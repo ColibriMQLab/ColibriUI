@@ -1,0 +1,12 @@
+# misc
+.DS_Store
+
+# build
+dist
+
+# dependencies
+node_modules
+
+#ide
+/.idea
+/.vscode
