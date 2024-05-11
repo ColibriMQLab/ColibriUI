@@ -19,7 +19,7 @@ export type BreakpointsTheme = {
   ) => string;
 };
 
-const breakpoints: BreakpointsTheme = {
+const Breakpoints: BreakpointsTheme = {
   values: {
     hd: 2560,
     xl: 1920,
@@ -47,4 +47,4 @@ const breakpoints: BreakpointsTheme = {
   },
 };
 
-export default breakpoints;
+export default Breakpoints;

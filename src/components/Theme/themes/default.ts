@@ -1,28 +1,9 @@
-import Color from "./color";
+import type { ButtonVariant } from "../../Button/index.props";
+import Color from "../color";
+import breakpoints from "../breakpoints";
 
-type Styles = {
-  color?: string;
-  backgroundColor?: string;
-  borderColor?: string;
-  boxShadow?: string;
-  borderWidth?: string;
-  border?: string;
-};
-
-type ButtonState = {
-  normal?: Styles;
-  hover?: Styles;
-  focus?: Styles;
-  active?: Styles;
-  disabled?: Styles;
-};
-
-export type ButtonTheme = {
-  default: ButtonState;
-};
-
-const button: ButtonTheme = {
-  default: {
+export const ButtonDefault: ButtonVariant = {
+  primary: {
     normal: {
       color: Color.WHITE,
       backgroundColor: Color.BLUE_12,
@@ -50,4 +31,7 @@ const button: ButtonTheme = {
   },
 };
 
-export default button;
+export const THEME_DEFAULT = {
+  breakpoints,
+  button: ButtonDefault,
+};

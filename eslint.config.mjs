@@ -13,6 +13,8 @@ export default [
   {
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
+      "react/display-name": "off",
+      "react/react-in-jsx-scope": "off",
     },
   },
 ];
