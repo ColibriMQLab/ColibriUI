@@ -26,8 +26,9 @@ export const ButtonBA: ButtonVariant | ButtonBase = {
       borderColor: Color.PURPLE_10,
     },
     disabled: {
-      backgroundColor: Color.PURPLE_4,
-      borderColor: Color.PURPLE_4,
+      color: Color.PURPLE_10,
+      backgroundColor: Color.PURPLE_8,
+      borderColor: Color.PURPLE_8,
     },
   },
 };

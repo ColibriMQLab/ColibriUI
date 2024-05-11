@@ -22,7 +22,7 @@ enum Color {
   PURPLE_5 = "rgba(210, 222, 255, 1)",
   PURPLE_6 = "rgba(190, 207, 255, 1)",
   PURPLE_7 = "rgba(166, 188, 255, 1)",
-  PURPLE_8 = "rgba(134, 160, 255, 1)",
+  PURPLE_8 = "rgba(38, 49, 129, .07)",
   PURPLE_9 = "rgba(38, 49, 129, .15)",
   PURPLE_10 = "rgba(38, 49, 129, .3)",
   PURPLE_11 = "rgba(79, 98, 199, .15)",
