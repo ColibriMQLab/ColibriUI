@@ -9,23 +9,20 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-themes",
+    "@storybook/addon-themes"
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  swc: () => ({
+  swc: (config, options) => ({
     jsc: {
       transform: {
         react: {
-          runtime: "automatic",
+          runtime: 'automatic',
         },
       },
     },
   }),
-  docs: {
-    autodocs: "tag",
-  },
 };
 export default config;

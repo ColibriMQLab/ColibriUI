@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
-import type { CSSObject } from "@emotion/react";
-import { css } from "@emotion/react";
-import type { ReactNode } from "react";
-import type { ButtonVariant, IButtonProps } from "./index.props";
+import { css, CSSObject } from "@emotion/react";
+import { ReactNode } from "react";
+import { ButtonVariant, IButtonProps } from "./index.props";
 
 export const StyledButton = styled.button<{
   fullWidth?: boolean;
@@ -12,19 +11,21 @@ export const StyledButton = styled.button<{
 }>`
   padding: 10px 12px;
   box-sizing: border-box;
-  border: 1px solid;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 26px;
   cursor: pointer;
   gap: 8px;
   flex-shrink: 0;
-
+  border: 1px solid;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+
+  ${({ theme }) => css`
+    ${css(theme.button.base as CSSObject)}
+  `}
 
   ${({ size }) =>
     size === "s" &&
@@ -66,9 +67,10 @@ export const StyledButton = styled.button<{
       ${css(theme.button[variant].active as CSSObject)}
     }
 
+    ${disabled && css(theme.button[variant].disabled as CSSObject)}
+
     ${disabled &&
     css`
-      opacity: 0.7;
       cursor: not-allowed;
       pointer-events: none;
     `}

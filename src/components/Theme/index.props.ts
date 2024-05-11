@@ -1,7 +1,7 @@
 import type { BreakpointsTheme } from "./breakpoints";
-import type { ButtonVariant } from "../Button/index.props";
+import type { ButtonBase, ButtonVariant } from "../Button/index.props";
 
 export type ThemeProps = {
-  button: ButtonVariant;
+  button: ButtonVariant & ButtonBase;
   breakpoints: BreakpointsTheme;
 };

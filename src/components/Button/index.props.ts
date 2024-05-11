@@ -1,25 +1,35 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import type { CSSObject } from "@emotion/react";
 
-type ButtonStyles = {
+type BaseStyles = {
+  color: CSSObject["color"];
+  borderRadius: CSSObject["borderRadius"];
+}
+
+type VariantStyles = {
   color?: CSSObject["color"];
   backgroundColor?: CSSObject["backgroundColor"];
   borderColor?: CSSObject["borderColor"];
   boxShadow?: CSSObject["boxShadow"];
   borderWidth?: CSSObject["borderWidth"];
+  borderRadius?: CSSObject["borderRadius"];
   border?: CSSObject["border"];
 };
 
-type ButtonState = {
-  normal?: ButtonStyles;
-  hover?: ButtonStyles;
-  focus?: ButtonStyles;
-  active?: ButtonStyles;
-  disabled?: ButtonStyles;
+type VariantStates = {
+  normal?: VariantStyles;
+  hover?: VariantStyles;
+  focus?: VariantStyles;
+  active?: VariantStyles;
+  disabled?: VariantStyles;
+};
+
+export type ButtonBase = {
+  base: BaseStyles;
 };
 
 export type ButtonVariant = {
-  primary: ButtonState;
+  primary: VariantStates;
 };
 
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

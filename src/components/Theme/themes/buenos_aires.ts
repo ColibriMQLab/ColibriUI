@@ -1,32 +1,32 @@
-import type { ButtonVariant } from "../../Button/index.props";
+import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 import Color from "../color";
 import breakpoints from "../breakpoints";
 
-export const ButtonBA: ButtonVariant = {
+export const ButtonBA: ButtonVariant | ButtonBase = {
+  base: {
+    color: Color.BLACK,
+    borderRadius: '26px'
+  },
   primary: {
     normal: {
-      color: "red",
-      backgroundColor: Color.BLUE_12,
-      borderColor: Color.BLUE_12,
+      backgroundColor: Color.PURPLE_9,
+      borderColor: Color.PURPLE_9,
     },
     hover: {
-      color: "red",
-      backgroundColor: Color.BLUE_11,
-      borderColor: Color.BLUE_11,
+      backgroundColor: Color.PURPLE_10,
+      borderColor: Color.PURPLE_10,
     },
     focus: {
-      color: "red",
-      backgroundColor: Color.BLUE_11,
-      borderColor: Color.BLUE_11,
+      backgroundColor: Color.PURPLE_10,
+      borderColor: Color.PURPLE_10,
     },
     active: {
-      color: "red",
-      backgroundColor: Color.BLUE_10,
-      borderColor: Color.BLUE_10,
+      backgroundColor: Color.PURPLE_10,
+      borderColor: Color.PURPLE_10,
     },
     disabled: {
-      color: Color.GRAY_7,
-      backgroundColor: Color.GRAY_4,
+      backgroundColor: Color.PURPLE_4,
+      borderColor: Color.PURPLE_4,
     },
   },
 };
