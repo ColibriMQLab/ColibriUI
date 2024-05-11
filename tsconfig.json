@@ -1,6 +1,33 @@
 {
-  "extends": "./tsconfig.base.json",
-  "include": ["@types", "./src/**/*"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["ES2015", "dom", "ES2016", "ES2018"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types"
+    ],
+    "sourceMap": true,
+    "outDir": "./dist/esm",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,    
+    /* Type Checking */
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationDir": "./dist/esm",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true
+  },
+  "include": ["@types", "./**/*", "./src/**/*"],
   "exclude": [
       "node_modules",
       "dist",

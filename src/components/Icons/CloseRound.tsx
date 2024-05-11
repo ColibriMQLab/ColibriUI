@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
+import { forwardRef } from "react";
 
 export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
   (props, ref) => (
@@ -17,5 +18,5 @@ export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
         d="m7.5 12.5 5-5M12.5 12.5l-5-5"
       />
     </svg>
-  )
+  ),
 );

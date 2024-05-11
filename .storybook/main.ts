@@ -9,21 +9,21 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-themes"
+    "@storybook/addon-themes",
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  swc: (config, options) => ({
+  swc: () => ({
     jsc: {
       transform: {
         react: {
-          runtime: 'automatic',
+          runtime: "automatic",
         },
       },
     },
   }),
-  staticDirs: ['../static']
+  staticDirs: ["../static"],
 };
 export default config;

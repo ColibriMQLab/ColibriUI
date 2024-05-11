@@ -2,11 +2,11 @@ import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 import Color from "../color";
 import breakpoints from "../breakpoints";
 
-export const ButtonBA: ButtonVariant | ButtonBase = {
+export const ButtonBA: ButtonVariant & ButtonBase = {
   base: {
     color: Color.BLACK,
-    borderRadius: '26px',
-    border: 'none',
+    borderRadius: "26px",
+    border: "none",
   },
   primary: {
     normal: {

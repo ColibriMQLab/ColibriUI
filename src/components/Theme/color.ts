@@ -27,10 +27,6 @@ enum Color {
   PURPLE_10 = "rgba(38, 49, 129, .3)",
   PURPLE_11 = "rgba(79, 98, 199, .15)",
   PURPLE_12 = "rgba(30, 38, 117, .15)",
-
-
-
 }
 
 export default Color;
-

@@ -26,17 +26,16 @@ export const Primary: Story = {
 };
 
 export const withIcons: Story = {
-    args: {
-      children: "Кнопка",
-      variant: "primary",
-      iconEnd: <Globe />,
-    },
-  };
-  
-  export const onlyIcon: Story = {
-    args: {
+  args: {
+    children: "Кнопка",
     variant: "primary",
-      icon: <Globe />,
-    },
-  };
-  
+    iconEnd: <Globe />,
+  },
+};
+
+export const onlyIcon: Story = {
+  args: {
+    variant: "primary",
+    icon: <Globe />,
+  },
+};

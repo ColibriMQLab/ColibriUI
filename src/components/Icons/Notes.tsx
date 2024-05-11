@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
+import { forwardRef } from "react";
 
 export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
   (props, ref) => (
@@ -12,8 +13,8 @@ export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
     >
       <path
         stroke="#A1A4A8"
-        stroke-linecap="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeWidth="3"
         d="M11.25 13.25h3m-3 4h7"
       />
       <path
@@ -22,8 +23,8 @@ export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
       />
       <path
         stroke="#A1A4A8"
-        stroke-linecap="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeWidth="3"
         d="M11.25 21.25h7"
       />
       <path
@@ -35,5 +36,5 @@ export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
         d="M7 9.75A2.25 2.25 0 0 1 9.25 7.5h11c.879 0 1.64.504 2.01 1.239a2.24 2.24 0 0 0-1.01-.24h-11A2.25 2.25 0 0 0 8 10.75v15c0 .364.087.707.24 1.011A2.25 2.25 0 0 1 7 24.75v-15Z"
       />
     </svg>
-  )
+  ),
 );

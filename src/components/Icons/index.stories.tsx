@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import AddWidget from "./AddWidget";
 import Alert from "./Alert";
 import Arrow from "./Arrow";
@@ -78,15 +78,15 @@ const Icon = styled.div`
 `;
 
 const renderIcons = (icons: { [key: string]: ReactNode }) => {
-  const allIcons = [] 
+  const allIcons = [];
   for (const icon in icons) {
     allIcons.push(
-      //@ts-ignore
+      // @ts-expect-error error
       <div key={Math.random()}>
         <Item>{icons[icon]}</Item>
         <Icon>{icon}</Icon>
-      </div>
-    )
+      </div>,
+    );
   }
 
   return allIcons.map((item) => item);

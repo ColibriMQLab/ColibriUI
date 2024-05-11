@@ -1,8 +1,6 @@
 import type { Preview } from "@storybook/react";
-import { ThemeProvider } from "../src/components/Theme";
+import { ThemeProvider, THEMES } from "../src/components/Theme";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
-import { THEME_BA } from "../src/components/Theme/themes/buenos_aires";
-import { THEME_DEFAULT } from "../src/components/Theme/themes/default";
 
 const preview: Preview = {
   parameters: {
@@ -16,10 +14,10 @@ const preview: Preview = {
   decorators: [
     withThemeFromJSXProvider({
       themes: {
-        default: THEME_DEFAULT,
-        ba: THEME_BA,
+        DEFAULT: THEMES.DEFAULT,
+        BA: THEMES.BA,
       },
-      defaultTheme: "default",
+      defaultTheme: "DEFAULT",
       Provider: ThemeProvider,
     }),
   ],

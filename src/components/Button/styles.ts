@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { css, CSSObject } from "@emotion/react";
-import { ReactNode } from "react";
-import { ButtonVariant, IButtonProps } from "./index.props";
+import type { CSSObject } from "@emotion/react";
+import { css } from "@emotion/react";
+import type { ReactNode } from "react";
+import type { ButtonVariant, IButtonProps } from "./index.props";
 
 export const StyledButton = styled.button<{
   fullWidth?: boolean;
@@ -23,7 +24,9 @@ export const StyledButton = styled.button<{
   height: 36px;
   font-size: 15px;
   line-height: 36px;
-  transition: transform .1s ease-out, color .15s linear;
+  transition:
+    transform 0.1s ease-out,
+    color 0.15s linear;
   transform: scale(1);
 
   ${({ theme }) => css`
@@ -41,9 +44,9 @@ export const StyledButton = styled.button<{
   ${({ size }) =>
     size === "m" &&
     css`
-    height: 36px;
-    font-size: 15px;
-    line-height: 36px;
+      height: 36px;
+      font-size: 15px;
+      line-height: 36px;
     `};
 
   ${({ size }) =>

@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
+import { forwardRef } from "react";
 
 export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
   (props, ref) => (
@@ -12,5 +13,5 @@ export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
     >
       <path stroke="currentColor" d="M0 4h16m0 0-3-3m3 3-3 3" />
     </svg>
-  )
+  ),
 );
