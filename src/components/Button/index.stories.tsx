@@ -1,4 +1,6 @@
+import React from "react";
 import Button from "./index";
+import Globe from "../Icons/Globe";
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -22,3 +24,19 @@ export const Primary: Story = {
     disabled: false,
   },
 };
+
+export const withIcons: Story = {
+    args: {
+      children: "Кнопка",
+      variant: "primary",
+      iconEnd: <Globe />,
+    },
+  };
+  
+  export const onlyIcon: Story = {
+    args: {
+    variant: "primary",
+      icon: <Globe />,
+    },
+  };
+  

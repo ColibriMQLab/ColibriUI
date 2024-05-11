@@ -9,7 +9,7 @@ export const StyledButton = styled.button<{
   icon?: ReactNode;
   size?: IButtonProps["size"];
 }>`
-  padding: 10px 12px;
+  padding: 0 12px;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -20,8 +20,11 @@ export const StyledButton = styled.button<{
   border: 1px solid;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  height: 36px;
+  font-size: 15px;
+  line-height: 36px;
+  transition: transform .1s ease-out, color .15s linear;
+  transform: scale(1);
 
   ${({ theme }) => css`
     ${css(theme.button.base as CSSObject)}
@@ -30,25 +33,25 @@ export const StyledButton = styled.button<{
   ${({ size }) =>
     size === "s" &&
     css`
-      font-size: 16px;
-      line-height: 20px;
       height: 32px;
+      font-size: 13px;
+      line-height: 32px;
     `};
 
   ${({ size }) =>
     size === "m" &&
     css`
-      font-size: 18px;
-      line-height: 24px;
-      height: 36px;
+    height: 36px;
+    font-size: 15px;
+    line-height: 36px;
     `};
 
   ${({ size }) =>
     size === "l" &&
     css`
-      font-size: 20px;
-      line-height: 26px;
       height: 42px;
+      font-size: 18px;
+      line-height: 42px;
     `};
 
   ${({ theme, variant, fullWidth, disabled }) => css`
@@ -65,21 +68,23 @@ export const StyledButton = styled.button<{
 
     &:active {
       ${css(theme.button[variant].active as CSSObject)}
+      transition: none;
+      transform: scale(0.96);
     }
-
-    ${disabled && css(theme.button[variant].disabled as CSSObject)}
 
     ${disabled &&
     css`
       cursor: not-allowed;
       pointer-events: none;
+      ${css(theme.button[variant].disabled as CSSObject)}
     `}
   `}
 
   ${({ icon, size }) => css`
     ${icon &&
     css`
-      padding: 0px;
+      padding: 0;
+      margin: 0;
       border-radius: 50%;
       width: 36px;
       ${size === "s" && "width: 32px"};

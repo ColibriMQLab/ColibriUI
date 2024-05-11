@@ -5,7 +5,8 @@ import breakpoints from "../breakpoints";
 export const ButtonBA: ButtonVariant | ButtonBase = {
   base: {
     color: Color.BLACK,
-    borderRadius: '26px'
+    borderRadius: '26px',
+    border: 'none',
   },
   primary: {
     normal: {

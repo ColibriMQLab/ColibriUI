@@ -5,7 +5,7 @@ import breakpoints from "../breakpoints";
 export const ButtonDefault: ButtonVariant | ButtonBase = {
   base: {
     color: Color.WHITE,
-    borderRadius: '26px'
+    borderRadius: '26px',
   },
   primary: {
     normal: {
@@ -13,8 +13,8 @@ export const ButtonDefault: ButtonVariant | ButtonBase = {
       borderColor: Color.BLUE_9,
     },
     hover: {
-      backgroundColor: Color.BLUE_8,
-      borderColor: Color.BLUE_8,
+      backgroundColor: Color.BLUE_10,
+      borderColor: Color.BLUE_10,
     },
     focus: {
       backgroundColor: Color.BLUE_10,

@@ -4,6 +4,7 @@ import type { CSSObject } from "@emotion/react";
 type BaseStyles = {
   color: CSSObject["color"];
   borderRadius: CSSObject["borderRadius"];
+  border?: CSSObject["border"];
 }
 
 type VariantStyles = {
