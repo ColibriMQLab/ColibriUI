@@ -4,7 +4,6 @@ const { execSync } = require('child_process');
 
 const existPackageJson = existsSync('package.json');
 const existReadme = existsSync('README.md');
-const existFlags = existsSync('static/img');
 
 if (existPackageJson) {
     try {
@@ -21,15 +20,6 @@ if (existPackageJson) {
 if (existReadme) {
     try {
         execSync('cp README.md dist', { stdio: 'inherit' });
-    } catch (err) {
-        throw new Error(`Could not copy .npmrc file because of an error: ${err}`)
-    }
-}
-
-if (existFlags) {
-    try {
-        execSync('cp -r static/img  dist/Icons/Flag', { stdio: 'inherit' });
-        execSync('cp -r static/img  dist/esm/Icons/Flag', { stdio: 'inherit' });
     } catch (err) {
         throw new Error(`Could not copy .npmrc file because of an error: ${err}`)
     }

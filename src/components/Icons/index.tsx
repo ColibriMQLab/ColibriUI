@@ -25,4 +25,3 @@ export { default as Share } from "./Share";
 export { default as SignOut } from "./SignOut";
 export { default as Telegram } from "./Telegram";
 export { default as User } from "./User";
-export { default as Flag } from "./Flag";
