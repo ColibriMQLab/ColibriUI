@@ -15,18 +15,27 @@ enum Color {
   BLUE_11 = "#006DE3",
   BLUE_12 = "#093266",
 
-  PURPLE_1 = "rgba(252, 253, 255, 1)",
-  PURPLE_2 = "rgba(246, 249, 255, 1)",
-  PURPLE_3 = "rgba(236, 242, 255, 1)",
-  PURPLE_4 = "rgba(224, 233, 255, 1)",
-  PURPLE_5 = "rgba(210, 222, 255, 1)",
-  PURPLE_6 = "rgba(190, 207, 255, 1)",
-  PURPLE_7 = "rgba(166, 188, 255, 1)",
-  PURPLE_8 = "rgba(38, 49, 129, .07)",
-  PURPLE_9 = "rgba(38, 49, 129, .15)",
-  PURPLE_10 = "rgba(38, 49, 129, .3)",
-  PURPLE_11 = "rgba(79, 98, 199, .15)",
-  PURPLE_12 = "rgba(30, 38, 117, .15)",
+  PURPLE_1 = "rgba(38, 49, 129, .07)",
+  PURPLE_2 = "rgba(38, 49, 129, .15)",
+  PURPLE_3 = "rgba(38, 49, 129, .3)",
+
+  GRAPHITE_1 = "#FCFDFE",
+  GRAPHITE_2 = "#F8FAFB",
+  GRAPHITE_3 = "#EDF0F4",
+  GRAPHITE_4 = "#E4E8ED",
+  GRAPHITE_5 = "#DBE1E6",
+  GRAPHITE_6 = "#D1D8DF",
+  GRAPHITE_7 = "#C4CDD6",
+  GRAPHITE_8 = "#AFB9C3",
+  GRAPHITE_9 = "#24292E",
+  GRAPHITE_10 = "#383D42",
+  GRAPHITE_11 = "#5E666F",
+  GRAPHITE_12 = "#22272B",
+
+  NEUTRAL_1 = "rgba(22,51,0,.05)",
+  NEUTRAL_2 = "rgba(22,51,0,.078)",
+  NEUTRAL_3 =  "rgba(22,51,0,.129)",
+
 }
 
 export default Color;

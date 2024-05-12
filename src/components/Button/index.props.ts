@@ -30,6 +30,7 @@ export type ButtonBase = {
 };
 
 export type ButtonVariant = {
+  default: VariantStates;
   primary: VariantStates;
 };
 
