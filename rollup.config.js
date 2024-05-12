@@ -6,6 +6,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
+const external = (id) => !id.startsWith('.') && !id.startsWith('/');
+
 const getBabelOptions = ({ value }) => ({
   babelrc: false,
   presets: [
@@ -33,6 +35,9 @@ export default [
         preserveModulesRoot: "src/components",
       },
     ],
+    external: [
+      /node_modules/
+    ],
     treeshake: false,
     plugins: [
       url(),
@@ -58,6 +63,9 @@ export default [
         preserveModulesRoot: "src/components",
         exports: "named",
       },
+    ],
+    external: [
+      /node_modules/
     ],
     treeshake: false,
     plugins: [
