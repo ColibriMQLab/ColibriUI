@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./index";
-import Globe from "../Icons/Globe";
+import More from "../Icons/More";
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -25,17 +25,17 @@ export const Primary: Story = {
   },
 };
 
-export const withIcons: Story = {
+export const withIcon: Story = {
   args: {
-    children: "Кнопка",
+    children: "Click me",
     variant: "primary",
-    iconEnd: <Globe />,
+    iconEnd: <More />,
   },
 };
 
 export const onlyIcon: Story = {
   args: {
     variant: "primary",
-    icon: <Globe />,
+    icon: <More />,
   },
 };
