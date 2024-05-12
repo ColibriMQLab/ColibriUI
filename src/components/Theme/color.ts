@@ -28,6 +28,20 @@ enum Color {
   GRAPHITE_11 = "#5E666F",
   GRAPHITE_12 = "#22272B",
 
+  GRAY_1 = "#FCFCFD",
+  GRAY_2 = "#F9F9FB",
+  GRAY_3 = "#EFF0F3",
+  GRAY_4 = "#E7E8EC",
+  GRAY_5 = "#E0E1E6",
+  GRAY_6 = "#D8D9E0",
+  GRAY_7 = "#CDCED7",
+  GRAY_8 = "#B9BBC6",
+  GRAY_9 = "#8B8D98",
+  GRAY_10 = "#80828D",
+  GRAY_11 = "#62636C",
+  GRAY_12 = "#1E1F24",
+
+
   PURPLE_1 = "rgba(38, 49, 129, .07)",
   PURPLE_2 = "rgba(38, 49, 129, .15)",
   PURPLE_3 = "rgba(38, 49, 129, .3)",

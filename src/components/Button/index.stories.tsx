@@ -33,6 +33,14 @@ export const Primary: Story = {
   },
 };
 
+export const Clear: Story = {
+  args: {
+    children: "Click me",
+    variant: "clear",
+    disabled: false,
+  },
+};
+
 export const withIcon: Story = {
   args: {
     children: "Click me",

@@ -32,6 +32,7 @@ export type ButtonBase = {
 export type ButtonVariant = {
   default: VariantStates;
   primary: VariantStates;
+  clear: VariantStates;
 };
 
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

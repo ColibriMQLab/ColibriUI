@@ -57,6 +57,28 @@ export const ButtonDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.BLUE_4,
     },
   },
+  clear: {
+    normal: {
+      color: Color.GRAY_9,
+      backgroundColor: Color.WHITE,
+      borderColor: Color.WHITE,
+    },
+    hover: {
+      color: Color.BLACK,
+      backgroundColor: Color.NEUTRAL_2,
+      borderColor: Color.NEUTRAL_2,
+    },
+    active: {
+      color: Color.BLACK,
+      backgroundColor: Color.NEUTRAL_2,
+      borderColor: Color.NEUTRAL_2,
+    },
+    disabled: {
+      color: Color.NEUTRAL_3,
+      backgroundColor: Color.NEUTRAL_1,
+      borderColor: Color.NEUTRAL_1,
+    },
+  },
 };
 
 export const THEME_DEFAULT = {
