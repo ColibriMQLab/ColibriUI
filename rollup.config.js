@@ -33,6 +33,7 @@ export default [
         format: "esm",
         preserveModules: true,
         preserveModulesRoot: "src/components",
+        interop: "auto"
       },
     ],
     external,
@@ -60,6 +61,7 @@ export default [
         preserveModules: true,
         preserveModulesRoot: "src/components",
         exports: "named",
+        interop: "auto"
       },
     ],
     external,
