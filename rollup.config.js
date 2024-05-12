@@ -5,6 +5,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
+import terser from '@rollup/plugin-terser';
 
 const getBabelOptions = ({ value }) => ({
   babelrc: false,
@@ -49,6 +50,7 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(true)),
+      terser(),
     ],
   },
   {
@@ -78,6 +80,7 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(false)),
+      terser(),
     ],
   },
 ];
