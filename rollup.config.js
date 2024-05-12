@@ -7,6 +7,8 @@ import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 import terser from '@rollup/plugin-terser';
 
+const external = (id) => !id.startsWith('.') && !id.startsWith('/');
+
 const getBabelOptions = ({ value }) => ({
   babelrc: false,
   presets: [
@@ -25,7 +27,7 @@ const getBabelOptions = ({ value }) => ({
 
 export default [
   {
-    input: "src/components/index.ts",
+    input: "./src/components/index.ts",
     output: [
       {
         dir: "dist/esm",
@@ -34,9 +36,7 @@ export default [
         preserveModulesRoot: "src/components",
       },
     ],
-    external: [
-      /node_modules/
-    ],
+    external,
     treeshake: false,
     plugins: [
       url(),
@@ -50,11 +50,11 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(true)),
-      terser(),
+      terser()
     ],
   },
   {
-    input: "src/components/index.ts",
+    input: "./src/components/index.ts",
     output: [
       {
         dir: "dist",
@@ -64,9 +64,7 @@ export default [
         exports: "named",
       },
     ],
-    external: [
-      /node_modules/
-    ],
+    external,
     treeshake: false,
     plugins: [
       url(),
@@ -80,7 +78,7 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(false)),
-      terser(),
+      terser()
     ],
   },
 ];
