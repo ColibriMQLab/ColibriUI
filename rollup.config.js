@@ -50,7 +50,6 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(true)),
-      terser(),
     ],
   },
   {
@@ -78,7 +77,6 @@ export default [
         include: "node_modules/**",
       }),
       babel(getBabelOptions(false)),
-      terser(),
     ],
   },
 ];
