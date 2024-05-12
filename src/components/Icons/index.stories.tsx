@@ -11,22 +11,23 @@ import CheckBoxChecked from "./CheckBoxChecked";
 import Chevron from "./Chevron";
 import Close from "./Close";
 import CloseRound from "./CloseRound";
-import Info from "./Info";
 import Edit from "./Edit";
 import Error from "./Error";
 import EyeOpen from "./EyeOpen";
 import EyeClosed from "./EyeClosed";
-import Setting from "./Setting";
-import SignOut from "./SignOut";
-import Telegram from "./Telegram";
 import Globe from "./Globe";
+import Help from "./Help";
+import Info from "./Info";
 import Location from "./Location";
 import Lock from "./Lock";
 import Mir from "./Mir";
 import More from "./More";
 import Notes from "./Notes";
+import Setting from "./Setting";
+import Share from "./Share";
+import SignOut from "./SignOut";
+import Telegram from "./Telegram";
 import User from "./User";
-import Help from "./Help";
 
 const icons = {
   AddWidget: <AddWidget />,
@@ -45,6 +46,7 @@ const icons = {
   EyeOpen: <EyeOpen />,
   EyeClosed: <EyeClosed />,
   Setting: <Setting />,
+  Share: <Share />,
   SignOut: <SignOut />,
   Globe: <Globe />,
   Location: <Location />,

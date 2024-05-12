@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/ColibriMQLab/ColibriUI#readme",
   "dependencies": {
-    "@emotion/css": "11.11.2",
-    "@emotion/react": "11.11.4",
-    "@emotion/styled": "11.11.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.24.3",
@@ -74,13 +74,13 @@
     "typescript-eslint": "7.8.0"
   },
   "peerDependencies": {
-    "tslib": "^2.6.2",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@types/react": "^17.0.0 || ^18.0.0",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "tslib": "^2.6.2"
   },
   "eslintConfig": {
     "extends": [
