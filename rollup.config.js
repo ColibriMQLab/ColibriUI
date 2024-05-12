@@ -5,7 +5,6 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
-import terser from "@rollup/plugin-terser";
 
 const external = (id) => !id.startsWith(".") && !id.startsWith("/");
 
