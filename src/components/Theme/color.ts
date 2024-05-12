@@ -15,10 +15,6 @@ enum Color {
   BLUE_11 = "#006DE3",
   BLUE_12 = "#093266",
 
-  PURPLE_1 = "rgba(38, 49, 129, .07)",
-  PURPLE_2 = "rgba(38, 49, 129, .15)",
-  PURPLE_3 = "rgba(38, 49, 129, .3)",
-
   GRAPHITE_1 = "#FCFDFE",
   GRAPHITE_2 = "#F8FAFB",
   GRAPHITE_3 = "#EDF0F4",
@@ -31,6 +27,10 @@ enum Color {
   GRAPHITE_10 = "#383D42",
   GRAPHITE_11 = "#5E666F",
   GRAPHITE_12 = "#22272B",
+
+  PURPLE_1 = "rgba(38, 49, 129, .07)",
+  PURPLE_2 = "rgba(38, 49, 129, .15)",
+  PURPLE_3 = "rgba(38, 49, 129, .3)",
 
   NEUTRAL_1 = "rgba(22,51,0,.05)",
   NEUTRAL_2 = "rgba(22,51,0,.078)",
