@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import More from "../Icons/More";
 import { SIZE, VARIANT } from "./index.props";
+import { fn } from "@storybook/test";
 import Button from ".";
 
 const meta: Meta<typeof Button> = {
@@ -19,6 +20,7 @@ const meta: Meta<typeof Button> = {
       options: Object.values(VARIANT),
     },
   },
+  args: { onClick: fn() },
   component: Button,
 } satisfies Meta<typeof Button>;
 

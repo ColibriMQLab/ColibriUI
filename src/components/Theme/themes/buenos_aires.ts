@@ -100,8 +100,25 @@ export const TypographyThemeBA = {
   },
 };
 
+export const SwitchThemeDefault = {
+  circle: {
+    backgroundColor: Color.WHITE,
+  },
+  state: {
+    normal: {
+      backgroundColor: Color.GRAPHITE_6,
+      borderColor: Color.GRAPHITE_6,
+    },
+    checked: {
+      backgroundColor: Color.GRAPHITE_10,
+      borderColor: Color.GRAPHITE_10,
+    },
+  },
+};
+
 export const THEME_BA = {
   breakpoints,
   button: ButtonThemeBA,
   typography: TypographyThemeBA,
+  switch: SwitchThemeDefault,
 };

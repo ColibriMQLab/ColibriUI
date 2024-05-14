@@ -1,6 +1,8 @@
 # misc
 .DS_Store
 
+.swc
+
 # build
 dist
 
