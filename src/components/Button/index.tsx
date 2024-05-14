@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { VARIANT, type IButtonProps } from "./index.props";
+import { VARIANT, type ButtonProps } from "./index.props";
 import { StyledButton, StyledIcon } from "./styles";
 
-const Button = forwardRef<HTMLButtonElement, IButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,

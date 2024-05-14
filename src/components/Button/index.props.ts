@@ -47,7 +47,7 @@ export type ButtonVariant = {
   [VARIANT.CLEAR]: VariantStates;
 };
 
-export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof ButtonVariant;
   fullWidth?: boolean;
   icon?: ReactNode;

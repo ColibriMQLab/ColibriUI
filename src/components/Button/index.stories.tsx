@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "./index";
-import More from "../Icons/More";
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
+import More from "../Icons/More";
 import { SIZE, VARIANT } from "./index.props";
+import Button from ".";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",
@@ -20,7 +19,6 @@ const meta: Meta<typeof Button> = {
       options: Object.values(VARIANT),
     },
   },
-  args: { onClick: fn(), size: SIZE.M, variant: VARIANT.DEFAULT },
   component: Button,
 } satisfies Meta<typeof Button>;
 
@@ -28,16 +26,17 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
+const TEXT = "Click me";
+
 export const Default: Story = {
   args: {
-    children: "Click me",
-    disabled: false,
+    children: TEXT,
   },
 };
 
 export const withIcon: Story = {
   args: {
-    children: "Click me",
+    children: TEXT,
     iconEnd: <More />,
   },
 };

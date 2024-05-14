@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import type { CSSObject } from "@emotion/react";
 import { css } from "@emotion/react";
 import type { ReactNode } from "react";
-import type { ButtonVariant, IButtonProps } from "./index.props";
+import type { ButtonVariant, SIZE } from "./index.props";
 
 const sizeS = css`
   height: 32px;
@@ -26,7 +26,7 @@ export const StyledButton = styled.button<{
   fullWidth?: boolean;
   variant: keyof ButtonVariant;
   icon?: ReactNode;
-  size?: IButtonProps["size"];
+  size?: SIZE;
 }>`
   padding: 0 12px;
   box-sizing: border-box;
