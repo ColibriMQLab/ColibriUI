@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import More from "../Icons/More";
-import { SIZE } from "./index.props";
+import { SIZE, VARIANT } from "./index.props";
 import Button from ".";
 
 const meta: Meta<typeof Button> = {
@@ -13,6 +13,10 @@ const meta: Meta<typeof Button> = {
     size: {
       control: { type: "select" },
       options: Object.values(SIZE),
+    },
+    variant: {
+      control: { type: "select" },
+      options: Object.values(VARIANT),
     },
   },
   component: Button,
