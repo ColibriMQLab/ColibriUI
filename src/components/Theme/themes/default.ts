@@ -82,11 +82,21 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
 };
 
 export const TypographyThemeDefault = {
-  primary: Color.TYPOGRAPHY_PRIMARY,
-  secondary: Color.TYPOGRAPHY_SECONDARY,
-  alert: Color.TYPOGRAPHY_ALERT,
-  success: Color.TYPOGRAPHY_SUCCESS,
-  link: Color.TYPOGRAPHY_LINK,
+  primary: {
+    color: Color.TYPOGRAPHY_PRIMARY,
+  },
+  secondary: {
+    color: Color.TYPOGRAPHY_SECONDARY,
+  },
+  alert: {
+    color: Color.TYPOGRAPHY_ALERT,
+  },
+  success: {
+    color: Color.TYPOGRAPHY_SUCCESS,
+  },
+  link: {
+    color: Color.TYPOGRAPHY_LINK,
+  },
 };
 
 export const THEME_DEFAULT = {

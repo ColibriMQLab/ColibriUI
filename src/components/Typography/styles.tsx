@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import type {
-  TypographyFontWeight,
-  TypographySize,
-  TypographyVariant,
+import {
+  type TypographyFontWeight,
+  type TypographySize,
+  type TypographyVariant,
 } from "./index.props";
 
 const sizeXS = css`
@@ -76,26 +76,26 @@ export const BaseTypography = styled.span<{
 }>`
   ${({ size }) => size === "xs" && sizeXS}
   ${({ size }) => size === "s" && sizeS}
-    ${({ size }) => size === "m" && sizeM}
-    ${({ size }) => size === "l" && sizeL}
-    ${({ size }) => size === "h1" && sizeH1}
-    ${({ size }) => size === "h2" && sizeH2}
-    ${({ size }) => size === "h3" && sizeH3}
-    ${({ size }) => size === "h4" && sizeH4}
-    ${({ size }) => size === "h5" && sizeH5}
-    ${({ size }) => size === "h6" && sizeH6}
+  ${({ size }) => size === "m" && sizeM}
+  ${({ size }) => size === "l" && sizeL}
+  ${({ size }) => size === "h1" && sizeH1}
+  ${({ size }) => size === "h2" && sizeH2}
+  ${({ size }) => size === "h3" && sizeH3}
+  ${({ size }) => size === "h4" && sizeH4}
+  ${({ size }) => size === "h5" && sizeH5}
+  ${({ size }) => size === "h6" && sizeH6}
 
-    ${({ fontWeight }) => fontWeight === "normal" && fontWeightNormal}
-    ${({ fontWeight }) => fontWeight === "medium" && fontWeightMedium}
-    ${({ fontWeight }) => fontWeight === "bold" && fontWeightBold}
+  ${({ fontWeight }) => fontWeight === "normal" && fontWeightNormal}
+  ${({ fontWeight }) => fontWeight === "medium" && fontWeightMedium}
+  ${({ fontWeight }) => fontWeight === "bold" && fontWeightBold}
 
-    ${({ nowrap }) =>
+  ${({ nowrap }) =>
     nowrap &&
     css`
       white-space: nowrap;
     `}
 
-    ${({ theme, variant = "primary" }) => css`
+  ${({ theme, variant }) => css`
     ${css(theme.typography[variant])}
   `}
 `;

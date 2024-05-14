@@ -7,3 +7,7 @@ React UI components library.
 ```sh
 npm i -S colibri-ui
 ```
+
+## License
+
+MIT

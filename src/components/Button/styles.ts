@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import type { CSSObject } from "@emotion/react";
 import { css } from "@emotion/react";
 import type { ReactNode } from "react";
 import type { ButtonVariant, SIZE } from "./index.props";
@@ -20,6 +19,10 @@ const sizeL = css`
   height: 42px;
   font-size: 18px;
   line-height: 42px;
+`;
+
+const fullWidthCSS = css`
+  width: 100%;
 `;
 
 export const StyledButton = styled.button<{
@@ -46,28 +49,23 @@ export const StyledButton = styled.button<{
   color 0.15s linear;
   transform: scale(1);
 
-  ${({ theme }) => css`
-    ${css(theme.button.base as CSSObject)}
-  `}
-
   ${({ size }) => size === "s" && sizeS}
   ${({ size }) => size === "m" && sizeM}
   ${({ size }) => size === "l" && sizeL}
 
-  ${({ theme, variant, fullWidth, disabled }) => css`
-    ${fullWidth &&
-    css`
-      width: 100%;
-    `}
+  ${({ fullWidth }) => fullWidth && fullWidthCSS}
 
-    ${css(theme.button[variant].normal as CSSObject)}
+  ${({ theme, variant, disabled }) => css`
+    ${css(theme.button.base)}
+
+    ${css(theme.button[variant].normal)}
 
     &:hover {
-      ${css(theme.button[variant].hover as CSSObject)}
+      ${css(theme.button[variant].hover)}
     }
 
     &:active {
-      ${css(theme.button[variant].active as CSSObject)}
+      ${css(theme.button[variant].active)}
       transition: none;
       transform: scale(0.96);
     }
@@ -76,7 +74,7 @@ export const StyledButton = styled.button<{
     css`
       cursor: not-allowed;
       pointer-events: none;
-      ${css(theme.button[variant].disabled as CSSObject)}
+      ${css(theme.button[variant].disabled)}
     `}
   `}
 

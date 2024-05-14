@@ -1,9 +1,23 @@
+import type { CSSObject } from "@emotion/react";
+
+export enum VARIANT {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  ALERT = "alert",
+  SUCCESS = "success",
+  LINK = "link",
+}
+
+type VariantStyles = {
+  color?: CSSObject["color"];
+};
+
 export type TypographyVariant = {
-  primary: string;
-  secondary: string;
-  alert: string;
-  success: string;
-  link: string;
+  [VARIANT.PRIMARY]: VariantStyles;
+  [VARIANT.SECONDARY]: VariantStyles;
+  [VARIANT.ALERT]: VariantStyles;
+  [VARIANT.SUCCESS]: VariantStyles;
+  [VARIANT.LINK]: VariantStyles;
 };
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =

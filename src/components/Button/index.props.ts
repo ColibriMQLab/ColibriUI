@@ -7,12 +7,6 @@ export enum SIZE {
   L = "l",
 }
 
-export enum VARIANT {
-  DEFAULT = "default",
-  PRIMARY = "primary",
-  CLEAR = "clear",
-}
-
 type BaseStyles = {
   color: CSSObject["color"];
   borderRadius: CSSObject["borderRadius"];
@@ -42,9 +36,9 @@ export type ButtonBase = {
 };
 
 export type ButtonVariant = {
-  [VARIANT.DEFAULT]: VariantStates;
-  [VARIANT.PRIMARY]: VariantStates;
-  [VARIANT.CLEAR]: VariantStates;
+  default: VariantStates;
+  primary: VariantStates;
+  clear: VariantStates;
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
