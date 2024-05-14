@@ -4,6 +4,24 @@ import { css } from "@emotion/react";
 import type { ReactNode } from "react";
 import type { ButtonVariant, IButtonProps } from "./index.props";
 
+const sizeS = css`
+  height: 32px;
+  font-size: 13px;
+  line-height: 32px;
+`;
+
+const sizeM = css`
+  height: 36px;
+  font-size: 15px;
+  line-height: 36px;
+`;
+
+const sizeL = css`
+  height: 42px;
+  font-size: 18px;
+  line-height: 42px;
+`;
+
 export const StyledButton = styled.button<{
   fullWidth?: boolean;
   variant: keyof ButtonVariant;
@@ -24,38 +42,17 @@ export const StyledButton = styled.button<{
   height: 36px;
   font-size: 15px;
   line-height: 36px;
-  transition:
-    transform 0.1s ease-out,
-    color 0.15s linear;
+  transition: transform 0.1s ease-out;
+  color 0.15s linear;
   transform: scale(1);
 
   ${({ theme }) => css`
     ${css(theme.button.base as CSSObject)}
   `}
 
-  ${({ size }) =>
-    size === "s" &&
-    css`
-      height: 32px;
-      font-size: 13px;
-      line-height: 32px;
-    `};
-
-  ${({ size }) =>
-    size === "m" &&
-    css`
-      height: 36px;
-      font-size: 15px;
-      line-height: 36px;
-    `};
-
-  ${({ size }) =>
-    size === "l" &&
-    css`
-      height: 42px;
-      font-size: 18px;
-      line-height: 42px;
-    `};
+  ${({ size }) => size === "s" && sizeS}
+  ${({ size }) => size === "m" && sizeM}
+  ${({ size }) => size === "l" && sizeL}
 
   ${({ theme, variant, fullWidth, disabled }) => css`
     ${fullWidth &&

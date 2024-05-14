@@ -3,13 +3,24 @@ import Button from "./index";
 import More from "../Icons/More";
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
+import { SIZE, VARIANT } from "./index.props";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",
   parameters: {
     layout: "centered",
   },
-  args: { onClick: fn() },
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: Object.values(SIZE),
+    },
+    variant: {
+      control: { type: "select" },
+      options: Object.values(VARIANT),
+    },
+  },
+  args: { onClick: fn(), size: SIZE.M, variant: VARIANT.DEFAULT },
   component: Button,
 } satisfies Meta<typeof Button>;
 
@@ -20,23 +31,6 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: "Click me",
-    variant: "default",
-    disabled: false,
-  },
-};
-
-export const Primary: Story = {
-  args: {
-    children: "Click me",
-    variant: "primary",
-    disabled: false,
-  },
-};
-
-export const Clear: Story = {
-  args: {
-    children: "Click me",
-    variant: "clear",
     disabled: false,
   },
 };
@@ -44,14 +38,12 @@ export const Clear: Story = {
 export const withIcon: Story = {
   args: {
     children: "Click me",
-    variant: "primary",
     iconEnd: <More />,
   },
 };
 
 export const onlyIcon: Story = {
   args: {
-    variant: "primary",
     icon: <More />,
   },
 };

@@ -2,7 +2,7 @@ import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 import Color from "../color";
 import breakpoints from "../breakpoints";
 
-export const ButtonDefault: ButtonVariant & ButtonBase = {
+export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
   base: {
     color: Color.BLACK,
     borderRadius: "26px",
@@ -81,7 +81,16 @@ export const ButtonDefault: ButtonVariant & ButtonBase = {
   },
 };
 
+export const TypographyThemeDefault = {
+  primary: Color.TYPOGRAPHY_PRIMARY,
+  secondary: Color.TYPOGRAPHY_SECONDARY,
+  alert: Color.TYPOGRAPHY_ALERT,
+  success: Color.TYPOGRAPHY_SUCCESS,
+  link: Color.TYPOGRAPHY_LINK,
+};
+
 export const THEME_DEFAULT = {
   breakpoints,
-  button: ButtonDefault,
+  button: ButtonThemeDefault,
+  typography: TypographyThemeDefault,
 };

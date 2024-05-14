@@ -19,6 +19,8 @@ export type BreakpointsTheme = {
   ) => string;
 };
 
+export type BreakpointMap<T = number> = Map<BreakpointName, T>;
+
 const Breakpoints: BreakpointsTheme = {
   values: {
     hd: 2560,

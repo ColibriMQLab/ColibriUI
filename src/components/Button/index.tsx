@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import type { IButtonProps } from "./index.props";
+import { VARIANT, type IButtonProps } from "./index.props";
 import { StyledButton, StyledIcon } from "./styles";
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
@@ -7,10 +7,11 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
     {
       className,
       fullWidth = false,
-      variant = "primary",
+      variant = VARIANT.DEFAULT,
       iconStart,
       iconEnd,
       icon,
+      size,
       children,
       onClick,
       ...props
@@ -21,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       <StyledButton
         onClick={onClick}
         ref={ref}
+        size={size}
         className={className}
         variant={variant}
         icon={icon}
