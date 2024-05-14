@@ -1,6 +1,6 @@
-import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 import Color from "../color";
 import breakpoints from "../breakpoints";
+import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 
 export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
   base: {

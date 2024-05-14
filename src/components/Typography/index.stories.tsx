@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import Typography from ".";
 import { VARIANT } from "./index.props";
+import Typography from ".";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Typography> = {
   title: "UI/Typography",

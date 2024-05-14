@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
-import type { SwitchProps } from "./index.props";
 import {
   BaseContainer,
   BaseInput,
   BaseSwitch,
   BaseSwitchContainer,
 } from "./styles";
+import type { SwitchProps } from "./index.props";
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
   return (

@@ -1,5 +1,5 @@
-import type { FC } from "react";
 import { Dot, Wrapper } from "./styles";
+import type { FC } from "react";
 
 const DotsLoader: FC<{ color?: string }> = ({ color }) => {
   return (

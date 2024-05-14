@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Color } from "../Theme/color";
 
 import DotsLoader from ".";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof DotsLoader> = {
   title: "UI/DotsLoader",

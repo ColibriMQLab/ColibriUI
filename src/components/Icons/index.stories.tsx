@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import type { ReactNode } from "react";
 import Burger from "./Burger";
 import Check from "./Check";
 import Chevron from "./Chevron";
@@ -11,6 +10,7 @@ import Help from "./Help";
 import Info from "./Info";
 import More from "./More";
 import User from "./User";
+import type { ReactNode } from "react";
 
 const icons = {
   Burger: <Burger />,

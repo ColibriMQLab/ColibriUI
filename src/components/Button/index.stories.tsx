@@ -1,9 +1,9 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 import More from "../Icons/More";
 import { SIZE, VARIANT } from "./index.props";
-import { fn } from "@storybook/test";
 import Button from ".";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",
