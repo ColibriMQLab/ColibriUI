@@ -33,6 +33,8 @@ const StyledTitle = styled(Typography)`
 
 const StyledName = styled(Typography)`
   word-break: break-all;
+  mix-blend-mode: difference;
+  color: white;
 `;
 
 const renderPalete = (colors, title) => {
