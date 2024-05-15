@@ -47,6 +47,10 @@ export const Purple = {
   PURPLE_1: "rgba(38, 49, 129, .07)",
   PURPLE_2: "rgba(38, 49, 129, .15)",
   PURPLE_3: "rgba(38, 49, 129, .3)",
+  PURPLE_4: "rgba(38, 49, 129, .4)",
+  PURPLE_5: "rgba(38, 49, 129, .5)",
+  PURPLE_6: "rgba(38, 49, 129, .6)",
+  PURPLE_7: "rgba(38, 49, 129, .7)",
 };
 
 export const Neutral = {

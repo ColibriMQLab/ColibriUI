@@ -1,8 +1,8 @@
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { type FC, type ReactNode } from "react";
 import globalStyles from "./global";
 import { THEME_DEFAULT } from "./themes/default";
 import { THEME_BA } from "./themes/buenos_aires";
-import type { FC, ReactNode } from "react";
 import type { ThemeProps } from "./index.props";
 
 export const THEMES = {
