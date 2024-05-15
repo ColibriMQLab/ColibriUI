@@ -15,4 +15,5 @@ node_modules
 
 # Optional npm cache directory
 .npm
+storybook-static
 *storybook.log

@@ -36,6 +36,12 @@ export default [
     },
   },
   {
-    ignores: [".git/*", "dist/*", "scripts/*", "node_modules/*"],
+    ignores: [
+      ".git/*",
+      "dist/*",
+      "scripts/*",
+      "node_modules/*",
+      "storybook-static/*",
+    ],
   },
 ];
