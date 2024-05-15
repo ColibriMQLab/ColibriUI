@@ -7,7 +7,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       fullWidth = false,
-      variant = VARIANT.DEFAULT,
+      variant = VARIANT.PRIMARY,
       iconStart,
       iconEnd,
       icon,

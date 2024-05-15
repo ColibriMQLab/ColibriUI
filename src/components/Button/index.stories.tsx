@@ -19,6 +19,14 @@ const meta: Meta<typeof Button> = {
       control: { type: "select" },
       options: Object.values(VARIANT),
     },
+    disabled: {
+      control: { type: "boolean" },
+      options: [true, false],
+    },
+    fullWidth: {
+      control: { type: "boolean" },
+      options: [true, false],
+    },
   },
   args: { onClick: fn() },
   component: Button,

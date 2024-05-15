@@ -9,7 +9,7 @@ export enum SIZE {
 
 export enum VARIANT {
   PRIMARY = "primary",
-  DEFAULT = "default",
+  SECONDARY = "secondary",
   CLEAR = "clear",
 }
 
@@ -42,8 +42,8 @@ export type ButtonBase = {
 };
 
 export type ButtonVariant = {
-  [VARIANT.DEFAULT]: VariantStates;
   [VARIANT.PRIMARY]: VariantStates;
+  [VARIANT.SECONDARY]: VariantStates;
   [VARIANT.CLEAR]: VariantStates;
 };
 

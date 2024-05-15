@@ -7,29 +7,6 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
     color: Color.BLACK,
     borderRadius: "26px",
   },
-  default: {
-    normal: {
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
-    },
-    hover: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
-    },
-    focus: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
-    },
-    active: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
-    },
-    disabled: {
-      color: Color.NEUTRAL_3,
-      backgroundColor: Color.NEUTRAL_1,
-      borderColor: Color.NEUTRAL_1,
-    },
-  },
   primary: {
     normal: {
       color: Color.WHITE,
@@ -55,6 +32,29 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       color: Color.BLUE_7,
       backgroundColor: Color.BLUE_4,
       borderColor: Color.BLUE_4,
+    },
+  },
+  secondary: {
+    normal: {
+      backgroundColor: Color.NEUTRAL_2,
+      borderColor: Color.NEUTRAL_2,
+    },
+    hover: {
+      backgroundColor: Color.NEUTRAL_3,
+      borderColor: Color.NEUTRAL_3,
+    },
+    focus: {
+      backgroundColor: Color.NEUTRAL_3,
+      borderColor: Color.NEUTRAL_3,
+    },
+    active: {
+      backgroundColor: Color.NEUTRAL_3,
+      borderColor: Color.NEUTRAL_3,
+    },
+    disabled: {
+      color: Color.NEUTRAL_3,
+      backgroundColor: Color.NEUTRAL_1,
+      borderColor: Color.NEUTRAL_1,
     },
   },
   clear: {

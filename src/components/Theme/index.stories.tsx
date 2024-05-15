@@ -58,15 +58,24 @@ const renderPalete = (colors, title) => {
   );
 };
 
-export const Palete = () => {
+export const ThemeDefault = () => {
   return (
     <>
       {renderPalete(Common, "Common")}
       {renderPalete(Blue, "Blue")}
+      {renderPalete(Neutral, "Neutral")}
+      {renderPalete(Text, "Text")}
+    </>
+  );
+};
+
+export const ThemeBA = () => {
+  return (
+    <>
+      {renderPalete(Common, "Common")}
       {renderPalete(Graphite, "Graphite")}
       {renderPalete(Gray, "Gray")}
       {renderPalete(Purple, "Purple")}
-      {renderPalete(Neutral, "Neutral")}
       {renderPalete(Text, "Text")}
     </>
   );

@@ -21,10 +21,6 @@ const sizeL = css`
   line-height: 42px;
 `;
 
-const fullWidthCSS = css`
-  width: 100%;
-`;
-
 export const StyledButton = styled.button<{
   fullWidth?: boolean;
   variant: keyof ButtonVariant;
@@ -49,11 +45,11 @@ export const StyledButton = styled.button<{
   color 0.15s linear;
   transform: scale(1);
 
+  width: ${({ fullWidth }) => (fullWidth ? "100%" : "fit-content")};
+
   ${({ size }) => size === "s" && sizeS}
   ${({ size }) => size === "m" && sizeM}
   ${({ size }) => size === "l" && sizeL}
-
-  ${({ fullWidth }) => fullWidth && fullWidthCSS}
 
   ${({ theme, variant, disabled }) => css`
     ${css(theme.button.base)}

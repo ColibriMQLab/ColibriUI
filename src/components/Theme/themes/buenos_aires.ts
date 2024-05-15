@@ -8,7 +8,7 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
     borderRadius: "26px",
     border: "none",
   },
-  default: {
+  primary: {
     normal: {
       backgroundColor: Color.GRAPHITE_9,
       borderColor: Color.GRAPHITE_9,
@@ -31,7 +31,7 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
       borderColor: Color.GRAPHITE_5,
     },
   },
-  primary: {
+  secondary: {
     normal: {
       color: Color.BLACK,
       backgroundColor: Color.PURPLE_2,
@@ -66,18 +66,18 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
     },
     hover: {
       color: Color.BLACK,
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
+      backgroundColor: Color.PURPLE_2,
+      borderColor: Color.PURPLE_2,
     },
     active: {
       color: Color.BLACK,
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
+      backgroundColor: Color.PURPLE_2,
+      borderColor: Color.PURPLE_2,
     },
     disabled: {
-      color: Color.NEUTRAL_3,
-      backgroundColor: Color.NEUTRAL_1,
-      borderColor: Color.NEUTRAL_1,
+      color: Color.PURPLE_3,
+      backgroundColor: Color.PURPLE_1,
+      borderColor: Color.PURPLE_1,
     },
   },
 };
