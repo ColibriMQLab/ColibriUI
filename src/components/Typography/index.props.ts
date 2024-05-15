@@ -43,7 +43,7 @@ export type TypographyTag =
   | "h6"
   | "s";
 
-export type Props = {
+export type TypographyProps = {
   className?: string;
   tag?: TypographyTag;
   variant?: keyof TypographyVariant;
