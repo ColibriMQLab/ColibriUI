@@ -1,3 +1,4 @@
+import type { ColorsTheme } from "./color";
 import type { BreakpointsTheme } from "./breakpoints";
 import type { ButtonBase, ButtonVariant } from "../Button/index.props";
 import type { TypographyVariant } from "../Typography/index.props";
@@ -8,4 +9,5 @@ export type ThemeProps = {
   breakpoints: BreakpointsTheme;
   typography: TypographyVariant;
   switch: SwitchStates;
+  palette: ColorsTheme;
 };

@@ -121,4 +121,5 @@ export const THEME_BA = {
   button: ButtonThemeBA,
   typography: TypographyThemeBA,
   switch: SwitchThemeDefault,
+  palette: Color,
 };

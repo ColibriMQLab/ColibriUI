@@ -120,4 +120,5 @@ export const THEME_DEFAULT = {
   button: ButtonThemeDefault,
   typography: TypographyThemeDefault,
   switch: SwitchThemeDefault,
+  palette: Color,
 };

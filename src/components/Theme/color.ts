@@ -62,6 +62,10 @@ export const Neutral = {
 export const Common = {
   WHITE: "#fff",
   BLACK: "#000",
+  BG_1: "#0000001f",
+  BG_2: "#0000002e",
+  BG_3: "#0000003d",
+  BG_4: "#0000004d",
 };
 
 export const Text = {
@@ -70,6 +74,10 @@ export const Text = {
   TYPOGRAPHY_ALERT: "#E6481F",
   TYPOGRAPHY_SUCCESS: "#23943E",
   TYPOGRAPHY_LINK: "#0062D1",
+};
+
+export type ColorsTheme = {
+  [key: string]: string;
 };
 
 export const Color = {
