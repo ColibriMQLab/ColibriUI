@@ -21,7 +21,9 @@
     "react",
     "react-components"
   ],
-  "author": "Sergey Bocharov",
+  "author": {
+    "name": "Sergey Bocharov"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ColibriMQLab/ColibriUI/issues"
@@ -60,6 +62,7 @@
     "@svgr/rollup": "8.1.0",
     "@swc/plugin-emotion": "^3.0.4",
     "@types/react": "18.3.1",
+    "chromatic": "^11.3.5",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "^2.29.1",
