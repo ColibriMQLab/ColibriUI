@@ -21,6 +21,7 @@ export const BaseSwitchContainer = styled.div`
   height: 22px;
 
   position: relative;
+  box-sizing: border-box;
 
   border-width: 1px;
   border-style: solid;

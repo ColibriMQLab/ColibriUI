@@ -31,6 +31,10 @@ const StyledTitle = styled(Typography)`
   margin: 20px 0;
 `;
 
+const StyledHeader = styled.div`
+  width: 100%;
+`;
+
 const StyledName = styled(Typography)`
   word-break: break-all;
   mix-blend-mode: difference;
@@ -40,9 +44,11 @@ const StyledName = styled(Typography)`
 const renderPalete = (colors, title) => {
   return (
     <>
-      <StyledTitle tag="h3" size="h3">
-        {title}
-      </StyledTitle>
+      <StyledHeader>
+        <StyledTitle tag="h3" size="h3">
+          {title}
+        </StyledTitle>
+      </StyledHeader>
       <StyledContainer>
         {Object.keys(colors).map((name, i) => {
           return (

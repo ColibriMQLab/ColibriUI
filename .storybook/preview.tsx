@@ -9,7 +9,7 @@ const GlobalStyles = () => (
   <Global
     styles={css`
       body {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
       #storybook-root {
         width: 100%;
@@ -17,7 +17,6 @@ const GlobalStyles = () => (
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position" relative;
       }
     `}
   />
