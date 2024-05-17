@@ -46,10 +46,16 @@ export const TretiaryBA = {
   TRETIARY_BA_5: "#87929d",
 };
 
-export const TextBA = {
-  TEXT_BA_PRIMARY: "#000",
-  TEXT_BA_SECONDARY: "#fffbe9",
-  TEXT_BA_TRETIARY: "#D5D500",
+export const BrandDefault = {
+  BRAND_DEFAULT_1: "#F393D2",
+  BRAND_DEFAULT_2: "#4BDCF8",
+  BRAND_DEFAULT_3: "#D5D500",
+};
+
+export const BrandBA = {
+  BRAND_BA_1: "#B54141",
+  BRAND_BA_2: "#fffbe9",
+  BRAND_BA_3: "#D5D500",
 };
 
 export const Common = {
@@ -77,7 +83,8 @@ export type ColorsTheme = {
 export const Color = {
   ...Common,
   ...Accents,
-  ...TextBA,
+  ...BrandDefault,
+  ...BrandBA,
   ...Backgrounds,
   ...Primary,
   ...Secondary,

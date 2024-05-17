@@ -12,7 +12,8 @@ import {
   Common,
   Backgrounds,
   Accents,
-  TextBA,
+  BrandDefault,
+  BrandBA,
 } from "./color";
 
 const meta = {
@@ -118,6 +119,7 @@ export const CommonPalette = () => {
 export const ThemeDefault = () => {
   return (
     <>
+      {renderPalete(BrandDefault, "Brand Colors")}
       {renderPalete(Primary, "Primary")}
       {renderPalete(Secondary, "Secondary")}
       {renderPalete(Tretiary, "Tretiary")}
@@ -128,7 +130,7 @@ export const ThemeDefault = () => {
 export const ThemeBA = () => {
   return (
     <>
-      {renderPalete(TextBA, "Text")}
+      {renderPalete(BrandBA, "Brand Colors")}
       {renderPalete(PrimaryBA, "Primary")}
       {renderPalete(SecondaryBA, "Secondary")}
       {renderPalete(TretiaryBA, "Tretiary")}

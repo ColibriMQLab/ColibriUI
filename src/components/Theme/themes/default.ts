@@ -30,9 +30,9 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.PRIMARY_5,
     },
     disabled: {
-      color: Color.PRIMARY_3,
-      backgroundColor: Color.PRIMARY_2,
-      borderColor: Color.PRIMARY_2,
+      color: Color.BG_3,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_1,
     },
   },
   secondary: {
@@ -57,9 +57,9 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.SECONDARY_5,
     },
     disabled: {
-      color: Color.SECONDARY_3,
-      backgroundColor: Color.SECONDARY_2,
-      borderColor: Color.SECONDARY_2,
+      color: Color.BG_3,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_1,
     },
   },
   clear: {
@@ -79,9 +79,9 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.TRETIARY_2,
     },
     disabled: {
-      color: Color.TRETIARY_3,
-      backgroundColor: Color.TRETIARY_1,
-      borderColor: Color.TRETIARY_1,
+      color: Color.BG_3,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_1,
     },
   },
 };
