@@ -1,12 +1,12 @@
 import { Children, useMemo } from "react";
 import { BaseTypography } from "./styles";
-import { VARIANT, type TypographyProps } from "./index.props";
+import { type TypographyProps } from "./index.props";
 import type { FC, PropsWithChildren } from "react";
 
 const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   tag: Element = "span",
   children,
-  variant = VARIANT.PRIMARY,
+  variant,
   size,
   fontWeight,
   className,

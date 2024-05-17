@@ -1,7 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import Typography from "../Typography";
-import { Blue, Graphite, Gray, Purple, Common, Text, Neutral } from "./color";
+import {
+  Primary,
+  Secondary,
+  Tretiary,
+  PrimaryBA,
+  SecondaryBA,
+  TretiaryBA,
+  Common,
+  Backgrounds,
+  Text,
+} from "./color";
 
 const meta = {
   title: "UI/Theme",
@@ -35,10 +46,30 @@ const StyledHeader = styled.div`
   width: 100%;
 `;
 
-const StyledName = styled(Typography)`
+const StyledName = styled(Typography)<{ colorName?: string }>`
   word-break: break-all;
-  mix-blend-mode: difference;
-  color: white;
+
+  ${({ colorName }) => css`
+    ${colorName === "BLACK" &&
+    css`
+      mix-blend-mode: difference;
+      color: white;
+    `}
+  `}
+
+  ${({ colorName }) => css`
+    ${colorName === "SECONDARY_BA_4" &&
+    css`
+      color: white;
+    `}
+  `}
+
+${({ colorName }) => css`
+    ${colorName === "SECONDARY_BA_5" &&
+    css`
+      color: white;
+    `}
+  `}
 `;
 
 const renderPalete = (colors, title) => {
@@ -51,9 +82,10 @@ const renderPalete = (colors, title) => {
       </StyledHeader>
       <StyledContainer>
         {Object.keys(colors).map((name, i) => {
+          console.log(name);
           return (
             <StyledColor key={i} style={{ backgroundColor: colors[name] }}>
-              <StyledName tag="p" size="xs">
+              <StyledName tag="p" size="xs" colorName={name}>
                 {name}
               </StyledName>
             </StyledColor>
@@ -64,13 +96,22 @@ const renderPalete = (colors, title) => {
   );
 };
 
-export const ThemeDefault = () => {
+export const CommonPalette = () => {
   return (
     <>
       {renderPalete(Common, "Common")}
-      {renderPalete(Blue, "Blue")}
-      {renderPalete(Neutral, "Neutral")}
       {renderPalete(Text, "Text")}
+      {renderPalete(Backgrounds, "Backgrounds")}
+    </>
+  );
+};
+
+export const ThemeDefault = () => {
+  return (
+    <>
+      {renderPalete(Primary, "Primary")}
+      {renderPalete(Secondary, "Secondary")}
+      {renderPalete(Tretiary, "Tretiary")}
     </>
   );
 };
@@ -78,11 +119,9 @@ export const ThemeDefault = () => {
 export const ThemeBA = () => {
   return (
     <>
-      {renderPalete(Common, "Common")}
-      {renderPalete(Graphite, "Graphite")}
-      {renderPalete(Gray, "Gray")}
-      {renderPalete(Purple, "Purple")}
-      {renderPalete(Text, "Text")}
+      {renderPalete(PrimaryBA, "Primary")}
+      {renderPalete(SecondaryBA, "Secondary")}
+      {renderPalete(TretiaryBA, "Tretiary")}
     </>
   );
 };

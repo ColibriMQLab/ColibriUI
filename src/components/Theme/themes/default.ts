@@ -10,81 +10,82 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
   primary: {
     normal: {
       color: Color.WHITE,
-      backgroundColor: Color.BLUE_9,
-      borderColor: Color.BLUE_9,
+      backgroundColor: Color.PRIMARY_4,
+      borderColor: Color.PRIMARY_4,
     },
     hover: {
       color: Color.WHITE,
-      backgroundColor: Color.BLUE_10,
-      borderColor: Color.BLUE_10,
+      backgroundColor: Color.PRIMARY_5,
+      borderColor: Color.PRIMARY_5,
     },
     focus: {
       color: Color.WHITE,
-      backgroundColor: Color.BLUE_10,
-      borderColor: Color.BLUE_10,
+      backgroundColor: Color.PRIMARY_5,
+      borderColor: Color.PRIMARY_5,
     },
     active: {
       color: Color.WHITE,
-      backgroundColor: Color.BLUE_10,
-      borderColor: Color.BLUE_10,
+      backgroundColor: Color.PRIMARY_5,
+      borderColor: Color.PRIMARY_5,
     },
     disabled: {
-      color: Color.BLUE_7,
-      backgroundColor: Color.BLUE_4,
-      borderColor: Color.BLUE_4,
+      color: Color.PRIMARY_3,
+      backgroundColor: Color.PRIMARY_2,
+      borderColor: Color.PRIMARY_2,
     },
   },
   secondary: {
     normal: {
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_4,
+      borderColor: Color.SECONDARY_4,
     },
     hover: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_5,
+      borderColor: Color.SECONDARY_5,
     },
     focus: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_5,
+      borderColor: Color.SECONDARY_5,
     },
     active: {
-      backgroundColor: Color.NEUTRAL_3,
-      borderColor: Color.NEUTRAL_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_5,
+      borderColor: Color.SECONDARY_5,
     },
     disabled: {
-      color: Color.NEUTRAL_3,
-      backgroundColor: Color.NEUTRAL_1,
-      borderColor: Color.NEUTRAL_1,
+      color: Color.SECONDARY_3,
+      backgroundColor: Color.SECONDARY_2,
+      borderColor: Color.SECONDARY_2,
     },
   },
   clear: {
     normal: {
-      color: Color.GRAY_9,
+      color: Color.TRETIARY_5,
       backgroundColor: Color.WHITE,
       borderColor: Color.WHITE,
     },
     hover: {
-      color: Color.BLACK,
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
+      color: Color.TRETIARY_5,
+      backgroundColor: Color.TRETIARY_2,
+      borderColor: Color.TRETIARY_2,
     },
     active: {
-      color: Color.BLACK,
-      backgroundColor: Color.NEUTRAL_2,
-      borderColor: Color.NEUTRAL_2,
+      color: Color.TRETIARY_5,
+      backgroundColor: Color.TRETIARY_2,
+      borderColor: Color.TRETIARY_2,
     },
     disabled: {
-      color: Color.NEUTRAL_3,
-      backgroundColor: Color.NEUTRAL_1,
-      borderColor: Color.NEUTRAL_1,
+      color: Color.TRETIARY_3,
+      backgroundColor: Color.TRETIARY_1,
+      borderColor: Color.TRETIARY_1,
     },
   },
 };
 
 export const TypographyThemeDefault = {
-  primary: {
-    color: Color.TYPOGRAPHY_PRIMARY,
-  },
   secondary: {
     color: Color.TYPOGRAPHY_SECONDARY,
   },
@@ -94,9 +95,6 @@ export const TypographyThemeDefault = {
   success: {
     color: Color.TYPOGRAPHY_SUCCESS,
   },
-  link: {
-    color: Color.TYPOGRAPHY_LINK,
-  },
 };
 
 export const SwitchThemeDefault = {
@@ -105,12 +103,12 @@ export const SwitchThemeDefault = {
   },
   state: {
     normal: {
-      backgroundColor: Color.BLUE_6,
-      borderColor: Color.BLUE_6,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_1,
     },
     checked: {
-      backgroundColor: Color.BLUE_10,
-      borderColor: Color.BLUE_10,
+      backgroundColor: Color.PRIMARY_5,
+      borderColor: Color.PRIMARY_5,
     },
   },
 };

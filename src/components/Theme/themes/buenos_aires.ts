@@ -10,82 +10,83 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
   },
   primary: {
     normal: {
-      backgroundColor: Color.GRAPHITE_9,
-      borderColor: Color.GRAPHITE_9,
+      color: Color.WHITE,
+      backgroundColor: Color.PRIMARY_BA_4,
+      borderColor: Color.PRIMARY_BA_4,
     },
     hover: {
-      backgroundColor: Color.GRAPHITE_10,
-      borderColor: Color.GRAPHITE_10,
+      color: Color.WHITE,
+      backgroundColor: Color.PRIMARY_BA_5,
+      borderColor: Color.PRIMARY_BA_5,
     },
     focus: {
-      backgroundColor: Color.GRAPHITE_10,
-      borderColor: Color.GRAPHITE_10,
+      color: Color.WHITE,
+      backgroundColor: Color.PRIMARY_BA_5,
+      borderColor: Color.PRIMARY_BA_5,
     },
     active: {
-      backgroundColor: Color.GRAPHITE_10,
-      borderColor: Color.GRAPHITE_10,
+      color: Color.WHITE,
+      backgroundColor: Color.PRIMARY_BA_5,
+      borderColor: Color.PRIMARY_BA_5,
     },
     disabled: {
-      color: Color.GRAPHITE_7,
-      backgroundColor: Color.GRAPHITE_5,
-      borderColor: Color.GRAPHITE_5,
+      color: Color.PRIMARY_BA_3,
+      backgroundColor: Color.PRIMARY_BA_2,
+      borderColor: Color.PRIMARY_BA_2,
     },
   },
   secondary: {
     normal: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_2,
-      borderColor: Color.PURPLE_2,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_BA_4,
+      borderColor: Color.SECONDARY_BA_4,
     },
     hover: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_3,
-      borderColor: Color.PURPLE_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_BA_5,
+      borderColor: Color.SECONDARY_BA_5,
     },
     focus: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_3,
-      borderColor: Color.PURPLE_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_BA_5,
+      borderColor: Color.SECONDARY_BA_5,
     },
     active: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_3,
-      borderColor: Color.PURPLE_3,
+      color: Color.WHITE,
+      backgroundColor: Color.SECONDARY_BA_5,
+      borderColor: Color.SECONDARY_BA_5,
     },
     disabled: {
-      color: Color.PURPLE_3,
-      backgroundColor: Color.PURPLE_1,
-      borderColor: Color.PURPLE_1,
+      color: Color.SECONDARY_BA_3,
+      backgroundColor: Color.SECONDARY_BA_2,
+      borderColor: Color.SECONDARY_BA_2,
     },
   },
   clear: {
     normal: {
-      color: Color.GRAY_9,
+      color: Color.TRETIARY_BA_5,
       backgroundColor: Color.WHITE,
       borderColor: Color.WHITE,
     },
     hover: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_2,
-      borderColor: Color.PURPLE_2,
+      color: Color.TRETIARY_BA_5,
+      backgroundColor: Color.TRETIARY_BA_2,
+      borderColor: Color.TRETIARY_BA_2,
     },
     active: {
-      color: Color.BLACK,
-      backgroundColor: Color.PURPLE_2,
-      borderColor: Color.PURPLE_2,
+      color: Color.TRETIARY_BA_5,
+      backgroundColor: Color.TRETIARY_BA_2,
+      borderColor: Color.TRETIARY_BA_2,
     },
     disabled: {
-      color: Color.PURPLE_3,
-      backgroundColor: Color.PURPLE_1,
-      borderColor: Color.PURPLE_1,
+      color: Color.TRETIARY_BA_3,
+      backgroundColor: Color.TRETIARY_BA_1,
+      borderColor: Color.TRETIARY_BA_1,
     },
   },
 };
 
 export const TypographyThemeBA = {
-  primary: {
-    color: Color.TYPOGRAPHY_PRIMARY,
-  },
   secondary: {
     color: Color.TYPOGRAPHY_SECONDARY,
   },
@@ -95,9 +96,6 @@ export const TypographyThemeBA = {
   success: {
     color: Color.TYPOGRAPHY_SUCCESS,
   },
-  link: {
-    color: Color.TYPOGRAPHY_LINK,
-  },
 };
 
 export const SwitchThemeDefault = {
@@ -106,12 +104,12 @@ export const SwitchThemeDefault = {
   },
   state: {
     normal: {
-      backgroundColor: Color.GRAPHITE_6,
-      borderColor: Color.GRAPHITE_6,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_1,
     },
     checked: {
-      backgroundColor: Color.GRAPHITE_10,
-      borderColor: Color.GRAPHITE_10,
+      backgroundColor: Color.PRIMARY_BA_5,
+      borderColor: Color.PRIMARY_BA_5,
     },
   },
 };

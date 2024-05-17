@@ -74,6 +74,8 @@ export const BaseTypography = styled.span<{
   fontWeight?: TypographyFontWeight;
   nowrap?: boolean;
 }>`
+  color: ${({ theme }) => theme.palette.BLACK};
+
   ${({ size }) => size === "xs" && sizeXS}
   ${({ size }) => size === "s" && sizeS}
   ${({ size }) => size === "m" && sizeM}
