@@ -4,7 +4,7 @@ React UI components library.
 
 ## Demo
 
-[Demo](https://66463ad45ac665db2620044b-sztbxghpch.chromatic.com/)
+[Demo](https://66463ad45ac665db2620044b-jravylsyiw.chromatic.com)
 
 ## Installation
 
