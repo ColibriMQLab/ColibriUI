@@ -46,22 +46,28 @@ export const TretiaryBA = {
   TRETIARY_BA_5: "#87929d",
 };
 
+export const TextBA = {
+  TEXT_BA_PRIMARY: "#000",
+  TEXT_BA_SECONDARY: "#fffbe9",
+  TEXT_BA_TRETIARY: "#D5D500",
+};
+
 export const Common = {
   WHITE: "#fff",
   BLACK: "#000",
 };
 
 export const Backgrounds = {
-  BG_1: "#e6e6e6",
-  BG_2: "#dbdbdb",
-  BG_3: "#b3b3b3",
-  BG_4: "#999",
+  BG_1: "#f2f2f2",
+  BG_2: "#e6e6e6",
+  BG_3: "#dbdbdb",
+  BG_4: "#b3b3b3",
+  BG_5: "#999",
 };
 
-export const Text = {
-  TYPOGRAPHY_SECONDARY: "#999",
-  TYPOGRAPHY_ALERT: "#ff564e",
-  TYPOGRAPHY_SUCCESS: "#28bc00",
+export const Accents = {
+  ALERT: "#ff564e",
+  SUCCESS: "#28bc00",
 };
 
 export type ColorsTheme = {
@@ -70,7 +76,8 @@ export type ColorsTheme = {
 
 export const Color = {
   ...Common,
-  ...Text,
+  ...Accents,
+  ...TextBA,
   ...Backgrounds,
   ...Primary,
   ...Secondary,

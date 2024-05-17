@@ -28,7 +28,7 @@ const Example = (props): JSX.Element => {
 };
 
 export const Default = (): JSX.Element => (
-  <ul>
+  <ul style={{ listStyleType: "none" }}>
     <li style={{ padding: "3px" }}>
       <Example text="Label one" />
     </li>

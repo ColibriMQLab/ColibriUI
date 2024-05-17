@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import type { CheckboxVariant } from "./index.props";
 
 export const Label = styled.label`
   cursor: pointer;
@@ -17,10 +18,11 @@ export const Text = styled.span`
 export const FakeCheckbox = styled.span<{
   checked?: boolean;
   error?: boolean;
+  variant: keyof CheckboxVariant;
 }>`
   background-color: ${({ theme }) => theme.palette.WHITE};
   block-size: 16px;
-  border: 1px solid ${({ theme }) => theme.palette.BG_2};
+  border: 1px solid ${({ theme }) => theme.palette.BG_3};
   border-radius: 4px;
   box-sizing: border-box;
   direction: ltr;
@@ -41,10 +43,10 @@ export const FakeCheckbox = styled.span<{
     `}
   `}
 
-  ${({ checked }) => css`
+  ${({ checked, theme, variant }) => css`
     ${checked &&
     css`
-      background-color: rgb(255, 220, 130);
+      ${css(theme.checkbox[variant].checked)}
       border: 0;
 
       &::after {
@@ -65,7 +67,7 @@ export const FakeCheckbox = styled.span<{
   `}
 `;
 
-export const Control = styled.input`
+export const Control = styled.input<{ variant: keyof CheckboxVariant }>`
   inset-inline-start: -9999px;
   position: absolute;
 
@@ -73,22 +75,22 @@ export const Control = styled.input`
     border-color: ${({ theme }) => theme.palette.BG_3};
   }
 
-  &:focus:not(:disabled) + ${FakeCheckbox} {
-    box-shadow: 0 0 0 2px rgba(255, 220, 130, 0.4);
-  }
+  ${({ theme, variant }) => css`
+    &:focus:not(:disabled) + ${FakeCheckbox} {
+      ${css(theme.checkbox[variant].focus)}
+    }
 
-  &:active:not(:disabled) + ${FakeCheckbox} {
-    background-color: rgba(255, 220, 130, 0.4);
-    border-color: rgba(255, 220, 130, 0.4);
-    box-shadow: 0 0 0 2px rgba(255, 220, 130, 0.4);
-  }
+    &:hover:not(:disabled) + ${FakeCheckbox} {
+      ${css(theme.checkbox[variant].hover)}
+    }
 
-  &:disabled + ${FakeCheckbox} {
-    z-index: 1;
-    background-color: rgba(246, 246, 246, 0.8);
-  }
+    &:active:not(:disabled) + ${FakeCheckbox} {
+      ${css(theme.checkbox[variant].active)}
+    }
 
-  &:hover:not(:disabled) + ${FakeCheckbox} {
-    background-color: rgb(254, 212, 102);
-  }
+    &:disabled + ${FakeCheckbox} {
+      z-index: 1;
+      ${css(theme.checkbox[variant].disabled)}
+    }
+  `}
 `;

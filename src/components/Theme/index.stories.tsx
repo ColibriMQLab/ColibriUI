@@ -11,7 +11,8 @@ import {
   TretiaryBA,
   Common,
   Backgrounds,
-  Text,
+  Accents,
+  TextBA,
 } from "./color";
 
 const meta = {
@@ -51,6 +52,14 @@ const StyledName = styled(Typography)<{ colorName?: string }>`
 
   ${({ colorName }) => css`
     ${colorName === "BLACK" &&
+    css`
+      mix-blend-mode: difference;
+      color: white;
+    `}
+  `}
+
+  ${({ colorName }) => css`
+    ${colorName === "TEXT_BA_PRIMARY" &&
     css`
       mix-blend-mode: difference;
       color: white;
@@ -100,7 +109,7 @@ export const CommonPalette = () => {
   return (
     <>
       {renderPalete(Common, "Common")}
-      {renderPalete(Text, "Text")}
+      {renderPalete(Accents, "Accents")}
       {renderPalete(Backgrounds, "Backgrounds")}
     </>
   );
@@ -119,6 +128,7 @@ export const ThemeDefault = () => {
 export const ThemeBA = () => {
   return (
     <>
+      {renderPalete(TextBA, "Text")}
       {renderPalete(PrimaryBA, "Primary")}
       {renderPalete(SecondaryBA, "Secondary")}
       {renderPalete(TretiaryBA, "Tretiary")}

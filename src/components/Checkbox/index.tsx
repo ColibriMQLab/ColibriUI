@@ -1,21 +1,8 @@
-import React from "react";
 import { Control, FakeCheckbox, Label, Text } from "./styles";
+import type { FC } from "react";
+import type { CheckboxProps } from "./index.props";
 
-type Props = {
-  id?: string;
-  name?: string;
-  value?: string | number;
-  text?: string | React.ReactNode;
-  checked?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  className?: string;
-  disabled?: boolean;
-  error?: boolean;
-};
-
-const Checkbox: React.FC<Props> = ({
+const Checkbox: FC<CheckboxProps> = ({
   id,
   name,
   value,
@@ -24,6 +11,7 @@ const Checkbox: React.FC<Props> = ({
   onChange,
   onFocus,
   onBlur,
+  variant = "primary",
   className,
   disabled,
   error,
@@ -34,6 +22,7 @@ const Checkbox: React.FC<Props> = ({
         className={className}
         type="checkbox"
         id={id}
+        variant={variant}
         name={name}
         value={value}
         checked={checked}
@@ -42,7 +31,7 @@ const Checkbox: React.FC<Props> = ({
         onBlur={onBlur}
         disabled={disabled}
       />
-      <FakeCheckbox checked={checked} error={error} data-popunder="ignore" />
+      <FakeCheckbox variant={variant} checked={checked} error={error} />
       <Text>{text}</Text>
     </>
   );

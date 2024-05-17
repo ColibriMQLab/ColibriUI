@@ -1,7 +1,6 @@
 import type { CSSObject } from "@emotion/react";
 
 export enum VARIANT {
-  SECONDARY = "secondary",
   ALERT = "alert",
   SUCCESS = "success",
 }
@@ -9,7 +8,6 @@ type VariantStyles = {
   color?: CSSObject["color"];
 };
 export type TypographyVariant = {
-  [VARIANT.SECONDARY]: VariantStyles;
   [VARIANT.ALERT]: VariantStyles;
   [VARIANT.SUCCESS]: VariantStyles;
 };

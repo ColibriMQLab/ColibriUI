@@ -1,5 +1,6 @@
 import Color from "../color";
 import breakpoints from "../breakpoints";
+import type { CheckboxVariant } from "../../Checkbox/index.props";
 import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 
 export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
@@ -85,15 +86,37 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
   },
 };
 
-export const TypographyThemeDefault = {
-  secondary: {
-    color: Color.TYPOGRAPHY_SECONDARY,
+export const CheckboxThemeDefault: CheckboxVariant = {
+  primary: {
+    normal: {
+      backgroundColor: Color.PRIMARY_4,
+    },
+    hover: {
+      backgroundColor: Color.PRIMARY_4,
+    },
+    focus: {
+      boxShadow: `0 0 0 2px ${Color.PRIMARY_1}`,
+    },
+    checked: {
+      backgroundColor: Color.PRIMARY_4,
+    },
+    active: {
+      backgroundColor: Color.PRIMARY_4,
+      borderColor: Color.PRIMARY_4,
+      boxShadow: Color.PRIMARY_4,
+    },
+    disabled: {
+      backgroundColor: Color.BG_1,
+    },
   },
+};
+
+export const TypographyThemeDefault = {
   alert: {
-    color: Color.TYPOGRAPHY_ALERT,
+    color: Color.ALERT,
   },
   success: {
-    color: Color.TYPOGRAPHY_SUCCESS,
+    color: Color.SUCCESS,
   },
 };
 
@@ -116,6 +139,7 @@ export const SwitchThemeDefault = {
 export const THEME_DEFAULT = {
   breakpoints,
   button: ButtonThemeDefault,
+  checkbox: CheckboxThemeDefault,
   typography: TypographyThemeDefault,
   switch: SwitchThemeDefault,
   palette: Color,
