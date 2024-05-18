@@ -1,6 +1,6 @@
 # Colibri UI
 
-[![npm version](https://img.shields.io/npm/v/colibri-ui.svg?style=flat)]
+![npm version](https://img.shields.io/npm/v/colibri-ui.svg?style=flat)
 
 React UI components library.
 
