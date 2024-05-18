@@ -14,6 +14,8 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
+const TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+
 const Example = (props): JSX.Element => {
   const [isChecked, setChecked] = useState<boolean>(false);
   return (
@@ -45,7 +47,7 @@ export const Default = (): JSX.Element => (
 );
 
 export const LongText = (): JSX.Element => (
-  <div style={{ width: 200 }}>
-    <Example text="Very very very very very very very long text" />
+  <div style={{ width: 300 }}>
+    <Example text={TEXT} />
   </div>
 );

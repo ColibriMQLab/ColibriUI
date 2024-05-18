@@ -56,14 +56,22 @@ export const FakeCheckbox = styled.span<{
         position: absolute;
 
         block-size: 8px;
-        border-block-end: 2px solid rgb(45, 49, 55);
-        border-inline-end: 2px solid rgb(45, 49, 55);
+        border-block-end: 2px solid ${css(theme.palette.BLACK)};
+        border-inline-end: 2px solid ${css(theme.palette.BLACK)};
         inline-size: 4px;
         inset-block-start: 45%;
         inset-inline-start: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
       }
     `}
+
+    ${checked && variant === 'primary' &&
+      css`
+        &::after {
+          border-block-end: 2px solid ${css(theme.palette.WHITE)};
+          border-inline-end: 2px solid ${css(theme.palette.WHITE)};
+        }
+      `}
   `}
 `;
 
@@ -86,6 +94,11 @@ export const Control = styled.input<{ variant: keyof CheckboxVariant }>`
 
     &:active:not(:disabled) + ${FakeCheckbox} {
       ${css(theme.checkbox[variant].active)}
+    }
+
+    &:disabled + ${FakeCheckbox}::after {
+      border-block-end: 2px solid ${css(theme.palette.BG_4)};
+      border-inline-end: 2px solid ${css(theme.palette.BG_4)};
     }
 
     &:disabled + ${FakeCheckbox} {

@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Burger from "./Burger";
-import Check from "./Check";
-import Chevron from "./Chevron";
 import Close from "./Close";
 import EyeOpen from "./EyeOpen";
 import EyeClosed from "./EyeClosed";
@@ -13,9 +10,6 @@ import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
-  Burger: <Burger />,
-  Check: <Check />,
-  Chevron: <Chevron />,
   Close: <Close />,
   Info: <Info />,
   EyeOpen: <EyeOpen />,

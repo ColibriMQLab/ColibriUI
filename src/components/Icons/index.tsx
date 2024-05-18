@@ -1,6 +1,4 @@
-export { default as Burger } from "./Burger";
-export { default as Check } from "./Check";
-export { default as Chevron } from "./Chevron";
+
 export { default as Close } from "./Close";
 export { default as EyeOpen } from "./EyeOpen";
 export { default as EyeClosed } from "./EyeClosed";
