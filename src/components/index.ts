@@ -2,6 +2,7 @@ export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
 export { default as DotsLoader } from "./DotsLoader";
 export { default as Grid } from "./Grid";
+export { default as Image } from "./Image";
 export { default as Input } from "./Input";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { default as Switch } from "./Switch";
