@@ -4,9 +4,9 @@ type VariantStyles = {
   color?: CSSObject["color"];
 };
 export type TypographyVariant = {
-  "alert": VariantStyles;
-  "success": VariantStyles;
-  "secondary": VariantStyles;
+  alert: VariantStyles;
+  success: VariantStyles;
+  secondary: VariantStyles;
 };
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =

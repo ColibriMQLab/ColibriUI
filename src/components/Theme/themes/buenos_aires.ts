@@ -123,7 +123,7 @@ export const InputThemeBA = {
       },
     },
   },
-}
+};
 
 export const CheckboxThemeBA: CheckboxVariant = {
   primary: {

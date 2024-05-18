@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type FormFieldProps = {
   label?: ReactNode;
@@ -6,4 +6,4 @@ export type FormFieldProps = {
   error?: boolean;
   className?: string;
   children: ReactNode;
-}
+};

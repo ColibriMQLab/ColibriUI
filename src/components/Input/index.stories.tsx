@@ -36,7 +36,7 @@ export const Default: Story = {
     error: false,
     disabled: false,
     label: "Label",
-    variant: 'primary',
+    variant: "primary",
     hint: "hint",
   },
 };
@@ -47,7 +47,7 @@ export const Error: Story = {
     error: true,
     disabled: false,
     label: "Label",
-    variant: 'primary',
+    variant: "primary",
     hint: "hint",
   },
 };
@@ -58,8 +58,8 @@ export const WithIcon: Story = {
     error: false,
     disabled: false,
     label: "Label",
-    variant: 'primary',
+    variant: "primary",
     hint: "hint",
-    endIcon: <Chevron />
+    endIcon: <Chevron />,
   },
 };

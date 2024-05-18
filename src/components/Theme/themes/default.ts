@@ -121,7 +121,7 @@ export const InputThemeDefault = {
       },
     },
   },
-}
+};
 
 export const CheckboxThemeDefault: CheckboxVariant = {
   primary: {

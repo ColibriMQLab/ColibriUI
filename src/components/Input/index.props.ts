@@ -1,6 +1,6 @@
-import { ChangeEvent, InputHTMLAttributes, ReactNode } from "react";
-import { FormFieldProps } from "../base/FormField/index.props";
-import { InputSize, InputVariant } from "../base/InputRoot/index.props";
+import type { ChangeEvent, InputHTMLAttributes, ReactNode } from "react";
+import type { FormFieldProps } from "../base/FormField/index.props";
+import type { InputSize, InputVariant } from "../base/InputRoot/index.props";
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange" | "size">,

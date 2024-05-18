@@ -1,13 +1,25 @@
-import { ChangeEvent, forwardRef } from "react";
+import { forwardRef } from "react";
 import FormField from "../base/FormField";
 import InputRoot from "../base/InputRoot";
 import { BaseInput } from "../base/InputRoot/styles";
-import { InputProps } from "./index.props";
+import type { ChangeEvent } from "react";
+import type { InputProps } from "./index.props";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, startIcon, endIcon, label, hint, error, onChange, variant = "primary", size, ...props },
-    ref
+    {
+      className,
+      startIcon,
+      endIcon,
+      label,
+      hint,
+      error,
+      onChange,
+      variant = "primary",
+      size,
+      ...props
+    },
+    ref,
   ) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       if (onChange) onChange(e, e.target.value);
@@ -31,7 +43,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </InputRoot>
       </FormField>
     );
-  }
+  },
 );
 
 export default Input;

@@ -65,13 +65,14 @@ export const FakeCheckbox = styled.span<{
       }
     `}
 
-    ${checked && variant === 'primary' &&
-      css`
-        &::after {
-          border-block-end: 2px solid ${css(theme.palette.WHITE)};
-          border-inline-end: 2px solid ${css(theme.palette.WHITE)};
-        }
-      `}
+    ${checked &&
+    variant === "primary" &&
+    css`
+      &::after {
+        border-block-end: 2px solid ${css(theme.palette.WHITE)};
+        border-inline-end: 2px solid ${css(theme.palette.WHITE)};
+      }
+    `}
   `}
 `;
 

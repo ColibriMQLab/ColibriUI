@@ -1,19 +1,20 @@
 import { forwardRef } from "react";
-import { InputProps } from "./index.props";
 import { BaseDisableWrapper, BaseIcon, BaseInputRoot } from "./styles";
+import type { InputProps } from "./index.props";
 
 const InputRoot = forwardRef<HTMLDivElement, InputProps>(
-  ({ 
-    className, 
-    startIcon, 
-    endIcon, 
-    children, 
-    variant = "primary", 
-    disabled, 
-    error, 
-    size
-  },
-    ref
+  (
+    {
+      className,
+      startIcon,
+      endIcon,
+      children,
+      variant = "primary",
+      disabled,
+      error,
+      size,
+    },
+    ref,
   ) => {
     return (
       <BaseInputRoot
@@ -30,7 +31,7 @@ const InputRoot = forwardRef<HTMLDivElement, InputProps>(
         {disabled && <BaseDisableWrapper />}
       </BaseInputRoot>
     );
-  }
+  },
 );
 
 export default InputRoot;

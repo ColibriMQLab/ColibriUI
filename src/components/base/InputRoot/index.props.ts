@@ -1,5 +1,5 @@
-import { CSSObject } from "@emotion/react";
-import { ReactNode } from "react";
+import type { CSSObject } from "@emotion/react";
+import type { ReactNode } from "react";
 
 export type InputSize = "s" | "m" | "l";
 
@@ -24,11 +24,11 @@ type VariantStates = {
     normal?: VariantStyles;
     hovered?: VariantStyles;
     focused?: VariantStyles;
-  }
+  };
 };
 
 export type InputVariant = {
-  "primary": VariantStates;
+  primary: VariantStates;
 };
 
 export type PlaceholderProps = {
@@ -44,4 +44,4 @@ export type InputProps = {
   endIcon?: ReactNode;
   children: ReactNode;
   size?: InputSize;
-}
+};

@@ -1,6 +1,6 @@
-import { css, CSSObject } from "@emotion/react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { InputSize, InputVariant } from "./index.props";
+import type { InputSize, InputVariant } from "./index.props";
 
 const sizeS = css`
   height: 32px;
@@ -64,20 +64,19 @@ export const BaseInputRoot = styled.div<{
   `}
 
   ${({ isError, theme, variant }) =>
-      isError &&
-      css`
-        ${css(theme.input[variant].error?.normal)}
-    
-        &:hover {
-          ${css(theme.input[variant].error?.hovered)}
-        }
-    
-        &:focus,
-        &:focus-within {
-          ${css(theme.input[variant].error?.focused)}
-        }
-      `}
+    isError &&
+    css`
+      ${css(theme.input[variant].error?.normal)}
 
+      &:hover {
+        ${css(theme.input[variant].error?.hovered)}
+      }
+
+      &:focus,
+      &:focus-within {
+        ${css(theme.input[variant].error?.focused)}
+      }
+    `}
 `;
 
 export const BaseInput = styled.div`
@@ -123,6 +122,3 @@ export const BaseDisableWrapper = styled.div`
 
   cursor: not-allowed;
 `;
-
-
-
