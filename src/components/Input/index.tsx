@@ -16,7 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       onChange,
       variant = "primary",
-      size,
+      size = "m",
       ...props
     },
     ref,

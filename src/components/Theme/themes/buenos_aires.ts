@@ -96,11 +96,11 @@ export const InputThemeBA = {
       borderColor: Color.BG_3,
     },
     hovered: {
-      borderColor: Color.PRIMARY_3,
-      boxShadow: `0px 0px 0px 2px ${Color.PRIMARY_2}`,
+      borderColor: Color.PRIMARY_BA_3,
+      boxShadow: `0px 0px 0px 2px ${Color.PRIMARY_BA_2}`,
     },
     focused: {
-      borderColor: Color.PRIMARY_4,
+      borderColor: Color.PRIMARY_BA_4,
     },
     disabled: {
       color: Color.BG_3,
