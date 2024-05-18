@@ -1,4 +1,3 @@
-import { VARIANT } from "./index.props";
 import Typography from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -10,7 +9,7 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: Object.values(VARIANT),
+      options: ["secondary", "alert", "success"],
     },
   },
   component: Typography,

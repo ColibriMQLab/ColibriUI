@@ -1,7 +1,7 @@
 import React from "react";
 import { fn } from "@storybook/test";
 import More from "../Icons/More";
-import { SIZE, VARIANT } from "./index.props";
+import { VARIANT } from "./index.props";
 import Button from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -13,7 +13,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: Object.values(SIZE),
+      options: ["s", "m", "l"],
     },
     variant: {
       control: { type: "select" },

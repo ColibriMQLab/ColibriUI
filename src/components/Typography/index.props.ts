@@ -1,15 +1,12 @@
 import type { CSSObject } from "@emotion/react";
 
-export enum VARIANT {
-  ALERT = "alert",
-  SUCCESS = "success",
-}
 type VariantStyles = {
   color?: CSSObject["color"];
 };
 export type TypographyVariant = {
-  [VARIANT.ALERT]: VariantStyles;
-  [VARIANT.SUCCESS]: VariantStyles;
+  "alert": VariantStyles;
+  "success": VariantStyles;
+  "secondary": VariantStyles;
 };
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =
@@ -25,6 +22,7 @@ export type TypographySize =
   | "h6";
 export type TypographyTag =
   | "span"
+  | "label"
   | "legend"
   | "p"
   | "h1"

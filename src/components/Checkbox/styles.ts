@@ -85,11 +85,11 @@ export const Control = styled.input<{ variant: keyof CheckboxVariant }>`
 
   ${({ theme, variant }) => css`
     &:focus:not(:disabled) + ${FakeCheckbox} {
-      ${css(theme.checkbox[variant].focus)}
+      ${css(theme.checkbox[variant].focused)}
     }
 
     &:hover:not(:disabled) + ${FakeCheckbox} {
-      ${css(theme.checkbox[variant].hover)}
+      ${css(theme.checkbox[variant].hovered)}
     }
 
     &:active:not(:disabled) + ${FakeCheckbox} {

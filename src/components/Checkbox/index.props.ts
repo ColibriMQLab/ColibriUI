@@ -8,9 +8,9 @@ type VariantStyles = {
 
 type VariantStates = {
   normal?: VariantStyles;
-  hover?: VariantStyles;
+  hovered?: VariantStyles;
   checked?: VariantStyles;
-  focus?: VariantStyles;
+  focused?: VariantStyles;
   active?: VariantStyles;
   disabled?: VariantStyles;
 };

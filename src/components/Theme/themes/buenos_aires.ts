@@ -15,12 +15,12 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
       backgroundColor: Color.PRIMARY_BA_4,
       borderColor: Color.PRIMARY_BA_4,
     },
-    hover: {
+    hovered: {
       color: Color.WHITE,
       backgroundColor: Color.PRIMARY_BA_5,
       borderColor: Color.PRIMARY_BA_5,
     },
-    focus: {
+    focused: {
       color: Color.WHITE,
       backgroundColor: Color.PRIMARY_BA_5,
       borderColor: Color.PRIMARY_BA_5,
@@ -42,12 +42,12 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
       backgroundColor: Color.SECONDARY_BA_4,
       borderColor: Color.SECONDARY_BA_4,
     },
-    hover: {
+    hovered: {
       color: Color.WHITE,
       backgroundColor: Color.SECONDARY_BA_5,
       borderColor: Color.SECONDARY_BA_5,
     },
-    focus: {
+    focused: {
       color: Color.WHITE,
       backgroundColor: Color.SECONDARY_BA_5,
       borderColor: Color.SECONDARY_BA_5,
@@ -69,7 +69,7 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
       backgroundColor: Color.WHITE,
       borderColor: Color.WHITE,
     },
-    hover: {
+    hovered: {
       color: Color.TRETIARY_BA_5,
       backgroundColor: Color.TRETIARY_BA_2,
       borderColor: Color.TRETIARY_BA_2,
@@ -87,15 +87,53 @@ export const ButtonThemeBA: ButtonVariant & ButtonBase = {
   },
 };
 
+export const InputThemeBA = {
+  placeholder: {
+    color: Color.BG_2,
+  },
+  primary: {
+    normal: {
+      borderColor: Color.BG_3,
+    },
+    hovered: {
+      borderColor: Color.PRIMARY_3,
+      boxShadow: `0px 0px 0px 2px ${Color.PRIMARY_2}`,
+    },
+    focused: {
+      borderColor: Color.PRIMARY_4,
+    },
+    disabled: {
+      color: Color.BG_3,
+      backgroundColor: Color.BG_1,
+      borderColor: Color.BG_3,
+    },
+    error: {
+      normal: {
+        backgroundColor: Color.TRETIARY_2,
+        borderColor: Color.ALERT,
+      },
+      hovered: {
+        backgroundColor: Color.WHITE,
+        borderColor: Color.ALERT,
+        boxShadow: `0px 0px 0px 2px ${Color.TRETIARY_2}`,
+      },
+      focused: {
+        backgroundColor: Color.WHITE,
+        borderColor: Color.ALERT,
+      },
+    },
+  },
+}
+
 export const CheckboxThemeBA: CheckboxVariant = {
   primary: {
     normal: {
       backgroundColor: Color.PRIMARY_BA_4,
     },
-    hover: {
+    hovered: {
       backgroundColor: Color.PRIMARY_BA_4,
     },
-    focus: {
+    focused: {
       boxShadow: `0 0 0 2px ${Color.PRIMARY_BA_1}`,
     },
     checked: {
@@ -119,6 +157,9 @@ export const TypographyThemeBA = {
   success: {
     color: Color.SUCCESS,
   },
+  secondary: {
+    color: Color.BG_3,
+  },
 };
 
 export const SwitchThemeDefault = {
@@ -140,6 +181,7 @@ export const SwitchThemeDefault = {
 export const THEME_BA = {
   breakpoints,
   button: ButtonThemeBA,
+  input: InputThemeBA,
   checkbox: CheckboxThemeBA,
   typography: TypographyThemeBA,
   switch: SwitchThemeDefault,

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Chevron from "./Chevron";
 import Close from "./Close";
 import EyeOpen from "./EyeOpen";
 import EyeClosed from "./EyeClosed";
@@ -10,6 +11,7 @@ import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
+  Chevron: <Chevron />,
   Close: <Close />,
   Info: <Info />,
   EyeOpen: <EyeOpen />,

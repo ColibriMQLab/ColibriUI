@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import type { ReactNode } from "react";
-import type { ButtonVariant, SIZE } from "./index.props";
+import type { ButtonSize, ButtonVariant } from "./index.props";
 
 const sizeS = css`
   height: 32px;
@@ -25,8 +25,9 @@ export const StyledButton = styled.button<{
   fullWidth?: boolean;
   variant: keyof ButtonVariant;
   icon?: ReactNode;
-  size?: SIZE;
+  size?: ButtonSize;
 }>`
+  color: ${({ theme }) => theme.palette.BLACK};
   padding: 0 12px;
   box-sizing: border-box;
   display: inline-flex;
@@ -45,6 +46,8 @@ export const StyledButton = styled.button<{
   color 0.15s linear;
   transform: scale(1);
 
+  ${({ theme }) => theme.button.base};
+
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "fit-content")};
 
   ${({ size }) => size === "s" && sizeS}
@@ -52,12 +55,10 @@ export const StyledButton = styled.button<{
   ${({ size }) => size === "l" && sizeL}
 
   ${({ theme, variant, disabled }) => css`
-    ${css(theme.button.base)}
-
     ${css(theme.button[variant].normal)}
 
     &:hover {
-      ${css(theme.button[variant].hover)}
+      ${css(theme.button[variant].hovered)}
     }
 
     &:active {
