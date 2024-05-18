@@ -126,8 +126,8 @@ export const SwitchThemeDefault = {
   },
   state: {
     normal: {
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_1,
+      backgroundColor: Color.BG_2,
+      borderColor: Color.BG_2,
     },
     checked: {
       backgroundColor: Color.PRIMARY_5,
