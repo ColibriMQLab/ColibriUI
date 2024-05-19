@@ -4,6 +4,7 @@ import url from "@rollup/plugin-url";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
+import replace from "@rollup/plugin-replace"
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
 const external = (id) => !id.startsWith(".") && !id.startsWith("/");
@@ -49,6 +50,7 @@ export default [
       commonjs({
         include: "node_modules/**",
       }),
+      replace({ preventAssignment: true }),
       babel(getBabelOptions(true)),
     ],
   },
@@ -77,6 +79,7 @@ export default [
       commonjs({
         include: "node_modules/**",
       }),
+      replace({ preventAssignment: true }),
       babel(getBabelOptions(false)),
     ],
   },
