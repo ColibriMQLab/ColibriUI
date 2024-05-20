@@ -1,4 +1,5 @@
 import type { CSSObject } from "@emotion/react";
+import { ReactNode } from "react";
 
 type VariantStyles = {
   backgroundColor?: CSSObject["backgroundColor"];
@@ -25,12 +26,12 @@ export interface CheckboxProps {
   id?: string;
   name?: string;
   value?: string | number;
-  text?: string | React.ReactNode;
+  label?: ReactNode;
   checked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
   disabled?: boolean;
-  error?: boolean;
+  isError?: boolean;
 }

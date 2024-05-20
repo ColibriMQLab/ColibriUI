@@ -17,7 +17,7 @@ export const Text = styled.span`
 
 export const FakeCheckbox = styled.span<{
   checked?: boolean;
-  error?: boolean;
+  isError?: boolean;
   variant: keyof CheckboxVariant;
 }>`
   background-color: ${({ theme }) => theme.palette.WHITE};
@@ -35,8 +35,8 @@ export const FakeCheckbox = styled.span<{
     border-color 0.16s ease,
     box-shadow 0.16s ease;
 
-  ${({ error }) => css`
-    ${error &&
+  ${({ isError }) => css`
+    ${isError &&
     css`
       border-color: red;
       box-shadow: 0 0 0 2px red;

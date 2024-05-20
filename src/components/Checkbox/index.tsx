@@ -6,7 +6,7 @@ const Checkbox: FC<CheckboxProps> = ({
   id,
   name,
   value,
-  text,
+  label,
   checked,
   onChange,
   onFocus,
@@ -14,7 +14,7 @@ const Checkbox: FC<CheckboxProps> = ({
   variant = "primary",
   className,
   disabled,
-  error,
+  isError,
 }) => {
   const control = (
     <>
@@ -31,8 +31,8 @@ const Checkbox: FC<CheckboxProps> = ({
         onBlur={onBlur}
         disabled={disabled}
       />
-      <FakeCheckbox variant={variant} checked={checked} error={error} />
-      <Text>{text}</Text>
+      <FakeCheckbox variant={variant} checked={checked} isError={isError} />
+      <Text>{label}</Text>
     </>
   );
 

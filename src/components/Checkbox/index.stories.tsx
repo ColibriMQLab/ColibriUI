@@ -32,22 +32,22 @@ const Example = (props): JSX.Element => {
 export const Default = (): JSX.Element => (
   <ul style={{ listStyleType: "none" }}>
     <li style={{ padding: "3px" }}>
-      <Example text="Label one" />
+      <Example label="Label one" />
     </li>
     <li style={{ padding: "3px" }}>
-      <Example text="Label two" />
+      <Example label="Label two" />
     </li>
     <li style={{ padding: "3px" }}>
-      <Example text="Disabled" disabled />
+      <Example label="Disabled" disabled />
     </li>
     <li style={{ padding: "3px" }}>
-      <Example text="Disabled checked" checked disabled />
+      <Example label="Disabled checked" checked disabled />
     </li>
   </ul>
 );
 
 export const LongText = (): JSX.Element => (
   <div style={{ width: 300 }}>
-    <Example text={TEXT} />
+    <Example label={TEXT} />
   </div>
 );
