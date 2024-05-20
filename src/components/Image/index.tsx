@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useState } from "react";
-import generateUniqID from "../../helpers/generateUniqID";
+import generateUniqID from "../helpers/generateUniqID";
 import { BasePicture } from "./styles";
 import type { ImageProps } from "./index.props";
 
