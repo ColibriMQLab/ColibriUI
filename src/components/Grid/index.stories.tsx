@@ -15,15 +15,9 @@ export default meta;
 
 export const Default = () => {
   const style = `
-        .my-adaptive-grid {
-            --adaptive-grid-row-gap: 24px;
-            --adaptive-grid-column-gap: 16px;
-            --adaptive-grid-item-min-width: 136px;
-        }
-
-        .my-adaptive-grid-item {
-            background: #f7f8f9;
-        }
+      .my-adaptive-grid-item {
+          background: #f7f8f9;
+      }
     `;
 
   const items = [
