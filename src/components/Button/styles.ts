@@ -45,6 +45,10 @@ export const StyledButton = styled.button<{
   transition: transform 0.1s ease-out;
   color 0.15s linear;
   transform: scale(1);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   ${({ theme }) => theme.button.base};
 

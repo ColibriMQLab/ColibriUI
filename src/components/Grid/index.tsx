@@ -7,9 +7,16 @@ const Grid: React.FC<GridProps> = ({
   gridRowGap = 24,
   gridColumnGap = 16,
   gridItemMinWidth = 136,
-  className }) => (
+  className,
+}) => (
   <GridWrapper className={className}>
-    <GridItems gridRowGap={gridRowGap} gridColumnGap={gridColumnGap} gridItemMinWidth={gridItemMinWidth} >{children}</GridItems>
+    <GridItems
+      gridRowGap={gridRowGap}
+      gridColumnGap={gridColumnGap}
+      gridItemMinWidth={gridItemMinWidth}
+    >
+      {children}
+    </GridItems>
   </GridWrapper>
 );
 

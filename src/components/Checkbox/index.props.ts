@@ -1,5 +1,5 @@
+import type { ReactNode } from "react";
 import type { CSSObject } from "@emotion/react";
-import { ReactNode } from "react";
 
 type VariantStyles = {
   backgroundColor?: CSSObject["backgroundColor"];

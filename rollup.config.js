@@ -61,7 +61,7 @@ export default [
         preserveModules: true,
         preserveModulesRoot: "src/components",
         exports: "named",
-       interop: "auto",
+        interop: "auto",
       },
     ],
     external,
