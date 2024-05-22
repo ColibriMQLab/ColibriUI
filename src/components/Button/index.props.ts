@@ -41,7 +41,7 @@ export type ButtonVariant = {
   [VARIANT.CLEAR]: VariantStates;
 };
 
-export type ButtonSize = "s" | "m" | "l";
+export type ButtonSize = "xs" | "s" | "m" | "l";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof ButtonVariant;

@@ -56,3 +56,12 @@ export const onlyIcon: Story = {
     icon: <More />,
   },
 };
+
+export const Sizes = () => (
+  <div>
+    <Button size="xs">size = xs</Button>
+    <Button size="s">size = s</Button>
+    <Button size="m">size = m</Button>
+    <Button size="l">size = l</Button>
+  </div>
+);

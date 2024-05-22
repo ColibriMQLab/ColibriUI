@@ -3,6 +3,12 @@ import { css } from "@emotion/react";
 import type { ReactNode } from "react";
 import type { ButtonSize, ButtonVariant } from "./index.props";
 
+const sizeXS = css`
+  height: 29px;
+  font-size: 12px;
+  line-height: 29px;
+`;
+
 const sizeS = css`
   height: 32px;
   font-size: 13px;
@@ -53,6 +59,7 @@ export const StyledButton = styled.button<{
 
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "fit-content")};
 
+  ${({ size }) => size === "xs" && sizeXS}
   ${({ size }) => size === "s" && sizeS}
   ${({ size }) => size === "m" && sizeM}
   ${({ size }) => size === "l" && sizeL}
