@@ -43,7 +43,7 @@ export const StyledButton = styled.button<{
   font-size: 15px;
   line-height: 36px;
   transition: transform 0.1s ease-out;
-  color 0.15s linear;
+  color: 0.15s linear;
   transform: scale(1);
   overflow: hidden;
   white-space: nowrap;
