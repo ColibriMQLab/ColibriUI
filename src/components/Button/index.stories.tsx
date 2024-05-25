@@ -1,7 +1,6 @@
 import React from "react";
 import { fn } from "@storybook/test";
 import More from "../Icons/More";
-import { VARIANT } from "./index.props";
 import Button from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -17,7 +16,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: { type: "select" },
-      options: Object.values(VARIANT),
+      options: ["primary", "secondary", "pseudo", "clear"],
     },
     disabled: {
       control: { type: "boolean" },
@@ -76,16 +75,16 @@ export const Sizes = (args) => (
 
 export const Variants = (args) => (
   <div>
-    <Button size="m" variant={VARIANT.PRIMARY} {...args}>
+    <Button size="m" variant="primary" {...args}>
       primary
     </Button>
-    <Button size="m" variant={VARIANT.SECONDARY} {...args}>
+    <Button size="m" variant="secondary" {...args}>
       secondary
     </Button>
-    <Button size="m" variant={VARIANT.PSEUDO} {...args}>
+    <Button size="m" variant="pseudo" {...args}>
       pseudo
     </Button>
-    <Button size="m" variant={VARIANT.CLEAR} {...args}>
+    <Button size="m" variant="clear" {...args}>
       clear
     </Button>
   </div>

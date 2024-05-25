@@ -1,13 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import type { CSSObject } from "@emotion/react";
 
-export enum VARIANT {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  PSEUDO = "pseudo",
-  CLEAR = "clear",
-}
-
 type BaseStyles = {
   color?: CSSObject["color"];
   borderRadius: CSSObject["borderRadius"];
@@ -37,10 +30,10 @@ export type ButtonBase = {
 };
 
 export type ButtonVariant = {
-  [VARIANT.PRIMARY]: VariantStates;
-  [VARIANT.SECONDARY]: VariantStates;
-  [VARIANT.PSEUDO]: VariantStates;
-  [VARIANT.CLEAR]: VariantStates;
+  "primary": VariantStates;
+  "secondary": VariantStates;
+  "pseudo": VariantStates;
+  "clear": VariantStates;
 };
 
 export type ButtonSize = "xs" | "s" | "m" | "l";
