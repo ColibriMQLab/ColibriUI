@@ -12,9 +12,10 @@ export default forwardRef<SVGSVGElement, Props>(
       {...props}
       viewBox="0 0 24 24"
     >
-      <circle cx="5" cy="12" r="1.75"></circle>
-      <circle cx="12" cy="12" r="1.75"></circle>
-      <circle cx="19" cy="12" r="1.75"></circle>
+      <g fill={fill} fillRule="evenodd">
+        <path d="M4 13h16v-2H4z" />
+        <path d="M11 4v16h2V4z" />
+      </g>
     </svg>
   ),
 );

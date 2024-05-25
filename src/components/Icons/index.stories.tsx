@@ -6,19 +6,25 @@ import EyeOpen from "./EyeOpen";
 import EyeClosed from "./EyeClosed";
 import Help from "./Help";
 import Info from "./Info";
+import Minus from "./Minus";
 import More from "./More";
+import Plus from "./Plus";
+import Trash from "./Trash";
 import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
   Chevron: <Chevron />,
   Close: <Close />,
-  Info: <Info />,
-  EyeOpen: <EyeOpen />,
   EyeClosed: <EyeClosed />,
-  More: <More />,
-  User: <User />,
+  EyeOpen: <EyeOpen />,
   Help: <Help />,
+  Info: <Info />,
+  Minus: <Minus />,
+  More: <More />,
+  Plus: <Plus />,
+  Trash: <Trash />,
+  User: <User />,
 };
 
 export default {
@@ -56,8 +62,10 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
   return allIcons.map((item) => item);
 };
 
-const Template = () => {
+export const All = () => {
   return <Wrapper>{renderIcons(icons)}</Wrapper>;
 };
 
-export const All = Template.bind({});
+export const Colored = () => {
+  return <Wrapper style={{ color: "#0066DC" }}>{renderIcons(icons)}</Wrapper>;
+};

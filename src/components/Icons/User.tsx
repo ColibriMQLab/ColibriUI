@@ -1,14 +1,15 @@
 import { forwardRef } from "react";
-import type { HTMLAttributes } from "react";
+import type { Props } from "./index.props";
 
-export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
-  (props, ref) => (
+export default forwardRef<SVGSVGElement, Props>(
+  ({ width = 24, height = 24, ...props }, ref) => (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
       ref={ref}
       {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      height="1em"
-      viewBox="0 0 20 20"
+      viewBox="0 0 24 24"
       fill="none"
     >
       <path

@@ -1,15 +1,16 @@
 import { forwardRef } from "react";
-import type { HTMLAttributes } from "react";
+import type { Props } from "./index.props";
 
-export default forwardRef<SVGSVGElement, HTMLAttributes<SVGElement>>(
-  (props, ref) => (
+export default forwardRef<SVGSVGElement, Props>(
+  ({ fill = "currentColor", width = 24, height = 24, ...props }, ref) => (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill={fill}
+      width={width}
+      height={height}
       ref={ref}
       {...props}
-      height="1em"
       viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         fillRule="evenodd"
