@@ -1,8 +1,7 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import Counter from ".";
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from '@storybook/test';
+import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Counter> = {
   title: "UI/Counter",
@@ -10,7 +9,7 @@ const meta: Meta<typeof Counter> = {
     layout: "centered",
   },
   argTypes: {
-   value: {
+    value: {
       control: { type: "number" },
     },
     min: {
@@ -34,6 +33,8 @@ const meta: Meta<typeof Counter> = {
 export default meta;
 
 export const Default = (args) => {
-    const [value, setValue] = useState(1);
-    return (<Counter onChange={setValue} min={1} value={value} max={10} {...args}/>)
-}
+  const [value, setValue] = useState(1);
+  return (
+    <Counter onChange={setValue} min={1} value={value} max={10} {...args} />
+  );
+};

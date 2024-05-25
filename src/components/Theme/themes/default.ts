@@ -29,9 +29,9 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.PRIMARY_5,
     },
     disabled: {
-      color: Color.BG_3,
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_1,
+      color: Color.PRIMARY_2,
+      backgroundColor: Color.PRIMARY_1,
+      borderColor: Color.PRIMARY_1,
     },
   },
   secondary: {
@@ -56,12 +56,12 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.SECONDARY_5,
     },
     disabled: {
-      color: Color.BG_3,
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_1,
+      color: Color.SECONDARY_2,
+      backgroundColor: Color.SECONDARY_1,
+      borderColor: Color.SECONDARY_1,
     },
   },
-  clear: {
+  pseudo: {
     normal: {
       color: Color.TRETIARY_5,
       backgroundColor: Color.WHITE,
@@ -78,9 +78,31 @@ export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
       borderColor: Color.TRETIARY_2,
     },
     disabled: {
+      color: Color.TRETIARY_3,
+      backgroundColor: Color.TRETIARY_1,
+      borderColor: Color.TRETIARY_1,
+    },
+  },
+  clear: {
+    normal: {
+      color: Color.PRIMARY_4,
+      backgroundColor: "transparent",
+      borderColor: "transparent",
+    },
+    hovered: {
+      color: Color.PRIMARY_5,
+      backgroundColor: "transparent",
+      borderColor: "transparent",
+    },
+    active: {
+      color: Color.PRIMARY_5,
+      backgroundColor: "transparent",
+      borderColor: "transparent",
+    },
+    disabled: {
       color: Color.BG_3,
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_1,
+      backgroundColor: "transparent",
+      borderColor: "transparent",
     },
   },
 };

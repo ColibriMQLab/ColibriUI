@@ -57,11 +57,36 @@ export const onlyIcon: Story = {
   },
 };
 
-export const Sizes = () => (
+export const Sizes = (args) => (
   <div>
-    <Button size="xs">size = xs</Button>
-    <Button size="s">size = s</Button>
-    <Button size="m">size = m</Button>
-    <Button size="l">size = l</Button>
+    <Button size="xs" {...args}>
+      size = xs
+    </Button>
+    <Button size="s" {...args}>
+      size = s
+    </Button>
+    <Button size="m" {...args}>
+      size = m
+    </Button>
+    <Button size="l" {...args}>
+      size = l
+    </Button>
+  </div>
+);
+
+export const Variants = (args) => (
+  <div>
+    <Button size="m" variant={VARIANT.PRIMARY} {...args}>
+      primary
+    </Button>
+    <Button size="m" variant={VARIANT.SECONDARY} {...args}>
+      secondary
+    </Button>
+    <Button size="m" variant={VARIANT.PSEUDO} {...args}>
+      pseudo
+    </Button>
+    <Button size="m" variant={VARIANT.CLEAR} {...args}>
+      clear
+    </Button>
   </div>
 );

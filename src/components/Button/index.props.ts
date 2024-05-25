@@ -4,6 +4,7 @@ import type { CSSObject } from "@emotion/react";
 export enum VARIANT {
   PRIMARY = "primary",
   SECONDARY = "secondary",
+  PSEUDO = "pseudo",
   CLEAR = "clear",
 }
 
@@ -38,6 +39,7 @@ export type ButtonBase = {
 export type ButtonVariant = {
   [VARIANT.PRIMARY]: VariantStates;
   [VARIANT.SECONDARY]: VariantStates;
+  [VARIANT.PSEUDO]: VariantStates;
   [VARIANT.CLEAR]: VariantStates;
 };
 
