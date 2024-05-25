@@ -1,5 +1,6 @@
 export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
+export { default as Counter } from "./Counter";
 export { default as DotsLoader } from "./DotsLoader";
 export { default as Grid } from "./Grid";
 export { default as GridItem } from "./Grid/Item";
