@@ -1,3 +1,4 @@
+import React from "react";
 import Menu from "./index";
 
 describe("<Menu />", () => {
@@ -38,6 +39,6 @@ describe("<Menu />", () => {
     menu
       .get("ul>li")
       .eq(1)
-      .should("have.css", "background-color", "#B8D2FF");
+      .should("have.css", "background-color", "rgb(184, 210, 255)");
   });
 });

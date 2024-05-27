@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { type ButtonProps } from "./index.props";
 import { StyledButton, StyledIcon } from "./styles";
 
