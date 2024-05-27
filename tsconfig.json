@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
@@ -23,7 +28,13 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
   },
-  "include": ["@types", "./**/*", "./src/**/*"],
+  "include": [
+    "@types",
+    "./**/*",
+    "./src/**/*",
+    "./cypress",
+    "./cypress.config.ts"
+  ],
   "exclude": [
       "node_modules",
       "dist",

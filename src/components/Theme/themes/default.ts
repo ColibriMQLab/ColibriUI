@@ -2,6 +2,7 @@ import Color from "../color";
 import breakpoints from "../breakpoints";
 import type { CheckboxVariant } from "../../Checkbox/index.props";
 import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
+import { MenuVariant } from "../../Menu/index.props";
 
 export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
   base: {
@@ -198,9 +199,31 @@ export const SwitchThemeDefault = {
   },
 };
 
+export const MenuThemeDefault: MenuVariant = {
+  primary: {
+    normal: {
+      backgroundColor: Color.WHITE
+    },
+    hovered: {
+      backgroundColor: Color.PRIMARY_2,
+    },
+    focused: {
+      backgroundColor: Color.PRIMARY_2,
+    },
+    selected: {
+      backgroundColor: Color.PRIMARY_2,
+    },
+    disabled: {
+      color: Color.BG_2,
+      backgroundColor: Color.WHITE,
+    },
+  },
+};
+
 export const THEME_DEFAULT = {
   breakpoints,
   button: ButtonThemeDefault,
+  menu: MenuThemeDefault,
   input: InputThemeDefault,
   checkbox: CheckboxThemeDefault,
   typography: TypographyThemeDefault,

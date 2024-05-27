@@ -20,7 +20,7 @@ import "./commands";
 // require('./commands')
 
 import { mount } from "cypress/react18";
-import { ThemeProvider } from "../../src/ui/Theme";
+import { THEMES, ThemeProvider } from "../../src/components/Theme";
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -36,7 +36,7 @@ declare global {
 
 Cypress.Commands.add("mount", (component, options) => {
   // Wrap any parent components needed
-  return mount(<ThemeProvider>{component}</ThemeProvider>, options);
+  return mount(<ThemeProvider theme={THEMES.DEFAULT}>{component}</ThemeProvider>, options);
 });
 // Example use:
 // cy.mount(<MyComponent />)
