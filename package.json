@@ -10,7 +10,9 @@
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:open": "cypress open",
+    "test": "cypress run --component"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "@babel/preset-env": "7.24.5",
     "@babel/preset-react": "7.24.1",
     "@babel/preset-typescript": "7.24.1",
+    "@cypress/webpack-dev-server": "^3.8.0",
     "@emotion/babel-plugin": "11.11.0",
     "@eslint/js": "9.2.0",
     "@rollup/plugin-babel": "6.0.4",
@@ -62,6 +65,7 @@
     "@swc/plugin-emotion": "^3.0.4",
     "@types/react": "18.3.1",
     "@types/react-dom": "^18.3.0",
+    "cypress": "^13.10.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "^2.29.1",
