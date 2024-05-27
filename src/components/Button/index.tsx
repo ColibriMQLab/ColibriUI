@@ -27,6 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variant}
         icon={icon}
         fullWidth={fullWidth}
+        data-cy="button"
         {...props}
       >
         {icon && <StyledIcon>{icon}</StyledIcon>}

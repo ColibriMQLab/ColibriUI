@@ -41,6 +41,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.24.3",
     "@babel/preset-typescript": "^7.24.1",
+    "@cypress/code-coverage": "^3.12.39",
     "@emotion/babel-plugin": "11.11.0",
     "@eslint/js": "9.2.0",
     "@rollup/plugin-babel": "6.0.4",
