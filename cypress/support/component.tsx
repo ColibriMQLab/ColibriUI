@@ -37,7 +37,10 @@ declare global {
 
 Cypress.Commands.add("mount", (component, options) => {
   // Wrap any parent components needed
-  return mount(<ThemeProvider theme={THEMES.DEFAULT}>{component}</ThemeProvider>, options);
+  return mount(
+    <ThemeProvider theme={THEMES.DEFAULT}>{component}</ThemeProvider>,
+    options,
+  );
 });
 // Example use:
 // cy.mount(<MyComponent />)

@@ -7,8 +7,7 @@ const meta: Meta<typeof Menu> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {
-  },
+  argTypes: {},
   component: Menu,
 } satisfies Meta<typeof Menu>;
 
@@ -21,7 +20,9 @@ const Template = (args) => {
     <Menu {...args} selected={selected} onClick={(k) => setSelected([k])}>
       <Menu.Item key="1">Menu item 1</Menu.Item>
       <Menu.Item key="2">Menu item 2</Menu.Item>
-      <Menu.Item disabled key="3">Menu item 3</Menu.Item>
+      <Menu.Item disabled key="3">
+        Menu item 3
+      </Menu.Item>
       <Menu.Item key="4">Menu item 4</Menu.Item>
     </Menu>
   );

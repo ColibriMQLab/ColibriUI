@@ -1,6 +1,6 @@
-import { CSSObject } from "@emotion/react";
-import { ReactNode, MouseEvent } from "react";
-import { MenuVariant } from "../../index.props";
+import type { CSSObject } from "@emotion/react";
+import type { ReactNode, MouseEvent } from "react";
+import type { MenuVariant } from "../../index.props";
 
 interface IStylesProps {
   color?: CSSObject["color"];

@@ -1,4 +1,5 @@
-import { MutableRefObject, RefObject, useEffect } from "react";
+import { useEffect } from "react";
+import type { MutableRefObject, RefObject } from "react";
 
 type AnyEvent = MouseEvent | TouchEvent;
 type Ref<T> = RefObject<T> | MutableRefObject<T | undefined>;
@@ -7,7 +8,7 @@ let element: Ref<HTMLElement> = { current: undefined };
 
 function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T> | MutableRefObject<T | undefined>,
-  handler: (e: MouseEvent | TouchEvent) => void
+  handler: (e: MouseEvent | TouchEvent) => void,
 ) {
   useEffect(() => {
     const previous = element;

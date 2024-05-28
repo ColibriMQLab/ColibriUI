@@ -1,10 +1,10 @@
-import { css, CSSObject } from "@emotion/react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { MenuVariant } from "../../index.props";
+import type { MenuVariant } from "../../index.props";
 
 export const Item = styled("li", {
   shouldForwardProp: (prop) => !["isSelected"].includes(prop),
-})<{ isSelected?: boolean; variant: keyof MenuVariant; disabled?: boolean; }>`
+})<{ isSelected?: boolean; variant: keyof MenuVariant; disabled?: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -24,9 +24,9 @@ export const Item = styled("li", {
     }
 
     ${isSelected &&
-      css`
-        ${css(theme.menu[variant].selected)}
-      `}
+    css`
+      ${css(theme.menu[variant].selected)}
+    `}
 
     ${disabled &&
     css`

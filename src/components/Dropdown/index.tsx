@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  MouseEventHandler,
   useMemo,
   Children,
 } from "react";
@@ -10,10 +9,11 @@ import { usePopper } from "react-popper";
 
 import Portal from "../Portal";
 
-import { OverlayContainer, PopperContainer } from "./styles";
-import { IDropdownProps } from "./index.props";
 import { on } from "../helpers/on";
 import ClickOutside from "../ClickOutside";
+import { OverlayContainer, PopperContainer } from "./styles";
+import type { IDropdownProps } from "./index.props";
+import type { MouseEventHandler } from "react";
 
 const Dropdown: React.FC<IDropdownProps> = ({
   children,
@@ -29,10 +29,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
   samewidth = false,
 }) => {
   const [controlElement, setControlElement] = useState<HTMLElement | null>(
-    null
+    null,
   );
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-    null
+    null,
   );
 
   const [visible, setVisible] = useState(false);
@@ -55,7 +55,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
           enabled: preventOverflow,
         },
       ],
-    }
+    },
   );
 
   const isNotComponent = typeof children === "string";
@@ -63,7 +63,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   const reference: any = useMemo(
     () =>
       Children.only(isNotComponent ? <button>{children}</button> : children),
-    [children, isNotComponent]
+    [children, isNotComponent],
   );
 
   const onToggle = useCallback(
@@ -71,7 +71,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
       e.stopPropagation();
       setVisible((state) => !state);
     },
-    [setVisible]
+    [setVisible],
   );
 
   const onShow = useCallback(() => {
@@ -88,7 +88,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 
       onHide();
     },
-    [onHide, controlElement]
+    [onHide, controlElement],
   );
 
   const onClickOverlay: MouseEventHandler<HTMLDivElement> = useCallback(
@@ -96,7 +96,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
       e.stopPropagation();
       onHide();
     },
-    [onHide]
+    [onHide],
   );
 
   useEffect(() => {
@@ -114,9 +114,8 @@ const Dropdown: React.FC<IDropdownProps> = ({
     }
 
     if (trigger.includes("focus")) {
-      const onFocusOut = (e: FocusEvent) => {
+      const onFocusOut = () => {
         requestAnimationFrame(() => {
-          // Check if the new focused element is a child of the original container
           if (controlElement?.contains(document.activeElement)) return;
           if (popperElement?.contains(document.activeElement)) return;
 

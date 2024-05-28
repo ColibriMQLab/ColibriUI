@@ -30,10 +30,10 @@ export type ButtonBase = {
 };
 
 export type ButtonVariant = {
-  "primary": VariantStates;
-  "secondary": VariantStates;
-  "pseudo": VariantStates;
-  "clear": VariantStates;
+  primary: VariantStates;
+  secondary: VariantStates;
+  pseudo: VariantStates;
+  clear: VariantStates;
 };
 
 export type ButtonSize = "xs" | "s" | "m" | "l";

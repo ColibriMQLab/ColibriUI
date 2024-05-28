@@ -1,5 +1,6 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import type { FC, ReactNode } from "react";
 
 const Portal: FC<{ node?: HTMLElement | null; children: ReactNode }> = ({
   children,

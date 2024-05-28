@@ -8,7 +8,7 @@ describe("<Menu />", () => {
         <Menu.Item key="1">Test 1</Menu.Item>
         <Menu.Item key="2">Test 2</Menu.Item>
         <Menu.Item key="3">Test 3</Menu.Item>
-      </Menu>
+      </Menu>,
     );
   });
 
@@ -19,7 +19,7 @@ describe("<Menu />", () => {
           <Menu.Item key="1">Test 1</Menu.Item>
           <Menu.Item key="2">Test 2</Menu.Item>
           <Menu.Item key="3">Test 3</Menu.Item>
-        </Menu>
+        </Menu>,
       )
       .get("ul");
     menu.get("ul>li").eq(0).should("contain.text", "Test 1");
@@ -33,7 +33,7 @@ describe("<Menu />", () => {
           <Menu.Item key="1">Test 1</Menu.Item>
           <Menu.Item key="2">Test 2</Menu.Item>
           <Menu.Item key="3">Test 3</Menu.Item>
-        </Menu>
+        </Menu>,
       )
       .get("ul");
     menu

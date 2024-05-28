@@ -1,17 +1,18 @@
-import React, {
-  useMemo,
-  isValidElement,
-  Children,
-  cloneElement,
-  MouseEvent,
-} from "react";
+import { useMemo, isValidElement, Children, cloneElement } from "react";
 
 import MenuItem from "./components/MenuItem";
 
-import { MenuProps } from "./index.props";
 import { MenuList } from "./styles";
+import type { MenuProps } from "./index.props";
+import type { MouseEvent } from "react";
 
-const Menu: MenuProps = ({ selected, variant, className, onClick, children }) => {
+const Menu: MenuProps = ({
+  selected,
+  variant,
+  className,
+  onClick,
+  children,
+}) => {
   const renderChild = useMemo(
     () =>
       Children.map(children, (child) => {
@@ -28,16 +29,14 @@ const Menu: MenuProps = ({ selected, variant, className, onClick, children }) =>
           return cloneElement(child, {
             isSelected,
             onClick: onClickHandler,
-            variant
+            variant,
           });
         }
         return child;
       }),
-    [children, selected, onClick]
+    [children, selected, onClick],
   );
-  return (
-    <MenuList className={className}>{renderChild}</MenuList>
-  );
+  return <MenuList className={className}>{renderChild}</MenuList>;
 };
 
 Menu.Item = MenuItem;

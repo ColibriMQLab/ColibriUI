@@ -1,5 +1,6 @@
-import Dropdown from "./index";
+import React from "react";
 import Menu from "../Menu";
+import Dropdown from "./index";
 
 describe("<Dropdown />", () => {
   it("renders", () => {
@@ -40,7 +41,7 @@ describe("<Dropdown />", () => {
       .mount(
         <Dropdown trigger={["click"]} overlay={overlay()}>
           Открыть
-        </Dropdown>
+        </Dropdown>,
       )
       .get("button");
     dropdown.click();
@@ -59,7 +60,7 @@ describe("<Dropdown />", () => {
       .mount(
         <Dropdown trigger={["hover"]} overlay={overlay()}>
           Открыть
-        </Dropdown>
+        </Dropdown>,
       )
       .get("button");
     dropdown.trigger("mouseenter");
@@ -78,7 +79,7 @@ describe("<Dropdown />", () => {
       .mount(
         <Dropdown trigger={["hover"]} overlay={overlay()}>
           Открыть
-        </Dropdown>
+        </Dropdown>,
       )
       .get("button");
     dropdown.trigger("mouseenter");

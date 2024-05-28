@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import { PositioningStrategy } from "@popperjs/core";
+import type { ReactNode } from "react";
+import type { PositioningStrategy } from "@popperjs/core";
 
-import { Placement as PopperPlacement } from "@popperjs/core";
+import type { Placement as PopperPlacement } from "@popperjs/core";
 
 export type Placement = Extract<
   PopperPlacement,

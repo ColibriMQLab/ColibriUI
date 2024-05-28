@@ -1,8 +1,8 @@
 import Color from "../color";
 import breakpoints from "../breakpoints";
+import type { MenuVariant } from "../../Menu/index.props";
 import type { CheckboxVariant } from "../../Checkbox/index.props";
 import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
-import { MenuVariant } from "../../Menu/index.props";
 
 export const ButtonThemeBA: ButtonVariant & ButtonBase = {
   base: {
@@ -204,7 +204,7 @@ export const SwitchThemeBA = {
 export const MenuThemeBA: MenuVariant = {
   primary: {
     normal: {
-      backgroundColor: Color.WHITE
+      backgroundColor: Color.WHITE,
     },
     hovered: {
       backgroundColor: Color.PRIMARY_BA_2,
@@ -221,7 +221,6 @@ export const MenuThemeBA: MenuVariant = {
     },
   },
 };
-
 
 export const THEME_BA = {
   breakpoints,
