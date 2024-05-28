@@ -20,6 +20,7 @@
     "declaration": true,
     "declarationDir": "./dist/esm",
     "strict": true,
+    "noEmit": false,
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
   },
