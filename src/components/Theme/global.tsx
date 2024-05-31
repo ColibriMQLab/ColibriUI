@@ -7,22 +7,13 @@ export default (
         margin: 0;
         padding: 0;
       }
-
-      ul,
-      ol {
-        list-style: none;
-      }
-
+      
       input,
       label,
       textarea,
       select,
       button {
         background: none;
-      }
-
-      a {
-        color: inherit;
       }
 
       * {
