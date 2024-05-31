@@ -7,24 +7,22 @@ export default forwardRef<SVGSVGElement, Props>(
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      viewBox="0 0 24 24"
       ref={ref}
       {...props}
-      viewBox="0 0 24 24"
       fill="none"
     >
       <path
-        stroke="currentColor"
+        stroke="#000"
         strokeLinecap="round"
         strokeWidth="1.6"
-        d="M15.796 15.447a6 6 0 0 0-11.592 0"
+        d="M21.936 23.026a10.286 10.286 0 0 0-19.872 0"
       />
-      <circle
-        cx="10"
-        cy="7"
-        r="4"
-        stroke="currentColor"
+      <path
+        stroke="#000"
         strokeLinecap="round"
         strokeWidth="1.6"
+        d="M12 15.086a6.857 6.857 0 1 0 0-13.714 6.857 6.857 0 0 0 0 13.714Z"
       />
     </svg>
   ),
