@@ -9,7 +9,9 @@ const GlobalStyles = () => (
   <Global
     styles={css`
       body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: "Roboto", Arial, sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
       #storybook-root {
         width: 100%;
