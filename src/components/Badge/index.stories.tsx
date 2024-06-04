@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import User from "../Icons/User";
+import Cart from "../Icons/Cart";
 import Badge from ".";
+import type { ReactNode } from "react";
 import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Badge> = {
@@ -49,16 +51,14 @@ export default meta;
 
 function render(args) {
   return (
-    <div>
-      {Array(1)
-        .fill(null)
-        .map((_, i: number) => {
-          return (
-            <Badge key={i} content={3} {...args}>
-              <User />
-            </Badge>
-          );
-        })}
+    <div style={{ display: "flex", gap: "30px" }}>
+      {[<Cart />, <User />].map((icon: ReactNode, i: number) => {
+        return (
+          <Badge key={i.toString()} content={3} {...args}>
+            {icon}
+          </Badge>
+        );
+      })}
     </div>
   );
 }

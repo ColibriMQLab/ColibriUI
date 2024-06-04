@@ -42,6 +42,8 @@ export default [
       "scripts/*",
       "node_modules/*",
       "storybook-static/*",
+      "cypress/",
+      "cypress.config.ts",
     ],
   },
 ];

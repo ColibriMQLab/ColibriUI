@@ -7,6 +7,7 @@ export const Root = styled.span<{
 }>`
   position: absolute;
   z-index: 1;
+  user-select: none;
 
   display: flex;
   flex-direction: row;
@@ -31,8 +32,7 @@ export const Root = styled.span<{
       top: 0;
       right: 0;
 
-      transform: scale(1) translate(100%, -50%);
-      transform-origin: 100% 0%;
+      transform: scale(1) translate(90%, -50%);
     `}
 
     ${direction === "left" &&
@@ -40,8 +40,7 @@ export const Root = styled.span<{
       top: 0;
       left: 0;
 
-      transform: scale(1) translate(-100%, -50%);
-      transform-origin: 100% 0%;
+      transform: scale(1) translate(-90%, -50%);
     `}
   `}
 

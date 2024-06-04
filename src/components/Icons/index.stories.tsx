@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Cart from "./Cart";
 import Chevron from "./Chevron";
 import Close from "./Close";
 import EyeOpen from "./EyeOpen";
@@ -14,6 +15,7 @@ import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
+  Cart: <Cart />,
   Chevron: <Chevron />,
   Close: <Close />,
   EyeClosed: <EyeClosed />,

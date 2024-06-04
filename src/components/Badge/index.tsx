@@ -35,8 +35,8 @@ const Badge: FC<Props> = ({
       {children}
       <Root
         style={{
-            color,
-            backgroundColor: background,
+          color,
+          backgroundColor: background,
         }}
         direction={direction}
         invisible={invisible}
