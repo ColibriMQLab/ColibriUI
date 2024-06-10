@@ -42,6 +42,7 @@ export default [
       "scripts/*",
       "node_modules/*",
       "storybook-static/*",
+      "**/*.stories.tsx",
       "cypress/",
       "cypress.config.ts",
     ],
