@@ -32,7 +32,7 @@ export const Root = styled.span<{
       top: 0;
       right: 0;
 
-      transform: scale(1) translate(90%, -50%);
+      transform: scale(1) translate(80%, -50%);
     `}
 
     ${direction === "left" &&
@@ -40,7 +40,7 @@ export const Root = styled.span<{
       top: 0;
       left: 0;
 
-      transform: scale(1) translate(-90%, -50%);
+      transform: scale(1) translate(-80%, -50%);
     `}
   `}
 
