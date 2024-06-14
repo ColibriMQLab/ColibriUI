@@ -2,11 +2,20 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import type { CheckboxVariant } from "./index.props";
 
+export const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+`;
+
 export const Label = styled.label`
-  cursor: pointer;
   display: inline-flex;
   line-height: 18px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const Text = styled.span`

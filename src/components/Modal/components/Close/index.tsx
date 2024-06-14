@@ -1,12 +1,8 @@
-import type { FC } from "react";
 import { Root } from "./styles";
+import type { FC } from "react";
 
-const Close: FC<{ onClick?: () => void }> = ({
-  onClick,
-}) => {
-  return (
-    <Root onClick={onClick} />
-  );
+const Close: FC<{ onClick?: () => void }> = ({ onClick }) => {
+  return <Root onClick={onClick} />;
 };
 
 export default Close;
