@@ -1,10 +1,7 @@
 import styled from "@emotion/styled";
+import { Close } from "../../../Icons";
 
-export const Root = styled.div`
-  height: 36px;
-
-  & > svg {
-    padding: 6px;
-    cursor: pointer;
-  }
+export const Root = styled(Close)`
+  cursor: pointer;
+  margin-right: 16px;
 `;

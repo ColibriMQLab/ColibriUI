@@ -1,15 +1,11 @@
-import { Close as CloseIcon } from "../../../Icons";
-import { Root } from "./styles";
 import type { FC } from "react";
+import { Root } from "./styles";
 
-const Close: FC<{ className?: string; onClick?: () => void }> = ({
-  className,
+const Close: FC<{ onClick?: () => void }> = ({
   onClick,
 }) => {
   return (
-    <Root onClick={onClick} className={className}>
-      <CloseIcon />
-    </Root>
+    <Root onClick={onClick} />
   );
 };
 
