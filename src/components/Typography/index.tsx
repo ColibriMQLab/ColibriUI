@@ -10,7 +10,6 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   size,
   fontWeight,
   className,
-  nowrap = false,
 }) => {
   const isNotComponent = typeof children === "string";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,7 +31,6 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
       size={size}
       variant={variant}
       fontWeight={fontWeight}
-      nowrap={nowrap}
       className={className}
     />
   );

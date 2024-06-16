@@ -72,7 +72,6 @@ export const BaseTypography = styled.span<{
   variant: keyof TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
-  nowrap?: boolean;
 }>`
   color: ${({ theme }) => theme.palette.BLACK};
 
@@ -90,12 +89,6 @@ export const BaseTypography = styled.span<{
   ${({ fontWeight }) => fontWeight === "normal" && fontWeightNormal}
   ${({ fontWeight }) => fontWeight === "medium" && fontWeightMedium}
   ${({ fontWeight }) => fontWeight === "bold" && fontWeightBold}
-
-  ${({ nowrap }) =>
-    nowrap &&
-    css`
-      white-space: nowrap;
-    `}
 
   ${({ theme, variant }) => css`
     ${css(theme.typography[variant])}

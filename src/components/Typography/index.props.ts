@@ -39,5 +39,4 @@ export type TypographyProps = {
   variant?: keyof TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
-  nowrap?: boolean;
 };
