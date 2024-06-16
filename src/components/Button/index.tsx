@@ -7,6 +7,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       fullWidth = false,
+      scale = false,
       variant = "primary",
       iconStart,
       iconEnd,
@@ -27,6 +28,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variant}
         icon={icon}
         fullWidth={fullWidth}
+        scale={scale}
         data-cy="button"
         {...props}
       >

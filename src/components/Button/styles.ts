@@ -29,6 +29,7 @@ const sizeL = css`
 
 export const StyledButton = styled.button<{
   fullWidth?: boolean;
+  scale?: boolean;
   variant: keyof ButtonVariant;
   icon?: ReactNode;
   size?: ButtonSize;
@@ -64,7 +65,7 @@ export const StyledButton = styled.button<{
   ${({ size }) => size === "m" && sizeM}
   ${({ size }) => size === "l" && sizeL}
 
-  ${({ theme, variant, disabled }) => css`
+  ${({ theme, variant, disabled, scale }) => css`
     ${css(theme.button[variant].normal)}
 
     &:hover {
@@ -73,8 +74,11 @@ export const StyledButton = styled.button<{
 
     &:active {
       ${css(theme.button[variant].active)}
-      transition: none;
-      transform: scale(0.96);
+      ${scale &&
+      css`
+        transition: none;
+        transform: scale(0.96);
+      `}
     }
 
     ${disabled &&

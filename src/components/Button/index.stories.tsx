@@ -56,6 +56,13 @@ export const onlyIcon: Story = {
   },
 };
 
+export const Scale: Story = {
+  args: {
+    children: TEXT,
+    scale: true
+  },
+};
+
 export const Sizes = (args) => (
   <div>
     <Button size="xs" {...args}>
