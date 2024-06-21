@@ -15,4 +15,5 @@ export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { default as Switch } from "./Switch";
 export { THEMES, ThemeProvider } from "./Theme";
 export { default as Typography } from "./Typography";
+export { default as useMediaSizes } from "./hooks/useMediaSizes";
 export * from "./Icons";
