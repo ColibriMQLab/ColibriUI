@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "./index";
+import Select from "./";
 
 describe("<Select />", () => {
   const options = Array(5)

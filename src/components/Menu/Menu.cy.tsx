@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "./index";
+import Menu from "./";
 
 describe("<Menu />", () => {
   it("renders", () => {

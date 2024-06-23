@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Select from "./index";
+import Select from "./";
 
 import type { Meta } from "@storybook/react";
 
