@@ -10,7 +10,7 @@ export type Placement = Extract<
 
 export type Trigger = "click" | "hover" | "focus";
 
-export interface IDropdownProps {
+export type DropdownProps = {
   children: ReactNode;
   zIndex?: number;
   disabled?: boolean;

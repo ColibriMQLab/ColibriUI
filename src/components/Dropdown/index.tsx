@@ -12,10 +12,10 @@ import Portal from "../Portal";
 import { on } from "../helpers/on";
 import ClickOutside from "../ClickOutside";
 import { OverlayContainer, PopperContainer } from "./styles";
-import type { IDropdownProps } from "./index.props";
+import type { DropdownProps } from "./index.props";
 import type { MouseEventHandler } from "react";
 
-const Dropdown: React.FC<IDropdownProps> = ({
+const Dropdown: React.FC<DropdownProps> = ({
   children,
   zIndex,
   disabled,

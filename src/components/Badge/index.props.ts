@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { ControlProps } from "./Control/index.props";
 
-export interface Props extends ControlProps {
+export interface BadgeProps extends ControlProps {
   className?: string;
   color?: string;
   background?: string;

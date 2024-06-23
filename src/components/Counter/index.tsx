@@ -3,9 +3,9 @@ import Button from "../Button";
 import MinusIcon from "../Icons/Minus";
 import PlusIcon from "../Icons/Plus";
 import { Control, Root, Value } from "./styles";
-import type { Props } from "./index.props";
+import type { CounterProps } from "./index.props";
 
-const Counter: React.FC<Props> = ({
+const Counter: React.FC<CounterProps> = ({
   value = 1,
   max,
   min = 0,

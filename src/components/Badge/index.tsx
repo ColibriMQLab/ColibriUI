@@ -1,9 +1,9 @@
 import { BadgeControl as Control } from "./Control";
 import { Root } from "./styles";
 import type { FC } from "react";
-import type { Props } from "./index.props";
+import type { BadgeProps } from "./index.props";
 
-const Badge: FC<Props> = ({
+const Badge: FC<BadgeProps> = ({
   className,
   content,
   children,

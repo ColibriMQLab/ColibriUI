@@ -1,4 +1,4 @@
-export type Props = {
+export type CounterProps = {
   value: number;
   max: number;
   min: number;
