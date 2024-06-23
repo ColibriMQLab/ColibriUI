@@ -41,6 +41,7 @@ const Badge: FC<Props> = ({
         direction={direction}
         invisible={invisible}
         className={className}
+        data-cy="badge"
       >
         {displayValue}
       </Root>
