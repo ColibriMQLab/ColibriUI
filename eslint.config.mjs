@@ -39,6 +39,7 @@ export default [
     ignores: [
       ".git/*",
       "dist/*",
+      ".storybook",
       "scripts/*",
       "node_modules/*",
       "storybook-static/*",

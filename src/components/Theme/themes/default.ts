@@ -1,232 +1,27 @@
 import Color from "../color";
-import breakpoints from "../breakpoints";
-import type { MenuVariant } from "../../Menu/index.props";
-import type { CheckboxVariant } from "../../Checkbox/index.props";
-import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 
-export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
-  base: {
-    borderRadius: "26px",
-  },
-  primary: {
-    normal: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_4,
-      borderColor: Color.PRIMARY_4,
-    },
-    hovered: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    focused: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    active: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    disabled: {
-      color: Color.PRIMARY_2,
-      backgroundColor: Color.PRIMARY_1,
-      borderColor: Color.PRIMARY_1,
-    },
-  },
-  secondary: {
-    normal: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_4,
-      borderColor: Color.SECONDARY_4,
-    },
-    hovered: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    focused: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    active: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    disabled: {
-      color: Color.SECONDARY_2,
-      backgroundColor: Color.SECONDARY_1,
-      borderColor: Color.SECONDARY_1,
-    },
-  },
-  pseudo: {
-    normal: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.WHITE,
-      borderColor: Color.WHITE,
-    },
-    hovered: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.TRETIARY_2,
-      borderColor: Color.TRETIARY_2,
-    },
-    active: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.TRETIARY_2,
-      borderColor: Color.TRETIARY_2,
-    },
-    disabled: {
-      color: Color.TRETIARY_3,
-      backgroundColor: Color.TRETIARY_1,
-      borderColor: Color.TRETIARY_1,
-    },
-  },
-  clear: {
-    normal: {
-      color: Color.PRIMARY_4,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    hovered: {
-      color: Color.PRIMARY_5,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    active: {
-      color: Color.PRIMARY_5,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    disabled: {
-      color: Color.BG_3,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-  },
-};
+export default {
+  "palette-bg3": Color.BG_3,
 
-export const InputThemeDefault = {
-  placeholder: {
-    color: Color.BG_2,
-  },
-  primary: {
-    normal: {
-      borderColor: Color.BG_3,
-    },
-    hovered: {
-      borderColor: Color.PRIMARY_3,
-      boxShadow: `0px 0px 0px 2px ${Color.PRIMARY_2}`,
-    },
-    focused: {
-      borderColor: Color.PRIMARY_4,
-    },
-    disabled: {
-      color: Color.BG_3,
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_3,
-    },
-    error: {
-      normal: {
-        backgroundColor: Color.TRETIARY_2,
-        borderColor: Color.ALERT,
-      },
-      hovered: {
-        backgroundColor: Color.WHITE,
-        borderColor: Color.ALERT,
-        boxShadow: `0px 0px 0px 2px ${Color.TRETIARY_2}`,
-      },
-      focused: {
-        backgroundColor: Color.WHITE,
-        borderColor: Color.ALERT,
-      },
-    },
-  },
-};
+  "button-primary-border-radius": "26px",
 
-export const CheckboxThemeDefault: CheckboxVariant = {
-  primary: {
-    normal: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    hovered: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    focused: {
-      boxShadow: `0 0 0 2px ${Color.PRIMARY_1}`,
-    },
-    checked: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    active: {
-      backgroundColor: Color.PRIMARY_4,
-      borderColor: Color.PRIMARY_4,
-      boxShadow: Color.PRIMARY_4,
-    },
-    disabled: {
-      backgroundColor: Color.BG_1,
-    },
-  },
-};
+  "button-primary-color": Color.WHITE,
+  "button-primary-background-color": Color.PRIMARY_4,
+  "button-primary-border-color": Color.PRIMARY_4,
 
-export const TypographyThemeDefault = {
-  alert: {
-    color: Color.ALERT,
-  },
-  success: {
-    color: Color.SUCCESS,
-  },
-  secondary: {
-    color: Color.BG_3,
-  },
-};
+  "button-primary-color-hovered": Color.WHITE,
+  "button-primary-background-color-hovered": Color.PRIMARY_5,
+  "button-primary-border-color-hovered": Color.PRIMARY_5,
 
-export const SwitchThemeDefault = {
-  circle: {
-    backgroundColor: Color.WHITE,
-  },
-  state: {
-    normal: {
-      backgroundColor: Color.BG_2,
-      borderColor: Color.BG_2,
-    },
-    checked: {
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-  },
-};
+  "button-primary-color-focused": Color.WHITE,
+  "button-primary-background-color-focused": Color.PRIMARY_5,
+  "button-primary-border-color-focused": Color.PRIMARY_5,
 
-export const MenuThemeDefault: MenuVariant = {
-  primary: {
-    normal: {
-      backgroundColor: Color.WHITE,
-    },
-    hovered: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    focused: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    selected: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    disabled: {
-      color: Color.BG_2,
-      backgroundColor: Color.WHITE,
-    },
-  },
-};
+  "button-primary-color-active": Color.WHITE,
+  "button-primary-background-color-active": Color.PRIMARY_5,
+  "button-primary-border-color-active": Color.PRIMARY_5,
 
-export const THEME_DEFAULT = {
-  breakpoints,
-  button: ButtonThemeDefault,
-  menu: MenuThemeDefault,
-  input: InputThemeDefault,
-  checkbox: CheckboxThemeDefault,
-  typography: TypographyThemeDefault,
-  switch: SwitchThemeDefault,
-  palette: Color,
+  "button-primary-color-disabled": Color.PRIMARY_2,
+  "button-primary-background-color-disabled": Color.PRIMARY_1,
+  "button-primary-border-color-disabled": Color.PRIMARY_1,
 };

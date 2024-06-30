@@ -1,13 +1,13 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { addons, types, useParameter } from '@storybook/manager-api';
+import React, { useState, useCallback, useEffect } from "react";
+import { addons, types, useParameter } from "@storybook/manager-api";
 import {
   IconButton,
   TooltipLinkList,
   WithTooltip,
-} from '@storybook/components';
-import { PhotoIcon } from '@storybook/icons'
+} from "@storybook/components";
+import { PhotoIcon } from "@storybook/icons";
 
-import { ADDON_ID, PARAM_KEY, events } from './constants';
+import { ADDON_ID, PARAM_KEY, events } from "./constants";
 
 interface ColoredIconProps {
   background: string;
@@ -17,10 +17,10 @@ const ColoredIcon = ({ background }: ColoredIconProps): JSX.Element => (
   <div
     style={{
       background,
-      borderRadius: '1rem',
-      display: 'block',
-      height: '1rem',
-      width: '1rem',
+      borderRadius: "1rem",
+      display: "block",
+      height: "1rem",
+      width: "1rem",
     }}
   />
 );
@@ -33,7 +33,7 @@ const ThemeSelect = ({ channel }): JSX.Element => {
       channel.emit(events.CHANGE, { name });
       window.location.reload();
     },
-    [activeTheme]
+    [activeTheme],
   );
 
   useEffect(() => {
@@ -72,7 +72,7 @@ addons.register(ADDON_ID, () => {
   const channel = addons.getChannel();
 
   addons.add(ADDON_ID, {
-    title: 'Themes',
+    title: "Themes",
     type: types.TOOL,
     render: () => <ThemeSelect channel={channel} />,
   });

@@ -1,1 +1,1 @@
-import './AddonThemesSwitcher/register';
+import "./AddonThemesSwitcher/register";
