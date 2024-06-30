@@ -1,7 +1,7 @@
 import { addons, makeDecorator } from "@storybook/preview-api";
 
 import { THEMES2 } from "../../src/components/Theme";
-import { events, THEME_COOKIE } from "./constants";
+import { events, THEME_COOKIE} from "./constants";
 
 const getThemeByName = (name) => {
   switch (name) {
@@ -23,14 +23,20 @@ export const withThemesDecorator = makeDecorator({
 
     channel.on(events.CHANGE, ({ name }) => {
       const theme = getThemeByName(name);
+
       // set CSS variables
       Object.entries(theme).forEach(([key, value]) => {
         document.documentElement.style.setProperty(`--${key}`, value);
       });
 
-      // set selected theme to cookie
-      document.cookie = `${THEME_COOKIE}=${name || "DEFAULT"}`;
+      document.cookie = `${THEME_COOKIE}=${name || 'DEFAULT'}`;
     });
+
+    const name = new Map(
+      document.cookie.split('; ').map((keyValue) => keyValue.split('='))
+    ).get(THEME_COOKIE);
+
+    channel.emit(events.CHANGE, { name });
 
     return getStory(context);
   },
