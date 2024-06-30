@@ -1,16 +1,16 @@
 import { addons, makeDecorator } from "@storybook/preview-api";
 
-import { THEMES2 } from "../../src/components/Theme";
+import { THEMES } from "../../src/components/Theme";
 import { events, THEME_COOKIE} from "./constants";
 
 const getThemeByName = (name) => {
   switch (name) {
     case "BA":
-      return THEMES2.BA;
+      return THEMES.BA;
     case "DEFAULT":
-      return THEMES2.DEFAULT;
+      return THEMES.DEFAULT;
     default:
-      return THEMES2.DEFAULT;
+      return THEMES.DEFAULT;
   }
 };
 
