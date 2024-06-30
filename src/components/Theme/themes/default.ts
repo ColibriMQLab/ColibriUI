@@ -2,6 +2,12 @@ import Color from "../color";
 
 export default {
   "palette-bg3": Color.BG_3,
+  "palette-black": Color.BLACK,
+  "palette-white": Color.WHITE,
+
+  "typography-alert": Color.ALERT,
+  "typography-success": Color.SUCCESS,
+  "typography-secondary": Color.BG_3,
 
   "button-primary-border-radius": "26px",
 
