@@ -15,10 +15,7 @@ const getBabelOptions = ({ value }) => ({
     "@babel/preset-react",
     "@babel/preset-typescript",
   ],
-  plugins: [
-    ["@babel/transform-runtime", { useESModules: value }],
-    "@emotion/babel-plugin",
-  ],
+  plugins: [["@babel/transform-runtime", { useESModules: value }]],
   babelHelpers: "runtime",
   exclude: "/node_modules/**",
   extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"],

@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
+    "jsx": "react",
     "moduleResolution": "node",
     "typeRoots": [
       "./@types",
@@ -23,6 +22,7 @@
     "noEmit": false,
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
+    "isolatedModules": true,
   },
   "include": ["@types", "./src/**/*"],
   "exclude": [
