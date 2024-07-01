@@ -1,0 +1,13 @@
+.baseInput {
+    margin: 7px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
+    ::placeholder {
+      color: var(--palette-bg-2);
+    }
+}
