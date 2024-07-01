@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import { type TypographyProps } from "./index.props";
-import styles from "./Typography.module.css";
+import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
 const cx = classNames.bind(styles);

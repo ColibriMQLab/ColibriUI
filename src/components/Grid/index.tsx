@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import styles from "./Grid.module.css";
+import styles from "./Grid.module.scss";
 import type { GridProps } from "./index.props";
 
 const Grid: React.FC<GridProps> = ({

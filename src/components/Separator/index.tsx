@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import styles from "./Separator.module.css";
+import styles from "./Separator.module.scss";
 import type { FC } from "react";
 
 type SeparatorProps = {
