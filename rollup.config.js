@@ -42,7 +42,7 @@ export default [
       postcss({
         extract: false,
         modules: true,
-        use: ['sass'],
+        use: ["sass"],
       }),
       nodeResolve({
         preferBuiltins: true,
@@ -75,7 +75,7 @@ export default [
       postcss({
         extract: false,
         modules: true,
-        use: ['sass'],
+        use: ["sass"],
       }),
       nodeResolve({
         preferBuiltins: true,
