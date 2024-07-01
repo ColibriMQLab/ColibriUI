@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Typography> = {
   title: "UI/Typography",
+  parameters: {
+    layout: "centered",
+  },
   argTypes: {
     variant: {
       control: { type: "select" },

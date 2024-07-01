@@ -5,6 +5,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof DotsLoader> = {
   title: "UI/DotsLoader",
+  parameters: {
+    layout: "centered",
+  },
   component: DotsLoader,
 } satisfies Meta<typeof DotsLoader>;
 

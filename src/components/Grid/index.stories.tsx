@@ -5,6 +5,9 @@ import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Grid> = {
   title: "UI/Grid",
+  parameters: {
+    layout: "centered",
+  },
   component: Grid,
 } satisfies Meta<typeof Grid>;
 

@@ -4,6 +4,9 @@ export default {
   "palette-bg3": Color.BG_3,
   "palette-black": Color.BLACK,
   "palette-white": Color.WHITE,
+  "palette-brand-default-1": Color.BRAND_DEFAULT_1,
+  "palette-brand-default-2": Color.BRAND_DEFAULT_2,
+  "palette-brand-default-3": Color.BRAND_DEFAULT_3,
 
   "typography-alert": Color.ALERT,
   "typography-success": Color.SUCCESS,

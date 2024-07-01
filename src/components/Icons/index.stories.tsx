@@ -30,6 +30,9 @@ const icons = {
 
 export default {
   title: "UI/Icons",
+  parameters: {
+    layout: "centered",
+  },
 };
 
 const renderIcons = (icons: { [key: string]: ReactNode }) => {
