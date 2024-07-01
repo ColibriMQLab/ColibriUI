@@ -4,7 +4,7 @@ import { type TypographyProps } from "./index.props";
 import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
-const cx = classNames.bind(styles);
+const clx = classNames.bind(styles);
 
 const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   tag: Element = "span",
@@ -17,7 +17,7 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
 }) => (
   <Element
     {...props}
-    className={cx(
+    className={clx(
       {
         root: true,
         [`size_${size}`]: !!size,

@@ -9,7 +9,7 @@ const GridItem: FC<GridItemProps> = ({
   fullWidth = false,
   className,
 }) => (
-  <div className={classNames({ [styles.full]: fullWidth }, className)}>
+  <div className={classNames({[styles.full]: fullWidth }, className)}>
     {children}
   </div>
 );
