@@ -1,9 +1,9 @@
-import { BadgeControl as Control } from "./Control";
 import React from "react";
-import type { FC } from "react";
-import styles from "./Badge.module.scss";
-import type { BadgeProps } from "./index.props";
 import classNames from "classnames/bind";
+import { BadgeControl as Control } from "./Control";
+import styles from "./Badge.module.scss";
+import type { FC } from "react";
+import type { BadgeProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
@@ -42,7 +42,14 @@ const Badge: FC<BadgeProps> = ({
           color,
           backgroundColor: background,
         }}
-        className={clx({ root: true, [`root_direction_${direction}`] : !!direction, 'root_invisible' : invisible }, className)}
+        className={clx(
+          {
+            root: true,
+            [`root_direction_${direction}`]: !!direction,
+            root_invisible: invisible,
+          },
+          className,
+        )}
         data-cy="badge"
       >
         {displayValue}

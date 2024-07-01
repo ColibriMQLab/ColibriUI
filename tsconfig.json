@@ -24,7 +24,7 @@
     "emitDeclarationOnly": true,
     "isolatedModules": true,
   },
-  "include": ["@types", "./src/**/*"],
+  "include": ["@types", "./src/**/*", "TODO/styles.ts"],
   "exclude": [
       "node_modules",
       "dist",
