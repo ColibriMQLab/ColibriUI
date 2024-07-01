@@ -25,7 +25,7 @@ const InputRoot = forwardRef<HTMLDivElement, InputProps>(
         className={clx(
           styles.root,
           {
-            [`variant_${variant}_disabled`]: disabled,
+            [`variant_${variant}_disabled`]: disabled ? 1 : 0,
             [`variant_${variant}_error`]: error ? 1 : 0,
             [`size_${size}`]: !!size,
             [`variant_${variant}`]: !!variant,

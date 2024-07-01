@@ -3,11 +3,11 @@ import classNames from "classnames/bind";
 import { BadgeControl as Control } from "./Control";
 import styles from "./Badge.module.scss";
 import type { FC } from "react";
-import type { BadgeProps } from "./index.props";
+import type { Props } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const Badge: FC<BadgeProps> = ({
+const Badge: FC<Props> = ({
   className,
   content,
   children,

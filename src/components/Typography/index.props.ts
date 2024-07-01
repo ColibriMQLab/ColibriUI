@@ -1,12 +1,4 @@
-type VariantStyles = {
-  color?: string;
-};
-
-export type TypographyVariant = {
-  alert: VariantStyles;
-  success: VariantStyles;
-  secondary: VariantStyles;
-};
+export type TypographyVariant = "alert" | "success" | "secondary";
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =
   | "xs"
@@ -33,10 +25,10 @@ export type TypographyTag =
   | "h6"
   | "s";
 
-export type TypographyProps = {
+export type Props = {
   className?: string;
   tag?: TypographyTag;
-  variant?: keyof TypographyVariant;
+  variant?: TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
 };

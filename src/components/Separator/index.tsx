@@ -3,11 +3,11 @@ import classNames from "classnames";
 import styles from "./Separator.module.scss";
 import type { FC } from "react";
 
-type SeparatorProps = {
+type Props = {
   className?: string;
 };
 
-const Separator: FC<SeparatorProps> = ({ className }) => {
+const Separator: FC<Props> = ({ className }) => {
   return <div className={classNames(styles.root, className)} />;
 };
 
