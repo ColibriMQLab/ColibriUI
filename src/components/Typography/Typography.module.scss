@@ -54,26 +54,30 @@
   }
 }
 
-.fontWeight_normal {
-  font-weight: 400;
+.fontWeight {
+  &_normal {
+    font-weight: 400;
+  }
+  
+  &_medium {
+    font-weight: 500;
+  }
+  
+  &_bold {
+    font-weight: 700;
+  }
 }
 
-.fontWeight_medium {
-  font-weight: 500;
-}
-
-.fontWeight_bold {
-  font-weight: 700;
-}
-
-.variant_alert {
-  color: var(--typography-alert);
-}
-
-.variant_success {
-  color: var(--typography-success);
-}
-
-.variant_secondary {
-  color: var(--typography-secondary);
+.variant {
+  &_alert {
+    color: var(--typography-alert);
+  }
+  
+  &_success {
+    color: var(--typography-success);
+  }
+  
+  &_secondary {
+    color: var(--typography-secondary);
+  }
 }

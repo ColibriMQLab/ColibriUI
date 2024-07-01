@@ -14,6 +14,7 @@ if (existPackageJson) {
     );
     const packageJson = require(packageJsonPath);
     packageJson.scripts = {};
+    packageJson.devDependencies = {};
     writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   } catch (err) {
     throw new Error(
