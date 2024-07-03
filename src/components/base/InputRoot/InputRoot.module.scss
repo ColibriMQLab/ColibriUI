@@ -16,8 +16,8 @@
 }
 
 .root {
-  background-color: var(--palette-common-white);
-  color: var(--palette-common-black);
+  background-color: var(--palette-white);
+  color: var(--palette-black);
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -63,7 +63,7 @@
       border-color: var(palette-alert);
 
       &:hover {
-        background-color: var(--palette-common-white);
+        background-color: var(--palette-white);
         border-color: var(--palette-alert);
         box-shadow: 0px 0px 0px 2px var(--palette-tretiary-2);
       }
@@ -71,7 +71,7 @@
       &:focus,
       &:focus-within {
         border-color: var(--palette-alert);
-        background-color: var(--palette-common-white);
+        background-color: var(--palette-white);
       }
     }
   }

@@ -1,8 +1,8 @@
 import Color from "../color";
 
 export default {
-  "palette-common-black": Color.BLACK,
-  "palette-common-white": Color.WHITE,
+  "palette-black": Color.BLACK,
+  "palette-white": Color.WHITE,
   "palette-bg-1": Color.BG_1,
   "palette-bg-2": Color.BG_2,
   "palette-bg-3": Color.BG_3,
