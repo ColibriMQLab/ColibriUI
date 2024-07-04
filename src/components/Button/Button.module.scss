@@ -1,0 +1,90 @@
+.root {
+    color: var(--palette-black);
+    padding: 0 12px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 8px;
+    flex-shrink: 0;
+    border: 1px solid;
+    font-style: normal;
+    font-weight: 400;
+    height: 36px;
+    font-size: 15px;
+    line-height: 36px;
+    transition: transform 0.1s ease-out;
+    color: 0.15s linear;
+    transform: scale(1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: fit-content;
+}
+
+.icon {
+    display: flex;
+}
+
+.size {
+    &_xs {
+        height: 29px;
+        font-size: 12px;
+        line-height: 29px;
+    }
+  
+    &_s {
+        height: 32px;
+        font-size: 13px;
+        line-height: 32px;
+    }
+  
+    &_m {
+        height: 36px;
+        font-size: 15px;
+        line-height: 36px;
+    }
+  
+    &_l {
+        height: 42px;
+        font-size: 18px;
+        line-height: 42px;
+    }
+}
+
+.variant {
+    &_primary {
+        border-radius: var(--button-primary-border-radius);
+        color: var(--button-primary-color);
+        background-color: var(--button-primary-background-color);
+        border-color: var(--button-primary-border-color);
+
+        &:hover {
+            color: var(--button-primary-color-hovered);
+            background-color: var(--button-primary-background-color-hovered);
+            border-color: var(--button-primary-border-color-hovered);
+        }
+    
+        &:active {
+            color: var(--button-primary-color-active);
+            background-color: var(--button-primary-background-color-active);
+            border-color: var(--button-primary-border-color-active);
+        }
+    
+        &:focus,
+        &:focus-within {
+            color: var(--button-primary-color-focused);
+            background-color: var(--button-primary-background-color-focused);
+            border-color: var(--button-primary-border-color-focused);
+        }
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--button-primary-color-disabled);
+    background-color: var(--button-primary-background-color-disabled);
+    border-color: var(--button-primary-border-color-disabled);
+}
