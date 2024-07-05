@@ -67,5 +67,9 @@ export default {
   "button-pseudo-background-color-disabled": Color.SECONDARY_1,
   "button-pseudo-border-color-disabled": Color.SECONDARY_1,
 
+  "button-clear-color": Color.PRIMARY_4,
+  "button-clear-color-hovered": Color.PRIMARY_5,
+  "button-clear-color-active": Color.PRIMARY_5,
+
   "input-primary-border-color": Color.BG_3,
 };
