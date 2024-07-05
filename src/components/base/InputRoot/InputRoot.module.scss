@@ -60,7 +60,7 @@
 
     &_error {
       background-color: var(--palette-tretiary-2);
-      border-color: var(palette-alert);
+      border-color: var(--palette-alert);
 
       &:hover {
         background-color: var(--palette-white);

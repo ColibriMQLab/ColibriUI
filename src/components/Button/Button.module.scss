@@ -21,6 +21,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: fit-content;
+    border-radius: var(--button-border-radius);
 }
 
 .icon {
@@ -55,7 +56,6 @@
 
 .variant {
     &_primary {
-        border-radius: var(--button-primary-border-radius);
         color: var(--button-primary-color);
         background-color: var(--button-primary-background-color);
         border-color: var(--button-primary-border-color);
@@ -72,12 +72,44 @@
             border-color: var(--button-primary-border-color-active);
         }
     
-        &:focus,
-        &:focus-within {
-            color: var(--button-primary-color-focused);
-            background-color: var(--button-primary-background-color-focused);
-            border-color: var(--button-primary-border-color-focused);
+    }
+
+    &_secondary {
+        color: var(--button-secondary-color);
+        background-color: var(--button-secondary-background-color);
+        border-color: var(--button-secondary-border-color);
+
+        &:hover {
+            color: var(--button-secondary-color-hovered);
+            background-color: var(--button-secondary-background-color-hovered);
+            border-color: var(--button-secondary-border-color-hovered);
         }
+    
+        &:active {
+            color: var(--button-secondary-color-active);
+            background-color: var(--button-secondary-background-color-active);
+            border-color: var(--button-secondary-border-color-active);
+        }
+
+    }
+
+    &_pseudo {
+        color: var(--button-pseudo-color);
+        background-color: var(--button-pseudo-background-color);
+        border-color: var(--button-pseudo-border-color);
+
+        &:hover {
+            color: var(--button-pseudo-color-hovered);
+            background-color: var(--button-pseudo-background-color-hovered);
+            border-color: var(--button-pseudo-border-color-hovered);
+        }
+    
+        &:active {
+            color: var(--button-pseudo-color-active);
+            background-color: var(--button-pseudo-background-color-active);
+            border-color: var(--button-pseudo-border-color-active);
+        }
+    
     }
 }
 
