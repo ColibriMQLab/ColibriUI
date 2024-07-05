@@ -22,6 +22,39 @@
   text-overflow: ellipsis;
   width: fit-content;
   border-radius: var(--button-border-radius);
+
+  &_icon {
+    border-radius: 50%;
+    width: 36px;
+
+    &.size_xs {
+      width: 29px;
+    }
+
+    &.size_s {
+      width: 32px;
+    }
+
+    &.size_m {
+      width: 36px;
+    }
+
+    &.size_l {
+      width: 42px;
+    }
+  }
+
+  &_fullWidth {
+    width: 100%;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--button-primary-color-disabled);
+    background-color: var(--button-primary-background-color-disabled);
+    border-color: var(--button-primary-border-color-disabled);
+  }
 }
 
 .icon {
@@ -123,12 +156,4 @@
     }
   }
 
-}
-
-.disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  color: var(--button-primary-color-disabled);
-  background-color: var(--button-primary-background-color-disabled);
-  border-color: var(--button-primary-border-color-disabled);
 }

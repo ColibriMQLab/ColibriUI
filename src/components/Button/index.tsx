@@ -5,19 +5,6 @@ import styles from "./Button.module.scss";
 
 const clx = classNames.bind(styles);
 
-const getWidth = (size?: string) => {
-  switch (size) {
-    case "xs":
-      return "29px";
-    case "s":
-      return "32px";
-    case "l":
-      return "42px";
-    default:
-      return "36px";
-  }
-};
-
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -37,16 +24,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-        style={{
-          width: fullWidth ? "100%" : icon ? getWidth(size) : "",
-          borderRadius: icon ? "50%" : "",
-        }}
         onClick={onClick}
         ref={ref}
         className={clx(
+          styles.root,
           {
-            root: true,
-            disabled: disabled,
+            root_icon: !!icon,
+            root_disabled: disabled ? 1 : 0,
+            root_fullWidth: fullWidth ? 1 : 0,
             [`size_${size}`]: !!size,
             [`variant_${variant}`]: !!variant,
           },

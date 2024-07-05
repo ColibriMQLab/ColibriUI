@@ -53,6 +53,7 @@ export const withIcon: Story = {
 export const onlyIcon: Story = {
   args: {
     icon: <More />,
+    size: 'xs'
   },
 };
 
