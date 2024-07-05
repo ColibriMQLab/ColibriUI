@@ -1,0 +1,44 @@
+.item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 8px 6px;
+
+    & > * {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+}
+
+.variant {
+    &_primary {
+        background-color: var(--palette-white);
+
+        &:hover {
+            background-color: var(--palette-primary-2);
+        }
+    
+        &:active {
+            background-color: var(--palette-primary-2);
+        }
+    
+        &:focus,
+        &:focus-within {
+            background-color: var(--palette-primary-2);
+        }
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--palette-bg-2);
+    background-color: var(--palette-white);
+}

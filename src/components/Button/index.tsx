@@ -37,7 +37,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-        style={{ width: fullWidth ? "100%" : "fit-content" }}
+        style={{
+          width: fullWidth ? "100%" : icon ? getWidth(size) : "",
+          borderRadius: icon ? "50%" : "",
+        }}
         onClick={onClick}
         ref={ref}
         className={clx(
@@ -53,19 +56,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-cy="button"
         {...props}
       >
-        {icon && (
-          <span
-            style={{
-              padding: 0,
-              margin: 0,
-              borderRadius: "50%",
-              width: getWidth(size),
-            }}
-            className={clx(styles.icon)}
-          >
-            {icon}
-          </span>
-        )}
+        {icon && <span className={clx(styles.icon)}>{icon}</span>}
         {iconStart && <span className={clx(styles.icon)}>{iconStart}</span>}
         {children && children}
         {iconEnd && <span className={clx(styles.icon)}>{iconEnd}</span>}
