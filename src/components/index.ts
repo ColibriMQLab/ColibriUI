@@ -11,6 +11,7 @@ export { default as Input } from "./Input";
 export { default as Menu } from "./Menu";
 export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
+export { default as Switch } from "./Switch";
 export { THEMES } from "./Theme";
 export { default as Typography } from "./Typography";
 export { default as useMediaSizes } from "./hooks/useMediaSizes";

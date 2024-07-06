@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Breakpoints from "../../Theme/breakpoints";
-import { BreakpointsTheme } from "../../Theme/breakpoints";
+import type { BreakpointsTheme } from "../../Theme/breakpoints";
 
 export type QueryInputFunction = (breakpoints: BreakpointsTheme) => string;
 type QueryInput = QueryInputFunction | string;
@@ -9,7 +9,6 @@ const supportMatchMedia =
   typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
 
 const useMediaSizes = (queryInput: QueryInput) => {
-
   let query =
     typeof queryInput === "function" ? queryInput(Breakpoints) : queryInput;
 

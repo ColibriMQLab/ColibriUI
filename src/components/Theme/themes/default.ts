@@ -80,4 +80,9 @@ export default {
   "checkbox-primary-border-color-active": Color.PRIMARY_4,
   "checkbox-primary-box-shadow-active": Color.PRIMARY_4,
   "checkbox-primary-background-color-disabled": Color.PRIMARY_1,
+
+  "switch-primary-background-color": Color.BG_2,
+  "switch-primary-border-color": Color.BG_2,
+  "switch-primary-background-color-checked": Color.PRIMARY_5,
+  "switch-primary-border-color-checked": Color.PRIMARY_5,
 };
