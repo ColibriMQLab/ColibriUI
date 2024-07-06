@@ -10,6 +10,7 @@ export { default as Image } from "./Image";
 export { default as Input } from "./Input";
 export { default as Menu } from "./Menu";
 export { default as Separator } from "./Separator";
+export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { THEMES } from "./Theme";
 export { default as Typography } from "./Typography";
 export * from "./Icons";
