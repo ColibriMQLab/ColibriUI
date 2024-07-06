@@ -13,4 +13,5 @@ export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { THEMES } from "./Theme";
 export { default as Typography } from "./Typography";
+export { default as useMediaSizes } from "./hooks/useMediaSizes";
 export * from "./Icons";
