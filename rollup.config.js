@@ -40,8 +40,8 @@ export default [
       url(),
       svgr(),
       postcss({
+        inject: true,
         minimize: true,
-        extract: true,
         modules: true,
         use: ["sass"],
       }),
@@ -74,8 +74,8 @@ export default [
       url(),
       svgr(),
       postcss({
+        inject: true,
         minimize: true,
-        extract: true,
         modules: true,
         use: ["sass"],
       }),
