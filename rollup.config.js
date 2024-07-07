@@ -4,7 +4,6 @@ import url from "@rollup/plugin-url";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
-// import sass from 'rollup-plugin-sass';
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
@@ -41,7 +40,8 @@ export default [
       url(),
       svgr(),
       postcss({
-        extract: false,
+        minimize: true,
+        extract: true,
         modules: true,
         use: ["sass"],
       }),
@@ -74,7 +74,8 @@ export default [
       url(),
       svgr(),
       postcss({
-        extract: false,
+        minimize: true,
+        extract: true,
         modules: true,
         use: ["sass"],
       }),
