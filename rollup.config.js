@@ -4,7 +4,7 @@ import url from "@rollup/plugin-url";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
-import sass from 'rollup-plugin-sass';
+// import sass from 'rollup-plugin-sass';
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
@@ -40,12 +40,11 @@ export default [
     plugins: [
       url(),
       svgr(),
-      // postcss({
-      //   extract: false,
-      //   modules: true,
-      //   use: ["sass"],
-      // }),
-      sass(),
+      postcss({
+        extract: false,
+        modules: true,
+        use: ["sass"],
+      }),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],
@@ -74,12 +73,11 @@ export default [
     plugins: [
       url(),
       svgr(),
-      // postcss({
-      //   extract: false,
-      //   modules: true,
-      //   use: ["sass"],
-      // }),
-      sass(),
+      postcss({
+        extract: false,
+        modules: true,
+        use: ["sass"],
+      }),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],
