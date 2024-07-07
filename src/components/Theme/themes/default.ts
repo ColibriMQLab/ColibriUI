@@ -72,6 +72,7 @@ export default {
   "button-clear-color-active": Color.PRIMARY_5,
 
   "input-primary-border-color": Color.BG_3,
+  "input-primary-plaseholder-color": Color.BG_2,
 
   "checkbox-primary-background-color-checked": Color.PRIMARY_4,
   "checkbox-primary-background-color-hovered": Color.PRIMARY_4,
