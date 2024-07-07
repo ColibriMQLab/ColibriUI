@@ -9,6 +9,7 @@ export { default as GridItem } from "./Grid/Item";
 export { default as Image } from "./Image";
 export { default as Input } from "./Input";
 export { default as Menu } from "./Menu";
+export { default as Modal } from "./Modal";
 export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { default as Switch } from "./Switch";
