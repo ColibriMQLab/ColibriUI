@@ -3,11 +3,10 @@ import babel from "@rollup/plugin-babel";
 import url from "@rollup/plugin-url";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import postcss from "rollup-plugin-postcss";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
-const external = (id) => !id.startsWith(".") && !id.startsWith("/");
+const external = (id) => !id.startsWith(".") && !id.startsWith("/") || id.endsWith('.scss');
 
 const getBabelOptions = ({ value }) => ({
   babelrc: false,
@@ -39,12 +38,6 @@ export default [
     plugins: [
       url(),
       svgr(),
-      postcss({
-        extract: true,
-        minimize: true,
-        modules: true,
-        use: ["sass"],
-      }),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],
@@ -73,12 +66,6 @@ export default [
     plugins: [
       url(),
       svgr(),
-      postcss({
-        extract: true,
-        minimize: true,
-        modules: true,
-        use: ["sass"],
-      }),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],

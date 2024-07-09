@@ -33,5 +33,6 @@
       "src/**/*.stories.tsx",
       "src/**/*.cy.tsx",
       "src/**/*.cy.ts",
+      "src/**/*.scss",
   ],
 }
