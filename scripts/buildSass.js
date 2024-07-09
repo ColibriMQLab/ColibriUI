@@ -1,4 +1,4 @@
-const { promises } = require("fs");
+const { writeFile, mkdir } = require('fs-extra');
 const { relative, join, dirname } = require("path");
 const fg = require("fast-glob");
 const sass = require('sass')
@@ -14,9 +14,8 @@ async function compileSass() {
 
     for (const outputDir of distPaths) {
         const outputFilePath = join(outputDir, relativePath.replace(/\.scss$/, '.css'));
-        await promises.mkdir(dirname(outputFilePath), { recursive: true });
-        await promises.writeFile(outputFilePath, result.css);
-        console.log(`Compiled ${relativePath} to CSS in the ${outputDir}.`);
+        await mkdir(dirname(outputFilePath), { recursive: true });
+        await writeFile(outputFilePath, result.css);
     }
   })
 }

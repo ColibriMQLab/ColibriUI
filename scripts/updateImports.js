@@ -1,21 +1,15 @@
-// update-ts-imports.ts
-import { promises as fs } from 'fs';
-import * as path from 'path';
-import fg from 'fast-glob';
+const { promises } = require("fs");
+const fg = require("fast-glob");
 
-const inputDir = 'src'; // Base directory where your TypeScript files are located
-const outputDir = 'dist'; // Base directory where your TypeScript files are outputted
+const inputDir = 'dist';
 
 async function updateTsImports() {
-  const files = await fg(`${inputDir}/**/*.tsx`);
+  const files = await fg(`${inputDir}/**/*.js`);
 
   for (const file of files) {
-    const tsFileContent = await fs.readFile(file, 'utf-8');
-    const updatedTsFileContent = tsFileContent.replace(/\.scss/g, '.css');
-
-    await fs.mkdir(path.dirname(path.join(outputDir, path.relative(inputDir, file))), { recursive: true });
-    await fs.writeFile(path.join(outputDir, path.relative(inputDir, file)), updatedTsFileContent);
-    console.log(`Updated imports in ${path.relative(inputDir, file)}.`);
+    const jsFileContent = await promises.readFile(file, 'utf-8');
+    const updatedTsFileContent = jsFileContent.replace(/\.scss/g, '.css');
+    await promises.writeFile(file, updatedTsFileContent);
   }
 }
 
