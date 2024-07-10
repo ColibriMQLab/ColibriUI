@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && rollup -c --bundleConfigAsCjs && npm run build:sass && npm run build:updateImports && npm run build:postbuild",
+    "build": "npm run clean && rollup -c --bundleConfigAsCjs && npm run build:sass && npm run build:updateImports && npm run build:variables && npm run build:postbuild",
     "build:sass": "node scripts/buildSass.js",
     "build:updateImports": "node scripts/updateImports.js",
     "build:postbuild": "node scripts/copyFiles.js && node scripts/postbuild.js",
+    "build:variables": "ts-node scripts/variables.ts",
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006",

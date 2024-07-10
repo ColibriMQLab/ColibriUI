@@ -24,6 +24,11 @@
     "emitDeclarationOnly": true,
     "isolatedModules": true,
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "include": ["@types", "./src/**/*", "TODO/styles.ts"],
   "exclude": [
       "node_modules",
