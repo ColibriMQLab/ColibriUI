@@ -18,8 +18,8 @@ async function variables() {
   const baContent = `:global {\r\n${themeBA}}`;
 
   for (const outputDir of distPaths) {
-    const defaultPath = resolve(outputDir, 'theme_default_variables.module.css');
-    const baPath = resolve(outputDir, 'theme_ba_variables.module.css');
+    const defaultPath = resolve(outputDir, 'theme_default_variables.css');
+    const baPath = resolve(outputDir, 'theme_ba_variables.css');
     await ensureDir(dirname(defaultPath));
     await writeFile(defaultPath, defaultContent);
     await writeFile(baPath, baContent);
