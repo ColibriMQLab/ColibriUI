@@ -14,8 +14,8 @@ async function variables() {
   Object.entries(THEMES.BA).forEach(([key, value]) => {
     themeBA += `--${key}: ${value};\r\n`;
   });
-  const defaultContent = `[data-page='colibri-ui'] {\r\n${themeDefault}}`;
-  const baContent = `[data-page='colibri-ui'] {\r\n${themeBA}}`;
+  const defaultContent = `body {\r\n${themeDefault}}`;
+  const baContent = `body {\r\n${themeBA}}`;
 
   for (const outputDir of distPaths) {
     const defaultPath = resolve(outputDir, 'theme_default_variables.module.css');
