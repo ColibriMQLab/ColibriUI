@@ -14,8 +14,8 @@ async function variables() {
   Object.entries(THEMES.BA).forEach(([key, value]) => {
     themeBA += `--${key}: ${value};\r\n`;
   });
-  const defaultContent = `:global {\r\n${themeDefault}}`;
-  const baContent = `:global {\r\n${themeBA}}`;
+  const defaultContent = `.theme {\r\n${themeDefault}}`;
+  const baContent = `.theme {\r\n${themeBA}}`;
 
   for (const outputDir of distPaths) {
     const defaultPath = resolve(outputDir, 'theme_default_variables.css');
