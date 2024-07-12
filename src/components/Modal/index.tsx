@@ -15,7 +15,7 @@ const clx = classNames.bind(styles);
 
 const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
   const modalRef = useRef(null);
-  const isDesktop = useMediaSizes((bp) => bp.up("lg"));
+  const isDesktop = useMediaSizes((bp) => bp.up("md"));
   const onCloseHandler = useMemo(() => onClose || (() => ({})), [onClose]);
 
   useScrollLock();
