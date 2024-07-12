@@ -14,7 +14,7 @@ const BaseInput = forwardRef<HTMLInputElement, Props>(
         className={classNames(styles.baseInput, className)}
         onChange={onChangeHandler}
         ref={ref}
-        {...{ type: "text", ...props }}
+        {...props}
       />
     );
   },

@@ -37,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           disabled={!!props.disabled}
           error={error}
         >
-          <BaseInput onChange={onChange} />
+          <BaseInput onChange={onChange} {...{ type: "text", ...props }} />
         </InputRoot>
       </FormField>
     );
