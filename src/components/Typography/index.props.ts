@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export type TypographyVariant = "alert" | "success" | "secondary";
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =
@@ -31,4 +33,5 @@ export type Props = {
   variant?: TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
+  style?: CSSProperties;
 };

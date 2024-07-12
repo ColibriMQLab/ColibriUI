@@ -11,12 +11,14 @@ const Typography: FC<PropsWithChildren<Props>> = ({
   children,
   variant,
   size,
+  style,
   fontWeight,
   className,
   ...props
 }) => (
   <Element
     {...props}
+    style={style}
     className={clx(
       {
         root: true,
