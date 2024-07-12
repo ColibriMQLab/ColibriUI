@@ -10,6 +10,7 @@ export { default as Image } from "./Image";
 export { default as Input } from "./Input";
 export { default as Menu } from "./Menu";
 export { default as Modal } from "./Modal";
+export { default as Portal } from "./Portal";
 export { default as Select } from "./Select";
 export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
