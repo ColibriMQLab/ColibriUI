@@ -1,8 +1,19 @@
 .root {
-    width: 100%;
+    display: grid;
+    grid-gap: 10px;
 }
 
-.items {
+.root {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.root {
     display: grid;
-    grid-auto-flow: row dense;
+}
+
+@supports (display: grid) {
+    .root > * {
+      margin: 0;
+    }
 }

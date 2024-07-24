@@ -10,18 +10,16 @@ const Grid: React.FC<GridProps> = ({
   gridItemMinWidth = 136,
   className,
 }) => (
-  <div className={classNames(styles.root, className)}>
     <div
-      className={classNames(styles.items)}
+      className={classNames(styles.root, className)}
       style={{
         rowGap: `${gridRowGap}px`,
         columnGap: `${gridColumnGap}px`,
-        gridTemplateColumns: `repeat(auto-fit, minmax(${gridItemMinWidth}px, 1fr))`,
+        gridTemplateColumns: `repeat(auto-fill, minmax(${gridItemMinWidth}px, 1fr))`,
       }}
     >
       {children}
     </div>
-  </div>
 );
 
 export default Grid;
