@@ -1,12 +1,14 @@
-import { FC } from 'react';
-import { Root } from './styles';
+import React from "react";
+import classNames from "classnames";
+import styles from "./Separator.module.scss";
+import type { FC } from "react";
 
-type SeparatorProps = {
+type Props = {
   className?: string;
 };
 
-const Separator: FC<SeparatorProps> = ({ className }) => {
-  return <Root className={className} />;
+const Separator: FC<Props> = ({ className }) => {
+  return <div className={classNames(styles.root, className)} />;
 };
 
 export default Separator;

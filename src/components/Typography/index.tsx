@@ -1,39 +1,36 @@
-import { Children, useMemo } from "react";
-import { BaseTypography } from "./styles";
-import { type TypographyProps } from "./index.props";
+import React from "react";
+import classNames from "classnames/bind";
+import { type Props } from "./index.props";
+import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
-const Typography: FC<PropsWithChildren<TypographyProps>> = ({
+const clx = classNames.bind(styles);
+
+const Typography: FC<PropsWithChildren<Props>> = ({
   tag: Element = "span",
   children,
   variant,
   size,
+  style,
   fontWeight,
   className,
-}) => {
-  const isNotComponent = typeof children === "string";
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const child: any = useMemo(
-    () =>
-      Children.only(isNotComponent ? <Element>{children}</Element> : children),
-    [children, Element, isNotComponent],
-  );
-
-  const Component = useMemo(
-    () => BaseTypography.withComponent(child.type),
-    [child.type],
-  );
-
-  return (
-    <Component
-      {...child.props}
-      ref={child.ref}
-      size={size}
-      variant={variant}
-      fontWeight={fontWeight}
-      className={className}
-    />
-  );
-};
+  ...props
+}) => (
+  <Element
+    {...props}
+    style={style}
+    className={clx(
+      {
+        root: true,
+        [`size_${size}`]: !!size,
+        [`fontWeight_${fontWeight}`]: !!fontWeight,
+        [`variant_${variant}`]: !!variant,
+      },
+      className,
+    )}
+  >
+    {children}
+  </Element>
+);
 
 export default Typography;

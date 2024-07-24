@@ -41,6 +41,18 @@ export const Default: Story = {
   },
 };
 
+export const TypePassword: Story = {
+  args: {
+    placeholder: PLACEHOLDER,
+    error: false,
+    disabled: false,
+    label: "Label",
+    type: 'password',
+    variant: "primary",
+    hint: "hint",
+  },
+};
+
 export const Error: Story = {
   args: {
     placeholder: PLACEHOLDER,

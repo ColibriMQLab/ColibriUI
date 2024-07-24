@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
+    "jsx": "react",
     "moduleResolution": "node",
     "typeRoots": [
       "./@types",
@@ -23,8 +22,14 @@
     "noEmit": false,
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
+    "isolatedModules": true,
   },
-  "include": ["@types", "./src/**/*"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": ["@types", "./src/**/*", "TODO/styles.ts"],
   "exclude": [
       "node_modules",
       "dist",
@@ -33,5 +38,6 @@
       "src/**/*.stories.tsx",
       "src/**/*.cy.tsx",
       "src/**/*.cy.ts",
+      "src/**/*.scss",
   ],
 }

@@ -1,0 +1,47 @@
+.menuWrapper {
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.icon {
+  &_isOpen {
+    transform: rotate(180deg)
+  }
+}
+
+.inputRoot {
+  cursor: pointer;
+}
+
+.formField {
+  &_fullWidth {
+    width: 100%;
+  }
+}
+
+.baseInput {
+  margin: 7px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  ::placeholder {
+    color: var(--palette-bg-2);
+  }
+}
+
+.placeholder {
+  user-select: none;
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-width: 100%;
+  display: block;
+
+  color: var(--input-primary-plaseholder-color);
+}

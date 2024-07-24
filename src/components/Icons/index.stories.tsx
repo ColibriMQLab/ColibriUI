@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import Cart from "./Cart";
 import Chevron from "./Chevron";
 import Close from "./Close";
@@ -31,23 +30,10 @@ const icons = {
 
 export default {
   title: "UI/Icons",
+  parameters: {
+    layout: "centered",
+  },
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flexwrap: wrap;
-  gap: 10px;
-`;
-
-const Item = styled.div`
-  width: 100%;
-  font-size: 40px;
-  text-align: center;
-`;
-
-const Icon = styled.div`
-  font-size: 18px;
-`;
 
 const renderIcons = (icons: { [key: string]: ReactNode }) => {
   const allIcons = [];
@@ -55,8 +41,8 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
     allIcons.push(
       // @ts-expect-error error
       <div key={Math.random()}>
-        <Item>{icons[icon]}</Item>
-        <Icon>{icon}</Icon>
+        <div style={{textAlign: 'center', fontSize: '40px', width: '100%'}}>{icons[icon]}</div>
+        <div>{icon}</div>
       </div>,
     );
   }
@@ -65,9 +51,9 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
 };
 
 export const All = () => {
-  return <Wrapper>{renderIcons(icons)}</Wrapper>;
+  return <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px'}}>{renderIcons(icons)}</div>;
 };
 
 export const Colored = () => {
-  return <Wrapper style={{ color: "#0066DC" }}>{renderIcons(icons)}</Wrapper>;
+  return <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', color: "#0066DC" }}>{renderIcons(icons)}</div>;
 };

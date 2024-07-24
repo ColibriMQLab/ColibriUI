@@ -25,9 +25,9 @@ const Breakpoints: BreakpointsTheme = {
   values: {
     hd: 2560,
     xl: 1920,
-    lg: 1200,
-    md: 1024,
-    sm: 640,
+    lg: 1450,
+    md: 1075,
+    sm: 680,
     xs: 320,
   },
   up(breakpoint, isMedia = true) {

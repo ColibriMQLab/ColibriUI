@@ -1,27 +1,7 @@
 import type { ReactNode } from "react";
-import type { CSSObject } from "@emotion/react";
-
-type VariantStyles = {
-  backgroundColor?: CSSObject["backgroundColor"];
-  borderColor?: CSSObject["borderColor"];
-  boxShadow?: CSSObject["boxShadow"];
-};
-
-type VariantStates = {
-  normal?: VariantStyles;
-  hovered?: VariantStyles;
-  checked?: VariantStyles;
-  focused?: VariantStyles;
-  active?: VariantStyles;
-  disabled?: VariantStyles;
-};
-
-export type CheckboxVariant = {
-  primary: VariantStates;
-};
 
 export interface CheckboxProps {
-  variant?: keyof CheckboxVariant;
+  variant?: "primary";
   size?: "s" | "m" | "l";
   id?: string;
   name?: string;

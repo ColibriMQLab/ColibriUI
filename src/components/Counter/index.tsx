@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
+import classNames from "classnames/bind";
 import Button from "../Button";
 import MinusIcon from "../Icons/Minus";
 import PlusIcon from "../Icons/Plus";
-import { Control, Root, Value } from "./styles";
+import styles from "./Counter.module.scss";
 import type { CounterProps } from "./index.props";
+
+const clx = classNames.bind(styles);
 
 const Counter: React.FC<CounterProps> = ({
   value = 1,
@@ -19,8 +22,20 @@ const Counter: React.FC<CounterProps> = ({
   const plusDisabled = disabled || value >= max;
 
   return (
-    <Root className={className} fullWidth={fullWidth}>
-      <Control fullWidth={fullWidth}>
+    <div
+      className={clx(
+        styles.root,
+        {
+          root_fullWidth: fullWidth ? 1 : 0,
+        },
+        className,
+      )}
+    >
+      <div
+        className={clx(styles.control, {
+          control_fullWidth: fullWidth ? 1 : 0,
+        })}
+      >
         <Button
           icon={<MinusIcon width={16} height={16} />}
           disabled={minusDisabled}
@@ -30,7 +45,7 @@ const Counter: React.FC<CounterProps> = ({
           }}
           aria-label="decrease"
         />
-        <Value>{value}</Value>
+        <div className={clx(styles.value)}>{value}</div>
         <Button
           icon={<PlusIcon width={16} height={16} />}
           disabled={plusDisabled}
@@ -40,8 +55,8 @@ const Counter: React.FC<CounterProps> = ({
           }}
           aria-label="increase"
         />
-      </Control>
-    </Root>
+      </div>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: ["s", "m", "l"],
+      options: ["xs", "s", "m", "l"],
     },
     variant: {
       control: { type: "select" },
@@ -53,13 +53,7 @@ export const withIcon: Story = {
 export const onlyIcon: Story = {
   args: {
     icon: <More />,
-  },
-};
-
-export const Scale: Story = {
-  args: {
-    children: TEXT,
-    scale: true
+    size: 'xs'
   },
 };
 

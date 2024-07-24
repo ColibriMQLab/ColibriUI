@@ -1,23 +1,25 @@
 import React from "react";
-import { GridItems, GridWrapper } from "./styles";
+import classNames from "classnames";
+import styles from "./Grid.module.scss";
 import type { GridProps } from "./index.props";
 
 const Grid: React.FC<GridProps> = ({
   children,
   gridRowGap = 24,
   gridColumnGap = 16,
-  gridItemMinWidth = 136,
+  gridItemMinWidth = 250,
   className,
 }) => (
-  <GridWrapper className={className}>
-    <GridItems
-      gridRowGap={gridRowGap}
-      gridColumnGap={gridColumnGap}
-      gridItemMinWidth={gridItemMinWidth}
+    <div
+      className={classNames(styles.root, className)}
+      style={{
+        rowGap: `${gridRowGap}px`,
+        columnGap: `${gridColumnGap}px`,
+        gridTemplateColumns: `repeat(auto-fill, minmax(${gridItemMinWidth}px, 1fr))`,
+      }}
     >
       {children}
-    </GridItems>
-  </GridWrapper>
+    </div>
 );
 
 export default Grid;

@@ -1,13 +1,6 @@
-import type { CSSObject } from "@emotion/react";
+import { CSSProperties } from "react";
 
-type VariantStyles = {
-  color?: CSSObject["color"];
-};
-export type TypographyVariant = {
-  alert: VariantStyles;
-  success: VariantStyles;
-  secondary: VariantStyles;
-};
+export type TypographyVariant = "alert" | "success" | "secondary";
 export type TypographyFontWeight = "normal" | "medium" | "bold";
 export type TypographySize =
   | "xs"
@@ -20,6 +13,7 @@ export type TypographySize =
   | "h4"
   | "h5"
   | "h6";
+
 export type TypographyTag =
   | "span"
   | "label"
@@ -33,10 +27,11 @@ export type TypographyTag =
   | "h6"
   | "s";
 
-export type TypographyProps = {
+export type Props = {
   className?: string;
   tag?: TypographyTag;
-  variant?: keyof TypographyVariant;
+  variant?: TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
+  style?: CSSProperties;
 };

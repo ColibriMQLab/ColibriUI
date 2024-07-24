@@ -1,6 +1,9 @@
-import { forwardRef } from "react";
-import { BaseDisableWrapper, BaseIcon, BaseInputRoot } from "./styles";
+import React, { forwardRef } from "react";
+import classNames from "classnames/bind";
+import styles from "./InputRoot.module.scss";
 import type { InputProps } from "./index.props";
+
+const clx = classNames.bind(styles);
 
 const InputRoot = forwardRef<HTMLDivElement, InputProps>(
   (
@@ -17,19 +20,24 @@ const InputRoot = forwardRef<HTMLDivElement, InputProps>(
     ref,
   ) => {
     return (
-      <BaseInputRoot
+      <div
         ref={ref}
-        className={className}
-        variant={variant}
-        isError={error ? 1 : 0}
-        disabled={disabled}
-        size={size}
+        className={clx(
+          styles.root,
+          {
+            [`variant_${variant}_disabled`]: disabled ? 1 : 0,
+            [`variant_${variant}_error`]: error ? 1 : 0,
+            [`size_${size}`]: !!size,
+            [`variant_${variant}`]: !!variant,
+          },
+          className,
+        )}
       >
-        {startIcon && <BaseIcon>{startIcon}</BaseIcon>}
+        {startIcon && <div className={clx(styles.baseIcon)}>{startIcon}</div>}
         {children}
-        {endIcon && <BaseIcon>{endIcon}</BaseIcon>}
-        {disabled && <BaseDisableWrapper />}
-      </BaseInputRoot>
+        {endIcon && <div className={clx(styles.baseIcon)}>{endIcon}</div>}
+        {disabled && <div className={clx(styles.baseDisableWrapper)} />}
+      </div>
     );
   },
 );

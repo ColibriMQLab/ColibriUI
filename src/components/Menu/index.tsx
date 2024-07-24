@@ -1,8 +1,9 @@
-import { useMemo, isValidElement, Children, cloneElement } from "react";
+import React, { useMemo, isValidElement, Children, cloneElement } from "react";
 
+import classNames from "classnames";
 import MenuItem from "./components/MenuItem";
 
-import { MenuList } from "./styles";
+import styles from "./Menu.module.scss";
 import type { MenuProps } from "./index.props";
 import type { MouseEvent } from "react";
 
@@ -36,7 +37,7 @@ const Menu: MenuProps = ({
       }),
     [children, selected, onClick],
   );
-  return <MenuList className={className}>{renderChild}</MenuList>;
+  return <ul className={classNames(styles.menu, className)}>{renderChild}</ul>;
 };
 
 Menu.Item = MenuItem;

@@ -22,4 +22,4 @@ export type DropdownProps = {
   visible?: boolean;
   preventOverflow?: boolean;
   samewidth?: boolean;
-}
+};

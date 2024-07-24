@@ -6,7 +6,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
-const external = (id) => !id.startsWith(".") && !id.startsWith("/");
+const external = (id) => !id.startsWith(".") && !id.startsWith("/") || id.endsWith('.scss');
 
 const getBabelOptions = ({ value }) => ({
   babelrc: false,
@@ -15,10 +15,7 @@ const getBabelOptions = ({ value }) => ({
     "@babel/preset-react",
     "@babel/preset-typescript",
   ],
-  plugins: [
-    ["@babel/transform-runtime", { useESModules: value }],
-    "@emotion/babel-plugin",
-  ],
+  plugins: [["@babel/transform-runtime", { useESModules: value }]],
   babelHelpers: "runtime",
   exclude: "/node_modules/**",
   extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"],

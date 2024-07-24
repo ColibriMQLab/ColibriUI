@@ -1,15 +1,17 @@
+import React from "react";
+import classNames from "classnames/bind";
 import Typography from "../../../Typography";
-import { Wrapper } from "./styles";
-import type { CSSObject } from "@emotion/react";
+import styles from "./Title.module.scss";
 import type { FC, ReactNode } from "react";
+
+const clx = classNames.bind(styles);
 
 const Title: FC<{
   children: ReactNode;
-  justifyContent?: CSSObject["justifyContent"];
-}> = ({ children, justifyContent = "flex-start" }) => {
+}> = ({ children }) => {
   return (
     <Typography tag="h3" size="h3">
-      <Wrapper justifyContent={justifyContent}>{children}</Wrapper>
+      <div className={clx(styles.wrapper)}>{children}</div>
     </Typography>
   );
 };

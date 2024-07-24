@@ -1,15 +1,17 @@
-import { Item } from "./styles";
+import React from "react";
+import classNames from "classnames";
+import styles from "./Grid-Item.module.scss";
 import type { FC } from "react";
 import type { GridItemProps } from "./index.props";
 
 const GridItem: FC<GridItemProps> = ({
   children,
-  className,
   fullWidth = false,
+  className,
 }) => (
-  <Item fullWidth={fullWidth} className={className}>
+  <div className={classNames(styles.item, { [styles.full]: fullWidth }, className)}>
     {children}
-  </Item>
+  </div>
 );
 
 export default GridItem;

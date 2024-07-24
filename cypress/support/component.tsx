@@ -21,7 +21,7 @@ import "./commands";
 // require('./commands')
 
 import { mount } from "cypress/react18";
-import { THEMES, ThemeProvider } from "../../src/components/Theme";
+import { THEMES } from "../../src/components/Theme";
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.

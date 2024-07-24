@@ -1,0 +1,40 @@
+.root {
+  position: absolute;
+  z-index: 1;
+  user-select: none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+
+  font-size: 12px;
+  border-radius: 10px;
+  background-color: var(--palette-brand-default-1);
+  color: var(--palette-white);
+
+  &_direction_right {
+    top: 0;
+    right: 0;
+
+    transform: scale(1) translate(60%, -50%);
+  }
+
+  &_direction_left {
+    top: 0;
+    left: 0;
+
+    transform: scale(1) translate(-60%, -50%);
+  }
+
+  &_invisible {
+    transform: scale(0) translate(50%, -50%);
+  }
+}

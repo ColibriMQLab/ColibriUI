@@ -1,24 +1,21 @@
-import { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
+import classNames from "classnames/bind";
 import useScrollLock from "../hooks/useScrollLock";
 import useTrapFocus from "../hooks/useTrapFocus";
 import Portal from "../Portal";
+import useMediaSizes from "../hooks/useMediaSizes";
 import Content from "./components/Content";
 import Close from "./components/Close";
 import Title from "./components/Title";
-
-import {
-  ModalOverlay,
-  Root,
-  ModalWrapper,
-  CloseWrapper,
-  TitleWrapper,
-} from "./styles";
+import styles from "./Modal.module.scss";
 import type { FC } from "react";
 import type { ModalProps } from "./index.props";
 
+const clx = classNames.bind(styles);
+
 const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
   const modalRef = useRef(null);
-
+  const isDesktop = useMediaSizes((bp) => bp.up("md"));
   const onCloseHandler = useMemo(() => onClose || (() => ({})), [onClose]);
 
   useScrollLock();
@@ -40,22 +37,32 @@ const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
 
   return (
     <Portal>
-      <Root>
-        <ModalOverlay onClick={onCloseHandler} />
-        <ModalWrapper className={className} ref={modalRef}>
+      <div className={clx(styles.root)}>
+        <div className={clx(styles.modalOverlay)} onClick={onCloseHandler} />
+        <div
+          className={clx(
+            styles.modalWrapper,
+            {
+              modalWrapper_desktop: isDesktop ? 1 : 0,
+              modalWrapper_mobile: !isDesktop ? 1 : 0,
+            },
+            className,
+          )}
+          ref={modalRef}
+        >
           {title ? (
-            <TitleWrapper>
+            <div className={clx(styles.titleWrapper)}>
               <Title>{title}</Title>
               <Close onClick={onCloseHandler} />
-            </TitleWrapper>
+            </div>
           ) : (
-            <CloseWrapper>
+            <div className={clx(styles.closeWrapper)}>
               <Close onClick={onCloseHandler} />
-            </CloseWrapper>
+            </div>
           )}
           <Content>{children}</Content>
-        </ModalWrapper>
-      </Root>
+        </div>
+      </div>
     </Portal>
   );
 };

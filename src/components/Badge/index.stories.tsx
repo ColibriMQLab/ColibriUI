@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import User from "../Icons/User";
 import Cart from "../Icons/Cart";
 import Badge from ".";
@@ -63,12 +62,6 @@ function render(args) {
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  flexwrap: wrap;
-  gap: 10px;
-`;
-
 export const Default = (args) => {
-  return <Wrapper>{render(args)}</Wrapper>;
+  return <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px'}} >{render(args)}</div>;
 };

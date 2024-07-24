@@ -1,232 +1,89 @@
 import Color from "../color";
-import breakpoints from "../breakpoints";
-import type { MenuVariant } from "../../Menu/index.props";
-import type { CheckboxVariant } from "../../Checkbox/index.props";
-import type { ButtonBase, ButtonVariant } from "../../Button/index.props";
 
-export const ButtonThemeDefault: ButtonVariant & ButtonBase = {
-  base: {
-    borderRadius: "26px",
-  },
-  primary: {
-    normal: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_4,
-      borderColor: Color.PRIMARY_4,
-    },
-    hovered: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    focused: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    active: {
-      color: Color.WHITE,
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-    disabled: {
-      color: Color.PRIMARY_2,
-      backgroundColor: Color.PRIMARY_1,
-      borderColor: Color.PRIMARY_1,
-    },
-  },
-  secondary: {
-    normal: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_4,
-      borderColor: Color.SECONDARY_4,
-    },
-    hovered: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    focused: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    active: {
-      color: Color.WHITE,
-      backgroundColor: Color.SECONDARY_5,
-      borderColor: Color.SECONDARY_5,
-    },
-    disabled: {
-      color: Color.SECONDARY_2,
-      backgroundColor: Color.SECONDARY_1,
-      borderColor: Color.SECONDARY_1,
-    },
-  },
-  pseudo: {
-    normal: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.WHITE,
-      borderColor: Color.WHITE,
-    },
-    hovered: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.TRETIARY_2,
-      borderColor: Color.TRETIARY_2,
-    },
-    active: {
-      color: Color.TRETIARY_5,
-      backgroundColor: Color.TRETIARY_2,
-      borderColor: Color.TRETIARY_2,
-    },
-    disabled: {
-      color: Color.TRETIARY_3,
-      backgroundColor: Color.TRETIARY_1,
-      borderColor: Color.TRETIARY_1,
-    },
-  },
-  clear: {
-    normal: {
-      color: Color.PRIMARY_4,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    hovered: {
-      color: Color.PRIMARY_5,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    active: {
-      color: Color.PRIMARY_5,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-    disabled: {
-      color: Color.BG_3,
-      backgroundColor: "transparent",
-      borderColor: "transparent",
-    },
-  },
-};
+export default {
+  "palette-black": Color.BLACK,
+  "palette-white": Color.WHITE,
+  "palette-bg-1": Color.BG_1,
+  "palette-bg-2": Color.BG_2,
+  "palette-bg-3": Color.BG_3,
+  "palette-bg-4": Color.BG_4,
+  "palette-bg-5": Color.BG_5,
+  "palette-brand-default-1": Color.BRAND_DEFAULT_1,
+  "palette-brand-default-2": Color.BRAND_DEFAULT_2,
+  "palette-brand-default-3": Color.BRAND_DEFAULT_3,
+  "palette-primary-1": Color.PRIMARY_1,
+  "palette-primary-2": Color.PRIMARY_2,
+  "palette-primary-3": Color.PRIMARY_3,
+  "palette-primary-4": Color.PRIMARY_4,
+  "palette-primary-5": Color.PRIMARY_5,
+  "palette-tretiary-1": Color.TRETIARY_1,
+  "palette-tretiary-2": Color.TRETIARY_2,
+  "palette-tretiary-3": Color.TRETIARY_3,
+  "palette-tretiary-4": Color.TRETIARY_4,
+  "palette-tretiary-5": Color.TRETIARY_5,
+  "palette-alert": Color.ALERT,
 
-export const InputThemeDefault = {
-  placeholder: {
-    color: Color.BG_2,
-  },
-  primary: {
-    normal: {
-      borderColor: Color.BG_3,
-    },
-    hovered: {
-      borderColor: Color.PRIMARY_3,
-      boxShadow: `0px 0px 0px 2px ${Color.PRIMARY_2}`,
-    },
-    focused: {
-      borderColor: Color.PRIMARY_4,
-    },
-    disabled: {
-      color: Color.BG_3,
-      backgroundColor: Color.BG_1,
-      borderColor: Color.BG_3,
-    },
-    error: {
-      normal: {
-        backgroundColor: Color.TRETIARY_2,
-        borderColor: Color.ALERT,
-      },
-      hovered: {
-        backgroundColor: Color.WHITE,
-        borderColor: Color.ALERT,
-        boxShadow: `0px 0px 0px 2px ${Color.TRETIARY_2}`,
-      },
-      focused: {
-        backgroundColor: Color.WHITE,
-        borderColor: Color.ALERT,
-      },
-    },
-  },
-};
+  "typography-alert": Color.ALERT,
+  "typography-success": Color.SUCCESS,
+  "typography-secondary": Color.BG_3,
 
-export const CheckboxThemeDefault: CheckboxVariant = {
-  primary: {
-    normal: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    hovered: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    focused: {
-      boxShadow: `0 0 0 2px ${Color.PRIMARY_1}`,
-    },
-    checked: {
-      backgroundColor: Color.PRIMARY_4,
-    },
-    active: {
-      backgroundColor: Color.PRIMARY_4,
-      borderColor: Color.PRIMARY_4,
-      boxShadow: Color.PRIMARY_4,
-    },
-    disabled: {
-      backgroundColor: Color.BG_1,
-    },
-  },
-};
+  "button-border-radius": "26px",
+  "button-primary-color": Color.WHITE,
+  "button-primary-background-color": Color.PRIMARY_4,
+  "button-primary-border-color": Color.PRIMARY_4,
+  "button-primary-color-hovered": Color.WHITE,
+  "button-primary-background-color-hovered": Color.PRIMARY_5,
+  "button-primary-border-color-hovered": Color.PRIMARY_5,
+  "button-primary-color-active": Color.WHITE,
+  "button-primary-background-color-active": Color.PRIMARY_5,
+  "button-primary-border-color-active": Color.PRIMARY_5,
+  "button-primary-color-disabled": Color.PRIMARY_2,
+  "button-primary-background-color-disabled": Color.PRIMARY_1,
+  "button-primary-border-color-disabled": Color.PRIMARY_1,
 
-export const TypographyThemeDefault = {
-  alert: {
-    color: Color.ALERT,
-  },
-  success: {
-    color: Color.SUCCESS,
-  },
-  secondary: {
-    color: Color.BG_3,
-  },
-};
+  "button-secondary-color": Color.WHITE,
+  "button-secondary-background-color": Color.SECONDARY_4,
+  "button-secondary-border-color": Color.SECONDARY_4,
+  "button-secondary-color-hovered": Color.WHITE,
+  "button-secondary-background-color-hovered": Color.SECONDARY_5,
+  "button-secondary-border-color-hovered": Color.SECONDARY_5,
+  "button-secondary-color-active": Color.WHITE,
+  "button-secondary-background-color-active": Color.SECONDARY_5,
+  "button-secondary-border-color-active": Color.SECONDARY_5,
+  "button-secondary-color-disabled": Color.SECONDARY_2,
+  "button-secondary-background-color-disabled": Color.SECONDARY_1,
+  "button-secondary-border-color-disabled": Color.SECONDARY_1,
 
-export const SwitchThemeDefault = {
-  circle: {
-    backgroundColor: Color.WHITE,
-  },
-  state: {
-    normal: {
-      backgroundColor: Color.BG_2,
-      borderColor: Color.BG_2,
-    },
-    checked: {
-      backgroundColor: Color.PRIMARY_5,
-      borderColor: Color.PRIMARY_5,
-    },
-  },
-};
+  "button-pseudo-color": Color.TRETIARY_5,
+  "button-pseudo-background-color": Color.WHITE,
+  "button-pseudo-border-color": Color.WHITE,
+  "button-pseudo-color-hovered": Color.TRETIARY_5,
+  "button-pseudo-background-color-hovered": Color.TRETIARY_2,
+  "button-pseudo-border-color-hovered": Color.TRETIARY_2,
+  "button-pseudo-color-active": Color.TRETIARY_5,
+  "button-pseudo-background-color-active": Color.TRETIARY_2,
+  "button-pseudo-border-color-active": Color.TRETIARY_2,
+  "button-pseudo-color-disabled": Color.SECONDARY_2,
+  "button-pseudo-background-color-disabled": Color.SECONDARY_1,
+  "button-pseudo-border-color-disabled": Color.SECONDARY_1,
 
-export const MenuThemeDefault: MenuVariant = {
-  primary: {
-    normal: {
-      backgroundColor: Color.WHITE,
-    },
-    hovered: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    focused: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    selected: {
-      backgroundColor: Color.PRIMARY_2,
-    },
-    disabled: {
-      color: Color.BG_2,
-      backgroundColor: Color.WHITE,
-    },
-  },
-};
+  "button-clear-color": Color.PRIMARY_4,
+  "button-clear-color-hovered": Color.PRIMARY_5,
+  "button-clear-color-active": Color.PRIMARY_5,
 
-export const THEME_DEFAULT = {
-  breakpoints,
-  button: ButtonThemeDefault,
-  menu: MenuThemeDefault,
-  input: InputThemeDefault,
-  checkbox: CheckboxThemeDefault,
-  typography: TypographyThemeDefault,
-  switch: SwitchThemeDefault,
-  palette: Color,
+  "input-primary-border-color": Color.BG_3,
+  "input-primary-plaseholder-color": Color.BG_2,
+
+  "checkbox-primary-background-color-checked": Color.PRIMARY_4,
+  "checkbox-primary-background-color-hovered": Color.PRIMARY_4,
+  "checkbox-primary-box-shadow-focused": Color.PRIMARY_1,
+  "checkbox-primary-background-color-active": Color.PRIMARY_4,
+  "checkbox-primary-border-color-active": Color.PRIMARY_4,
+  "checkbox-primary-box-shadow-active": Color.PRIMARY_4,
+  "checkbox-primary-background-color-disabled": Color.PRIMARY_1,
+
+  "switch-primary-background-color": Color.BG_2,
+  "switch-primary-border-color": Color.BG_2,
+  "switch-primary-background-color-checked": Color.PRIMARY_5,
+  "switch-primary-border-color-checked": Color.PRIMARY_5,
 };

@@ -1,9 +1,13 @@
+import React from "react";
+import classNames from "classnames/bind";
 import { BadgeControl as Control } from "./Control";
-import { Root } from "./styles";
+import styles from "./Badge.module.scss";
 import type { FC } from "react";
-import type { BadgeProps } from "./index.props";
+import type { Props } from "./index.props";
 
-const Badge: FC<BadgeProps> = ({
+const clx = classNames.bind(styles);
+
+const Badge: FC<Props> = ({
   className,
   content,
   children,
@@ -33,18 +37,23 @@ const Badge: FC<BadgeProps> = ({
   return (
     <Control {...props}>
       {children}
-      <Root
+      <span
         style={{
           color,
           backgroundColor: background,
         }}
-        direction={direction}
-        invisible={invisible}
-        className={className}
+        className={clx(
+          {
+            root: true,
+            [`root_direction_${direction}`]: !!direction,
+            root_invisible: invisible,
+          },
+          className,
+        )}
         data-cy="badge"
       >
         {displayValue}
-      </Root>
+      </span>
     </Control>
   );
 };

@@ -1,6 +1,7 @@
-import { forwardRef, useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState } from "react";
+import classNames from "classnames";
 import generateUniqID from "../helpers/generateUniqID";
-import { BasePicture } from "./styles";
+import styles from "./Image.module.scss";
 import type { ImageProps } from "./index.props";
 
 const emptyImage =
@@ -18,7 +19,6 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
       sizes,
       ariaLabel,
       sources = [],
-      "data-testid": testId,
       alt = src,
       width,
       height,
@@ -44,7 +44,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
     }, []);
 
     return (
-      <BasePicture data-testid={testId} ref={ref}>
+      <picture ref={ref} className={classNames(styles.root)}>
         {!!sources.length &&
           sources.map((source, index) => (
             <source key={generateUniqID(index)} {...source} />
@@ -52,7 +52,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
         <img
           alt={alt}
           style={sizeAttrs}
-          className={className}
+          className={classNames(className)}
           loading={loading}
           aria-hidden={ariaLabel ? "false" : "true"}
           aria-label={ariaLabel}
@@ -63,7 +63,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>(
           sizes={sizes}
           {...props}
         />
-      </BasePicture>
+      </picture>
     );
   },
 );

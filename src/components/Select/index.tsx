@@ -1,16 +1,14 @@
-import { useState, useMemo, useCallback } from "react";
-import { BaseInput, BasePlaceholder } from "../base/InputRoot/styles";
-
+import React, { useState, useMemo, useCallback } from "react";
+import Chevron from "../Icons/Chevron";
+import InputRoot from "../base/InputRoot";
+import FormField from "../base/FormField";
 import Dropdown from "../Dropdown";
 import Menu from "../Menu";
+import styles from "./Select.module.scss";
 
-import {
-  MenuWrapper,
-  SelectIcon,
-  StyledBaseInputRoot,
-  StyledFormField,
-} from "./styles";
+const clx = classNames.bind(styles);
 import type { IOption, SelectProps } from "./index.props";
+import classNames from "classnames/bind";
 
 const Select = <T extends string | number>({
   options = [],
@@ -50,8 +48,10 @@ const Select = <T extends string | number>({
   );
 
   return (
-    <StyledFormField
-      fullWidth={fullWidth}
+    <FormField
+      className={clx(styles.formField, {
+        formField_fullWidth: fullWidth ? 1 : 0,
+      })}
       label={label}
       hint={hint}
       error={error}
@@ -63,7 +63,10 @@ const Select = <T extends string | number>({
         zIndex={zIndex}
         disabled={!!disabled}
         overlay={
-          <MenuWrapper listHeight={listHeight}>
+          <div
+            className={clx(styles.menuWrapper)}
+            style={{ maxHeight: `${listHeight}px` }}
+          >
             <Menu>
               {preparedOptions.map((option, i) => (
                 <Menu.Item
@@ -75,22 +78,29 @@ const Select = <T extends string | number>({
                 </Menu.Item>
               ))}
             </Menu>
-          </MenuWrapper>
+          </div>
         }
         samewidth
       >
-        <StyledBaseInputRoot
+        <InputRoot
           error={error}
-          endIcon={<SelectIcon isOpen={isOpen} />}
+          className={clx(styles.inputRoot)}
+          endIcon={
+            <Chevron
+              className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+            />
+          }
           disabled={!!disabled}
         >
-          <BaseInput>
-            {prepraredLabel ?? <BasePlaceholder>{placeholder}</BasePlaceholder>}
-          </BaseInput>
+          <div className={clx(styles.baseInput)}>
+            {prepraredLabel ?? (
+              <span className={clx(styles.placeholder)}>{placeholder}</span>
+            )}
+          </div>
           <input type="hidden" tabIndex={-1} value={value} />
-        </StyledBaseInputRoot>
+        </InputRoot>
       </Dropdown>
-    </StyledFormField>
+    </FormField>
   );
 };
 

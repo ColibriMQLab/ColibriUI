@@ -1,36 +1,12 @@
-import type { CSSObject } from "@emotion/react";
 import type { ReactElement, MouseEvent, FC } from "react";
 import type MenuItem from "./components/MenuItem";
-import type {
-  MenuItemProps,
-  MenuItemPalette,
-} from "./components/MenuItem/index.props";
+import type { MenuItemProps } from "./components/MenuItem/index.props";
 
-export interface MenuPalette {
-  backgroundColor: CSSObject["backgroundColor"];
-  item: MenuItemPalette;
-}
-
-type VariantStyles = {
-  color?: CSSObject["color"];
-  backgroundColor?: CSSObject["backgroundColor"];
-};
-
-type VariantStates = {
-  normal?: VariantStyles;
-  hovered?: VariantStyles;
-  focused?: VariantStyles;
-  selected?: VariantStyles;
-  disabled?: VariantStyles;
-};
-
-export type MenuVariant = {
-  primary: VariantStates;
-};
+export type MenuVariant = "primary";
 
 type Props = {
   selected?: string[];
-  variant?: keyof MenuVariant;
+  variant?: MenuVariant;
   className?: string;
   onClick?: (key: string, e: MouseEvent) => void;
   children?: ReactElement<MenuItemProps> | ReactElement<MenuItemProps>[];
