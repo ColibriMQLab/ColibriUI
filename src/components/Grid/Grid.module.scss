@@ -10,6 +10,7 @@
 
 .root {
     display: grid;
+    grid-auto-rows: minmax(150px, auto);
 }
 
 @supports (display: grid) {
