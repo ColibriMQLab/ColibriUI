@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../Menu";
-import Dropdown from "./";
+import Dropdown from ".";
 
 describe("<Dropdown />", () => {
   it("renders", () => {

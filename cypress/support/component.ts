@@ -1,4 +1,3 @@
-import React from "react";
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
@@ -15,13 +14,12 @@ import React from "react";
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands";
+import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import { mount } from "cypress/react18";
-import { THEMES } from "../../src/components/Theme";
+import { mount } from 'cypress/react18'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -30,17 +28,12 @@ import { THEMES } from "../../src/components/Theme";
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount;
+      mount: typeof mount
     }
   }
 }
 
-Cypress.Commands.add("mount", (component, options) => {
-  // Wrap any parent components needed
-  return mount(
-    <ThemeProvider theme={THEMES.DEFAULT}>{component}</ThemeProvider>,
-    options,
-  );
-});
+Cypress.Commands.add('mount', mount)
+
 // Example use:
 // cy.mount(<MyComponent />)
