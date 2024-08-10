@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import type { CSSProperties } from "react";
 
 export type TypographyVariant = "alert" | "success" | "secondary";
 export type TypographyFontWeight = "normal" | "medium" | "bold";

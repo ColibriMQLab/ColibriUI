@@ -6,7 +6,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
-const external = (id) => !id.startsWith(".") && !id.startsWith("/") || id.endsWith('.scss');
+const external = (id) =>
+  (!id.startsWith(".") && !id.startsWith("/")) || id.endsWith(".scss");
 
 const getBabelOptions = ({ value }) => ({
   babelrc: false,

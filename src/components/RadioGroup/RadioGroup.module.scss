@@ -1,0 +1,37 @@
+.group {
+  display: inline-flex;
+
+  &_wide {
+    inline-size: 100%;
+  }
+
+  &_column {
+    flex-direction: column;
+
+    .radio:not(:last-child) {
+      margin-block-end: 16px;
+    }
+  }
+
+  &_wrapped {
+    flex-wrap: wrap;
+
+    .radio {
+      inline-size: 100%;
+      margin: 8px auto;
+
+      &:first-child {
+        margin-block-start: 0;
+      }
+
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+  }
+}
+
+.radio {
+  line-height: 16px;
+  margin-inline-end: 20px;
+}

@@ -60,8 +60,8 @@
 .variant {
   &_primary {
     &_error {
-      border-color: red;
-      box-shadow: 0 0 0 2px red;
+      border-color: var(--palette-alert);
+      box-shadow: 0 0 0 2px var(--palette-alert);
     }
 
     &_checked {

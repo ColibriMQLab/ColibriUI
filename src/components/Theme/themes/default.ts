@@ -82,6 +82,12 @@ export default {
   "checkbox-primary-box-shadow-active": Color.PRIMARY_4,
   "checkbox-primary-background-color-disabled": Color.PRIMARY_1,
 
+  "inputradio-primary-background-color-checked": Color.PRIMARY_4,
+  "inputradio-primary-background-color-hovered": Color.PRIMARY_4,
+  "inputradio-primary-box-shadow-focused": Color.PRIMARY_1,
+  "inputradio-primary-background-color-focused": Color.PRIMARY_1,
+  "inputradio-primary-border-color-focused": Color.PRIMARY_1,
+
   "switch-primary-background-color": Color.BG_2,
   "switch-primary-border-color": Color.BG_2,
   "switch-primary-background-color-checked": Color.PRIMARY_5,

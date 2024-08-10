@@ -40,7 +40,7 @@ const Example = (args): JSX.Element => {
       onChange={() => {
         setChecked(!isChecked);
       }}
-      hint={args.isError ? 'Ошибка' : ''}
+      hint={args.isError ? 'Error text' : ''}
       checked={isChecked}
       {...args}
     />
