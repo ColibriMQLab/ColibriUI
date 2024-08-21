@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import classNames from "classnames/bind";
 import Typography from "../Typography";
@@ -26,16 +26,14 @@ type Props = {
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-  onMouseEnter?: (
-    event: React.MouseEvent<HTMLLabelElement, MouseEvent>,
-  ) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
   style?: CSSProperties;
   text?: string;
   value: string | number;
   testid?: string;
 };
 
-const InputRadio: FC<PropsWithChildren<Props>> = ({
+const InputRadio: FC<PropsWithChildren<Props>> = memo(({
   checked,
   children,
   className,
@@ -102,6 +100,6 @@ const InputRadio: FC<PropsWithChildren<Props>> = ({
       )}
     </label>
   );
-};
+});
 
 export default InputRadio;

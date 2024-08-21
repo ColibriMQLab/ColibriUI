@@ -27,13 +27,13 @@ const Radio: FC<Props> = ({
   text,
   note,
   name,
-  checked,
+  checked = false,
   onChange,
   onBlur,
   onClick,
   onMouseEnter,
   className,
-  disabled,
+  disabled = false,
   testId,
 }: Props) => {
   return (

@@ -1,8 +1,6 @@
-import React from "react";
-
+import React, { FC, memo } from "react";
 import classNames from "classnames/bind";
 import Radio from "./Radio";
-
 import styles from "./RadioGroup.module.scss";
 
 const clx = classNames.bind(styles);
@@ -15,9 +13,7 @@ export interface Option {
   name?: string;
   tooltipContent?: () => React.ReactElement;
   onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-  onMouseEnter?: (
-    event: React.MouseEvent<HTMLLabelElement, MouseEvent>,
-  ) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
   className?: string;
   disabled?: boolean;
 }
@@ -34,41 +30,55 @@ interface Props {
   hasError?: boolean;
 }
 
-const RadioGroup: React.FC<Props> = ({
+const RadioGroup: FC<Props> = memo(({
   val,
   options,
   onChange,
   onBlur,
-  column,
-  wrapped,
+  column = false,
+  wrapped = false,
   className,
-  disabled,
-  hasError,
+  disabled = false,
+  hasError = false,
 }: Props) => {
   return (
     <div
       className={clx(styles.group, { column, wrapped, hasError }, className)}
     >
-      {options.map((option) => (
-        <Radio
-          className={clx(styles.radio, option.className)}
-          id={option.id}
-          testId={option.id}
-          value={option.val}
-          text={option.text}
-          note={option.note}
-          name={option.name}
-          checked={val === option.val}
-          onChange={(e) => onChange(e.target.value)}
-          onBlur={onBlur}
-          onClick={option.onClick}
-          onMouseEnter={option.onMouseEnter}
-          key={option.val}
-          disabled={disabled || option.disabled}
-        />
-      ))}
+      {options.map((option) => {
+        const {
+          id,
+          val: optionVal,
+          text,
+          note,
+          name,
+          onClick,
+          onMouseEnter,
+          className: optionClassName,
+          disabled: optionDisabled,
+        } = option;
+
+        return (
+          <Radio
+            key={optionVal}
+            id={id}
+            testId={id}
+            value={optionVal}
+            text={text}
+            note={note}
+            name={name}
+            className={clx(styles.radio, optionClassName)}
+            checked={val === optionVal}
+            onChange={(e) => onChange(e.target.value)}
+            onBlur={onBlur}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            disabled={disabled || optionDisabled}
+          />
+        );
+      })}
     </div>
   );
-};
+});
 
 export default RadioGroup;
