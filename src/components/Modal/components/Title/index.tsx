@@ -10,7 +10,7 @@ const Title: FC<{
   children: ReactNode;
 }> = ({ children }) => {
   return (
-    <Typography tag="h3" size="h3">
+    <Typography tag="h3" size="h3" className={clx(styles.title)}>
       <div className={clx(styles.wrapper)}>{children}</div>
     </Typography>
   );

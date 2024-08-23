@@ -14,6 +14,28 @@ React UI components library.
 npm i -S colibri-ui
 ```
 
+## Usage
+
+```tsx
+// app/layout.tsx
+import classNames from "classnames";
+import "colibri-ui/theme_default_variables.css";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={classNames("theme")}>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
 ## License
 
 MIT

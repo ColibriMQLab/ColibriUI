@@ -5,9 +5,6 @@ import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Grid> = {
   title: "UI/Grid",
-  parameters: {
-    layout: "centered",
-  },
   component: Grid,
 } satisfies Meta<typeof Grid>;
 
@@ -17,6 +14,10 @@ export const Default = () => {
   const style = `
       .my-adaptive-grid-item {
           background: #f7f8f9;
+      }
+      #storybook-root {
+        flex: 1;
+        display: block;
       }
     `;
 
