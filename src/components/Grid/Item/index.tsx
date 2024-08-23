@@ -8,9 +8,11 @@ const GridItem: FC<GridItemProps> = ({
   children,
   fullWidth = false,
   className,
+  style,
 }) => (
   <div
     className={classNames(styles.item, { [styles.full]: fullWidth }, className)}
+    style={style}
   >
     {children}
   </div>

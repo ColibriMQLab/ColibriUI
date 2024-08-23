@@ -1,4 +1,4 @@
-import Color from "../color";
+import Color from "../colors";
 
 export default {
   "palette-black": Color.BLACK,

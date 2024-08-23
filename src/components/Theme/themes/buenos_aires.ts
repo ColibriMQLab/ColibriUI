@@ -1,4 +1,4 @@
-import Color from "../color";
+import Color from "../colors";
 
 export default {
   "palette-bg-3": Color.BG_3,

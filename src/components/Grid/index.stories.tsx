@@ -12,7 +12,7 @@ export default meta;
 
 export const Default = () => {
   const style = `
-      .my-adaptive-grid-item {
+      .grid-item {
           background: #f7f8f9;
       }
       #storybook-root {
@@ -40,12 +40,12 @@ export const Default = () => {
   return (
     <>
       <style>{style}</style>
-      <Grid className="my-adaptive-grid">
+      <Grid>
         {items.map((item, index) => (
           <GridItem
             key={index}
             fullWidth={item.fullWidth}
-            className="my-adaptive-grid-item"
+            className="grid-item"
           >
             {item.content}
           </GridItem>

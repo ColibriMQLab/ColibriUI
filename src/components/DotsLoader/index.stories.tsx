@@ -1,4 +1,4 @@
-import { Color } from "../Theme/color";
+import { Color } from "../Theme/colors/theme_default";
 
 import DotsLoader from ".";
 import type { Meta, StoryObj } from "@storybook/react";
