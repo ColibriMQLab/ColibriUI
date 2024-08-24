@@ -1,0 +1,106 @@
+.root {
+  min-width: 300px;
+  overflow: hidden;
+  position: relative;
+
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  @media (min-width: 360px) {
+    min-width: 360px;
+  }
+}
+
+.monthControl {
+  width: 80px;
+  height: 48px;
+  padding: 0 16px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+
+  &::before {
+    content: '';
+    width: 40px;
+    height: 100%;
+    display: block;
+    border: 0 solid #fff;
+    position: absolute;
+    top: 0;
+  }
+
+  &::after {
+    content: '';
+    width: 10px;
+    height: 16px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 10px 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    position: relative;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &[disabled]::after {
+    opacity: 0.3;
+  }
+}
+
+.monthControl-prev {
+  text-align: left;
+  border-left-width: 16px;
+  left: 0;
+
+  &::before {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-left-width: 26px;
+    left: 0;
+  }
+
+  &::after {
+    background-image: url('./assets/next-arrow.svg');
+    transform: rotate(180deg);
+  }
+}
+
+.monthControl-next {
+  text-align: right;
+  border-right-width: 16px;
+  right: 0;
+
+  &::before {
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-right-width: 26px;
+    right: 0;
+  }
+
+  &::after {
+    background-image: url('./assets/next-arrow.svg');
+  }
+}
+
+.months {
+  height: 284px;
+  position: relative;
+  transition: transform 0.3s ease;
+
+  & div {
+    position: absolute;
+    top: 0;
+  }
+}

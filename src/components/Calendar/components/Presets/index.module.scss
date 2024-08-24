@@ -1,0 +1,41 @@
+.native-scroll {
+  overflow-y: hidden;
+}
+
+.native-scroll-inner {
+  overflow-x: auto;
+  margin-bottom: -30px;
+  padding-bottom: 30px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+}
+
+.root {
+  margin: 20px 0 0;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+.item {
+  flex-grow: 1;
+  padding: 0 4px;
+
+  & > button {
+      width: 100%;
+      display: block;
+      padding: 0 8px;
+  }
+
+  &:first-child {
+      padding-left: 16px;
+  }
+
+  &:last-child {
+      padding-right: 16px;
+  }
+}

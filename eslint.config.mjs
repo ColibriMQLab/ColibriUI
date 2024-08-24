@@ -44,6 +44,8 @@ export default [
       "node_modules/*",
       "storybook-static/*",
       "**/*.stories.tsx",
+      "src/**/*.test.ts",
+      "src/**/*.test.tsx",
       "cypress/",
       "cypress.config.ts",
     ],
