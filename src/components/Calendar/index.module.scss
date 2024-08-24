@@ -1,50 +1,48 @@
 .root {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   min-width: 300px;
   overflow: hidden;
   position: relative;
-
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
   text-size-adjust: 100%;
 
-  @media (min-width: 360px) {
+  @media (width >= 360px) {
     min-width: 360px;
   }
 }
 
-.monthControl {
-  width: 80px;
-  height: 48px;
-  padding: 0 16px;
+.month-control {
   background: transparent;
   border: 0;
-  outline: 0;
   cursor: pointer;
+  height: 48px;
+  outline: 0;
+  padding: 0 16px;
   position: absolute;
   top: 0;
+  width: 80px;
 
   &::before {
-    content: '';
-    width: 40px;
-    height: 100%;
-    display: block;
     border: 0 solid #fff;
+    content: "";
+    display: block;
+    height: 100%;
     position: absolute;
     top: 0;
+    width: 40px;
   }
 
   &::after {
-    content: '';
-    width: 10px;
-    height: 16px;
-    display: inline-block;
     background-repeat: no-repeat;
     background-size: 10px 16px;
+    content: "";
+    display: inline-block;
+    height: 16px;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
     position: relative;
+    transition: opacity 0.3s ease;
+    width: 10px;
   }
 
   &:hover::after {
@@ -52,8 +50,8 @@
   }
 
   &[disabled] {
-    opacity: 0.3;
     cursor: default;
+    opacity: 0.3;
   }
 
   &[disabled]::after {
@@ -61,36 +59,44 @@
   }
 }
 
-.monthControl-prev {
-  text-align: left;
+.month-control-prev {
   border-left-width: 16px;
   left: 0;
+  text-align: left;
 
   &::before {
-    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      to right,
+      rgb(255 255 255 / 100%) 0%,
+      rgb(255 255 255 / 0%) 100%
+    );
     border-left-width: 26px;
     left: 0;
   }
 
   &::after {
-    background-image: url('./assets/next-arrow.svg');
+    background-image: url("./assets/next-arrow.svg");
     transform: rotate(180deg);
   }
 }
 
-.monthControl-next {
-  text-align: right;
+.month-control-next {
   border-right-width: 16px;
   right: 0;
+  text-align: right;
 
   &::before {
-    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      to left,
+      rgb(255 255 255 / 100%) 0%,
+      rgb(255 255 255 / 0%) 100%
+    );
     border-right-width: 26px;
     right: 0;
   }
 
   &::after {
-    background-image: url('./assets/next-arrow.svg');
+    background-image: url("./assets/next-arrow.svg");
   }
 }
 

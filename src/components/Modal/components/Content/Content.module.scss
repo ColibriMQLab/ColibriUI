@@ -1,8 +1,6 @@
 .root {
-    overflow-y: auto;
-
-    display: flex;
-    min-height: 100%;
-  
-    padding: 10px;
+  display: flex;
+  min-height: 100%;
+  overflow-y: auto;
+  padding: 10px;
 }

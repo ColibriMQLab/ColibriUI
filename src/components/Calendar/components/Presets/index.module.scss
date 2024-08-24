@@ -3,11 +3,11 @@
 }
 
 .native-scroll-inner {
-  overflow-x: auto;
   margin-bottom: -30px;
-  padding-bottom: 30px;
-  -webkit-transform: translate3d(0, 0, 0);
   -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  padding-bottom: 30px;
+  transform: translate3d(0, 0, 0);
 }
 
 .root {
@@ -15,10 +15,10 @@
 }
 
 .inner {
-  display: flex;
-  justify-content: space-between;
   align-items: stretch;
+  display: flex;
   flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .item {
@@ -26,16 +26,16 @@
   padding: 0 4px;
 
   & > button {
-      width: 100%;
-      display: block;
-      padding: 0 8px;
+    display: block;
+    padding: 0 8px;
+    width: 100%;
   }
 
   &:first-child {
-      padding-left: 16px;
+    padding-left: 16px;
   }
 
   &:last-child {
-      padding-right: 16px;
+    padding-right: 16px;
   }
 }

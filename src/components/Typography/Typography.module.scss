@@ -54,15 +54,15 @@
   }
 }
 
-.fontWeight {
+.font-weight {
   &_normal {
     font-weight: 400;
   }
-  
+
   &_medium {
     font-weight: 500;
   }
-  
+
   &_bold {
     font-weight: 700;
   }
@@ -72,11 +72,11 @@
   &_alert {
     color: var(--typography-alert);
   }
-  
+
   &_success {
     color: var(--typography-success);
   }
-  
+
   &_secondary {
     color: var(--typography-secondary);
   }

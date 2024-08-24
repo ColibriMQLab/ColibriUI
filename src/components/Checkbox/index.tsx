@@ -44,7 +44,7 @@ const Checkbox: FC<CheckboxProps> = ({
           disabled={disabled}
         />
         <span
-          className={clx(styles.fakeCheckbox, {
+          className={clx(styles['fake-checkbox'], {
             [`variant_${variant}_disabled`]: disabled ? 1 : 0,
             [`variant_${variant}_error`]: isError ? 1 : 0,
             [`variant_${variant}_checked`]: checked ? 1 : 0,

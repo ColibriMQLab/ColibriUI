@@ -28,7 +28,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             [`wrapper_variant_${variant}`]: variant ? 1 : 0,
           })}
         >
-          <div className={clx(styles.baseSwitch)} />
+          <div className={clx(styles['base-switch'])} />
         </div>
       </div>
     );

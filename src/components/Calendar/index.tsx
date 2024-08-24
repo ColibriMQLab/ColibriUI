@@ -177,12 +177,12 @@ const Calendar: React.FC<Props> = ({
         />
       )}
       <button
-        className={clx(styles.monthControl, styles["monthControl-prev"])}
+        className={clx(styles['month-control'], styles["month-control-prev"])}
         onClick={showPrevMonth}
         disabled={currentMonthOffset <= 0}
       />
       <button
-        className={clx(styles.monthControl, styles["monthControl-next"])}
+        className={clx(styles['month-control'], styles["month-control-next"])}
         onClick={showNextMonth}
         disabled={currentMonthOffset >= 11}
       />

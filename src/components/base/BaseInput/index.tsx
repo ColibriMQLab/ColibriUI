@@ -11,7 +11,7 @@ const BaseInput = forwardRef<HTMLInputElement, Props>(
     };
     return (
       <input
-        className={classNames(styles.baseInput, className)}
+        className={classNames(styles['base-input'], className)}
         onChange={onChangeHandler}
         ref={ref}
         {...props}

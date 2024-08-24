@@ -41,20 +41,20 @@ const Item = ({
   children,
 }: ComponentProps) => {
   const noSelection =
-    isStartOfSelection && isEndOfSelection ? styles.noSelection : "";
+    isStartOfSelection && isEndOfSelection ? styles['no-selection'] : "";
   const startClass =
-    isStartOfSelection && !isEndOfSelection ? styles.startOfSelection : "";
+    isStartOfSelection && !isEndOfSelection ? styles['start-of-selection'] : "";
   const endClass =
-    isEndOfSelection && !isStartOfSelection ? styles.endOfSelection : "";
-  const firstChildClass = isEndOfSelection ? styles.firstChild : "";
-  const lastChildClass = isStartOfSelection ? styles.lastChild : "";
+    isEndOfSelection && !isStartOfSelection ? styles['end-of-selection'] : "";
+  const firstChildClass = isEndOfSelection ? styles['first-child'] : "";
+  const lastChildClass = isStartOfSelection ? styles['last-child'] : "";
 
   if (isSelected) {
     return (
       <li
         className={clx(
-          styles.selectedRangeDay,
-          styles.selectedDay,
+          styles['selected-range-day'],
+          styles['selected-day'],
           noSelection,
           startClass,
           endClass,
@@ -66,7 +66,7 @@ const Item = ({
       </li>
     );
   } else if (isInSelectedRange) {
-    return <li className={clx(styles.selectedRangeDay)}>{children}</li>;
+    return <li className={clx(styles['selected-range-day'])}>{children}</li>;
   }
 
   return <li className={clx(styles.day)}>{children}</li>;
@@ -82,7 +82,7 @@ export const Month: FCWithElements<Props> = (props) => {
       className={clx(styles.root)}
       style={{ left: props.offsetLeft ? `${props.offsetLeft}px` : undefined }}
     >
-      <div className={clx(styles.monthName)}>
+      <div className={clx(styles['month-name'])}>
         <Typography tag="span" size="h3">
           {getUpperMonthName(props.startDate)}
         </Typography>
@@ -123,14 +123,14 @@ export const Month: FCWithElements<Props> = (props) => {
                 };
 
                 const dayInnerActive = day.isActive
-                  ? styles.dayInnerActive
+                  ? styles['day-inner-active']
                   : "";
                 return (
                   <Item {...attrs} key={key}>
                     <button
-                      className={clx(styles.dayInner, dayInnerActive)}
+                      className={clx(styles['day-inner'], dayInnerActive)}
                       style={{
-                        background: day.isSelected ? "#e3e3e3" : "transparent",
+                        background: day.isSelected ? "var(--palette-bg-2)" : "transparent",
                       }}
                       onClick={
                         day.isActive

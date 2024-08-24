@@ -33,10 +33,10 @@ const InputRoot = forwardRef<HTMLDivElement, InputProps>(
           className,
         )}
       >
-        {startIcon && <div className={clx(styles.baseIcon)}>{startIcon}</div>}
+        {startIcon && <div className={clx(styles['base-icon'])}>{startIcon}</div>}
         {children}
-        {endIcon && <div className={clx(styles.baseIcon)}>{endIcon}</div>}
-        {disabled && <div className={clx(styles.baseDisableWrapper)} />}
+        {endIcon && <div className={clx(styles['base-icon'])}>{endIcon}</div>}
+        {disabled && <div className={clx(styles['base-disable-wrapper'])} />}
       </div>
     );
   },

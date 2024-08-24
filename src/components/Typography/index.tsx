@@ -23,7 +23,7 @@ const Typography: FC<PropsWithChildren<Props>> = ({
       {
         root: true,
         [`size_${size}`]: !!size,
-        [`fontWeight_${fontWeight}`]: !!fontWeight,
+        [`font-weight_${fontWeight}`]: !!fontWeight,
         [`variant_${variant}`]: !!variant,
       },
       className,

@@ -49,8 +49,8 @@ const Select = <T extends string | number>({
 
   return (
     <FormField
-      className={clx(styles.formField, {
-        formField_fullWidth: fullWidth ? 1 : 0,
+      className={clx(styles['form-field'], {
+        'form-field_fullWidth': fullWidth ? 1 : 0,
       })}
       label={label}
       hint={hint}
@@ -64,7 +64,7 @@ const Select = <T extends string | number>({
         disabled={!!disabled}
         overlay={
           <div
-            className={clx(styles.menuWrapper)}
+            className={clx(styles['menu-wrapper'])}
             style={{ maxHeight: `${listHeight}px` }}
           >
             <Menu>
@@ -84,7 +84,7 @@ const Select = <T extends string | number>({
       >
         <InputRoot
           error={error}
-          className={clx(styles.inputRoot)}
+          className={clx(styles.root)}
           endIcon={
             <Chevron
               className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
@@ -92,7 +92,7 @@ const Select = <T extends string | number>({
           }
           disabled={!!disabled}
         >
-          <div className={clx(styles.baseInput)}>
+          <div className={clx(styles['base-input'])}>
             {prepraredLabel ?? (
               <span className={clx(styles.placeholder)}>{placeholder}</span>
             )}

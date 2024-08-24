@@ -4,9 +4,7 @@
 }
 
 .text {
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1 1 auto;
   line-height: 18px;
   margin-inline-start: 8px;
 }
@@ -22,7 +20,9 @@
   inline-size: 16px;
   margin-block-start: 1px;
   position: relative;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
 .container {
@@ -57,7 +57,7 @@
   padding: 0;
   position: absolute;
 
-  &:not(&_disabled):not(&_error) {
+  &:not(&_disabled, &_error) {
     &:hover + .icon {
       border-color: var(--inputradio-primary-background-color-hovered);
     }
@@ -73,7 +73,7 @@
     }
   }
 
-  &:not(&_disabled):not(&_error) &_checked {
+  &:not(&_disabled, &_error) &_checked {
     &:hover + .icon {
       border-color: var(--inputradio-primary-background-color-hovered);
     }
@@ -91,15 +91,15 @@
 
   &_disabled + .icon {
     border-radius: 50%;
-    
+
     &::after {
-      background-color: rgb(246, 246, 246, 0.8);
-      content: '';
+      background-color: rgb(246 246 246 / 80%);
+      border-radius: 50%;
+      content: "";
       display: block;
       inset: 0;
       margin: -1px;
       position: absolute;
-      border-radius: 50%;
     }
   }
 

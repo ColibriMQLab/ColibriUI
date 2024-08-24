@@ -1,30 +1,30 @@
-.menuWrapper {
+.menu-wrapper {
   max-height: 140px;
   overflow-y: auto;
 }
 
 .icon {
   &_isOpen {
-    transform: rotate(180deg)
+    transform: rotate(180deg);
   }
 }
 
-.inputRoot {
+.root {
   cursor: pointer;
 }
 
-.formField {
+.form-field {
   &_fullWidth {
     width: 100%;
   }
 }
 
-.baseInput {
-  margin: 7px 0;
+.base-input {
   background: transparent;
   border: none;
-  outline: none;
   flex: 1;
+  margin: 7px 0;
+  outline: none;
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -34,14 +34,11 @@
 }
 
 .placeholder {
-  user-select: none;
-  white-space: nowrap;
-
+  color: var(--input-primary-plaseholder-color);
+  display: block;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  max-width: 100%;
-  display: block;
-
-  color: var(--input-primary-plaseholder-color);
+  user-select: none;
+  white-space: nowrap;
 }

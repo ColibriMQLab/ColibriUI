@@ -152,7 +152,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <ClickOutside onClick={onClickOutside}>
             <div
               ref={setPopperElement}
-              className={classNames(dropDownStyles.popperContainer)}
+              className={classNames(dropDownStyles['popper-container'])}
               style={{
                 ...styles.popper,
                 zIndex,
@@ -165,7 +165,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               {...attributes.popper}
             >
               <div
-                className={classNames(dropDownStyles.overlayContainer)}
+                className={classNames(dropDownStyles['overlay-container'])}
                 onClick={onClickOverlay}
               >
                 {overlay}

@@ -1,13 +1,13 @@
-.popperContainer {
-  padding-top: 2px;
+.popper-container {
   padding-bottom: 2px;
+  padding-top: 2px;
 }
 
-.overlayContainer {
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  overflow: hidden;
-  border-color: var(--palette-bg-2);
+.overlay-container {
   background-color: var(--palette-white);
+  border-color: var(--palette-bg-2);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
 }

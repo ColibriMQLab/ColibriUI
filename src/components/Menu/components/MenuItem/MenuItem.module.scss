@@ -1,18 +1,18 @@
 .item {
+  align-items: center;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 8px 6px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   line-height: 22px;
+  list-style: none;
+  padding: 8px 6px;
 
-  &>* {
-    white-space: nowrap;
+  & > * {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -36,8 +36,8 @@
 }
 
 .disabled {
+  background-color: var(--palette-white);
+  color: var(--palette-bg-2);
   cursor: not-allowed;
   pointer-events: none;
-  color: var(--palette-bg-2);
-  background-color: var(--palette-white);
 }

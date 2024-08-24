@@ -1,4 +1,4 @@
-[data-page='colibri-ui'] {
+[data-page="colibri-ui"] {
   html {
     margin: 0;
     padding: 0;
@@ -13,16 +13,18 @@
   }
 
   * {
-    box-sizing: border-box;
     border: none;
-    outline: none;
-    text-decoration: none;
+    box-sizing: border-box;
     margin: 0;
+    outline: none;
     padding: 0;
+    text-decoration: none;
   }
 
-  *, *::before, *::after {
-      box-sizing: inherit;
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
   }
 
   input,
@@ -40,7 +42,7 @@
   h4,
   h5,
   h6 {
-    margin: 0;
     color: inherit;
+    margin: 0;
   }
 }
