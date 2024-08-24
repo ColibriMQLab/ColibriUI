@@ -97,7 +97,7 @@ export const Month: FCWithElements<Props> = (props) => {
                 <Typography
                   style={{
                     opacity: index > 5 ? 80 : 30,
-                    color: index > 5 ? "var(--typography-alert)" : "black",
+                    color: index > 5 ? "var(--typography-alert)" : "var(--palette-black)",
                   }}
                 >
                   {getShortWeekDayNameByIndex(index)}

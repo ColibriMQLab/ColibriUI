@@ -26,7 +26,7 @@ export const ContinueButton: React.FC<Props> = ({
     if (selectedDate && selectedPeriod) {
       return getPeriodDates(selectedDate, selectedPeriod);
     }
-    return null; // or a default value if needed
+    return null;
   }, [selectedDate, selectedPeriod]);
 
   const handleClick = useCallback(() => {
