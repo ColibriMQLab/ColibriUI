@@ -31,6 +31,7 @@ type Props = {
   availableDates?: string[];
   onChange?: (payload: ChangePayload) => void;
   onCancel?: () => void;
+  withContinueButton?: boolean;
 };
 
 const Calendar: React.FC<Props> = ({
@@ -43,6 +44,7 @@ const Calendar: React.FC<Props> = ({
   canSelectRange,
   onChange,
   onCancel,
+  withContinueButton = false,
 }) => {
   const $root = useRef<HTMLDivElement>(null);
 
@@ -192,7 +194,7 @@ const Calendar: React.FC<Props> = ({
           onPresetSelect={handlePresetSelect}
         />
       )}
-      <ContinueButton
+      {withContinueButton && <ContinueButton
         isChanged={
           selectedDate !== initialSelectedDate ||
           selectedPeriod !== initialSelectedPeriod
@@ -201,7 +203,7 @@ const Calendar: React.FC<Props> = ({
         selectedPeriod={selectedPeriod}
         onContinue={commitSelectedDates}
         onCancel={cancelCalendar}
-      />
+      />}
     </div>
   );
 };

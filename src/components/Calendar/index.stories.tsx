@@ -26,3 +26,9 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {};
+
+export const withContinueButton = Template.bind({});
+
+withContinueButton.args = {
+  withContinueButton: true
+};
