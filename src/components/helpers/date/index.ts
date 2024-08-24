@@ -57,7 +57,7 @@ const getDateMonth = (date: DateFormat) => {
     date = parse(date);
   }
 
-  return format(date, "d MMMM", { locale: enGB });
+  return format(date, "MMMM d", { locale: enGB });
 };
 
 export const shiftDate = (date: Date, days: number) =>
@@ -79,20 +79,20 @@ export const isSameMonthAndYear = (date: Date, otherDate: Date) => {
 };
 
 export const toISODate = (date: Date) => {
-    const year = date.getFullYear();
-    let month = String(date.getMonth() + 1);
+  const year = date.getFullYear();
+  let month = String(date.getMonth() + 1);
 
-    if (month.length < 2) {
-        month = `0${month}`;
-    }
+  if (month.length < 2) {
+    month = `0${month}`;
+  }
 
-    let day = String(date.getDate());
+  let day = String(date.getDate());
 
-    if (day.length < 2) {
-        day = `0${day}`;
-    }
+  if (day.length < 2) {
+    day = `0${day}`;
+  }
 
-    return [year, month, day].join('-');
+  return [year, month, day].join("-");
 };
 
 export const getPeriodDates = (startDate: DateFormat, period = 1) => {

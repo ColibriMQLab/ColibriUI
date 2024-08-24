@@ -101,6 +101,7 @@ class Calendar extends React.PureComponent<Props & Methods, State> {
       >
         {contentWidth ? (
           <div
+            data-component="Months"
             className={clx(styles.months)}
             style={{
               transform: `translate3D(${-1 * currentMonthOffset * contentWidth}px, 0, 0)`,

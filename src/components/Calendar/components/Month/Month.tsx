@@ -38,6 +38,7 @@ const Item = ({
   isInSelectedRange,
   isStartOfSelection,
   isEndOfSelection,
+  children,
 }: ComponentProps) => {
   const noSelection =
     isStartOfSelection && isEndOfSelection ? styles.noSelection : "";
@@ -60,13 +61,15 @@ const Item = ({
           firstChildClass,
           lastChildClass,
         )}
-      />
+      >
+        {children}
+      </li>
     );
   } else if (isInSelectedRange) {
-    return <li className={clx(styles.selectedRangeDay)} />;
+    return <li className={clx(styles.selectedRangeDay)}>{children}</li>;
   }
 
-  return <li className={clx(styles.day)} />;
+  return <li className={clx(styles.day)}>{children}</li>;
 };
 
 export const Month: FCWithElements<Props> = (props) => {
@@ -75,11 +78,12 @@ export const Month: FCWithElements<Props> = (props) => {
 
   return (
     <div
+      data-component="Month"
       className={clx(styles.root)}
-      style={{ left: props.offsetLeft ? props.offsetLeft : undefined }}
+      style={{ left: props.offsetLeft ? `${props.offsetLeft}px` : undefined }}
     >
       <div className={clx(styles.monthName)}>
-        <Typography tag="h3" size="h3" style={{ opacity: 80 }}>
+        <Typography tag="span" size="h3">
           {getUpperMonthName(props.startDate)}
         </Typography>
       </div>
@@ -93,10 +97,10 @@ export const Month: FCWithElements<Props> = (props) => {
                 <Typography
                   style={{
                     opacity: index > 5 ? 80 : 30,
-                    color: index > 5 ? "mario" : "black",
+                    color: index > 5 ? "var(--typography-alert)" : "black",
                   }}
                 >
-                  {getShortWeekDayNameByIndex(index - 1)}
+                  {getShortWeekDayNameByIndex(index)}
                 </Typography>
               </li>
             );
@@ -141,7 +145,12 @@ export const Month: FCWithElements<Props> = (props) => {
                     >
                       <Typography
                         size="s"
-                        style={{ opacity: day.isActive ? 80 : 30 }}
+                        style={{
+                          opacity: day.isActive ? 80 : 30,
+                          color: day.isActive
+                            ? "rgba(0, 0, 0, 0.8)"
+                            : "rgba(0, 0, 0, 0.3)",
+                        }}
                       >
                         {day.day}
                       </Typography>

@@ -99,7 +99,7 @@
   position: relative;
   transition: transform 0.3s ease;
 
-  & div {
+  & > div {
     position: absolute;
     top: 0;
   }
