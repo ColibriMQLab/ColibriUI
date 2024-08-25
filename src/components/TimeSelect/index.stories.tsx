@@ -18,12 +18,13 @@ export default meta;
 const Template = (args) => {
   const [value, setValue] = useState<string>('');
 
-  return (
+  return (<div style={{ width: '10vw' }}>
     <TimeSelect
       {...args}
       value={value}
+      fullWidth
       onChange={(v) => setValue(v)}
-    />
+    /></div>
   );
 };
 
