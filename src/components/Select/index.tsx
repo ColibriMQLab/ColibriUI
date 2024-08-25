@@ -75,7 +75,7 @@ const Select = <T extends string>({
               <span className={clx(styles.placeholder)}>{placeholder}</span>
             )}
           </div>
-          <input type="hidden" tabIndex={-1} value={value} />
+          <input type="hidden" tabIndex={-1} value={value || ''} />
         </InputRoot>
       </Dropdown>
     </FormField>
