@@ -1,5 +1,6 @@
 import React from "react";
 import Cart from "./Cart";
+import Check from "./Check";
 import Chevron from "./Chevron";
 import Close from "./Close";
 import EyeOpen from "./EyeOpen";
@@ -9,12 +10,14 @@ import Info from "./Info";
 import Minus from "./Minus";
 import More from "./More";
 import Plus from "./Plus";
+import Setting from "./Setting";
 import Trash from "./Trash";
 import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
   Cart: <Cart />,
+  Check: <Check />,
   Chevron: <Chevron />,
   Close: <Close />,
   EyeClosed: <EyeClosed />,
@@ -24,6 +27,7 @@ const icons = {
   Minus: <Minus />,
   More: <More />,
   Plus: <Plus />,
+  Setting: <Setting />,
   Trash: <Trash />,
   User: <User />,
 };
