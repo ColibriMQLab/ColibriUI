@@ -31,9 +31,11 @@
 
 .variant {
   &_primary {
-    box-shadow: none;
-    transition: box-shadow 0.2s ease-in, box-shadow 0.1s ease-out;
     border-color: var(--input-primary-border-color);
+    box-shadow: none;
+    transition:
+      box-shadow 0.2s ease-in,
+      box-shadow 0.1s ease-out;
 
     &:hover {
       border-color: var(--palette-primary-3);

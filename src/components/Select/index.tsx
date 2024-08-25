@@ -1,14 +1,12 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import classNames from "classnames/bind";
 import Chevron from "../Icons/Chevron";
 import InputRoot from "../base/InputRoot";
 import FormField from "../base/FormField";
 import Dropdown from "../Dropdown";
-import Menu from "../Menu";
-import Check from "../Icons/Check";
-import MenuItem from "../Menu/components/MenuItem";
-import styles from "./Select.module.scss";
-import type { IOption, SelectProps } from "./index.props";
+import styles from "./index.module.scss";
+import MenuOverlay from "./components/MenuOverlay";
+import type { SelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
@@ -21,12 +19,10 @@ const Select = <T extends string>({
   error,
   placeholder,
   disabled,
-  listHeight = 130,
   fullWidth = false,
   onChange,
 }: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string[]>();
 
   const preparedOptions = useMemo(
     () =>
@@ -41,14 +37,6 @@ const Select = <T extends string>({
   const prepraredLabel = useMemo(
     () => preparedOptions.find(({ selected }) => selected)?.label,
     [preparedOptions],
-  );
-
-  const handleSelect = useCallback(
-    (option: IOption<T>, key: string) => {
-      onChange(option.value);
-      setSelected(key.split(" "));
-    },
-    [onChange],
   );
 
   return (
@@ -66,25 +54,7 @@ const Select = <T extends string>({
         trigger={["click"]}
         zIndex={zIndex}
         disabled={!!disabled}
-        overlay={
-          <div
-            className={clx(styles["menu-wrapper"])}
-            style={{ maxHeight: `${listHeight}px` }}
-          >
-            <Menu selected={selected}>
-              {preparedOptions.map((option, i) => (
-                <MenuItem
-                  key={`item-${i}`}
-                  onClick={() => handleSelect(option, `item-${i}`)}
-                  isSelected={option.selected}
-                >
-                  {option.label}
-                  {option.selected && <Check width={16} height={16} />}
-                </MenuItem>
-              ))}
-            </Menu>
-          </div>
-        }
+        overlay={<MenuOverlay options={preparedOptions} onChange={onChange} />}
         samewidth
       >
         <InputRoot

@@ -1,16 +1,11 @@
-.menu-wrapper {
-  max-height: 140px;
-  overflow-y: auto;
+.root {
+  cursor: pointer;
 }
 
 .icon {
   &_isOpen {
     transform: rotate(180deg);
   }
-}
-
-.root {
-  cursor: pointer;
 }
 
 .form-field {

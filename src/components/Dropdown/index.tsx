@@ -152,6 +152,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <ClickOutside onClick={onClickOutside}>
             <div
               ref={setPopperElement}
+              data-component="popper-container"
               className={classNames(dropDownStyles["popper-container"])}
               style={{
                 ...styles.popper,

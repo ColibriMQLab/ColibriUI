@@ -20,21 +20,21 @@ const options = Array(5)
   .map((_, i) => ({
     label: (
       <span>
-        <strong>options</strong> {i}
+        <strong>options</strong> {String(i)}
       </span>
     ),
-    value: i,
+    value: String(i),
   }));
 
 const Template = (args) => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<string>();
 
   return (
     <Select
       {...args}
       value={value}
       options={options}
-      onChange={(v) => setValue(Number(v))}
+      onChange={(v) => setValue(v)}
     />
   );
 };
