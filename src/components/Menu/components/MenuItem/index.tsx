@@ -8,28 +8,30 @@ const clx = classNames.bind(styles);
 
 const MenuItem: FC<MenuItemProps> = ({
   className,
-  isSelected = false,
+  isSelected,
   variant = "primary",
   disabled,
   onClick,
   children,
-}) => {
-  return (
-    <li
-      style={{ backgroundColor: isSelected ? "#B8D2FF" : "" }}
-      className={clx(
-        {
-          item: true,
-          disabled: disabled,
-          [`variant_${variant}`]: !!variant,
-        },
-        className,
-      )}
-      onClick={onClick}
-    >
-      {children}
-    </li>
-  );
-};
+}) => (
+  <li
+    style={{
+      backgroundColor: isSelected
+        ? "var(--palette-primary-1)"
+        : "var(--palette-white)",
+    }}
+    className={clx(
+      styles.item,
+      {
+        disabled: disabled,
+        [`variant_${variant}`]: !!variant,
+      },
+      className,
+    )}
+    onClick={onClick}
+  >
+    {children}
+  </li>
+);
 
 export default MenuItem;

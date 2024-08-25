@@ -1,16 +1,18 @@
 import React, { useState, useMemo, useCallback } from "react";
+import classNames from "classnames/bind";
 import Chevron from "../Icons/Chevron";
 import InputRoot from "../base/InputRoot";
 import FormField from "../base/FormField";
 import Dropdown from "../Dropdown";
 import Menu from "../Menu";
+import Check from "../Icons/Check";
+import MenuItem from "../Menu/components/MenuItem";
 import styles from "./Select.module.scss";
+import type { IOption, SelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
-import type { IOption, SelectProps } from "./index.props";
-import classNames from "classnames/bind";
 
-const Select = <T extends string | number>({
+const Select = <T extends string>({
   options = [],
   value,
   zIndex,
@@ -24,6 +26,7 @@ const Select = <T extends string | number>({
   onChange,
 }: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string[]>();
 
   const preparedOptions = useMemo(
     () =>
@@ -41,16 +44,17 @@ const Select = <T extends string | number>({
   );
 
   const handleSelect = useCallback(
-    ({ value: lvalue }: IOption<T>) => {
-      onChange(lvalue);
+    (option: IOption<T>, key: string) => {
+      onChange(option.value);
+      setSelected(key.split(" "));
     },
     [onChange],
   );
 
   return (
     <FormField
-      className={clx(styles['form-field'], {
-        'form-field_fullWidth': fullWidth ? 1 : 0,
+      className={clx(styles["form-field"], {
+        "form-field_fullWidth": fullWidth ? 1 : 0,
       })}
       label={label}
       hint={hint}
@@ -64,18 +68,19 @@ const Select = <T extends string | number>({
         disabled={!!disabled}
         overlay={
           <div
-            className={clx(styles['menu-wrapper'])}
+            className={clx(styles["menu-wrapper"])}
             style={{ maxHeight: `${listHeight}px` }}
           >
-            <Menu>
+            <Menu selected={selected}>
               {preparedOptions.map((option, i) => (
-                <Menu.Item
-                  key={`${option.label}-${i}`}
-                  onClick={() => handleSelect(option)}
+                <MenuItem
+                  key={`item-${i}`}
+                  onClick={() => handleSelect(option, `item-${i}`)}
                   isSelected={option.selected}
                 >
                   {option.label}
-                </Menu.Item>
+                  {option.selected && <Check width={16} height={16} />}
+                </MenuItem>
               ))}
             </Menu>
           </div>
@@ -92,7 +97,10 @@ const Select = <T extends string | number>({
           }
           disabled={!!disabled}
         >
-          <div className={clx(styles['base-input'])}>
+          <div
+            className={clx(styles["base-input"])}
+            data-component="base-input"
+          >
             {prepraredLabel ?? (
               <span className={clx(styles.placeholder)}>{placeholder}</span>
             )}

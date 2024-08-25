@@ -3,6 +3,7 @@ import Menu from "../Menu";
 import Button from "../Button";
 import Dropdown from ".";
 import type { Meta } from "@storybook/react";
+import MenuItem from "../Menu/components/MenuItem";
 
 const meta: Meta<typeof Dropdown> = {
   title: "UI/Dropdown",
@@ -21,9 +22,9 @@ const Template = (args) => {
       {...args}
       overlay={
         <Menu>
-          <Menu.Item>Test 1</Menu.Item>
-          <Menu.Item>Test 2</Menu.Item>
-          <Menu.Item>Test 3</Menu.Item>
+          <MenuItem>Test 1</MenuItem>
+          <MenuItem>Test 2</MenuItem>
+          <MenuItem>Test 3</MenuItem>
         </Menu>
       }
     />

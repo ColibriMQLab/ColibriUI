@@ -43,8 +43,23 @@ export const Default = Template.bind({});
 
 Default.args = {
   placeholder: "select options",
-  disabled: false,
+  label: "Label",
+  hint: "hint",
+};
+
+export const Error = Template.bind({});
+
+Error.args = {
+  placeholder: "select options",
   error: true,
+  label: "Label",
+  hint: "hint",
+};
+
+export const FullWidth = Template.bind({});
+
+FullWidth.args = {
+  placeholder: "select options",
   label: "Label",
   hint: "hint",
   fullWidth: true,

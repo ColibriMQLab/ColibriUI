@@ -38,10 +38,13 @@ const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
   return (
     <Portal>
       <div className={clx(styles.root)}>
-        <div className={clx(styles['modal-overlay'])} onClick={onCloseHandler} />
+        <div
+          className={clx(styles["modal-overlay"])}
+          onClick={onCloseHandler}
+        />
         <div
           className={clx(
-            styles['modal-wrapper'],
+            styles["modal-wrapper"],
             {
               modalWrapper_desktop: isDesktop ? 1 : 0,
               modalWrapper_mobile: !isDesktop ? 1 : 0,
@@ -51,12 +54,12 @@ const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
           ref={modalRef}
         >
           {title ? (
-            <div className={clx(styles['title-wrapper'])}>
+            <div className={clx(styles["title-wrapper"])}>
               <Title>{title}</Title>
               <Close onClick={onCloseHandler} />
             </div>
           ) : (
-            <div className={clx(styles['close-wrapper'])}>
+            <div className={clx(styles["close-wrapper"])}>
               <Close onClick={onCloseHandler} />
             </div>
           )}

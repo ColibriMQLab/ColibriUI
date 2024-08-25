@@ -1,13 +1,12 @@
 import React, { useMemo, isValidElement, Children, cloneElement } from "react";
 
 import classNames from "classnames";
-import MenuItem from "./components/MenuItem";
 
 import styles from "./Menu.module.scss";
-import type { MenuProps } from "./index.props";
-import type { MouseEvent } from "react";
+import type { Props } from "./index.props";
+import type { FC, MouseEvent } from "react";
 
-const Menu: MenuProps = ({
+const Menu: FC<Props> = ({
   selected,
   variant,
   className,
@@ -39,7 +38,5 @@ const Menu: MenuProps = ({
   );
   return <ul className={classNames(styles.menu, className)}>{renderChild}</ul>;
 };
-
-Menu.Item = MenuItem;
 
 export default Menu;

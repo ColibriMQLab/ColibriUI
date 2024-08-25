@@ -1,13 +1,14 @@
 import React from "react";
+import MenuItem from "./components/MenuItem";
 import Menu from "./";
 
 describe("<Menu />", () => {
   it("renders", () => {
     cy.mount(
       <Menu>
-        <Menu.Item key="1">Test 1</Menu.Item>
-        <Menu.Item key="2">Test 2</Menu.Item>
-        <Menu.Item key="3">Test 3</Menu.Item>
+        <MenuItem key="1">Test 1</MenuItem>
+        <MenuItem key="2">Test 2</MenuItem>
+        <MenuItem key="3">Test 3</MenuItem>
       </Menu>,
     );
   });
@@ -16,9 +17,9 @@ describe("<Menu />", () => {
     const menu = cy
       .mount(
         <Menu>
-          <Menu.Item key="1">Test 1</Menu.Item>
-          <Menu.Item key="2">Test 2</Menu.Item>
-          <Menu.Item key="3">Test 3</Menu.Item>
+          <MenuItem key="1">Test 1</MenuItem>
+          <MenuItem key="2">Test 2</MenuItem>
+          <MenuItem key="3">Test 3</MenuItem>
         </Menu>,
       )
       .get("ul");
@@ -30,9 +31,9 @@ describe("<Menu />", () => {
     const menu = cy
       .mount(
         <Menu selected={["2"]}>
-          <Menu.Item key="1">Test 1</Menu.Item>
-          <Menu.Item key="2">Test 2</Menu.Item>
-          <Menu.Item key="3">Test 3</Menu.Item>
+          <MenuItem key="1">Test 1</MenuItem>
+          <MenuItem key="2">Test 2</MenuItem>
+          <MenuItem key="3">Test 3</MenuItem>
         </Menu>,
       )
       .get("ul");

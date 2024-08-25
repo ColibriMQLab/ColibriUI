@@ -9,6 +9,7 @@ export { default as GridItem } from "./Grid/Item";
 export { default as Image } from "./Image";
 export { default as Input } from "./Input";
 export { default as Menu } from "./Menu";
+export { default as MenuItem } from "./Menu/components/MenuItem";
 export { default as Modal } from "./Modal";
 export { default as Portal } from "./Portal";
 export { default as RadioGroup } from "./RadioGroup";

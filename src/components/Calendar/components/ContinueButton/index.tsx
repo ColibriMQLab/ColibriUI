@@ -38,11 +38,7 @@ export const ContinueButton: React.FC<Props> = ({
   return (
     <div className={clx(styles.root)} data-component="Calendar__ContinueButton">
       <Button size="l" onClick={handleClick}>
-        {isChanged && selectedDates ? (
-          <>Select {selectedDates}</>
-        ) : (
-          <>Cancel</>
-        )}
+        {isChanged && selectedDates ? <>Select {selectedDates}</> : <>Cancel</>}
       </Button>
     </div>
   );

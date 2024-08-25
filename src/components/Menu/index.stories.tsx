@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Menu from ".";
 import type { Meta } from "@storybook/react";
+import MenuItem from "./components/MenuItem";
 
 const meta: Meta<typeof Menu> = {
   title: "UI/Menu",
@@ -14,16 +15,16 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 
 const Template = (args) => {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(['2']);
 
   return (
     <Menu {...args} selected={selected} onClick={(k) => setSelected([k])}>
-      <Menu.Item key="1">Menu item 1</Menu.Item>
-      <Menu.Item key="2">Menu item 2</Menu.Item>
-      <Menu.Item disabled key="3">
+      <MenuItem key="1">Menu item 1</MenuItem>
+      <MenuItem key="2">Menu item 2</MenuItem>
+      <MenuItem disabled key="3">
         Menu item 3
-      </Menu.Item>
-      <Menu.Item key="4">Menu item 4</Menu.Item>
+      </MenuItem>
+      <MenuItem key="4">Menu item 4</MenuItem>
     </Menu>
   );
 };

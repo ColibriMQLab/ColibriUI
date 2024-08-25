@@ -1,14 +1,15 @@
 import React from "react";
 import Menu from "../Menu";
+import MenuItem from "../Menu/components/MenuItem";
 import Dropdown from ".";
 
 describe("<Dropdown />", () => {
   it("renders", () => {
     const overlay = () => (
       <Menu>
-        <Menu.Item>Test 1</Menu.Item>
-        <Menu.Item>Test 2</Menu.Item>
-        <Menu.Item>Test 3</Menu.Item>
+        <MenuItem>Test 1</MenuItem>
+        <MenuItem>Test 2</MenuItem>
+        <MenuItem>Test 3</MenuItem>
       </Menu>
     );
     cy.mount(<Dropdown overlay={overlay()}>Открыть</Dropdown>);
@@ -17,9 +18,9 @@ describe("<Dropdown />", () => {
   it("has the correct title", () => {
     const overlay = () => (
       <Menu>
-        <Menu.Item>Test 1</Menu.Item>
-        <Menu.Item>Test 2</Menu.Item>
-        <Menu.Item>Test 3</Menu.Item>
+        <MenuItem>Test 1</MenuItem>
+        <MenuItem>Test 2</MenuItem>
+        <MenuItem>Test 3</MenuItem>
       </Menu>
     );
     const dropdown = cy
@@ -31,9 +32,9 @@ describe("<Dropdown />", () => {
   it("body is visible (trigger = click)", () => {
     const overlay = () => (
       <Menu>
-        <Menu.Item>Test 1</Menu.Item>
-        <Menu.Item>Test 2</Menu.Item>
-        <Menu.Item>Test 3</Menu.Item>
+        <MenuItem>Test 1</MenuItem>
+        <MenuItem>Test 2</MenuItem>
+        <MenuItem>Test 3</MenuItem>
       </Menu>
     );
 
@@ -51,9 +52,9 @@ describe("<Dropdown />", () => {
   it("body is visible (trigger = hover)", () => {
     const overlay = () => (
       <Menu>
-        <Menu.Item>Test 1</Menu.Item>
-        <Menu.Item>Test 2</Menu.Item>
-        <Menu.Item>Test 3</Menu.Item>
+        <MenuItem>Test 1</MenuItem>
+        <MenuItem>Test 2</MenuItem>
+        <MenuItem>Test 3</MenuItem>
       </Menu>
     );
     const dropdown = cy
@@ -70,9 +71,9 @@ describe("<Dropdown />", () => {
   it("should has correct child", () => {
     const overlay = () => (
       <Menu>
-        <Menu.Item>Test 1</Menu.Item>
-        <Menu.Item>Test 2</Menu.Item>
-        <Menu.Item>Test 3</Menu.Item>
+        <MenuItem>Test 1</MenuItem>
+        <MenuItem>Test 2</MenuItem>
+        <MenuItem>Test 3</MenuItem>
       </Menu>
     );
     const dropdown = cy

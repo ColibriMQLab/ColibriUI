@@ -39,7 +39,10 @@ export const shiftDate = (date: Date, days: number): Date => {
 
 // Check if two dates are in the same month and year
 export const isSameMonthAndYear = (date: Date, otherDate: Date): boolean => {
-  return date.getFullYear() === otherDate.getFullYear() && date.getMonth() === otherDate.getMonth();
+  return (
+    date.getFullYear() === otherDate.getFullYear() &&
+    date.getMonth() === otherDate.getMonth()
+  );
 };
 
 // Convert date to ISO format (YYYY-MM-DD)
@@ -55,7 +58,9 @@ export const getPeriodDates = (startDate: DateFormat, period = 1): string => {
   }
 
   const end = shiftDate(start, period - 1);
-  const startDateFormat = isSameMonthAndYear(start, end) ? format(start, "d") : getDateMonth(start);
+  const startDateFormat = isSameMonthAndYear(start, end)
+    ? format(start, "d")
+    : getDateMonth(start);
 
   return `${startDateFormat} – ${getDateMonth(end)}`;
 };

@@ -75,36 +75,45 @@ const Calendar: React.FC<Props> = ({
     setCurrentMonthOffset((prev) => prev + 1);
   }, []);
 
-  const selectDate = useCallback((date: string, period: number, rangeCompleted: boolean) => {
-    setSelectedDate(date);
-    setSelectedPeriod(period);
-    setIsRangeCompleted(rangeCompleted);
-    setCurrentMonthOffset(getNumberOfMonthsBetweenDates(startMonth, date));
-  }, [startMonth]);
+  const selectDate = useCallback(
+    (date: string, period: number, rangeCompleted: boolean) => {
+      setSelectedDate(date);
+      setSelectedPeriod(period);
+      setIsRangeCompleted(rangeCompleted);
+      setCurrentMonthOffset(getNumberOfMonthsBetweenDates(startMonth, date));
+    },
+    [startMonth],
+  );
 
-  const handleDayClick = useCallback((date: string) => {
-    if (canSelectRange && selectedDate && !isRangeCompleted) {
-      const [startDate, endDate] = [date, selectedDate].sort();
-      const period = getDaysDiff(new Date(startDate), new Date(endDate)) + 1;
+  const handleDayClick = useCallback(
+    (date: string) => {
+      if (canSelectRange && selectedDate && !isRangeCompleted) {
+        const [startDate, endDate] = [date, selectedDate].sort();
+        const period = getDaysDiff(new Date(startDate), new Date(endDate)) + 1;
 
+        requestIdleCallback(
+          () => selectDate(startDate, period, true),
+          idleCallbackOptions,
+        );
+      } else {
+        requestIdleCallback(
+          () => selectDate(date, 1, !canSelectRange),
+          idleCallbackOptions,
+        );
+      }
+    },
+    [canSelectRange, selectedDate, isRangeCompleted, selectDate],
+  );
+
+  const handlePresetSelect = useCallback(
+    (preset: Preset) => {
       requestIdleCallback(
-        () => selectDate(startDate, period, true),
+        () => selectDate(preset.date, preset.period, true),
         idleCallbackOptions,
       );
-    } else {
-      requestIdleCallback(
-        () => selectDate(date, 1, !canSelectRange),
-        idleCallbackOptions,
-      );
-    }
-  }, [canSelectRange, selectedDate, isRangeCompleted, selectDate]);
-
-  const handlePresetSelect = useCallback((preset: Preset) => {
-    requestIdleCallback(
-      () => selectDate(preset.date, preset.period, true),
-      idleCallbackOptions,
-    );
-  }, [selectDate]);
+    },
+    [selectDate],
+  );
 
   const commitSelectedDates = useCallback(() => {
     if (selectedDate && selectedPeriod) {
@@ -126,11 +135,14 @@ const Calendar: React.FC<Props> = ({
     }
   }, [onCancel]);
 
-  const getMonthStartDate = useCallback((shiftIndex: number) => {
-    const startDate = new Date(startMonth);
-    startDate.setMonth(startDate.getMonth() + shiftIndex);
-    return startDate;
-  }, [startMonth]);
+  const getMonthStartDate = useCallback(
+    (shiftIndex: number) => {
+      const startDate = new Date(startMonth);
+      startDate.setMonth(startDate.getMonth() + shiftIndex);
+      return startDate;
+    },
+    [startMonth],
+  );
 
   const commonAttrs = {
     selectedDate,
@@ -142,11 +154,7 @@ const Calendar: React.FC<Props> = ({
   };
 
   return (
-    <div
-      className={clx(styles.root)}
-      data-component="Calendar"
-      ref={$root}
-    >
+    <div className={clx(styles.root)} data-component="Calendar" ref={$root}>
       {contentWidth ? (
         <div
           data-component="Months"
@@ -177,12 +185,12 @@ const Calendar: React.FC<Props> = ({
         />
       )}
       <button
-        className={clx(styles['month-control'], styles["month-control-prev"])}
+        className={clx(styles["month-control"], styles["month-control-prev"])}
         onClick={showPrevMonth}
         disabled={currentMonthOffset <= 0}
       />
       <button
-        className={clx(styles['month-control'], styles["month-control-next"])}
+        className={clx(styles["month-control"], styles["month-control-next"])}
         onClick={showNextMonth}
         disabled={currentMonthOffset >= 11}
       />
@@ -194,16 +202,18 @@ const Calendar: React.FC<Props> = ({
           onPresetSelect={handlePresetSelect}
         />
       )}
-      {withContinueButton && <ContinueButton
-        isChanged={
-          selectedDate !== initialSelectedDate ||
-          selectedPeriod !== initialSelectedPeriod
-        }
-        selectedDate={selectedDate}
-        selectedPeriod={selectedPeriod}
-        onContinue={commitSelectedDates}
-        onCancel={cancelCalendar}
-      />}
+      {withContinueButton && (
+        <ContinueButton
+          isChanged={
+            selectedDate !== initialSelectedDate ||
+            selectedPeriod !== initialSelectedPeriod
+          }
+          selectedDate={selectedDate}
+          selectedPeriod={selectedPeriod}
+          onContinue={commitSelectedDates}
+          onCancel={cancelCalendar}
+        />
+      )}
     </div>
   );
 };
