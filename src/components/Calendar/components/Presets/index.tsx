@@ -5,8 +5,15 @@ import styles from "./index.module.scss";
 
 const clx = classNames.bind(styles);
 
+export enum PRESETS {
+  TODAY = 'today',
+  TOMORROW = 'tomorrow',
+  WEEKENDS = 'weekends',
+  CURWEEK = 'currWeek',
+  NEXTWEEK = 'nextWeek'
+}
+
 export type Preset = {
-  alias: string;
   name: string;
   date: string;
   period: number;
@@ -21,8 +28,8 @@ type Props = {
 
 export const Presets: React.FunctionComponent<Props> = ({
   presets,
-  selectedDate,
-  selectedPeriod,
+  // selectedDate,
+  // selectedPeriod,
   onPresetSelect,
 }) => (
   <div
@@ -36,10 +43,7 @@ export const Presets: React.FunctionComponent<Props> = ({
             return (
               <div className={clx(styles.item)} key={`preset=${rest[0]}`}>
                 <Button
-                  disabled={
-                    preset.date !== selectedDate &&
-                    preset.period !== selectedPeriod
-                  }
+                  variant="outline"
                   onClick={() => onPresetSelect(preset)}
                   size="m"
                 >

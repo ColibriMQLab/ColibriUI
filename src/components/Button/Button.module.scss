@@ -141,6 +141,25 @@
     }
   }
 
+
+  &_outline {
+    background-color: var(--button-outline-background-color);
+    border-color: var(--button-outline-border-color);
+    color: var(--button-outline-color);
+
+    &:hover {
+      background-color: var(--button-outline-background-color-hovered);
+      border-color: var(--button-outline-border-color-hovered);
+      color: var(--button-outline-color-hovered);
+    }
+
+    &:active {
+      background-color: var(--button-outline-background-color-active);
+      border-color: var(--button-outline-border-color-active);
+      color: var(--button-outline-color-active);
+    }
+  }
+
   &_clear {
     background-color: transparent;
     border-color: transparent;
