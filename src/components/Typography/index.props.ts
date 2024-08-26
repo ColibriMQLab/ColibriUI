@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type TypographyVariant = "alert" | "success" | "secondary";
 export type TypographyFontWeight = "normal" | "medium" | "bold";
@@ -34,4 +34,5 @@ export type Props = {
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
   style?: CSSProperties;
+  children?: ReactNode;
 };

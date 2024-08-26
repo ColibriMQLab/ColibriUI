@@ -1,14 +1,14 @@
 .root {
+  display: flex;
+  flex-direction: column;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  gap: 16px;
   min-width: 300px;
   overflow: hidden;
   position: relative;
   text-rendering: optimizelegibility;
   text-size-adjust: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 
   @media (width >= 360px) {
     min-width: 360px;
