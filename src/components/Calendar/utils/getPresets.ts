@@ -8,7 +8,7 @@ export type DatePreset = {
 };
 
 export function getPresets(presets: string[]) {
-  if(!presets) {
+  if (!presets) {
     return;
   }
 
@@ -32,7 +32,7 @@ export function getPresets(presets: string[]) {
 
 function getToday() {
   return {
-    name: 'today',
+    name: "today",
     date: format(new Date()),
     period: 1,
   };
@@ -44,7 +44,7 @@ function getTomorrow() {
   increaseDate(date);
 
   return {
-    name: 'tomorrow',
+    name: "tomorrow",
     date: format(date),
     period: 1,
   };
@@ -58,7 +58,7 @@ function getWeekends() {
   }
 
   return {
-    name: 'weekends',
+    name: "weekends",
     date: format(date),
     period: date.getDay() === 6 ? 2 : 1,
   };
@@ -80,7 +80,7 @@ function getCurrWeek() {
   }
 
   return {
-    name: 'currWeek',
+    name: "currWeek",
     date: format(today),
     period: days,
   };
@@ -99,7 +99,7 @@ function getNextWeek() {
   }
 
   return {
-    name: 'nextWeek',
+    name: "nextWeek",
     date: format(date),
     period: 7,
   };

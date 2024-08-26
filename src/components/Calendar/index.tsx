@@ -91,11 +91,27 @@ const Calendar: React.FC<Props> = ({
         const [startDate, endDate] = [date, selectedDate].sort();
         const period = getDaysDiff(new Date(startDate), new Date(endDate)) + 1;
 
+        if (!withContinueButton && onChange) {
+          onChange({
+            date,
+            period,
+          });
+          return;
+        }
+
         requestIdleCallback(
           () => selectDate(startDate, period, true),
           idleCallbackOptions,
         );
       } else {
+        if (!withContinueButton && onChange) {
+          onChange({
+            date,
+            period: 1,
+          });
+          return;
+        }
+
         requestIdleCallback(
           () => selectDate(date, 1, !canSelectRange),
           idleCallbackOptions,
@@ -156,35 +172,39 @@ const Calendar: React.FC<Props> = ({
   return (
     <div className={clx(styles.root)} data-component="Calendar" ref={$root}>
       <div>
-      {contentWidth ? (
-        <div
-          data-component="Months"
-          className={clx(styles.months)}
-          style={{
-            transform: `translate3D(${-1 * currentMonthOffset * contentWidth}px, 0, 0)`,
-          }}
-        >
-          {[currentMonthOffset - 1, currentMonthOffset, currentMonthOffset + 1]
-            .filter((index) => index >= 0)
-            .map((index) => {
-              const attrs = {
-                ...commonAttrs,
-                today,
-                startDate: getMonthStartDate(index),
-                offsetLeft: index * contentWidth,
-              };
+        {contentWidth ? (
+          <div
+            data-component="Months"
+            className={clx(styles.months)}
+            style={{
+              transform: `translate3D(${-1 * currentMonthOffset * contentWidth}px, 0, 0)`,
+            }}
+          >
+            {[
+              currentMonthOffset - 1,
+              currentMonthOffset,
+              currentMonthOffset + 1,
+            ]
+              .filter((index) => index >= 0)
+              .map((index) => {
+                const attrs = {
+                  ...commonAttrs,
+                  today,
+                  startDate: getMonthStartDate(index),
+                  offsetLeft: index * contentWidth,
+                };
 
-              return <Month {...attrs} key={`month-${index}`} />;
-            })}
-        </div>
-      ) : (
-        <Month
-          today={today}
-          startDate={getMonthStartDate(currentMonthOffset)}
-          offsetLeft={0}
-          {...commonAttrs}
-        />
-      )}
+                return <Month {...attrs} key={`month-${index}`} />;
+              })}
+          </div>
+        ) : (
+          <Month
+            today={today}
+            startDate={getMonthStartDate(currentMonthOffset)}
+            offsetLeft={0}
+            {...commonAttrs}
+          />
+        )}
         <button
           className={clx(styles["month-control"], styles["month-control-prev"])}
           onClick={showPrevMonth}
@@ -197,10 +217,7 @@ const Calendar: React.FC<Props> = ({
         />
       </div>
       {datePresets && (
-        <Presets
-          presets={datePresets}
-          onPresetSelect={handlePresetSelect}
-        />
+        <Presets presets={datePresets} onPresetSelect={handlePresetSelect} />
       )}
       {withContinueButton && (
         <ContinueButton
