@@ -21,23 +21,17 @@ export type Preset = {
 
 type Props = {
   presets: Preset[];
-  selectedDate?: string;
-  selectedPeriod?: number;
   onPresetSelect(preset: Preset): void;
 };
 
 export const Presets: React.FunctionComponent<Props> = ({
   presets,
-  // selectedDate,
-  // selectedPeriod,
   onPresetSelect,
 }) => (
   <div
-    className={clx(styles["native-scroll"])}
     data-component="Calendar_Presets"
   >
     <div className={clx(styles["native-scroll-inner"])}>
-      <div className={clx(styles.root)}>
         <div className={clx(styles.inner)}>
           {presets.map((preset, ...rest) => {
             return (
@@ -53,7 +47,6 @@ export const Presets: React.FunctionComponent<Props> = ({
             );
           })}
         </div>
-      </div>
     </div>
   </div>
 );

@@ -1,17 +1,7 @@
-.native-scroll {
-  overflow-y: hidden;
-}
-
 .native-scroll-inner {
-  margin-bottom: -30px;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
-  padding-bottom: 30px;
   transform: translate3d(0, 0, 0);
-}
-
-.root {
-  margin: 20px 0 0;
 }
 
 .inner {

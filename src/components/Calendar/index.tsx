@@ -155,6 +155,7 @@ const Calendar: React.FC<Props> = ({
 
   return (
     <div className={clx(styles.root)} data-component="Calendar" ref={$root}>
+      <div>
       {contentWidth ? (
         <div
           data-component="Months"
@@ -184,21 +185,20 @@ const Calendar: React.FC<Props> = ({
           {...commonAttrs}
         />
       )}
-      <button
-        className={clx(styles["month-control"], styles["month-control-prev"])}
-        onClick={showPrevMonth}
-        disabled={currentMonthOffset <= 0}
-      />
-      <button
-        className={clx(styles["month-control"], styles["month-control-next"])}
-        onClick={showNextMonth}
-        disabled={currentMonthOffset >= 11}
-      />
+        <button
+          className={clx(styles["month-control"], styles["month-control-prev"])}
+          onClick={showPrevMonth}
+          disabled={currentMonthOffset <= 0}
+        />
+        <button
+          className={clx(styles["month-control"], styles["month-control-next"])}
+          onClick={showNextMonth}
+          disabled={currentMonthOffset >= 11}
+        />
+      </div>
       {datePresets && (
         <Presets
           presets={datePresets}
-          selectedDate={selectedDate}
-          selectedPeriod={selectedPeriod}
           onPresetSelect={handlePresetSelect}
         />
       )}
