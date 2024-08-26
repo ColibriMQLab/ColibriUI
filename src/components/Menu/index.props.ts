@@ -1,4 +1,4 @@
-import type { ReactElement, MouseEvent, FC } from "react";
+import type { ReactElement, MouseEvent } from "react";
 import type { MenuItemProps } from "./components/MenuItem/index.props";
 
 export type MenuVariant = "primary";

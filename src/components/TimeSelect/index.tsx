@@ -1,38 +1,35 @@
-import React from "react";
-import classNames from "classnames/bind";
+import React, { useMemo } from "react";
 import Select from "../Select";
-import {
-  generateSuggest,
-  MINUTES_INTERVAL_15,
-  MINUTES_INTERVAL_30,
-} from "./helpers";
+import { generateSuggest } from "./helpers";
 import OptionLabel from "./Label";
 
-import styles from "./index.module.scss";
 import type { SelectProps } from "../Select/index.props";
 import type { FC } from "react";
 
-const clx = classNames.bind(styles);
-
-interface TimeSelectProps extends SelectProps<string> {}
-
-const SUGGEST = generateSuggest(MINUTES_INTERVAL_30);
+interface TimeSelectProps extends SelectProps<string> {
+  interval?: 5 | 10 | 15 | 30;
+}
 
 const TimeSelect: FC<TimeSelectProps> = ({
   value,
   label = "Start time",
+  interval = 15,
   onChange,
   ...props
 }: TimeSelectProps) => {
+  const options = useMemo(() => {
+    return generateSuggest(interval).map((item) => ({
+      value: item.time,
+      label: <OptionLabel time={item.time} />,
+    }));
+  }, [interval]);
+
   return (
     <Select
       {...props}
       value={value}
       label={label}
-      options={SUGGEST.map((item) => ({
-        value: item.time,
-        label: <OptionLabel time={item.time} />,
-      }))}
+      options={options}
       onChange={onChange}
     />
   );

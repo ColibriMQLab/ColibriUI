@@ -32,4 +32,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   placeholder: "Select options",
+  interval: 10
 };

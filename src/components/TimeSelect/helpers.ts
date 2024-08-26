@@ -4,14 +4,10 @@ import type { Timestamp } from "./index.props";
 const day = new Date();
 day.setHours(24, 0, 0, 0);
 
-export const MINUTES_INTERVAL_30 = 30;
-export const MINUTES_INTERVAL_15 = 15;
 export const DEFAULT_TIME = { index: 24, time: "12:00" };
 export const formatTime = (date: Date): string => format(date, "HH:mm");
 
-export const generateSuggest = (
-  interval: number = MINUTES_INTERVAL_30,
-): Timestamp[] => {
+export const generateSuggest = (interval: number = 15): Timestamp[] => {
   return new Array((24 * 60) / interval).fill(null).map((_, index) => {
     const date = addMinutes(day, index * interval);
 
