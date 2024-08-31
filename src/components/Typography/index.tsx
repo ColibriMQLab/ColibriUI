@@ -1,11 +1,11 @@
-import React, { forwardRef } from "react";
+import React, { FC } from "react";
 import classNames from "classnames/bind";
 import { type Props } from "./index.props";
 import styles from "./Typography.module.scss";
 
 const clx = classNames.bind(styles);
 
-const Typography = forwardRef<HTMLElement, Props>(
+const Typography: FC<Props> =
   ({
     tag: Element = "span",
     children,
@@ -31,7 +31,6 @@ const Typography = forwardRef<HTMLElement, Props>(
     >
       {children}
     </Element>
-  ),
-);
+  );
 
 export default Typography;
