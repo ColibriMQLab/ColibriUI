@@ -1,4 +1,5 @@
 import React from "react";
+import ArrowNext from "./ArrowNext";
 import Cart from "./Cart";
 import Check from "./Check";
 import Chevron from "./Chevron";
@@ -16,6 +17,7 @@ import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
+  ArrowNext: <ArrowNext/>,
   Cart: <Cart />,
   Check: <Check />,
   Chevron: <Chevron />,

@@ -38,7 +38,6 @@
       "src/**/*.stories.tsx",
       "src/**/*.cy.tsx",
       "src/**/*.cy.ts",
-      "src/components/HorizontalSlider/**",
       "src/**/*.test.ts",
       "src/**/*.scss",
   ],

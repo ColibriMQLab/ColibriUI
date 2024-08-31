@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import classNames from "classnames/bind";
 import { requestIdleCallback } from "../libs/requestIdleCallback";
 import { getDaysDiff } from "../helpers/date";
+import { ArrowNext } from "../Icons";
 import { Month } from "./components/Month/Month";
 import { getStartMonth } from "./utils/getStartMonth";
 import { Presets } from "./components/Presets";
@@ -209,12 +210,16 @@ const Calendar: React.FC<Props> = ({
           className={clx(styles["month-control"], styles["month-control-prev"])}
           onClick={showPrevMonth}
           disabled={currentMonthOffset <= 0}
-        />
+        >
+          <ArrowNext className={clx(styles["month-control-prev-arrow"])} />
+        </button>
         <button
           className={clx(styles["month-control"], styles["month-control-next"])}
           onClick={showNextMonth}
           disabled={currentMonthOffset >= 11}
-        />
+        >
+          <ArrowNext className={clx(styles["month-control-next-arrow"])} />
+        </button>
       </div>
       {datePresets && (
         <Presets presets={datePresets} onPresetSelect={handlePresetSelect} />

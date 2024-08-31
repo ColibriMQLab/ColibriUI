@@ -26,38 +26,15 @@
   top: 0;
   width: 80px;
 
-  &::before {
-    border: 0 solid #fff;
-    content: "";
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 40px;
-  }
-
-  &::after {
-    background-repeat: no-repeat;
-    background-size: 10px 16px;
-    content: "";
-    display: inline-block;
-    height: 16px;
-    opacity: 0.8;
-    position: relative;
-    transition: opacity 0.3s ease;
-    width: 10px;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-
   &[disabled] {
     cursor: default;
+  }
+
+  &[disabled] .month-control-prev-arrow {
     opacity: 0.3;
   }
 
-  &[disabled]::after {
+  &[disabled] .month-control-next-arrow {
     opacity: 0.3;
   }
 }
@@ -73,13 +50,15 @@
       rgb(255 255 255 / 100%) 0%,
       rgb(255 255 255 / 0%) 100%
     );
+    border: 0 solid #fff;
     border-left-width: 26px;
+    content: "";
+    display: block;
+    height: 100%;
     left: 0;
-  }
-
-  &::after {
-    background-image: url("./assets/next-arrow.svg");
-    transform: rotate(180deg);
+    position: absolute;
+    top: 0;
+    width: 40px;
   }
 }
 
@@ -94,13 +73,26 @@
       rgb(255 255 255 / 100%) 0%,
       rgb(255 255 255 / 0%) 100%
     );
+    border: 0 solid #fff;
     border-right-width: 26px;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
     right: 0;
+    top: 0;
+    width: 40px;
   }
+}
 
-  &::after {
-    background-image: url("./assets/next-arrow.svg");
-  }
+.month-control-prev-arrow {
+  color: var(--palette-black);
+  transform: rotate(180deg);
+}
+
+.month-control-next-arrow {
+  color: var(--palette-black);
+  transform: rotate(360deg);
 }
 
 .months {
