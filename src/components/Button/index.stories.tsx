@@ -61,13 +61,13 @@ export const Sizes = (args) => (
   <div>
     <Button size="xs" {...args}>
       size = xs
-    </Button>
+    </Button>{' '}
     <Button size="s" {...args}>
       size = s
-    </Button>
+    </Button>{' '}
     <Button size="m" {...args}>
       size = m
-    </Button>
+    </Button>{' '}
     <Button size="l" {...args}>
       size = l
     </Button>
@@ -78,16 +78,16 @@ export const Variants = (args) => (
   <div>
     <Button size="m" variant="primary" {...args}>
       primary
-    </Button>
+    </Button>{' '}
     <Button size="m" variant="secondary" {...args}>
       secondary
-    </Button>
+    </Button>{' '}
     <Button size="m" variant="outline" {...args}>
       outline
-    </Button>
+    </Button>{' '}
     <Button size="m" variant="pseudo" {...args}>
       pseudo
-    </Button>
+    </Button>{' '}
     <Button size="m" variant="clear" {...args}>
       clear
     </Button>

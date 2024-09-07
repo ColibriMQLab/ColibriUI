@@ -1,31 +1,33 @@
 export const PrimaryBA = {
-  PRIMARY_BA_1: "rgba(38, 49, 129, .07)",
-  PRIMARY_BA_2: "rgba(38, 49, 129, .3)",
-  PRIMARY_BA_3: "rgba(38, 49, 129, .4)",
-  PRIMARY_BA_4: "rgba(38, 49, 129, .6)",
-  PRIMARY_BA_5: "rgba(38, 49, 129, .8)",
+  PRIMARY_BA_1: "#ffe695",
+  PRIMARY_BA_2: "#ffe07b",
+  PRIMARY_BA_3: "#ffd85a",
+  PRIMARY_BA_4: "#ffce31",
+  PRIMARY_BA_5: "#ffc818",
 };
 
 export const SecondaryBA = {
-  SECONDARY_BA_1: "#d9d9d9",
-  SECONDARY_BA_2: "#bbb",
-  SECONDARY_BA_3: "#636363",
-  SECONDARY_BA_4: "#313131",
-  SECONDARY_BA_5: "#1a1a1a",
+  SECONDARY_BA_1: "#7d7d7d",
+  SECONDARY_BA_2: "#5c5c5c",
+  SECONDARY_BA_3: "#333",
+  SECONDARY_BA_4: "#1f1f1f",
+  SECONDARY_BA_5: "#000",
 };
 
 export const TretiaryBA = {
-  TRETIARY_BA_1: "#EDF1F5",
-  TRETIARY_BA_2: "#d3dbe3",
-  TRETIARY_BA_3: "#c5cfda",
-  TRETIARY_BA_4: "#b1bcc8",
-  TRETIARY_BA_5: "#87929d",
+  TRETIARY_BA_1: "#DFE7FA",
+  TRETIARY_BA_2: "#C0CFF8",
+  TRETIARY_BA_3: "#AFC3F5",
+  TRETIARY_BA_4: "#80A0ED",
+  TRETIARY_BA_5: "#6088ea",
 };
 
 export const BrandBA = {
-  BRAND_BA_1: "#B54141",
-  BRAND_BA_2: "#fffbe9",
-  BRAND_BA_3: "#D5D500",
+  BRAND_BA_1: "#fcdfe2",
+  BRAND_BA_2: "#facdd2",
+  BRAND_BA_3: "#F59fa7",
+  BRAND_BA_4: "#ef6975",
+  BRAND_BA_5: "#E61428",
 };
 
 export const Color = {

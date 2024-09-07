@@ -46,14 +46,6 @@
   &_fullWidth {
     width: 100%;
   }
-
-  &_disabled {
-    background-color: var(--button-primary-background-color-disabled);
-    border-color: var(--button-primary-border-color-disabled);
-    color: var(--button-primary-color-disabled);
-    cursor: not-allowed;
-    pointer-events: none;
-  }
 }
 
 .icon {
@@ -103,6 +95,14 @@
       border-color: var(--button-primary-border-color-active);
       color: var(--button-primary-color-active);
     }
+
+    &_disabled {
+      background-color: var(--button-primary-background-color-disabled);
+      border-color: var(--button-primary-border-color-disabled);
+      color: var(--button-primary-color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   &_secondary {
@@ -120,6 +120,14 @@
       background-color: var(--button-secondary-background-color-active);
       border-color: var(--button-secondary-border-color-active);
       color: var(--button-secondary-color-active);
+    }
+
+    &_disabled {
+      background-color: var(--button-secondary-background-color-disabled);
+      border-color: var(--button-secondary-border-color-disabled);
+      color: var(--button-secondary-color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 
@@ -139,6 +147,14 @@
       border-color: var(--button-pseudo-border-color-active);
       color: var(--button-pseudo-color-active);
     }
+
+    &_disabled {
+      background-color: var(--button-pseudo-background-color-disabled);
+      border-color: var(--button-pseudo-border-color-disabled);
+      color: var(--button-pseudo-color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   &_outline {
@@ -157,6 +173,14 @@
       border-color: var(--button-outline-border-color-active);
       color: var(--button-outline-color-active);
     }
+
+    &_disabled {
+      background-color: var(--button-outline-background-color-disabled);
+      border-color: var(--button-outline-border-color-disabled);
+      color: var(--button-outline-color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   &_clear {
@@ -170,6 +194,14 @@
 
     &:active {
       color: var(--button-clear-color-active);
+    }
+
+    &_disabled {
+      background-color: var(--button-clear-background-color-disabled);
+      border-color: var(--button-clear-border-color-disabled);
+      color: var(--button-clear-color-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 }

@@ -30,10 +30,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           styles.root,
           {
             root_icon: !!icon,
-            root_disabled: disabled ? 1 : 0,
-            root_fullWidth: fullWidth ? 1 : 0,
+            root_fullWidth: !!fullWidth,
             [`size_${size}`]: !!size,
             [`variant_${variant}`]: !!variant,
+            [`variant_${variant}_disabled`]: !!disabled,
           },
           className,
         )}
