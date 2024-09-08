@@ -60,19 +60,19 @@
     }
 
     &_error {
-      background-color: var(--palette-tretiary-2);
-      border-color: var(--palette-alert);
+      background-color: var(--input-primary-background-color-error);
+      border-color: var(--input-primary-border-color-error);
 
       &:hover {
         background-color: var(--palette-white);
-        border-color: var(--palette-alert);
-        box-shadow: 0 0 0 2px var(--palette-tretiary-2);
+        border-color: var(--input-primary-border-color-error);
+        box-shadow: 0 0 0 2px var(--input-primary-box-shadow-color-error);
       }
 
       &:focus,
       &:focus-within {
         background-color: var(--palette-white);
-        border-color: var(--palette-alert);
+        border-color: var(--input-primary-border-color-error);
       }
     }
   }

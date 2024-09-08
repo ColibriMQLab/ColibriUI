@@ -83,4 +83,29 @@ export default {
   "button-clear-color-disabled": Color.BG_4,
   "button-clear-background-color-disabled": Color.WHITE,
   "button-clear-border-color-disabled": Color.WHITE,
+
+  "input-primary-border-color": Color.BG_3,
+  "input-primary-plaseholder-color": Color.BG_2,
+  "input-primary-border-color-error": Color.ALERT,
+  "input-primary-background-color-error": Color.TRETIARY_DEFAULT_2,
+  "input-primary-box-shadow-color-error": Color.TRETIARY_DEFAULT_2,
+
+  "checkbox-primary-background-color-checked": Color.PRIMARY_BA_4,
+  "checkbox-primary-background-color-hovered": Color.PRIMARY_BA_4,
+  "checkbox-primary-box-shadow-focused": Color.PRIMARY_BA_1,
+  "checkbox-primary-background-color-active": Color.PRIMARY_BA_4,
+  "checkbox-primary-border-color-active": Color.PRIMARY_BA_4,
+  "checkbox-primary-box-shadow-active": Color.PRIMARY_BA_4,
+  "checkbox-primary-background-color-disabled": Color.PRIMARY_BA_1,
+
+  "inputradio-primary-background-color-checked": Color.PRIMARY_BA_4,
+  "inputradio-primary-background-color-hovered": Color.PRIMARY_BA_4,
+  "inputradio-primary-box-shadow-focused": Color.PRIMARY_BA_1,
+  "inputradio-primary-background-color-focused": Color.PRIMARY_BA_1,
+  "inputradio-primary-border-color-focused": Color.PRIMARY_BA_1,
+
+  "switch-primary-background-color": Color.BG_2,
+  "switch-primary-border-color": Color.BG_2,
+  "switch-primary-background-color-checked": Color.PRIMARY_BA_5,
+  "switch-primary-border-color-checked": Color.PRIMARY_BA_5,
 };
