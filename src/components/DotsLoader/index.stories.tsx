@@ -21,6 +21,6 @@ export const Default: Story = {
 
 export const Colored: Story = {
   args: {
-    color: Color.PRIMARY_4,
+    color: Color.PRIMARY_DEFAULT_5,
   },
 };

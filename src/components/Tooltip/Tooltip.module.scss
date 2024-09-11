@@ -1,0 +1,148 @@
+.root {
+  &[data-popper-placement="bottom-start"] {
+    padding-top: 4px;
+
+    &::before {
+      left: 6px;
+      top: 0;
+    }
+  }
+
+  &[data-popper-placement="bottom-end"] {
+    padding-top: 4px;
+
+    &::before {
+      right: 6px;
+      top: 0;
+    }
+  }
+
+  &[data-popper-placement="bottom"] {
+    padding-top: 4px;
+
+    &::before {
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &[data-popper-placement="right"] {
+    padding-left: 4px;
+
+    &::before {
+      left: -6px;
+      top: 50%;
+      transform: translate(0, -50%) rotate(-90deg);
+    }
+  }
+
+  &[data-popper-placement="right-start"] {
+    padding-left: 4px;
+
+    &::before {
+      left: -6px;
+      top: 6px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &[data-popper-placement="right-end"] {
+    padding-left: 4px;
+
+    &::before {
+      bottom: 6px;
+      left: -6px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &[data-popper-placement="left"] {
+    padding-right: 4px;
+
+    &::before {
+      right: -6px;
+      top: 50%;
+      transform: translate(0, -50%) rotate(90deg);
+    }
+  }
+
+  &[data-popper-placement="left-start"] {
+    padding-right: 4px;
+
+    &::before {
+      right: -6px;
+      top: 6px;
+      transform: rotate(90deg);
+    }
+  }
+
+  &[data-popper-placement="left-end"] {
+    padding-right: 4px;
+
+    &::before {
+      bottom: 6px;
+      right: -6px;
+      transform: rotate(90deg);
+    }
+  }
+
+  &[data-popper-placement="top"] {
+    padding-bottom: 4px;
+
+    &::before {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0) rotate(180deg);
+    }
+  }
+
+  &[data-popper-placement="top-start"] {
+    padding-bottom: 4px;
+
+    &::before {
+      bottom: 0;
+      left: 6px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-popper-placement="top-end"] {
+    padding-bottom: 4px;
+
+    &::before {
+      bottom: 0;
+      right: 6px;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.tail {
+  position: relative;
+
+  &::before {
+    border-bottom: 5px solid var(--tooltip-background-color);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
+    width: 0;
+    z-index: 3000;
+  }
+}
+
+.overlay {
+  background-color: var(--tooltip-background-color);
+  border-radius: var(--tooltip-border-radius);
+  color: var(--tooltip-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  max-width: 200px;
+  overflow: hidden;
+  padding: 4px 10px;
+  position: relative;
+}

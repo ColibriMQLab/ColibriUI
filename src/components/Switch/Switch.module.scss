@@ -20,8 +20,8 @@
 
   &_variant {
     &_primary {
-      background-color: var(--switch-primary-background-color);
-      border-color: var(--switch-primary-border-color);
+      background-color: var(--switch-background-color);
+      border-color: var(--switch-border-color);
     }
   }
 }
@@ -52,8 +52,8 @@
   z-index: 1;
 
   &:checked + .wrapper {
-    background-color: var(--switch-primary-background-color-checked);
-    border-color: var(--switch-primary-border-color-checked);
+    background-color: var(--switch-background-color-checked);
+    border-color: var(--switch-border-color-checked);
 
     .base-switch {
       transform: translateX(18px);

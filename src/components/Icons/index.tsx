@@ -9,5 +9,6 @@ export { default as Info } from "./Info";
 export { default as Minus } from "./Minus";
 export { default as More } from "./More";
 export { default as Plus } from "./Plus";
+export { default as Setting } from "./Setting";
 export { default as Trash } from "./Trash";
 export { default as User } from "./User";

@@ -59,34 +59,34 @@
 
   &:not(&_disabled, &_error) {
     &:hover + .icon {
-      border-color: var(--inputradio-primary-background-color-hovered);
+      border-color: var(--input-radio-background-color-hovered);
     }
 
     &:focus + .icon {
-      box-shadow: 0 0 0 2px var(--inputradio-primary-box-shadow-focused);
+      box-shadow: 0 0 0 2px var(--input-radio-box-shadow-focused);
     }
 
     &:active + .icon {
-      background-color: var(--inputradio-primary-background-color-focused);
-      border-color: var(--inputradio-primary-border-color-focused);
-      box-shadow: 0 0 0 2px var(--inputradio-primary-box-shadow-focused);
+      background-color: var(--input-radio-background-color-focused);
+      border-color: var(--input-radio-border-color-focused);
+      box-shadow: 0 0 0 2px var(--input-radio-box-shadow-focused);
     }
   }
 
   &:not(&_disabled, &_error) &_checked {
     &:hover + .icon {
-      border-color: var(--inputradio-primary-background-color-hovered);
+      border-color: var(--input-radio-background-color-hovered);
     }
 
     &:active + .icon {
       background-color: var(--palette-white);
-      border: 4px solid var(--inputradio-primary-background-color-checked);
+      border: 4px solid var(--input-radio-background-color-checked);
     }
   }
 
   &_checked + .icon {
     background-color: var(--palette-white);
-    border: 4px solid var(--inputradio-primary-background-color-checked);
+    border: 4px solid var(--input-radio-background-color-checked);
   }
 
   &_disabled + .icon {
