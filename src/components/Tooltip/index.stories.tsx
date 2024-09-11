@@ -22,13 +22,14 @@ export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 
+const TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+
 export const Default: Story = {
   args: {
     children: <Button variant="primary">Кнопка</Button>,
     content: (
       <span>
-        Я Tooltip и у меня много много текста. Я Tooltip и у меня много много
-        текста. Я Tooltip и у меня много много текста.
+        {TEXT}
       </span>
     ),
     placement: "top-end",
