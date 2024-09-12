@@ -22,6 +22,7 @@ export default {
   "palette-tretiary-4": Color.TRETIARY_DEFAULT_4,
   "palette-tretiary-5": Color.TRETIARY_DEFAULT_5,
   "palette-alert": Color.ALERT,
+  "palette-success": Color.SUCCESS,
 
   "typography-alert": Color.ALERT,
   "typography-success": Color.SUCCESS,

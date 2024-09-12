@@ -22,7 +22,12 @@ export default {
   "palette-tretiary-4": Color.TRETIARY_BA_4,
   "palette-tretiary-5": Color.TRETIARY_BA_5,
   "palette-alert": Color.ALERT,
+  "palette-success": Color.SUCCESS,
 
+  "typography-alert": Color.ALERT,
+  "typography-success": Color.SUCCESS,
+  "typography-secondary": Color.BG_3,
+  
   "button-border-radius": "18px",
   "button-primary-color": Color.BLACK,
   "button-primary-background-color": Color.PRIMARY_BA_4,
