@@ -27,7 +27,7 @@ export default {
   "typography-alert": Color.ALERT,
   "typography-success": Color.SUCCESS,
   "typography-secondary": Color.BG_3,
-  
+
   "button-border-radius": "18px",
   "button-primary-color": Color.BLACK,
   "button-primary-background-color": Color.PRIMARY_BA_4,

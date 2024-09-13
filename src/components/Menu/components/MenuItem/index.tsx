@@ -21,14 +21,12 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       ref={ref}
       data-component="menu-item"
       style={{
-        backgroundColor: isSelected
-          ? "var(--palette-primary-1)"
-          : "",
+        backgroundColor: isSelected ? "var(--palette-primary-1)" : "",
       }}
       className={clx(
-        'item',
+        "item",
         {
-         'item_disabled': !!disabled,
+          item_disabled: !!disabled,
           [`item_variant_${variant}`]: !!variant,
         },
         className,

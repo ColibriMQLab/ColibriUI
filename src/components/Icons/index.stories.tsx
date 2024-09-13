@@ -4,7 +4,6 @@ import Cart from "./Cart";
 import Check from "./Check";
 import Chevron from "./Chevron";
 import Close from "./Close";
-import Document from "./Document";
 import Exit from "./Exit";
 import EyeOpen from "./EyeOpen";
 import EyeClosed from "./EyeClosed";
@@ -24,7 +23,6 @@ const icons = {
   Check: <Check />,
   Chevron: <Chevron />,
   Close: <Close />,
-  Document: <Document />,
   Exit: <Exit />,
   EyeClosed: <EyeClosed />,
   EyeOpen: <EyeOpen />,

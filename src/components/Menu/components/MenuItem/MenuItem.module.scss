@@ -20,15 +20,15 @@
   &_variant {
     &_primary {
       background-color: var(--palette-white);
-  
+
       &:hover {
         background-color: var(--palette-primary-1);
       }
-  
+
       &:active {
         background-color: var(--palette-primary-1);
       }
-  
+
       &:focus,
       &:focus-within {
         background-color: var(--palette-primary-1);
@@ -42,7 +42,3 @@
     white-space: nowrap;
   }
 }
-
-
-
-

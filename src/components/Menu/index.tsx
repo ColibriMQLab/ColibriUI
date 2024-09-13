@@ -8,10 +8,10 @@ import React, {
 
 const clx = classNames.bind(styles);
 
+import classNames from "classnames/bind";
 import styles from "./Menu.module.scss";
 import type { Props } from "./index.props";
 import type { MouseEvent } from "react";
-import classNames from "classnames/bind";
 
 const Menu = forwardRef<HTMLUListElement, Props>(
   ({ selected, variant, className, onClick, children }, ref) => {
@@ -39,7 +39,7 @@ const Menu = forwardRef<HTMLUListElement, Props>(
       [children, selected, onClick],
     );
     return (
-      <ul ref={ref} className={clx('menu', className)}>
+      <ul ref={ref} className={clx("menu", className)}>
         {renderChild}
       </ul>
     );

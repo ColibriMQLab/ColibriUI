@@ -4,9 +4,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Modal> = {
   title: "UI/Modal",
-  parameters: {
-    layout: "centered",
-  },
   component: Modal,
 } satisfies Meta<typeof Modal>;
 

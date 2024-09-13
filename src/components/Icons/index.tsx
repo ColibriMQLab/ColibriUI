@@ -2,7 +2,6 @@ export { default as ArrowNext } from "./ArrowNext";
 export { default as Cart } from "./Cart";
 export { default as Chevron } from "./Chevron";
 export { default as Close } from "./Close";
-export { default as Docunebt } from "./Document";
 export { default as Exit } from "./Exit";
 export { default as EyeOpen } from "./EyeOpen";
 export { default as EyeClosed } from "./EyeClosed";
