@@ -23,13 +23,13 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       style={{
         backgroundColor: isSelected
           ? "var(--palette-primary-1)"
-          : "var(--palette-white)",
+          : "",
       }}
       className={clx(
-        styles.item,
+        'item',
         {
-          disabled: disabled,
-          [`variant_${variant}`]: !!variant,
+         'item_disabled': !!disabled,
+          [`item_variant_${variant}`]: !!variant,
         },
         className,
       )}
