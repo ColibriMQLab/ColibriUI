@@ -5,7 +5,7 @@ import type { FC, ReactNode } from "react";
 
 const clx = classNames.bind(styles);
 
-type Size = "s" | "m" | "l" | string;
+type Size = "s" | "m" | "l";
 
 type Props = {
   size?: Size;
