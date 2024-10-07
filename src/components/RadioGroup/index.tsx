@@ -30,7 +30,6 @@ interface Props {
   wrapped?: boolean;
   className?: string;
   disabled?: boolean;
-  hasError?: boolean;
 }
 
 const RadioGroup: FC<Props> = memo(
@@ -43,11 +42,10 @@ const RadioGroup: FC<Props> = memo(
     wrapped = false,
     className,
     disabled = false,
-    hasError = false,
   }: Props) => {
     return (
       <div
-        className={clx(styles.group, { column, wrapped, hasError }, className)}
+        className={clx(styles.group, { column, wrapped }, className)}
       >
         {options.map((option) => {
           const {
