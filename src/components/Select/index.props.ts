@@ -15,6 +15,7 @@ export interface SelectProps<T extends string>
   disabled?: boolean;
   placeholder?: string;
   fullWidth?: boolean;
+  required?: boolean;
 }
 
 export type Coordinates = {

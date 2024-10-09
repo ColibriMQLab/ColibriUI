@@ -17,6 +17,7 @@ const Select = <T extends string>({
   label,
   hint,
   error,
+  required,
   placeholder,
   disabled,
   fullWidth = false,
@@ -44,6 +45,7 @@ const Select = <T extends string>({
       className={clx(styles["form-field"], {
         "form-field_fullWidth": fullWidth ? 1 : 0,
       })}
+      required={required}
       label={label}
       hint={hint}
       error={error}

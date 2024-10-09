@@ -13,4 +13,5 @@ export interface InputProps
   label?: ReactNode;
   hint?: ReactNode;
   error?: boolean;
+  required?: boolean;
 }

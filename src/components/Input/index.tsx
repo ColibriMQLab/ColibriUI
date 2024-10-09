@@ -14,6 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       hint,
       error,
+      required,
       onChange,
       variant = "primary",
       size = "m",
@@ -25,6 +26,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <FormField
         className={classNames(className)}
         label={label}
+        required={required}
         hint={hint}
         error={error}
       >

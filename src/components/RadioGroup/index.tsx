@@ -44,9 +44,7 @@ const RadioGroup: FC<Props> = memo(
     disabled = false,
   }: Props) => {
     return (
-      <div
-        className={clx(styles.group, { column, wrapped }, className)}
-      >
+      <div className={clx(styles.group, { column, wrapped }, className)}>
         {options.map((option) => {
           const {
             id,

@@ -3,3 +3,10 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.label {
+  &_required::after {
+    color: var(--typography-alert);
+    content: "\00a0*";
+  }
+}

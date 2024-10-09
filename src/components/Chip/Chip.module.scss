@@ -4,13 +4,13 @@
 }
 
 .inner {
-  place-items: stretch flex-start;
   box-sizing: border-box;
   display: flex;
   font-family: Roboto, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 0;
+  place-items: stretch flex-start;
   transition-duration: 0.3s;
   transition-property: background, box-shadow, transform;
   transition-timing-function: ease;
