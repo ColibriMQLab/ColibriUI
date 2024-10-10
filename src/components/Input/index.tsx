@@ -16,6 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       required,
       onChange,
+      inputRef,
       variant = "primary",
       size = "m",
       ...props
@@ -39,7 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           disabled={!!props.disabled}
           error={error}
         >
-          <BaseInput onChange={onChange} {...{ type: "text", ...props }} />
+          <BaseInput ref={inputRef} onChange={onChange} {...{ type: "text", ...props }} />
         </InputRoot>
       </FormField>
     );
