@@ -39,7 +39,9 @@ const Counter: React.FC<CounterProps> = ({
         <Button
           icon={<MinusIcon width={16} height={16} />}
           disabled={minusDisabled}
-          onClick={() => {
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
             onChange(value - 1);
             lastNumValue.current = value - 1;
           }}
@@ -49,7 +51,9 @@ const Counter: React.FC<CounterProps> = ({
         <Button
           icon={<PlusIcon width={16} height={16} />}
           disabled={plusDisabled}
-          onClick={() => {
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
             onChange(value + 1);
             lastNumValue.current = value + 1;
           }}

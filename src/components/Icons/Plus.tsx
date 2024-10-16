@@ -2,20 +2,19 @@ import React, { forwardRef } from "react";
 import type { Props } from "./index.props";
 
 export default forwardRef<SVGSVGElement, Props>(
-  ({ fill = "currentColor", width = 24, height = 24, ...props }, ref) => (
+  ({ fill = "currentColor", width = 18, height = 18, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      viewBox="0 0 18 18"
       ref={ref}
       {...props}
-      fill="none"
     >
       <path
         fill={fill}
-        fillRule="evenodd"
-        d="M12.5 1a1.26 1.26 0 0 1 1.26 1.26v7.98h7.98a1.26 1.26 0 1 1 0 2.52h-7.98v7.98a1.26 1.26 0 0 1-2.52 0v-7.98H3.26a1.26 1.26 0 0 1 0-2.52h7.98V2.26A1.26 1.26 0 0 1 12.5 1"
-        clipRule="evenodd"
+        fillRule="nonzero"
+        d="M15.517 7.642h-5.16v-5.16a1.358 1.358 0 0 0-2.715 0v5.16h-5.16a1.358 1.358 0 0 0 0 2.716h5.16v5.16a1.358 1.358 0 0 0 2.716 0v-5.16h5.16a1.358 1.358 0 0 0 0-2.716"
       />
     </svg>
   ),
