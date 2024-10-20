@@ -1,12 +1,7 @@
-export const enum AvatarSizes {
-  XXXS = 20,
-  XXS = 38,
-  XXR = 44,
-  XS = 52,
-  XR = 60,
-  MB = 64,
-  S = 70,
-  MS = 120,
-  M = 160,
-  XL = 280,
+export enum AvatarSizes {
+  S = '2rem',
+  M = '3rem',
+  L = '3.5rem',
+  XL = '5rem',
+  XXL = '6rem',
 }

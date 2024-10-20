@@ -1,6 +1,6 @@
 import { AvatarSizes } from "./constants";
 
-export const enum AccountType {
+export enum AccountType {
   Person = 'person',
   Organization = 'org'
 }

@@ -2,17 +2,19 @@ import React from "react";
 import Avatar from ".";
 import type { Meta } from "@storybook/react";
 import { AccountType } from "./index.props";
-import { textChangeRangeIsUnchanged } from "typescript";
+import { AvatarSizes } from "./constants";
 
 const meta: Meta<typeof Avatar> = {
   title: "UI/Avatar",
-  parameters: {
-    layout: "centered",
-  },
+  parameters: {},
   argTypes: {
     accountType: {
       control: { type: "select" },
-      options: [AccountType.Organization, AccountType.Person],
+      options: Object.values(AccountType),
+    },
+    size: {
+      control: { type: "select" },
+      options: Object.values(AvatarSizes),
     },
     bordered: {
       control: { type: "boolean" },

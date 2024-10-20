@@ -1,16 +1,14 @@
 import React, { FC, memo } from 'react';
 
 import { AvatarSizes } from './constants';
-
+import maleCircleUrl from './assets/male-circle.svg';
+import orgCircleUrl from './assets/org-circle.svg';
 import styles from './Avatar.module.scss';
 import classNames from 'classnames/bind';
 import { AccountType, AvatarProps } from './index.props';
 import Image from '../Image';
 
 const clx = classNames.bind(styles);
-
-const MaleCircle = require('./assets/male-circle.svg');
-const OrgCircle = require('./assets/org-circle.svg');
 
 const Avatar: FC<AvatarProps> = memo(props => {
   const {
@@ -22,12 +20,12 @@ const Avatar: FC<AvatarProps> = memo(props => {
     accountType = AccountType.Organization,
   } = props;
   const isOrg = accountType === AccountType.Organization;
-  const StubImage = isOrg ? OrgCircle : MaleCircle;
+  const stubImageURL = isOrg ? orgCircleUrl : maleCircleUrl;
 
   return (
     <Image
       alt={title}
-      src={avatarURL || StubImage}
+      src={(avatarURL || stubImageURL) as string}
       width={size}
       height={size}
       className={clx(styles.avatar, { 
