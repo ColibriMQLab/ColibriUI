@@ -23,7 +23,7 @@ const Avatar: FC<AvatarProps> = memo(props => {
   const stubImageURL = isOrg ? orgCircleUrl : maleCircleUrl;
 
   return (
-    <Image
+    <img
       alt={title}
       src={(avatarURL || stubImageURL) as string}
       width={size}
