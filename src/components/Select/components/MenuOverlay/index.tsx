@@ -2,6 +2,7 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
+import generateUniqID from "../../../helpers/generateUniqID";
 import styles from "./index.module.scss";
 import type { Coordinates, IOption } from "../../index.props";
 
@@ -46,17 +47,13 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
   }, [scrollView, rootRef]);
 
   return (
-    <div
-      ref={rootRef}
-      className={clx(styles.root)}
-      // style={{ maxHeight: `${listHeight}px` }}
-    >
+    <div ref={rootRef} className={clx(styles.root)}>
       <Menu ref={listRef} selected={selected}>
         {options.map((option, index) => (
           <SelectItem
             setScrollView={setScrollView}
             option={option}
-            key={`item-${index}`}
+            key={generateUniqID(index)}
             onClick={() => handleSelect(option, `item-${index}`)}
           />
         ))}

@@ -92,12 +92,11 @@ const Calendar: React.FC<Props> = ({
         const [startDate, endDate] = [date, selectedDate].sort();
         const period = getDaysDiff(new Date(startDate), new Date(endDate)) + 1;
 
-        if (!withContinueButton && onChange) {
+        if (onChange) {
           onChange({
             date,
             period,
           });
-          return;
         }
 
         requestIdleCallback(
@@ -105,16 +104,15 @@ const Calendar: React.FC<Props> = ({
           idleCallbackOptions,
         );
       } else {
-        if (!withContinueButton && onChange) {
+        if (onChange) {
           onChange({
             date,
             period: 1,
           });
-          return;
         }
 
         requestIdleCallback(
-          () => selectDate(date, 1, !canSelectRange),
+          () => selectDate(date, 1, false),
           idleCallbackOptions,
         );
       }

@@ -1,6 +1,7 @@
 import React from "react";
 import User from "../Icons/User";
 import Cart from "../Icons/Cart";
+import generateUniqID from '../helpers/generateUniqID';
 import Badge from ".";
 import type { ReactNode } from "react";
 import type { Meta } from "@storybook/react";
@@ -51,9 +52,9 @@ export default meta;
 function render(args) {
   return (
     <div style={{ display: "flex", gap: "30px" }}>
-      {[<Cart />, <User />].map((icon: ReactNode, i: number) => {
+      {[<Cart />, <User />].map((icon: ReactNode, index: number) => {
         return (
-          <Badge key={i.toString()} content={3} {...args}>
+          <Badge key={generateUniqID(index)} content={3} {...args}>
             {icon}
           </Badge>
         );

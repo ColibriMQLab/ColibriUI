@@ -3,6 +3,7 @@ import GridItem from "../Grid/Item";
 import Grid from "../Grid";
 import Typography from '../Typography';
 import type { Meta } from "@storybook/react";
+import generateUniqID from '../helpers/generateUniqID';
 import { Common, Backgrounds, Accents } from './colors/common';
 import { Primary, Secondary, Tretiary, Brand } from './colors/theme_default';
 import { PrimaryBA, SecondaryBA, TretiaryBA, BrandBA } from './colors/theme_buenos_aires';
@@ -32,7 +33,7 @@ export const CommonColors = () => {
       <Grid>
         {common.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -43,7 +44,7 @@ export const CommonColors = () => {
       <Grid>
         {backgrounds.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -54,7 +55,7 @@ export const CommonColors = () => {
       <Grid>
         {accents.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -85,7 +86,7 @@ export const ThemeDefault = () => {
       <Grid>
         {primary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -96,7 +97,7 @@ export const ThemeDefault = () => {
       <Grid>
         {secondary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -107,7 +108,7 @@ export const ThemeDefault = () => {
       <Grid>
         {tretiary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -118,7 +119,7 @@ export const ThemeDefault = () => {
       <Grid>
         {brand.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -149,7 +150,7 @@ export const ThemeBuenosAires = () => {
       <Grid>
         {primary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -160,7 +161,7 @@ export const ThemeBuenosAires = () => {
       <Grid>
         {secondary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -171,7 +172,7 @@ export const ThemeBuenosAires = () => {
       <Grid>
         {tretiary.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
@@ -182,7 +183,7 @@ export const ThemeBuenosAires = () => {
       <Grid>
         {brand.map((item, index) => (
           <GridItem
-            key={index}
+            key={generateUniqID(index)}
             style={{ backgroundColor: item }}
           >
             {item}
