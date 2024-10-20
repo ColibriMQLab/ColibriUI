@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {icon && <span className={clx(styles.icon)}>{icon}</span>}
         {iconStart && <span className={clx(styles.icon)}>{iconStart}</span>}
-        {children && children}
+        {children && <span className={clx(styles.text)}>{children}</span>}
         {iconEnd && <span className={clx(styles.icon)}>{iconEnd}</span>}
       </button>
     );

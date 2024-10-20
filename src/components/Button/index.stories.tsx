@@ -93,3 +93,11 @@ export const Variants = (args) => (
     </Button>
   </div>
 );
+
+export const LongText = (args) => (
+  <div style={{width: '200px'}}>
+    <Button size="m" variant="primary" {...args} fullWidth>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </Button>
+  </div>
+);

@@ -6,7 +6,9 @@ import { AvatarSizes } from "./constants";
 
 const meta: Meta<typeof Avatar> = {
   title: "UI/Avatar",
-  parameters: {},
+  parameters: {
+    layout: 'centered'
+  },
   argTypes: {
     accountType: {
       control: { type: "select" },
@@ -14,7 +16,7 @@ const meta: Meta<typeof Avatar> = {
     },
     size: {
       control: { type: "select" },
-      options: Object.values(AvatarSizes),
+      options: [AvatarSizes.S, AvatarSizes.M, AvatarSizes.L, AvatarSizes.XL, AvatarSizes.XXL],
     },
     bordered: {
       control: { type: "boolean" },
