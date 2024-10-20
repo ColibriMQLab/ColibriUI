@@ -3,9 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Image> = {
   title: "UI/Image",
-  parameters: {
-    layout: "centered",
-  },
+  parameters: {},
   component: Image,
 } satisfies Meta<typeof Image>;
 
