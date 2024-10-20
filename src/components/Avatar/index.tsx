@@ -6,7 +6,6 @@ import orgCircleUrl from './assets/org-circle.svg';
 import styles from './Avatar.module.scss';
 import classNames from 'classnames/bind';
 import { AccountType, AvatarProps } from './index.props';
-import Image from '../Image';
 
 const clx = classNames.bind(styles);
 
