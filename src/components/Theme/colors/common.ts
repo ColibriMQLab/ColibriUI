@@ -4,11 +4,11 @@ export const Common = {
 };
 
 export const Backgrounds = {
-  BG_1: "#f2f2f2",
-  BG_2: "#e6e6e6",
-  BG_3: "#dbdbdb",
-  BG_4: "#b3b3b3",
-  BG_5: "#999",
+  BG_1: "#ECEEF2",
+  BG_2: "#E4E6EA",
+  BG_3: "#D6D9E0",
+  BG_4: "#C9CDD6",
+  BG_5: "#BCC1CC",
 };
 
 export const Accents = {
