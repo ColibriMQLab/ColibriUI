@@ -1,24 +1,28 @@
 import React from "react";
+import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 import Cart from "../Icons/Cart";
 import Badge from ".";
 
 describe("<Badge />", () => {
-  it("renders", () => {
-    cy.mount(
-      <Badge content={3}>
+  it('should render correctly', () => {
+      const { container } = render(
+        <Badge content={3}>
         <Cart />
       </Badge>,
-    );
+      );
+      expect(container).toMatchSnapshot();
   });
 
-  it("has the correct number", () => {
-    const badge = cy
-      .mount(
-        <Badge content={3}>
-          <Cart />
-        </Badge>,
-      )
-      .get("[data-cy=badge]");
-    badge.should("contains.text", "3");
+  it('has the correct number', () => {
+    // Рендерим компонент
+    render(
+      <Badge content={3}>
+        <Cart />
+      </Badge>
+    );
+  
+    const badge = screen.getByTestId('badge');
+    expect(badge).toHaveTextContent('3');
   });
 });
