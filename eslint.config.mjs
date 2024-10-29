@@ -46,8 +46,6 @@ export default [
       "**/*.stories.tsx",
       "src/**/*.test.ts",
       "src/**/*.test.tsx",
-      "cypress/",
-      "cypress.config.ts",
     ],
   },
 ];

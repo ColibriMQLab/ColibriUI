@@ -33,8 +33,6 @@
   "exclude": [
       "node_modules",
       "dist",
-      "cypress/**/*",
-      "cypress.config.ts",
       "src/**/*.stories.tsx",
       "src/**/*.cy.tsx",
       "src/**/*.cy.ts",
