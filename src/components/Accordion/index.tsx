@@ -12,6 +12,7 @@ type Props = {
   title: ReactNode;
   className?: string;
   boldTitle?: boolean;
+  tabIndex?: number;
 };
 
 const Accordion: FC<PropsWithChildren<Props>> = ({
@@ -19,6 +20,7 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
   boldTitle = false,
   children,
   className,
+  tabIndex,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -40,6 +42,9 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
           className={clx("button")}
           onClick={toggleAccordion}
           type="button"
+          role="button"
+          aria-expanded={isOpen}
+          tabIndex={tabIndex}
         >
           <Chevron
             className={clx("chevron", { chevron_open: isOpen })}
