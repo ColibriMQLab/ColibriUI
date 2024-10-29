@@ -1,14 +1,14 @@
 .avatar {
-  transition: border-color .15s ease;
   border-radius: 100%;
   box-sizing: border-box;
+  transition: border-color 0.15s ease;
 
   &_bordered {
-    border: 4px solid transparent;
     background-color: var(--palette-white);
+    border: 4px solid transparent;
 
     &:hover {
-      border-color: rgba(95, 99, 104, .24);
+      border-color: rgb(95 99 104 / 24%);
     }
   }
 }

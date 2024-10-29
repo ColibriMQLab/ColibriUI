@@ -1,8 +1,8 @@
-import { AvatarSizes } from "./constants";
+import type { AvatarSizes } from "./constants";
 
 export enum AccountType {
-  Person = 'person',
-  Organization = 'org'
+  Person = "person",
+  Organization = "org",
 }
 
 export type AvatarProps = {
@@ -12,4 +12,4 @@ export type AvatarProps = {
   avatarURL?: string;
   bordered?: boolean;
   className?: string;
-}
+};
