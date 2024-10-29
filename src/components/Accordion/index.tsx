@@ -45,6 +45,7 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
           role="button"
           aria-expanded={isOpen}
           tabIndex={tabIndex}
+          aria-label="Toggle"
         >
           <Chevron
             className={clx("chevron", { chevron_open: isOpen })}

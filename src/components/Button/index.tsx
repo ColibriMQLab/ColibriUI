@@ -18,6 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       disabled,
       onClick,
+      type,
       ...props
     },
     ref,
@@ -39,6 +40,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         disabled={disabled}
         data-cy="button"
+        type={type || "button"}
+        role="button"
         {...props}
       >
         {icon && <span className={clx(styles.icon)}>{icon}</span>}

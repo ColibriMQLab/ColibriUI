@@ -139,6 +139,8 @@ export const Month: FCWithElements<Props> = (props) => {
                           ? "var(--palette-bg-2)"
                           : "transparent",
                       }}
+                      role="button"
+                      type="button"
                       onClick={
                         day.isActive
                           ? () =>

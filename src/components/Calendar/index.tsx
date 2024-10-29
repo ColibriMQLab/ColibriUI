@@ -208,6 +208,9 @@ const Calendar: React.FC<Props> = ({
           className={clx(styles["month-control"], styles["month-control-prev"])}
           onClick={showPrevMonth}
           disabled={currentMonthOffset <= 0}
+          type="button"
+          role="button"
+          aria-label="Prev"
         >
           <ArrowNext className={clx(styles["month-control-prev-arrow"])} />
         </button>
@@ -215,6 +218,9 @@ const Calendar: React.FC<Props> = ({
           className={clx(styles["month-control"], styles["month-control-next"])}
           onClick={showNextMonth}
           disabled={currentMonthOffset >= 11}
+          type="button"
+          role="button"
+          aria-label="Next"
         >
           <ArrowNext className={clx(styles["month-control-next-arrow"])} />
         </button>
