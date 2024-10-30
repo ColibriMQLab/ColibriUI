@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import classNames from "classnames/bind";
 import { BadgeControl as Control } from "./Control";
 import styles from "./Badge.module.scss";

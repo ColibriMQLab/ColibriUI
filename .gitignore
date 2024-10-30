@@ -15,7 +15,7 @@ node_modules
 
 #specs
 /.nyc_output
-/coverage/
+.coverage
 
 # Optional npm cache directory
 .npm

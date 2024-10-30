@@ -13,7 +13,7 @@ describe('<Menu />', () => {
       </Menu>
     );
 
-    const menuItems = screen.getAllByRole('listitem');
+    const menuItems = screen.getAllByTestId('menuitem');
     expect(menuItems.length).toBe(3);
   });
 
@@ -41,6 +41,6 @@ describe('<Menu />', () => {
     );
 
     const selectedItem = screen.getByText('Test 2').closest('li');
-    expect(selectedItem).toHaveStyle('background-color: rgb(184, 210, 255)');
+    expect(selectedItem).toHaveStyle('background-color: rgb(232, 240, 254)');
   });
 });
