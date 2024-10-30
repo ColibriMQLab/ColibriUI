@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import MenuItem from './components/MenuItem';
-import Menu from './';
+import MenuItem from '../components/MenuItem';
+import Menu from '..';
 
 describe('<Menu />', () => {
   it('renders', () => {
@@ -13,9 +13,8 @@ describe('<Menu />', () => {
       </Menu>
     );
 
-    // Проверяем, что элементы рендерятся
     const menuItems = screen.getAllByRole('listitem');
-    expect(menuItems.length).toBe(3); // Убедитесь, что три элемента в меню
+    expect(menuItems.length).toBe(3);
   });
 
   it('has the correct items value', () => {
@@ -27,7 +26,6 @@ describe('<Menu />', () => {
       </Menu>
     );
 
-    // Проверяем текст элементов
     expect(screen.getByText('Test 1')).toBeInTheDocument();
     expect(screen.getByText('Test 2')).toBeInTheDocument();
     expect(screen.getByText('Test 3')).toBeInTheDocument();
@@ -42,7 +40,6 @@ describe('<Menu />', () => {
       </Menu>
     );
 
-    // Проверяем стиль выбранного элемента
     const selectedItem = screen.getByText('Test 2').closest('li');
     expect(selectedItem).toHaveStyle('background-color: rgb(184, 210, 255)');
   });

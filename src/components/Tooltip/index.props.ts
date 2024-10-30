@@ -2,8 +2,6 @@ import type { ReactNode } from "react";
 import type { PositioningStrategy } from "@popperjs/core";
 import type { Placement as PopperPlacement } from "@popperjs/core";
 
-export type Trigger = "hover";
-
 export type Placement = Extract<
   PopperPlacement,
   | "bottom-start"
