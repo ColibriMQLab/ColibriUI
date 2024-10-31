@@ -41,9 +41,11 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
       return;
     }
 
-    rootRef.current.scrollTo({
-      top: scrollView.top - OFFSET_ITEMS_COUNT * scrollView.height,
-    });
+    if (typeof rootRef.current.scrollTo === "function") {
+      rootRef.current.scrollTo({
+        top: scrollView.top - OFFSET_ITEMS_COUNT * scrollView.height,
+      });
+    }
   }, [scrollView, rootRef]);
 
   return (

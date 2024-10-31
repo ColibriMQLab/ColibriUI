@@ -1,6 +1,6 @@
 import { getNumberOfMonthsBetweenDates } from "../getNumberOfMonthsBetweenDates";
 
-describe("Components. Calendar. Utils. getNumberOfMonthsBetweenDates", () => {
+describe("<Calendar/> - utils - getNumberOfMonthsBetweenDates", () => {
   it("should return proper number of dates", () => {
     const start = "2019-01-15";
 

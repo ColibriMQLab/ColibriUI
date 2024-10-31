@@ -50,7 +50,7 @@ const Badge: FC<Props> = ({
           },
           className,
         )}
-        data-cy="badge"
+        data-testid="badge"
       >
         {displayValue}
       </span>
