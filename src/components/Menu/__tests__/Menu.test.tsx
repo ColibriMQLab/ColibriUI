@@ -41,6 +41,6 @@ describe('<Menu />', () => {
     );
 
     const selectedItem = screen.getByText('Test 2').closest('li');
-    expect(selectedItem).toHaveStyle('background-color: rgb(232, 240, 254)');
+    expect(selectedItem).toHaveStyle('background-color: var(--palette-primary-1, rgb(232, 240, 254))');
   });
 });

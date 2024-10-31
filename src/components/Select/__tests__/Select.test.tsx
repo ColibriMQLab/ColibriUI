@@ -25,13 +25,13 @@ describe('<Select />', () => {
     const onChange = jest.fn();
     render(<Select value={2} options={options} onChange={onChange} />);
 
-    const selectButton = screen.getByRole('button');
+    const selectButton = screen.getByTestId('base-input');
     await userEvent.click(selectButton);
 
     const firstOption = screen.getByText(/options 0/i);
     await userEvent.click(firstOption);
 
     expect(onChange).toHaveBeenCalled();
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ value: 0 }));
+    expect(onChange).toHaveBeenCalledWith(0);
   });
 });

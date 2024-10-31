@@ -12,11 +12,9 @@ import Portal from "../Portal";
 import { on } from "../helpers/on";
 import ClickOutside from "../ClickOutside";
 
+import styles from "./Dropdown.module.scss";
 import type { DropdownProps } from "./index.props";
 import type { MouseEventHandler } from "react";
-
-import styles from "./Dropdown.module.scss";
-
 
 const clx = classNames.bind(styles);
 
@@ -156,8 +154,8 @@ const Dropdown: React.FC<DropdownProps> = ({
           <ClickOutside onClick={onClickOutside}>
             <div
               ref={setPopperElement}
-              data-component="popper-container"
-              className={clx(styles["popper-container"])}
+              data-testid="popper-container"
+              className={clx("popper-container")}
               style={{
                 ...styles.popper,
                 zIndex,
@@ -170,7 +168,8 @@ const Dropdown: React.FC<DropdownProps> = ({
               {...attributes.popper}
             >
               <div
-                className={clx(styles["overlay-container"])}
+                data-testid="overlay-container"
+                className={clx("overlay-container")}
                 onClick={onClickOverlay}
               >
                 {overlay}

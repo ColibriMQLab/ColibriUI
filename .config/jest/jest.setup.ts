@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 global.requestAnimationFrame = (callback: FrameRequestCallback): number => {
-    return setTimeout(callback, 0);
+  return setTimeout(callback, 0);
 };

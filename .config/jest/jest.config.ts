@@ -3,11 +3,11 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
-import { resolve } from 'path';
+import { resolve } from "path";
+import type { Config } from "jest";
 
 const config: Config = {
-  rootDir: resolve(__dirname, '../..'),
+  rootDir: resolve(__dirname, "../.."),
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -93,9 +93,9 @@ const config: Config = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    '^.+\\.(css|sass|scss)$': '<rootDir>/.config/jest/__mocks__/noop.js',
-    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': `<rootDir>/.config/jest/__mocks__/noop.js`,
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^.+\\.(css|sass|scss)$": "<rootDir>/.config/jest/__mocks__/noop.js",
+    "^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$": `<rootDir>/.config/jest/__mocks__/noop.js`,
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -143,7 +143,7 @@ const config: Config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/.config/jest/jest.setup.ts'],
+  setupFilesAfterEnv: ["<rootDir>/.config/jest/jest.setup.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -167,7 +167,7 @@ const config: Config = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ["<rootDir>/node_modules/"],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -182,13 +182,13 @@ const config: Config = {
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset
     // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '^.+\\.module\\.(css|sass|scss)$',
+    "<rootDir>/node_modules/",
+    "^.+\\.module\\.(css|sass|scss)$",
   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

@@ -6,12 +6,12 @@ import React, {
   forwardRef,
 } from "react";
 
-const clx = classNames.bind(styles);
-
 import classNames from "classnames/bind";
 import styles from "./Menu.module.scss";
 import type { Props } from "./index.props";
 import type { MouseEvent } from "react";
+
+const clx = classNames.bind(styles);
 
 const Menu = forwardRef<HTMLUListElement, Props>(
   ({ selected, variant, className, onClick, children }, ref) => {

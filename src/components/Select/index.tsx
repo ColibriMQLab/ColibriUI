@@ -69,10 +69,7 @@ const Select = <T extends string>({
           }
           disabled={!!disabled}
         >
-          <div
-            className={clx(styles["base-input"])}
-            data-component="base-input"
-          >
+          <div className={clx(styles["base-input"])} data-testid="base-input">
             {prepraredLabel ?? (
               <span className={clx(styles.placeholder)}>{placeholder}</span>
             )}
