@@ -1,5 +1,5 @@
-import { RefObject } from "react";
-import { TabProps } from "./Tab/Tab.props";
+import type { RefObject } from "react";
+import type { TabProps } from "./Tab/Tab.props";
 
 export type TabsMenuProps = {
   activeTab?: string;
@@ -8,4 +8,4 @@ export type TabsMenuProps = {
   tabsRefs?: RefObject<HTMLLIElement>[];
   innerRef?: RefObject<HTMLUListElement>;
   className?: string;
-}
+};

@@ -1,4 +1,9 @@
-import { KeyboardEventHandler, MouseEventHandler, ReactNode, RefObject } from "react";
+import type {
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  RefObject,
+} from "react";
 
 export type TabProps = {
   id?: string;
@@ -12,4 +17,4 @@ export type TabProps = {
   role?: string;
   tabIndex?: number;
   onKeyDown?: KeyboardEventHandler<HTMLElement>;
-}
+};

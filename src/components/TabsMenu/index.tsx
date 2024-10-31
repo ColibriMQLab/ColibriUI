@@ -1,11 +1,12 @@
-import React, { KeyboardEvent, useCallback, FC, createRef, useMemo } from 'react';
+import React, { useCallback, createRef, useMemo } from "react";
 
-import { isKey, Keys } from '../lib/keyboard';
-import Tab from './Tab/Tab';
-import { TabsMenuProps } from './index.props';
-import classNames from 'classnames/bind';
+import classNames from "classnames/bind";
+import { isKey, Keys } from "../lib/keyboard";
+import Tab from "./Tab/Tab";
+import styles from "./TabsMenu.module.scss";
+import type { TabsMenuProps } from "./index.props";
 
-import styles from './TabsMenu.module.scss'
+import type { KeyboardEvent, FC } from "react";
 
 const clx = classNames.bind(styles);
 
@@ -18,7 +19,9 @@ const TabsMenu: FC<TabsMenuProps> = ({
   tabsRefs: externalTabsRefs,
   ...props
 }) => {
-  const tabsRefs = externalTabsRefs || useMemo(() => tabs.map(() => createRef<HTMLLIElement>()), [tabs]);
+  const tabsRefs =
+    externalTabsRefs ||
+    useMemo(() => tabs.map(() => createRef<HTMLLIElement>()), [tabs]);
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -37,8 +40,10 @@ const TabsMenu: FC<TabsMenuProps> = ({
 
         for (let i = nextTabMenuIndex; i < tabs.length; i += direction) {
           nextTabMenuIndex += direction;
-          const isEdge = nextTabMenuIndex >= tabs.length || nextTabMenuIndex < 0;
-          const isTabNonDisabled = tabs[nextTabMenuIndex] && !tabs[nextTabMenuIndex].disabled;
+          const isEdge =
+            nextTabMenuIndex >= tabs.length || nextTabMenuIndex < 0;
+          const isTabNonDisabled =
+            tabs[nextTabMenuIndex] && !tabs[nextTabMenuIndex].disabled;
           if (isEdge || isTabNonDisabled) {
             break;
           }
@@ -79,14 +84,18 @@ const TabsMenu: FC<TabsMenuProps> = ({
           innerRef={tabsRefs[index]}
           first={index === 0}
           disabled={disabled}
-          onClick={disabled || (!onChange && !tabProps.onClick) ? undefined : (event) => {
-            if (tabProps.onClick !== undefined) {
-              tabProps.onClick(event);
-            }
-            if (onChange !== undefined) {
-              onChange(id as string);
-            }
-          }}
+          onClick={
+            disabled || (!onChange && !tabProps.onClick)
+              ? undefined
+              : (event) => {
+                  if (tabProps.onClick !== undefined) {
+                    tabProps.onClick(event);
+                  }
+                  if (onChange !== undefined) {
+                    onChange(id as string);
+                  }
+                }
+          }
           active={id === activeTab}
           key={id}
           onKeyDown={onKeyDown}
