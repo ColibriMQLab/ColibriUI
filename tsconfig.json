@@ -34,7 +34,7 @@
       "node_modules",
       "dist",
       "src/**/*.stories.tsx",
-      "src/**/*.cy.ts",
+      "src/**/*.test.tsx",
       "src/**/*.test.ts",
       "src/**/*.scss",
   ],
