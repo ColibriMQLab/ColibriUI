@@ -1,0 +1,10 @@
+.tab {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.tab_disabled {
+  cursor: default;
+}
