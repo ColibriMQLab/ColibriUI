@@ -16,7 +16,7 @@
   transition-timing-function: ease;
 
   &_active {
-    background: rgb(237 237 237);
+    background: var(--palette-bg-1);
   }
 
   &_inactive {
@@ -49,17 +49,20 @@
 
   &[data-size="s"] {
     border-radius: 32px;
-    height: 32px;
+    font-size: 15px;
+    line-height: 32px;
   }
 
   &[data-size="m"] {
     border-radius: 36px;
-    height: 36px;
+    font-size: 16px;
+    line-height: 36px;
   }
 
   &[data-size="l"] {
     border-radius: 44px;
-    height: 44px;
+    font-size: 18px;
+    line-height: 44px;
   }
 }
 

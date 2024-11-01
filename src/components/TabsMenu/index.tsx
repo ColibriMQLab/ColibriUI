@@ -16,6 +16,7 @@ const TabsMenu: FC<TabsMenuProps> = ({
   className,
   innerRef,
   tabs,
+  size = "m",
   tabsRefs: externalTabsRefs,
   ...props
 }) => {
@@ -84,6 +85,7 @@ const TabsMenu: FC<TabsMenuProps> = ({
           innerRef={tabsRefs[index]}
           first={index === 0}
           disabled={disabled}
+          size={size}
           onClick={
             disabled || (!onChange && !tabProps.onClick)
               ? undefined

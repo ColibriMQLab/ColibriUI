@@ -1,21 +1,10 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Chip.module.scss";
-import type { FC, ReactNode } from "react";
+import type { Props } from "./index.props";
+import type { FC } from "react";
 
 const clx = classNames.bind(styles);
-
-type Size = "s" | "m" | "l";
-
-type Props = {
-  size?: Size;
-  testID?: string;
-  isActive?: boolean;
-  iconOnRight?: React.ReactNode;
-  onClick?: () => void;
-  onIconOnRightClick?: () => void;
-  children?: ReactNode;
-};
 
 const Chip: FC<Props> = (props) => {
   const {

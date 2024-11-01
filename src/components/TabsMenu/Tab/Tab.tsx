@@ -14,6 +14,7 @@ const Tab: FC<TabProps> = ({
   content,
   disabled,
   first,
+  size,
   ...props
 }) => (
   <li
@@ -23,12 +24,14 @@ const Tab: FC<TabProps> = ({
     className={clx(
       styles.tab,
       {
+        tab_inactive: !active,
         tab_active: !!active,
         tab_disabled: !!disabled,
         tab_first: !!first,
       },
       className,
     )}
+    data-size={size}
     role="tab"
     tabIndex={disabled ? undefined : active ? 0 : -1}
   >

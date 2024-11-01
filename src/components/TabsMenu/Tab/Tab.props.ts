@@ -1,3 +1,4 @@
+import type { Size } from "../index.props";
 import type {
   KeyboardEventHandler,
   MouseEventHandler,
@@ -17,4 +18,5 @@ export type TabProps = {
   role?: string;
   tabIndex?: number;
   onKeyDown?: KeyboardEventHandler<HTMLElement>;
+  size?: Size;
 };
