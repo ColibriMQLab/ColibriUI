@@ -22,6 +22,7 @@ export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { default as Switch } from "./Switch";
 export { default as TabsMenu } from "./TabsMenu";
+export { default as TabsPanes } from "./TabsPanes";
 export { THEMES } from "./Theme";
 export { default as Tooltip } from "./Tooltip";
 export { default as TimeSelect } from "./TimeSelect";

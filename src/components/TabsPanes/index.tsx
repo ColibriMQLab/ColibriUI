@@ -20,21 +20,13 @@ const TabsPanes: FC<TabsPanesProps> = ({
     return pane.id === activePane ? pane : null;
   }, null);
 
-  if (currentPane === null) {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn(
-        `Panel with id ${activePane} was not found in the list of elements.`,
-      );
-    }
-  }
-
   const { id, ...paneProps }: any = currentPane || {};
 
   return (
     <div
       {...props}
       ref={innerRef}
-      role="tabpanel"
+      role="menutabpanes"
       className={classNames(null, [className])}
     >
       {currentPane && <TabsPanesPane {...paneProps} />}
