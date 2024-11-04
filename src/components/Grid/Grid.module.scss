@@ -6,7 +6,7 @@
 @supports (display: grid) {
   .root {
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(50px, auto);
     grid-gap: 10px;
   }
 

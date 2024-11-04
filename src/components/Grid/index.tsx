@@ -7,7 +7,7 @@ const Grid: React.FC<GridProps> = ({
   children,
   gridRowGap = 24,
   gridColumnGap = 16,
-  gridItemMinWidth = 250,
+  gridItemMinWidth = 100,
   className,
 }) => (
   <div
