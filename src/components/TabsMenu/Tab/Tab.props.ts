@@ -15,7 +15,6 @@ export type TabProps = {
   onClick?: MouseEventHandler<HTMLLIElement>;
   innerRef?: RefObject<HTMLLIElement>;
   className?: string;
-  role?: string;
   tabIndex?: number;
   onKeyDown?: KeyboardEventHandler<HTMLElement>;
   size?: Size;
