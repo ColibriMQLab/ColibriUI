@@ -7,7 +7,6 @@ export type TabsMenuProps = {
   activeTab?: string;
   onChange?: (tabId: string) => void;
   tabs: TabProps[];
-  tabsRefs?: RefObject<HTMLLIElement>[];
   innerRef?: RefObject<HTMLUListElement>;
   className?: string;
   size?: Size;

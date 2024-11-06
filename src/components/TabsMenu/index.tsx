@@ -17,12 +17,9 @@ const TabsMenu: FC<TabsMenuProps> = ({
   innerRef,
   tabs,
   size = "m",
-  tabsRefs: externalTabsRefs,
   ...props
 }) => {
-  const tabsRefs =
-    externalTabsRefs ||
-    useMemo(() => tabs.map(() => createRef<HTMLLIElement>()), [tabs]);
+  const tabsRefs = useMemo(() => tabs.map(() => createRef<HTMLLIElement>()), [tabs]);
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {
