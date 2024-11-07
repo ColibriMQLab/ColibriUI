@@ -2,7 +2,7 @@ import React, { memo } from "react";
 
 import classNames from "classnames/bind";
 import { AvatarSizes } from "./constants";
-import maleCircleUrl from "./assets/male-circle.svg";
+import userCircleUrl from "./assets/user-circle.svg";
 import orgCircleUrl from "./assets/org-circle.svg";
 import styles from "./Avatar.module.scss";
 import { AccountType } from "./index.props";
@@ -21,7 +21,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     accountType = AccountType.Organization,
   } = props;
   const isOrg = accountType === AccountType.Organization;
-  const stubImageURL = isOrg ? orgCircleUrl : maleCircleUrl;
+  const stubImageURL = isOrg ? orgCircleUrl : userCircleUrl;
 
   return (
     <img
