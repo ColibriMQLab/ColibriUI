@@ -6,9 +6,7 @@
 .inner {
   box-sizing: border-box;
   display: flex;
-  font-family: Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font: inherit;
   min-width: 0;
   place-items: stretch flex-start;
   transition-duration: 0.3s;
