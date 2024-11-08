@@ -1,5 +1,5 @@
 export const Common = {
-  WHITE: "#fff",
+  WHITE: "#FFF",
   BLACK: "#000",
 };
 
@@ -12,8 +12,8 @@ export const Backgrounds = {
 };
 
 export const Accents = {
-  ALERT: "#ff564e",
-  SUCCESS: "#28bc00",
+  ALERT: "#FF564E",
+  SUCCESS: "#28BC00",
 };
 
 export const Color = {

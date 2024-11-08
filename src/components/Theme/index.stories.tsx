@@ -1,20 +1,16 @@
 import React from "react";
-import GridItem from "../Grid/Item";
-import Grid from "../Grid";
-import Typography from '../Typography';
-import type { Meta } from "@storybook/react";
+import chroma from 'chroma-js';
 import generateUniqID from '../helpers/generateUniqID';
-import { Common, Backgrounds, Accents } from './colors/common';
-import { Primary, Secondary, Tretiary, Brand } from './colors/theme_default';
-import { PrimaryBA, SecondaryBA, TretiaryBA, BrandBA } from './colors/theme_buenos_aires';
+import ColorsDefault from './themes/default';
+import Typography from '../Typography'
 
-const meta: Meta<typeof Grid> = {
+const meta = {
   title: "UI/Theme",
-} satisfies Meta<typeof Grid>;
+};
 
 export default meta;
 
-export const CommonColors = () => {
+export const Themes = () => {
   const style = `
     #storybook-root {
       flex: 1;
@@ -22,174 +18,56 @@ export const CommonColors = () => {
     }
   `;
 
-  const common = Object.values(Common);
-  const backgrounds = Object.values(Backgrounds);
-  const accents = Object.values(Accents);
+  function isColorDark(color) {
+    const rgb = chroma(color).rgb();
+    const [r, g, b] = rgb.map(Number);
+    const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+    return brightness < 128;
+  }
+
+  function getTextColorForBackground(bgColor) {
+    return isColorDark(bgColor) ? 'white' : 'black';
+  }
+
+  function isHexColor(color) {
+    return /^#([0-9A-F]{3}){1,2}$/i.test(color);
+  }
 
   return (
     <>
       <style>{style}</style>
-      <Typography size="h3" tag="h3">Common</Typography>
-      <Grid>
-        {common.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Backgrounds</Typography>
-      <Grid>
-        {backgrounds.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Accents</Typography>
-      <Grid>
-        {accents.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-    </>
-  );
-};
+      <div>
+        <div style={{ width: '700px', display: 'flex', gap: '16px', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ flex: 1 }}>
+  
+          </div>
+          <div style={{ flex: 1 }}>
+            <Typography tag="h5" size="h5">Theme Default</Typography>
+          </div>
+        </div>
+          {Object.entries(ColorsDefault).map((item, index) => {
+            let backgroundColor = '';
+            let textColor = '';
 
-export const ThemeDefault = () => {
-  const style = `
-    #storybook-root {
-      flex: 1;
-      display: block;
-    }
-  `;
+            if (isHexColor(item[1])) {
+              backgroundColor = item[1];
+              textColor = getTextColorForBackground(backgroundColor);
+            }
 
-  const primary = Object.values(Primary);
-  const secondary = Object.values(Secondary);
-  const tretiary = Object.values(Tretiary);
-  const brand = Object.values(Brand);
-
-  return (
-    <>
-      <style>{style}</style>
-      <Typography size="h3" tag="h3">Primary</Typography>
-      <Grid>
-        {primary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Secondary</Typography>
-      <Grid>
-        {secondary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Tretiary</Typography>
-      <Grid>
-        {tretiary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Brand</Typography>
-      <Grid>
-        {brand.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-    </>
-  );
-};
-
-export const ThemeBuenosAires = () => {
-  const style = `
-    #storybook-root {
-      flex: 1;
-      display: block;
-    }
-  `;
-
-  const primary = Object.values(PrimaryBA);
-  const secondary = Object.values(SecondaryBA);
-  const tretiary = Object.values(TretiaryBA);
-  const brand = Object.values(BrandBA);
-
-  return (
-    <>
-      <style>{style}</style>
-      <Typography size="h3" tag="h3">Primary</Typography>
-      <Grid>
-        {primary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Secondary</Typography>
-      <Grid>
-        {secondary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Tretiary</Typography>
-      <Grid>
-        {tretiary.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
-      <Typography size="h3" tag="h3">Brand</Typography>
-      <Grid>
-        {brand.map((item, index) => (
-          <GridItem
-            key={generateUniqID(index)}
-            style={{ backgroundColor: item }}
-          >
-            {item}
-          </GridItem>
-        ))}
-      </Grid>
+            return (
+              <div style={{ display: 'flex', gap: '16px' }} key={generateUniqID(index)}>
+                <div style={{ flex: 1 }}>
+                  {`--${item[0]}`}
+                </div>
+                <div style={{ backgroundColor, color: textColor, flex: 1 }}>
+                  {item[1]}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </>
   );
 };

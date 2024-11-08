@@ -1,0 +1,22 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: var(--palette-bg-2);
+  line-height: 1.5rem;
+  padding: 0 .5rem;
+  border-radius: 6rem;
+  inline-size: fit-content;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+
+  &::before {
+    background-color: var(--palette-bg-5);
+    content: '';
+    inline-size: .5rem;
+    block-size: .5rem;
+    border-radius: 100%;
+  }
+}

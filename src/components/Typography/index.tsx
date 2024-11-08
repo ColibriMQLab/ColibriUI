@@ -7,7 +7,7 @@ import type { FC } from "react";
 const clx = classNames.bind(styles);
 
 const Typography: FC<Props> = ({
-  tag: Element = "span",
+  tag: Component = "span",
   children,
   variant,
   size,
@@ -16,7 +16,7 @@ const Typography: FC<Props> = ({
   className,
   ...props
 }) => (
-  <Element
+  <Component
     {...props}
     style={style}
     className={clx(
@@ -30,7 +30,7 @@ const Typography: FC<Props> = ({
     )}
   >
     {children}
-  </Element>
+  </Component>
 );
 
 export default Typography;
