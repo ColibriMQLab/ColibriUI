@@ -20,6 +20,7 @@ export { default as RadioGroup } from "./RadioGroup";
 export { default as Select } from "./Select";
 export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
+export { default as Status } from "./Status";
 export { default as Switch } from "./Switch";
 export { default as TabsMenu } from "./TabsMenu";
 export { default as TabsPanes } from "./TabsPanes";
