@@ -39,9 +39,7 @@ export const Themes = () => {
       <div>
         <div style={{ width: '700px', display: 'flex', gap: '16px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', gap: '16px' }}>
-          <div style={{ flex: 1 }}>
-  
-          </div>
+          <div style={{ flex: 1 }}/>
           <div style={{ flex: 1 }}>
             <Typography tag="h5" size="h5">Theme Default</Typography>
           </div>
