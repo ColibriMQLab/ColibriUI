@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  background-color: var(--palette-bg-2);
+  background-color: var(--status-neutral-bg);
   line-height: 1.5rem;
   padding: 0 .5rem;
   border-radius: 6rem;
@@ -13,10 +13,42 @@
   vertical-align: middle;
 
   &::before {
-    background-color: var(--palette-bg-5);
+    background-color: var(--status-neutral);
     content: '';
-    inline-size: .5rem;
-    block-size: .5rem;
+    inline-size: .4rem;
+    block-size: .4rem;
     border-radius: 100%;
+  }
+
+  &_success {
+    background-color: var(--status-success-bg);
+
+    &::before {
+      background-color: var(--status-success);
+    }
+  }
+
+  &_info {
+    background-color: var(--status-info-bg);
+
+    &::before {
+      background-color: var(--status-info);
+    }
+  }
+
+  &_failure {
+    background-color: var(--status-failure-bg);
+
+    &::before {
+      background-color: var(--status-failure);
+    }
+  }
+
+  &_warning {
+    background-color: var(--status-warning-bg);
+
+    &::before {
+      background-color: var(--status-warning);
+    }
   }
 }

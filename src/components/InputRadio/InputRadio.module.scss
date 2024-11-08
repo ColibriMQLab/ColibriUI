@@ -59,7 +59,7 @@
 
   &:not(&_disabled, &_error) {
     &:hover + .icon {
-      border-color: var(--input-radio-background-color-hovered);
+      border-color: var(--input-radio-bg-hovered);
     }
 
     &:focus + .icon {
@@ -67,7 +67,7 @@
     }
 
     &:active + .icon {
-      background-color: var(--input-radio-background-color-focused);
+      background-color: var(--input-radio-bg-focused);
       border-color: var(--input-radio-border-color-focused);
       box-shadow: 0 0 0 2px var(--input-radio-box-shadow-focused);
     }
@@ -75,18 +75,18 @@
 
   &:not(&_disabled, &_error) &_checked {
     &:hover + .icon {
-      border-color: var(--input-radio-background-color-hovered);
+      border-color: var(--input-radio-bg-hovered);
     }
 
     &:active + .icon {
       background-color: var(--palette-white);
-      border: 4px solid var(--input-radio-background-color-checked);
+      border: 4px solid var(--input-radio-bg-checked);
     }
   }
 
   &_checked + .icon {
     background-color: var(--palette-white);
-    border: 4px solid var(--input-radio-background-color-checked);
+    border: 4px solid var(--input-radio-bg-checked);
   }
 
   &_disabled + .icon {

@@ -20,7 +20,7 @@
 
   &_variant {
     &_primary {
-      background-color: var(--switch-background-color);
+      background-color: var(--switch-bg);
       border-color: var(--switch-border-color);
     }
   }
@@ -52,7 +52,7 @@
   z-index: 1;
 
   &:checked + .wrapper {
-    background-color: var(--switch-background-color-checked);
+    background-color: var(--switch-bg-checked);
     border-color: var(--switch-border-color-checked);
 
     .base-switch {

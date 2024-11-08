@@ -23,6 +23,7 @@ const meta: Meta<typeof Avatar> = {
     },
   },
   args: {
+    size: AvatarSizes.XXL
   },
   component: Avatar,
 } satisfies Meta<typeof Avatar>;

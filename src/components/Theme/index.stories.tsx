@@ -2,6 +2,7 @@ import React from "react";
 import chroma from 'chroma-js';
 import generateUniqID from '../helpers/generateUniqID';
 import ColorsDefault from './themes/default';
+import ColorsBA from './themes/buenos_aires';
 import Typography from '../Typography'
 
 const meta = {
@@ -29,29 +30,25 @@ export const Themes = () => {
     return isColorDark(bgColor) ? 'white' : 'black';
   }
 
-  function isHexColor(color) {
-    return /^#([0-9A-F]{3}){1,2}$/i.test(color);
-  }
-
   return (
     <>
       <style>{style}</style>
       <div>
-        <div style={{ width: '700px', display: 'flex', gap: '16px', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', gap: '16px' }}>
           <div style={{ flex: 1 }}/>
           <div style={{ flex: 1 }}>
             <Typography tag="h5" size="h5">Theme Default</Typography>
           </div>
+          <div style={{ flex: 1 }}>
+            <Typography tag="h5" size="h5">Theme BA</Typography>
+          </div>
         </div>
           {Object.entries(ColorsDefault).map((item, index) => {
-            let backgroundColor = '';
-            let textColor = '';
-
-            if (isHexColor(item[1])) {
-              backgroundColor = item[1];
-              textColor = getTextColorForBackground(backgroundColor);
-            }
+            const backgroundColor = item[1];
+            const textColor = getTextColorForBackground(backgroundColor);
+            const backgroundBAColor = ColorsBA[item[0]];
+            const textBAColor = getTextColorForBackground(backgroundColor);
 
             return (
               <div style={{ display: 'flex', gap: '16px' }} key={generateUniqID(index)}>
@@ -60,6 +57,9 @@ export const Themes = () => {
                 </div>
                 <div style={{ backgroundColor, color: textColor, flex: 1 }}>
                   {item[1]}
+                </div>
+                <div style={{ backgroundColor: backgroundBAColor, color: textBAColor, flex: 1 }}>
+                  {ColorsBA[item[0]]}
                 </div>
               </div>
             )

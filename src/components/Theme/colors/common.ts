@@ -13,7 +13,7 @@ export const Backgrounds = {
 
 export const Accents = {
   ALERT: "#FF564E",
-  SUCCESS: "#28BC00",
+  SUCCESS: "#4AC99B",
 };
 
 export const Color = {
