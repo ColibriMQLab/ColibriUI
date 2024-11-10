@@ -1,9 +1,15 @@
-.base-input {
+.textarea {
+  resize: none;
+  font: inherit;
+
+  overflow: auto;
+  text-overflow: unset;
+
+  padding: 7px 0;
   background: transparent;
   border: none;
-  flex: 1;
-  margin: 7px 0;
   outline: none;
+  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
 

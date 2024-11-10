@@ -39,7 +39,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className,
         )}
         disabled={disabled}
-        data-cy="button"
+        data-testid="button"
         type={type || "button"}
         role="button"
         {...props}

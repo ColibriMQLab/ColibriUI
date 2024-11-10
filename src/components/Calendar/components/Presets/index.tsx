@@ -28,7 +28,7 @@ export const Presets: React.FunctionComponent<Props> = ({
   presets,
   onPresetSelect,
 }) => (
-  <div data-component="Calendar_Presets">
+  <div data-testid="presets">
     <div className={clx(styles["native-scroll-inner"])}>
       <div className={clx(styles.inner)}>
         {presets.map((preset, ...rest) => {

@@ -17,6 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       required,
       onChange,
       inputRef,
+      disabled,
       variant = "primary",
       size = "m",
       ...props
@@ -37,7 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           endIcon={endIcon}
           variant={variant}
           size={size}
-          disabled={!!props.disabled}
+          disabled={!!disabled}
           error={error}
         >
           <BaseInput

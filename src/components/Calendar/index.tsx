@@ -169,7 +169,7 @@ const Calendar: React.FC<Props> = ({
   };
 
   return (
-    <div className={clx(styles.root)} data-component="Calendar" ref={$root}>
+    <div className={clx(styles.root)} data-testid="calendar" ref={$root}>
       <div>
         {contentWidth ? (
           <div

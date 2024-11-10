@@ -18,7 +18,7 @@ const Chip: FC<Props> = (props) => {
   } = props;
 
   return (
-    <span className={clx("root")} data-component="Chip" data-testid={testID}>
+    <span className={clx("root")} data-testid={testID}>
       <span
         className={clx("inner", {
           inner_active: isActive,

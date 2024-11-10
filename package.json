@@ -42,7 +42,8 @@
     "date-fns": "^3.6.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "react-popper": "^2.3.0"
+    "react-popper": "^2.3.0",
+    "react-textarea-autosize": "^8.5.4"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.24.7",

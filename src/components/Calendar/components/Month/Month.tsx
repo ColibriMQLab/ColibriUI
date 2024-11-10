@@ -79,7 +79,7 @@ export const Month: FCWithElements<Props> = (props) => {
 
   return (
     <div
-      data-component="Month"
+      data-testid="month"
       className={clx(styles.root)}
       style={{ left: props.offsetLeft ? `${props.offsetLeft}px` : undefined }}
     >

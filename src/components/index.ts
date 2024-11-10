@@ -24,6 +24,7 @@ export { default as Status } from "./Status";
 export { default as Switch } from "./Switch";
 export { default as TabsMenu } from "./TabsMenu";
 export { default as TabsPanes } from "./TabsPanes";
+export { default as TextArea } from "./TextArea";
 export { THEMES } from "./Theme";
 export { default as Tooltip } from "./Tooltip";
 export { default as TimeSelect } from "./TimeSelect";
