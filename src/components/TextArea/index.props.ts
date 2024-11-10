@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode, TextareaHTMLAttributes } from "react";
+import type { ChangeEvent, ReactNode, TextareaHTMLAttributes } from "react";
 
 export interface ITextAreaProps
   extends Omit<
