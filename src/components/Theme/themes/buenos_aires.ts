@@ -26,7 +26,7 @@ export default {
 
   "typography-alert": Color.ALERT,
   "typography-success": Color.SUCCESS,
-  "typography-secondary": Color.BG_3,
+  "typography-secondary": "rgba(0, 0, 0, .6)",
 
   "button-primary-color": Color.BLACK,
   "button-primary-bg": Color.PRIMARY_BA_4,
