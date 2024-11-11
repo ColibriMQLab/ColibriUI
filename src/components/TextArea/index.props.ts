@@ -1,4 +1,4 @@
-import type { ChangeEvent, ReactNode, TextareaHTMLAttributes } from "react";
+import type { ChangeEvent, ForwardedRef, ReactNode, TextareaHTMLAttributes } from "react";
 
 export interface ITextAreaProps
   extends Omit<
@@ -13,4 +13,5 @@ export interface ITextAreaProps
   error?: boolean;
   required?: boolean;
   onChange?: (value: string, e: ChangeEvent<HTMLTextAreaElement>) => void;
+  inputRef?: ForwardedRef<HTMLTextAreaElement>;
 }

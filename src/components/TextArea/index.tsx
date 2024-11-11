@@ -23,6 +23,7 @@ const TextArea = forwardRef<HTMLDivElement, ITextAreaProps>(
       error,
       hint,
       disabled,
+      inputRef,
       ...props
     },
     ref,
@@ -42,6 +43,7 @@ const TextArea = forwardRef<HTMLDivElement, ITextAreaProps>(
       >
         <InputRoot disabled={!!disabled} error={error}>
           <TextareaAutosize
+            ref={inputRef}
             data-testid="textarea"
             minRows={minRows}
             maxRows={maxRows}
