@@ -23,9 +23,9 @@ export const Tretiary = {
 };
 
 export const Brand = {
-  BRAND_DEFAULT_1: "#F393D2",
-  BRAND_DEFAULT_2: "#4BDCF8",
-  BRAND_DEFAULT_3: "#D5D500",
+  BRAND_DEFAULT_1: "#f6aadc",
+  BRAND_DEFAULT_2: "#F393D2",
+  BRAND_DEFAULT_3: "#ee65bf",
 };
 
 export const Color = {
