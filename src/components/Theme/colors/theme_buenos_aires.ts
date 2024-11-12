@@ -7,8 +7,8 @@ export const PrimaryBA = {
 };
 
 export const SecondaryBA = {
-  SECONDARY_BA_1: "#59636e",
-  SECONDARY_BA_2: "#454c54",
+  SECONDARY_BA_1: "#818b98",
+  SECONDARY_BA_2: "#59636e",
   SECONDARY_BA_3: "#393f46",
   SECONDARY_BA_4: "#25292e",
   SECONDARY_BA_5: "#1f2328",
