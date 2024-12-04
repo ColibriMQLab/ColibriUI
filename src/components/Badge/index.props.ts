@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import type { ControlProps } from "./Control/index.props";
 
 export interface Props extends ControlProps {
@@ -6,7 +5,6 @@ export interface Props extends ControlProps {
   color?: string;
   background?: string;
   content?: number;
-  children: ReactNode;
   invisible?: boolean;
   max?: number;
   showZero?: boolean;

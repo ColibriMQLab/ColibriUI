@@ -11,7 +11,6 @@ export type Placement = Extract<
 export type Trigger = "click" | "hover" | "focus";
 
 export type DropdownProps = {
-  children: ReactNode;
   zIndex?: number;
   disabled?: boolean;
   onVisibleChange?: (visible: boolean) => void;

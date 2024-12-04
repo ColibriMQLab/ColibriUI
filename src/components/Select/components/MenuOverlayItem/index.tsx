@@ -8,6 +8,7 @@ type SelectItemProps = {
     value: string;
     label: React.ReactNode;
     selected: boolean;
+    disabled?: boolean;
   };
   onClick?: () => void;
   setScrollView: (value: Coordinates) => void;
@@ -36,7 +37,12 @@ const SelectItem = ({ option, onClick, setScrollView }: SelectItemProps) => {
   }, []);
 
   return (
-    <MenuItem ref={ref} onClick={onClick} isSelected={option.selected}>
+    <MenuItem
+      ref={ref}
+      onClick={onClick}
+      isSelected={option.selected}
+      disabled={option.disabled}
+    >
       {option.label}
       {option.selected && <Check width={16} height={16} />}
     </MenuItem>

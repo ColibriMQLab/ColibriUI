@@ -27,10 +27,11 @@ const Select = <T extends string>({
 
   const preparedOptions = useMemo(
     () =>
-      options.map(({ value: lvalue, label: llabel }) => ({
+      options.map(({ value: lvalue, label: llabel, disabled }) => ({
         value: lvalue,
         label: llabel,
         selected: value === lvalue,
+        disabled,
       })),
     [value, options],
   );

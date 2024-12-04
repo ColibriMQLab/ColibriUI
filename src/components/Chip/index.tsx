@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Chip.module.scss";
-import type { Props } from "./index.props";
-import type { FC } from "react";
+import type { ChipProps } from "./index.props";
+import type { FC, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
-const Chip: FC<Props> = (props) => {
+const Chip: FC<PropsWithChildren<ChipProps>> = (props) => {
   const {
     children,
     iconOnRight,

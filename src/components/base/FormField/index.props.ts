@@ -6,5 +6,4 @@ export type FormFieldProps = {
   error?: boolean;
   required?: boolean;
   className?: string;
-  children: ReactNode;
 };

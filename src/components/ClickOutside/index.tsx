@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import useOnClickOutside from "../hooks/useOnClickOutside";
-import type { FC, ReactNode } from "react";
+import type { FC, PropsWithChildren } from "react";
 
-const ClickOutside: FC<{
-  onClick: (e: MouseEvent | TouchEvent) => void;
-  children: ReactNode;
-}> = ({ children, onClick }) => {
+const ClickOutside: FC<
+  PropsWithChildren<{
+    onClick: (e: MouseEvent | TouchEvent) => void;
+  }>
+> = ({ children, onClick }) => {
   const childRef = useRef<HTMLElement>();
 
   useOnClickOutside(childRef, onClick);

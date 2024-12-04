@@ -1,23 +1,23 @@
 .root {
-  display: inline-flex;
   align-items: center;
-  gap: .5rem;
   background-color: var(--status-neutral-bg);
-  line-height: 1.5rem;
-  padding: 0 .5rem;
   border-radius: 6rem;
-  inline-size: fit-content;
   box-sizing: border-box;
-  white-space: nowrap;
+  display: inline-flex;
+  gap: 0.5rem;
+  inline-size: fit-content;
+  line-height: 1.5rem;
   overflow: hidden;
+  padding: 0 0.5rem;
   vertical-align: middle;
+  white-space: nowrap;
 
   &::before {
     background-color: var(--status-neutral);
-    content: '';
-    inline-size: .4rem;
-    block-size: .4rem;
+    block-size: 0.4rem;
     border-radius: 100%;
+    content: "";
+    inline-size: 0.4rem;
   }
 
   &_success {

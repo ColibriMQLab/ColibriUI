@@ -34,5 +34,4 @@ export type Props = {
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
   style?: CSSProperties;
-  children?: ReactNode;
 };

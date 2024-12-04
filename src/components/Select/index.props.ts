@@ -4,6 +4,7 @@ import type { FormFieldProps } from "../base/FormField/index.props";
 export interface IOption<T extends string> {
   value: T;
   label: ReactNode;
+  disabled?: boolean;
 }
 
 export interface SelectProps<T extends string>

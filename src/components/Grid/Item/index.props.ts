@@ -1,7 +1,6 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 
 export type GridItemProps = {
-  children: ReactNode;
   fullWidth?: boolean;
   className?: string;
   style?: CSSProperties;

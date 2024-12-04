@@ -10,6 +10,5 @@ export enum STATUS_TYPE {
 export type StatusProps = {
   className?: string;
   tag?: StatusTag;
-  children?: string;
   type?: STATUS_TYPE;
 };

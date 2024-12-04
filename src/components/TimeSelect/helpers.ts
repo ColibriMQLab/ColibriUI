@@ -1,4 +1,4 @@
-import { addMinutes, format } from "date-fns";
+import { addMinutes, format, isBefore, parse } from "date-fns";
 import type { Timestamp } from "./index.props";
 
 const day = new Date();
@@ -16,3 +16,9 @@ export const generateSuggest = (interval: number = 15): Timestamp[] => {
     };
   });
 };
+
+export const checkIsBeforeNow = (
+  time: string,
+  currentDate?: Date | null,
+): boolean =>
+  currentDate ? isBefore(parse(time, "HH:mm", currentDate), new Date()) : false;

@@ -1,9 +1,10 @@
 import React from "react";
 import classNames from "classnames";
 import styles from "./Grid.module.scss";
+import type { FC, PropsWithChildren } from "react";
 import type { GridProps } from "./index.props";
 
-const Grid: React.FC<GridProps> = ({
+const Grid: FC<PropsWithChildren<GridProps>> = ({
   children,
   gridRowGap = 24,
   gridColumnGap = 16,

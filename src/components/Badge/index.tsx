@@ -2,12 +2,12 @@ import React from "react";
 import classNames from "classnames/bind";
 import { BadgeControl as Control } from "./Control";
 import styles from "./Badge.module.scss";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import type { Props } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const Badge: FC<Props> = ({
+const Badge: FC<PropsWithChildren<Props>> = ({
   className,
   content,
   children,

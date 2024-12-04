@@ -1,11 +1,12 @@
 import React, { forwardRef } from "react";
 import classNames from "classnames/bind";
 import styles from "./MenuItem.module.scss";
+import type { PropsWithChildren } from "react";
 import type { MenuItemProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
+const MenuItem = forwardRef<HTMLLIElement, PropsWithChildren<MenuItemProps>>(
   (
     {
       className,
@@ -14,7 +15,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       disabled,
       onClick,
       children,
-    }: MenuItemProps,
+    }: PropsWithChildren<MenuItemProps>,
     ref,
   ) => (
     <li

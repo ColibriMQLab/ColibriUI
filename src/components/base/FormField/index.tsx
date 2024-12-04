@@ -3,11 +3,12 @@ import React from "react";
 import classNames from "classnames/bind";
 import Typography from "../../Typography";
 import styles from "./FormField.module.scss";
+import type { PropsWithChildren } from "react";
 import type { FormFieldProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
+const FormField = forwardRef<HTMLDivElement, PropsWithChildren<FormFieldProps>>(
   ({ label, hint, children, error, required, className }, ref) => {
     return (
       <div className={clx(styles.container, className)} ref={ref}>

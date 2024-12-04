@@ -9,7 +9,7 @@ import {
 import generateUniqID from "../../../helpers/generateUniqID";
 import { getMonthWeeks } from "../../utils/getMonthWeeks";
 import styles from "./index.module.scss";
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
@@ -31,7 +31,6 @@ type ComponentProps = {
   isEndOfSelection?: boolean;
   isSelected?: boolean;
   isInSelectedRange?: boolean;
-  children?: React.ReactNode;
 };
 
 const Item = ({
@@ -40,7 +39,7 @@ const Item = ({
   isStartOfSelection,
   isEndOfSelection,
   children,
-}: ComponentProps) => {
+}: PropsWithChildren<ComponentProps>) => {
   const noSelection =
     isStartOfSelection && isEndOfSelection ? styles["no-selection"] : "";
   const startClass =

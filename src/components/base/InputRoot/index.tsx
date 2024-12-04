@@ -1,11 +1,12 @@
 import React, { forwardRef } from "react";
 import classNames from "classnames/bind";
 import styles from "./InputRoot.module.scss";
+import type { PropsWithChildren } from "react";
 import type { InputProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const InputRoot = forwardRef<HTMLDivElement, InputProps>(
+const InputRoot = forwardRef<HTMLDivElement, PropsWithChildren<InputProps>>(
   (
     {
       className,

@@ -14,11 +14,11 @@ import ClickOutside from "../ClickOutside";
 
 import styles from "./Dropdown.module.scss";
 import type { DropdownProps } from "./index.props";
-import type { MouseEventHandler } from "react";
+import type { FC, MouseEventHandler, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   children,
   zIndex,
   disabled,

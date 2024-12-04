@@ -8,12 +8,17 @@ import Content from "./components/Content";
 import Close from "./components/Close";
 import Title from "./components/Title";
 import styles from "./Modal.module.scss";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import type { ModalProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const Modal: FC<ModalProps> = ({ children, className, onClose, title }) => {
+const Modal: FC<PropsWithChildren<ModalProps>> = ({
+  children,
+  className,
+  onClose,
+  title,
+}) => {
   const modalRef = useRef(null);
   const isDesktop = useMediaSizes((bp) => bp.up("md"));
   const onCloseHandler = useMemo(() => onClose || (() => ({})), [onClose]);

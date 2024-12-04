@@ -1,16 +1,14 @@
 .textarea {
-  resize: none;
-  font: inherit;
-
-  overflow: auto;
-  text-overflow: unset;
-
-  padding: 7px 0;
   background: transparent;
   border: none;
-  outline: none;
   flex: 1;
+  font: inherit;
+  outline: none;
+  overflow: auto;
   overflow: hidden;
+  padding: 7px 0;
+  resize: none;
+  text-overflow: unset;
   text-overflow: ellipsis;
 
   &::placeholder {

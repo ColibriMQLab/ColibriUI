@@ -19,12 +19,13 @@ npm i -S colibri-ui
 ```tsx
 // app/layout.tsx
 import classNames from "classnames";
+import type { ReactNode } from "react";
 import "colibri-ui/theme_default_variables.css";
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">

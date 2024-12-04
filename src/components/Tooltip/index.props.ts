@@ -19,7 +19,6 @@ export type Placement = Extract<
 >;
 
 export interface ITooltipProps {
-  children: ReactNode;
   content: ReactNode;
   zIndex?: number;
   placement?: Placement;

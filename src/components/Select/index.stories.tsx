@@ -24,6 +24,7 @@ const options = Array(5)
       </span>
     ),
     value: String(i),
+    disabled: i === 2,
   }));
 
 const Template = (args) => {

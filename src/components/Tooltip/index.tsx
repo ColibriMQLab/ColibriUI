@@ -13,11 +13,11 @@ import { on } from "../helpers/on";
 import ClickOutside from "../ClickOutside";
 import styles from "./Tooltip.module.scss";
 import type { ITooltipProps } from "./index.props";
-import type { MouseEventHandler } from "react";
+import type { FC, MouseEventHandler, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
-const Tooltip: React.FC<ITooltipProps> = ({
+const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
   children,
   zIndex,
   content,
