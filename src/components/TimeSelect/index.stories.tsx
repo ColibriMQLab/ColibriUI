@@ -40,7 +40,7 @@ const Template = (args) => {
   return (<div style={{ width: '10vw' }}>
     <TimeSelect
       {...args}
-      currentDate={getToday()}
+      
       value={value}
       fullWidth
       onChange={(v) => setValue(v)}
@@ -52,5 +52,13 @@ export const Default = Template.bind({});
 
 Default.args = {
   placeholder: "Select options",
-  interval: 10
+  interval: 10,
+  currentDate: getToday()
+};
+
+export const WithOutCurrentDate = Template.bind({});
+
+WithOutCurrentDate.args = {
+  placeholder: "Select options",
+  interval: 10,
 };

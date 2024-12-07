@@ -19,12 +19,18 @@
   border: none;
   flex: 1;
   margin: 7px 0;
-  outline: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: inline-grid;
 
   ::placeholder {
     color: var(--palette-bg-2);
+  }
+
+  & > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+   
   }
 }
 

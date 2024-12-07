@@ -20,7 +20,7 @@ const options = Array(5)
   .map((_, i) => ({
     label: (
       <span>
-        <strong>options</strong> {String(i)}
+        <strong>Long long option</strong> {String(i)}
       </span>
     ),
     value: String(i),

@@ -23,7 +23,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
     return generateSuggest(interval).map((item) => ({
       value: item.time,
       label: <OptionLabel time={item.time} />,
-      disabled: checkIsBeforeNow(item.time, currentDate),
+      disabled: !!currentDate && checkIsBeforeNow(item.time, currentDate),
     }));
   }, [interval]);
 

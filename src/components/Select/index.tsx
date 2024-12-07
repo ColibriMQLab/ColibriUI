@@ -20,6 +20,7 @@ const Select = <T extends string>({
   required,
   placeholder,
   disabled,
+  size = "m",
   fullWidth = false,
   onChange,
 }: SelectProps<T>) => {
@@ -62,6 +63,7 @@ const Select = <T extends string>({
       >
         <InputRoot
           error={error}
+          size={size}
           className={clx(styles.root)}
           endIcon={
             <Chevron

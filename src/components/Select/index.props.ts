@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import type { FormFieldProps } from "../base/FormField/index.props";
 
+type Size = "s" | "m" | "l";
 export interface IOption<T extends string> {
   value: T;
   label: ReactNode;
   disabled?: boolean;
 }
-
 export interface SelectProps<T extends string>
   extends Omit<FormFieldProps, "children"> {
   options: IOption<T>[];
@@ -17,6 +17,7 @@ export interface SelectProps<T extends string>
   placeholder?: string;
   fullWidth?: boolean;
   required?: boolean;
+  size?: Size;
 }
 
 export type Coordinates = {
