@@ -6,7 +6,7 @@ import OptionLabel from "./Label";
 import type { SelectProps } from "../Select/index.props";
 import type { FC } from "react";
 
-interface TimeSelectProps extends SelectProps<string> {
+interface TimeSelectProps extends Omit<SelectProps<string>, 'options'> {
   interval?: 5 | 10 | 15 | 30;
   currentDate?: Date | null;
 }
@@ -14,7 +14,7 @@ interface TimeSelectProps extends SelectProps<string> {
 const TimeSelect: FC<TimeSelectProps> = ({
   value,
   currentDate,
-  label = "Start time",
+  label,
   interval = 15,
   onChange,
   ...props
