@@ -4,11 +4,12 @@
   transition: border-color 0.15s ease;
 
   &_bordered {
+    padding: 3px;
     background-color: var(--palette-white);
-    border: 4px solid transparent;
+    border: 3px solid var(--palette-bg-2);
 
     &:hover {
-      border-color: rgb(95 99 104 / 24%);
+      border-color: var(--palette-bg-4);
     }
   }
 }
