@@ -22,6 +22,7 @@ const Select = <T extends string>({
   disabled,
   size = "m",
   fullWidth = false,
+  className,
   onChange,
 }: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -45,8 +46,8 @@ const Select = <T extends string>({
   return (
     <FormField
       className={clx(styles["form-field"], {
-        "form-field_fullWidth": fullWidth ? 1 : 0,
-      })}
+        "full-width": fullWidth ? 1 : 0,
+      }, className)}
       required={required}
       label={label}
       hint={hint}

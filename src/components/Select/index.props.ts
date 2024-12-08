@@ -18,6 +18,7 @@ export interface SelectProps<T extends string>
   fullWidth?: boolean;
   required?: boolean;
   size?: Size;
+  className?: string;
 }
 
 export type Coordinates = {
