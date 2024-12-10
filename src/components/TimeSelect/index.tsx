@@ -21,13 +21,19 @@ const TimeSelect: FC<TimeSelectProps> = ({
   onChange,
   ...props
 }: TimeSelectProps) => {
-  const options = useMemo(() => {
-    return generateSuggest(interval).map((item) => ({
-      value: item.time,
-      label: <OptionLabel time={item.time} />,
-      disabled: !!currentDate && checkIsBeforeNow(item.time, currentDate),
-    }));
-  }, [interval]);
+const baseOptions = useMemo(() => {
+  return generateSuggest(interval).map((item) => ({
+    value: item.time,
+    label: <OptionLabel time={item.time} />,
+  }));
+}, [interval]);
+
+const options = useMemo(() => {
+  return baseOptions.map((option) => ({
+    ...option,
+    disabled: !!currentDate && checkIsBeforeNow(option.value, currentDate),
+  }));
+}, [baseOptions, currentDate]);
 
   return (
     <Select
