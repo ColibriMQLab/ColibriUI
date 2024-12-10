@@ -9,10 +9,12 @@ import type { FC } from "react";
 interface TimeSelectProps extends Omit<SelectProps<string>, 'options'> {
   interval?: 5 | 10 | 15 | 30;
   currentDate?: Date | null;
+  name?: string;
 }
 
 const TimeSelect: FC<TimeSelectProps> = ({
   value,
+  name,
   currentDate,
   label,
   interval = 15,
@@ -30,6 +32,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
   return (
     <Select
       {...props}
+      name={name}
       value={value}
       label={label}
       options={options}

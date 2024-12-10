@@ -19,6 +19,7 @@ export interface SelectProps<T extends string>
   required?: boolean;
   size?: Size;
   className?: string;
+  name?: string;
 }
 
 export type Coordinates = {

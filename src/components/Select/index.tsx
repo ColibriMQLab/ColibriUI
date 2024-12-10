@@ -13,6 +13,7 @@ const clx = classNames.bind(styles);
 const Select = <T extends string>({
   options = [],
   value,
+  name, 
   zIndex,
   label,
   hint,
@@ -78,7 +79,7 @@ const Select = <T extends string>({
               <span className={clx(styles.placeholder)}>{placeholder}</span>
             )}
           </div>
-          <input type="hidden" tabIndex={-1} value={value || ""} />
+          <input type="hidden" name={name} tabIndex={-1} value={value || ""} />
         </InputRoot>
       </Dropdown>
     </FormField>
