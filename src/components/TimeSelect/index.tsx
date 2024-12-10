@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Select from "../Select";
-import { checkIsBeforeDate, checkIsBeforeNow, generateSuggest } from "./helpers";
+import { checkIsBeforeSelectedDate, checkIsBeforeNow, generateSuggest } from "./helpers";
 import OptionLabel from "./Label";
 
 import type { SelectProps } from "../Select/index.props";
@@ -9,7 +9,7 @@ import type { FC } from "react";
 interface TimeSelectProps extends Omit<SelectProps<string>, 'options'> {
   interval?: 5 | 10 | 15 | 30;
   currentDate?: Date | null;
-  upToDate?: Date | null;
+  selectedDate?: Date | null;
   name?: string;
 }
 
@@ -17,7 +17,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
   value,
   name,
   currentDate,
-  upToDate,
+  selectedDate,
   label,
   interval = 15,
   onChange,
@@ -33,9 +33,9 @@ const TimeSelect: FC<TimeSelectProps> = ({
   const options = useMemo(() => {
     return baseOptions.map((option) => ({
       ...option,
-      disabled: !!upToDate && checkIsBeforeDate(option.value, upToDate) || !!currentDate && checkIsBeforeNow(option.value, currentDate),
+      disabled: !!selectedDate && checkIsBeforeSelectedDate(option.value, selectedDate) || !!currentDate && checkIsBeforeNow(option.value, currentDate),
     }));
-  }, [baseOptions, currentDate, upToDate]);
+  }, [baseOptions, currentDate, selectedDate]);
 
   return (
     <Select

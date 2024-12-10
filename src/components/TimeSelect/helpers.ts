@@ -23,7 +23,7 @@ export const checkIsBeforeNow = (
 ): boolean =>
   currentDate ? isBefore(parse(time, "HH:mm", currentDate), new Date()) : false;
 
-  export const checkIsBeforeDate = (
+  export const checkIsBeforeSelectedDate = (
     time: string,
     date?: Date | null,
   ): boolean =>
