@@ -11,6 +11,7 @@ interface TimeSelectProps extends Omit<SelectProps<string>, 'options'> {
   currentDate?: Date | null;
   selectedDate?: Date | null;
   name?: string;
+  disabled?: boolean;
 }
 
 const TimeSelect: FC<TimeSelectProps> = ({
@@ -21,6 +22,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
   label,
   interval = 15,
   onChange,
+  disabled,
   ...props
 }: TimeSelectProps) => {
   const baseOptions = useMemo(() => {
@@ -45,6 +47,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
       label={label}
       options={options}
       onChange={onChange}
+      disabled={disabled}
     />
   );
 };
