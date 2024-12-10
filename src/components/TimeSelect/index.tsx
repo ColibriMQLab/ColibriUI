@@ -33,9 +33,9 @@ const TimeSelect: FC<TimeSelectProps> = ({
   const options = useMemo(() => {
     return baseOptions.map((option) => ({
       ...option,
-      disabled: !!selectedDate && checkIsBeforeSelectedDate(option.value, selectedDate) || !!currentDate && checkIsBeforeNow(option.value, currentDate),
+      disabled: !!selectedDate && checkIsBeforeSelectedDate(option.value, interval, selectedDate) || !!currentDate && checkIsBeforeNow(option.value, currentDate),
     }));
-  }, [baseOptions, currentDate, selectedDate]);
+  }, [baseOptions, currentDate, selectedDate, interval]);
 
   return (
     <Select

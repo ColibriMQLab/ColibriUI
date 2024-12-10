@@ -20,11 +20,23 @@ export const generateSuggest = (interval: number = 15): Timestamp[] => {
 export const checkIsBeforeNow = (
   time: string,
   currentDate?: Date | null,
+
 ): boolean =>
   currentDate ? isBefore(parse(time, "HH:mm", currentDate), new Date()) : false;
 
   export const checkIsBeforeSelectedDate = (
     time: string,
+    interval: number,
     date?: Date | null,
-  ): boolean =>
-    date ? isBefore(parse(time, "HH:mm", date), new Date(date)) : false;
+  ): boolean => {
+
+    if(date) {
+      const selectedDate = new Date(date);
+      selectedDate.setMinutes(selectedDate.getMinutes() + interval);
+      return isBefore(parse(time, "HH:mm", date), selectedDate);
+    }
+  
+    return false;
+  }
+
+    
