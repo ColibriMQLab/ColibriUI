@@ -15,9 +15,9 @@
 .base-input {
   background: transparent;
   border: none;
+  display: inline-grid;
   flex: 1;
   margin: 7px 0;
-  display: inline-grid;
 
   ::placeholder {
     color: var(--palette-bg-2);
