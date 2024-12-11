@@ -13,7 +13,7 @@ const clx = classNames.bind(styles);
 const Select = <T extends string>({
   options = [],
   value,
-  name, 
+  name,
   zIndex,
   label,
   hint,
@@ -46,9 +46,13 @@ const Select = <T extends string>({
 
   return (
     <FormField
-      className={clx(styles["form-field"], {
-        "full-width": fullWidth ? 1 : 0,
-      }, className)}
+      className={clx(
+        styles["form-field"],
+        {
+          "full-width": fullWidth ? 1 : 0,
+        },
+        className,
+      )}
       required={required}
       label={label}
       hint={hint}
