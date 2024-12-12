@@ -12,6 +12,7 @@ export type Trigger = "click" | "hover" | "focus";
 
 export type DropdownProps = {
   zIndex?: number;
+  fontSize?: number;
   disabled?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   overlay: ReactNode;

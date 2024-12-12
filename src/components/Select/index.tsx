@@ -15,6 +15,7 @@ const Select = <T extends string>({
   value,
   name,
   zIndex,
+  fontSize,
   label,
   hint,
   error,
@@ -23,6 +24,7 @@ const Select = <T extends string>({
   disabled,
   size = "m",
   fullWidth = false,
+  customInputRoot,
   className,
   onChange,
 }: SelectProps<T>) => {
@@ -63,28 +65,38 @@ const Select = <T extends string>({
         onVisibleChange={setIsOpen}
         trigger={["click"]}
         zIndex={zIndex}
+        fontSize={fontSize}
         disabled={!!disabled}
         overlay={<MenuOverlay options={preparedOptions} onChange={onChange} />}
         samewidth
       >
-        <InputRoot
-          error={error}
-          size={size}
-          className={clx(styles.root)}
-          endIcon={
-            <Chevron
-              className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+        {customInputRoot ? (
+          customInputRoot
+        ) : (
+          <InputRoot
+            error={error}
+            size={size}
+            className={clx(styles.root)}
+            endIcon={
+              <Chevron
+                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+              />
+            }
+            disabled={!!disabled}
+          >
+            <div className={clx(styles["base-input"])} data-testid="base-input">
+              {prepraredLabel ?? (
+                <span className={clx(styles.placeholder)}>{placeholder}</span>
+              )}
+            </div>
+            <input
+              type="hidden"
+              name={name}
+              tabIndex={-1}
+              value={value || ""}
             />
-          }
-          disabled={!!disabled}
-        >
-          <div className={clx(styles["base-input"])} data-testid="base-input">
-            {prepraredLabel ?? (
-              <span className={clx(styles.placeholder)}>{placeholder}</span>
-            )}
-          </div>
-          <input type="hidden" name={name} tabIndex={-1} value={value || ""} />
-        </InputRoot>
+          </InputRoot>
+        )}
       </Dropdown>
     </FormField>
   );

@@ -21,6 +21,7 @@ const clx = classNames.bind(styles);
 const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   children,
   zIndex,
+  fontSize,
   disabled,
   onVisibleChange,
   overlay,
@@ -163,6 +164,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
                 ...(samewidth && {
                   maxWidth: controlElement?.offsetWidth,
                 }),
+                fontSize: `${fontSize}px`,
               }}
               tabIndex={0}
               {...attributes.popper}

@@ -12,6 +12,7 @@ export interface SelectProps<T extends string>
   options: IOption<T>[];
   value?: T;
   zIndex?: number;
+  fontSize?: number;
   onChange: (value: T) => void;
   disabled?: boolean;
   placeholder?: string;
@@ -19,6 +20,7 @@ export interface SelectProps<T extends string>
   required?: boolean;
   size?: Size;
   className?: string;
+  customInputRoot?: ReactNode;
   name?: string;
 }
 
