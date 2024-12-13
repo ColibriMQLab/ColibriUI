@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { memo, useMemo, useState } from "react";
 import classNames from "classnames/bind";
 import Select from "../../../Select";
 import styles from "./index.module.scss";
@@ -11,10 +11,15 @@ interface TimePickerProps {
   className?: string;
   interval?: 5 | 10 | 15 | 30;
   value?: string;
+  selectedTime?: string;
 }
 
-const TimePicker = ({ className, interval = 30 }: TimePickerProps) => {
-  const [value, setValue] = useState<string>("");
+const TimePicker = ({
+  className,
+  interval = 30,
+  selectedTime = "",
+}: TimePickerProps) => {
+  const [time, setTime] = useState<string>(selectedTime);
 
   const baseOptions = useMemo(() => {
     return generateSuggest(interval).map((item) => ({
@@ -37,7 +42,8 @@ const TimePicker = ({ className, interval = 30 }: TimePickerProps) => {
           <span className={clx(styles.select)}>
             <span className={clx(styles["text-input"])}>
               <Select
-                value={value}
+                value={time}
+                className={clx(styles["select-input-control"])}
                 options={options}
                 fontSize={14}
                 customInputRoot={
@@ -48,10 +54,11 @@ const TimePicker = ({ className, interval = 30 }: TimePickerProps) => {
                     autoComplete="off"
                     className={clx(styles["text-input-control"])}
                     maxLength={5}
-                    defaultValue={value}
+                    value={time}
+                    readOnly
                   />
                 }
-                onChange={(v) => setValue(v)}
+                onChange={(time) => setTime(time)}
               />
               <span className={clx(styles["text-input-box"])} />
             </span>
@@ -62,4 +69,4 @@ const TimePicker = ({ className, interval = 30 }: TimePickerProps) => {
   );
 };
 
-export default TimePicker;
+export default memo(TimePicker);

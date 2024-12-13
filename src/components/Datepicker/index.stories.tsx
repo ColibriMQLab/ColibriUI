@@ -16,6 +16,6 @@ export default meta;
 
 export const Default = (args) => {
   return (
-    <Datepicker {...args} />
+    <Datepicker {...args} selectedTime="10:00" selectedDate="2024-12-22"/>
   );
 };

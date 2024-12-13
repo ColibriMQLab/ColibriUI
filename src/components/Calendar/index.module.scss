@@ -3,16 +3,12 @@
   flex-direction: column;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  gap: 16px;
-  min-width: 300px;
+  gap: 1rem;
+  min-width: 360px;
   overflow: hidden;
   position: relative;
   text-rendering: optimizelegibility;
   text-size-adjust: 100%;
-
-  @media (width >= 360px) {
-    min-width: 360px;
-  }
 }
 
 .month-control {

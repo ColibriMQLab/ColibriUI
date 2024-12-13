@@ -8,13 +8,15 @@ const clx = classNames.bind(styles);
 
 type Props = {
   className?: string;
+  selectedTime?: string;
+  selectedDate?: string;
 };
 
-const Datepicker = ({ className }: Props) => {
+const Datepicker = ({ className, selectedTime, selectedDate }: Props) => {
   return (
     <div className={clx(styles.root, className)}>
-      <TimePickerInput />
-      <DatePickerInput />
+      <TimePickerInput selectedTime={selectedTime} />
+      <DatePickerInput selectedDate={selectedDate} />
     </div>
   );
 };

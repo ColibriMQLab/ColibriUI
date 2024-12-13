@@ -9,6 +9,7 @@ import { Presets } from "./components/Presets";
 import { getNumberOfMonthsBetweenDates } from "./utils/getNumberOfMonthsBetweenDates";
 import { ContinueButton } from "./components/ContinueButton";
 import styles from "./index.module.scss";
+import type { CalendarProps } from "./index.props";
 import type { Preset } from "./components/Presets";
 
 const clx = classNames.bind(styles);
@@ -17,25 +18,7 @@ const idleCallbackOptions = {
   timeout: 1000,
 };
 
-type ChangePayload = {
-  date: string;
-  period: number;
-};
-
-type Props = {
-  today: string;
-  selectedDate?: string;
-  selectedPeriod?: number;
-  canSelectRange?: boolean;
-  activeDates?: string[];
-  datePresets?: Preset[];
-  availableDates?: string[];
-  onChange?: (payload: ChangePayload) => void;
-  onCancel?: () => void;
-  withContinueButton?: boolean;
-};
-
-const Calendar: React.FC<Props> = ({
+const Calendar: React.FC<CalendarProps> = ({
   today,
   selectedDate: initialSelectedDate,
   selectedPeriod: initialSelectedPeriod,
@@ -45,7 +28,10 @@ const Calendar: React.FC<Props> = ({
   canSelectRange,
   onChange,
   onCancel,
+  minWidth = 360,
   withContinueButton = false,
+  className,
+  titleSize = "h3",
 }) => {
   const $root = useRef<HTMLDivElement>(null);
 
@@ -169,7 +155,12 @@ const Calendar: React.FC<Props> = ({
   };
 
   return (
-    <div className={clx(styles.root)} data-testid="calendar" ref={$root}>
+    <div
+      className={clx(styles.root, className)}
+      style={{ minWidth: `${minWidth}px` }}
+      data-testid="calendar"
+      ref={$root}
+    >
       <div>
         {contentWidth ? (
           <div
@@ -193,11 +184,18 @@ const Calendar: React.FC<Props> = ({
                   offsetLeft: index * contentWidth,
                 };
 
-                return <Month {...attrs} key={`month-${index}`} />;
+                return (
+                  <Month
+                    {...attrs}
+                    titleSize={titleSize}
+                    key={`month-${index}`}
+                  />
+                );
               })}
           </div>
         ) : (
           <Month
+            titleSize={titleSize}
             today={today}
             startDate={getMonthStartDate(currentMonthOffset)}
             offsetLeft={0}

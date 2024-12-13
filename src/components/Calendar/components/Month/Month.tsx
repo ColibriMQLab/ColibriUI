@@ -9,6 +9,7 @@ import {
 import generateUniqID from "../../../helpers/generateUniqID";
 import { getMonthWeeks } from "../../utils/getMonthWeeks";
 import styles from "./index.module.scss";
+import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
@@ -24,6 +25,7 @@ type Props = {
   onDayClick: (date: string) => void;
   offsetLeft: number;
   availableDates?: string[];
+  titleSize?: CalendarTitleSize;
 };
 
 type ComponentProps = {
@@ -83,7 +85,7 @@ export const Month: FCWithElements<Props> = (props) => {
       style={{ left: props.offsetLeft ? `${props.offsetLeft}px` : undefined }}
     >
       <div className={clx(styles["month-name"])}>
-        <Typography tag="span" size="h3">
+        <Typography tag="span" size={props.titleSize}>
           {getUpperMonthName(props.startDate)}
         </Typography>
       </div>

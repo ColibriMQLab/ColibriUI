@@ -21,5 +21,6 @@ export type DropdownProps = {
   trigger?: [Trigger, ...Trigger[]];
   visible?: boolean;
   preventOverflow?: boolean;
+  preventAutoClose?: boolean;
   samewidth?: boolean;
 };

@@ -23,7 +23,7 @@ const MenuItem = forwardRef<HTMLLIElement, PropsWithChildren<MenuItemProps>>(
       data-component="menu-item"
       style={{
         backgroundColor: isSelected
-          ? "var(--palette-primary-1, rgb(232, 240, 254))"
+          ? "var(--palette-bg-2, rgb(232, 240, 254))"
           : "",
       }}
       data-testid="menuitem"

@@ -65,8 +65,8 @@
 
     &_checked {
       &::after {
-        border-block-end: 2px solid var(--palette-white);
-        border-inline-end: 2px solid var(--palette-white);
+        border-block-end: 2px solid var(--palette-black);
+        border-inline-end: 2px solid var(--palette-black);
       }
     }
   }

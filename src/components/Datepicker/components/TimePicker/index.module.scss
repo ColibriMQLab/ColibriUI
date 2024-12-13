@@ -60,8 +60,7 @@
   z-index: 1;
 }
 
-.text-input-control:focus:not(:disabled)+.text-input-box,
-.text-input-control:active:not(:disabled)+.text-input-box {
+.select-input-control:focus-within+.text-input-box {
   border-color: var(--palette-primary-3);
   border-width: 1px;
   box-shadow: 0 0 0 2px var(--palette-primary-2);

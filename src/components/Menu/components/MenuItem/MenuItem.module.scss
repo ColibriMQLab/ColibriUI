@@ -22,16 +22,16 @@
       background-color: var(--palette-white);
 
       &:hover {
-        background-color: var(--palette-primary-1);
+        background-color: var(--palette-bg-2);
       }
 
       &:active {
-        background-color: var(--palette-primary-1);
+        background-color: var(--palette-bg-2);
       }
 
       &:focus,
       &:focus-within {
-        background-color: var(--palette-primary-1);
+        background-color: var(--palette-bg-2);
       }
     }
   }

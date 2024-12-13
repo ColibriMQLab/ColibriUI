@@ -30,6 +30,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   trigger = ["hover"],
   visible: visibleProp = true,
   preventOverflow = false,
+  preventAutoClose = false,
   samewidth = false,
 }) => {
   const [controlElement, setControlElement] = useState<HTMLElement | null>(
@@ -96,9 +97,11 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   );
 
   const onClickOverlay: MouseEventHandler<HTMLDivElement> = useCallback(
-    (e) => {
-      e.stopPropagation();
-      onHide();
+    (event) => {
+      event.stopPropagation();
+      if (!preventAutoClose) {
+        onHide();
+      }
     },
     [onHide],
   );

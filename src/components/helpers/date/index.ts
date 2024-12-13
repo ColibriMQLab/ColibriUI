@@ -50,6 +50,11 @@ export const toISODate = (date: Date): string => {
   return format(date, "yyyy-MM-dd");
 };
 
+// Convert date to DMY format (dd.MM.yyyy)
+export const toDMYDate = (dateISO: string): string => {
+  return dateISO ? format(new Date(dateISO), "dd.MM.yyyy") : "";
+};
+
 // Get the period dates as a formatted string
 export const getPeriodDates = (startDate: DateFormat, period = 1): string => {
   const start = parse(startDate);
