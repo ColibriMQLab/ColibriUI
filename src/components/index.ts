@@ -6,6 +6,7 @@ export { default as Calendar } from "./Calendar";
 export { default as Checkbox } from "./Checkbox";
 export { default as Chip } from "./Chip";
 export { default as Counter } from "./Counter";
+export { default as Datepicker } from "./Datepicker";
 export { default as DotsLoader } from "./DotsLoader";
 export { default as Dropdown } from "./Dropdown";
 export { default as Grid } from "./Grid";
