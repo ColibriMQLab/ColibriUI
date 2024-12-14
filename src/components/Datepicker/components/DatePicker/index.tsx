@@ -47,9 +47,7 @@ const DatePicker = ({ className, selectedDate = "" }: Props) => {
           value={toDMYDate(date)}
         />
       </Dropdown>
-
     </div>
-
   );
 };
 

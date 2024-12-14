@@ -36,13 +36,13 @@ const TimePicker = ({
   }, [baseOptions, interval]);
 
   return (
-    <Select
-      className={className}
-      value={time}
-      options={options}
-      fontSize={14}
-      customInputRoot={
-        <div className={clx(styles['input-container'], styles['input-time'])}>
+    <div className={clx(styles['input-container'], styles['input-time'])}>
+      <Select
+        className={className}
+        value={time}
+        options={options}
+        fontSize={14}
+        customInputRoot={
           <input
             className={clx(styles['input-field'])}
             tabIndex={0}
@@ -54,10 +54,10 @@ const TimePicker = ({
             readOnly
             value={time}
           />
-        </div>
-      }
-      onChange={(time) => setTime(time)}
-    />
+        }
+        onChange={(time) => setTime(time)}
+      />
+    </div>
   );
 };
 
