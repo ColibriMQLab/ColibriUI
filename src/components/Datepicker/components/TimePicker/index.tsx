@@ -37,7 +37,7 @@ const TimePicker = ({
 
   return (
     <Select
-      className={clx(className)}
+      className={clx(className, styles.select)}
       options={options}
       fontSize={14}
       customInputRoot={
@@ -55,6 +55,7 @@ const TimePicker = ({
           />
         </div>
       }
+      value={time}
       onChange={(time) => setTime(time)}
     />
   );

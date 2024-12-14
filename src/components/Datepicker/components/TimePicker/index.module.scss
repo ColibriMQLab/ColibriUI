@@ -25,7 +25,6 @@
 
 .input-time {
   position: relative;
-  width: 89px;
 }
 
 .input-time::before {
@@ -52,4 +51,8 @@
   width: 1px;
   background-color: var(--palette-primary-3);
   right: 0;
+}
+
+.select {
+  flex: 2;
 }
