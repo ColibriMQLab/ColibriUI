@@ -38,8 +38,7 @@ const TimePicker = ({
   return (
     <div className={clx(styles['input-container'], styles['input-time'])}>
       <Select
-        className={className}
-        value={time}
+        className={clx(styles.select, className)}
         options={options}
         fontSize={14}
         customInputRoot={
