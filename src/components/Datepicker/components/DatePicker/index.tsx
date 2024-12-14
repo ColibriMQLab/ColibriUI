@@ -16,34 +16,40 @@ type Props = {
 const DatePicker = ({ className, selectedDate = "" }: Props) => {
   const [date, setDate] = useState(selectedDate);
   return (
-    <div className={clx(styles.root, className)}>
-      <div className={clx(styles["date-picker"])}>
-        <Dropdown
-          placement="bottom"
-          preventAutoClose
-          fontSize={14}
-          trigger={["click"]}
-          overlay={
-            <Calendar
-              minWidth={260}
-              className={styles.calendar}
-              today={toISODate(new Date())}
-              titleSize="h5"
-              selectedDate={date}
-              onChange={(payload: CalendarPayload) => {
-                setDate(payload.date);
-              }}
-            />
-          }
-        >
-          <input
-            className={clx(styles["date-picker-input-control"])}
-            value={toDMYDate(date)}
-            readOnly
+    <div className={clx(styles['input-container'], styles['input-date'], className)}>
+      <Dropdown
+        placement="bottom"
+        preventAutoClose
+        fontSize={14}
+        trigger={["click"]}
+        overlay={
+          <Calendar
+            minWidth={260}
+            className={styles.calendar}
+            today={toISODate(new Date())}
+            titleSize="h5"
+            selectedDate={date}
+            onChange={(payload: CalendarPayload) => {
+              setDate(payload.date);
+            }}
           />
-        </Dropdown>
-      </div>
+        }
+      >
+        <input
+          className={clx(styles['input-field'])}
+          tabIndex={0}
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-invalid="false"
+          autoComplete="off"
+          maxLength={7}
+          readOnly
+          value={toDMYDate(date)}
+        />
+      </Dropdown>
+
     </div>
+
   );
 };
 

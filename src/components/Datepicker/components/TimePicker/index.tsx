@@ -36,36 +36,28 @@ const TimePicker = ({
   }, [baseOptions, interval]);
 
   return (
-    <div className={clx(styles.root, className)}>
-      <div className={clx(styles["time-picker"])}>
-        <span className={clx(styles["time-input-wrapper"])}>
-          <span className={clx(styles.select)}>
-            <span className={clx(styles["text-input"])}>
-              <Select
-                value={time}
-                className={clx(styles["select-input-control"])}
-                options={options}
-                fontSize={14}
-                customInputRoot={
-                  <input
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    aria-invalid="false"
-                    autoComplete="off"
-                    className={clx(styles["text-input-control"])}
-                    maxLength={5}
-                    value={time}
-                    readOnly
-                  />
-                }
-                onChange={(time) => setTime(time)}
-              />
-              <span className={clx(styles["text-input-box"])} />
-            </span>
-          </span>
-        </span>
-      </div>
-    </div>
+    <Select
+      className={className}
+      value={time}
+      options={options}
+      fontSize={14}
+      customInputRoot={
+        <div className={clx(styles['input-container'], styles['input-time'])}>
+          <input
+            className={clx(styles['input-field'])}
+            tabIndex={0}
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-invalid="false"
+            autoComplete="off"
+            maxLength={5}
+            readOnly
+            value={time}
+          />
+        </div>
+      }
+      onChange={(time) => setTime(time)}
+    />
   );
 };
 
