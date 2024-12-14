@@ -16,25 +16,25 @@ type Props = {
 const DatePicker = ({ className, selectedDate = "" }: Props) => {
   const [date, setDate] = useState(selectedDate);
   return (
-    <div className={clx(styles['input-container'], styles['input-date'], className)}>
-      <Dropdown
-        placement="bottom"
-        preventAutoClose
-        fontSize={14}
-        trigger={["click"]}
-        overlay={
-          <Calendar
-            minWidth={260}
-            className={styles.calendar}
-            today={toISODate(new Date())}
-            titleSize="h5"
-            selectedDate={date}
-            onChange={(payload: CalendarPayload) => {
-              setDate(payload.date);
-            }}
-          />
-        }
-      >
+    <Dropdown
+      placement="bottom"
+      preventAutoClose
+      fontSize={14}
+      trigger={["click"]}
+      overlay={
+        <Calendar
+          minWidth={260}
+          className={styles.calendar}
+          today={toISODate(new Date())}
+          titleSize="h5"
+          selectedDate={date}
+          onChange={(payload: CalendarPayload) => {
+            setDate(payload.date);
+          }}
+        />
+      }
+    >
+      <div className={clx(styles['input-container'], styles['input-date'], className)}>
         <input
           className={clx(styles['input-field'])}
           tabIndex={0}
@@ -46,8 +46,8 @@ const DatePicker = ({ className, selectedDate = "" }: Props) => {
           readOnly
           value={toDMYDate(date)}
         />
-      </Dropdown>
-    </div>
+      </div>
+    </Dropdown>
   );
 };
 
