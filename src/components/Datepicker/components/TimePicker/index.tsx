@@ -41,9 +41,9 @@ const TimePicker = ({
       options={options}
       fontSize={14}
       customInputRoot={
-        <div className={clx(styles['input-container'], styles['input-time'])}>
+        <div className={clx(styles["input-container"], styles["input-time"])}>
           <input
-            className={clx(styles['input-field'])}
+            className={clx(styles["input-field"])}
             tabIndex={0}
             aria-expanded="false"
             aria-haspopup="true"
