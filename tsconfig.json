@@ -23,6 +23,14 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     "isolatedModules": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
   },
   "ts-node": {
     "compilerOptions": {
