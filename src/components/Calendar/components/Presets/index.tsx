@@ -31,19 +31,17 @@ export const Presets: React.FunctionComponent<Props> = ({
   <div data-testid="presets">
     <div className={clx(styles["native-scroll-inner"])}>
       <div className={clx(styles.inner)}>
-        {presets.map((preset, ...rest) => {
-          return (
-            <div className={clx(styles.item)} key={`preset=${rest[0]}`}>
-              <Button
-                variant="outline"
-                onClick={() => onPresetSelect(preset)}
-                size="m"
-              >
-                {preset.name}
-              </Button>
-            </div>
-          );
-        })}
+        {presets.map((preset, ...rest) => (
+          <div className={clx(styles.item)} key={`preset=${rest[0]}`}>
+            <Button
+              variant="outline"
+              onClick={() => onPresetSelect(preset)}
+              size="m"
+            >
+              {preset.name}
+            </Button>
+          </div>
+        ))}
       </div>
     </div>
   </div>

@@ -42,44 +42,42 @@ const RadioGroup: FC<Props> = memo(
     wrapped = false,
     className,
     disabled = false,
-  }: Props) => {
-    return (
-      <div className={clx(styles.group, { column, wrapped }, className)}>
-        {options.map((option) => {
-          const {
-            id,
-            val: optionVal,
-            text,
-            note,
-            name,
-            onClick,
-            onMouseEnter,
-            className: optionClassName,
-            disabled: optionDisabled,
-          } = option;
+  }: Props) => (
+    <div className={clx(styles.group, { column, wrapped }, className)}>
+      {options.map((option) => {
+        const {
+          id,
+          val: optionVal,
+          text,
+          note,
+          name,
+          onClick,
+          onMouseEnter,
+          className: optionClassName,
+          disabled: optionDisabled,
+        } = option;
 
-          return (
-            <Radio
-              key={optionVal}
-              id={id}
-              testId={id}
-              value={optionVal}
-              text={text}
-              note={note}
-              name={name}
-              className={clx(styles.radio, optionClassName)}
-              checked={val === optionVal}
-              onChange={(e) => onChange(e.target.value)}
-              onBlur={onBlur}
-              onClick={onClick}
-              onMouseEnter={onMouseEnter}
-              disabled={disabled || optionDisabled}
-            />
-          );
-        })}
-      </div>
-    );
-  },
+        return (
+          <Radio
+            key={optionVal}
+            id={id}
+            testId={id}
+            value={optionVal}
+            text={text}
+            note={note}
+            name={name}
+            className={clx(styles.radio, optionClassName)}
+            checked={val === optionVal}
+            onChange={(e) => onChange(e.target.value)}
+            onBlur={onBlur}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            disabled={disabled || optionDisabled}
+          />
+        );
+      })}
+    </div>
+  ),
 );
 
 export default RadioGroup;

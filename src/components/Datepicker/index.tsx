@@ -12,13 +12,11 @@ type Props = {
   selectedDate?: string;
 };
 
-const Datepicker = ({ className, selectedTime, selectedDate }: Props) => {
-  return (
-    <div className={clx(styles.root, className)}>
-      <TimePickerInput selectedTime={selectedTime} />
-      <DatePickerInput selectedDate={selectedDate} />
-    </div>
-  );
-};
+const Datepicker = ({ className, selectedTime, selectedDate }: Props) => (
+  <div className={clx(styles.root, className)}>
+    <TimePickerInput selectedTime={selectedTime} />
+    <DatePickerInput selectedDate={selectedDate} />
+  </div>
+);
 
 export default Datepicker;

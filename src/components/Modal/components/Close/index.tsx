@@ -4,8 +4,8 @@ import { Close as CloseIcon } from "../../../Icons";
 import styles from "./Close.module.scss";
 import type { FC } from "react";
 
-const Close: FC<{ onClick?: () => void }> = ({ onClick }) => {
-  return <CloseIcon className={classNames(styles.close)} onClick={onClick} />;
-};
+const Close: FC<{ onClick?: () => void }> = ({ onClick }) => (
+  <CloseIcon className={classNames(styles.close)} onClick={onClick} />
+);
 
 export default Close;

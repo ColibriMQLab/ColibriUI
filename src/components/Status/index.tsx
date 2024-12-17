@@ -11,14 +11,12 @@ const Status = ({
   tag: Component = "span",
   children,
   type,
-}: PropsWithChildren<StatusProps>) => {
-  return (
-    <Component
-      className={clx(styles.root, { [`root_${type}`]: !!type }, className)}
-    >
-      {children}
-    </Component>
-  );
-};
+}: PropsWithChildren<StatusProps>) => (
+  <Component
+    className={clx(styles.root, { [`root_${type}`]: !!type }, className)}
+  >
+    {children}
+  </Component>
+);
 
 export default Status;

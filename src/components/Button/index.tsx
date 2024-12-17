@@ -22,35 +22,33 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ...props
     },
     ref,
-  ) => {
-    return (
-      <button
-        onClick={onClick}
-        ref={ref}
-        className={clx(
-          styles.root,
-          {
-            root_icon: !!icon,
-            root_fullWidth: !!fullWidth,
-            [`size_${size}`]: !!size,
-            [`variant_${variant}`]: !!variant,
-            [`variant_${variant}_disabled`]: !!disabled,
-          },
-          className,
-        )}
-        disabled={disabled}
-        data-testid="button"
-        type={type || "button"}
-        role="button"
-        {...props}
-      >
-        {icon && <span className={clx(styles.icon)}>{icon}</span>}
-        {iconStart && <span className={clx(styles.icon)}>{iconStart}</span>}
-        {children && <span className={clx(styles.text)}>{children}</span>}
-        {iconEnd && <span className={clx(styles.icon)}>{iconEnd}</span>}
-      </button>
-    );
-  },
+  ) => (
+    <button
+      onClick={onClick}
+      ref={ref}
+      className={clx(
+        styles.root,
+        {
+          root_icon: !!icon,
+          root_fullWidth: !!fullWidth,
+          [`size_${size}`]: !!size,
+          [`variant_${variant}`]: !!variant,
+          [`variant_${variant}_disabled`]: !!disabled,
+        },
+        className,
+      )}
+      disabled={disabled}
+      data-testid="button"
+      type={type || "button"}
+      role="button"
+      {...props}
+    >
+      {icon && <span className={clx(styles.icon)}>{icon}</span>}
+      {iconStart && <span className={clx(styles.icon)}>{iconStart}</span>}
+      {children && <span className={clx(styles.text)}>{children}</span>}
+      {iconEnd && <span className={clx(styles.icon)}>{iconEnd}</span>}
+    </button>
+  ),
 );
 
 export default Button;

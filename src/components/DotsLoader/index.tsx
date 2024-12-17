@@ -5,27 +5,25 @@ import type { FC } from "react";
 
 const clx = classNames.bind(styles);
 
-const DotsLoader: FC<{ color?: string }> = ({ color }) => {
-  return (
-    <div className={clx("wrapper")}>
-      <div
-        style={{ backgroundColor: color }}
-        className={clx({ dot: true, dot_first: true })}
-      />
-      <div
-        style={{ backgroundColor: color }}
-        className={clx({ dot: true, dot_second: true })}
-      />
-      <div
-        style={{ backgroundColor: color }}
-        className={clx({ dot: true, dot_third: true })}
-      />
-      <div
-        style={{ backgroundColor: color }}
-        className={clx({ dot: true, dot_fourth: true })}
-      />
-    </div>
-  );
-};
+const DotsLoader: FC<{ color?: string }> = ({ color }) => (
+  <div className={clx("wrapper")}>
+    <div
+      style={{ backgroundColor: color }}
+      className={clx({ dot: true, dot_first: true })}
+    />
+    <div
+      style={{ backgroundColor: color }}
+      className={clx({ dot: true, dot_second: true })}
+    />
+    <div
+      style={{ backgroundColor: color }}
+      className={clx({ dot: true, dot_third: true })}
+    />
+    <div
+      style={{ backgroundColor: color }}
+      className={clx({ dot: true, dot_fourth: true })}
+    />
+  </div>
+);
 
 export default DotsLoader;

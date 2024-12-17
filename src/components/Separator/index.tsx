@@ -7,8 +7,8 @@ type Props = {
   className?: string;
 };
 
-const Separator: FC<Props> = ({ className }) => {
-  return <div className={classNames(styles.root, className)} />;
-};
+const Separator: FC<Props> = ({ className }) => (
+  <div className={classNames(styles.root, className)} />
+);
 
 export default Separator;

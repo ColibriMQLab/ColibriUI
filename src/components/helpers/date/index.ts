@@ -33,27 +33,20 @@ const getDateMonth = (date: DateFormat): string => {
 };
 
 // Shift the date by a number of days
-export const shiftDate = (date: Date, days: number): Date => {
-  return addDays(date, days);
-};
+export const shiftDate = (date: Date, days: number): Date =>
+  addDays(date, days);
 
 // Check if two dates are in the same month and year
-export const isSameMonthAndYear = (date: Date, otherDate: Date): boolean => {
-  return (
-    date.getFullYear() === otherDate.getFullYear() &&
-    date.getMonth() === otherDate.getMonth()
-  );
-};
+export const isSameMonthAndYear = (date: Date, otherDate: Date): boolean =>
+  date.getFullYear() === otherDate.getFullYear() &&
+  date.getMonth() === otherDate.getMonth();
 
 // Convert date to ISO format (YYYY-MM-DD)
-export const toISODate = (date: Date): string => {
-  return format(date, "yyyy-MM-dd");
-};
+export const toISODate = (date: Date): string => format(date, "yyyy-MM-dd");
 
 // Convert date to DMY format (dd.MM.yyyy)
-export const toDMYDate = (dateISO: string): string => {
-  return dateISO ? format(new Date(dateISO), "dd.MM.yyyy") : "";
-};
+export const toDMYDate = (dateISO: string): string =>
+  dateISO ? format(new Date(dateISO), "dd.MM.yyyy") : "";
 
 // Get the period dates as a formatted string
 export const getPeriodDates = (startDate: DateFormat, period = 1): string => {
@@ -71,9 +64,8 @@ export const getPeriodDates = (startDate: DateFormat, period = 1): string => {
 };
 
 // Clear time from a date
-export const clearTime = (date: Date): Date => {
-  return new Date(date.setHours(0, 0, 0, 0));
-};
+export const clearTime = (date: Date): Date =>
+  new Date(date.setHours(0, 0, 0, 0));
 
 // Get the difference in days between two dates
 export const getDaysDiff = (dateStart: Date, dateEnd: Date): number => {

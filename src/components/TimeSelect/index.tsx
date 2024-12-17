@@ -29,22 +29,26 @@ const TimeSelect: FC<TimeSelectProps> = ({
   disabled,
   ...props
 }: TimeSelectProps) => {
-  const baseOptions = useMemo(() => {
-    return generateSuggest(interval).map((item) => ({
-      value: item.time,
-      label: <OptionLabel time={item.time} />,
-    }));
-  }, [interval]);
+  const baseOptions = useMemo(
+    () =>
+      generateSuggest(interval).map((item) => ({
+        value: item.time,
+        label: <OptionLabel time={item.time} />,
+      })),
+    [interval],
+  );
 
-  const options = useMemo(() => {
-    return baseOptions.map((option) => ({
-      ...option,
-      disabled:
-        (!!selectedDate &&
-          checkIsBeforeSelectedDate(option.value, interval, selectedDate)) ||
-        (!!currentDate && checkIsBeforeNow(option.value, currentDate)),
-    }));
-  }, [baseOptions, currentDate, selectedDate, interval]);
+  const options = useMemo(
+    () =>
+      baseOptions.map((option) => ({
+        ...option,
+        disabled:
+          (!!selectedDate &&
+            checkIsBeforeSelectedDate(option.value, interval, selectedDate)) ||
+          (!!currentDate && checkIsBeforeNow(option.value, currentDate)),
+      })),
+    [baseOptions, currentDate, selectedDate, interval],
+  );
 
   return (
     <Select

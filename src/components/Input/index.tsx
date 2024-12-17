@@ -23,33 +23,31 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       ...props
     },
     ref,
-  ) => {
-    return (
-      <FormField
-        className={classNames(className)}
-        label={label}
-        required={required}
-        hint={hint}
+  ) => (
+    <FormField
+      className={classNames(className)}
+      label={label}
+      required={required}
+      hint={hint}
+      error={error}
+    >
+      <InputRoot
+        ref={ref}
+        startIcon={startIcon}
+        endIcon={endIcon}
+        variant={variant}
+        size={size}
+        disabled={!!disabled}
         error={error}
       >
-        <InputRoot
-          ref={ref}
-          startIcon={startIcon}
-          endIcon={endIcon}
-          variant={variant}
-          size={size}
-          disabled={!!disabled}
-          error={error}
-        >
-          <BaseInput
-            ref={inputRef}
-            onChange={onChange}
-            {...{ type: "text", ...props }}
-          />
-        </InputRoot>
-      </FormField>
-    );
-  },
+        <BaseInput
+          ref={inputRef}
+          onChange={onChange}
+          {...{ type: "text", ...props }}
+        />
+      </InputRoot>
+    </FormField>
+  ),
 );
 
 export default Input;

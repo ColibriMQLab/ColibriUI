@@ -21,19 +21,23 @@ const TimePicker = ({
 }: TimePickerProps) => {
   const [time, setTime] = useState<string>(selectedTime);
 
-  const baseOptions = useMemo(() => {
-    return generateSuggest(interval).map((item) => ({
-      value: item.time,
-      label: <OptionLabel time={item.time} />,
-    }));
-  }, [interval]);
+  const baseOptions = useMemo(
+    () =>
+      generateSuggest(interval).map((item) => ({
+        value: item.time,
+        label: <OptionLabel time={item.time} />,
+      })),
+    [interval],
+  );
 
-  const options = useMemo(() => {
-    return baseOptions.map((option) => ({
-      ...option,
-      disabled: false,
-    }));
-  }, [baseOptions, interval]);
+  const options = useMemo(
+    () =>
+      baseOptions.map((option) => ({
+        ...option,
+        disabled: false,
+      })),
+    [baseOptions, interval],
+  );
 
   return (
     <Select

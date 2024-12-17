@@ -35,24 +35,22 @@ const Radio: FC<Props> = ({
   className,
   disabled = false,
   testId,
-}: Props) => {
-  return (
-    <InputRadio
-      id={id}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-      onBlur={onBlur}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      text={text}
-      note={note}
-      name={name}
-      className={className}
-      disabled={disabled}
-      testid={testId}
-    />
-  );
-};
+}: Props) => (
+  <InputRadio
+    id={id}
+    value={value}
+    checked={checked}
+    onChange={onChange}
+    onBlur={onBlur}
+    onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    text={text}
+    note={note}
+    name={name}
+    className={className}
+    disabled={disabled}
+    testid={testId}
+  />
+);
 
 export default Radio;

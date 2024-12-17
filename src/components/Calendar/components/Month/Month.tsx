@@ -111,66 +111,62 @@ export const Month: FCWithElements<Props> = (props) => {
             );
           })}
         </ul>
-        {getMonthWeeks(props).map((days, ...rest1) => {
-          return (
-            <ul key={`week-${rest1[0]}`} className={clx(styles.week)}>
-              {days.map((day, ...rest2) => {
-                const key = `day-${rest2[0]}`;
+        {getMonthWeeks(props).map((days, ...rest1) => (
+          <ul key={`week-${rest1[0]}`} className={clx(styles.week)}>
+            {days.map((day, ...rest2) => {
+              const key = `day-${rest2[0]}`;
 
-                if (day.isDummy) {
-                  return <li className={clx(styles.day)} key={key} />;
-                }
-                const attrs = {
-                  isStartOfSelection: day.isStartOfSelection,
-                  isEndOfSelection: day.isEndOfSelection,
-                  isSelected: day.isSelected,
-                  isInSelectedRange: day.isInSelectedRange,
-                };
+              if (day.isDummy) {
+                return <li className={clx(styles.day)} key={key} />;
+              }
+              const attrs = {
+                isStartOfSelection: day.isStartOfSelection,
+                isEndOfSelection: day.isEndOfSelection,
+                isSelected: day.isSelected,
+                isInSelectedRange: day.isInSelectedRange,
+              };
 
-                const dayInnerActive = day.isActive
-                  ? styles["day-inner-active"]
-                  : "";
+              const dayInnerActive = day.isActive
+                ? styles["day-inner-active"]
+                : "";
 
-                return (
-                  <Item {...attrs} key={key}>
-                    <button
-                      className={clx(styles["day-inner"], dayInnerActive)}
+              return (
+                <Item {...attrs} key={key}>
+                  <button
+                    className={clx(styles["day-inner"], dayInnerActive)}
+                    style={{
+                      background: day.isSelected
+                        ? "var(--palette-bg-2)"
+                        : "transparent",
+                    }}
+                    role="button"
+                    type="button"
+                    onClick={
+                      day.isActive
+                        ? () =>
+                            props.onDayClick(
+                              [year, month, leadingZeros(day.day, 2)].join("-"),
+                            )
+                        : undefined
+                    }
+                  >
+                    <Typography
+                      size="s"
                       style={{
-                        background: day.isSelected
-                          ? "var(--palette-bg-2)"
-                          : "transparent",
+                        opacity: day.isActive ? 80 : 30,
+                        color: day.isActive
+                          ? "rgba(0, 0, 0, 0.8)"
+                          : "rgba(0, 0, 0, 0.3)",
                       }}
-                      role="button"
-                      type="button"
-                      onClick={
-                        day.isActive
-                          ? () =>
-                              props.onDayClick(
-                                [year, month, leadingZeros(day.day, 2)].join(
-                                  "-",
-                                ),
-                              )
-                          : undefined
-                      }
                     >
-                      <Typography
-                        size="s"
-                        style={{
-                          opacity: day.isActive ? 80 : 30,
-                          color: day.isActive
-                            ? "rgba(0, 0, 0, 0.8)"
-                            : "rgba(0, 0, 0, 0.3)",
-                        }}
-                      >
-                        {day.day}
-                      </Typography>
-                    </button>
-                  </Item>
-                );
-              })}
-            </ul>
-          );
-        })}
+                      {day.day}
+                    </Typography>
+                  </button>
+                </Item>
+              );
+            })}
+          </ul>
+        ))}
       </div>
     </div>
   );

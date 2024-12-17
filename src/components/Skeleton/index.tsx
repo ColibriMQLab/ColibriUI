@@ -9,20 +9,16 @@ export const SkeletonRect: FC<RectProps> = ({
   width,
   height,
   borderRadius,
-}) => {
-  return (
-    <div
-      className={classNames(styles.rect, className)}
-      style={{ width, height, borderRadius }}
-    />
-  );
-};
+}) => (
+  <div
+    className={classNames(styles.rect, className)}
+    style={{ width, height, borderRadius }}
+  />
+);
 
-export const SkeletonText: FC<TextProps> = ({ className, width, size }) => {
-  return (
-    <div
-      className={classNames(styles.text, className)}
-      style={{ width, height: size }}
-    />
-  );
-};
+export const SkeletonText: FC<TextProps> = ({ className, width, size }) => (
+  <div
+    className={classNames(styles.text, className)}
+    style={{ width, height: size }}
+  />
+);
