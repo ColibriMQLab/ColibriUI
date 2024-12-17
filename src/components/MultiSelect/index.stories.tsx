@@ -56,14 +56,10 @@ const groups = [{
 ];
 
 const Template = (args) => {
-  const [value, setValue] = useState<string>();
-
   return (
     <MultiSelect
       {...args}
-      value={value}
       groups={groups}
-      onChange={(v) => setValue(v)}
     />
   );
 };

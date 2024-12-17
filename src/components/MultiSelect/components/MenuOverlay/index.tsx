@@ -1,10 +1,11 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
 import generateUniqID from "../../../helpers/generateUniqID";
 import Typography from "../../../Typography";
 import Separator from "../../../Separator";
+import { createGroupOptionString } from "../..";
 import styles from "./index.module.scss";
 import type { Coordinates } from "../../index.props";
 
@@ -22,27 +23,18 @@ interface IMenuOverlayProps {
     title?: string;
     options: IOption[];
   }[];
-  onChange: (value: string) => void;
+  onChange: (key: string) => void;
 }
 
 const OFFSET_ITEMS_COUNT = 2;
 
 const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
-  const [selected, setSelected] = useState<string[]>();
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
     height: 0,
   });
   const listRef = useRef<null | HTMLUListElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
-
-  const handleSelect = useCallback(
-    (option: IOption, key: string) => {
-      onChange(option.value);
-      setSelected(key.split(" "));
-    },
-    [onChange],
-  );
 
   useLayoutEffect(() => {
     if (!rootRef || !rootRef.current) {
@@ -58,8 +50,8 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
 
   return (
     <div ref={rootRef} className={clx(styles.root)}>
-      {groups.map((group, index) => (
-        <div key={generateUniqID(index)}>
+      {groups.map((group, groupIndex) => (
+        <div key={generateUniqID(groupIndex)}>
           <div className={clx(styles.title)}>
             <Typography
               style={{ color: "var(--typography-secondary)" }}
@@ -69,13 +61,15 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
             </Typography>
           </div>
           <Separator />
-          <Menu ref={listRef} selected={selected}>
-            {group.options.map((option, index) => (
+          <Menu ref={listRef}>
+            {group.options.map((option, optionIndex) => (
               <SelectItem
                 setScrollView={setScrollView}
                 option={option}
-                key={generateUniqID(index)}
-                onClick={() => handleSelect(option, `item-${index}`)}
+                key={generateUniqID(optionIndex)}
+                onClick={() =>
+                  onChange(createGroupOptionString(groupIndex, option.value))
+                }
               />
             ))}
           </Menu>

@@ -16,7 +16,7 @@
     "lint:css:fix": "stylelint 'src/**/*.scss' --fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:coverage": "npm run test -- --coverage",
+    "test:coverage": "npm run test --coverage",
     "test": "jest --config ./.config/jest/jest.config.ts"
   },
   "repository": {

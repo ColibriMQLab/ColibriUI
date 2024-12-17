@@ -20,7 +20,6 @@ const MenuItem = forwardRef<HTMLLIElement, PropsWithChildren<MenuItemProps>>(
   ) => (
     <li
       ref={ref}
-      data-component="menu-item"
       style={{
         backgroundColor: isSelected
           ? "var(--palette-bg-2, rgb(232, 240, 254))"

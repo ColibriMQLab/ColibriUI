@@ -7,28 +7,47 @@ import type { MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
+export function createGroupOptionString(
+  groupIndex: number,
+  optionValue: string,
+) {
+  return `group-${groupIndex}-option-${optionValue}`;
+}
+
 const MultiSelect = ({
   className,
   groups,
-  value,
   zIndex,
   fontSize,
   disabled,
-  onChange,
 }: MultiSelectProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string[]>([]);
 
   const preparedGroups = useMemo(
     () =>
-      groups.map((group) => ({
+      groups.map((group, groupIndex) => ({
         title: group.title,
         options: group.options.map((option) => ({
           ...option,
-          selected: value?.includes(option.value) || false,
+          selected:
+            value?.includes(
+              createGroupOptionString(groupIndex, option.value),
+            ) || false,
         })),
       })),
     [value, groups],
   );
+
+  const handleChange = (key: string) => {
+    setValue((prev) => {
+      if (prev.indexOf(key) !== -1) {
+        return prev.filter((prevValue) => prevValue !== key);
+      } else {
+        return [...prev, key];
+      }
+    });
+  };
 
   return (
     <div className={clx(styles.root, className)}>
@@ -39,7 +58,9 @@ const MultiSelect = ({
         zIndex={zIndex}
         fontSize={fontSize}
         disabled={!!disabled}
-        overlay={<MenuOverlay groups={preparedGroups} onChange={onChange} />}
+        overlay={
+          <MenuOverlay groups={preparedGroups} onChange={handleChange} />
+        }
         samewidth
       >
         <div>ffffffffffddggggggggggggggggg</div>

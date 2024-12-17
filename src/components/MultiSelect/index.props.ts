@@ -19,9 +19,7 @@ export type Group = {
 export type MultiSelectProps = {
   groups: Group[];
   className?: string;
-  value?: string[];
   zIndex?: number;
   fontSize?: number;
-  onChange: (value: string) => void;
   disabled?: boolean;
 };

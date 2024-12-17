@@ -15,7 +15,7 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 
 const Template = (args) => {
-  const [selected, setSelected] = useState<string[]>(['2']);
+  const [selected, setSelected] = useState<string[]>(['2', '4']);
 
   return (
     <Menu {...args} selected={selected} onClick={(k) => setSelected([k])}>
@@ -25,6 +25,8 @@ const Template = (args) => {
         Menu item 3
       </MenuItem>
       <MenuItem key="4">Menu item 4</MenuItem>
+      <MenuItem key="5">Menu item 5</MenuItem>
+      <MenuItem key="6">Menu item 6</MenuItem>
     </Menu>
   );
 };
