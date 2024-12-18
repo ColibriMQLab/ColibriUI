@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { createRef, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
@@ -7,7 +7,7 @@ import Typography from "../../../Typography";
 import Separator from "../../../Separator";
 import { createGroupOptionString } from "../..";
 import styles from "./index.module.scss";
-import type { Coordinates } from "../../index.props";
+import type { Coordinates, Group } from "../../index.props";
 
 const clx = classNames.bind(styles);
 
@@ -29,11 +29,11 @@ interface IMenuOverlayProps {
 const OFFSET_ITEMS_COUNT = 2;
 
 const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
+  const refs = useRef([]);
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
     height: 0,
   });
-  const listRef = useRef<null | HTMLUListElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -61,12 +61,14 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
             </Typography>
           </div>
           <Separator />
-          <Menu ref={listRef}>
+          <Menu>
             {group.options.map((option, optionIndex) => (
               <SelectItem
+                ref={(el) => (refs.current[optionIndex] = el)}
                 setScrollView={setScrollView}
                 option={option}
                 key={generateUniqID(optionIndex)}
+                groups={groups}
                 onClick={() =>
                   onChange(createGroupOptionString(groupIndex, option.value))
                 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import classNames from "classnames/bind";
 import Dropdown from "../Dropdown";
 import styles from "./index.module.scss";
@@ -13,6 +13,23 @@ export function createGroupOptionString(
 ) {
   return `group-${groupIndex}-option-${optionValue}`;
 }
+
+const sortedItems = (items: string[]) => items.sort((a, b) => {
+
+  if (!a || !b) return 0;
+
+  const matchA = a.match(/group-(\d+)-option-(\d+)/);
+  const matchB = b.match(/group-(\d+)-option-(\d+)/);
+
+  if (!matchA || !matchB) {
+    return 0;
+  }
+
+  const [, groupA, optionA] = matchA.map(Number);
+  const [, groupB, optionB] = matchB.map(Number);
+
+  return groupA - groupB || optionA - optionB;
+});
 
 const MultiSelect = ({
   className,
@@ -39,15 +56,15 @@ const MultiSelect = ({
     [value, groups],
   );
 
-  const handleChange = (key: string) => {
+  const handleChange = useCallback((key: string) => {
     setValue((prev) => {
       if (prev.indexOf(key) !== -1) {
         return prev.filter((prevValue) => prevValue !== key);
       } else {
-        return [...prev, key];
+        return sortedItems([...prev, key]);
       }
     });
-  };
+  }, [sortedItems]);
 
   return (
     <div className={clx(styles.root, className)}>

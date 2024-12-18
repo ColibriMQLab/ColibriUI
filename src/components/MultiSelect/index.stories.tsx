@@ -3,6 +3,7 @@ import { useState } from "react";
 import MultiSelect from "./";
 
 import type { Meta } from "@storybook/react";
+import { truncateSync } from "fs";
 
 const meta: Meta<typeof MultiSelect> = {
   title: "UI/MultiSelect",
@@ -36,7 +37,8 @@ const groups = [{
       }, 
       { 
         value: '4', 
-        label: <span>Long long option</span>
+        label: <span>Long long option</span>,
+        selected: true
       }
     ],
   }, {
@@ -45,11 +47,13 @@ const groups = [{
       { 
         value: '5', 
         label: <span>Long long option</span>,
-        disabled: true
-      }, 
+        disabled: true,
+        selected: false
+      },
       { 
         value: '6', 
         label: <span>Long long option</span>,
+        selected: true
       }
     ],
   },
