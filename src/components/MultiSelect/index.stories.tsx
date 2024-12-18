@@ -38,7 +38,6 @@ const groups = [{
       { 
         value: '4', 
         label: <span>Long long option</span>,
-        selected: true
       }
     ],
   }, {
@@ -48,12 +47,14 @@ const groups = [{
         value: '5', 
         label: <span>Long long option</span>,
         disabled: true,
-        selected: false
       },
       { 
         value: '6', 
         label: <span>Long long option</span>,
-        selected: true
+      },
+      { 
+        value: '7',
+        label: <span>Long long option</span>,
       }
     ],
   },

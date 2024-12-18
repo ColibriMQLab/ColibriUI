@@ -1,4 +1,4 @@
-import React, { createRef, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
@@ -7,7 +7,7 @@ import Typography from "../../../Typography";
 import Separator from "../../../Separator";
 import { createGroupOptionString } from "../..";
 import styles from "./index.module.scss";
-import type { Coordinates, Group } from "../../index.props";
+import type { Coordinates } from "../../index.props";
 
 const clx = classNames.bind(styles);
 
@@ -29,7 +29,7 @@ interface IMenuOverlayProps {
 const OFFSET_ITEMS_COUNT = 2;
 
 const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
-  const refs = useRef([]);
+  const refs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
     height: 0,
@@ -48,6 +48,41 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
     }
   }, [scrollView, rootRef]);
 
+  function scrollToItem(key: string): void {
+    if (!refs.current && !refs.current[key]) {
+      return;
+    }
+
+    const { offsetTop, offsetHeight } = refs.current[key];
+
+    setScrollView({
+      top: offsetTop,
+      height: offsetHeight,
+    });
+  }
+
+  useLayoutEffect(() => {
+    const allOptions = groups.flatMap((group, groupIndex) =>
+      group.options.map((option, optionIndex) => ({
+        option,
+        key: `group-${groupIndex}-option-${optionIndex}`,
+      })),
+    );
+
+    const firstSelectedOptionWithKey = allOptions.find(
+      ({ option }) => option.selected,
+    );
+
+    if (firstSelectedOptionWithKey) {
+      const { option, key } = firstSelectedOptionWithKey;
+      console.log("Selected option:", option);
+      console.log("Key for selected option:", key);
+      scrollToItem(key);
+    } else {
+      console.log("No selected option found");
+    }
+  }, []);
+
   return (
     <div ref={rootRef} className={clx(styles.root)}>
       {groups.map((group, groupIndex) => (
@@ -64,11 +99,12 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
           <Menu>
             {group.options.map((option, optionIndex) => (
               <SelectItem
-                ref={(el) => (refs.current[optionIndex] = el)}
-                setScrollView={setScrollView}
+                ref={(ref) => {
+                  refs.current[`group-${groupIndex}-option-${optionIndex}`] =
+                    ref;
+                }}
                 option={option}
                 key={generateUniqID(optionIndex)}
-                groups={groups}
                 onClick={() =>
                   onChange(createGroupOptionString(groupIndex, option.value))
                 }

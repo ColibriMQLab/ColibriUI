@@ -14,22 +14,22 @@ export function createGroupOptionString(
   return `group-${groupIndex}-option-${optionValue}`;
 }
 
-const sortedItems = (items: string[]) => items.sort((a, b) => {
+const sortedItems = (items: string[]) =>
+  items.sort((a, b) => {
+    if (!a || !b) return 0;
 
-  if (!a || !b) return 0;
+    const matchA = a.match(/group-(\d+)-option-(\d+)/);
+    const matchB = b.match(/group-(\d+)-option-(\d+)/);
 
-  const matchA = a.match(/group-(\d+)-option-(\d+)/);
-  const matchB = b.match(/group-(\d+)-option-(\d+)/);
+    if (!matchA || !matchB) {
+      return 0;
+    }
 
-  if (!matchA || !matchB) {
-    return 0;
-  }
+    const [, groupA, optionA] = matchA.map(Number);
+    const [, groupB, optionB] = matchB.map(Number);
 
-  const [, groupA, optionA] = matchA.map(Number);
-  const [, groupB, optionB] = matchB.map(Number);
-
-  return groupA - groupB || optionA - optionB;
-});
+    return groupA - groupB || optionA - optionB;
+  });
 
 const MultiSelect = ({
   className,
@@ -56,15 +56,18 @@ const MultiSelect = ({
     [value, groups],
   );
 
-  const handleChange = useCallback((key: string) => {
-    setValue((prev) => {
-      if (prev.indexOf(key) !== -1) {
-        return prev.filter((prevValue) => prevValue !== key);
-      } else {
-        return sortedItems([...prev, key]);
-      }
-    });
-  }, [sortedItems]);
+  const handleChange = useCallback(
+    (key: string) => {
+      setValue((prev) => {
+        if (prev.indexOf(key) !== -1) {
+          return prev.filter((prevValue) => prevValue !== key);
+        } else {
+          return sortedItems([...prev, key]);
+        }
+      });
+    },
+    [sortedItems],
+  );
 
   return (
     <div className={clx(styles.root, className)}>
