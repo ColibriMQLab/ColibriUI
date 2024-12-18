@@ -6,7 +6,7 @@ import FormField from "../base/FormField";
 import { Chevron } from "../Icons";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
-import type { Group, GroupOptions, MultiSelectProps } from "./index.props";
+import type { GroupOptions, MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
@@ -16,6 +16,10 @@ export function createGroupOptionString(
 ) {
   return `group-${groupIndex}-option-${optionValue}`;
 }
+
+type GroupOptionsWithSelected = GroupOptions & {
+  selected: boolean;
+};
 
 const sortedItems = (items: string[]) =>
   items.sort((a, b) => {
@@ -40,7 +44,7 @@ const MultiSelect = ({
   zIndex,
   fontSize,
   disabled,
-  fullWidth = true,
+  fullWidth = false,
   required,
   label,
   hint,
@@ -55,9 +59,9 @@ const MultiSelect = ({
   const preparedGroups = useMemo(
     () =>
       groups.map(
-        (group, groupIndex: number): Group => ({
+        (group, groupIndex: number) => ({
           title: group.title,
-          options: group.options.map((option: GroupOptions) => ({
+          options: group.options.map((option: GroupOptions): GroupOptionsWithSelected => ({
             ...option,
             selected:
               value?.includes(
@@ -129,7 +133,7 @@ const MultiSelect = ({
           }
           disabled={!!disabled}
         >
-          <div className={clx(styles["base-input"])} data-testid="base-input">
+          <div className={clx(styles["base-input"])}>
             {prepraredLabel.length ? (
               prepraredLabel.join(", ")
             ) : (

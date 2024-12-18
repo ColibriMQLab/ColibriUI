@@ -12,7 +12,7 @@ import type { Coordinates } from "../../index.props";
 
 const clx = classNames.bind(styles);
 
-interface IOption {
+export interface IOption {
   selected: boolean;
   value: string;
   label: ReactNode;
