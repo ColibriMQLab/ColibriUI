@@ -1,9 +1,12 @@
 import React, { useCallback, useMemo, useState } from "react";
 import classNames from "classnames/bind";
 import Dropdown from "../Dropdown";
+import InputRoot from "../base/InputRoot";
+import FormField from "../base/FormField";
+import { Chevron } from "../Icons";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
-import type { MultiSelectProps } from "./index.props";
+import type { Group, GroupOptions, MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
@@ -37,22 +40,32 @@ const MultiSelect = ({
   zIndex,
   fontSize,
   disabled,
+  fullWidth = true,
+  required,
+  label,
+  hint,
+  error,
+  size = "m",
+  placeholder,
+  name,
 }: MultiSelectProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string[]>([]);
 
   const preparedGroups = useMemo(
     () =>
-      groups.map((group, groupIndex) => ({
-        title: group.title,
-        options: group.options.map((option) => ({
-          ...option,
-          selected:
-            value?.includes(
-              createGroupOptionString(groupIndex, option.value),
-            ) || false,
-        })),
-      })),
+      groups.map(
+        (group, groupIndex: number): Group => ({
+          title: group.title,
+          options: group.options.map((option: GroupOptions) => ({
+            ...option,
+            selected:
+              value?.includes(
+                createGroupOptionString(groupIndex, option.value),
+              ) || false,
+          })),
+        }),
+      ),
     [value, groups],
   );
 
@@ -69,8 +82,30 @@ const MultiSelect = ({
     [sortedItems],
   );
 
+  const prepraredLabel = useMemo(
+    () =>
+      preparedGroups.flatMap((group) =>
+        group.options
+          .filter((option) => option.selected)
+          .map((option) => option.label),
+      ),
+    [preparedGroups],
+  );
+
   return (
-    <div className={clx(styles.root, className)}>
+    <FormField
+      className={clx(
+        styles["form-field"],
+        {
+          "full-width": fullWidth ? 1 : 0,
+        },
+        className,
+      )}
+      required={required}
+      label={label}
+      hint={hint}
+      error={error}
+    >
       <Dropdown
         placement="bottom-start"
         onVisibleChange={setIsOpen}
@@ -83,9 +118,28 @@ const MultiSelect = ({
         }
         samewidth
       >
-        <div>ffffffffffddggggggggggggggggg</div>
+        <InputRoot
+          error={error}
+          size={size}
+          className={clx(styles.root)}
+          endIcon={
+            <Chevron
+              className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+            />
+          }
+          disabled={!!disabled}
+        >
+          <div className={clx(styles["base-input"])} data-testid="base-input">
+            {prepraredLabel.length ? (
+              prepraredLabel.join(", ")
+            ) : (
+              <span className={clx(styles.placeholder)}>{placeholder}</span>
+            )}
+          </div>
+          <input type="hidden" name={name} tabIndex={-1} value={value || ""} />
+        </InputRoot>
       </Dropdown>
-    </div>
+    </FormField>
   );
 };
 

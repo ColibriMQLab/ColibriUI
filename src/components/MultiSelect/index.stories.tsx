@@ -1,9 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import MultiSelect from "./";
 
 import type { Meta } from "@storybook/react";
-import { truncateSync } from "fs";
 
 const meta: Meta<typeof MultiSelect> = {
   title: "UI/MultiSelect",
@@ -17,55 +15,57 @@ const meta: Meta<typeof MultiSelect> = {
 export default meta;
 
 const groups = [{
-    title: 'Group 1',
-    options: [
-      { 
-        value: '1', 
-        label: <span>Long long option</span> 
-      }, 
-      { 
-        value: '2', 
-        label: <span>Long long option</span>
-      }
-    ],
-  }, {
-    title: 'Group 2',
-    options: [
-      { 
-        value: '3', 
-        label: <span>Long long option</span> 
-      }, 
-      { 
-        value: '4', 
-        label: <span>Long long option</span>,
-      }
-    ],
-  }, {
-    title: 'Group 3',
-    options: [
-      { 
-        value: '5', 
-        label: <span>Long long option</span>,
-        disabled: true,
-      },
-      { 
-        value: '6', 
-        label: <span>Long long option</span>,
-      },
-      { 
-        value: '7',
-        label: <span>Long long option</span>,
-      }
-    ],
-  },
+  title: 'Group 1',
+  options: [
+    {
+      value: '1',
+      label: "Long long option"
+    },
+    {
+      value: '2',
+      label: "Long long option"
+    }
+  ],
+}, {
+  title: 'Group 2',
+  options: [
+    {
+      value: '3',
+      label: "Long long option"
+    },
+    {
+      value: '4',
+      label: "Long long option",
+    }
+  ],
+}, {
+  title: 'Group 3',
+  options: [
+    {
+      value: '5',
+      label: "Long long option",
+      disabled: true,
+    },
+    {
+      value: '6',
+      label: "Long long option",
+    },
+    {
+      value: '7',
+      label: "Long long option",
+    }
+  ],
+},
 ];
 
 const Template = (args) => {
   return (
-    <MultiSelect
-      {...args}
-      groups={groups}
-    />
+    <div style={{ width: '300px' }}>
+      <MultiSelect
+        {...args}
+        groups={groups}
+      />
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
+import type { FormFieldProps } from "../base/FormField/index.props";
 
 export type GroupOptions = {
   value: string;
-  label: ReactNode;
+  label: string;
   disabled?: boolean;
 };
 
@@ -16,10 +16,18 @@ export type Group = {
   options: GroupOptions[];
 };
 
-export type MultiSelectProps = {
+type Size = "s" | "m" | "l";
+
+export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   groups: Group[];
   className?: string;
   zIndex?: number;
   fontSize?: number;
   disabled?: boolean;
-};
+
+  fullWidth?: boolean;
+  required?: boolean;
+  size?: Size;
+  placeholder?: string;
+  name?: string;
+}

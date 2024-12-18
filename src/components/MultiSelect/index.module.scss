@@ -1,3 +1,39 @@
 .root {
-    
+  cursor: pointer;
+}
+
+.icon {
+  &_isOpen {
+    transform: rotate(180deg);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.base-input {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  flex: 1;
+  margin: 7px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+
+  ::placeholder {
+    color: var(--palette-bg-2);
+  }
+}
+
+.placeholder {
+  color: var(--input-primary-plaseholder-color);
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  white-space: nowrap;
 }
