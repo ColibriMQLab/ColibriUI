@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { memo, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
@@ -7,6 +7,7 @@ import Typography from "../../../Typography";
 import Separator from "../../../Separator";
 import { createGroupOptionString } from "../..";
 import styles from "./index.module.scss";
+import type { ReactNode } from "react";
 import type { Coordinates } from "../../index.props";
 
 const clx = classNames.bind(styles);
@@ -14,7 +15,7 @@ const clx = classNames.bind(styles);
 interface IOption {
   selected: boolean;
   value: string;
-  label: React.ReactNode;
+  label: ReactNode;
   disabled?: boolean;
 }
 
@@ -53,7 +54,8 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
       return;
     }
 
-    const { offsetTop, offsetHeight } = refs.current[key];
+    const offsetTop = refs.current[key]?.offsetTop ?? 0;
+    const offsetHeight = refs.current[key]?.offsetHeight ?? 0;
 
     setScrollView({
       top: offsetTop,
@@ -74,12 +76,8 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
     );
 
     if (firstSelectedOptionWithKey) {
-      const { option, key } = firstSelectedOptionWithKey;
-      console.log("Selected option:", option);
-      console.log("Key for selected option:", key);
+      const { key } = firstSelectedOptionWithKey;
       scrollToItem(key);
-    } else {
-      console.log("No selected option found");
     }
   }, []);
 
@@ -117,4 +115,4 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
   );
 };
 
-export default MenuOverlay;
+export default memo(MenuOverlay);
