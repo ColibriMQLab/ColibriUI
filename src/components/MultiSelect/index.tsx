@@ -58,18 +58,18 @@ const MultiSelect = ({
 
   const preparedGroups = useMemo(
     () =>
-      groups.map(
-        (group, groupIndex: number) => ({
-          title: group.title,
-          options: group.options.map((option: GroupOptions): GroupOptionsWithSelected => ({
+      groups.map((group, groupIndex: number) => ({
+        title: group.title,
+        options: group.options.map(
+          (option: GroupOptions): GroupOptionsWithSelected => ({
             ...option,
             selected:
               value?.includes(
                 createGroupOptionString(groupIndex, option.value),
               ) || false,
-          })),
-        }),
-      ),
+          }),
+        ),
+      })),
     [value, groups],
   );
 
