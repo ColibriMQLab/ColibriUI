@@ -19,15 +19,15 @@ export interface IOption {
   disabled?: boolean;
 }
 
-type MenuOverlayGroup = Omit<GroupProps, 'options' | 'value'> & {
+type MenuOverlayGroup = Omit<GroupProps, "options" | "value"> & {
   options: IOption[];
   value: string;
-}
+};
 
 type MenuOverlayProps = {
   groups: MenuOverlayGroup[];
   onChange: (key: string) => void;
-}
+};
 
 const OFFSET_ITEMS_COUNT = 2;
 
