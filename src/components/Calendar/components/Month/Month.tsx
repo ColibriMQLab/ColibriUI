@@ -91,7 +91,7 @@ export const Month: FCWithElements<Props> = (props) => {
       </div>
       <div className={clx(styles.table)}>
         <ul className={clx(styles.legend)}>
-          {[...Array(7)].map((empty, ...rest) => {
+          {[...Array(7)].map((_, ...rest) => {
             const index = rest[0] + 1;
 
             return (

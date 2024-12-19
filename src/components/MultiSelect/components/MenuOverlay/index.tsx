@@ -5,7 +5,7 @@ import SelectItem from "../MenuOverlayItem";
 import generateUniqID from "../../../helpers/generateUniqID";
 import Typography from "../../../Typography";
 import Separator from "../../../Separator";
-import { createGroupOptionString } from "../..";
+import { createGroupOptionString } from "../../utils";
 import styles from "./index.module.scss";
 import type { ReactNode } from "react";
 import type { Coordinates, GroupProps } from "../../index.props";

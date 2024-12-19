@@ -6,16 +6,10 @@ import FormField from "../base/FormField";
 import { Chevron } from "../Icons";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
+import { createGroupOptionString } from "./utils";
 import type { GroupOptions, MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
-
-export function createGroupOptionString(
-  groupValue: string,
-  optionValue: string,
-) {
-  return `group-${groupValue}-option-${optionValue}`;
-}
 
 type GroupOptionsWithSelected = GroupOptions & {
   selected: boolean;

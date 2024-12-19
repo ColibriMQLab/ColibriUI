@@ -25,7 +25,7 @@ export function getPresets(presets: string[]) {
       case PRESETS.NEXTWEEK:
         return getNextWeek();
       default:
-        break;
+        return;
     }
   });
 }
