@@ -44,24 +44,24 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
   const isVisible = visibleProp && visible && !disabled;
 
-  const { styles, attributes, update } = usePopper(
-    controlElement,
-    popperElement,
-    {
-      placement,
-      strategy,
-      modifiers: [
-        {
-          name: "flip",
-          enabled: false,
-        },
-        {
-          name: "preventOverflow",
-          enabled: preventOverflow,
-        },
-      ],
-    },
-  );
+  const {
+    styles: popperStyles,
+    attributes,
+    update,
+  } = usePopper(controlElement, popperElement, {
+    placement,
+    strategy,
+    modifiers: [
+      {
+        name: "flip",
+        enabled: false,
+      },
+      {
+        name: "preventOverflow",
+        enabled: preventOverflow,
+      },
+    ],
+  });
 
   const isNotComponent = typeof children === "string";
 
@@ -161,7 +161,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
               data-testid="popper-container"
               className={clx("popper-container")}
               style={{
-                ...styles.popper,
+                ...popperStyles.popper,
                 zIndex,
                 minWidth: controlElement?.offsetWidth,
                 ...(samewidth && {

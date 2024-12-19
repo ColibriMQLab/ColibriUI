@@ -10,7 +10,6 @@ const clx = classNames.bind(styles);
 interface TimePickerProps {
   className?: string;
   interval?: 5 | 10 | 15 | 30;
-  value?: string;
   selectedTime?: string;
 }
 
@@ -60,7 +59,7 @@ const TimePicker = ({
         </div>
       }
       value={time}
-      onChange={(time) => setTime(time)}
+      onChange={(value) => setTime(value)}
     />
   );
 };

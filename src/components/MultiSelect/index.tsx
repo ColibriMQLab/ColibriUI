@@ -6,7 +6,7 @@ import FormField from "../base/FormField";
 import { Chevron } from "../Icons";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
-import type { GroupOptions, GroupProps, MultiSelectProps } from "./index.props";
+import type { GroupOptions, MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 

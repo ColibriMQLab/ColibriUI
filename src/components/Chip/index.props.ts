@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 type Size = "s" | "m" | "l";
 
 export type ChipProps = {

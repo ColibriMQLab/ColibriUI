@@ -32,24 +32,24 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
     null,
   );
   const [visible, setVisible] = useState(false);
-  const { styles, attributes, update } = usePopper(
-    controlElement,
-    popperElement,
-    {
-      placement,
-      strategy,
-      modifiers: [
-        {
-          name: "flip",
-          enabled: true,
-        },
-        {
-          name: "preventOverflow",
-          enabled: true,
-        },
-      ],
-    },
-  );
+  const {
+    styles: popperStyles,
+    attributes,
+    update,
+  } = usePopper(controlElement, popperElement, {
+    placement,
+    strategy,
+    modifiers: [
+      {
+        name: "flip",
+        enabled: true,
+      },
+      {
+        name: "preventOverflow",
+        enabled: true,
+      },
+    ],
+  });
 
   const isNotComponent = typeof children === "string";
 
@@ -117,12 +117,17 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
               className={clx("root", { tail: !!withTail })}
               ref={setPopperElement}
               style={{
-                ...styles.popper,
+                ...popperStyles.popper,
                 zIndex,
               }}
               {...attributes.popper}
             >
-              <div className={clx("overlay")} onClick={onClickOverlay}>
+              <div
+                role="button"
+                tabIndex={0}
+                className={clx("overlay")}
+                onClick={onClickOverlay}
+              >
                 {content}
               </div>
             </div>
