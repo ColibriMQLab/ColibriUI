@@ -6,15 +6,15 @@ import FormField from "../base/FormField";
 import { Chevron } from "../Icons";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
-import type { GroupOptions, MultiSelectProps } from "./index.props";
+import type { GroupOptions, GroupProps, MultiSelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
 export function createGroupOptionString(
-  groupIndex: number,
+  groupValue: string,
   optionValue: string,
 ) {
-  return `group-${groupIndex}-option-${optionValue}`;
+  return `group-${groupValue}-option-${optionValue}`;
 }
 
 type GroupOptionsWithSelected = GroupOptions & {
@@ -58,14 +58,14 @@ const MultiSelect = ({
 
   const preparedGroups = useMemo(
     () =>
-      groups.map((group, groupIndex: number) => ({
-        title: group.title,
+      groups.map((group) => ({
+        ...group,
         options: group.options.map(
           (option: GroupOptions): GroupOptionsWithSelected => ({
             ...option,
             selected:
               value?.includes(
-                createGroupOptionString(groupIndex, option.value),
+                createGroupOptionString(group.value, option.value),
               ) || false,
           }),
         ),

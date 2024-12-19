@@ -11,20 +11,20 @@ export type Coordinates = {
   height: number;
 };
 
-export type Group = {
-  title?: string;
+export type GroupProps = {
+  value: string;
+  title: string;
   options: GroupOptions[];
 };
 
 type Size = "s" | "m" | "l";
 
 export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
-  groups: Group[];
+  groups: GroupProps[];
   className?: string;
   zIndex?: number;
   fontSize?: number;
   disabled?: boolean;
-
   fullWidth?: boolean;
   required?: boolean;
   size?: Size;

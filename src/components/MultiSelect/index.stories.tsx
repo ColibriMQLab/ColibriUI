@@ -15,44 +15,51 @@ const meta: Meta<typeof MultiSelect> = {
 export default meta;
 
 const groups = [{
-  title: 'Group 1',
+  title: 'Haircut',
+  value: 'haircut', 
   options: [
     {
-      value: '1',
-      label: "Long long option"
+      value: 'shampoo-and-blow-dry',
+      label: "Shampoo and Blow-Dry"
     },
     {
-      value: '2',
-      label: "Long long option"
+      value: 'hair-treatment',
+      label: "Hair Treatment"
+    },
+    {
+      value: 'trim',
+      label: "Trim"
     }
   ],
 }, {
-  title: 'Group 2',
+  title: 'Hair Coloring',
+  value: 'hair-coloring', 
   options: [
     {
-      value: '3',
-      label: "Long long option"
+      value: 'hair-coloring',
+      label: "Hair Coloring"
     },
     {
-      value: '4',
-      label: "Long long option",
+      value: 'highlights',
+      label: "Highlights",
     }
   ],
 }, {
-  title: 'Group 3',
+  title: 'Hair care',
+  value: 'hair-care', 
   options: [
     {
-      value: '5',
-      label: "Long long option",
+      value: 'scalp-treatment',
+      label: "Scalp Treatment",
       disabled: true,
     },
     {
-      value: '6',
-      label: "Long long option",
+      value: 'hair-mask',
+      label: "Hair Mask",
     },
     {
-      value: '7',
-      label: "Long long option",
+      value: 'olaplex-treatment',
+      label: "Olaplex Treatment",
     }
   ],
 },

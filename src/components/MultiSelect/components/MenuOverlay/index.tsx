@@ -8,7 +8,7 @@ import Separator from "../../../Separator";
 import { createGroupOptionString } from "../..";
 import styles from "./index.module.scss";
 import type { ReactNode } from "react";
-import type { Coordinates } from "../../index.props";
+import type { Coordinates, GroupProps } from "../../index.props";
 
 const clx = classNames.bind(styles);
 
@@ -19,17 +19,19 @@ export interface IOption {
   disabled?: boolean;
 }
 
-interface IMenuOverlayProps {
-  groups: {
-    title?: string;
-    options: IOption[];
-  }[];
+type MenuOverlayGroup = Omit<GroupProps, 'options' | 'value'> & {
+  options: IOption[];
+  value: string;
+}
+
+type MenuOverlayProps = {
+  groups: MenuOverlayGroup[];
   onChange: (key: string) => void;
 }
 
 const OFFSET_ITEMS_COUNT = 2;
 
-const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
+const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
   const refs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
@@ -64,10 +66,10 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
   }
 
   useLayoutEffect(() => {
-    const allOptions = groups.flatMap((group, groupIndex) =>
-      group.options.map((option, optionIndex) => ({
+    const allOptions = groups.flatMap((group) =>
+      group.options.map((option) => ({
         option,
-        key: `group-${groupIndex}-option-${optionIndex}`,
+        key: `group-${group.value}-option-${option.value}`,
       })),
     );
 
@@ -98,13 +100,13 @@ const MenuOverlay = ({ groups, onChange }: IMenuOverlayProps) => {
             {group.options.map((option, optionIndex) => (
               <SelectItem
                 ref={(ref) => {
-                  refs.current[`group-${groupIndex}-option-${optionIndex}`] =
+                  refs.current[`group-${group.value}-option-${option.value}`] =
                     ref;
                 }}
                 option={option}
                 key={generateUniqID(optionIndex)}
                 onClick={() =>
-                  onChange(createGroupOptionString(groupIndex, option.value))
+                  onChange(createGroupOptionString(group.value, option.value))
                 }
               />
             ))}
