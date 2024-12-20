@@ -47,20 +47,20 @@
 
   &[data-size="s"] {
     border-radius: 32px;
-    font-size: 15px;
-    line-height: 32px;
+    font-size: 0.875rem;
+    line-height: 2.2;
   }
 
   &[data-size="m"] {
     border-radius: 36px;
-    font-size: 16px;
-    line-height: 36px;
+    font-size: 1rem;
+    line-height: 2.3;
   }
 
   &[data-size="l"] {
     border-radius: 44px;
-    font-size: 18px;
-    line-height: 44px;
+    font-size: 1.25rem;
+    line-height: 2.4;
   }
 }
 
@@ -69,7 +69,7 @@
   display: flex;
   justify-content: flex-start;
   max-width: 200px;
-  padding: 0 20px;
+  padding: 0 1rem;
   user-select: none;
 }
 
@@ -81,8 +81,13 @@
 
 .icon-right {
   align-items: center;
+  color: var(--palette-bg-5);
   display: flex;
   justify-content: center;
   margin-left: -11px;
-  padding-right: 18px;
+  padding-right: 0.8rem;
+
+  &:hover {
+    color: var(--palette-black);
+  }
 }

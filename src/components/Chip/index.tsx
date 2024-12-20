@@ -21,8 +21,8 @@ const Chip: FC<PropsWithChildren<ChipProps>> = (props) => {
     <span className={clx("root")} data-testid={testID}>
       <span
         className={clx("inner", {
-          inner_active: isActive,
-          inner_inactive: !isActive,
+          inner_active: iconOnRight || isActive,
+          inner_inactive: !iconOnRight && !isActive,
         })}
         data-size={size}
       >

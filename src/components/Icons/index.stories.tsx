@@ -4,6 +4,7 @@ import Cart from "./Cart";
 import Check from "./Check";
 import Chevron from "./Chevron";
 import Close from "./Close";
+import CrossFill from "./CrossFill";
 import Edit from "./Edit";
 import Exit from "./Exit";
 import EyeOpen from "./EyeOpen";
@@ -24,6 +25,7 @@ const icons = {
   Check: <Check />,
   Chevron: <Chevron />,
   Close: <Close />,
+  CrossFill: <CrossFill />,
   Edit: <Edit />,
   Exit: <Exit />,
   EyeClosed: <EyeClosed />,
