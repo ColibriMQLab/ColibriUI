@@ -88,7 +88,10 @@ const MultiSelect = ({
       preparedGroups.flatMap((group) =>
         group.options
           .filter((option) => option.selected)
-          .map((option) => option.label),
+          .map((option) => ({
+            label: option.label,
+            key: createGroupOptionString(group.value, option.value),
+          })),
       ),
     [preparedGroups],
   );
@@ -138,14 +141,15 @@ const MultiSelect = ({
             >
               {prepraredLabel.length ? (
                 <>
-                  {prepraredLabel.map((label, index) => (
+                  {prepraredLabel.map((option, index) => (
                     <Chip
                       size="s"
                       iconEnd={<CrossFill />}
                       data-ignore-click={true}
                       key={generateUniqID(index)}
+                      onClickIcon={() => handleChange(option.key)}
                     >
-                      {label}
+                      {option.label}
                     </Chip>
                   ))}
                 </>
@@ -153,7 +157,6 @@ const MultiSelect = ({
                 <span className={clx(styles.placeholder)}>{placeholder}</span>
               )}
             </div>
-
             <input
               type="hidden"
               name={name}

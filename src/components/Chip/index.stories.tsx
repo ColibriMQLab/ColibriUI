@@ -87,7 +87,7 @@ export const Deletable = (args: Story) => {
       <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete} {...args}>
         Chip 1
       </Chip>{' '}
-      <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete}{...args}>
+      <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete} {...args}>
         Chip 2
       </Chip>{' '}
       <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete} {...args}>

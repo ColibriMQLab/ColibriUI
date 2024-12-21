@@ -73,8 +73,6 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
   const onToggle = useCallback(
     (event: MouseEvent | TouchEvent) => {
-      event.stopPropagation();
-
       if (
         (event.target as HTMLElement)?.closest('[data-ignore-click="true"]')
       ) {
