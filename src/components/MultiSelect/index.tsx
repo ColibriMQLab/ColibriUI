@@ -3,7 +3,9 @@ import classNames from "classnames/bind";
 import Dropdown from "../Dropdown";
 import InputRoot from "../base/InputRoot";
 import FormField from "../base/FormField";
-import { Chevron } from "../Icons";
+import { Chevron, CrossFill } from "../Icons";
+import Chip from "../Chip";
+import generateUniqID from "../helpers/generateUniqID";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
 import { createGroupOptionString } from "./utils";
@@ -46,6 +48,7 @@ const MultiSelect = ({
   size = "m",
   placeholder,
   name,
+  type,
 }: MultiSelectProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string[]>([]);
@@ -116,26 +119,77 @@ const MultiSelect = ({
         }
         samewidth
       >
-        <InputRoot
-          error={error}
-          size={size}
-          className={clx(styles.root)}
-          endIcon={
-            <Chevron
-              className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+        {type === "chip" ? (
+          <InputRoot
+            error={error}
+            size={size}
+            className={clx(styles.root, {
+              auto: !!prepraredLabel.length,
+            })}
+            endIcon={
+              <Chevron
+                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+              />
+            }
+            disabled={!!disabled}
+          >
+            <div
+              className={clx(styles["base-input"], styles["base-input-flex"])}
+            >
+              {prepraredLabel.length ? (
+                <>
+                  {prepraredLabel.map((label, index) => (
+                    <Chip
+                      size="s"
+                      iconEnd={<CrossFill />}
+                      data-ignore-click={true}
+                      key={generateUniqID(index)}
+                    >
+                      {label}
+                    </Chip>
+                  ))}
+                </>
+              ) : (
+                <span className={clx(styles.placeholder)}>{placeholder}</span>
+              )}
+            </div>
+
+            <input
+              type="hidden"
+              name={name}
+              tabIndex={-1}
+              value={value || ""}
             />
-          }
-          disabled={!!disabled}
-        >
-          <div className={clx(styles["base-input"])}>
-            {prepraredLabel.length ? (
-              prepraredLabel.join(", ")
-            ) : (
-              <span className={clx(styles.placeholder)}>{placeholder}</span>
-            )}
-          </div>
-          <input type="hidden" name={name} tabIndex={-1} value={value || ""} />
-        </InputRoot>
+          </InputRoot>
+        ) : (
+          <InputRoot
+            error={error}
+            size={size}
+            className={clx(styles.root)}
+            endIcon={
+              <Chevron
+                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+              />
+            }
+            disabled={!!disabled}
+          >
+            <div
+              className={clx(styles["base-input"], styles["base-input-text"])}
+            >
+              {prepraredLabel.length ? (
+                prepraredLabel.join(", ")
+              ) : (
+                <span className={clx(styles.placeholder)}>{placeholder}</span>
+              )}
+            </div>
+            <input
+              type="hidden"
+              name={name}
+              tabIndex={-1}
+              value={value || ""}
+            />
+          </InputRoot>
+        )}
       </Dropdown>
     </FormField>
   );

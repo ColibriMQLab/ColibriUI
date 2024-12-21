@@ -83,3 +83,12 @@ Default.args = {
   label: "Label",
   hint: "hint",
 };
+
+export const Chip = Template.bind({});
+
+Chip.args = {
+  placeholder: "select options",
+  label: "Label",
+  hint: "hint",
+  type: 'chip'
+};

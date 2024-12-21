@@ -16,12 +16,14 @@ const InputRoot = forwardRef<HTMLDivElement, PropsWithChildren<InputProps>>(
       variant = "primary",
       disabled,
       error,
+      style,
       size,
     },
     ref,
   ) => (
     <div
       ref={ref}
+      style={style}
       className={clx(
         styles.root,
         {

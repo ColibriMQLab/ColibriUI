@@ -72,8 +72,15 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   );
 
   const onToggle = useCallback(
-    (e: MouseEvent | TouchEvent) => {
-      e.stopPropagation();
+    (event: MouseEvent | TouchEvent) => {
+      event.stopPropagation();
+
+      if (
+        (event.target as HTMLElement)?.closest('[data-ignore-click="true"]')
+      ) {
+        return;
+      }
+
       setVisible((state) => !state);
     },
     [setVisible],
@@ -90,7 +97,6 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   const onClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
       if (controlElement?.contains(e.target as Node)) return;
-
       onHide();
     },
     [onHide, controlElement],

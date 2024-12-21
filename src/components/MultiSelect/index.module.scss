@@ -2,6 +2,11 @@
   cursor: pointer;
 }
 
+.root.auto {
+  height: auto;
+  min-height: 36px;
+}
+
 .icon {
   &_isOpen {
     transform: rotate(180deg);
@@ -18,14 +23,23 @@
   display: inline-block;
   flex: 1;
   margin: 7px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 100%;
 
   ::placeholder {
     color: var(--palette-bg-2);
   }
+}
+
+.base-input-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.base-input-flex {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
 }
 
 .placeholder {

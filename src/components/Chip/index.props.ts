@@ -4,7 +4,7 @@ export type ChipProps = {
   size?: Size;
   testID?: string;
   isActive?: boolean;
-  iconOnRight?: React.ReactNode;
+  iconEnd?: React.ReactNode;
   onClick?: () => void;
-  onIconOnRightClick?: () => void;
+  onClickIcon?: () => void;
 };

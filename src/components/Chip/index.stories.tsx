@@ -84,13 +84,13 @@ export const Deletable = (args: Story) => {
 
   return(
     <>
-      <Chip size="s" iconOnRight={<CrossFill/>} onIconOnRightClick={handleDelete} {...args}>
+      <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete} {...args}>
         Chip 1
       </Chip>{' '}
-      <Chip size="s" iconOnRight={<CrossFill/>} onIconOnRightClick={handleDelete} {...args}>
+      <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete}{...args}>
         Chip 2
       </Chip>{' '}
-      <Chip size="s" iconOnRight={<CrossFill/>} onIconOnRightClick={handleDelete} {...args}>
+      <Chip size="s" iconEnd={<CrossFill/>} onClickIcon={handleDelete} {...args}>
         Long long chip 3
       </Chip>
     </>

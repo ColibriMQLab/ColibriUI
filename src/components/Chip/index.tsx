@@ -6,40 +6,45 @@ import type { FC, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
-const Chip: FC<PropsWithChildren<ChipProps>> = (props) => {
-  const {
-    children,
-    iconOnRight,
-    isActive,
-    onClick,
-    onIconOnRightClick,
-    size = "m",
-    testID = "chip",
-  } = props;
-
-  return (
-    <span className={clx("root")} data-testid={testID}>
+const Chip: FC<PropsWithChildren<ChipProps>> = ({
+  children,
+  iconEnd,
+  isActive,
+  onClick,
+  onClickIcon,
+  size = "m",
+  testID = "chip",
+  ...props
+}) => (
+  <span className={clx("chip")} data-testid={testID} {...props}>
+    <span
+      className={clx("inner", {
+        inner_active: iconEnd || isActive,
+        inner_inactive: !iconEnd && !isActive,
+      })}
+      data-size={size}
+    >
       <span
-        className={clx("inner", {
-          inner_active: iconOnRight || isActive,
-          inner_inactive: !iconOnRight && !isActive,
-        })}
-        data-size={size}
+        className={clx("content")}
+        aria-pressed={isActive}
+        role="button"
+        tabIndex={0}
+        onClick={onClick}
       >
-        <span className={clx("content")} onClick={onClick}>
-          <span className={clx("content-inner")}>{children}</span>
-        </span>
-        {iconOnRight && (
-          <span
-            className={clx("icon-right")}
-            onClick={onIconOnRightClick || onClick}
-          >
-            {iconOnRight}
-          </span>
-        )}
+        <span className={clx("content-inner")}>{children}</span>
       </span>
+      {iconEnd && (
+        <span
+          className={clx("icon-right")}
+          role="button"
+          tabIndex={0}
+          onClick={onClickIcon}
+        >
+          {iconEnd}
+        </span>
+      )}
     </span>
-  );
-};
+  </span>
+);
 
 export default Chip;

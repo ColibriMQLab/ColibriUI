@@ -19,6 +19,8 @@ export type GroupProps = {
 
 type Size = "s" | "m" | "l";
 
+type Type = "chip";
+
 export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   groups: GroupProps[];
   className?: string;
@@ -30,4 +32,5 @@ export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   size?: Size;
   placeholder?: string;
   name?: string;
+  type?: Type;
 }

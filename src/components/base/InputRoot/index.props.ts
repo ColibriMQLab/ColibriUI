@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type Size = "s" | "m" | "l";
 
@@ -12,4 +12,5 @@ export type InputProps = {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   size?: Size;
+  style?: CSSProperties;
 };
