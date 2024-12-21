@@ -1,6 +1,6 @@
 {
   "name": "colibri-ui",
-  "version": "0.7.127",
+  "version": "0.7.128",
   "description": "React UI components library",
   "main": "index.js",
   "scripts": {
