@@ -8,7 +8,7 @@ type OptionLabelProps = {
 };
 
 const OptionLabel: FC<OptionLabelProps> = ({ time, onClick, onMouseEnter }) => {
-  const ref = useRef<null | HTMLLIElement>(null);
+  const ref = useRef<HTMLLIElement | null>(null);
   return (
     <span onClick={onClick} onMouseEnter={onMouseEnter} ref={ref}>
       {time}

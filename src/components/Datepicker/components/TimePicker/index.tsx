@@ -4,39 +4,32 @@ import Select from "../../../Select";
 import styles from "./index.module.scss";
 import { generateSuggest } from "./helpers";
 import OptionLabel from "./Label";
+import type { TimePickerProps } from "./index.props";
 
 const clx = classNames.bind(styles);
-
-interface TimePickerProps {
-  className?: string;
-  interval?: 5 | 10 | 15 | 30;
-  selectedTime?: string;
-}
 
 const TimePicker = ({
   className,
   interval = 30,
   selectedTime = "",
+  onChangeTime,
 }: TimePickerProps) => {
   const [time, setTime] = useState<string>(selectedTime);
 
-  const baseOptions = useMemo(
+  const options = useMemo(
     () =>
       generateSuggest(interval).map((item) => ({
         value: item.time,
         label: <OptionLabel time={item.time} />,
+        disabled: false,
       })),
     [interval],
   );
 
-  const options = useMemo(
-    () =>
-      baseOptions.map((option) => ({
-        ...option,
-        disabled: false,
-      })),
-    [baseOptions, interval],
-  );
+  const handleChange = (value: string) => {
+    setTime(value);
+    onChangeTime?.(value);
+  };
 
   return (
     <Select
@@ -59,7 +52,7 @@ const TimePicker = ({
         </div>
       }
       value={time}
-      onChange={(value) => setTime(value)}
+      onChange={handleChange}
     />
   );
 };

@@ -57,14 +57,14 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
         name: "flip",
         enabled: flip,
         options: {
-          fallbackPlacements: ['top'],
+          fallbackPlacements: ["top"],
         },
       },
       {
         name: "preventOverflow",
         enabled: preventOverflow,
       },
-    ], 
+    ],
   });
 
   const isNotComponent = typeof children === "string";

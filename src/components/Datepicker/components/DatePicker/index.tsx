@@ -4,17 +4,24 @@ import Dropdown from "../../../Dropdown";
 import Calendar from "../../../Calendar";
 import { toDMYDate, toISODate } from "../../../helpers/date";
 import styles from "./index.module.scss";
+import type { DatePickerProps } from "./index.props";
 import type { CalendarPayload } from "../../../Calendar/index.props";
 
 const clx = classNames.bind(styles);
 
-type Props = {
-  className?: string;
-  selectedDate?: string;
-};
-
-const DatePicker = ({ className, selectedDate = "" }: Props) => {
+const DatePicker = ({
+  className,
+  selectedDate = "",
+  onChangeDate,
+}: DatePickerProps) => {
   const [date, setDate] = useState(selectedDate);
+
+  const handleDateChange = (payload: CalendarPayload) => {
+    const newDate = payload.date;
+    setDate(newDate);
+    onChangeDate?.(newDate);
+  };
+
   return (
     <Dropdown
       placement="bottom"
@@ -29,9 +36,7 @@ const DatePicker = ({ className, selectedDate = "" }: Props) => {
           today={toISODate(new Date())}
           titleSize="h5"
           selectedDate={date}
-          onChange={(payload: CalendarPayload) => {
-            setDate(payload.date);
-          }}
+          onChange={handleDateChange}
         />
       }
     >
