@@ -22,5 +22,6 @@ export type DropdownProps = {
   visible?: boolean;
   preventOverflow?: boolean;
   preventAutoClose?: boolean;
+  flip?: boolean;
   samewidth?: boolean;
 };

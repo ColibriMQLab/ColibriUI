@@ -31,6 +31,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   visible: visibleProp = true,
   preventOverflow = false,
   preventAutoClose = false,
+  flip = true,
   samewidth = false,
 }) => {
   const [controlElement, setControlElement] = useState<HTMLElement | null>(
@@ -54,13 +55,16 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     modifiers: [
       {
         name: "flip",
-        enabled: false,
+        enabled: flip,
+        options: {
+          fallbackPlacements: ['top'],
+        },
       },
       {
         name: "preventOverflow",
         enabled: preventOverflow,
       },
-    ],
+    ], 
   });
 
   const isNotComponent = typeof children === "string";

@@ -19,6 +19,7 @@ const DatePicker = ({ className, selectedDate = "" }: Props) => {
     <Dropdown
       placement="bottom"
       preventAutoClose
+      preventOverflow={true}
       fontSize={14}
       trigger={["click"]}
       overlay={
