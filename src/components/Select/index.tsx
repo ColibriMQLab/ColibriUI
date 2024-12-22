@@ -62,6 +62,7 @@ const Select = <T extends string>({
     >
       <Dropdown
         placement="bottom-start"
+        preventOverflow={true}
         onVisibleChange={setIsOpen}
         trigger={["click"]}
         zIndex={zIndex}
