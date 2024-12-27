@@ -83,7 +83,6 @@ const TabsMenu: FC<TabsMenuProps> = ({
         <Tab
           {...tabProps}
           innerRef={tabsRefs[index]}
-          first={index === 0}
           disabled={disabled}
           size={size}
           onClick={

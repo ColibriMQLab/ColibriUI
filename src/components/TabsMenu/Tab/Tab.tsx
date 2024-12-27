@@ -13,7 +13,6 @@ const Tab: FC<TabProps> = ({
   className,
   content,
   disabled,
-  first,
   size,
   ...props
 }) => (
@@ -27,7 +26,6 @@ const Tab: FC<TabProps> = ({
         tab_inactive: !active,
         tab_active: !!active,
         tab_disabled: !!disabled,
-        tab_first: !!first,
       },
       className,
     )}

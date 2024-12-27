@@ -10,7 +10,6 @@ export type TabProps = {
   id?: string;
   active?: boolean;
   disabled?: boolean;
-  first?: boolean;
   content?: ReactNode;
   onClick?: MouseEventHandler<HTMLLIElement>;
   innerRef?: RefObject<HTMLLIElement>;
