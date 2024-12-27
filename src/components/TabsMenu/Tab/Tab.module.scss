@@ -1,6 +1,6 @@
 .tab {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 0.875em;
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
   transition-duration: 0.3s;
   transition-property: background, box-shadow, transform;
@@ -9,9 +9,9 @@
   white-space: nowrap;
 
   &[data-size="xs"] {
-    border-radius: 1.5rem;
-    font-size: 14px;
-    line-height: 1.5rem;
+    border-radius: 1.75rem;
+    font-size: 0.775rem/1.15rem;
+    line-height: 1.75rem;
   }
 
   &[data-size="s"] {
@@ -24,12 +24,14 @@
     border-radius: 2.25rem;
     font-size: 1rem;
     line-height: 2.25rem;
+    padding: 0 1em;
   }
 
   &[data-size="l"] {
     border-radius: 2.625rem;
     font-size: 1rem/1.5rem;
     line-height: 2.625rem;
+    padding: 0 1em;
   }
 
   &_active {
