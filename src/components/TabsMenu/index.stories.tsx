@@ -10,7 +10,7 @@ const meta: Meta<typeof TabsMenu> = {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: ["s", "m", "l"],
+      options: ["xs", "s", "m", "l"],
     },
   },
   component: TabsMenu,
