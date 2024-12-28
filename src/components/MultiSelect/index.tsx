@@ -49,6 +49,7 @@ const MultiSelect = ({
   placeholder,
   name,
   type,
+  onChange,
 }: MultiSelectProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string[]>([]);
@@ -73,14 +74,19 @@ const MultiSelect = ({
   const handleChange = useCallback(
     (key: string) => {
       setValue((prev) => {
-        if (prev.indexOf(key) !== -1) {
-          return prev.filter((prevValue) => prevValue !== key);
-        } else {
-          return sortedItems([...prev, key]);
+        const newValue =
+          prev.indexOf(key) !== -1
+            ? prev.filter((prevValue) => prevValue !== key)
+            : sortedItems([...prev, key]);
+
+        if (onChange) {
+          onChange(newValue);
         }
+
+        return newValue;
       });
     },
-    [sortedItems],
+    [onChange],
   );
 
   const prepraredLabel = useMemo(

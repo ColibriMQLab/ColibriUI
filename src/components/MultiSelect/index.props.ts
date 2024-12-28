@@ -33,4 +33,5 @@ export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   placeholder?: string;
   name?: string;
   type?: Type;
+  onChange?: (value: string[]) => void;
 }
