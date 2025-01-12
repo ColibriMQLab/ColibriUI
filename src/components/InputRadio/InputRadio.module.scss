@@ -79,13 +79,13 @@
     }
 
     &:active + .icon {
-      background-color: var(--palette-white);
+      background-color: var(--palette-black);
       border: 4px solid var(--input-radio-bg-checked);
     }
   }
 
   &_checked + .icon {
-    background-color: var(--palette-white);
+    background-color: var(--palette-black);
     border: 4px solid var(--input-radio-bg-checked);
   }
 
