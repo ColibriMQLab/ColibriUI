@@ -1,7 +1,6 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import MenuItem from "../../../Menu/components/MenuItem";
 import Check from "../../../Icons/Check";
-import type { PropsWithChildren } from "react";
 
 type SelectItemProps = {
   option: {
@@ -11,12 +10,10 @@ type SelectItemProps = {
     disabled?: boolean;
   };
   onClick?: () => void;
+  ref?: React.Ref<HTMLLIElement>;
 };
 
-const SelectItem: React.ForwardRefRenderFunction<
-  HTMLLIElement,
-  PropsWithChildren<SelectItemProps>
-> = ({ option, onClick }, ref) => (
+const SelectItem = ({ option, onClick, ref }: SelectItemProps) => (
   <MenuItem
     ref={ref}
     onClick={onClick}
@@ -28,4 +25,4 @@ const SelectItem: React.ForwardRefRenderFunction<
   </MenuItem>
 );
 
-export default forwardRef(SelectItem);
+export default SelectItem;

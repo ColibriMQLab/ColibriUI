@@ -9,4 +9,6 @@ export interface BaseImageContainerProps {
 
 export interface ImageProps
   extends BaseImageContainerProps,
-    React.ImgHTMLAttributes<HTMLImageElement> {}
+    React.ImgHTMLAttributes<HTMLImageElement> {
+  ref?: React.Ref<HTMLImageElement>;
+}

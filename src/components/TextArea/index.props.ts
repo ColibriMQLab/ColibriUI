@@ -19,4 +19,5 @@ export interface ITextAreaProps
   required?: boolean;
   onChange?: (value: string, e: ChangeEvent<HTMLTextAreaElement>) => void;
   inputRef?: ForwardedRef<HTMLTextAreaElement>;
+  ref?: React.Ref<HTMLDivElement>;
 }

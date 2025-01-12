@@ -4,4 +4,5 @@ export interface SwitchProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   variant?: "primary";
   disabled?: boolean;
+  ref?: React.Ref<HTMLInputElement>;
 }

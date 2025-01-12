@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { cloneElement, useRef } from "react";
 import useOnClickOutside from "../hooks/useOnClickOutside";
-import type { FC, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren, ReactElement } from "react";
 
 const ClickOutside: FC<
   PropsWithChildren<{
@@ -13,19 +13,23 @@ const ClickOutside: FC<
 
   if (!React.isValidElement(children)) return null;
 
-  return React.cloneElement(children, {
+  const combinedRef = (node: HTMLElement) => {
+    childRef.current = node;
+
     // @ts-expect-error expected
-    ref: (node: HTMLElement) => {
-      childRef.current = node;
+    const { ref } = children;
 
-      // @ts-expect-error expected
-      const { ref } = children;
-
-      // @ts-expect-error expected
-      if (typeof children.ref === "function") {
+    if (ref) {
+      if (typeof ref === "function") {
         ref(node);
+      } else if (typeof ref === "object" && ref !== null) {
+        (ref as React.MutableRefObject<HTMLElement>).current = node;
       }
-    },
+    }
+  };
+
+  return cloneElement(children as ReactElement, {
+    ref: combinedRef,
   });
 };
 

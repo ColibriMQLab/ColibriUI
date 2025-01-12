@@ -20,4 +20,5 @@ export interface InputProps
   error?: boolean;
   required?: boolean;
   inputRef?: ForwardedRef<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 }

@@ -9,4 +9,5 @@ export type Props = {
   className?: string;
   onClick?: (key: string, e: MouseEvent) => void;
   children?: ReactElement<MenuItemProps> | ReactElement<MenuItemProps>[];
+  ref?: React.Ref<HTMLUListElement>;
 };
