@@ -20,7 +20,7 @@ const TabsPanes: FC<TabsPanesProps> = ({
     return pane.id === activePane ? pane : null;
   }, null);
 
-  const { id, ...paneProps }: any = currentPane || {};
+  const { ...paneProps }: any = currentPane || {};
 
   return (
     <div

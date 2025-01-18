@@ -7,4 +7,5 @@ export interface MenuItemProps {
   onClick?: (e: MouseEvent) => void;
   variant?: MenuVariant;
   disabled?: boolean;
+  ref?: React.Ref<HTMLLIElement>;
 }

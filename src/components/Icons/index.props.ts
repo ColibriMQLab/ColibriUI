@@ -4,4 +4,5 @@ export interface Props extends HTMLAttributes<SVGElement> {
   width?: number;
   height?: number;
   fill?: string;
+  ref?: React.Ref<SVGSVGElement>;
 }

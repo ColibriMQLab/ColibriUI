@@ -46,7 +46,7 @@ export const Color = {
   ...PrimaryBA,
   ...SecondaryBA,
   ...TretiaryBA,
-  ...PromoBA
+  ...PromoBA,
 };
 
 export default Color;
