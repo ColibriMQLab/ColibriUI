@@ -130,4 +130,13 @@ export default {
   "status-info-bg": "rgba(112, 182, 246, .12)",
   "status-neutral": Color.BG_5,
   "status-neutral-bg": Color.BG_1,
+
+  "promo-silver": Color.PROMO_SILVER,
+  "promo-gold": Color.PROMO_GOLD,
+  "promo-asphalt": Color.PROMO_ASPHALT,
+  "promo-tomato": Color.PROMO_TOMATO,
+  "promo-copper": Color.PROMO_COPPER,
+  "promo-mint": Color.PROMO_MINT,
+  "promo-sky": Color.PROMO_SKY,
+  "promo-neon": Color.PROMO_NEON,
 };

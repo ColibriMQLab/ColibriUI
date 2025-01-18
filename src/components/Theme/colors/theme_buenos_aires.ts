@@ -30,11 +30,23 @@ export const BrandBA = {
   BRAND_BA_5: "#E61428",
 };
 
+export const PromoBA = {
+  PROMO_SILVER: "#EDF2F7",
+  PROMO_GOLD: "#FFF1B8",
+  PROMO_ASPHALT: "#EAEBEB",
+  PROMO_TOMATO: "#FFDEDE",
+  PROMO_COPPER: "#FFE6C4",
+  PROMO_MINT: "#CCF0D2",
+  PROMO_SKY: "#D6E9FD",
+  PROMO_NEON: "#ECE2FC",
+};
+
 export const Color = {
   ...BrandBA,
   ...PrimaryBA,
   ...SecondaryBA,
   ...TretiaryBA,
+  ...PromoBA
 };
 
 export default Color;
