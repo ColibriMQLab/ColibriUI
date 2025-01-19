@@ -2,7 +2,6 @@ import React, { memo, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
-import generateUniqID from "../../../helpers/generateUniqID";
 import Typography from "../../../Typography";
 import Separator from "../../../Separator";
 import { createGroupOptionString } from "../../utils";
@@ -85,8 +84,8 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
 
   return (
     <div ref={rootRef} className={clx(styles.root)}>
-      {groups.map((group, groupIndex) => (
-        <div key={generateUniqID(groupIndex)}>
+      {groups.map((group, index) => (
+        <div key={`item-${index}`}>
           <div className={clx(styles.title)}>
             <Typography
               style={{ color: "var(--typography-secondary)" }}
@@ -104,7 +103,7 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
                     ref;
                 }}
                 option={option}
-                key={generateUniqID(optionIndex)}
+                key={`item-${optionIndex}`}
                 onClick={() =>
                   onChange(createGroupOptionString(group.value, option.value))
                 }

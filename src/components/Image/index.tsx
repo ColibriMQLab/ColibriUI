@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import classNames from "classnames";
-import generateUniqID from "../helpers/generateUniqID";
 import styles from "./Image.module.scss";
 import type { ImageProps } from "./index.props";
 
@@ -44,7 +43,7 @@ const Image = ({
     <picture ref={ref} className={classNames(styles.root)}>
       {!!sources.length &&
         sources.map((source, index) => (
-          <source key={generateUniqID(index)} {...source} />
+          <source key={`item-${index}`} {...source} />
         ))}
       <img
         alt={alt}

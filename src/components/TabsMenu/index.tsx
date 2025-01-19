@@ -25,7 +25,7 @@ const TabsMenu: FC<TabsMenuProps> = ({
   );
 
   const onKeyDown = useCallback(
-    (event: KeyboardEvent) => {
+    (event: KeyboardEvent<HTMLUListElement>) => {
       if (isKey(event.key, [Keys.LEFT, Keys.DOWN, Keys.RIGHT, Keys.UP])) {
         event.preventDefault();
 

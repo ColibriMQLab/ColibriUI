@@ -8,8 +8,8 @@ const getFocusableModalElements = (element: HTMLElement) =>
 
 function useTrapFocus(refObject: RefObject<HTMLElement>) {
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (!refObject.current || e.code !== "Tab") return;
+    const handler = (event: KeyboardEvent) => {
+      if (!refObject.current || event.code !== "Tab") return;
 
       const focusable = Array.from(
         getFocusableModalElements(refObject.current),
@@ -24,17 +24,17 @@ function useTrapFocus(refObject: RefObject<HTMLElement>) {
         : true;
 
       if (
-        e.shiftKey &&
+        event.shiftKey &&
         (document.activeElement === firstElement || focusOutside)
       ) {
         lastElement.focus();
-        e.preventDefault();
+        event.preventDefault();
       } else if (
-        !e.shiftKey &&
+        !event.shiftKey &&
         (document.activeElement === lastElement || focusOutside)
       ) {
         firstElement.focus();
-        e.preventDefault();
+        event.preventDefault();
       }
     };
 
@@ -43,7 +43,7 @@ function useTrapFocus(refObject: RefObject<HTMLElement>) {
     return () => {
       document.removeEventListener("keydown", handler);
     };
-  }, []);
+  }, [refObject]);
 }
 
 export default useTrapFocus;

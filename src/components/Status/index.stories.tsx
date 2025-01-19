@@ -2,7 +2,6 @@ import React from "react";
 import Status from ".";
 import type { Meta } from "@storybook/react";
 import { STATUS_TYPE } from "./index.props";
-import generateUniqID from "../helpers/generateUniqID";
 
 const list = [
   {
@@ -38,6 +37,6 @@ export default meta;
 
 export const Default = (args) => {
   return <div style={{display: 'flex', gap: '16px'}}>
-    {list.map(({text, type}, index) => (<Status type={type} {...args} key={generateUniqID(index)}>{text}</Status>))}
+    {list.map(({text, type}, index) => (<Status type={type} {...args} key={index}>{text}</Status>))}
     </div>;
 };

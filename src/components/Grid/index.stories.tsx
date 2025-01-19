@@ -1,7 +1,6 @@
 import React from "react";
 import GridItem from "./Item";
 import Grid from ".";
-import generateUniqID from '../helpers/generateUniqID';
 import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Grid> = {
@@ -44,7 +43,7 @@ export const Default = () => {
       <Grid>
         {items.map((item, index) => (
           <GridItem
-            key={generateUniqID(index)}
+            key={`item-${index}`}
             fullWidth={item.fullWidth}
             className="grid-item"
           >

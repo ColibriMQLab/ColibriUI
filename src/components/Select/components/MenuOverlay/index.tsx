@@ -2,7 +2,6 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
-import generateUniqID from "../../../helpers/generateUniqID";
 import styles from "./index.module.scss";
 import type { Coordinates, IOption } from "../../index.props";
 
@@ -55,7 +54,7 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
           <SelectItem
             setScrollView={setScrollView}
             option={option}
-            key={generateUniqID(index)}
+            key={index}
             onClick={() => handleSelect(option, `item-${index}`)}
           />
         ))}

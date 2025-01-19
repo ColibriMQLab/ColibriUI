@@ -6,7 +6,6 @@ import {
   getShortWeekDayNameByIndex,
   getUpperMonthName,
 } from "../../../helpers/date";
-import generateUniqID from "../../../helpers/generateUniqID";
 import { getMonthWeeks } from "../../utils/getMonthWeeks";
 import styles from "./index.module.scss";
 import type { CalendarTitleSize } from "../../index.props";
@@ -95,7 +94,7 @@ export const Month: FCWithElements<Props> = (props) => {
             const index = rest[0] + 1;
 
             return (
-              <li className={clx(styles.day)} key={generateUniqID(index)}>
+              <li className={clx(styles.day)} key={index}>
                 <Typography
                   style={{
                     opacity: index > 5 ? 80 : 30,

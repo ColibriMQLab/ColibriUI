@@ -1,6 +1,5 @@
 import React from "react";
 import chroma from 'chroma-js';
-import generateUniqID from '../helpers/generateUniqID';
 import ColorsDefault from './themes/default';
 import ColorsBA from './themes/buenos_aires';
 import Typography from '../Typography'
@@ -51,7 +50,7 @@ export const Themes = () => {
             const textBAColor = getTextColorForBackground(backgroundColor);
 
             return (
-              <div style={{ display: 'flex', gap: '16px' }} key={generateUniqID(index)}>
+              <div style={{ display: 'flex', gap: '16px' }} key={index}>
                 <div style={{ flex: 1 }}>
                   {`--${item[0]}`}
                 </div>

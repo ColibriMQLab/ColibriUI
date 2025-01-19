@@ -43,6 +43,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   return (
     <Portal>
       <div className={clx("root")}>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div className={clx("modal-overlay")} onClick={onCloseHandler} />
         <div
           className={clx(

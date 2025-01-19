@@ -14,7 +14,7 @@ import ClickOutside from "../ClickOutside";
 
 import styles from "./Dropdown.module.scss";
 import type { DropdownProps } from "./index.props";
-import type { FC, MouseEventHandler, PropsWithChildren } from "react";
+import type { FC, MouseEventHandler, PropsWithChildren, ReactElement } from "react";
 
 const clx = classNames.bind(styles);
 
@@ -75,6 +75,14 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     [children, isNotComponent],
   );
 
+  // const reference: ReactElement | null = useMemo(() => {
+  //   if (!children) return null;
+  
+  //   return Children.only(
+  //     isNotComponent ? <button>{children}</button> : children
+  //   ) as ReactElement;
+  // }, [children, isNotComponent]);
+
   const onToggle = useCallback(
     (event: MouseEvent | TouchEvent) => {
       if (
@@ -97,8 +105,8 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   }, [setVisible]);
 
   const onClickOutside = useCallback(
-    (e: MouseEvent | TouchEvent) => {
-      if (controlElement?.contains(e.target as Node)) return;
+    (event: MouseEvent | TouchEvent) => {
+      if (controlElement?.contains(event.target as Node)) return;
       onHide();
     },
     [onHide, controlElement],

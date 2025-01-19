@@ -5,7 +5,6 @@ import InputRoot from "../base/InputRoot";
 import FormField from "../base/FormField";
 import { Chevron, CrossFill } from "../Icons";
 import Chip from "../Chip";
-import generateUniqID from "../helpers/generateUniqID";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
 import { createGroupOptionString } from "./utils";
@@ -153,7 +152,7 @@ const MultiSelect = ({
                       size="s"
                       iconEnd={<CrossFill />}
                       data-ignore-click={true}
-                      key={generateUniqID(index)}
+                      key={`item-${index}`}
                       onClickIcon={() => handleChange(option.key)}
                     >
                       {option.label}

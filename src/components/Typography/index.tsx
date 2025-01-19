@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames/bind";
-import { type Props } from "./index.props";
+import { type TypographyProps } from "./index.props";
 import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
 
-const Typography: FC<PropsWithChildren<Props>> = ({
+const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   tag: Component = "span",
   children,
   variant,

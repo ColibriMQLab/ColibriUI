@@ -13,7 +13,7 @@ import type {
 
 const clx = classNames.bind(styles);
 
-type Props = {
+type InputRadioProps = {
   checked?: boolean;
   className?: string;
   containerClassName?: string;
@@ -35,7 +35,7 @@ type Props = {
   testid?: string;
 };
 
-const InputRadio: FC<PropsWithChildren<Props>> = memo(
+const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
   ({
     checked,
     children,
