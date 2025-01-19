@@ -80,6 +80,7 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
       const { key } = firstSelectedOptionWithKey;
       scrollToItem(key);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

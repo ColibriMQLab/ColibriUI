@@ -23,6 +23,7 @@ const Checkbox: FC<CheckboxProps> = ({
   isError,
 }) => {
   const control = (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={clx(styles.label)}>
       <div className={clx(styles.wrapper)}>
         <input

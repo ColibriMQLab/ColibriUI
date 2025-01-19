@@ -45,6 +45,7 @@ const Image = ({
         sources.map((source, index) => (
           <source key={`item-${index}`} {...source} />
         ))}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <img
         alt={alt}
         style={sizeAttrs}

@@ -26,6 +26,58 @@ const dummyDay: Day = {
   isDummy: true,
 };
 
+function getDateDayInWeek(date: Date) {
+  const day = date.getDay() - 1;
+
+  return day >= 0 ? day : 6;
+}
+
+function doubleDigits(v: number) {
+  return leadingZeros(v, 2);
+}
+
+function formatToComparable(date: Date) {
+  return new Date(
+    [
+      date.getFullYear(),
+      doubleDigits(date.getMonth() + 1),
+      doubleDigits(date.getDate()),
+    ].join("-"),
+  ).getTime();
+}
+
+function checkIfDateIsAvailable(date: number, options: Options) {
+  const { availableDates, today } = options;
+
+  const todayCompatible = formatToComparable(new Date(today));
+
+  const availableDatesComparable =
+    availableDates &&
+    availableDates.length > 0 &&
+    availableDates.map((_date) => formatToComparable(new Date(_date)));
+
+  const isAvailableDate = availableDatesComparable
+    ? availableDatesComparable.includes(date)
+    : true;
+
+  return date >= todayCompatible && isAvailableDate;
+}
+
+function getSelectedDates(options: Options) {
+  const period = options.selectedPeriod ? options.selectedPeriod - 1 : 0;
+  const dateFrom = options.selectedDate
+    ? new Date(options.selectedDate)
+    : undefined;
+  const dateTo = dateFrom
+    ? new Date(dateFrom.getTime() + 24 * 60 * 60 * 1000 * period)
+    : undefined;
+
+  return {
+    selectedDateFrom: dateFrom ? formatToComparable(dateFrom) : undefined,
+    selectedDateTo: dateTo ? formatToComparable(dateTo) : undefined,
+  };
+}
+
 export function getMonthWeeks(options: Options): Week[] {
   const { selectedDateFrom, selectedDateTo } = getSelectedDates(options);
 
@@ -80,56 +132,4 @@ export function getMonthWeeks(options: Options): Week[] {
   }
 
   return weeks;
-}
-
-function getDateDayInWeek(date: Date) {
-  const day = date.getDay() - 1;
-
-  return day >= 0 ? day : 6;
-}
-
-function getSelectedDates(options: Options) {
-  const period = options.selectedPeriod ? options.selectedPeriod - 1 : 0;
-  const dateFrom = options.selectedDate
-    ? new Date(options.selectedDate)
-    : undefined;
-  const dateTo = dateFrom
-    ? new Date(dateFrom.getTime() + 24 * 60 * 60 * 1000 * period)
-    : undefined;
-
-  return {
-    selectedDateFrom: dateFrom ? formatToComparable(dateFrom) : undefined,
-    selectedDateTo: dateTo ? formatToComparable(dateTo) : undefined,
-  };
-}
-
-function formatToComparable(date: Date) {
-  return new Date(
-    [
-      date.getFullYear(),
-      doubleDigits(date.getMonth() + 1),
-      doubleDigits(date.getDate()),
-    ].join("-"),
-  ).getTime();
-}
-
-function doubleDigits(v: number) {
-  return leadingZeros(v, 2);
-}
-
-function checkIfDateIsAvailable(date: number, options: Options) {
-  const { availableDates, today } = options;
-
-  const todayCompatible = formatToComparable(new Date(today));
-
-  const availableDatesComparable =
-    availableDates &&
-    availableDates.length > 0 &&
-    availableDates.map((_date) => formatToComparable(new Date(_date)));
-
-  const isAvailableDate = availableDatesComparable
-    ? availableDatesComparable.includes(date)
-    : true;
-
-  return date >= todayCompatible && isAvailableDate;
 }

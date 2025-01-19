@@ -24,6 +24,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
       })}
       data-size={size}
     >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <span
         className={clx("content")}
         aria-pressed={isActive}
@@ -34,6 +35,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
         <span className={clx("content-inner")}>{children}</span>
       </span>
       {iconEnd && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <span
           className={clx("icon-right")}
           role="button"

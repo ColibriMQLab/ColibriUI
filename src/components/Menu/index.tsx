@@ -36,6 +36,7 @@ const Menu = ({
         }
         return child;
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [children, selected, onClick],
   );
   return (

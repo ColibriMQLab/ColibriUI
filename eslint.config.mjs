@@ -76,6 +76,8 @@ export default [
       "**/*.stories.tsx",
       "src/**/*.test.ts",
       "src/**/*.test.tsx",
+      ".config",
+      "rollup.config.js",
     ],
   },
 ];

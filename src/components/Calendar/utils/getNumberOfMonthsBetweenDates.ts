@@ -2,6 +2,10 @@
  * Returns number of months between dates
  */
 
+function normalizeDate(date: string) {
+  return date.split("-").slice(0, 2).join("-");
+}
+
 export function getNumberOfMonthsBetweenDates(
   startDate: string,
   activeDate: string,
@@ -21,8 +25,4 @@ export function getNumberOfMonthsBetweenDates(
   }
 
   return count;
-}
-
-function normalizeDate(date: string) {
-  return date.split("-").slice(0, 2).join("-");
 }

@@ -61,6 +61,7 @@ const TabsMenu: FC<TabsMenuProps> = ({
         ) {
           nextTabMenuRef.current.focus();
           if (nextTabMenu.onClick !== undefined) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             nextTabMenu.onClick(event as any);
           }
           if (onChange !== undefined) {

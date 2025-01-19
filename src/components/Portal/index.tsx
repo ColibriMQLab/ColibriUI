@@ -10,7 +10,7 @@ const Portal: FC<PropsWithChildren<{ node?: HTMLElement | null }>> = ({
 
   useEffect(() => {
     setMountNode(node || document.body);
-  });
+  }, [node]);
 
   return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
 };

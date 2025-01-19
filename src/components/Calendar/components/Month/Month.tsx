@@ -12,7 +12,7 @@ import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
-
+// eslint-disable-next-line @typescript-eslint/ban-types
 export interface FCWithElements<T = {}> extends FunctionComponent<T> {}
 
 type Props = {

@@ -103,6 +103,7 @@ const Calendar: React.FC<CalendarProps> = ({
         );
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [canSelectRange, selectedDate, isRangeCompleted, selectDate],
   );
 

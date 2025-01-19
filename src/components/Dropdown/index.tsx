@@ -74,19 +74,13 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
   const isNotComponent = typeof children === "string";
 
-  const reference: any = useMemo(
-    () =>
-      Children.only(isNotComponent ? <button>{children}</button> : children),
-    [children, isNotComponent],
-  );
+  const reference: ReactElement | null = useMemo(() => {
+    if (!children) return null;
 
-  // const reference: ReactElement | null = useMemo(() => {
-  //   if (!children) return null;
-
-  //   return Children.only(
-  //     isNotComponent ? <button>{children}</button> : children
-  //   ) as ReactElement;
-  // }, [children, isNotComponent]);
+    return Children.only(
+      isNotComponent ? <button>{children}</button> : children,
+    ) as ReactElement;
+  }, [children, isNotComponent]);
 
   const onToggle = useCallback(
     (event: MouseEvent | TouchEvent) => {
@@ -124,6 +118,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
         onHide();
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onHide],
   );
 
@@ -157,6 +152,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     }
 
     return () => unsubscribes.forEach((un) => un());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controlElement, popperElement, onToggle, onShow, onHide]);
 
   useEffect(() => {
@@ -169,11 +165,13 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
   return (
     <>
-      <reference.type
-        ref={setControlElement}
-        tabIndex={0}
-        {...reference.props}
-      />
+      {reference && (
+        <reference.type
+          ref={setControlElement}
+          tabIndex={0}
+          {...reference.props}
+        />
+      )}
       {isVisible && (
         <Portal>
           <ClickOutside onClick={onClickOutside}>
@@ -193,6 +191,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
               tabIndex={0}
               {...attributes.popper}
             >
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
               <div
                 data-testid="overlay-container"
                 className={clx("overlay-container")}

@@ -13,7 +13,12 @@ import { on } from "../helpers/on";
 import ClickOutside from "../ClickOutside";
 import styles from "./Tooltip.module.scss";
 import type { ITooltipProps } from "./index.props";
-import type { FC, MouseEventHandler, PropsWithChildren } from "react";
+import type {
+  FC,
+  MouseEventHandler,
+  PropsWithChildren,
+  ReactElement,
+} from "react";
 
 const clx = classNames.bind(styles);
 
@@ -53,11 +58,13 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
 
   const isNotComponent = typeof children === "string";
 
-  const reference: any = useMemo(
-    () =>
-      Children.only(isNotComponent ? <button>{children}</button> : children),
-    [children, isNotComponent],
-  );
+  const reference: ReactElement | null = useMemo(() => {
+    if (!children) return null;
+
+    return Children.only(
+      isNotComponent ? <button>{children}</button> : children,
+    ) as ReactElement;
+  }, [children, isNotComponent]);
 
   const onToggle = useCallback(
     (e: MouseEvent | TouchEvent) => {
@@ -109,7 +116,9 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
 
   return (
     <>
-      <reference.type ref={setControlElement} {...reference.props} />
+      {reference && (
+        <reference.type ref={setControlElement} {...reference.props} />
+      )}
       {visible && (
         <Portal>
           <ClickOutside onClick={onClickOutside}>
@@ -122,6 +131,7 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
               }}
               {...attributes.popper}
             >
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
               <div
                 role="button"
                 tabIndex={0}

@@ -7,27 +7,12 @@ export type DatePreset = {
   period: number;
 };
 
-export function getPresets(presets: string[]) {
-  if (!presets) {
-    return;
-  }
+function format(date: Date): string {
+  return toISODate(date);
+}
 
-  return presets.map((preset) => {
-    switch (preset) {
-      case PRESETS.TODAY:
-        return getToday();
-      case PRESETS.TOMORROW:
-        return getTomorrow();
-      case PRESETS.WEEKENDS:
-        return getWeekends();
-      case PRESETS.CURWEEK:
-        return getCurrWeek();
-      case PRESETS.NEXTWEEK:
-        return getNextWeek();
-      default:
-        return;
-    }
-  });
+function increaseDate(date: Date) {
+  date.setDate(date.getDate() + 1);
 }
 
 function getToday() {
@@ -105,10 +90,25 @@ function getNextWeek() {
   };
 }
 
-function format(date: Date): string {
-  return toISODate(date);
-}
+export function getPresets(presets: string[]) {
+  if (!presets) {
+    return;
+  }
 
-function increaseDate(date: Date) {
-  date.setDate(date.getDate() + 1);
+  return presets.map((preset) => {
+    switch (preset) {
+      case PRESETS.TODAY:
+        return getToday();
+      case PRESETS.TOMORROW:
+        return getTomorrow();
+      case PRESETS.WEEKENDS:
+        return getWeekends();
+      case PRESETS.CURWEEK:
+        return getCurrWeek();
+      case PRESETS.NEXTWEEK:
+        return getNextWeek();
+      default:
+        return;
+    }
+  });
 }
