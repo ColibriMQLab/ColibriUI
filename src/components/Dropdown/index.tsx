@@ -14,7 +14,12 @@ import ClickOutside from "../ClickOutside";
 
 import styles from "./Dropdown.module.scss";
 import type { DropdownProps } from "./index.props";
-import type { FC, MouseEventHandler, PropsWithChildren, ReactElement } from "react";
+import type {
+  FC,
+  MouseEventHandler,
+  PropsWithChildren,
+  ReactElement,
+} from "react";
 
 const clx = classNames.bind(styles);
 
@@ -77,7 +82,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
   // const reference: ReactElement | null = useMemo(() => {
   //   if (!children) return null;
-  
+
   //   return Children.only(
   //     isNotComponent ? <button>{children}</button> : children
   //   ) as ReactElement;

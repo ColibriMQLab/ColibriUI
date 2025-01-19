@@ -22,6 +22,7 @@ export default [
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
       "react/display-name": "off",
+      "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "import/order": [
         "error",
