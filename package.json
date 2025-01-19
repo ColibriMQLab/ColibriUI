@@ -10,6 +10,7 @@
     "build:updateImports": "node scripts/updateImports.js",
     "build:postbuild": "node scripts/copyFiles.js && node scripts/postbuild.js",
     "build:variables": "ts-node scripts/variables.ts",
+    "lint": "npm run lint:ts && npm run lint:css",
     "lint:ts": "eslint .",
     "lint:ts:fix": "eslint . --fix",
     "lint:css": "stylelint 'src/**/*.scss'",

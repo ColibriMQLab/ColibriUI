@@ -11,6 +11,19 @@
   text-size-adjust: 100%;
 }
 
+.month-control-prev-arrow {
+  color: var(--palette-black);
+  transform: rotate(180deg);
+}
+
+.month-control-next-arrow {
+  color: var(--palette-black);
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  transform: rotate(360deg);
+}
+
 .month-control {
   background: transparent;
   border: 0;
@@ -79,19 +92,6 @@
     top: 0;
     width: 40px;
   }
-}
-
-.month-control-prev-arrow {
-  color: var(--palette-black);
-  transform: rotate(180deg);
-}
-
-.month-control-next-arrow {
-  color: var(--palette-black);
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  transform: rotate(360deg);
 }
 
 .months {

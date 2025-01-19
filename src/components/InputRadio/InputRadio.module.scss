@@ -57,6 +57,25 @@
   padding: 0;
   position: absolute;
 
+  &_checked + .icon {
+    background-color: var(--palette-black);
+    border: 4px solid var(--input-radio-bg-checked);
+  }
+
+  &_disabled + .icon {
+    border-radius: 50%;
+
+    &::after {
+      background-color: rgb(246 246 246 / 80%);
+      border-radius: 50%;
+      content: "";
+      display: block;
+      inset: 0;
+      margin: -1px;
+      position: absolute;
+    }
+  }
+
   &:not(&_disabled, &_error) {
     &:hover + .icon {
       border-color: var(--input-radio-bg-hovered);
@@ -81,25 +100,6 @@
     &:active + .icon {
       background-color: var(--palette-black);
       border: 4px solid var(--input-radio-bg-checked);
-    }
-  }
-
-  &_checked + .icon {
-    background-color: var(--palette-black);
-    border: 4px solid var(--input-radio-bg-checked);
-  }
-
-  &_disabled + .icon {
-    border-radius: 50%;
-
-    &::after {
-      background-color: rgb(246 246 246 / 80%);
-      border-radius: 50%;
-      content: "";
-      display: block;
-      inset: 0;
-      margin: -1px;
-      position: absolute;
     }
   }
 

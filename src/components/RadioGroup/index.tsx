@@ -21,7 +21,7 @@ export interface Option {
   disabled?: boolean;
 }
 
-interface Props {
+export interface RadioGroupProps {
   val?: string | number;
   options: Option[];
   onChange: (value: string) => void;
@@ -32,7 +32,7 @@ interface Props {
   disabled?: boolean;
 }
 
-const RadioGroup: FC<Props> = memo(
+const RadioGroup: FC<RadioGroupProps> = memo(
   ({
     val,
     options,
@@ -42,8 +42,11 @@ const RadioGroup: FC<Props> = memo(
     wrapped = false,
     className,
     disabled = false,
-  }: Props) => (
-    <div className={clx(styles.group, { column, wrapped }, className)}>
+  }: RadioGroupProps) => (
+    <div className={clx(styles.group, { 
+      group_column: !!column, 
+      group_wrapped: !!wrapped, 
+    }, className)}>
       {options.map((option) => {
         const {
           id,

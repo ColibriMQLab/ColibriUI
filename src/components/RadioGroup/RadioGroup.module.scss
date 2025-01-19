@@ -1,3 +1,8 @@
+.radio {
+  line-height: 16px;
+  margin-inline-end: 20px;
+}
+
 .group {
   display: inline-flex;
 
@@ -15,7 +20,7 @@
 
   &_wrapped {
     flex-wrap: wrap;
-
+    /* stylelint-disable-next-line no-descending-specificity */
     .radio {
       inline-size: 100%;
       margin: 8px auto;
@@ -29,9 +34,4 @@
       }
     }
   }
-}
-
-.radio {
-  line-height: 16px;
-  margin-inline-end: 20px;
 }
