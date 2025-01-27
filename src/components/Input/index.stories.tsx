@@ -8,7 +8,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 const meta: Meta<typeof Input> = {
   title: "UI/Input",
   parameters: {
-    layout: "centered",
   },
   argTypes: {
     size: {
