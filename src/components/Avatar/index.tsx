@@ -21,14 +21,14 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     size = AvatarSizes.M,
     className,
     bordered,
-    title = "",
+    alt = "profile image",
     accountType = AccountType.Organization,
   } = props;
   const stubImageURL = getStubImage(accountType);
 
   return (
     <img
-      alt={title}
+      alt={alt}
       src={(avatarURL || stubImageURL) as string}
       width={size}
       height={size}
@@ -40,6 +40,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
         },
         [className],
       )}
+      {...props}
     />
   );
 });

@@ -9,7 +9,7 @@ export enum AccountType {
 export type AvatarProps = {
   accountType?: AccountType;
   style?: CSSProperties;
-  title?: string;
+  alt?: string;
   size?: AvatarSizes | number;
   avatarURL?: string;
   bordered?: boolean;
