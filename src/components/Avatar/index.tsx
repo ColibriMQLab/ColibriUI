@@ -11,17 +11,20 @@ import type { FC } from "react";
 
 const clx = classNames.bind(styles);
 
+const getStubImage = (type: AccountType) => 
+  type === AccountType.Organization ? orgCircleUrl : userCircleUrl;
+
 const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     avatarURL,
+    style,
     size = AvatarSizes.M,
     className,
     bordered,
     title = "",
     accountType = AccountType.Organization,
   } = props;
-  const isOrg = accountType === AccountType.Organization;
-  const stubImageURL = isOrg ? orgCircleUrl : userCircleUrl;
+  const stubImageURL = getStubImage(accountType);
 
   return (
     <img
@@ -29,6 +32,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       src={(avatarURL || stubImageURL) as string}
       width={size}
       height={size}
+      style={style}
       className={clx(
         styles.avatar,
         {

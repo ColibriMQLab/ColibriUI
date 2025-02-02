@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import type { AvatarSizes } from "./constants";
 
 export enum AccountType {
@@ -7,6 +8,7 @@ export enum AccountType {
 
 export type AvatarProps = {
   accountType?: AccountType;
+  style?: CSSProperties;
   title?: string;
   size?: AvatarSizes | number;
   avatarURL?: string;
