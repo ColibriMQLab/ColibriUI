@@ -18,9 +18,6 @@ const meta: Meta<typeof Avatar> = {
       control: { type: "select" },
       options: [AvatarSizes.S, AvatarSizes.M, AvatarSizes.L, AvatarSizes.XL, AvatarSizes.XXL],
     },
-    bordered: {
-      control: { type: "boolean" },
-    },
   },
   args: {
     size: AvatarSizes.XXL
@@ -35,5 +32,5 @@ export const Default = (args) => {
 };
 
 export const Bordered = (args) => {
-  return <Avatar bordered={true} {...args}/>;
+  return <Avatar bordered {...args}/>;
 };
