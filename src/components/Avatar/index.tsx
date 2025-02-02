@@ -34,9 +34,9 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       height={size}
       style={style}
       className={clx(
-        styles.avatar,
+        'avatar',
         {
-          avatar_bordered: !!bordered,
+          'avatar_bordered': !!bordered,
         },
         [className],
       )}
