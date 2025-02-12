@@ -8,15 +8,15 @@ import type { Props } from "./index.props";
 const clx = classNames.bind(styles);
 
 const Badge: FC<PropsWithChildren<Props>> = ({
-  className,
-  content,
+  background,
   children,
+  className,
+  color,
+  content,
+  direction = "right",
   invisible: invisibleProp,
   max = 99,
   showZero = false,
-  color,
-  direction = "right",
-  background,
   ...props
 }) => {
   let invisible = invisibleProp;
@@ -28,32 +28,25 @@ const Badge: FC<PropsWithChildren<Props>> = ({
     invisible = true;
   }
 
-  let displayValue;
-
-  if (content) {
-    displayValue = content > max ? `${max}+` : content;
-  }
+  const displayValue = content ? (content > max ? `${max}+` : content) : undefined;
 
   return (
     <Control {...props}>
       {children}
-      <span
-        style={{
-          color,
-          backgroundColor: background,
-        }}
+      {displayValue && (<span
         className={clx(
+          "root",
           {
-            root: true,
             [`root_direction_${direction}`]: !!direction,
             root_invisible: invisible,
           },
-          className,
+          className
         )}
         data-testid="badge"
+        style={{ backgroundColor: background, color }}
       >
         {displayValue}
-      </span>
+      </span>)}
     </Control>
   );
 };
