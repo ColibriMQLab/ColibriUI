@@ -28,25 +28,31 @@ const Badge: FC<PropsWithChildren<Props>> = ({
     invisible = true;
   }
 
-  const displayValue = content ? (content > max ? `${max}+` : content) : undefined;
+  const displayValue = content
+    ? content > max
+      ? `${max}+`
+      : content
+    : undefined;
 
   return (
     <Control {...props}>
       {children}
-      {displayValue && (<span
-        className={clx(
-          "root",
-          {
-            [`root_direction_${direction}`]: !!direction,
-            root_invisible: invisible,
-          },
-          className
-        )}
-        data-testid="badge"
-        style={{ backgroundColor: background, color }}
-      >
-        {displayValue}
-      </span>)}
+      {displayValue && (
+        <span
+          className={clx(
+            "root",
+            {
+              [`root_direction_${direction}`]: !!direction,
+              root_invisible: invisible,
+            },
+            className,
+          )}
+          data-testid="badge"
+          style={{ backgroundColor: background, color }}
+        >
+          {displayValue}
+        </span>
+      )}
     </Control>
   );
 };

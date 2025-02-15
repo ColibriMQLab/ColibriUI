@@ -11,7 +11,7 @@ import type { FC } from "react";
 
 const clx = classNames.bind(styles);
 
-const getStubImage = (type: AccountType) => 
+const getStubImage = (type: AccountType) =>
   type === AccountType.Organization ? orgCircleUrl : userCircleUrl;
 
 const Avatar: FC<AvatarProps> = memo((props) => {
@@ -35,9 +35,9 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       height={size}
       style={style}
       className={clx(
-        'avatar',
+        "avatar",
         {
-          'avatar_bordered': !!bordered,
+          avatar_bordered: !!bordered,
         },
         [className],
       )}

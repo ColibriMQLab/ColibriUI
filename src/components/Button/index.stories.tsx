@@ -16,7 +16,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary", "outline", "pseudo", "clear"],
+      options: ["primary", "secondary", "outline", "pseudo", "clear", "alert", "success"],
     },
     disabled: {
       control: { type: "boolean" },
@@ -90,6 +90,12 @@ export const Variants = (args) => (
     </Button>{' '}
     <Button size="m" variant="clear" {...args}>
       clear
+    </Button>
+    <Button size="m" variant="alert" {...args}>
+      alert
+    </Button>{' '}
+    <Button size="m" variant="success" {...args}>
+      success
     </Button>
   </div>
 );

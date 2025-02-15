@@ -13,7 +13,13 @@ export const Backgrounds = {
 
 export const Accents = {
   ALERT: "#FF564E",
+  ALERT_HOVER: "#e72d24",
+  ALERT_ACTIVE: "#af2d26",
+  ALERT_LIGHT: "#ffeeed",
   SUCCESS: "#4AC99B",
+  SUCCESS_HOVER: "#42b48b",
+  SUCCESS_ACTIVE: "#3ba07c",
+  SUCCESS_LIGHT: "#ecf9f5",
 };
 
 export const Color = {
