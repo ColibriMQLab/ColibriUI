@@ -15,19 +15,18 @@ const ClickOutside: FC<
 
   const combinedRef = (node: HTMLElement) => {
     childRef.current = node;
-
-    // @ts-expect-error expected
-    const { ref } = children;
-
-    if (ref) {
-      if (typeof ref === "function") {
-        ref(node);
-      } else if (typeof ref === "object" && ref !== null) {
-        (ref as React.MutableRefObject<HTMLElement>).current = node;
+  
+    if (React.isValidElement(children) && "ref" in children.props) {
+      const childRefProp = children.props.ref;
+  
+      if (typeof childRefProp === "function") {
+        childRefProp(node);
+      } else if (childRefProp && typeof childRefProp === "object") {
+        (childRefProp as React.MutableRefObject<HTMLElement | null>).current = node;
       }
     }
   };
-
+  
   return cloneElement(children as ReactElement, {
     ref: combinedRef,
   });
