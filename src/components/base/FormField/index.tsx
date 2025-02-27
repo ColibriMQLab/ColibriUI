@@ -1,25 +1,24 @@
 import React from "react";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import Typography from "../../Typography";
 import styles from "./FormField.module.scss";
-
 import type { FormFieldProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const FormField = ({
   label,
   hint,
   children,
-  error,
+  hasError,
   required,
-  ref,
   className,
+  ref,
 }: FormFieldProps) => (
-  <div className={clx(styles.container, className)} ref={ref}>
+  <div className={classNames(styles.container, className)} ref={ref}>
     {label && (
       <Typography
-        className={clx(styles.label, { label_required: !!required })}
+        className={classNames(styles.label, {
+          [styles.label_required]: required,
+        })}
         tag="label"
       >
         {label}
@@ -27,7 +26,7 @@ const FormField = ({
     )}
     {children}
     {hint && (
-      <Typography variant={error ? "alert" : "secondary"} tag="span">
+      <Typography variant={hasError ? "alert" : "secondary"} tag="span">
         {hint}
       </Typography>
     )}

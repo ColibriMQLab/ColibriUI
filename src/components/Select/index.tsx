@@ -18,7 +18,7 @@ const Select = <T extends string>({
   fontSize,
   label,
   hint,
-  error,
+  hasError,
   required,
   placeholder,
   disabled,
@@ -58,7 +58,7 @@ const Select = <T extends string>({
       required={required}
       label={label}
       hint={hint}
-      error={error}
+      hasError={hasError}
     >
       <Dropdown
         placement="bottom-start"
@@ -75,7 +75,7 @@ const Select = <T extends string>({
           customInputRoot
         ) : (
           <InputRoot
-            error={error}
+            hasError={hasError}
             size={size}
             className={clx(styles.root)}
             endIcon={

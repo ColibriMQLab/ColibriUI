@@ -1,18 +1,18 @@
-import type { ReactNode } from "react";
+import type { FocusEvent, ChangeEvent, ReactNode } from "react";
 
 export interface CheckboxProps {
-  variant?: "primary";
-  size?: "s" | "m" | "l";
-  id?: string;
-  name?: string;
-  value?: string | number;
-  label?: ReactNode;
-  hint?: ReactNode;
   checked?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
   disabled?: boolean;
-  isError?: boolean;
+  hasError?: boolean;
+  hint?: ReactNode;
+  id?: string;
+  label?: ReactNode;
+  name?: string;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  size?: "s" | "m" | "l";
+  value?: string | number;
+  variant?: "primary";
 }

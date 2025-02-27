@@ -1,9 +1,7 @@
 import React from "react";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import styles from "./InputRoot.module.scss";
 import type { InputProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const InputRoot = ({
   className,
@@ -12,7 +10,7 @@ const InputRoot = ({
   children,
   variant = "primary",
   disabled,
-  error,
+  hasError,
   style,
   size,
   ref,
@@ -20,21 +18,21 @@ const InputRoot = ({
   <div
     ref={ref}
     style={style}
-    className={clx(
+    className={classNames(
       styles.root,
+      styles[`variant_${variant}`],
+      size && styles[`size_${size}`],
       {
-        [`variant_${variant}_disabled`]: disabled ? 1 : 0,
-        [`variant_${variant}_error`]: error ? 1 : 0,
-        [`size_${size}`]: !!size,
-        [`variant_${variant}`]: !!variant,
+        [styles[`variant_${variant}_disabled`]]: disabled,
+        [styles[`variant_${variant}_error`]]: hasError,
       },
       className,
     )}
   >
-    {startIcon && <div className={clx(styles["base-icon"])}>{startIcon}</div>}
+    {startIcon && <div className={styles["base-icon"]}>{startIcon}</div>}
     {children}
-    {endIcon && <div className={clx(styles["base-icon"])}>{endIcon}</div>}
-    {disabled && <div className={clx(styles["base-disable-wrapper"])} />}
+    {endIcon && <div className={styles["base-icon"]}>{endIcon}</div>}
+    {disabled && <div className={styles["base-disable-wrapper"]} />}
   </div>
 );
 

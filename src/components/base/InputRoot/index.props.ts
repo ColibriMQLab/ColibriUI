@@ -8,7 +8,7 @@ export type Variant = "primary";
 export type InputProps = PropsWithChildren<{
   variant?: Variant;
   disabled: boolean;
-  error?: boolean;
+  hasError?: boolean;
   className?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;

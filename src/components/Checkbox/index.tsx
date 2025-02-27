@@ -20,54 +20,42 @@ const Checkbox: FC<CheckboxProps> = ({
   variant = "primary",
   className,
   disabled,
-  isError,
-}) => {
-  const control = (
-    // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={clx(styles.label)}>
-      <div className={clx(styles.wrapper)}>
-        <input
-          className={clx(
-            styles.control,
-            {
-              [`control_variant_${variant}`]: !!variant,
-            },
-            className,
-          )}
-          type="checkbox"
-          id={id}
-          name={name}
-          value={value}
-          checked={checked}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          disabled={disabled}
-        />
-        <span
-          className={clx(styles["fake-checkbox"], {
-            [`variant_${variant}_disabled`]: disabled ? 1 : 0,
-            [`variant_${variant}_error`]: isError ? 1 : 0,
-            [`variant_${variant}_checked`]: checked ? 1 : 0,
-            checked: checked ? 1 : 0,
-            [`variant_${variant}`]: !!variant,
-          })}
-        />
-        <span className={clx(styles.text)}>{label}</span>
-      </div>
+  hasError,
+}) => (
+  <div className={clx(styles.root)}>
+    <label className={clx(styles.label)} htmlFor={id}>
+      <input
+        className={clx(
+          styles.control,
+          styles[`control_variant_${variant}`],
+          className,
+        )}
+        type="checkbox"
+        id={id}
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        disabled={disabled}
+      />
+      <span
+        className={clx(styles["fake-checkbox"], styles[`variant_${variant}`], {
+          [styles[`variant_${variant}_disabled`]]: disabled,
+          [styles[`variant_${variant}_error`]]: hasError,
+          [styles[`variant_${variant}_checked`]]: checked,
+          [styles.checked]: checked,
+        })}
+      />
+      <span className={clx(styles.text)}>{label}</span>
     </label>
-  );
-
-  return (
-    <div className={clx(styles.root)}>
-      {control}
-      {hint && (
-        <Typography variant={isError ? "alert" : "secondary"} tag="span">
-          {hint}
-        </Typography>
-      )}
-    </div>
-  );
-};
+    {hint && (
+      <Typography variant={hasError ? "alert" : "secondary"} tag="span">
+        {hint}
+      </Typography>
+    )}
+  </div>
+);
 
 export default Checkbox;

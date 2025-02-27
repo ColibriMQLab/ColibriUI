@@ -19,7 +19,14 @@ const meta: Meta<typeof Input> = {
       options: ["primary"],
     },
   },
-  args: { onChange: fn() },
+  args: { 
+    onChange: fn(), 
+    hasError: false,    
+    disabled: false,
+    label: "Label",
+    variant: "primary",
+    hint: "hint",
+  },
   component: Input,
 } satisfies Meta<typeof Input>;
 
@@ -32,57 +39,32 @@ const PLACEHOLDER = "Name";
 export const Default: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    error: false,
-    disabled: false,
-    label: "Label",
-    variant: "primary",
-    hint: "hint",
   },
 };
 
 export const Required: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    error: false,
     required: true,
-    disabled: false,
-    label: "Label",
-    variant: "primary",
-    hint: "hint",
   },
 };
 
 export const TypePassword: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    error: false,
-    disabled: false,
-    label: "Label",
     type: 'password',
-    variant: "primary",
-    hint: "hint",
   },
 };
 
 export const Error: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    error: true,
-    disabled: false,
-    label: "Label",
-    variant: "primary",
-    hint: "hint",
   },
 };
 
 export const WithIcon: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    error: false,
-    disabled: false,
-    label: "Label",
-    variant: "primary",
-    hint: "hint",
     endIcon: <Chevron />,
   },
 };

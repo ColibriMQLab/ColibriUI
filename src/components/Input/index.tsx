@@ -11,7 +11,7 @@ const Input = ({
   endIcon,
   label,
   hint,
-  error,
+  hasError,
   required,
   onChange,
   inputRef,
@@ -26,7 +26,7 @@ const Input = ({
     label={label}
     required={required}
     hint={hint}
-    error={error}
+    hasError={hasError}
   >
     <InputRoot
       ref={ref}
@@ -35,7 +35,7 @@ const Input = ({
       variant={variant}
       size={size}
       disabled={!!disabled}
-      error={error}
+      hasError={hasError}
     >
       <BaseInput
         ref={inputRef}

@@ -10,30 +10,27 @@ import MenuOverlay from "./components/MenuOverlay";
 import { createGroupOptionString } from "./utils";
 import type { GroupOptions, MultiSelectProps } from "./index.props";
 
+type GroupOptionsWithSelected = GroupOptions & { selected: boolean };
+type PreparedLabelProps = { label: string; key: string };
+
 const clx = classNames.bind(styles);
 
-type GroupOptionsWithSelected = GroupOptions & {
-  selected: boolean;
-};
-
-const sortedItems = (items: string[]) =>
-  items.sort((a, b) => {
-    if (!a || !b) return 0;
-
-    const matchA = a.match(/group-(\d+)-option-(\d+)/);
-    const matchB = b.match(/group-(\d+)-option-(\d+)/);
-
-    if (!matchA || !matchB) {
-      return 0;
-    }
-
-    const [, groupA, optionA] = matchA.map(Number);
-    const [, groupB, optionB] = matchB.map(Number);
-
+const sortItems = (items: string[]): string[] =>
+  [...items].sort((a, b) => {
+    const parseKey = (key: string): number[] =>
+      key
+        .match(/group-(\d+)-option-(\d+)/)
+        ?.slice(1)
+        .map(Number) || [];
+    const [groupA, optionA] = parseKey(a);
+    const [groupB, optionB] = parseKey(b);
     return groupA - groupB || optionA - optionB;
   });
 
-const MultiSelect = ({
+const getValue = (options: PreparedLabelProps[]): string =>
+  options.map(({ label }) => label).join(", ");
+
+const MultiSelect: React.FC<MultiSelectProps> = ({
   className,
   groups,
   zIndex,
@@ -43,13 +40,13 @@ const MultiSelect = ({
   required,
   label,
   hint,
-  error,
+  hasError,
   size = "m",
   placeholder,
   name,
   type,
   onChange,
-}: MultiSelectProps) => {
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string[]>([]);
 
@@ -58,12 +55,11 @@ const MultiSelect = ({
       groups.map((group) => ({
         ...group,
         options: group.options.map(
-          (option: GroupOptions): GroupOptionsWithSelected => ({
+          (option): GroupOptionsWithSelected => ({
             ...option,
-            selected:
-              value?.includes(
-                createGroupOptionString(group.value, option.value),
-              ) || false,
+            selected: value.includes(
+              createGroupOptionString(group.value, option.value),
+            ),
           }),
         ),
       })),
@@ -73,30 +69,28 @@ const MultiSelect = ({
   const handleChange = useCallback(
     (key: string) => {
       setValue((prev) => {
-        const newValue =
-          prev.indexOf(key) !== -1
-            ? prev.filter((prevValue) => prevValue !== key)
-            : sortedItems([...prev, key]);
-
-        if (onChange) {
-          onChange(newValue);
-        }
-
+        const newValue = prev.includes(key)
+          ? prev.filter((v) => v !== key)
+          : sortItems([...prev, key]);
+        onChange?.(newValue);
         return newValue;
       });
     },
     [onChange],
   );
 
-  const prepraredLabel = useMemo(
+  const preparedLabel = useMemo(
     () =>
-      preparedGroups.flatMap((group) =>
-        group.options
-          .filter((option) => option.selected)
-          .map((option) => ({
-            label: option.label,
-            key: createGroupOptionString(group.value, option.value),
-          })),
+      preparedGroups.flatMap(({ value: groupVal, options }) =>
+        options
+          .filter(({ selected }) => selected)
+          .map(
+            // eslint-disable-next-line @typescript-eslint/no-shadow
+            ({ label, value: optVal }): PreparedLabelProps => ({
+              label,
+              key: createGroupOptionString(groupVal, optVal),
+            }),
+          ),
       ),
     [preparedGroups],
   );
@@ -105,100 +99,70 @@ const MultiSelect = ({
     <FormField
       className={clx(
         styles["form-field"],
-        {
-          "full-width": fullWidth ? 1 : 0,
-        },
+        { "full-width": fullWidth },
         className,
       )}
       required={required}
       label={label}
       hint={hint}
-      error={error}
+      hasError={hasError}
     >
       <Dropdown
         placement="bottom-start"
-        preventOverflow={true}
+        preventOverflow
         onVisibleChange={setIsOpen}
         trigger={["click"]}
         zIndex={zIndex}
         fontSize={fontSize}
-        disabled={!!disabled}
+        disabled={disabled}
         overlay={
           <MenuOverlay groups={preparedGroups} onChange={handleChange} />
         }
         samewidth
       >
-        {type === "chip" ? (
-          <InputRoot
-            error={error}
-            size={size}
-            className={clx(styles.root, {
-              auto: !!prepraredLabel.length,
-            })}
-            endIcon={
-              <Chevron
-                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
-              />
-            }
-            disabled={!!disabled}
+        <InputRoot
+          hasError={hasError}
+          size={size}
+          className={clx(styles.root, { root_auto: preparedLabel.length })}
+          endIcon={
+            <Chevron className={clx(styles.icon, { icon_isOpen: isOpen })} />
+          }
+          disabled={Boolean(disabled)}
+        >
+          <div
+            className={clx(
+              styles["base-input"],
+              styles[type === "chip" ? "base-input-flex" : "base-input-text"],
+            )}
           >
-            <div
-              className={clx(styles["base-input"], styles["base-input-flex"])}
-            >
-              {prepraredLabel.length ? (
-                <>
-                  {prepraredLabel.map((option, index) => (
-                    <Chip
-                      size="s"
-                      iconEnd={<CrossFill />}
-                      data-ignore-click={true}
-                      key={`item-${index}`}
-                      onClickIcon={() => handleChange(option.key)}
-                    >
-                      {option.label}
-                    </Chip>
-                  ))}
-                </>
+            {preparedLabel.length ? (
+              type === "chip" ? (
+                // eslint-disable-next-line @typescript-eslint/no-shadow
+                preparedLabel.map(({ label, key }) => (
+                  <Chip
+                    key={key}
+                    size="s"
+                    iconEnd={<CrossFill />}
+                    data-ignore-click
+                    onClickIcon={() => handleChange(key)}
+                  >
+                    {label}
+                  </Chip>
+                ))
               ) : (
-                <span className={clx(styles.placeholder)}>{placeholder}</span>
-              )}
-            </div>
-            <input
-              type="hidden"
-              name={name}
-              tabIndex={-1}
-              value={value || ""}
-            />
-          </InputRoot>
-        ) : (
-          <InputRoot
-            error={error}
-            size={size}
-            className={clx(styles.root)}
-            endIcon={
-              <Chevron
-                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
-              />
-            }
-            disabled={!!disabled}
-          >
-            <div
-              className={clx(styles["base-input"], styles["base-input-text"])}
-            >
-              {prepraredLabel.length ? (
-                prepraredLabel.join(", ")
-              ) : (
-                <span className={clx(styles.placeholder)}>{placeholder}</span>
-              )}
-            </div>
-            <input
-              type="hidden"
-              name={name}
-              tabIndex={-1}
-              value={value || ""}
-            />
-          </InputRoot>
-        )}
+                getValue(preparedLabel)
+              )
+            ) : (
+              <span className={clx(styles.placeholder)}>{placeholder}</span>
+            )}
+          </div>
+          <input
+            type="hidden"
+            name={name}
+            tabIndex={-1}
+            value={value.join(",") || ""}
+          />
+        </InputRoot>
       </Dropdown>
     </FormField>
   );

@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from "react";
-import { fn } from "@storybook/test";
+import React, { useEffect, useState } from "react";
 import Checkbox from ".";
 import type { Meta } from "@storybook/react";
 
@@ -17,14 +16,11 @@ const meta: Meta<typeof Checkbox> = {
       control: { type: "select" },
       options: ["primary"],
     },
-    disabled: {
-      control: { type: "boolean" },
-      options: [true, false],
-    },
-    isError: {
-      control: { type: "boolean" },
-      options: [true, false],
-    },
+  },
+  args: {
+    disabled: false,
+    hasError: false,
+    checked: false,
   },
   component: Checkbox,
 } satisfies Meta<typeof Checkbox>;
@@ -33,19 +29,28 @@ export default meta;
 
 const TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-const Example = (args): JSX.Element => {
-  const [isChecked, setChecked] = useState<boolean>(false);
+const Example = ({ checked: controlledChecked, onChange, ...args }): JSX.Element => {
+  const [isChecked, setChecked] = useState<boolean>(controlledChecked ?? false);
+
+  useEffect(() => {
+    setChecked(controlledChecked);
+  }, [controlledChecked]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    onChange?.(event);
+  };
+
   return (
     <Checkbox
-      onChange={() => {
-        setChecked(!isChecked);
-      }}
-      hint={args.isError ? 'Error text' : ''}
       checked={isChecked}
+      onChange={handleChange}
+      hint={args.hasError ? "Error text" : ""}
       {...args}
     />
   );
 };
+
 
 export const Default = (args): JSX.Element => (
   <ul style={{ listStyleType: "none" }}>

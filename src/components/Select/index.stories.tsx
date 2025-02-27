@@ -10,6 +10,13 @@ const meta: Meta<typeof Select> = {
     layout: "centered",
   },
   argTypes: {},
+  args: {
+    hasError: false,
+    fullWidth: false,
+    placeholder: "select options",
+    label: "Label",
+    hint: "hint",
+  },
   component: Select,
 } satisfies Meta<typeof Select>;
 
@@ -42,26 +49,4 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 
-Default.args = {
-  placeholder: "select options",
-  label: "Label",
-  hint: "hint",
-};
-
-export const Error = Template.bind({});
-
-Error.args = {
-  placeholder: "select options",
-  error: true,
-  label: "Label",
-  hint: "hint",
-};
-
-export const FullWidth = Template.bind({});
-
-FullWidth.args = {
-  placeholder: "select options",
-  label: "Label",
-  hint: "hint",
-  fullWidth: true,
-};
+Default.args = {};
