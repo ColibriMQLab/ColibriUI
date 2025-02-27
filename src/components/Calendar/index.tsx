@@ -9,6 +9,7 @@ import { Presets } from "./components/Presets";
 import { getNumberOfMonthsBetweenDates } from "./utils/getNumberOfMonthsBetweenDates";
 import { ContinueButton } from "./components/ContinueButton";
 import styles from "./index.module.scss";
+import type { MouseEvent } from "react";
 import type { CalendarProps } from "./index.props";
 import type { Preset } from "./components/Presets";
 
@@ -54,13 +55,17 @@ const Calendar: React.FC<CalendarProps> = ({
     setContentWidth($root.current?.offsetWidth || 0);
   }, []);
 
-  const showPrevMonth = useCallback(() => {
+  const showPrevMonth = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     setCurrentMonthOffset((prev) => prev - 1);
-  }, []);
+  };
 
-  const showNextMonth = useCallback(() => {
+  const showNextMonth = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     setCurrentMonthOffset((prev) => prev + 1);
-  }, []);
+  };
 
   const selectDate = useCallback(
     (date: string, period: number, rangeCompleted: boolean) => {
