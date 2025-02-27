@@ -15,7 +15,7 @@ export interface ITextAreaProps
   value?: string;
   label?: ReactNode;
   hint?: ReactNode;
-  error?: boolean;
+  hasError?: boolean;
   required?: boolean;
   onChange?: (value: string, e: ChangeEvent<HTMLTextAreaElement>) => void;
   inputRef?: ForwardedRef<HTMLTextAreaElement>;

@@ -17,7 +17,7 @@ const TextArea = ({
   onChange,
   label,
   required,
-  error,
+  hasError,
   hint,
   disabled,
   inputRef,
@@ -35,9 +35,9 @@ const TextArea = ({
       required={required}
       label={label}
       hint={hint}
-      error={error}
+      hasError={hasError}
     >
-      <InputRoot disabled={!!disabled} error={error}>
+      <InputRoot disabled={!!disabled} hasError={hasError}>
         <TextareaAutosize
           ref={inputRef}
           data-testid="textarea"
