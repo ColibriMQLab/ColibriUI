@@ -18,15 +18,14 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
 }) => (
   <Component
     {...props}
-    style={style}
+    style={{ ...style }}
     className={clx(
       {
-        root: true,
-        [`size_${size}`]: !!size,
-        [`font-weight_${fontWeight}`]: !!fontWeight,
-        [`variant_${variant}`]: !!variant,
+        [`size_${size}`]: Boolean(size),
+        [`font-weight_${fontWeight}`]: Boolean(fontWeight),
+        [`variant_${variant}`]: Boolean(variant),
       },
-      className,
+      className
     )}
   >
     {children}
