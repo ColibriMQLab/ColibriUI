@@ -56,31 +56,27 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
     ],
   });
 
-  const isNotComponent = typeof children === "string";
-
-  const reference: ReactElement | null = useMemo(() => {
+  const reference = useMemo(() => {
     if (!children) return null;
+    if (typeof children === "string") {
+      return <button>{children}</button>;
+    }
+    return Children.only(children) as ReactElement;
+  }, [children]);
 
-    return Children.only(
-      isNotComponent ? <button>{children}</button> : children,
-    ) as ReactElement;
-  }, [children, isNotComponent]);
-
-  const onToggle = useCallback(
+  const onToggle = 
     (e: MouseEvent | TouchEvent) => {
       e.stopPropagation();
       setVisible((state) => !state);
-    },
-    [setVisible],
-  );
+    };
 
-  const onShow = useCallback(() => {
+  const onShow = () => {
     setVisible(true);
-  }, [setVisible]);
+  };
 
-  const onHide = useCallback(() => {
+  const onHide = () => {
     setVisible(false);
-  }, [setVisible]);
+  };
 
   const onClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
@@ -116,9 +112,7 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
 
   return (
     <>
-      {reference && (
-        <reference.type ref={setControlElement} {...reference.props} />
-      )}
+      {reference && React.cloneElement(reference, { ref: setControlElement })}
       {visible && (
         <Portal>
           <ClickOutside onClick={onClickOutside}>
