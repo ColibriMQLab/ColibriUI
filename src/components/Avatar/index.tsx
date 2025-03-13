@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-
 import classNames from "classnames/bind";
 import { AvatarSizes } from "./constants";
 import userCircleUrl from "./assets/user-circle.svg";
@@ -18,7 +17,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     avatarURL,
     style,
-    size = AvatarSizes.M,
+    size = AvatarSizes.M, 
     className,
     bordered,
     alt = "profile image",
@@ -31,15 +30,11 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     <img
       alt={alt}
       src={(avatarURL || stubImageURL) as string}
-      width={size}
-      height={size}
-      style={style}
+      style={{ ...style, ...(size ? { width: size, height: size } : {}) }}
       className={clx(
         "avatar",
-        {
-          avatar_bordered: !!bordered,
-        },
-        [className],
+        { avatar_bordered: !!bordered },
+        [className]
       )}
       {...rest}
     />
@@ -47,3 +42,4 @@ const Avatar: FC<AvatarProps> = memo((props) => {
 });
 
 export default Avatar;
+
