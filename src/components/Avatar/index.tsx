@@ -17,7 +17,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     avatarURL,
     style,
-    size = AvatarSizes.M, 
+    size = AvatarSizes.M,
     className,
     bordered,
     alt = "profile image",
@@ -31,15 +31,10 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       alt={alt}
       src={(avatarURL || stubImageURL) as string}
       style={{ ...style, ...(size ? { width: size, height: size } : {}) }}
-      className={clx(
-        "avatar",
-        { avatar_bordered: !!bordered },
-        [className]
-      )}
+      className={clx("avatar", { avatar_bordered: !!bordered }, [className])}
       {...rest}
     />
   );
 });
 
 export default Avatar;
-

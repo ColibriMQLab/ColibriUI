@@ -23,9 +23,9 @@ const Menu = ({
             ? selected.includes(String(child.key))
             : undefined;
 
-          const onClickHandler = (e: MouseEvent) => {
-            if (child.props.onClick) child.props.onClick(e);
-            if (onClick && child.key) onClick(child.key.toString(), e);
+          const onClickHandler = (event: MouseEvent) => {
+            if (child.props.onClick) child.props.onClick(event);
+            if (onClick && child.key) onClick(child.key.toString(), event);
           };
 
           return cloneElement(child, {
@@ -40,7 +40,7 @@ const Menu = ({
     [children, selected, onClick],
   );
   return (
-    <ul ref={ref} className={clx("menu", className)}>
+    <ul ref={ref} className={clx(styles.menu, className)}>
       {renderChild}
     </ul>
   );

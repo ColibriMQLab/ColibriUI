@@ -15,7 +15,7 @@ const MenuItem = ({
   children,
   ref,
 }: PropsWithChildren<MenuItemProps>) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
   <li
     ref={ref}
     style={{
@@ -23,7 +23,9 @@ const MenuItem = ({
         ? "var(--palette-bg-2, rgb(232, 240, 254))"
         : "",
     }}
+    aria-label="MenuItem"
     data-testid="menuitem"
+    aria-disabled={disabled}
     className={clx(
       "item",
       {
@@ -32,7 +34,7 @@ const MenuItem = ({
       },
       className,
     )}
-    onClick={onClick}
+    onClick={!disabled ? onClick : undefined}
   >
     {children}
   </li>

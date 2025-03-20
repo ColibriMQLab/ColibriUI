@@ -25,7 +25,7 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
         [`font-weight_${fontWeight}`]: Boolean(fontWeight),
         [`variant_${variant}`]: Boolean(variant),
       },
-      className
+      className,
     )}
   >
     {children}

@@ -64,11 +64,10 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
     return Children.only(children) as ReactElement;
   }, [children]);
 
-  const onToggle = 
-    (e: MouseEvent | TouchEvent) => {
-      e.stopPropagation();
-      setVisible((state) => !state);
-    };
+  const onToggle = (e: MouseEvent | TouchEvent) => {
+    e.stopPropagation();
+    setVisible((state) => !state);
+  };
 
   const onShow = () => {
     setVisible(true);
