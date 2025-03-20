@@ -130,7 +130,7 @@ export default {
   "checkbox-bg-active": Color.PRIMARY_BA_4,
   "checkbox-border-color-active": Color.PRIMARY_BA_4,
   "checkbox-box-shadow-active": Color.PRIMARY_BA_4,
-  "checkbox-bg-disabled": Color.PRIMARY_BA_1,
+  "checkbox-bg-disabled": Color.BG_1,
 
   "input-radio-bg-checked": Color.PRIMARY_BA_4,
   "input-radio-bg-hovered": Color.PRIMARY_BA_4,
