@@ -1,27 +1,27 @@
 import React from 'react'
-import TabsPanes from ".";
+import TabsPanels from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof TabsPanes> = {
-  title: "UI/TabsPanes",
+const meta: Meta<typeof TabsPanels> = {
+  title: "UI/TabsPanels",
   parameters: {
     layout: "centered",
   },
   argTypes: {
   },
-  component: TabsPanes,
-} satisfies Meta<typeof TabsPanes>;
+  component: TabsPanels,
+} satisfies Meta<typeof TabsPanels>;
 
 export default meta;
 
-type Story = StoryObj<typeof TabsPanes>;
+type Story = StoryObj<typeof TabsPanels>;
 
 export const Default = (args: Story) => {
   return(
-  <TabsPanes
+  <TabsPanels
     {...args}
-    activePane="2"
-    panes={[
+    activePanel="2"
+    panels={[
       { id: '1', content: 'Pane 1 content' },
       { id: '2', content: 'Pane 2 content' },
     ]}

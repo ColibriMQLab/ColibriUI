@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TabsPanes should display new JSX content when activePane changes (snapshot) 1`] = `
+exports[`TabsPanels should display new JSX content when activePane changes (snapshot) 1`] = `
 <div>
   <div
     class=""
-    role="menutabpanes"
+    role="menutabpanels"
   >
     <div
+      aria-labelledby="tab-tab3"
       class=""
+      id="tab3"
       role="tabpanel"
     >
       <div>
@@ -18,17 +20,19 @@ exports[`TabsPanes should display new JSX content when activePane changes (snaps
 </div>
 `;
 
-exports[`TabsPanes should display only the active pane content (snapshot) 1`] = `
+exports[`TabsPanels should display only the active pane content (snapshot) 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
         class=""
-        role="menutabpanes"
+        role="menutabpanels"
       >
         <div
+          aria-labelledby="tab-tab1"
           class=""
+          id="tab1"
           role="tabpanel"
         >
           Pane 1 Поиск
@@ -39,10 +43,12 @@ exports[`TabsPanes should display only the active pane content (snapshot) 1`] = 
   "container": <div>
     <div
       class=""
-      role="menutabpanes"
+      role="menutabpanels"
     >
       <div
+        aria-labelledby="tab-tab1"
         class=""
+        id="tab1"
         role="tabpanel"
       >
         Pane 1 Поиск
@@ -103,17 +109,19 @@ exports[`TabsPanes should display only the active pane content (snapshot) 1`] = 
 }
 `;
 
-exports[`TabsPanes should return the complete component template (snapshot) 1`] = `
+exports[`TabsPanels should return the complete component template (snapshot) 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
         class="mix"
-        role="menutabpanes"
+        role="menutabpanels"
       >
         <div
+          aria-labelledby="tab-tab1"
           class=""
+          id="tab1"
           role="tabpanel"
         >
           Pane 1 Поиск
@@ -124,10 +132,12 @@ exports[`TabsPanes should return the complete component template (snapshot) 1`] 
   "container": <div>
     <div
       class="mix"
-      role="menutabpanes"
+      role="menutabpanels"
     >
       <div
+        aria-labelledby="tab-tab1"
         class=""
+        id="tab1"
         role="tabpanel"
       >
         Pane 1 Поиск
