@@ -15,6 +15,6 @@ export type AvatarProps = {
   onClick?: () => void;
   initials?: string;
   ref?: React.Ref<HTMLImageElement>;
-  loader?: boolean;
+  loading?: boolean;
   ariaLabel?: string;
 };

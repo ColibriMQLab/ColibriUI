@@ -40,5 +40,5 @@ export const Initials = (args: AvatarProps) => {
 };
 
 export const Loader = (args: AvatarProps) => {
-  return <Avatar loader {...args}/>;
+  return <Avatar loading {...args}/>;
 };

@@ -41,7 +41,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     accountType = AccountType.Organization,
     onClick,
     initials,
-    loader,
+    loading,
     ariaLabel,
     ref,
     ...rest
@@ -58,7 +58,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
         onClick={onClick}
         className={clx(
           styles.avatarInitials,
-          { avatarBordered: !!bordered, loader: !!loader },
+          { avatarBordered: !!bordered, loading: !!loading },
           SIZE_CLASSES[size],
           className,
         )}
@@ -76,7 +76,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,
     <div
-      className={clx(styles.avatarWrapper, { avatarLoader: !!loader })}
+      className={clx(styles.avatarWrapper, { avatarLoader: !!loading })}
       onClick={onClick}
       role="button"
       aria-label={ariaLabel || "Avatar"}
