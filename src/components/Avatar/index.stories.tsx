@@ -16,7 +16,7 @@ const meta: Meta<typeof Avatar> = {
     },
     size: {
       control: { type: "select" },
-      options: [AvatarSize.S, AvatarSize.M, AvatarSize.L, AvatarSize.XL, AvatarSize.XXL],
+      options: [AvatarSize.S, AvatarSize.M, AvatarSize.L, AvatarSize.XL, AvatarSize.XXL, AvatarSize.XXXL],
     },
   },
   args: {

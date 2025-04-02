@@ -30,43 +30,53 @@
 }
 
 .sizeL {
-  width: 64px;
-  height: 64px;
-}
-
-.sizeXL {
   width: 80px;
   height: 80px;
 }
 
+.sizeXL {
+  width: 120px;
+  height: 120px;
+}
+
 .sizeXXL {
-  width: 96px;
-  height: 96px;
+  width: 196px;
+  height: 196px;
+}
+
+.sizeXXXL {
+  width: 280px;
+  height: 280px;
 }
 
 .textS {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .textM {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .textL {
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 2.5rem;
+  font-weight: 400;
 }
 
 .textXL {
-  font-size: 2.2rem;
-  font-weight: 500;
+  font-size: 3.75rem;
+  font-weight: 400;
 }
 
 .textXXL {
-  font-size: 2.6rem;
-  font-weight: 500;
+  font-size: 6rem;
+  font-weight: 400;
+}
+
+.textXXXL {
+  font-size: 9rem;
+  font-weight: 400;
 }
 
 .avatarInitials {

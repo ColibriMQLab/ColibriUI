@@ -4,4 +4,5 @@ export enum AvatarSize {
   L = "lg",
   XL = "xl",
   XXL = "xxl",
+  XXXL = "xxxl",
 }

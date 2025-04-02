@@ -19,6 +19,7 @@ const SIZE_CLASSES = {
   [AvatarSize.L]: styles.sizeL,
   [AvatarSize.XL]: styles.sizeXL,
   [AvatarSize.XXL]: styles.sizeXXL,
+  [AvatarSize.XXXL]: styles.sizeXXXL,
 };
 
 const TEXT_CLASSES = {
@@ -27,6 +28,7 @@ const TEXT_CLASSES = {
   [AvatarSize.L]: styles.textL,
   [AvatarSize.XL]: styles.textXL,
   [AvatarSize.XXL]: styles.textXXL,
+  [AvatarSize.XXXL]: styles.textXXXL,
 };
 
 const Avatar: FC<AvatarProps> = memo((props) => {
