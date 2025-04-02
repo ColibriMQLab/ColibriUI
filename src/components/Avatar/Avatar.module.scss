@@ -19,6 +19,10 @@
   }
 }
 
+.sizeS, .sizeM, .sizeL, .sizeXL, .sizeXXL, .sizeXXXL {
+  aspect-ratio: 1 / 1;
+}
+
 .sizeS {
   width: 32px;
   height: 32px;
