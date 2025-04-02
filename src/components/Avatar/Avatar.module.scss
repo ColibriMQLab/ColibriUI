@@ -1,12 +1,15 @@
 .avatar {
+  display: block;
+  width: 100%; /* Теперь адаптивно */
+  height: 100%;
+  position: relative;
   border-radius: 100%;
-  cursor: pointer;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
   object-fit: cover;
 }
 
-.avatar_bordered {
+.avatarBordered {
   background-color: var(--palette-white);
   border: 3px solid var(--palette-bg-2);
   padding: 3px;
@@ -14,4 +17,91 @@
   &:hover {
     border-color: var(--palette-bg-4);
   }
+}
+
+.sizeS {
+  width: 32px;
+  height: 32px;
+}
+
+.sizeM {
+  width: 48px;
+  height: 48px;
+}
+
+.sizeL {
+  width: 64px;
+  height: 64px;
+}
+
+.sizeXL {
+  width: 80px;
+  height: 80px;
+}
+
+.sizeXXL {
+  width: 96px;
+  height: 96px;
+}
+
+.textS {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.textM {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.textL {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.textXL {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.textXXL {
+  font-size: 2.6rem;
+  font-weight: 500;
+}
+
+.avatarInitials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--palette-bg-4);
+}
+
+.initialsText {
+  color: white;
+  text-transform: uppercase;
+}
+
+.avatarWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatarLoader::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: #0087bf;
+  animation: spin 1s linear infinite;
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

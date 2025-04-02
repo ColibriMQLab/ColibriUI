@@ -1,8 +1,8 @@
 import React from "react";
 import Avatar from ".";
 import type { Meta } from "@storybook/react";
-import { AccountType } from "./index.props";
-import { AvatarSizes } from "./constants";
+import { AccountType, AvatarProps } from "./index.props";
+import { AvatarSize } from "./constants";
 
 const meta: Meta<typeof Avatar> = {
   title: "UI/Avatar",
@@ -16,21 +16,29 @@ const meta: Meta<typeof Avatar> = {
     },
     size: {
       control: { type: "select" },
-      options: [AvatarSizes.S, AvatarSizes.M, AvatarSizes.L, AvatarSizes.XL, AvatarSizes.XXL],
+      options: [AvatarSize.S, AvatarSize.M, AvatarSize.L, AvatarSize.XL, AvatarSize.XXL],
     },
   },
   args: {
-    size: AvatarSizes.XXL
+    size: AvatarSize.XXL
   },
   component: Avatar,
 } satisfies Meta<typeof Avatar>;
 
 export default meta;
 
-export const Default = (args) => {
-  return <Avatar {...args}/>;
+export const Default = (args: AvatarProps) => {
+  return <Avatar {...args} />;
 };
 
-export const Bordered = (args) => {
+export const Bordered = (args: AvatarProps) => {
   return <Avatar bordered {...args}/>;
+};
+
+export const Initials = (args: AvatarProps) => {
+  return <Avatar bordered initials="SB" {...args}/>;
+};
+
+export const Loader = (args: AvatarProps) => {
+  return <Avatar loader {...args}/>;
 };
