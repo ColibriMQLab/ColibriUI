@@ -1,24 +1,33 @@
 import React from "react";
 import MultiSelect from "./";
-import type { Meta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof MultiSelect> = {
   title: "UI/MultiSelect",
   component: MultiSelect,
   parameters: { layout: "centered" },
-  argTypes: {},
+  argTypes: {
+    type: {
+      control: { type: "select" },
+      options: ["chip", "text"],
+    },
+  },
   args: {
     required: false,
     fullWidth: false,
     disabled: false,
     hasError: false,
-    placeholder: "select options",
+    placeholder: "Select options",
     label: "Label",
-    hint: "hint",
+    hint: "Hint",
+    onChange: action("onChange"),
   },
 };
 
 export default meta;
+
+type Story = StoryObj<typeof MultiSelect>;
 
 const groups = [
   {
@@ -55,8 +64,40 @@ const Template = (args) => (
   </div>
 );
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {
+  render: Template,
+};
 
-export const Chip = Template.bind({});
-Chip.args = { type: "chip" };
+export const Chip: Story = {
+  render: Template,
+  args: {
+    type: "chip",
+  },
+};
+
+export const ChipWithValue: Story = {
+  render: Template,
+  args: {
+    type: "chip",
+    value: [
+      { group: "haircut", option: "trim" },
+      { group: "haircut", option: "shampoo-and-blow-dry" },
+      { group: "hair-care", option: "hair-mask" },
+    ],
+  },
+};
+
+export const Disabled: Story = {
+  render: Template,
+  args: {
+    disabled: true,
+  },
+};
+
+export const WithError: Story = {
+  render: Template,
+  args: {
+    hasError: true,
+    hint: "This field is required",
+  },
+};

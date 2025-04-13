@@ -4,7 +4,7 @@ import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
 import Typography from "../../../Typography";
 import Separator from "../../../Separator";
-import { createGroupOptionString } from "../../utils";
+import { toKey } from "../../utils";
 import styles from "./index.module.scss";
 import type { ReactNode } from "react";
 import type { Coordinates, GroupProps } from "../../index.props";
@@ -106,7 +106,7 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
                 option={option}
                 key={`item-${optionIndex}`}
                 onClick={() =>
-                  onChange(createGroupOptionString(group.value, option.value))
+                  onChange(toKey({ group: group.value, option: option.value }))
                 }
               />
             ))}

@@ -21,6 +21,7 @@ type Size = "s" | "m" | "l";
 
 type Type = "chip";
 
+export type SelectedItem = { group: string; option: string };
 export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   groups: GroupProps[];
   className?: string;
@@ -33,5 +34,6 @@ export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   placeholder?: string;
   name?: string;
   type?: Type;
-  onChange?: (value: string[]) => void;
+  value?: SelectedItem[];
+  onChange?: (value: SelectedItem[]) => void;
 }

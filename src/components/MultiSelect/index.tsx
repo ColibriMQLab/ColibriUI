@@ -7,25 +7,17 @@ import { Chevron, CrossFill } from "../Icons";
 import Chip from "../Chip";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
-import { createGroupOptionString } from "./utils";
-import type { GroupOptions, MultiSelectProps } from "./index.props";
+import { fromKey, toKey } from "./utils";
+import type {
+  GroupOptions,
+  MultiSelectProps,
+  SelectedItem,
+} from "./index.props";
 
 type GroupOptionsWithSelected = GroupOptions & { selected: boolean };
 type PreparedLabelProps = { label: string; key: string };
 
 const clx = classNames.bind(styles);
-
-const sortItems = (items: string[]): string[] =>
-  [...items].sort((a, b) => {
-    const parseKey = (key: string): number[] =>
-      key
-        .match(/group-(\d+)-option-(\d+)/)
-        ?.slice(1)
-        .map(Number) || [];
-    const [groupA, optionA] = parseKey(a);
-    const [groupB, optionB] = parseKey(b);
-    return groupA - groupB || optionA - optionB;
-  });
 
 const getValue = (options: PreparedLabelProps[]): string =>
   options.map(({ label }) => label).join(", ");
@@ -44,11 +36,14 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   size = "m",
   placeholder,
   name,
+  value = [],
   type,
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [value, setValue] = useState<string[]>([]);
+  const [selected, setSelected] = useState<SelectedItem[]>(value || []);
+
+  const internalSelectedKeys = useMemo(() => selected.map(toKey), [selected]);
 
   const preparedGroups = useMemo(
     () =>
@@ -57,21 +52,24 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         options: group.options.map(
           (option): GroupOptionsWithSelected => ({
             ...option,
-            selected: value.includes(
-              createGroupOptionString(group.value, option.value),
+            selected: internalSelectedKeys.includes(
+              toKey({ group: group.value, option: option.value }),
             ),
           }),
         ),
       })),
-    [value, groups],
+    [groups, internalSelectedKeys],
   );
 
   const handleChange = useCallback(
     (key: string) => {
-      setValue((prev) => {
-        const newValue = prev.includes(key)
-          ? prev.filter((v) => v !== key)
-          : sortItems([...prev, key]);
+      setSelected((prev) => {
+        const exists = prev.some((v) => toKey(v) === key);
+        const item = fromKey(key);
+        const newValue = exists
+          ? prev.filter((v) => toKey(v) !== key)
+          : [...prev, item];
+
         onChange?.(newValue);
         return newValue;
       });
@@ -83,12 +81,13 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     () =>
       preparedGroups.flatMap(({ value: groupVal, options }) =>
         options
+          // eslint-disable-next-line @typescript-eslint/no-shadow
           .filter(({ selected }) => selected)
           .map(
             // eslint-disable-next-line @typescript-eslint/no-shadow
             ({ label, value: optVal }): PreparedLabelProps => ({
               label,
-              key: createGroupOptionString(groupVal, optVal),
+              key: toKey({ group: groupVal, option: optVal }),
             }),
           ),
       ),
@@ -160,7 +159,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             type="hidden"
             name={name}
             tabIndex={-1}
-            value={value.join(",") || ""}
+            value={internalSelectedKeys.join(",") || ""}
           />
         </InputRoot>
       </Dropdown>
