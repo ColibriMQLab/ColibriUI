@@ -11,7 +11,6 @@ import { fromKey, toKey } from "./utils";
 import type {
   GroupOptions,
   MultiSelectProps,
-  SelectedItem,
 } from "./index.props";
 
 type GroupOptionsWithSelected = GroupOptions & { selected: boolean };
@@ -41,9 +40,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<SelectedItem[]>(value || []);
-
-  const internalSelectedKeys = useMemo(() => selected.map(toKey), [selected]);
+  const internalSelectedKeys = useMemo(() => value.map(toKey), [value]);
 
   const preparedGroups = useMemo(
     () =>
@@ -63,16 +60,12 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
   const handleChange = useCallback(
     (key: string) => {
-      setSelected((prev) => {
-        const exists = prev.some((v) => toKey(v) === key);
-        const item = fromKey(key);
-        const newValue = exists
-          ? prev.filter((v) => toKey(v) !== key)
-          : [...prev, item];
-
-        onChange?.(newValue);
-        return newValue;
-      });
+      const exists = value.some((v) => toKey(v) === key);
+      const item = fromKey(key);
+      const newValue = exists
+        ? value.filter((v) => toKey(v) !== key)
+        : [...value, item];
+      onChange?.(newValue);
     },
     [onChange],
   );

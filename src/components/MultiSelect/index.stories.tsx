@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import MultiSelect from "./";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { SelectedItem } from "./index.props";
 
 const meta: Meta<typeof MultiSelect> = {
   title: "UI/MultiSelect",
@@ -58,11 +59,13 @@ const groups = [
   },
 ];
 
-const Template = (args) => (
+const Template = (args) => {
+  const [value, setValue] = useState<SelectedItem[]>();
+  return (
   <div style={{ width: "300px" }}>
-    <MultiSelect {...args} groups={groups} />
+    <MultiSelect {...args} value={value} groups={groups} onChange={(v) => setValue(v)} />
   </div>
-);
+)};
 
 export const Default: Story = {
   render: Template,
