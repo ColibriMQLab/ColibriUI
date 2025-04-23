@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import type { FormFieldProps } from "../base/FormField/index.props";
 
 export type GroupOptions = {
@@ -34,6 +35,7 @@ export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
   placeholder?: string;
   name?: string;
   type?: Type;
+  style?: CSSProperties;
   value?: SelectedItem[];
   onChange?: (value: SelectedItem[]) => void;
 }

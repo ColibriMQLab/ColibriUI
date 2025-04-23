@@ -31,6 +31,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   required,
   label,
   hint,
+  style,
   hasError,
   size = "m",
   placeholder,
@@ -115,6 +116,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         <InputRoot
           hasError={hasError}
           size={size}
+          style={style}
           className={clx(styles.root, { root_auto: preparedLabel.length })}
           endIcon={
             <Chevron className={clx(styles.icon, { icon_isOpen: isOpen })} />
