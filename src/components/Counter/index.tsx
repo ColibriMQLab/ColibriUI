@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import classNames from "classnames/bind";
 import Button from "../Button";
 import MinusIcon from "../Icons/Minus";
@@ -17,9 +17,15 @@ const Counter: React.FC<CounterProps> = ({
   disabled,
   className,
 }) => {
-  const lastNumValue = useRef<number>(value);
   const minusDisabled = disabled || value <= min;
   const plusDisabled = disabled || value >= max;
+
+  const handleChange = (delta: number) => {
+    if (disabled) return;
+    const newValue = value + delta;
+    if (newValue < min || newValue > max) return;
+    onChange(newValue);
+  };
 
   return (
     <div
@@ -40,11 +46,11 @@ const Counter: React.FC<CounterProps> = ({
           icon={<MinusIcon width={16} height={16} />}
           disabled={minusDisabled}
           type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onChange(value - 1);
-            lastNumValue.current = value - 1;
+          onClick={(event) => {
+            event.stopPropagation();
+            handleChange(-1);
           }}
+
           aria-label="decrease"
         />
         <div className={clx(styles.value)}>{value}</div>
@@ -52,10 +58,9 @@ const Counter: React.FC<CounterProps> = ({
           icon={<PlusIcon width={16} height={16} />}
           disabled={plusDisabled}
           type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onChange(value + 1);
-            lastNumValue.current = value + 1;
+          onClick={(event) => {
+            event.stopPropagation();
+            handleChange(1);
           }}
           aria-label="increase"
         />
