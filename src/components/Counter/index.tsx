@@ -50,7 +50,6 @@ const Counter: React.FC<CounterProps> = ({
             event.stopPropagation();
             handleChange(-1);
           }}
-
           aria-label="decrease"
         />
         <div className={clx(styles.value)}>{value}</div>

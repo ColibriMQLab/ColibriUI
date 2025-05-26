@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import type { CSSProperties } from "react";
 import type { FormFieldProps } from "../base/FormField/index.props";
 
 export type GroupOptions = {

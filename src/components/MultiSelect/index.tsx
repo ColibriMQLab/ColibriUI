@@ -8,10 +8,7 @@ import Chip from "../Chip";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
 import { fromKey, toKey } from "./utils";
-import type {
-  GroupOptions,
-  MultiSelectProps,
-} from "./index.props";
+import type { GroupOptions, MultiSelectProps } from "./index.props";
 
 type GroupOptionsWithSelected = GroupOptions & { selected: boolean };
 type PreparedLabelProps = { label: string; key: string };
