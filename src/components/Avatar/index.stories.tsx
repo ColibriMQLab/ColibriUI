@@ -31,6 +31,10 @@ export const Default = (args: AvatarProps) => {
   return <Avatar {...args} />;
 };
 
+export const WithSrc = (args: AvatarProps) => {
+  return <Avatar src='https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg' {...args} />;
+};
+
 export const Bordered = (args: AvatarProps) => {
   return <Avatar bordered {...args}/>;
 };

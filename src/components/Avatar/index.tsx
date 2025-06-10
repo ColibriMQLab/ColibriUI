@@ -47,34 +47,13 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     ...rest
   } = props;
 
-  if (initials?.trim() && initials.length <= 2) {
-    return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events,
-      <span
-        ref={ref}
-        data-testid="avatar"
-        role="button"
-        aria-label={ariaLabel || "Avatar"}
-        onClick={onClick}
-        className={clx(
-          styles.avatarInitials,
-          { avatarBordered: !!bordered, loading: !!loading },
-          SIZE_CLASSES[size],
-          className,
-        )}
-        {...rest}
-      >
-        <span className={clx(styles.initialsText, TEXT_CLASSES[size])}>
-          {initials}
-        </span>
-      </span>
-    );
-  }
-
   const stubSrc = getStubImage(accountType);
+  const finalSrc = src || stubSrc;
 
-  return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+  // Изображение показываем, если есть src ИЛИ есть дефолтное изображение
+  const shouldShowImage = !!finalSrc && !initials;
+
+  return shouldShowImage ? (
     <div
       className={clx(styles.avatarWrapper, { avatarLoader: !!loading })}
       onClick={onClick}
@@ -85,7 +64,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
         ref={ref}
         data-testid="avatar"
         alt={alt}
-        src={(src || stubSrc) as string}
+        src={finalSrc as string}
         className={clx(
           styles.avatar,
           { avatarBordered: !!bordered },
@@ -95,6 +74,25 @@ const Avatar: FC<AvatarProps> = memo((props) => {
         {...rest}
       />
     </div>
+  ) : (
+    <span
+      ref={ref}
+      data-testid="avatar"
+      role="button"
+      aria-label={ariaLabel || "Avatar"}
+      onClick={onClick}
+      className={clx(
+        styles.avatarInitials,
+        { avatarBordered: !!bordered, loading: !!loading },
+        SIZE_CLASSES[size],
+        className,
+      )}
+      {...rest}
+    >
+      <span className={clx(styles.initialsText, TEXT_CLASSES[size])}>
+        {initials?.trim().slice(0, 2) || ""}
+      </span>
+    </span>
   );
 });
 
