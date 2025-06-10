@@ -160,6 +160,14 @@ const Calendar: React.FC<CalendarProps> = ({
     onDayClick: handleDayClick,
   };
 
+  useEffect(() => {
+    setSelectedDate(initialSelectedDate);
+  }, [initialSelectedDate]);
+
+  useEffect(() => {
+    setSelectedPeriod(initialSelectedPeriod);
+  }, [initialSelectedPeriod]);
+  
   return (
     <div
       className={clx(styles.root, className)}
