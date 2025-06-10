@@ -10,7 +10,8 @@
 }
 
 .table {
-  display: table;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -85,20 +86,20 @@
   z-index: 2;
 
   &::before {
-    display: "block";
+    display: block;
     left: auto;
     right: auto;
     width: 90%;
   }
 
   &:first-child::before {
-    display: "block";
+    display: block;
     left: 50%;
     width: 90%;
   }
 
   &:last-child::before {
-    display: "block";
+    display: block;
     right: 50%;
     width: 90%;
   }
