@@ -1,5 +1,4 @@
 .root {
-  all: unset;
   align-items: center;
   border: 1px solid;
   border-radius: 1.125rem;
@@ -79,7 +78,7 @@
   }
 }
 
-.variant {
+button.variant {
   &_primary {
     background-color: var(--button-primary-bg);
     border-color: var(--button-primary-border-color);
