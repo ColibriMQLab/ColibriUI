@@ -168,6 +168,13 @@ const Calendar: React.FC<CalendarProps> = ({
     setSelectedPeriod(initialSelectedPeriod);
   }, [initialSelectedPeriod]);
   
+  useEffect(() => {
+    if (initialSelectedDate) {
+      const newOffset = getNumberOfMonthsBetweenDates(startMonth, initialSelectedDate);
+      setCurrentMonthOffset(newOffset);
+    }
+  }, [initialSelectedDate, startMonth]);
+  
   return (
     <div
       className={clx(styles.root, className)}
