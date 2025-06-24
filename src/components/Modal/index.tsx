@@ -52,7 +52,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   return (
     <Portal>
       <div
-        className={clx("root")}
+        className={clx("root", className)}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? "modal-title" : undefined}
@@ -68,8 +68,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
             {
               "modal-wrapper_desktop": isDesktop,
               "modal-wrapper_mobile": !isDesktop,
-            },
-            className,
+            }
           )}
           ref={modalRef}
         >
