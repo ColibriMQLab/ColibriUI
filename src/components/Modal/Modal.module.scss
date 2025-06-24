@@ -8,6 +8,7 @@
 }
 
 .title-wrapper {
+  padding-right: 20px;
   align-items: center;
   border-bottom: 1px solid var(--palette-bg-2);
   display: flex;
@@ -15,7 +16,11 @@
 }
 
 .close-wrapper {
+  box-sizing: border-box;
+  padding: 0 20px;
+  min-height: 70px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
 

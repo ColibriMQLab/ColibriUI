@@ -30,3 +30,23 @@ export const Default = ({ args }: Story) => {
     </>
   );
 };
+
+
+
+export const WithoutTitle = ({ args }: Story) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <Modal {...args} onClose={onClose}>
+          content
+        </Modal>
+      )}
+    </>
+  );
+};

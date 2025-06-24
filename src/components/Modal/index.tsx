@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import classNames from "classnames/bind";
 import useScrollLock from "../hooks/useScrollLock";
 import useTrapFocus from "../hooks/useTrapFocus";
@@ -19,38 +19,55 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   onClose,
   title,
 }) => {
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const isDesktop = useMediaSizes((bp) => bp.up("md"));
-  const onCloseHandler = useMemo(() => onClose || (() => ({})), [onClose]);
 
   useScrollLock();
   useTrapFocus(modalRef);
 
+  const handleClose = useCallback(() => {
+    onClose?.();
+  }, [onClose]);
+
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === e.currentTarget) {
+        handleClose();
+      }
+    },
+    [handleClose],
+  );
+
   useEffect(() => {
-    const onEsc = (e: KeyboardEvent) => {
-      if (!modalRef.current || e.code !== "Escape") return;
-
-      onCloseHandler();
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
     };
 
-    document.addEventListener("keydown", onEsc);
-
-    return () => {
-      document.removeEventListener("keydown", onEsc);
-    };
-  }, [onCloseHandler]);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [handleClose]);
 
   return (
     <Portal>
-      <div className={clx("root")}>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-        <div className={clx("modal-overlay")} onClick={onCloseHandler} />
+      <div
+        className={clx("root")}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? "modal-title" : undefined}
+      >
+        <div
+          className={clx("modal-overlay")}
+          onClick={handleOverlayClick}
+          aria-hidden="true"
+        />
         <div
           className={clx(
             "modal-wrapper",
             {
-              "modal-wrapper_desktop": isDesktop ? 1 : 0,
-              "modal-wrapper_mobile": !isDesktop ? 1 : 0,
+              "modal-wrapper_desktop": isDesktop,
+              "modal-wrapper_mobile": !isDesktop,
             },
             className,
           )}
@@ -59,11 +76,11 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
           {title ? (
             <div className={clx("title-wrapper")}>
               <Title>{title}</Title>
-              <Close onClick={onCloseHandler} />
+              <Close onClick={handleClose} aria-label="Close modal" />
             </div>
           ) : (
             <div className={clx("close-wrapper")}>
-              <Close onClick={onCloseHandler} />
+              <Close onClick={handleClose} aria-label="Close modal" />
             </div>
           )}
           <Content>{children}</Content>
