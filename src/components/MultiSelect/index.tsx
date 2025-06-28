@@ -65,7 +65,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         : [...value, item];
       onChange?.(newValue);
     },
-    [onChange],
+    [onChange, value],
   );
 
   const preparedLabel = useMemo(

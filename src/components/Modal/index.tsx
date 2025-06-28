@@ -69,7 +69,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
               "modal-wrapper_desktop": isDesktop,
               "modal-wrapper_mobile": !isDesktop,
             },
-            className
+            className,
           )}
           ref={modalRef}
         >

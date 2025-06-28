@@ -54,6 +54,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   const shouldShowImage = !!finalSrc && !initials;
 
   return shouldShowImage ? (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={clx(styles.avatarWrapper, { avatarLoader: !!loading })}
       onClick={onClick}
@@ -75,6 +76,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       />
     </div>
   ) : (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <span
       ref={ref}
       data-testid="avatar"

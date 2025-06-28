@@ -64,8 +64,8 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
     return Children.only(children) as ReactElement;
   }, [children]);
 
-  const onToggle = (e: MouseEvent | TouchEvent) => {
-    e.stopPropagation();
+  const onToggle = (event: MouseEvent | TouchEvent) => {
+    event.stopPropagation();
     setVisible((state) => !state);
   };
 
@@ -78,8 +78,8 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
   };
 
   const onClickOutside = useCallback(
-    (e: MouseEvent | TouchEvent) => {
-      if (controlElement?.contains(e.target as Node)) return;
+    (event: MouseEvent | TouchEvent) => {
+      if (controlElement?.contains(event.target as Node)) return;
 
       onHide();
     },

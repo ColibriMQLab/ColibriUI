@@ -4,6 +4,7 @@ import Cart from "./Cart";
 import Check from "./Check";
 import Chevron from "./Chevron";
 import Close from "./Close";
+import Cross from "./Cross";
 import CrossFill from "./CrossFill";
 import Edit from "./Edit";
 import Exit from "./Exit";
@@ -15,6 +16,7 @@ import Minus from "./Minus";
 import More from "./More";
 import Plus from "./Plus";
 import Setting from "./Setting";
+import Shield from "./Shield";
 import Trash from "./Trash";
 import User from "./User";
 import type { ReactNode } from "react";
@@ -25,6 +27,7 @@ const icons = {
   Check: <Check />,
   Chevron: <Chevron />,
   Close: <Close />,
+  Cross: <Cross />,
   CrossFill: <CrossFill />,
   Edit: <Edit />,
   Exit: <Exit />,
@@ -36,6 +39,7 @@ const icons = {
   More: <More />,
   Plus: <Plus />,
   Setting: <Setting />,
+  Shield: <Shield/>,
   Trash: <Trash />,
   User: <User />,
 };
