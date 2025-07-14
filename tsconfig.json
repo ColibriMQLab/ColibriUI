@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
@@ -31,6 +31,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
   },
   "ts-node": {
     "compilerOptions": {
