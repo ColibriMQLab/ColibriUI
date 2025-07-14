@@ -35,7 +35,7 @@ export default [
       },
     ],
     external,
-    treeshake: false,
+    treeshake: true,
     plugins: [
       url(),
       svgr(),
