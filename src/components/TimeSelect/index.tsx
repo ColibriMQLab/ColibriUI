@@ -10,13 +10,29 @@ import OptionLabel from "./Label";
 import type { SelectProps } from "../Select/index.props";
 import type { FC } from "react";
 
+type TimeRange = { start: string; end: string };
+
 interface TimeSelectProps extends Omit<SelectProps<string>, "options"> {
   interval?: 5 | 10 | 15 | 30;
   currentDate?: Date | null;
   selectedDate?: Date | null;
   name?: string;
   disabled?: boolean;
+  allowedTimeRange?: TimeRange;
 }
+
+const isTimeInRange = (timeString: string, range: TimeRange): boolean => {
+  const [hours, minutes] = timeString.split(":").map(Number);
+  const totalMinutes = hours * 60 + minutes;
+
+  const [startHours, startMinutes] = range.start.split(":").map(Number);
+  const startTotalMinutes = startHours * 60 + startMinutes;
+
+  const [endHours, endMinutes] = range.end.split(":").map(Number);
+  const endTotalMinutes = endHours * 60 + endMinutes;
+
+  return totalMinutes >= startTotalMinutes && totalMinutes <= endTotalMinutes;
+};
 
 const TimeSelect: FC<TimeSelectProps> = ({
   value,
@@ -27,6 +43,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
   interval = 15,
   onChange,
   disabled,
+  allowedTimeRange,
   ...props
 }: TimeSelectProps) => {
   const baseOptions = useMemo(
@@ -40,14 +57,23 @@ const TimeSelect: FC<TimeSelectProps> = ({
 
   const options = useMemo(
     () =>
-      baseOptions.map((option) => ({
-        ...option,
-        disabled:
-          (!!selectedDate &&
-            checkIsBeforeSelectedDate(option.value, interval, selectedDate)) ||
-          (!!currentDate && checkIsBeforeNow(option.value, currentDate)),
-      })),
-    [baseOptions, currentDate, selectedDate, interval],
+      baseOptions.map((option) => {
+        const timeRangeDisabled =
+          !!allowedTimeRange && !isTimeInRange(option.value, allowedTimeRange);
+        const beforeSelectedDisabled =
+          !!selectedDate &&
+          checkIsBeforeSelectedDate(option.value, interval, selectedDate);
+        const beforeCurrentDisabled =
+          !!currentDate && checkIsBeforeNow(option.value, currentDate);
+
+        const isDisabled =
+          timeRangeDisabled || beforeSelectedDisabled || beforeCurrentDisabled;
+        return {
+          ...option,
+          disabled: isDisabled,
+        };
+      }),
+    [baseOptions, currentDate, selectedDate, interval, allowedTimeRange],
   );
 
   return (

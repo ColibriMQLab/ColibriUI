@@ -64,18 +64,18 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
     return Children.only(children) as ReactElement;
   }, [children]);
 
-  const onToggle = (event: MouseEvent | TouchEvent) => {
+  const onToggle = useCallback((event: MouseEvent | TouchEvent) => {
     event.stopPropagation();
     setVisible((state) => !state);
-  };
+  }, []);
 
-  const onShow = () => {
+  const onShow = useCallback(() => {
     setVisible(true);
-  };
+  }, []);
 
-  const onHide = () => {
+  const onHide = useCallback(() => {
     setVisible(false);
-  };
+  }, []);
 
   const onClickOutside = useCallback(
     (event: MouseEvent | TouchEvent) => {
@@ -87,8 +87,8 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
   );
 
   const onClickOverlay: MouseEventHandler<HTMLDivElement> = useCallback(
-    (e) => {
-      e.stopPropagation();
+    (event) => {
+      event.stopPropagation();
       onHide();
     },
     [onHide],

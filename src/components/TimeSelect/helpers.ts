@@ -19,8 +19,13 @@ export const generateSuggest = (interval: number = 15): Timestamp[] =>
 export const checkIsBeforeNow = (
   time: string,
   currentDate?: Date | null,
-): boolean =>
-  currentDate ? isBefore(parse(time, "HH:mm", currentDate), new Date()) : false;
+): boolean => {
+  if (!currentDate) return false;
+  const baseDate = new Date(currentDate);
+  baseDate.setHours(0, 0, 0, 0);
+  const parsedTime = parse(time, "HH:mm", baseDate);
+  return isBefore(parsedTime, currentDate);
+};
 
 export const checkIsBeforeSelectedDate = (
   time: string,
@@ -30,7 +35,12 @@ export const checkIsBeforeSelectedDate = (
   if (date) {
     const selectedDate = new Date(date);
     selectedDate.setMinutes(selectedDate.getMinutes() + interval);
-    return isBefore(parse(time, "HH:mm", date), selectedDate);
+
+    const baseDate = new Date(date);
+    baseDate.setHours(0, 0, 0, 0);
+
+    const parsedTime = parse(time, "HH:mm", baseDate);
+    return isBefore(parsedTime, selectedDate);
   }
 
   return false;
