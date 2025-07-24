@@ -12,9 +12,17 @@ type SelectItemProps = {
   };
   onClick?: () => void;
   setScrollView: (value: Coordinates) => void;
+  isPrevDisabled?: boolean;
+  isDisabled?: boolean;
 };
 
-const SelectItem = ({ option, onClick, setScrollView }: SelectItemProps) => {
+const SelectItem = ({
+  option,
+  onClick,
+  setScrollView,
+  isPrevDisabled,
+  isDisabled,
+}: SelectItemProps) => {
   const ref = useRef<null | HTMLLIElement>(null);
 
   function scrollToItem(): void {
@@ -31,7 +39,7 @@ const SelectItem = ({ option, onClick, setScrollView }: SelectItemProps) => {
   }
 
   useLayoutEffect(() => {
-    if (option.selected) {
+    if (option.selected || (isPrevDisabled && !isDisabled)) {
       scrollToItem();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

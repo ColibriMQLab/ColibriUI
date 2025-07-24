@@ -12,6 +12,7 @@ interface Props<T extends string> {
     value: T;
     label: React.ReactNode;
     selected: boolean;
+    disabled?: boolean;
   }[];
   onChange: (value: T) => void;
 }
@@ -54,6 +55,10 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
           <SelectItem
             setScrollView={setScrollView}
             option={option}
+            isDisabled={option?.disabled || false}
+            isPrevDisabled={
+              options[index - 1] ? options[index - 1]?.disabled : false
+            }
             key={index}
             onClick={() => handleSelect(option, `item-${index}`)}
           />
