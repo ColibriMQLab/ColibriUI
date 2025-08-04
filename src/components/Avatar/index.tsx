@@ -48,10 +48,14 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   } = props;
 
   const stubSrc = getStubImage(accountType);
+  
+  // Приоритет: переданное изображение (src) > инициалы > дефолтное изображение
+  const hasInitials = initials && initials.trim().length > 0;
+  const hasCustomImage = !!src;
+  
+  // Показываем изображение если есть src ИЛИ (нет инициалов И есть дефолтное изображение)
+  const shouldShowImage = hasCustomImage || (!hasInitials && stubSrc);
   const finalSrc = src || stubSrc;
-
-  // Изображение показываем, если есть src ИЛИ есть дефолтное изображение
-  const shouldShowImage = !!finalSrc && !initials;
 
   return shouldShowImage ? (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events

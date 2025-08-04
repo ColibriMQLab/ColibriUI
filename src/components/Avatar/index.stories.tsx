@@ -40,7 +40,7 @@ export const Bordered = (args: AvatarProps) => {
 };
 
 export const Initials = (args: AvatarProps) => {
-  return <Avatar bordered initials="SB" {...args}/>;
+  return <Avatar initials="SB" src='https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg' {...args}/>;
 };
 
 export const Loader = (args: AvatarProps) => {
