@@ -82,7 +82,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     ) as ReactElement;
   }, [children, isNotComponent]);
 
-  const onToggle = useCallback(
+  const onToggle = 
     (event: MouseEvent | TouchEvent) => {
       if (
         (event.target as HTMLElement)?.closest('[data-ignore-click="true"]')
@@ -91,35 +91,29 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
       }
 
       setVisible((state) => !state);
-    },
-    [setVisible],
-  );
+   };
 
-  const onShow = useCallback(() => {
-    setVisible(true);
-  }, [setVisible]);
+  const handleShow = () => setVisible(true);
 
-  const onHide = useCallback(() => {
-    setVisible(false);
-  }, [setVisible]);
+  const handleHide = () => setVisible(false);
 
   const onClickOutside = useCallback(
     (event: MouseEvent | TouchEvent) => {
       if (controlElement?.contains(event.target as Node)) return;
-      onHide();
+      handleHide();
     },
-    [onHide, controlElement],
+    [handleHide, controlElement],
   );
 
   const onClickOverlay: MouseEventHandler<HTMLDivElement> = useCallback(
     (event) => {
       event.stopPropagation();
       if (!preventAutoClose) {
-        onHide();
+        handleHide();
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onHide],
+    [handleHide],
   );
 
   useEffect(() => {
@@ -130,10 +124,10 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     }
 
     if (trigger.includes("hover")) {
-      unsubscribes.push(on(controlElement, "mouseenter", onShow, false));
-      unsubscribes.push(on(controlElement, "mouseleave", onHide, false));
-      unsubscribes.push(on(popperElement, "mouseenter", onShow, false));
-      unsubscribes.push(on(popperElement, "mouseleave", onHide, false));
+      unsubscribes.push(on(controlElement, "mouseenter", handleShow, false));
+      unsubscribes.push(on(controlElement, "mouseleave", handleHide, false));
+      unsubscribes.push(on(popperElement, "mouseenter", handleShow, false));
+      unsubscribes.push(on(popperElement, "mouseleave", handleHide, false));
     }
 
     if (trigger.includes("focus")) {
@@ -142,18 +136,18 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
           if (controlElement?.contains(document.activeElement)) return;
           if (popperElement?.contains(document.activeElement)) return;
 
-          onHide();
+          handleHide();
         });
       };
-      unsubscribes.push(on(controlElement, "focusin", onShow, false));
+      unsubscribes.push(on(controlElement, "focusin", handleShow, false));
       unsubscribes.push(on(controlElement, "focusout", onFocusOut, false));
-      unsubscribes.push(on(popperElement, "focusin", onShow, false));
+      unsubscribes.push(on(popperElement, "focusin", handleShow, false));
       unsubscribes.push(on(popperElement, "focusout", onFocusOut, false));
     }
 
     return () => unsubscribes.forEach((un) => un());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controlElement, popperElement, onToggle, onShow, onHide]);
+  }, [controlElement, popperElement, onToggle, handleShow, handleHide]);
 
   useEffect(() => {
     if (onVisibleChange) onVisibleChange(visible);

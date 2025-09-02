@@ -8,4 +8,5 @@ export interface MenuItemProps {
   variant?: MenuVariant;
   disabled?: boolean;
   ref?: React.Ref<HTMLLIElement>;
+  onMouseEnter?: () => void;
 }

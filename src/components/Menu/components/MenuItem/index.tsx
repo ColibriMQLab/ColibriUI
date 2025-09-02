@@ -13,7 +13,9 @@ const MenuItem = ({
   disabled,
   onClick,
   children,
+  onMouseEnter,
   ref,
+  ...props
 }: PropsWithChildren<MenuItemProps>) => (
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events
   <li
@@ -35,6 +37,8 @@ const MenuItem = ({
       className,
     )}
     onClick={!disabled ? onClick : undefined}
+    onMouseEnter={onMouseEnter}
+    {...props}
   >
     {children}
   </li>
