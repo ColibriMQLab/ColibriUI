@@ -23,6 +23,8 @@ const BaseInput = ({
       onFocus={onFocus}
       onBlur={onBlur}
       onKeyDown={onKeyDown}
+      autoCorrect="off"
+      autoCapitalize="off"
       ref={ref}
       {...props}
     />
