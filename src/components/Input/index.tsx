@@ -14,6 +14,9 @@ const Input = ({
   hasError,
   required,
   onChange,
+  onFocus,
+  onBlur,
+  onKeyDown,
   inputRef,
   disabled,
   variant = "primary",
@@ -40,6 +43,9 @@ const Input = ({
       <BaseInput
         ref={inputRef}
         onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
         {...{ type: "text", ...props }}
       />
     </InputRoot>
