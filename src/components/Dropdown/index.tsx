@@ -82,20 +82,19 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     ) as ReactElement;
   }, [children, isNotComponent]);
 
-  const onToggle = 
-    (event: MouseEvent | TouchEvent) => {
-      if (
-        (event.target as HTMLElement)?.closest('[data-ignore-click="true"]')
-      ) {
-        return;
-      }
+  const onToggle = (event: MouseEvent | TouchEvent) => {
+    if ((event.target as HTMLElement)?.closest('[data-ignore-click="true"]')) {
+      return;
+    }
 
-      setVisible((state) => !state);
-   };
+    setVisible((state) => !state);
+  };
 
   const handleShow = () => setVisible(true);
 
-  const handleHide = () => setVisible(false);
+  const handleHide = useCallback(() => {
+    setVisible(false);
+  }, []);
 
   const onClickOutside = useCallback(
     (event: MouseEvent | TouchEvent) => {
