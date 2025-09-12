@@ -9,19 +9,19 @@ export type DatePreset = {
 
 const format = (date: Date): string => toISODate(date);
 
-const addDays = (date: Date, days: number = 1): Date => {
+export const addDays = (date: Date, days: number = 1): Date => {
   const d = new Date(date);
   d.setDate(d.getDate() + days);
   return d;
 };
 
-const getToday = (): DatePreset => ({
+export const getToday = (): DatePreset => ({
   name: PRESETS.TODAY,
   date: format(new Date()),
   period: 1,
 });
 
-const getTomorrow = (): DatePreset => {
+export const getTomorrow = (): DatePreset => {
   const tomorrow = addDays(new Date());
   return {
     name: PRESETS.TOMORROW,
@@ -30,7 +30,7 @@ const getTomorrow = (): DatePreset => {
   };
 };
 
-const getWeekends = (): DatePreset => {
+export const getWeekends = (): DatePreset => {
   let date = new Date();
   while (![0, 6].includes(date.getDay())) {
     date = addDays(date);
@@ -43,7 +43,7 @@ const getWeekends = (): DatePreset => {
   };
 };
 
-const getCurrWeek = (): DatePreset => {
+export const getCurrWeek = (): DatePreset => {
   const today = new Date();
   let date = new Date(today);
   let days = 0;
@@ -66,7 +66,7 @@ const getCurrWeek = (): DatePreset => {
   };
 };
 
-const getNextWeek = (): DatePreset => {
+export const getNextWeek = (): DatePreset => {
   let date = new Date();
 
   // если сегодня понедельник — смещаемся на завтра
