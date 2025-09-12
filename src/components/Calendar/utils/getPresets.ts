@@ -94,5 +94,11 @@ const PRESET_MAP: Record<string, () => DatePreset> = {
 };
 
 export function getPresets(presets: string[]): DatePreset[] {
-  return presets.map((preset) => PRESET_MAP[preset]?.() ?? getToday());
+  return presets.map((preset) => {
+    const presetFn = PRESET_MAP[preset];
+    if (!presetFn) {
+      console.warn(`Unknown preset: ${preset}, falling back to TODAY`);
+    }
+    return presetFn?.() ?? getToday();
+  });
 }
