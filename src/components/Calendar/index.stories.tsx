@@ -1,6 +1,6 @@
 import React from "react";
 import Calendar from ".";
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { toISODate } from "../helpers/date";
 import { getPresets } from "./utils/getPresets";
@@ -9,16 +9,17 @@ import { useArgs } from "@storybook/preview-api";
 
 const meta: Meta<typeof Calendar> = {
   title: "UI/Calendar",
+  component: Calendar,
   parameters: {
     layout: "centered",
   },
   args: { onChange: fn() },
-  component: Calendar,
 } satisfies Meta<typeof Calendar>;
 
 export default meta;
 
-const Template = (args) => {
+// ✅ типизируем Template как StoryFn
+const Template: StoryFn<typeof Calendar> = (args) => {
   const [, updateArgs] = useArgs();
   return (
     <Calendar
@@ -26,18 +27,20 @@ const Template = (args) => {
       today={toISODate(new Date())}
       onChange={(val) => {
         updateArgs({ selectedDate: val.date, selectedPeriod: val.period });
-        args.onChange(val);
+        args.onChange?.(val);
       }}
     />
   );
 };
 
-// Базовые сценарии
+// Теперь TS будет знать про .args
 export const Today = Template.bind({});
 Today.args = {
-  today: '2025-12-17',
+  today: toISODate(new Date()),
+  selectedDate: toISODate(new Date()),
 };
 
+// остальные сценарии оставляешь без изменений …
 export const SingleDateSelection = Template.bind({});
 SingleDateSelection.args = {
   selectedDate: '2025-12-17',
@@ -107,7 +110,7 @@ ShowMonthByActiveDates.args = {
     '2025-08-15', // август
     '2025-08-16',
   ],
-  today: '2025-01-15', // сегодня январь, но покажет август из-за activeDates
+  today: '2025-01-15',
 };
 
 // Сценарии с пресетами

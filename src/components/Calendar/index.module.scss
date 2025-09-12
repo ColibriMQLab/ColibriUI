@@ -4,7 +4,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   gap: 1rem;
-  min-width: 360px;
+  min-width: 320px;
+  min-height: 360px;
   overflow: hidden;
   position: relative;
   text-rendering: optimizelegibility;
@@ -33,7 +34,7 @@
   padding: 0 16px;
   position: absolute;
   top: 0;
-  width: 80px;
+  width: 60px;
 
   &[disabled] {
     cursor: default;

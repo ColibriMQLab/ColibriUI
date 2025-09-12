@@ -29,7 +29,7 @@ const Calendar: React.FC<CalendarProps> = ({
   canSelectRange,
   onChange,
   onCancel,
-  minWidth = 360,
+  minWidth = 320,
   withContinueButton = false,
   className,
   titleSize = "h3",
@@ -185,7 +185,7 @@ const Calendar: React.FC<CalendarProps> = ({
       data-testid="calendar"
       ref={$root}
     >
-      <div>
+      <>
         {contentWidth ? (
           <div
             data-component="Months"
@@ -246,7 +246,7 @@ const Calendar: React.FC<CalendarProps> = ({
         >
           <ArrowNext className={clx(styles["month-control-next-arrow"])} />
         </button>
-      </div>
+      </>
       {datePresets && (
         <Presets presets={datePresets} onPresetSelect={handlePresetSelect} />
       )}

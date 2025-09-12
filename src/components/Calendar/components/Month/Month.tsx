@@ -112,8 +112,8 @@ export const Month: FCWithElements<Props> = (props) => {
         </ul>
         {getMonthWeeks(props).map((days, ...rest1) => (
           <ul key={`week-${rest1[0]}`} className={clx(styles.week)}>
-            {days.map((day, ...rest2) => {
-              const key = `day-${rest2[0]}`;
+            {days.map((day) => {
+              const key = `${year}-${month}-${day.day}`;
 
               if (day.isDummy) {
                 return <li className={clx(styles.day)} key={key} />;

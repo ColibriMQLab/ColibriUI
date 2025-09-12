@@ -7,108 +7,92 @@ export type DatePreset = {
   period: number;
 };
 
-function format(date: Date): string {
-  return toISODate(date);
-}
+const format = (date: Date): string => toISODate(date);
 
-function increaseDate(date: Date) {
-  date.setDate(date.getDate() + 1);
-}
+const addDays = (date: Date, days: number = 1): Date => {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+};
 
-function getToday() {
+const getToday = (): DatePreset => ({
+  name: PRESETS.TODAY,
+  date: format(new Date()),
+  period: 1,
+});
+
+const getTomorrow = (): DatePreset => {
+  const tomorrow = addDays(new Date());
   return {
-    name: "today",
-    date: format(new Date()),
+    name: PRESETS.TOMORROW,
+    date: format(tomorrow),
     period: 1,
   };
-}
+};
 
-function getTomorrow() {
-  const date = new Date();
-
-  increaseDate(date);
-
-  return {
-    name: "tomorrow",
-    date: format(date),
-    period: 1,
-  };
-}
-
-function getWeekends() {
-  const date = new Date();
-
-  while (date.getDay() !== 0 && date.getDay() !== 6) {
-    increaseDate(date);
+const getWeekends = (): DatePreset => {
+  let date = new Date();
+  while (![0, 6].includes(date.getDay())) {
+    date = addDays(date);
   }
 
   return {
-    name: "weekends",
+    name: PRESETS.WEEKENDS,
     date: format(date),
     period: date.getDay() === 6 ? 2 : 1,
   };
-}
+};
 
-function getCurrWeek() {
+const getCurrWeek = (): DatePreset => {
   const today = new Date();
-  const date = new Date(today);
+  let date = new Date(today);
   let days = 0;
 
+  // если сегодня понедельник, пропускаем его
   if (today.getDay() === 1) {
-    increaseDate(date);
-    days += 1;
+    date = addDays(date);
+    days++;
   }
 
   while (date.getDay() !== 1) {
-    increaseDate(date);
-    days += 1;
+    date = addDays(date);
+    days++;
   }
 
   return {
-    name: "currWeek",
+    name: PRESETS.CURWEEK,
     date: format(today),
     period: days,
   };
-}
+};
 
-function getNextWeek() {
-  const today = new Date();
-  const date = new Date(today);
+const getNextWeek = (): DatePreset => {
+  let date = new Date();
 
-  if (today.getDay() === 1) {
-    increaseDate(date);
+  // если сегодня понедельник — смещаемся на завтра
+  if (date.getDay() === 1) {
+    date = addDays(date);
   }
 
   while (date.getDay() !== 1) {
-    increaseDate(date);
+    date = addDays(date);
   }
 
   return {
-    name: "nextWeek",
+    name: PRESETS.NEXTWEEK,
     date: format(date),
     period: 7,
   };
-}
+};
 
-export function getPresets(presets: string[]) {
-  if (!presets) {
-    return;
-  }
+const PRESET_MAP: Record<string, () => DatePreset> = {
+  [PRESETS.TODAY]: getToday,
+  [PRESETS.TOMORROW]: getTomorrow,
+  [PRESETS.WEEKENDS]: getWeekends,
+  [PRESETS.CURWEEK]: getCurrWeek,
+  [PRESETS.NEXTWEEK]: getNextWeek,
+};
 
-  return presets.map((preset) => {
-    switch (preset) {
-      case PRESETS.TODAY:
-        return getToday();
-      case PRESETS.TOMORROW:
-        return getTomorrow();
-      case PRESETS.WEEKENDS:
-        return getWeekends();
-      case PRESETS.CURWEEK:
-        return getCurrWeek();
-      case PRESETS.NEXTWEEK:
-        return getNextWeek();
-      default:
-        return;
-    }
-  });
+export function getPresets(presets: string[]): DatePreset[] {
+  return presets.map((preset) => PRESET_MAP[preset]?.() ?? getToday());
 }
