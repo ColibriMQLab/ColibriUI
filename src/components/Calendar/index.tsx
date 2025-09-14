@@ -114,6 +114,13 @@ const Calendar: React.FC<CalendarProps> = ({
 
   const handlePresetSelect = useCallback(
     (preset: Preset) => {
+      if (onChange) {
+        onChange({
+          date: preset.date,
+          period: preset.period,
+        });
+      }
+
       requestIdleCallback(
         () => selectDate(preset.date, preset.period, true),
         idleCallbackOptions,
