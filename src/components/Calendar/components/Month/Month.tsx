@@ -81,8 +81,8 @@ export const Month: FCWithElements<Props> = (props) => {
 			</div>
 			<div className={clx('table')}>
 				<ul className={clx('legend')}>
-					{[...Array(7)].map((_, ...rest) => {
-						const index = rest[0] + 1;
+					{Array.from({ length: 7 }, (_, idx) => {
+						const index = idx + 1;
 						return (
 							<li className={clx('day')} key={index}>
 								<Typography
