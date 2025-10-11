@@ -34,7 +34,7 @@ type ComponentProps = {
   isInSelectedRange?: boolean;
 };
 
-const Item = ({
+const Item = React.memo(({
   isSelected,
   isInSelectedRange,
   isStartOfSelection,
@@ -71,7 +71,7 @@ const Item = ({
   }
 
   return <li className={clx(styles.day)}>{children}</li>;
-};
+});
 
 export const Month: FCWithElements<Props> = (props) => {
   const year = props.startDate.getFullYear();
