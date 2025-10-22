@@ -24,10 +24,10 @@ const Button = ({
     onClick={onClick}
     ref={ref}
     className={clx(
-      'root',
+      "root",
       {
-        'root_icon': !!icon,
-        'root_fullWidth': !!fullWidth,
+        root_icon: !!icon,
+        root_fullWidth: !!fullWidth,
         [`size_${size}`]: !!size,
         [`variant_${variant}`]: !!variant,
         [`variant_${variant}_disabled`]: !!disabled,

@@ -1,10 +1,10 @@
 .root {
   background-color: var(--palette-white);
+  block-size: 40px;
   border-radius: 4px;
   box-sizing: border-box;
   display: inline-block;
   font-size: 16px;
-  block-size: 40px;
   min-inline-size: 96px;
   overflow: hidden;
   position: relative;

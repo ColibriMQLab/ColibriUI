@@ -1,12 +1,12 @@
 .avatar {
-  display: block;
-  width: 100%; /* Теперь адаптивно */
-  height: 100%;
-  position: relative;
   border-radius: 100%;
   box-sizing: border-box;
-  transition: border-color 0.15s ease;
+  display: block;
+  height: 100%;
   object-fit: cover;
+  position: relative;
+  transition: border-color 0.15s ease;
+  width: 100%; /* Теперь адаптивно */
 }
 
 .avatarBordered {
@@ -19,38 +19,43 @@
   }
 }
 
-.sizeS, .sizeM, .sizeL, .sizeXL, .sizeXXL, .sizeXXXL {
+.sizeS,
+.sizeM,
+.sizeL,
+.sizeXL,
+.sizeXXL,
+.sizeXXXL {
   aspect-ratio: 1 / 1;
 }
 
 .sizeS {
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .sizeM {
-  width: 48px;
   height: 48px;
+  width: 48px;
 }
 
 .sizeL {
-  width: 80px;
   height: 80px;
+  width: 80px;
 }
 
 .sizeXL {
-  width: 120px;
   height: 120px;
+  width: 120px;
 }
 
 .sizeXXL {
-  width: 196px;
   height: 196px;
+  width: 196px;
 }
 
 .sizeXXXL {
-  width: 280px;
   height: 280px;
+  width: 280px;
 }
 
 .textS {
@@ -84,11 +89,11 @@
 }
 
 .avatarInitials {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
   background-color: var(--palette-bg-4);
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
 }
 
 .initialsText {
@@ -97,25 +102,29 @@
 }
 
 .avatarWrapper {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
 .avatarLoader::before {
+  animation: spin 1s linear infinite;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  border-top-color: #0087bf;
+  box-sizing: border-box;
   content: "";
+  height: calc(100% + 6px);
+  left: -3px;
   position: absolute;
   top: -3px;
-  left: -3px;
   width: calc(100% + 6px);
-  height: calc(100% + 6px);
-  border-radius: 50%;
-  border: 4px solid transparent;
-  border-top-color: #0087bf;
-  animation: spin 1s linear infinite;
-  box-sizing: border-box;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

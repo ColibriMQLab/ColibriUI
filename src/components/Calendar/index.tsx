@@ -1,4 +1,10 @@
-import React, { useReducer, useEffect, useRef, useCallback, useMemo } from "react";
+import React, {
+  useReducer,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import classNames from "classnames/bind";
 import { requestIdleCallback } from "../libs/requestIdleCallback";
 import { getDaysDiff } from "../helpers/date";
@@ -33,60 +39,89 @@ type CalendarAction =
   | { type: "SET_CURRENT_MONTH_OFFSET"; payload: number }
   | { type: "SET_CONTENT_WIDTH"; payload: number }
   | { type: "SET_IS_RANGE_COMPLETED"; payload: boolean }
-  | { type: "SELECT_DATE"; payload: { date: string; period: number; rangeCompleted: boolean; startMonth: string } }
+  | {
+      type: "SELECT_DATE";
+      payload: {
+        date: string;
+        period: number;
+        rangeCompleted: boolean;
+        startMonth: string;
+      };
+    }
   | { type: "INCREMENT_MONTH_OFFSET" }
   | { type: "DECREMENT_MONTH_OFFSET" }
-  | { type: "SYNC_INITIAL_STATE"; payload: { selectedDate?: string; selectedPeriod?: number; startMonth: string } };
+  | {
+      type: "SYNC_INITIAL_STATE";
+      payload: {
+        selectedDate?: string;
+        selectedPeriod?: number;
+        startMonth: string;
+      };
+    };
 
-// Reducer функция
-const calendarReducer = (state: CalendarState, action: CalendarAction): CalendarState => {
+const updates: Partial<CalendarState> = {};
+
+const calendarReducer = (
+  state: CalendarState,
+  action: CalendarAction,
+): CalendarState => {
   switch (action.type) {
     case "SET_SELECTED_DATE":
       return { ...state, selectedDate: action.payload };
-    
+
     case "SET_SELECTED_PERIOD":
       return { ...state, selectedPeriod: action.payload };
-    
+
     case "SET_CURRENT_MONTH_OFFSET":
       return { ...state, currentMonthOffset: action.payload };
-    
+
     case "SET_CONTENT_WIDTH":
       return { ...state, contentWidth: action.payload };
-    
+
     case "SET_IS_RANGE_COMPLETED":
       return { ...state, isRangeCompleted: action.payload };
-    
+
     case "SELECT_DATE":
       return {
         ...state,
         selectedDate: action.payload.date,
         selectedPeriod: action.payload.period,
         isRangeCompleted: action.payload.rangeCompleted,
-        currentMonthOffset: getNumberOfMonthsBetweenDates(action.payload.startMonth, action.payload.date),
+        currentMonthOffset: getNumberOfMonthsBetweenDates(
+          action.payload.startMonth,
+          action.payload.date,
+        ),
       };
-    
+
     case "INCREMENT_MONTH_OFFSET":
       return { ...state, currentMonthOffset: state.currentMonthOffset + 1 };
-    
+
     case "DECREMENT_MONTH_OFFSET":
       return { ...state, currentMonthOffset: state.currentMonthOffset - 1 };
-    
+
     case "SYNC_INITIAL_STATE":
-      const updates: Partial<CalendarState> = {};
-      
-      if (action.payload.selectedDate !== undefined && action.payload.selectedDate !== state.selectedDate) {
+      if (
+        action.payload.selectedDate !== undefined &&
+        action.payload.selectedDate !== state.selectedDate
+      ) {
         updates.selectedDate = action.payload.selectedDate;
         if (action.payload.selectedDate) {
-          updates.currentMonthOffset = getNumberOfMonthsBetweenDates(action.payload.startMonth, action.payload.selectedDate);
+          updates.currentMonthOffset = getNumberOfMonthsBetweenDates(
+            action.payload.startMonth,
+            action.payload.selectedDate,
+          );
         }
       }
-      
-      if (action.payload.selectedPeriod !== undefined && action.payload.selectedPeriod !== state.selectedPeriod) {
+
+      if (
+        action.payload.selectedPeriod !== undefined &&
+        action.payload.selectedPeriod !== state.selectedPeriod
+      ) {
         updates.selectedPeriod = action.payload.selectedPeriod;
       }
-      
+
       return Object.keys(updates).length > 0 ? { ...state, ...updates } : state;
-    
+
     default:
       return state;
   }
@@ -129,7 +164,10 @@ const Calendar: React.FC<CalendarProps> = ({
   });
 
   useEffect(() => {
-    dispatch({ type: "SET_CONTENT_WIDTH", payload: $root.current?.offsetWidth || 0 });
+    dispatch({
+      type: "SET_CONTENT_WIDTH",
+      payload: $root.current?.offsetWidth || 0,
+    });
   }, []);
 
   const showPrevMonth = (event: MouseEvent<HTMLButtonElement>) => {
@@ -185,7 +223,13 @@ const Calendar: React.FC<CalendarProps> = ({
         );
       }
     },
-    [canSelectRange, state.selectedDate, state.isRangeCompleted, selectDate, onChange],
+    [
+      canSelectRange,
+      state.selectedDate,
+      state.isRangeCompleted,
+      selectDate,
+      onChange,
+    ],
   );
 
   const handlePresetSelect = useCallback(
@@ -234,14 +278,24 @@ const Calendar: React.FC<CalendarProps> = ({
     [startMonth],
   );
 
-  const commonAttrs = useMemo(() => ({
-    selectedDate: state.selectedDate,
-    selectedPeriod: state.selectedPeriod,
-    activeDates,
-    availableDates,
-    isRangeCompleted: state.isRangeCompleted,
-    onDayClick: handleDayClick,
-  }), [state.selectedDate, state.selectedPeriod, activeDates, availableDates, state.isRangeCompleted, handleDayClick]);
+  const commonAttrs = useMemo(
+    () => ({
+      selectedDate: state.selectedDate,
+      selectedPeriod: state.selectedPeriod,
+      activeDates,
+      availableDates,
+      isRangeCompleted: state.isRangeCompleted,
+      onDayClick: handleDayClick,
+    }),
+    [
+      state.selectedDate,
+      state.selectedPeriod,
+      activeDates,
+      availableDates,
+      state.isRangeCompleted,
+      handleDayClick,
+    ],
+  );
 
   useEffect(() => {
     dispatch({

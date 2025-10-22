@@ -1,35 +1,33 @@
 .input-container {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 36px;
-  box-sizing: border-box;
-
   border: 1px solid var(--palette-bg-3);
-  border-top-right-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
   border-left: none;
+  border-top-right-radius: 0.375rem;
+  box-sizing: border-box;
+  display: flex;
+  height: 36px;
+  justify-content: center;
 }
 
 .input-field {
-  width: 100%;
-  height: 100%;
-  padding: 4px;
-  text-align: center;
-
   background: transparent;
   border: none;
-  outline: none;
   box-sizing: border-box;
+  height: 100%;
+  outline: none;
+  padding: 4px;
+  text-align: center;
+  width: 100%;
 }
 
 .input-date {
+  border-bottom: 1px solid var(--palette-bg-3);
+  border-right: 1px solid var(--palette-bg-3);
+  border-top: 1px solid var(--palette-bg-3);
   cursor: pointer;
   flex: 3;
   position: relative;
-  border-top: 1px solid var(--palette-bg-3);
-  border-right: 1px solid var(--palette-bg-3);
-  border-bottom: 1px solid var(--palette-bg-3);
 }
 
 .input-date:focus-within {
@@ -38,12 +36,12 @@
 }
 
 .input-date:focus-within::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 1px;
-  height: 100%;
   background-color: var(--palette-primary-3);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .calendar {
@@ -51,8 +49,8 @@
 }
 
 .calendar-icon {
-  width: 24px;
+  cursor: pointer;
   height: 24px;
   margin-right: 10px;
-  cursor: pointer;
+  width: 24px;
 }
