@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMemo, useCallback } from "react";
 import classNames from "classnames/bind";
 import { leadingZeros } from "../../../libs/numbers/leadingZeros";
 import Typography from "../../../Typography";
@@ -12,7 +13,19 @@ import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
 
 const clx = classNames.bind(styles);
-// eslint-disable-next-line @typescript-eslint/ban-types
+
+const WEEK_DAYS = Array.from({ length: 7 }, (_, idx) => {
+	const index = idx + 1;
+	return {
+		index,
+		name: getShortWeekDayNameByIndex(index),
+		isWeekend: index > 5,
+	};
+});
+
+const SELECTED_BG_STYLE = { background: "var(--palette-bg-2)" };
+const TRANSPARENT_BG_STYLE = { background: "transparent" };
+
 export interface FCWithElements<T = {}> extends FunctionComponent<T> { }
 
 type Props = {
@@ -52,11 +65,7 @@ const Item = React.memo(({
 	});
 
 	if (isSelected) {
-		return (
-			<li className={itemClass}>
-				{children}
-			</li>
-		);
+		return <li className={itemClass}>{children}</li>;
 	} else if (isInSelectedRange) {
 		return <li className={clx("selected-range-day")}>{children}</li>;
 	}
@@ -64,93 +73,129 @@ const Item = React.memo(({
 	return <li className={clx('day')}>{children}</li>;
 });
 
+Item.displayName = 'Item';
+
+const DayButton = React.memo<{
+	day: number;
+	isActive: boolean;
+	isSelected: boolean;
+	dateString: string;
+	onDayClick: (date: string) => void;
+}>(({ day, isActive, isSelected, dateString, onDayClick }) => {
+	const handleClick = useCallback(() => {
+		if (isActive) {
+			onDayClick(dateString);
+		}
+	}, [isActive, dateString, onDayClick]);
+
+	const dayInnerActive = isActive ? "day-inner-active" : "";
+	const bgStyle = isSelected ? SELECTED_BG_STYLE : TRANSPARENT_BG_STYLE;
+
+	return (
+		<button
+			className={clx("day-inner", dayInnerActive)}
+			style={bgStyle}
+			role="button"
+			type="button"
+			onClick={isActive ? handleClick : undefined}
+		>
+			<Typography
+				size="s"
+				style={{
+					opacity: isActive ? 80 : 30,
+					color: isActive
+						? "rgba(0, 0, 0, 0.8)"
+						: "rgba(0, 0, 0, 0.3)",
+				}}
+			>
+				{day}
+			</Typography>
+		</button>
+	);
+});
+
+DayButton.displayName = 'DayButton';
+
 const Month: FCWithElements<Props> = (props) => {
-	const year = props.startDate.getFullYear();
-	const month = leadingZeros(props.startDate.getMonth() + 1, 2);
+	const {
+		startDate,
+		offsetLeft,
+		titleSize,
+		onDayClick,
+		today,
+		selectedDate,
+		selectedPeriod,
+		activeDays,
+		availableDates,
+	} = props;
+
+	const year = startDate.getFullYear();
+	const month = useMemo(() => leadingZeros(startDate.getMonth() + 1, 2), [startDate]);
+	const monthName = useMemo(() => getUpperMonthName(startDate), [startDate]);
+
+	const weeks = useMemo(() => {
+		return getMonthWeeks(props);
+	}, [today, startDate, activeDays, selectedDate, selectedPeriod, availableDates]);
+
+	const leftStyle = useMemo(
+		() => (offsetLeft ? { left: `${offsetLeft}px` } : undefined),
+		[offsetLeft]
+	);
 
 	return (
 		<div
 			data-testid="month"
 			className={clx('root')}
-			style={{ left: props.offsetLeft ? `${props.offsetLeft}px` : undefined }}
+			style={leftStyle}
 		>
 			<div className={clx("month-name")}>
-				<Typography tag="span" size={props.titleSize}>
-					{getUpperMonthName(props.startDate)}
+				<Typography tag="span" size={titleSize}>
+					{monthName}
 				</Typography>
 			</div>
 			<div className={clx('table')}>
 				<ul className={clx('legend')}>
-					{Array.from({ length: 7 }, (_, idx) => {
-						const index = idx + 1;
-						return (
-							<li className={clx('day')} key={index}>
-								<Typography
-									style={{
-										opacity: index > 5 ? 80 : 30,
-										color:
-											index > 5
-												? "var(--typography-alert)"
-												: "var(--palette-black)",
-									}}
-								>
-									{getShortWeekDayNameByIndex(index)}
-								</Typography>
-							</li>
-						);
-					})}
+					{WEEK_DAYS.map(({ index, name, isWeekend }) => (
+						<li className={clx('day')} key={index}>
+							<Typography
+								style={{
+									opacity: isWeekend ? 80 : 30,
+									color: isWeekend
+										? "var(--typography-alert)"
+										: "var(--palette-black)",
+								}}
+							>
+								{name}
+							</Typography>
+						</li>
+					))}
 				</ul>
-				{getMonthWeeks(props).map((days, ...rest1) => (
-					<ul key={`week-${rest1[0]}`} className={clx('week')}>
-						{days.map((day, ...rest2) => {
-							const key = `day-${rest2[0]}`;
+				{weeks.map((days, weekIndex) => (
+					<ul key={`week-${weekIndex}`} className={clx('week')}>
+						{days.map((day, dayIndex) => {
+							const key = `day-${dayIndex}`;
 
 							if (day.isDummy) {
 								return <li className={clx('day')} key={key} />;
 							}
-							const attrs = {
-								isStartOfSelection: day.isStartOfSelection,
-								isEndOfSelection: day.isEndOfSelection,
-								isSelected: day.isSelected,
-								isInSelectedRange: day.isInSelectedRange,
-							};
 
-							const dayInnerActive = day.isActive
-								? "day-inner-active"
-								: "";
+							const dateString = `${year}-${month}-${leadingZeros(day.day, 2)}`;
 
 							return (
-								<Item {...attrs} key={key}>
-									<button
-										className={clx("day-inner", dayInnerActive)}
-										style={{
-											background: day.isSelected
-												? "var(--palette-bg-2)"
-												: "transparent",
-										}}
-										role="button"
-										type="button"
-										onClick={
-											day.isActive
-												? () =>
-													props.onDayClick(
-														[year, month, leadingZeros(day.day, 2)].join("-"),
-													)
-												: undefined
-										}
-									>
-										<Typography
-											size="s"
-											style={{
-												opacity: day.isActive ? 80 : 30,
-												color: day.isActive
-													? "rgba(0, 0, 0, 0.8)"
-													: "rgba(0, 0, 0, 0.3)",
-											}}
-										>
-											{day.day}
-										</Typography>
-									</button>
+								<Item
+									isStartOfSelection={day.isStartOfSelection}
+									isEndOfSelection={day.isEndOfSelection}
+									isSelected={day.isSelected}
+									isInSelectedRange={day.isInSelectedRange}
+									key={key}
+								>
+									<DayButton
+										day={day.day}
+										isActive={Boolean(day.isActive)}
+										isSelected={Boolean(day.isSelected)}
+										dateString={dateString}
+										onDayClick={onDayClick}
+									/>
 								</Item>
 							);
 						})}
@@ -164,4 +209,3 @@ const Month: FCWithElements<Props> = (props) => {
 export default React.memo(Month);
 
 Month.displayName = 'Month';
-
