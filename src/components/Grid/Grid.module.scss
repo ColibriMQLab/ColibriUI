@@ -6,8 +6,8 @@
 @supports (display: grid) {
   .root {
     display: grid;
-    grid-auto-rows: minmax(50px, auto);
     gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
   }
 
   .root > * {

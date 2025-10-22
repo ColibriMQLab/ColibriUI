@@ -6,10 +6,10 @@
   object-fit: cover;
   position: relative;
   transition: border-color 0.15s ease;
-  width: 100%; /* Теперь адаптивно */
+  width: 100%;
 }
 
-.avatarBordered {
+.avatar-bordered {
   background-color: var(--palette-white);
   border: 3px solid var(--palette-bg-2);
   padding: 3px;
@@ -19,76 +19,76 @@
   }
 }
 
-.sizeS,
-.sizeM,
-.sizeL,
-.sizeXL,
-.sizeXXL,
-.sizeXXXL {
+.size-s,
+.size-m,
+.size-l,
+.size-xl,
+.size-xxl,
+.size-xxxl {
   aspect-ratio: 1 / 1;
 }
 
-.sizeS {
+.size-s {
   height: 32px;
   width: 32px;
 }
 
-.sizeM {
+.size-m {
   height: 48px;
   width: 48px;
 }
 
-.sizeL {
+.size-l {
   height: 80px;
   width: 80px;
 }
 
-.sizeXL {
+.size-xl {
   height: 120px;
   width: 120px;
 }
 
-.sizeXXL {
+.size-xxl {
   height: 196px;
   width: 196px;
 }
 
-.sizeXXXL {
+.size-xxxl {
   height: 280px;
   width: 280px;
 }
 
-.textS {
+.text-s {
   font-size: 1rem;
   font-weight: 500;
 }
 
-.textM {
+.text-m {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.textL {
+.text-l {
   font-size: 2.5rem;
   font-weight: 400;
 }
 
-.textXL {
+.text-xl {
   font-size: 3.75rem;
   font-weight: 400;
 }
 
-.textXXL {
+.text-xxl {
   font-size: 6rem;
   font-weight: 400;
 }
 
-.textXXXL {
+.text-xxxl {
   font-size: 9rem;
   font-weight: 400;
 }
 
-.avatarInitials {
+.avatar-initials {
   align-items: center;
   background-color: var(--palette-bg-4);
   border-radius: 50%;
@@ -96,17 +96,17 @@
   justify-content: center;
 }
 
-.initialsText {
+.initials-text {
   color: white;
   text-transform: uppercase;
 }
 
-.avatarWrapper {
+.avatar-wrapper {
   display: inline-block;
   position: relative;
 }
 
-.avatarLoader::before {
+.avatar-loader::before {
   animation: spin 1s linear infinite;
   border: 4px solid transparent;
   border-radius: 50%;
@@ -124,6 +124,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
