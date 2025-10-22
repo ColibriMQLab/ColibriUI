@@ -7,41 +7,47 @@ import type { MenuItemProps } from "./index.props";
 const clx = classNames.bind(styles);
 
 const MenuItem = ({
-  className,
-  isSelected,
-  variant = "primary",
-  disabled,
-  onClick,
-  children,
-  onMouseEnter,
-  ref,
-  ...props
-}: PropsWithChildren<MenuItemProps>) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-  <li
-    ref={ref}
-    style={{
-      backgroundColor: isSelected
-        ? "var(--palette-bg-2, rgb(232, 240, 254))"
-        : "",
-    }}
-    aria-label="MenuItem"
-    data-testid="menuitem"
-    aria-disabled={disabled}
-    className={clx(
-      "item",
-      {
-        item_disabled: !!disabled,
-        [`item_variant_${variant}`]: !!variant,
-      },
-      className,
-    )}
-    onClick={!disabled ? onClick : undefined}
-    onMouseEnter={onMouseEnter}
-    {...props}
-  >
-    {children}
-  </li>
-);
+	className,
+	isSelected,
+	variant = "primary",
+	disabled,
+	onClick,
+	children,
+	onMouseEnter,
+	ref,
+	...props
+}: PropsWithChildren<MenuItemProps>) => {
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
+		if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+			event.preventDefault();
+			onClick?.(event);
+		}
+	};
+
+	return (
+		<li
+			ref={ref}
+			role="menuitem"
+			tabIndex={disabled ? -1 : 0}
+			data-testid="menuitem"
+			aria-disabled={disabled || undefined}
+			className={clx(
+				"item",
+				{
+					item_disabled: disabled,
+					item_selected: isSelected,
+					[`item_variant_${variant}`]: true,
+				},
+				className,
+			)}
+			onClick={!disabled ? onClick : undefined}
+			onKeyDown={handleKeyDown}
+			onMouseEnter={onMouseEnter}
+			{...props}
+		>
+			{children}
+		</li>
+	);
+};
 
 export default MenuItem;

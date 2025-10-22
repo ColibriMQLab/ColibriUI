@@ -1,44 +1,48 @@
 .item {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  font-size: 1em;
-  font-style: normal;
-  font-weight: 400;
-  justify-content: space-between;
-  line-height: 1.5;
-  list-style: none;
-  padding: 8px 6px;
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	font-size: 1em;
+	font-style: normal;
+	font-weight: 400;
+	justify-content: space-between;
+	line-height: 1.5;
+	list-style: none;
+	padding: 8px 6px;
 
-  &_disabled {
-    background-color: var(--palette-white);
-    color: var(--palette-bg-2);
-    cursor: not-allowed;
-    pointer-events: none;
-  }
+	&_disabled {
+		background-color: var(--palette-white);
+		color: var(--palette-bg-2);
+		cursor: not-allowed;
+		pointer-events: none;
+	}
 
-  &_variant {
-    &_primary {
-      background-color: var(--palette-white);
+	&_selected {
+		background-color: var(--palette-bg-2, rgb(232, 240, 254));
+	}
 
-      &:hover {
-        background-color: var(--palette-bg-2);
-      }
+	&_variant {
+		&_primary {
+			background-color: var(--palette-white);
 
-      &:active {
-        background-color: var(--palette-bg-2);
-      }
+			&:hover {
+				background-color: var(--palette-bg-2);
+			}
 
-      &:focus,
-      &:focus-within {
-        background-color: var(--palette-bg-2);
-      }
-    }
-  }
+			&:active {
+				background-color: var(--palette-bg-2);
+			}
 
-  & > * {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+			&:focus,
+			&:focus-within {
+				background-color: var(--palette-bg-2);
+			}
+		}
+	}
+
+	&>* {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
