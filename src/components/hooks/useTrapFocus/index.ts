@@ -6,7 +6,7 @@ const getFocusableModalElements = (element: HTMLElement) =>
     'a[href], button, textarea, input[type="text"], input[type="password"], input[type="radio"], input[type="checkbox"], select',
   );
 
-function useTrapFocus(refObject: RefObject<HTMLElement>) {
+function useTrapFocus(refObject: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (!refObject.current || event.code !== "Tab") return;

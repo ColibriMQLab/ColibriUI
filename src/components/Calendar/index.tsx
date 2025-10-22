@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import { requestIdleCallback } from "../libs/requestIdleCallback";
 import { getDaysDiff } from "../helpers/date";
 import { ArrowNext } from "../Icons";
-import { Month } from "./components/Month/Month";
+import Month from "./components/Month/Month";
 import { getStartMonth } from "./utils/getStartMonth";
 import { Presets } from "./components/Presets";
 import { getNumberOfMonthsBetweenDates } from "./utils/getNumberOfMonthsBetweenDates";
@@ -109,7 +109,7 @@ const Calendar: React.FC<CalendarProps> = ({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [canSelectRange, selectedDate, isRangeCompleted, selectDate],
+    [canSelectRange, selectedDate, onChange, isRangeCompleted, selectDate],
   );
 
   const handlePresetSelect = useCallback(
@@ -126,7 +126,7 @@ const Calendar: React.FC<CalendarProps> = ({
         idleCallbackOptions,
       );
     },
-    [selectDate],
+    [selectDate, onChange],
   );
 
   const commitSelectedDates = useCallback(() => {

@@ -12,7 +12,7 @@ export type TabProps = {
   disabled?: boolean;
   content?: ReactNode;
   onClick?: MouseEventHandler<HTMLLIElement>;
-  innerRef?: RefObject<HTMLLIElement>;
+  innerRef?: RefObject<HTMLLIElement | null>;
   className?: string;
   tabIndex?: number;
   onKeyDown?: KeyboardEventHandler<HTMLElement>;

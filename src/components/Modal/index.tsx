@@ -19,7 +19,7 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   onClose,
   title,
 }) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
   const isDesktop = useMediaSizes((bp) => bp.up("md"));
 
   useScrollLock();

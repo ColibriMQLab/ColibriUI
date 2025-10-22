@@ -64,7 +64,7 @@ const Item = React.memo(({
 	return <li className={clx('day')}>{children}</li>;
 });
 
-export const Month: FCWithElements<Props> = (props) => {
+const Month: FCWithElements<Props> = (props) => {
 	const year = props.startDate.getFullYear();
 	const month = leadingZeros(props.startDate.getMonth() + 1, 2);
 
@@ -160,3 +160,8 @@ export const Month: FCWithElements<Props> = (props) => {
 		</div>
 	);
 };
+
+export default React.memo(Month);
+
+Month.displayName = 'Month';
+
