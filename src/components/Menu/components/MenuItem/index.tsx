@@ -34,8 +34,8 @@ const MenuItem = ({
 			className={clx(
 				"item",
 				{
-					item_disabled: disabled,
-					item_selected: isSelected,
+					'item_disabled': disabled,
+					'item_selected': isSelected,
 					[`item_variant_${variant}`]: true,
 				},
 				className,
