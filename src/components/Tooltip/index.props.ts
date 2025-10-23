@@ -1,27 +1,9 @@
 import type { ReactNode } from "react";
-import type { PositioningStrategy } from "@popperjs/core";
-import type { Placement as PopperPlacement } from "@popperjs/core";
-
-export type Placement = Extract<
-  PopperPlacement,
-  | "bottom-start"
-  | "bottom"
-  | "bottom-end"
-  | "top-start"
-  | "top"
-  | "top-end"
-  | "right-start"
-  | "right"
-  | "right-end"
-  | "left-start"
-  | "left"
-  | "left-end"
->;
-
+import { Placement, Strategy } from "@floating-ui/react";
 export interface ITooltipProps {
-  content: ReactNode;
-  zIndex?: number;
-  placement?: Placement;
-  strategy?: PositioningStrategy;
-  withTail?: boolean;
+	content: ReactNode;
+	zIndex?: number;
+	placement?: Placement;
+	strategy?: Strategy;
+	withTail?: boolean;
 }
