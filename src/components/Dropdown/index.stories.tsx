@@ -1,40 +1,36 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import Menu from "../Menu";
-import Button from "../Button";
+
 import Dropdown from ".";
-import type { Meta } from "@storybook/react-webpack5";
+import Menu from "../Menu";
 import MenuItem from "../Menu/components/MenuItem";
+import Button from "../Button";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "UI/Dropdown",
-  parameters: {
-    layout: "centered",
-  },
-  args: {},
-  component: Dropdown,
-} satisfies Meta<typeof Dropdown>;
+	title: "UI/Dropdown",
+	component: Dropdown,
+	parameters: {
+		layout: "centered",
+	},
+	args: {
+		disabled: false,
+		trigger: ["hover"],
+	},
+};
 
 export default meta;
 
-const Template = (args) => {
-  return (
-    <Dropdown
-      {...args}
-      overlay={
-        <Menu>
-          <MenuItem>Test 1</MenuItem>
-          <MenuItem>Test 2</MenuItem>
-          <MenuItem>Test 3</MenuItem>
-        </Menu>
-      }
-    />
-  );
-};
+type Story = StoryObj<typeof Dropdown>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  children: <Button variant="primary">Hover me</Button>,
-  trigger: ["hover"],
-  disabled: false,
+export const Default: Story = {
+	args: {
+		children: <Button variant="primary">Hover me</Button>,
+		overlay: (
+			<Menu>
+				<MenuItem>Test 1</MenuItem>
+				<MenuItem>Test 2</MenuItem>
+				<MenuItem>Test 3</MenuItem>
+			</Menu>
+		),
+	},
 };

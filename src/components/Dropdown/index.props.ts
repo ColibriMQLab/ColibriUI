@@ -1,12 +1,5 @@
 import type { ReactNode } from "react";
-import type { PositioningStrategy } from "@popperjs/core";
-
-import type { Placement as PopperPlacement } from "@popperjs/core";
-
-export type Placement = Extract<
-	PopperPlacement,
-	"bottom-start" | "bottom" | "bottom-end"
->;
+import type { Placement, Strategy } from "@floating-ui/react";
 
 export type Trigger = "click" | "hover" | "focus";
 
@@ -17,7 +10,7 @@ export type DropdownProps = {
 	onVisibleChange?: (visible: boolean) => void;
 	overlay: ReactNode;
 	placement?: Placement;
-	strategy?: PositioningStrategy;
+	strategy?: Strategy;
 	trigger?: [Trigger, ...Trigger[]];
 	visible?: boolean;
 	preventOverflow?: boolean;

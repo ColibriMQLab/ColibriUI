@@ -1,39 +1,45 @@
 import { useEffect } from "react";
-import type { MutableRefObject, RefObject } from "react";
+import type { RefObject } from "react";
 
 type AnyEvent = MouseEvent | TouchEvent;
-type Ref<T> = RefObject<T> | MutableRefObject<T | undefined>;
 
-let element: Ref<HTMLElement> = { current: undefined };
+/**
+ * Универсальный тип ссылки, поддерживающий как useRef, так и forwardRef.
+ */
+type AnyRef<T> = RefObject<T> | { current: T | null | undefined };
+
+let element: AnyRef<HTMLElement> = { current: undefined };
 
 function useOnClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T> | MutableRefObject<T | undefined>,
-  handler: (e: MouseEvent | TouchEvent) => void,
+	ref: AnyRef<T>,
+	handler: (event: AnyEvent) => void,
 ) {
-  useEffect(() => {
-    const previous = element;
-    element = ref;
+	useEffect(() => {
+		const previous = element;
+		element = ref;
 
-    const listener = (event: AnyEvent) => {
-      if (ref?.current !== element?.current) return;
+		const listener = (event: AnyEvent) => {
+			// Проверяем, что хук относится именно к текущему элементу
+			if (ref?.current !== element?.current) return;
 
-      if (element.current?.contains(event.target as Node)) {
-        return;
-      }
+			const el = element.current;
+			if (!el) return;
 
-      handler(event);
-    };
+			// Игнорируем клики внутри элемента
+			if (el.contains(event.target as Node)) return;
 
-    document.addEventListener(`mousedown`, listener, false);
-    document.addEventListener(`touchstart`, listener, false);
+			handler(event);
+		};
 
-    return () => {
-      document.removeEventListener(`mousedown`, listener, false);
-      document.removeEventListener(`touchstart`, listener, false);
+		document.addEventListener("mousedown", listener, false);
+		document.addEventListener("touchstart", listener, false);
 
-      element = previous;
-    };
-  }, [handler, ref]);
+		return () => {
+			document.removeEventListener("mousedown", listener, false);
+			document.removeEventListener("touchstart", listener, false);
+			element = previous;
+		};
+	}, [handler, ref]);
 }
 
 export default useOnClickOutside;

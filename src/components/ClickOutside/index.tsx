@@ -1,36 +1,35 @@
-import React, { cloneElement, useRef } from "react";
+import React, { cloneElement, useRef, isValidElement } from "react";
 import useOnClickOutside from "../hooks/useOnClickOutside";
-import type { FC, PropsWithChildren, ReactElement } from "react";
+import type { FC, PropsWithChildren, ReactElement, RefCallback } from "react";
 
-const ClickOutside: FC<
-  PropsWithChildren<{
-    onClick: (e: MouseEvent | TouchEvent) => void;
-  }>
-> = ({ children, onClick }) => {
-  const childRef = useRef<HTMLElement>();
+type ClickOutsideProps = {
+	onClick: (e: MouseEvent | TouchEvent) => void;
+};
 
-  useOnClickOutside(childRef, onClick);
+const ClickOutside: FC<PropsWithChildren<ClickOutsideProps>> = ({
+	children,
+	onClick,
+}) => {
+	const childRef = useRef<HTMLElement | null>(null);
 
-  if (!React.isValidElement(children)) return null;
+	useOnClickOutside(childRef, onClick);
 
-  const combinedRef = (node: HTMLElement) => {
-    childRef.current = node;
+	if (!isValidElement(children)) return null;
 
-    if (React.isValidElement(children) && "ref" in children.props) {
-      const childRefProp = children.props.ref;
+	const combinedRef: RefCallback<HTMLElement> = (node) => {
+		childRef.current = node;
 
-      if (typeof childRefProp === "function") {
-        childRefProp(node);
-      } else if (childRefProp && typeof childRefProp === "object") {
-        (childRefProp as React.MutableRefObject<HTMLElement | null>).current =
-          node;
-      }
-    }
-  };
+		const childRefProp = (children as any).ref;
+		if (typeof childRefProp === "function") {
+			childRefProp(node);
+		} else if (childRefProp && typeof childRefProp === "object" && "current" in childRefProp) {
+			(childRefProp as { current: HTMLElement | null }).current = node;
+		}
+	};
 
-  return cloneElement(children as ReactElement, {
-    ref: combinedRef,
-  });
+	return cloneElement(children as ReactElement<{ ref?: React.Ref<HTMLElement> }>, {
+		ref: combinedRef,
+	});
 };
 
 export default ClickOutside;
