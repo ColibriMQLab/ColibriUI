@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RadioGroup, { RadioGroupProps } from '.';
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const getOptions = (name?: string) => [
   {

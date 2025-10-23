@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Menu from ".";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react-webpack5";
 import MenuItem from "./components/MenuItem";
 
 const meta: Meta<typeof Menu> = {

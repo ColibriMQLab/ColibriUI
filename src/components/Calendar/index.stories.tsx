@@ -1,11 +1,11 @@
 import React from "react";
 import Calendar from ".";
-import type { Meta, StoryFn } from "@storybook/react";
-import { fn } from "@storybook/test";
+import type { Meta, StoryFn } from "@storybook/react-webpack5";
+import { fn } from "storybook/test";
 import { toISODate } from "../helpers/date";
 import { getPresets } from "./utils/getPresets";
 import { PRESETS } from "./components/Presets";
-import { useArgs } from "@storybook/preview-api";
+import { useArgs } from "storybook/preview-api";
 
 const meta: Meta<typeof Calendar> = {
   title: "UI/Calendar",

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button";
 import Tooltip from ".";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Tooltip> = {
   title: "UI/Tooltip",

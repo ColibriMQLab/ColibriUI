@@ -1,6 +1,6 @@
 import React from "react";
 import { SkeletonRect, SkeletonText } from ".";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof SkeletonRect> = {
   title: "UI/Skeleton",

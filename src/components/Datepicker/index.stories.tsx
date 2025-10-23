@@ -1,7 +1,7 @@
 import React from "react";
 import Datepicker from ".";
-import { fn } from '@storybook/test';
-import type { Meta } from "@storybook/react";
+import { fn } from 'storybook/test';
+import type { Meta } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Datepicker> = {
   title: "UI/Datepicker",

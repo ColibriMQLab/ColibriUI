@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TabsMenu from ".";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof TabsMenu> = {
   title: "UI/TabsMenu",

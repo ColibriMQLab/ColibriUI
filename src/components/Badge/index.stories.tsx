@@ -4,7 +4,7 @@ import Cart from "../Icons/Cart";
 import generateUniqID from '../helpers/generateUniqID';
 import Badge from ".";
 import type { ReactNode } from "react";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Badge> = {
   title: "UI/Badge",

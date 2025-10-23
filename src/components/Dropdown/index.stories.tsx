@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "../Menu";
 import Button from "../Button";
 import Dropdown from ".";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react-webpack5";
 import MenuItem from "../Menu/components/MenuItem";
 
 const meta: Meta<typeof Dropdown> = {

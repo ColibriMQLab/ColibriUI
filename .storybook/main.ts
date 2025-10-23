@@ -4,10 +4,9 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "storybook-addon-sass-postcss",
     "storybook-css-modules",
+    "@storybook/addon-docs"
   ],
   framework: {
     name: "@storybook/react-webpack5",

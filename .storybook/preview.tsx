@@ -1,5 +1,5 @@
 import withTheme from "./AddonThemesSwitcher";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-webpack5";
 
 const preview: Preview = {
   parameters: {

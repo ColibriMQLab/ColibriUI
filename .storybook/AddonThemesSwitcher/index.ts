@@ -1,4 +1,4 @@
-import { addons, makeDecorator } from "@storybook/preview-api";
+import { addons, makeDecorator } from "storybook/preview-api";
 
 import { THEMES } from "../../src/components/Theme";
 import { events, THEME_COOKIE } from "./constants";

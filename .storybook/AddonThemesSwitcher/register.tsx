@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { addons, types, useParameter } from "@storybook/manager-api";
+import { addons, types, useParameter } from "storybook/manager-api";
 import {
   IconButton,
   TooltipLinkList,
   WithTooltip,
-} from "@storybook/components";
+} from "storybook/internal/components";
 import { PhotoIcon } from "@storybook/icons";
 
 import { ADDON_ID, PARAM_KEY, events } from "./constants";

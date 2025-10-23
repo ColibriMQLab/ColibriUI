@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MultiSelect from "./";
-import { action } from "@storybook/addon-actions";
-import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "storybook/actions";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { SelectedItem } from "./index.props";
 
 const meta: Meta<typeof MultiSelect> = {

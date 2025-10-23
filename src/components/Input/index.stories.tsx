@@ -1,9 +1,9 @@
 import React from "react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import Chevron from "../Icons/Chevron";
 import Input from ".";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Input> = {
   title: "UI/Input",
