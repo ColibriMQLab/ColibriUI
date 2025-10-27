@@ -75,7 +75,7 @@ const Select = <T extends string>({
         {customInputRoot ? (
           customInputRoot
         ) : (
-          <div tabIndex={0} role="button">
+          <div tabIndex={0} role="button" style={{width: 'fit-content'}}>
             <InputRoot
               hasError={hasError}
               size={size}

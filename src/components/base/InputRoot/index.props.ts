@@ -14,5 +14,5 @@ export type InputProps = PropsWithChildren<{
   endIcon?: ReactNode;
   size?: Size;
   style?: CSSProperties;
-  ref?: React.Ref<HTMLDivElement>;
+  inputRef?: React.Ref<HTMLDivElement>;
 }>;

@@ -110,7 +110,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         }
         samewidth
       >
-        <div tabIndex={0} role="button">
+        <div tabIndex={0} role="button" style={{width: 'fit-content'}}>
           <InputRoot
             hasError={hasError}
             size={size}
