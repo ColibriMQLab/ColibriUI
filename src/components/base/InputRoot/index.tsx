@@ -13,10 +13,10 @@ const InputRoot = ({
   hasError,
   style,
   size,
-  inputRef,
+  ref,
 }: InputProps) => (
   <div
-    ref={inputRef}
+    ref={ref}
     style={style}
     className={classNames(
       styles.root,
