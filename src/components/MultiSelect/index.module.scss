@@ -1,10 +1,10 @@
 .root {
   cursor: pointer;
-}
 
-.root_auto {
-  height: auto;
-  min-height: 36px;
+  &_auto {
+    height: auto;
+    min-height: 36px;
+  }
 }
 
 .icon {

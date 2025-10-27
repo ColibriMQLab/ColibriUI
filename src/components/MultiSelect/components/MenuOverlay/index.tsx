@@ -1,5 +1,4 @@
 import React, { memo, useLayoutEffect, useRef, useState } from "react";
-import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
 import Typography from "../../../Typography";
@@ -8,8 +7,6 @@ import { toKey } from "../../utils";
 import styles from "./index.module.scss";
 import type { ReactNode } from "react";
 import type { Coordinates, GroupProps } from "../../index.props";
-
-const clx = classNames.bind(styles);
 
 export interface IOption {
   selected: boolean;
@@ -84,10 +81,10 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
   }, []);
 
   return (
-    <div ref={rootRef} className={clx(styles.root)}>
+    <div ref={rootRef} className={styles.root}>
       {groups.map((group, index) => (
         <div key={`item-${index}`}>
-          <div className={clx(styles.title)}>
+          <div className={styles.title}>
             <Typography
               style={{ color: "var(--typography-secondary)" }}
               size="s"

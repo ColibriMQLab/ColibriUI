@@ -1,11 +1,8 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
-import classNames from "classnames/bind";
 import Menu from "../../../Menu";
 import SelectItem from "../MenuOverlayItem";
 import styles from "./index.module.scss";
 import type { Coordinates, IOption } from "../../index.props";
-
-const clx = classNames.bind(styles);
 
 interface Props<T extends string> {
   options: {
@@ -49,7 +46,7 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
   }, [scrollView, rootRef]);
 
   return (
-    <div ref={rootRef} className={clx(styles.root)}>
+    <div ref={rootRef} className={styles.root}>
       <Menu ref={listRef} selected={selected}>
         {options.map((option, index) => (
           <SelectItem

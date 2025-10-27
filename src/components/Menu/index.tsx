@@ -8,42 +8,41 @@ import type { KeyboardEvent, MouseEvent } from "react";
 const clx = classNames.bind(styles);
 
 const Menu = ({
-	selected,
-	variant,
-	className,
-	onClick,
-	children,
-	ref,
+  selected,
+  variant,
+  className,
+  onClick,
+  children,
+  ref,
 }: Props) => {
-	const renderChild = useMemo(
-		() =>
-			Children.map(children, (child) => {
-				if (!isValidElement(child)) return child;
+  const renderChild = useMemo(
+    () =>
+      Children.map(children, (child) => {
+        if (!isValidElement(child)) return child;
 
-				const childKey = child.key ? String(child.key) : null;
-				const isSelected = selected && childKey
-					? selected.includes(childKey)
-					: undefined;
+        const childKey = child.key ? String(child.key) : null;
+        const isSelected =
+          selected && childKey ? selected.includes(childKey) : undefined;
 
-				const onClickHandler = (event: MouseEvent | KeyboardEvent) => {
-					child.props.onClick?.(event);
-					if (onClick && childKey) onClick(childKey, event);
-				};
+        const onClickHandler = (event: MouseEvent | KeyboardEvent) => {
+          child.props.onClick?.(event);
+          if (onClick && childKey) onClick(childKey, event);
+        };
 
-				return cloneElement(child, {
-					isSelected,
-					onClick: onClickHandler,
-					variant,
-				});
-			}),
-		[children, selected, onClick, variant]
-	);
+        return cloneElement(child, {
+          isSelected,
+          onClick: onClickHandler,
+          variant,
+        });
+      }),
+    [children, selected, onClick, variant],
+  );
 
-	return (
-		<ul ref={ref} className={clx('menu', className)} role="menu">
-			{renderChild}
-		</ul>
-	);
+  return (
+    <ul ref={ref} className={clx("menu", className)} role="menu">
+      {renderChild}
+    </ul>
+  );
 };
 
 export default Menu;

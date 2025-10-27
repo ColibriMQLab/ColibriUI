@@ -3,16 +3,16 @@ import ReactDOM from "react-dom";
 import type { FC, PropsWithChildren } from "react";
 
 const Portal: FC<PropsWithChildren<{ node?: HTMLElement | null }>> = ({
-	children,
-	node,
+  children,
+  node,
 }) => {
-	const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
+  const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
 
-	useEffect(() => {
-		setMountNode(node || document.body);
-	}, [node]);
+  useEffect(() => {
+    setMountNode(node || document.body);
+  }, [node]);
 
-	return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
+  return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
 };
 
 export default Portal;

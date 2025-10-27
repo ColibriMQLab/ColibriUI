@@ -1,25 +1,25 @@
 import React, {
-	useState,
-	useMemo,
-	cloneElement,
-	type FC,
-	type PropsWithChildren,
-	type ReactElement,
-	useRef,
+  useState,
+  useMemo,
+  cloneElement,
+  type FC,
+  type PropsWithChildren,
+  type ReactElement,
+  useRef,
 } from "react";
 import classNames from "classnames/bind";
 import {
-	useFloating,
-	offset,
-	flip,
-	shift,
-	arrow,
-	useHover,
-	useDismiss,
-	useRole,
-	useInteractions,
-	FloatingPortal,
-	FloatingArrow,
+  useFloating,
+  offset,
+  flip,
+  shift,
+  arrow,
+  useHover,
+  useDismiss,
+  useRole,
+  useInteractions,
+  FloatingPortal,
+  FloatingArrow,
 } from "@floating-ui/react";
 import styles from "./Tooltip.module.scss";
 import type { TooltipProps } from "./index.props";
@@ -27,74 +27,78 @@ import type { TooltipProps } from "./index.props";
 const clx = classNames.bind(styles);
 
 const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
-	children,
-	content,
-	zIndex = 1000,
-	withTail = false,
-	placement = "bottom",
-	strategy = "absolute",
-	className
+  children,
+  content,
+  zIndex = 1000,
+  withTail = false,
+  placement = "bottom",
+  strategy = "absolute",
+  className,
 }) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const arrowRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
 
-	const {
-		refs,
-		context,
-		floatingStyles,
-	} = useFloating({
-		placement,
-		strategy,
-		open: isOpen,
-		onOpenChange: setIsOpen,
-		middleware: [offset(8), flip(), shift({ padding: 8 }),
-		arrow({
-			element: arrowRef,
-		}),
-		],
-	});
+  const { refs, context, floatingStyles } = useFloating({
+    placement,
+    strategy,
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+      offset(8),
+      flip(),
+      shift({ padding: 8 }),
+      arrow({
+        element: arrowRef,
+      }),
+    ],
+  });
 
-	const hover = useHover(context, { move: false, delay: { open: 100, close: 100 } });
-	const dismiss = useDismiss(context);
-	const role = useRole(context, { role: "tooltip" });
-	const { getReferenceProps, getFloatingProps } = useInteractions([hover, dismiss, role]);
+  const hover = useHover(context, {
+    move: false,
+    delay: { open: 100, close: 100 },
+  });
+  const dismiss = useDismiss(context);
+  const role = useRole(context, { role: "tooltip" });
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    hover,
+    dismiss,
+    role,
+  ]);
 
-	const reference = useMemo(() => {
-		if (!children) return null;
-		if (typeof children === "string") {
-			return <span>{children}</span>;
-		}
-		return children as ReactElement;
-	}, [children]);
+  const reference = useMemo(() => {
+    if (!children) return null;
+    if (typeof children === "string") {
+      return <span>{children}</span>;
+    }
+    return children as ReactElement;
+  }, [children]);
 
-	const trigger = reference
-		? cloneElement(reference, {
-			ref: refs.setReference,
-			...getReferenceProps(),
-		})
-		: null;
+  const trigger = reference
+    ? cloneElement(reference, {
+        ref: refs.setReference,
+        ...getReferenceProps(),
+      })
+    : null;
 
-	return (
-		<>
-			{trigger}
-			{isOpen && (
-				<FloatingPortal>
-					<div
-						ref={refs.setFloating}
-						{...getFloatingProps()}
-						className={clx("tooltip", className)}
-						style={{ ...floatingStyles, zIndex }}
-					>
-						<div className={clx("content")}>{content}</div>
+  return (
+    <>
+      {trigger}
+      {isOpen && (
+        <FloatingPortal>
+          <div
+            ref={refs.setFloating}
+            {...getFloatingProps()}
+            className={clx("tooltip", className)}
+            style={{ ...floatingStyles, zIndex }}
+          >
+            <div className={clx("content")}>{content}</div>
 
-						{withTail && (
-							<FloatingArrow ref={arrowRef} context={context} />
-						)}
-					</div>
-				</FloatingPortal>
-			)}
-		</>
-	);
+            {withTail && <FloatingArrow ref={arrowRef} context={context} />}
+          </div>
+        </FloatingPortal>
+      )}
+    </>
+  );
 };
 
 export default Tooltip;

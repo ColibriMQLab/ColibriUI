@@ -110,50 +110,56 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         }
         samewidth
       >
-        <InputRoot
-          hasError={hasError}
-          size={size}
-          style={style}
-          className={clx(styles.root, { root_auto: preparedLabel.length })}
-          endIcon={
-            <Chevron className={clx(styles.icon, { icon_isOpen: isOpen })} />
-          }
-          disabled={Boolean(disabled)}
-        >
-          <div
-            className={clx(
-              styles["base-input"],
-              styles[type === "chip" ? "base-input-flex" : "base-input-text"],
-            )}
+        <div tabIndex={0} role="button">
+          <InputRoot
+            hasError={hasError}
+            size={size}
+            style={style}
+            className={clx("root", { root_auto: preparedLabel.length })}
+            endIcon={
+              <Chevron
+                className={clx("icon", {
+                  icon_isOpen: isOpen && Boolean(!disabled),
+                })}
+              />
+            }
+            disabled={Boolean(disabled)}
           >
-            {preparedLabel.length ? (
-              type === "chip" ? (
-                // eslint-disable-next-line @typescript-eslint/no-shadow
-                preparedLabel.map(({ label, key }) => (
-                  <Chip
-                    key={key}
-                    size="s"
-                    iconEnd={<CrossFill />}
-                    data-ignore-click
-                    onClickIcon={() => handleChange(key)}
-                  >
-                    {label}
-                  </Chip>
-                ))
+            <div
+              className={clx(
+                styles["base-input"],
+                styles[type === "chip" ? "base-input-flex" : "base-input-text"],
+              )}
+            >
+              {preparedLabel.length ? (
+                type === "chip" ? (
+                  // eslint-disable-next-line @typescript-eslint/no-shadow
+                  preparedLabel.map(({ label, key }) => (
+                    <Chip
+                      key={key}
+                      size="s"
+                      iconEnd={<CrossFill />}
+                      data-ignore-click
+                      onClickIcon={() => handleChange(key)}
+                    >
+                      {label}
+                    </Chip>
+                  ))
+                ) : (
+                  getValue(preparedLabel)
+                )
               ) : (
-                getValue(preparedLabel)
-              )
-            ) : (
-              <span className={clx(styles.placeholder)}>{placeholder}</span>
-            )}
-          </div>
-          <input
-            type="hidden"
-            name={name}
-            tabIndex={-1}
-            value={internalSelectedKeys.join(",") || ""}
-          />
-        </InputRoot>
+                <span className={clx(styles.placeholder)}>{placeholder}</span>
+              )}
+            </div>
+            <input
+              type="hidden"
+              name={name}
+              tabIndex={-1}
+              value={internalSelectedKeys.join(",") || ""}
+            />
+          </InputRoot>
+        </div>
       </Dropdown>
     </FormField>
   );

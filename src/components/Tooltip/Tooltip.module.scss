@@ -1,28 +1,28 @@
 .tooltip {
-	background-color: var(--tooltip-bg);
-	border-radius: 0.35rem;
-	padding: 4px 10px;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 18px;
-	color: var(--tooltip-color);
-	max-width: 200px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
-	position: relative;
-	display: inline-block;
-	box-sizing: border-box;
+  background-color: var(--tooltip-bg);
+  border-radius: 0.35rem;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+  box-sizing: border-box;
+  color: var(--tooltip-color);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  max-width: 200px;
+  padding: 4px 10px;
+  position: relative;
+  z-index: 1000;
 }
 
 .content {
-	background-color: inherit;
-	border-radius: inherit;
-	color: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	line-height: inherit;
-	padding: inherit;
-	max-width: inherit;
-	overflow: hidden;
-	position: relative;
+  background-color: inherit;
+  border-radius: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  max-width: inherit;
+  overflow: hidden;
+  padding: inherit;
+  position: relative;
 }

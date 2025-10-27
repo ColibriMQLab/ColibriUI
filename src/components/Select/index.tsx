@@ -6,6 +6,7 @@ import FormField from "../base/FormField";
 import Dropdown from "../Dropdown";
 import styles from "./index.module.scss";
 import MenuOverlay from "./components/MenuOverlay";
+import type { JSX } from "react";
 import type { SelectProps } from "./index.props";
 
 const clx = classNames.bind(styles);
@@ -27,7 +28,7 @@ const Select = <T extends string>({
   customInputRoot,
   className,
   onChange,
-}: SelectProps<T>) => {
+}: SelectProps<T>): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const preparedOptions = useMemo(
@@ -41,7 +42,7 @@ const Select = <T extends string>({
     [value, options],
   );
 
-  const prepraredLabel = useMemo(
+  const preparedLabel = useMemo(
     () => preparedOptions.find(({ selected }) => selected)?.label,
     [preparedOptions],
   );
@@ -67,36 +68,43 @@ const Select = <T extends string>({
         trigger={["click"]}
         zIndex={zIndex}
         fontSize={fontSize}
-        disabled={!!disabled}
+        disabled={Boolean(disabled)}
         overlay={<MenuOverlay options={preparedOptions} onChange={onChange} />}
         samewidth
       >
         {customInputRoot ? (
           customInputRoot
         ) : (
-          <InputRoot
-            hasError={hasError}
-            size={size}
-            className={clx(styles.root)}
-            endIcon={
-              <Chevron
-                className={clx(styles.icon, { icon_isOpen: isOpen ? 1 : 0 })}
+          <div tabIndex={0} role="button">
+            <InputRoot
+              hasError={hasError}
+              size={size}
+              className={clx(styles.root)}
+              endIcon={
+                <Chevron
+                  className={clx(styles.icon, {
+                    icon_isOpen: isOpen && Boolean(!disabled),
+                  })}
+                />
+              }
+              disabled={Boolean(disabled)}
+            >
+              <div
+                className={clx(styles["base-input"])}
+                data-testid="base-input"
+              >
+                {preparedLabel ?? (
+                  <span className={clx(styles.placeholder)}>{placeholder}</span>
+                )}
+              </div>
+              <input
+                type="hidden"
+                name={name}
+                tabIndex={-1}
+                value={value || ""}
               />
-            }
-            disabled={!!disabled}
-          >
-            <div className={clx(styles["base-input"])} data-testid="base-input">
-              {prepraredLabel ?? (
-                <span className={clx(styles.placeholder)}>{placeholder}</span>
-              )}
-            </div>
-            <input
-              type="hidden"
-              name={name}
-              tabIndex={-1}
-              value={value || ""}
-            />
-          </InputRoot>
+            </InputRoot>
+          </div>
         )}
       </Dropdown>
     </FormField>
