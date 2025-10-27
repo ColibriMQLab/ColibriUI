@@ -5,6 +5,7 @@ import React, {
 	type FC,
 	type PropsWithChildren,
 	type ReactElement,
+	useRef,
 } from "react";
 import classNames from "classnames/bind";
 import {
@@ -21,42 +22,43 @@ import {
 	FloatingArrow,
 } from "@floating-ui/react";
 import styles from "./Tooltip.module.scss";
-import type { ITooltipProps } from "./index.props";
+import type { TooltipProps } from "./index.props";
 
 const clx = classNames.bind(styles);
 
-const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
+const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
 	children,
 	content,
 	zIndex = 1000,
 	withTail = false,
 	placement = "bottom",
 	strategy = "absolute",
+	className
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [arrowEl, setArrowEl] = useState<SVGSVGElement | null>(null);
+	const arrowRef = useRef(null);
 
-	// === Floating UI setup ===
 	const {
 		refs,
 		context,
 		floatingStyles,
-		middlewareData,
 	} = useFloating({
 		placement,
 		strategy,
 		open: isOpen,
 		onOpenChange: setIsOpen,
-		middleware: [offset(8), flip(), shift({ padding: 8 }), arrow({ element: arrowEl })],
+		middleware: [offset(8), flip(), shift({ padding: 8 }),
+		arrow({
+			element: arrowRef,
+		}),
+		],
 	});
 
-	// === Interactions ===
 	const hover = useHover(context, { move: false, delay: { open: 100, close: 100 } });
 	const dismiss = useDismiss(context);
 	const role = useRole(context, { role: "tooltip" });
 	const { getReferenceProps, getFloatingProps } = useInteractions([hover, dismiss, role]);
 
-	// === Prepare reference element ===
 	const reference = useMemo(() => {
 		if (!children) return null;
 		if (typeof children === "string") {
@@ -65,22 +67,12 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
 		return children as ReactElement;
 	}, [children]);
 
-	// === Clone trigger with ref & props ===
 	const trigger = reference
 		? cloneElement(reference, {
 			ref: refs.setReference,
 			...getReferenceProps(),
 		})
 		: null;
-
-	// === Determine arrow side for CSS ===
-	const basePlacement = placement.split("-")[0] as "top" | "right" | "bottom" | "left";
-	const staticSide: "top" | "right" | "bottom" | "left" =
-		{ top: "bottom", right: "left", bottom: "top", left: "right" }[basePlacement] as "top" | "right" | "bottom" | "left";
-
-	// === Arrow position ===
-	const arrowX = middlewareData.arrow?.x ?? 0;
-	const arrowY = middlewareData.arrow?.y ?? 0;
 
 	return (
 		<>
@@ -90,22 +82,13 @@ const Tooltip: FC<PropsWithChildren<ITooltipProps>> = ({
 					<div
 						ref={refs.setFloating}
 						{...getFloatingProps()}
-						className={clx("root", { tail: withTail })}
+						className={clx("tooltip", className)}
 						style={{ ...floatingStyles, zIndex }}
 					>
-						<div className={clx("overlay")}>{content}</div>
+						<div className={clx("content")}>{content}</div>
 
 						{withTail && (
-							<FloatingArrow
-								ref={setArrowEl}
-								context={context}
-								className={clx("tail")}
-								style={{
-									left: arrowX != null ? `${arrowX}px` : undefined,
-									top: arrowY != null ? `${arrowY}px` : undefined,
-									[staticSide]: "-4px",
-								}}
-							/>
+							<FloatingArrow ref={arrowRef} context={context} />
 						)}
 					</div>
 				</FloatingPortal>

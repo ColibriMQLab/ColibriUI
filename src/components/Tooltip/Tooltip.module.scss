@@ -1,5 +1,4 @@
-/* Tooltip root container */
-.root {
+.tooltip {
 	background-color: var(--tooltip-bg);
 	border-radius: 0.35rem;
 	padding: 4px 10px;
@@ -15,8 +14,7 @@
 	box-sizing: border-box;
 }
 
-/* Overlay content inside tooltip */
-.overlay {
+.content {
 	background-color: inherit;
 	border-radius: inherit;
 	color: inherit;
@@ -27,16 +25,4 @@
 	max-width: inherit;
 	overflow: hidden;
 	position: relative;
-}
-
-/* Tail / FloatingArrow container */
-.tail {
-	/* базовые размеры стрелки */
-	width: 8px;
-	height: 8px;
-	position: absolute;
-	z-index: 1001;
-	pointer-events: none;
-	background-color: var(--tooltip-bg);
-	transform: rotate(45deg);
 }
