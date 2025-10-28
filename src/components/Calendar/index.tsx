@@ -319,7 +319,7 @@ const Calendar: React.FC<CalendarProps> = ({
         {state.contentWidth ? (
           <div
             data-component="Months"
-            className={clx(styles.months)}
+            className={styles.months}
             style={{
               transform: `translate3D(${-1 * state.currentMonthOffset * state.contentWidth}px, 0, 0)`,
             }}
@@ -364,7 +364,7 @@ const Calendar: React.FC<CalendarProps> = ({
           role="button"
           aria-label="Prev"
         >
-          <ArrowNext className={clx(styles["month-control-prev-arrow"])} />
+          <ArrowNext className={styles["month-control-prev-arrow"]} />
         </button>
         <button
           className={clx(styles["month-control"], styles["month-control-next"])}
@@ -374,7 +374,7 @@ const Calendar: React.FC<CalendarProps> = ({
           role="button"
           aria-label="Next"
         >
-          <ArrowNext className={clx(styles["month-control-next-arrow"])} />
+          <ArrowNext className={styles["month-control-next-arrow"]} />
         </button>
       </>
       {datePresets && (

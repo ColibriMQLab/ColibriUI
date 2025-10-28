@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./BaseInput.module.scss";
 import type { ChangeEvent } from "react";
 import type { Props } from "./index.props";
@@ -18,7 +18,7 @@ const BaseInput = ({
   };
   return (
     <input
-      className={classNames(styles["base-input"], className)}
+      className={clsx(styles["base-input"], className)}
       onChange={onChangeHandler}
       onFocus={onFocus}
       onBlur={onBlur}

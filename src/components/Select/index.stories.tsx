@@ -7,7 +7,7 @@ const meta: Meta<typeof Select> = {
 	title: "UI/Select",
 	component: Select,
 	parameters: {
-		layout: "centered",
+		// layout: "centered",
 	},
 	argTypes: {
 		hasError: {

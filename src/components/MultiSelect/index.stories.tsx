@@ -8,7 +8,7 @@ const meta: Meta<typeof MultiSelect> = {
 	title: "UI/MultiSelect",
 	component: MultiSelect,
 	parameters: {
-		layout: "centered",
+		// layout: "centered",
 	},
 	argTypes: {
 		type: {

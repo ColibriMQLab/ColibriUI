@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Chevron from "../Icons/Chevron";
 import InputRoot from "../base/InputRoot";
 import FormField from "../base/FormField";
@@ -9,106 +9,105 @@ import MenuOverlay from "./components/MenuOverlay";
 import type { JSX } from "react";
 import type { SelectProps } from "./index.props";
 
-const clx = classNames.bind(styles);
-
 const Select = <T extends string>({
-  options = [],
-  value,
-  name,
-  zIndex,
-  fontSize,
-  label,
-  hint,
-  hasError,
-  required,
-  placeholder,
-  disabled,
-  size = "m",
-  fullWidth = false,
-  customInputRoot,
-  className,
-  onChange,
+	options = [],
+	value,
+	name,
+	zIndex,
+	fontSize,
+	label,
+	hint,
+	hasError,
+	required,
+	placeholder,
+	disabled,
+	size = "m",
+	fullWidth = false,
+	customInputRoot,
+	className,
+	onChange,
 }: SelectProps<T>): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const preparedOptions = useMemo(
-    () =>
-      options.map(({ value: lvalue, label: llabel, disabled: ldisabled }) => ({
-        value: lvalue,
-        label: llabel,
-        selected: value === lvalue,
-        disabled: ldisabled,
-      })),
-    [value, options],
-  );
+	const preparedOptions = useMemo(
+		() =>
+			options.map(({ value: lvalue, label: llabel, disabled: ldisabled }) => ({
+				value: lvalue,
+				label: llabel,
+				selected: value === lvalue,
+				disabled: ldisabled,
+			})),
+		[value, options],
+	);
 
-  const preparedLabel = useMemo(
-    () => preparedOptions.find(({ selected }) => selected)?.label,
-    [preparedOptions],
-  );
+	const preparedLabel = useMemo(
+		() => preparedOptions.find(({ selected }) => selected)?.label,
+		[preparedOptions],
+	);
 
-  return (
-    <FormField
-      className={clx(
-        styles["form-field"],
-        {
-          "full-width": fullWidth ? 1 : 0,
-        },
-        className,
-      )}
-      required={required}
-      label={label}
-      hint={hint}
-      hasError={hasError}
-    >
-      <Dropdown
-        placement="bottom-start"
-        preventOverflow={true}
-        onVisibleChange={setIsOpen}
-        trigger={["click"]}
-        zIndex={zIndex}
-        fontSize={fontSize}
-        disabled={Boolean(disabled)}
-        overlay={<MenuOverlay options={preparedOptions} onChange={onChange} />}
-        samewidth
-      >
-        {customInputRoot ? (
-          customInputRoot
-        ) : (
-          <div tabIndex={0} role="button" style={{width: 'fit-content'}}>
-            <InputRoot
-              hasError={hasError}
-              size={size}
-              className={clx(styles.root)}
-              endIcon={
-                <Chevron
-                  className={clx(styles.icon, {
-                    icon_isOpen: isOpen && Boolean(!disabled),
-                  })}
-                />
-              }
-              disabled={Boolean(disabled)}
-            >
-              <div
-                className={clx(styles["base-input"])}
-                data-testid="base-input"
-              >
-                {preparedLabel ?? (
-                  <span className={clx(styles.placeholder)}>{placeholder}</span>
-                )}
-              </div>
-              <input
-                type="hidden"
-                name={name}
-                tabIndex={-1}
-                value={value || ""}
-              />
-            </InputRoot>
-          </div>
-        )}
-      </Dropdown>
-    </FormField>
-  );
+	return (
+		<FormField
+			className={clsx(
+				styles["form-field"],
+				{
+					[styles["full-width"]]: Boolean(fullWidth),
+				},
+				className,
+			)}
+			required={required}
+			label={label}
+			hint={hint}
+			hasError={hasError}
+		>
+			<Dropdown
+				placement="bottom-start"
+				preventOverflow={true}
+				onVisibleChange={setIsOpen}
+				trigger={["click"]}
+				zIndex={zIndex}
+				fontSize={fontSize}
+				disabled={Boolean(disabled)}
+				overlay={<MenuOverlay options={preparedOptions} onChange={onChange} />}
+				samewidth
+			>
+				{customInputRoot ? (
+					customInputRoot
+				) : (
+					<div tabIndex={0} role="button" style={{ width: fullWidth ? '100%' : 'fit-content' }}>
+						<InputRoot
+							hasError={hasError}
+							size={size}
+							style={{ width: fullWidth ? '100%' : ''}}
+							className={styles.root}
+							endIcon={
+								<Chevron
+									className={clsx(styles.icon, {
+										[styles['icon_isOpen']]: isOpen && Boolean(!disabled),
+									})}
+								/>
+							}
+							disabled={Boolean(disabled)}
+						>
+							<div
+								className={styles["base-input"]}
+								data-testid="base-input"
+							>
+								{preparedLabel ?? (
+									<span className={styles.placeholder}>{placeholder}</span>
+								)}
+							</div>
+							<input
+								type="hidden"
+								name={name}
+								tabIndex={-1}
+								value={value || ""}
+							/>
+						</InputRoot>
+					</div>
+				)}
+			</Dropdown>
+		</FormField>
+	);
 };
 
 export default Select;
