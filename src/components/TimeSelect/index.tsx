@@ -19,6 +19,7 @@ interface TimeSelectProps extends Omit<SelectProps<string>, "options"> {
 	name?: string;
 	disabled?: boolean;
 	allowedTimeRange?: TimeRange;
+	fullWidth?: boolean;
 }
 
 const isTimeInRange = (timeString: string, range: TimeRange): boolean => {
@@ -44,6 +45,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
 	onChange,
 	disabled,
 	allowedTimeRange,
+	fullWidth,
 	...props
 }: TimeSelectProps) => {
 	const baseOptions = useMemo(
@@ -79,6 +81,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
 	return (
 		<Select
 			{...props}
+			fullWidth={fullWidth}
 			name={name}
 			value={value}
 			label={label}
