@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import FormField from "../base/FormField";
 import InputRoot from "../base/InputRoot";
 import BaseInput from "../base/BaseInput";
@@ -25,7 +25,7 @@ const Input = ({
   ...props
 }: InputProps) => (
   <FormField
-    className={classNames(className)}
+    className={clsx(className)}
     label={label}
     required={required}
     hint={hint}

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./Image.module.scss";
 import type { ImageProps } from "./index.props";
 
@@ -40,7 +40,7 @@ const Image = ({
   }, []);
 
   return (
-    <picture ref={ref} className={classNames(styles.root)}>
+    <picture ref={ref} className={styles.root}>
       {!!sources.length &&
         sources.map((source, index) => (
           <source key={`item-${index}`} {...source} />
@@ -49,7 +49,7 @@ const Image = ({
       <img
         alt={alt}
         style={sizeAttrs}
-        className={classNames(className)}
+        className={clsx(className)}
         loading={loading}
         aria-hidden={ariaLabel ? "false" : "true"}
         aria-label={ariaLabel}

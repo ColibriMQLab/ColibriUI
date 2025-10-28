@@ -1,9 +1,6 @@
 import * as React from "react";
-import classNames from "classnames/bind";
 import Button from "../../../Button";
 import styles from "./index.module.scss";
-
-const clx = classNames.bind(styles);
 
 export enum PRESETS {
   TODAY = "today",
@@ -29,10 +26,10 @@ export const Presets: React.FunctionComponent<Props> = ({
   onPresetSelect,
 }) => (
   <div data-testid="presets">
-    <div className={clx(styles["native-scroll-inner"])}>
-      <div className={clx(styles.inner)}>
+    <div className={styles["native-scroll-inner"]}>
+      <div className={styles.inner}>
         {presets.map((preset, ...rest) => (
-          <div className={clx(styles.item)} key={`preset=${rest[0]}`}>
+          <div className={styles.item} key={`preset=${rest[0]}`}>
             <Button
               variant="outline"
               onClick={() => onPresetSelect(preset)}

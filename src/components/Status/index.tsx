@@ -1,10 +1,8 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import styles from "./index.module.scss";
 import type { PropsWithChildren } from "react";
 import type { StatusProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Status = ({
   className,
@@ -13,7 +11,11 @@ const Status = ({
   type,
 }: PropsWithChildren<StatusProps>) => (
   <Component
-    className={clx(styles.root, { [`root_${type}`]: !!type }, className)}
+    className={clsx(
+      styles.root,
+      { [styles[`root_${type}`]]: Boolean(type) },
+      className,
+    )}
   >
     {children}
   </Component>

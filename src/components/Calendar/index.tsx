@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { requestIdleCallback } from "../libs/requestIdleCallback";
 import { getDaysDiff } from "../helpers/date";
 import { ArrowNext } from "../Icons";
@@ -18,8 +18,6 @@ import styles from "./index.module.scss";
 import type { MouseEvent } from "react";
 import type { CalendarProps } from "./index.props";
 import type { Preset } from "./components/Presets";
-
-const clx = classNames.bind(styles);
 
 const idleCallbackOptions = {
   timeout: 1000,
@@ -310,7 +308,7 @@ const Calendar: React.FC<CalendarProps> = ({
 
   return (
     <div
-      className={clx(styles.root, className)}
+      className={clsx(styles.root, className)}
       style={{ minWidth: `${minWidth}px` }}
       data-testid="calendar"
       ref={$root}
@@ -357,7 +355,10 @@ const Calendar: React.FC<CalendarProps> = ({
           />
         )}
         <button
-          className={clx(styles["month-control"], styles["month-control-prev"])}
+          className={clsx(
+            styles["month-control"],
+            styles["month-control-prev"],
+          )}
           onClick={showPrevMonth}
           disabled={state.currentMonthOffset <= 0}
           type="button"
@@ -367,7 +368,10 @@ const Calendar: React.FC<CalendarProps> = ({
           <ArrowNext className={styles["month-control-prev-arrow"]} />
         </button>
         <button
-          className={clx(styles["month-control"], styles["month-control-next"])}
+          className={clsx(
+            styles["month-control"],
+            styles["month-control-next"],
+          )}
           onClick={showNextMonth}
           disabled={state.currentMonthOffset >= 11}
           type="button"

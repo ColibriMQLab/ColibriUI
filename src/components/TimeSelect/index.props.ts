@@ -1,4 +1,4 @@
 export type Timestamp = {
-	time: string;
-	disabled?: boolean;
+  time: string;
+  disabled?: boolean;
 };

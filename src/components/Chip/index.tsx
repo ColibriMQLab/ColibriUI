@@ -1,10 +1,8 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import styles from "./Chip.module.scss";
 import type { ChipProps } from "./index.props";
 import type { FC, PropsWithChildren } from "react";
-
-const clx = classNames.bind(styles);
 
 const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
@@ -16,28 +14,28 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
   testID = "chip",
   ...props
 }) => (
-  <span className={clx("chip")} data-testid={testID} {...props}>
+  <span className={styles.chip} data-testid={testID} {...props}>
     <span
-      className={clx("inner", {
-        inner_active: iconEnd || isActive,
-        inner_inactive: !iconEnd && !isActive,
+      className={clsx(styles.inner, {
+        [styles["inner_active"]]: iconEnd || isActive,
+        [styles["inner_inactive"]]: !iconEnd && !isActive,
       })}
       data-size={size}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <span
-        className={clx("content")}
+        className={styles.content}
         aria-pressed={isActive}
         role="button"
         tabIndex={0}
         onClick={onClick}
       >
-        <span className={clx("content-inner")}>{children}</span>
+        <span className={styles["content-inner"]}>{children}</span>
       </span>
       {iconEnd && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <span
-          className={clx("icon-right")}
+          className={styles["icon-right"]}
           role="button"
           tabIndex={0}
           onClick={onClickIcon}

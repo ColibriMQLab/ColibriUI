@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import useScrollLock from "../hooks/useScrollLock";
 import useTrapFocus from "../hooks/useTrapFocus";
 import Portal from "../Portal";
@@ -10,8 +10,6 @@ import Title from "./components/Title";
 import styles from "./Modal.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { ModalProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Modal: FC<PropsWithChildren<ModalProps>> = ({
   children,
@@ -52,34 +50,34 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   return (
     <Portal>
       <div
-        className={clx("root")}
+        className={styles.root}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? "modal-title" : undefined}
       >
         <div
-          className={clx("modal-overlay")}
+          className={styles["modal-overlay"]}
           onClick={handleOverlayClick}
           aria-hidden="true"
         />
         <div
-          className={clx(
-            "modal-wrapper",
+          className={clsx(
+            styles["modal-wrapper"],
             {
-              "modal-wrapper_desktop": isDesktop,
-              "modal-wrapper_mobile": !isDesktop,
+              [styles["modal-wrapper_desktop"]]: isDesktop,
+              [styles["modal-wrapper_mobile"]]: !isDesktop,
             },
             className,
           )}
           ref={modalRef}
         >
           {title ? (
-            <div className={clx("title-wrapper")}>
+            <div className={styles["title-wrapper"]}>
               <Title>{title}</Title>
               <Close onClick={handleClose} aria-label="Close modal" />
             </div>
           ) : (
-            <div className={clx("close-wrapper")}>
+            <div className={styles["close-wrapper"]}>
               <Close onClick={handleClose} aria-label="Close modal" />
             </div>
           )}

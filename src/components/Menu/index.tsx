@@ -1,11 +1,8 @@
 import React, { useMemo, isValidElement, Children, cloneElement } from "react";
-
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import styles from "./Menu.module.scss";
 import type { Props } from "./index.props";
 import type { KeyboardEvent, MouseEvent } from "react";
-
-const clx = classNames.bind(styles);
 
 const Menu = ({
   selected,
@@ -39,7 +36,7 @@ const Menu = ({
   );
 
   return (
-    <ul ref={ref} className={clx("menu", className)} role="menu">
+    <ul ref={ref} className={clsx(styles.menu, className)} role="menu">
       {renderChild}
     </ul>
   );
