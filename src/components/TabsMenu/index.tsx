@@ -1,14 +1,12 @@
 import React, { useCallback, createRef, useMemo } from "react";
 
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { isKey, Keys } from "../lib/keyboard";
 import Tab from "./Tab/Tab";
 import styles from "./TabsMenu.module.scss";
 import type { TabsMenuProps } from "./index.props";
 
 import type { KeyboardEvent, FC } from "react";
-
-const clx = classNames.bind(styles);
 
 const TabsMenu: FC<TabsMenuProps> = ({
   activeTab,
@@ -76,7 +74,7 @@ const TabsMenu: FC<TabsMenuProps> = ({
   return (
     <ul
       {...props}
-      className={clx(styles.root, className)}
+      className={clsx(styles.root, className)}
       ref={innerRef}
       role="tablist"
     >

@@ -1,11 +1,8 @@
 import React, { useMemo, useCallback } from "react";
-import classNames from "classnames/bind";
 import Button from "../../../Button";
 import { requestIdleCallback } from "../../../libs/requestIdleCallback";
 import { getPeriodDates } from "../../../helpers/date";
 import styles from "./index.module.scss";
-
-const clx = classNames.bind(styles);
 
 type Props = {
   isChanged: boolean;
@@ -36,7 +33,7 @@ export const ContinueButton: React.FC<Props> = ({
   }, [isChanged, onContinue, onCancel]);
 
   return (
-    <div className={clx(styles.root)} data-testid="continue-button">
+    <div className={styles.root} data-testid="continue-button">
       <Button size="l" onClick={handleClick}>
         {isChanged && selectedDates ? <>Select {selectedDates}</> : <>Cancel</>}
       </Button>

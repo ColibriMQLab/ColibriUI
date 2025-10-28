@@ -1,13 +1,11 @@
 import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import FormField from "../base/FormField";
 import InputRoot from "../base/InputRoot";
 import styles from "./TextArea.module.scss";
 import type { ITextAreaProps } from "./index.props";
 import type { ChangeEvent } from "react";
-
-const clx = classNames.bind(styles);
 
 const TextArea = ({
   className,
@@ -31,7 +29,7 @@ const TextArea = ({
   return (
     <FormField
       ref={ref}
-      className={clx(null, className)}
+      className={clsx(className)}
       required={required}
       label={label}
       hint={hint}
@@ -44,7 +42,7 @@ const TextArea = ({
           minRows={minRows}
           maxRows={maxRows}
           value={value}
-          className={clx(styles.textarea, className)}
+          className={clsx(styles.textarea, className)}
           onChange={onChangeHandler}
           {...props}
         />

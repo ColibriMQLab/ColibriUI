@@ -1,10 +1,8 @@
 import React, { memo } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Radio from "./Radio";
 import styles from "./RadioGroup.module.scss";
 import type { FC } from "react";
-
-const clx = classNames.bind(styles);
 
 export interface Option {
   id?: string;
@@ -44,11 +42,11 @@ const RadioGroup: FC<RadioGroupProps> = memo(
     disabled = false,
   }: RadioGroupProps) => (
     <div
-      className={clx(
+      className={clsx(
         styles.group,
         {
-          group_column: !!column,
-          group_wrapped: !!wrapped,
+          [styles["group_column"]]: Boolean(column),
+          [styles["group_wrapped"]]: Boolean(wrapped),
         },
         className,
       )}
@@ -75,7 +73,7 @@ const RadioGroup: FC<RadioGroupProps> = memo(
             text={text}
             note={note}
             name={name}
-            className={clx(styles.radio, optionClassName)}
+            className={clsx(styles.radio, optionClassName)}
             checked={val === optionVal}
             onChange={(e) => onChange(e.target.value)}
             onBlur={onBlur}

@@ -1,10 +1,8 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { type TypographyProps } from "./index.props";
 import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
-
-const clx = classNames.bind(styles);
 
 const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   tag: Component = "span",
@@ -19,11 +17,11 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   <Component
     {...props}
     style={{ ...style }}
-    className={clx(
+    className={clsx(
       {
-        [`size_${size}`]: Boolean(size),
-        [`font-weight_${fontWeight}`]: Boolean(fontWeight),
-        [`variant_${variant}`]: Boolean(variant),
+        [styles[`size_${size}`]]: Boolean(size),
+        [styles[`font-weight_${fontWeight}`]]: Boolean(fontWeight),
+        [styles[`variant_${variant}`]]: Boolean(variant),
       },
       className,
     )}

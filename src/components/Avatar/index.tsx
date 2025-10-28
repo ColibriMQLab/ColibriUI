@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { AvatarSize } from "./constants";
 import userCircleUrl from "./assets/user-circle.svg";
 import orgCircleUrl from "./assets/org-circle.svg";
@@ -7,8 +7,6 @@ import styles from "./Avatar.module.scss";
 import { AccountType } from "./index.props";
 import type { AvatarProps } from "./index.props";
 import type { FC } from "react";
-
-const clx = classNames.bind(styles);
 
 const getStubImage = (type: AccountType) =>
   type === AccountType.Organization ? orgCircleUrl : userCircleUrl;
@@ -51,7 +49,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
 
   // Приоритет: переданное изображение (src) > инициалы > дефолтное изображение
   const hasInitials = initials && initials.trim().length > 0;
-  const hasCustomImage = !!src;
+  const hasCustomImage = Boolean(src);
 
   // Показываем изображение если есть src ИЛИ (нет инициалов И есть дефолтное изображение)
   const shouldShowImage = hasCustomImage || (!hasInitials && stubSrc);
@@ -60,7 +58,9 @@ const Avatar: FC<AvatarProps> = memo((props) => {
   return shouldShowImage ? (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
-      className={clx(styles.avatarWrapper, { avatarLoader: !!loading })}
+      className={clsx(styles["avatar-wrapper"], {
+        [styles["avatar-loader"]]: Boolean(loading),
+      })}
       onClick={onClick}
       role="button"
       aria-label={ariaLabel || "Avatar"}
@@ -70,9 +70,9 @@ const Avatar: FC<AvatarProps> = memo((props) => {
         data-testid="avatar"
         alt={alt}
         src={finalSrc as string}
-        className={clx(
-          "avatar",
-          { avatarBordered: !!bordered },
+        className={clsx(
+          styles.avatar,
+          { [styles["avatar-bordered"]]: Boolean(bordered) },
           SIZE_CLASSES[size],
           className,
         )}
@@ -87,15 +87,18 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       role="button"
       aria-label={ariaLabel || "Avatar"}
       onClick={onClick}
-      className={clx(
-        "avatarInitials",
-        { avatarBordered: !!bordered, loading: !!loading },
+      className={clsx(
+        styles["avatar-initials"],
+        {
+          [styles["avatar-bordered"]]: Boolean(bordered),
+          [styles["avatar-loader"]]: Boolean(loading),
+        },
         SIZE_CLASSES[size],
         className,
       )}
       {...rest}
     >
-      <span className={clx("initialsText", TEXT_CLASSES[size])}>
+      <span className={clsx(styles["initials-text"], TEXT_CLASSES[size])}>
         {initials?.trim().slice(0, 2) || ""}
       </span>
     </span>

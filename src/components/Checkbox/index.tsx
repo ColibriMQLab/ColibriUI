@@ -1,11 +1,9 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Typography from "../Typography";
 import styles from "./Checkbox.module.scss";
 import type { FC } from "react";
 import type { CheckboxProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Checkbox: FC<CheckboxProps> = ({
   id,
@@ -22,10 +20,10 @@ const Checkbox: FC<CheckboxProps> = ({
   disabled,
   hasError,
 }) => (
-  <div className={clx(styles.root)}>
-    <label className={clx(styles.label)} htmlFor={id}>
+  <div className={styles.root}>
+    <label className={styles.label} htmlFor={id}>
       <input
-        className={clx(
+        className={clsx(
           styles.control,
           styles[`control_variant_${variant}`],
           className,
@@ -41,14 +39,14 @@ const Checkbox: FC<CheckboxProps> = ({
         disabled={disabled}
       />
       <span
-        className={clx(styles["fake-checkbox"], styles[`variant_${variant}`], {
-          [styles[`variant_${variant}_disabled`]]: disabled,
-          [styles[`variant_${variant}_error`]]: hasError,
-          [styles[`variant_${variant}_checked`]]: checked,
-          [styles.checked]: checked,
+        className={clsx(styles["fake-checkbox"], styles[`variant_${variant}`], {
+          [styles[`variant_${variant}_disabled`]]: Boolean(disabled),
+          [styles[`variant_${variant}_error`]]: Boolean(hasError),
+          [styles[`variant_${variant}_checked`]]: Boolean(checked),
+          [styles.checked]: Boolean(checked),
         })}
       />
-      <span className={clx(styles.text)}>{label}</span>
+      <span className={styles.text}>{label}</span>
     </label>
     {hint && (
       <Typography variant={hasError ? "alert" : "secondary"} tag="span">

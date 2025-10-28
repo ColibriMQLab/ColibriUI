@@ -1,11 +1,8 @@
 import React from "react";
-
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import styles from "./Tab.module.scss";
 import type { FC } from "react";
 import type { TabProps } from "./Tab.props";
-
-const clx = classNames.bind(styles);
 
 const Tab: FC<TabProps> = ({
   innerRef,
@@ -20,12 +17,12 @@ const Tab: FC<TabProps> = ({
     {...props}
     aria-selected={active}
     ref={innerRef}
-    className={clx(
+    className={clsx(
       styles.tab,
       {
-        tab_inactive: !active,
-        tab_active: !!active,
-        tab_disabled: !!disabled,
+        [styles["tab_inactive"]]: Boolean(!active),
+        [styles["tab_active"]]: Boolean(active),
+        [styles["tab_disabled"]]: Boolean(disabled),
       },
       className,
     )}

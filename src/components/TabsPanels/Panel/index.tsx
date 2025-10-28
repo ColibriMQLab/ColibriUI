@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import type { PanelProps } from "./index.props";
 import type { FC } from "react";
 
@@ -9,12 +9,7 @@ export const TabsPanel: FC<PanelProps> = ({
   id,
   ...props
 }) => (
-  <div
-    {...props}
-    id={id}
-    role="tabpanel"
-    className={classNames(null, className)}
-  >
+  <div {...props} id={id} role="tabpanel" className={clsx(className)}>
     {content}
   </div>
 );

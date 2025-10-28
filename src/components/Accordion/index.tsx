@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { Chevron } from "../Icons";
 import Typography from "../Typography";
 import styles from "./Accordion.module.scss";
 import type { FC, ReactNode, PropsWithChildren } from "react";
-
-const clx = classNames.bind(styles);
 
 type Props = {
   title: ReactNode;
@@ -36,10 +34,10 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
   }, [isOpen]);
 
   return (
-    <div className={clx("root", className)}>
-      <div className={clx("header")}>
+    <div className={clsx(styles.root, className)}>
+      <div className={styles.header}>
         <button
-          className={clx("button")}
+          className={styles.button}
           onClick={toggleAccordion}
           type="button"
           role="button"
@@ -48,20 +46,22 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
           aria-label="Toggle"
         >
           <Chevron
-            className={clx("chevron", { chevron_open: isOpen })}
+            className={clsx(styles.chevron, {
+              [styles["chevron_open"]]: Boolean(isOpen),
+            })}
             width={20}
             height={20}
           />
           <Typography
-            className={clx("text")}
+            className={styles.text}
             fontWeight={boldTitle ? "bold" : "normal"}
           >
             {title}
           </Typography>
-          <div className={clx("line")} />
+          <div className={styles.line} />
         </button>
       </div>
-      <div ref={contentRef} className={clx("content")}>
+      <div ref={contentRef} className={styles.content}>
         {children}
       </div>
     </div>

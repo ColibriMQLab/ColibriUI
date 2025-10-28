@@ -7,7 +7,6 @@ import React, {
   type ReactElement,
   useRef,
 } from "react";
-import classNames from "classnames/bind";
 import {
   useFloating,
   offset,
@@ -21,10 +20,9 @@ import {
   FloatingPortal,
   FloatingArrow,
 } from "@floating-ui/react";
+import clsx from "clsx";
 import styles from "./Tooltip.module.scss";
 import type { TooltipProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   children,
@@ -88,10 +86,10 @@ const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
           <div
             ref={refs.setFloating}
             {...getFloatingProps()}
-            className={clx("tooltip", className)}
+            className={clsx(styles.tooltip, className)}
             style={{ ...floatingStyles, zIndex }}
           >
-            <div className={clx("content")}>{content}</div>
+            <div className={styles.content}>{content}</div>
 
             {withTail && <FloatingArrow ref={arrowRef} context={context} />}
           </div>

@@ -1,6 +1,5 @@
 import React, { memo } from "react";
-
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Typography from "../Typography";
 import styles from "./InputRadio.module.scss";
 import type {
@@ -10,8 +9,6 @@ import type {
   FocusEvent,
   ChangeEvent,
 } from "react";
-
-const clx = classNames.bind(styles);
 
 type InputRadioProps = {
   checked?: boolean;
@@ -59,7 +56,7 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
   }) => (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <label
-      className={clx(styles.label, className)}
+      className={clsx(styles.label, className)}
       htmlFor={id}
       style={style}
       onClick={onClick}
@@ -67,9 +64,12 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
       data-testid={testid}
     >
       <div
-        className={clx(
+        className={clsx(
           styles.container,
-          { container_disabled: !!disabled, container_error: !!error },
+          {
+            [styles["container_disabled"]]: Boolean(disabled),
+            [styles["container_error"]]: Boolean(error),
+          },
           containerClassName,
         )}
       >
@@ -78,10 +78,10 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
           id={id}
           value={value}
           name={name}
-          className={clx(styles.input, {
-            input_error: !!error,
-            input_checked: !!checked,
-            input_disabled: !!disabled,
+          className={clsx(styles.input, {
+            [styles["input_error"]]: Boolean(error),
+            [styles["input_checked"]]: Boolean(checked),
+            [styles["input_disabled"]]: Boolean(disabled),
           })}
           checked={checked}
           disabled={disabled}
@@ -90,14 +90,14 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
           onBlur={onBlur}
           {...rest}
         />
-        <span className={clx(styles.icon)} />
-        <span className={clx(styles.text)}>
+        <span className={styles.icon} />
+        <span className={styles.text}>
           {!children && text}
           {!text && children}
         </span>
       </div>
       {!!note && (
-        <Typography tag="p" size="s" className={clx(styles.note)}>
+        <Typography tag="p" size="s" className={styles.note}>
           {note}
         </Typography>
       )}

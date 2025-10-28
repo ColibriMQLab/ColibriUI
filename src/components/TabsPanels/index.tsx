@@ -1,6 +1,5 @@
 import React from "react";
-
-import classNames from "classnames";
+import clsx from "clsx";
 import { TabsPanel } from "./Panel";
 import type { TabsPanelsProps } from "./index.props";
 import type { FC } from "react";
@@ -31,7 +30,7 @@ const TabsPanels: FC<TabsPanelsProps> = ({
       {...props}
       ref={innerRef}
       role="menutabpanels"
-      className={classNames(null, [className])}
+      className={clsx(className)}
     >
       <TabsPanel
         aria-labelledby={`tab-${activePanel}`}

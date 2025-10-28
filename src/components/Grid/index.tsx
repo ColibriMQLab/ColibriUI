@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./Grid.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { GridProps } from "./index.props";
@@ -12,7 +12,7 @@ const Grid: FC<PropsWithChildren<GridProps>> = ({
   className,
 }) => (
   <div
-    className={classNames(styles.root, className)}
+    className={clsx(styles.root, className)}
     style={{
       rowGap: `${gridRowGap}px`,
       columnGap: `${gridColumnGap}px`,

@@ -1,11 +1,9 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { BadgeControl as Control } from "./Control";
 import styles from "./Badge.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { Props } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Badge: FC<PropsWithChildren<Props>> = ({
   background,
@@ -39,11 +37,11 @@ const Badge: FC<PropsWithChildren<Props>> = ({
       {children}
       {displayValue && (
         <span
-          className={clx(
-            "root",
+          className={clsx(
+            styles.root,
             {
-              [`root_direction_${direction}`]: !!direction,
-              root_invisible: invisible,
+              [styles[`root_direction_${direction}`]]: Boolean(direction),
+              [styles["root_invisible"]]: Boolean(invisible),
             },
             className,
           )}

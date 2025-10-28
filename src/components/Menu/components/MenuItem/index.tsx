@@ -1,10 +1,8 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import styles from "./MenuItem.module.scss";
 import type { PropsWithChildren } from "react";
 import type { MenuItemProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const MenuItem = ({
   className,
@@ -31,12 +29,12 @@ const MenuItem = ({
       tabIndex={disabled ? -1 : 0}
       data-testid="menuitem"
       aria-disabled={disabled || undefined}
-      className={clx(
-        "item",
+      className={clsx(
+        styles.item,
         {
-          item_disabled: disabled,
-          item_selected: isSelected,
-          [`item_variant_${variant}`]: true,
+          [styles["item_disabled"]]: Boolean(disabled),
+          [styles["item_selected"]]: Boolean(isSelected),
+          [styles[`item_variant_${variant}`]]: Boolean(variant),
         },
         className,
       )}

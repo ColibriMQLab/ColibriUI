@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMemo, useCallback } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { leadingZeros } from "../../../libs/numbers/leadingZeros";
 import Typography from "../../../Typography";
 import {
@@ -11,8 +11,6 @@ import { getMonthWeeks } from "../../utils/getMonthWeeks";
 import styles from "./index.module.scss";
 import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
-
-const clx = classNames.bind(styles);
 
 const WEEK_DAYS = Array.from({ length: 7 }, (_, idx) => {
   const index = idx + 1;
@@ -56,23 +54,23 @@ const Item = React.memo(
     isEndOfSelection,
     children,
   }: PropsWithChildren<ComponentProps>) => {
-    const itemClass = clx("day", {
-      ["selected-day"]: isSelected,
-      ["selected-range-day"]: isInSelectedRange || isSelected,
-      ["no-selection"]: isStartOfSelection && isEndOfSelection,
-      ["start-of-selection"]: isStartOfSelection && !isEndOfSelection,
-      ["end-of-selection"]: isEndOfSelection && !isStartOfSelection,
-      ["first-child"]: isEndOfSelection,
-      ["last-child"]: isStartOfSelection,
+    const itemClass = clsx(styles.day, {
+      [styles["selected-day"]]: isSelected,
+      [styles["selected-range-day"]]: isInSelectedRange || isSelected,
+      [styles["no-selection"]]: isStartOfSelection && isEndOfSelection,
+      [styles["start-of-selection"]]: isStartOfSelection && !isEndOfSelection,
+      [styles["end-of-selection"]]: isEndOfSelection && !isStartOfSelection,
+      [styles["first-child"]]: isEndOfSelection,
+      [styles["last-child"]]: isStartOfSelection,
     });
 
     if (isSelected) {
       return <li className={itemClass}>{children}</li>;
     } else if (isInSelectedRange) {
-      return <li className={clx("selected-range-day")}>{children}</li>;
+      return <li className={styles["selected-range-day"]}>{children}</li>;
     }
 
-    return <li className={clx("day")}>{children}</li>;
+    return <li className={styles.day}>{children}</li>;
   },
 );
 
@@ -96,7 +94,7 @@ const DayButton = React.memo<{
 
   return (
     <button
-      className={clx("day-inner", dayInnerActive)}
+      className={clsx(styles["day-inner"], dayInnerActive)}
       style={bgStyle}
       role="button"
       type="button"
@@ -156,16 +154,16 @@ const Month: FCWithElements<Props> = (props) => {
   );
 
   return (
-    <div data-testid="month" className={clx("root")} style={leftStyle}>
-      <div className={clx("month-name")}>
+    <div data-testid="month" className={styles.root} style={leftStyle}>
+      <div className={styles["month-name"]}>
         <Typography tag="span" size={titleSize}>
           {monthName}
         </Typography>
       </div>
-      <div className={clx("table")}>
-        <ul className={clx("legend")}>
+      <div className={styles.table}>
+        <ul className={styles.legend}>
           {WEEK_DAYS.map(({ index, name, isWeekend }) => (
-            <li className={clx("day")} key={index}>
+            <li className={styles.day} key={index}>
               <Typography
                 style={{
                   opacity: isWeekend ? 80 : 30,
@@ -180,12 +178,12 @@ const Month: FCWithElements<Props> = (props) => {
           ))}
         </ul>
         {weeks.map((days, weekIndex) => (
-          <ul key={`week-${weekIndex}`} className={clx("week")}>
+          <ul key={`week-${weekIndex}`} className={styles.week}>
             {days.map((day, dayIndex) => {
               const key = `day-${dayIndex}`;
 
               if (day.isDummy) {
-                return <li className={clx("day")} key={key} />;
+                return <li className={styles.day} key={key} />;
               }
 
               const dateString = `${year}-${month}-${leadingZeros(day.day, 2)}`;

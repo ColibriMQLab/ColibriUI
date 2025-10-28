@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Dropdown from "../../../Dropdown";
 import Calendar from "../../../Calendar";
 import { toDMYDate, toISODate } from "../../../helpers/date";
@@ -7,14 +7,12 @@ import styles from "./index.module.scss";
 import type { DatePickerProps } from "./index.props";
 import type { CalendarPayload } from "../../../Calendar/index.props";
 
-const clx = classNames.bind(styles);
-
 const CalendarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    className={clx("calendar-icon")}
+    className={styles["calendar-icon"]}
     strokeWidth={1.5}
     stroke="currentColor"
   >
@@ -46,7 +44,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       overlay={
         <Calendar
           minWidth={260}
-          className={clx("calendar", className)}
+          className={clsx(styles.calendar, className)}
           today={toISODate(new Date())}
           titleSize="h5"
           selectedDate={date}
@@ -54,9 +52,15 @@ const DatePicker: React.FC<DatePickerProps> = ({
         />
       }
     >
-      <div className={clx("input-container", "input-date", className)}>
+      <div
+        className={clsx(
+          styles["input-container"],
+          styles["input-date"],
+          className,
+        )}
+      >
         <input
-          className={clx("input-field")}
+          className={styles["input-field"]}
           tabIndex={0}
           aria-expanded="false"
           aria-haspopup="true"

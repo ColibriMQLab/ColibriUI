@@ -18,7 +18,7 @@ npm i -S colibri-ui
 
 ```tsx
 // app/layout.tsx
-import classNames from "classnames";
+import clsx from "clsx";
 import type { ReactNode } from "react";
 import "colibri-ui/theme_default_variables.css";
 
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={classNames("theme")}>
+      <body className={clsx("theme")}>
         {children}
       </body>
     </html>

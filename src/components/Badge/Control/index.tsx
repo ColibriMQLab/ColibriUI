@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./Control.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
@@ -10,7 +10,7 @@ export const BadgeControl: FC<PropsWithChildren<ControlProps>> = ({
   children,
   ...props
 }) => (
-  <span className={classNames(styles.root, className)} {...props}>
+  <span className={clsx(styles.root, className)} {...props}>
     {children}
   </span>
 );

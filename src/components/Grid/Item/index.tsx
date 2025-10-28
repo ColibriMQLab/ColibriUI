@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./Grid-Item.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { GridItemProps } from "./index.props";
@@ -11,7 +11,11 @@ const GridItem: FC<PropsWithChildren<GridItemProps>> = ({
   style,
 }) => (
   <div
-    className={classNames(styles.item, { [styles.full]: fullWidth }, className)}
+    className={clsx(
+      styles.item,
+      { [styles.full]: Boolean(fullWidth) },
+      className,
+    )}
     style={style}
   >
     {children}

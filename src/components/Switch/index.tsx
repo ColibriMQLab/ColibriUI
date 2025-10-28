@@ -1,10 +1,8 @@
 import React from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Typography from "../Typography";
 import styles from "./Switch.module.scss";
 import type { SwitchProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const Switch = ({
   disabled,
@@ -18,17 +16,17 @@ const Switch = ({
   ...props
 }: SwitchProps) => (
   <div
-    className={clx(
+    className={clsx(
       styles.root,
       {
-        root_disabled: disabled,
+        [styles["root_disabled"]]: Boolean(disabled),
       },
       className,
     )}
   >
-    <label className={clx(styles.label)} htmlFor={id}>
+    <label className={styles.label} htmlFor={id}>
       <input
-        className={clx(styles.checkbox)}
+        className={styles.checkbox}
         ref={ref}
         id={id}
         type="checkbox"
@@ -36,15 +34,15 @@ const Switch = ({
         {...props}
       />
       <div
-        className={clx(styles.wrapper, {
-          [`wrapper_variant_${variant}`]: variant,
-          wrapper_disabled: disabled,
-          wrapper_error: hasError,
+        className={clsx(styles.wrapper, {
+          [styles[`wrapper_variant_${variant}`]]: Boolean(variant),
+          [styles["wrapper_disabled"]]: Boolean(disabled),
+          [styles["wrapper_error"]]: Boolean(hasError),
         })}
       >
-        <div className={clx(styles["base-switch"])} />
+        <div className={styles["base-switch"]} />
       </div>
-      {label && <span className={clx(styles.text)}>{label}</span>}
+      {label && <span className={styles.text}>{label}</span>}
     </label>
     {hint && (
       <Typography variant={hasError ? "alert" : "secondary"} tag="span">

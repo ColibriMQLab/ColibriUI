@@ -1,12 +1,10 @@
 import React, { memo, useMemo, useState } from "react";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import Select from "../../../Select";
 import styles from "./index.module.scss";
 import { generateSuggest } from "./helpers";
 import OptionLabel from "./Label";
 import type { TimePickerProps } from "./index.props";
-
-const clx = classNames.bind(styles);
 
 const TimePicker = ({
   className,
@@ -33,13 +31,13 @@ const TimePicker = ({
 
   return (
     <Select
-      className={clx(className, styles.select)}
+      className={clsx(className, styles.select)}
       options={options}
       fontSize={14}
       customInputRoot={
-        <div className={clx(styles["input-container"], styles["input-time"])}>
+        <div className={clsx(styles["input-container"], styles["input-time"])}>
           <input
-            className={clx(styles["input-field"])}
+            className={styles["input-field"]}
             tabIndex={0}
             aria-expanded="false"
             aria-haspopup="true"
