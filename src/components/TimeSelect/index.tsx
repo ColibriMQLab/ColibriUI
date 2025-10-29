@@ -45,8 +45,7 @@ const TimeSelect: FC<TimeSelectProps> = ({
   onChange,
   disabled,
   allowedTimeRange,
-  fullWidth,
-  ...props
+  fullWidth
 }: TimeSelectProps) => {
   const baseOptions = useMemo(
     () =>
@@ -80,7 +79,6 @@ const TimeSelect: FC<TimeSelectProps> = ({
 
   return (
     <Select
-      {...props}
       fullWidth={fullWidth}
       name={name}
       value={value}
