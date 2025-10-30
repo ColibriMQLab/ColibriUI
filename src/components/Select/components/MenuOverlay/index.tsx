@@ -23,7 +23,7 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
     height: 0,
   });
   const listRef = useRef<null | HTMLUListElement>(null);
-  const rootRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   const handleSelect = useCallback(
     (option: IOption<T>, key: string) => {
