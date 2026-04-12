@@ -9,6 +9,7 @@ import eslintPluginJSXA11Y from "eslint-plugin-jsx-a11y";
 
 export default [
   { languageOptions: { globals: globals.browser } },
+  { settings: { react: { version: "detect" } } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReactConfig,

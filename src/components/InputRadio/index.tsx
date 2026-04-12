@@ -54,7 +54,7 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
     testid,
     ...rest
   }) => (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <label
       className={clsx(styles.label, className)}
       htmlFor={id}

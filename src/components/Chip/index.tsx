@@ -22,7 +22,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
       })}
       data-size={size}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <span
         className={styles.content}
         aria-pressed={isActive}
@@ -33,7 +33,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
         <span className={styles["content-inner"]}>{children}</span>
       </span>
       {iconEnd && (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <span
           className={styles["icon-right"]}
           role="button"

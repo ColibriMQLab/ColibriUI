@@ -70,7 +70,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     () =>
       preparedGroups.flatMap(({ value: groupVal, options }) =>
         options
-          // eslint-disable-next-line @typescript-eslint/no-shadow
+
           .filter(({ selected }) => selected)
           .map(
             // eslint-disable-next-line @typescript-eslint/no-shadow
