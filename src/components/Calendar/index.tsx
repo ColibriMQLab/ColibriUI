@@ -156,7 +156,7 @@ const Calendar: React.FC<CalendarProps> = ({
 	className,
 	titleSize = "h3",
 }) => {
-	const $root = useRef<HTMLDivElement>(null);
+	const rootElementRef = useRef<HTMLDivElement>(null);
 
 	const startMonth = getStartMonth({ today, activeDates });
 
@@ -190,22 +190,22 @@ const Calendar: React.FC<CalendarProps> = ({
 	});
 
 	useEffect(() => {
-		const el = $root.current;
-		if (!el) return;
+		const rootElement = rootElementRef.current;
+		if (!rootElement) return;
 
 		dispatch({
 			type: "SET_CONTENT_WIDTH",
-			payload: el.offsetWidth,
+			payload: rootElement.offsetWidth,
 		});
 
 		const observer = new ResizeObserver(() => {
-			const width = el.offsetWidth;
+			const width = rootElement.offsetWidth;
 			if (width) {
 				dispatch({ type: "SET_CONTENT_WIDTH", payload: width });
 			}
 		});
 
-		observer.observe(el);
+		observer.observe(rootElement);
 		return () => observer.disconnect();
 	}, []); const showPrevMonth = (event: MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
@@ -308,44 +308,44 @@ const Calendar: React.FC<CalendarProps> = ({
 
 	const shiftDate = useCallback(
 		(date: string, days: number): string => {
-			const d = new Date(date);
-			d.setDate(d.getDate() + days);
-			const y = d.getFullYear();
-			const m = String(d.getMonth() + 1).padStart(2, "0");
-			const day = String(d.getDate()).padStart(2, "0");
-			return `${y}-${m}-${day}`;
+			const shiftedDate = new Date(date);
+			shiftedDate.setDate(shiftedDate.getDate() + days);
+			const year = shiftedDate.getFullYear();
+			const month = String(shiftedDate.getMonth() + 1).padStart(2, "0");
+			const day = String(shiftedDate.getDate()).padStart(2, "0");
+			return `${year}-${month}-${day}`;
 		},
 		[],
 	);
 
 	const handleKeyDown = useCallback(
-		(e: React.KeyboardEvent<HTMLDivElement>) => {
-			const base = state.focusedDate ?? state.selectedDate ?? today;
+		(event: React.KeyboardEvent<HTMLDivElement>) => {
+			const baseDateForNavigation = state.focusedDate ?? state.selectedDate ?? today;
 
-			if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-				e.preventDefault();
-				const next = shiftDate(base, e.key === "ArrowRight" ? 1 : 7);
-				const nextOffset = getNumberOfMonthsBetweenDates(startMonth, next);
-				if (nextOffset <= maxMonthOffset) {
+			if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+				event.preventDefault();
+				const nextDate = shiftDate(baseDateForNavigation, event.key === "ArrowRight" ? 1 : 7);
+				const nextMonthOffset = getNumberOfMonthsBetweenDates(startMonth, nextDate);
+				if (nextMonthOffset <= maxMonthOffset) {
 					dispatch({
 						type: "NAVIGATE_KEYBOARD",
-						payload: { focusedDate: next, monthOffset: nextOffset },
+						payload: { focusedDate: nextDate, monthOffset: nextMonthOffset },
 					});
 				}
-			} else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-				e.preventDefault();
-				const prev = shiftDate(base, e.key === "ArrowLeft" ? -1 : -7);
-				const prevOffset = getNumberOfMonthsBetweenDates(startMonth, prev);
-				if (prevOffset >= 0) {
+			} else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+				event.preventDefault();
+				const prevDate = shiftDate(baseDateForNavigation, event.key === "ArrowLeft" ? -1 : -7);
+				const prevMonthOffset = getNumberOfMonthsBetweenDates(startMonth, prevDate);
+				if (prevMonthOffset >= 0) {
 					dispatch({
 						type: "NAVIGATE_KEYBOARD",
-						payload: { focusedDate: prev, monthOffset: prevOffset },
+						payload: { focusedDate: prevDate, monthOffset: prevMonthOffset },
 					});
 				}
-			} else if (e.key === "Enter" || e.key === " ") {
-				e.preventDefault();
-				if (base) {
-					handleDayClick(base);
+			} else if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				if (baseDateForNavigation) {
+					handleDayClick(baseDateForNavigation);
 				}
 			}
 		},
@@ -369,7 +369,7 @@ const Calendar: React.FC<CalendarProps> = ({
 		[startMonth],
 	);
 
-	const commonAttrs = useMemo(
+	const commonMonthProps = useMemo(
 		() => ({
 			selectedDate: state.selectedDate,
 			selectedPeriod: state.selectedPeriod,
@@ -406,7 +406,7 @@ const Calendar: React.FC<CalendarProps> = ({
 			className={clsx(styles.root, className)}
 			style={{ minWidth: `${minWidth}px` }}
 			data-testid="calendar"
-			ref={$root}
+			ref={rootElementRef}
 			tabIndex={0}
 			onKeyDown={handleKeyDown}
 		>
@@ -426,16 +426,14 @@ const Calendar: React.FC<CalendarProps> = ({
 						]
 							.filter((index) => index >= 0)
 							.map((index) => {
-								const attrs = {
-									...commonAttrs,
-									today,
-									startDate: getMonthStartDate(index),
-									offsetLeft: index * state.contentWidth,
-								};
-
-								return (
+							const monthProps = {
+								...commonMonthProps,
+								today,
+								startDate: getMonthStartDate(index),
+								offsetLeft: index * state.contentWidth,
+							};								return (
 									<Month
-										{...attrs}
+										{...monthProps}
 										titleSize={titleSize}
 										key={`month-${index}`}
 									/>
@@ -448,7 +446,7 @@ const Calendar: React.FC<CalendarProps> = ({
 						today={today}
 						startDate={getMonthStartDate(state.currentMonthOffset)}
 						offsetLeft={0}
-						{...commonAttrs}
+						{...commonMonthProps}
 					/>
 				)}
 				<button

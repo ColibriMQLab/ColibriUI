@@ -12,8 +12,8 @@ import styles from "./index.module.scss";
 import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
 
-const WEEK_DAYS = Array.from({ length: 7 }, (_, idx) => {
-	const index = idx + 1;
+const WEEK_DAYS = Array.from({ length: 7 }, (_, weekDayIndex) => {
+	const index = weekDayIndex + 1;
 	return {
 		index,
 		name: getShortWeekDayNameByIndex(index),
@@ -85,11 +85,11 @@ const DayButton = React.memo<{
 	dateString: string;
 	onDayClick: (date: string) => void;
 }>(({ day, isActive, isSelected, isFocused, dateString, onDayClick }) => {
-	const btnRef = useRef<HTMLButtonElement>(null);
+	const buttonRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
-		if (isFocused && btnRef.current) {
-			btnRef.current.focus({ preventScroll: true });
+		if (isFocused && buttonRef.current) {
+			buttonRef.current.focus({ preventScroll: true });
 		}
 	}, [isFocused]);
 
@@ -99,16 +99,16 @@ const DayButton = React.memo<{
 		}
 	}, [isActive, dateString, onDayClick]);
 
-	const dayInnerActive = isActive ? "day-inner-active" : "";
-	const bgStyle = isSelected ? SELECTED_BG_STYLE : TRANSPARENT_BG_STYLE;
+	const dayInnerActiveClass = isActive ? "day-inner-active" : "";
+	const backgroundStyle = isSelected ? SELECTED_BG_STYLE : TRANSPARENT_BG_STYLE;
 
 	return (
 		<button
-			ref={btnRef}
-			className={clsx(styles["day-inner"], dayInnerActive, {
+			ref={buttonRef}
+			className={clsx(styles["day-inner"], dayInnerActiveClass, {
 				[styles["day-focused"]]: isFocused,
 			})}
-			style={bgStyle}
+			style={backgroundStyle}
 			role="button"
 			type="button"
 			tabIndex={isFocused ? 0 : -1}
@@ -197,10 +197,10 @@ const Month: FCWithElements<Props> = (props) => {
 				{weeks.map((days, weekIndex) => (
 					<ul key={`week-${weekIndex}`} className={styles.week}>
 						{days.map((day, dayIndex) => {
-							const key = `day-${dayIndex}`;
+							const itemKey = `day-${dayIndex}`;
 
 							if (day.isDummy) {
-								return <li className={styles.day} key={key} />;
+								return <li className={styles.day} key={itemKey} />;
 							}
 
 							const dateString = `${year}-${month}-${leadingZeros(day.day, 2)}`;
@@ -211,7 +211,7 @@ const Month: FCWithElements<Props> = (props) => {
 									isEndOfSelection={day.isEndOfSelection}
 									isSelected={day.isSelected}
 									isInSelectedRange={day.isInSelectedRange}
-									key={key}
+									key={itemKey}
 								>
 									<DayButton
 										day={day.day}
