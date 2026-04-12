@@ -1,157 +1,157 @@
 .root {
-  box-sizing: border-box;
-  padding: 0 16px;
-  width: 100%;
+	box-sizing: border-box;
+	padding: 0 16px;
+	width: 100%;
 }
 
 .month-name {
-  padding: 7px 0 25px;
-  text-align: center;
+	padding: 7px 0 25px;
+	text-align: center;
 }
 
 .table {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: 100%;
 }
 
 .week {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: center;
-  margin: 2px 0;
-  padding: 0;
+	display: grid;
+	gap: 4px;
+	grid-template-columns: repeat(7, 1fr);
+	justify-content: center;
+	margin: 2px 0;
+	padding: 0;
 }
 
 .day {
-  display: block;
-  min-height: 32px;
-  position: relative;
-  text-align: center;
+	display: block;
+	min-height: 32px;
+	position: relative;
+	text-align: center;
 }
 
 .legend {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(7, 1fr);
-  margin: 2px 0;
-  padding: 0;
-  text-align: center;
+	display: grid;
+	gap: 4px;
+	grid-template-columns: repeat(7, 1fr);
+	margin: 2px 0;
+	padding: 0;
+	text-align: center;
 }
 
 .selected-range-day {
-  display: block;
-  height: 32px;
-  position: relative;
-  text-align: center;
-  z-index: 0;
+	display: block;
+	height: 32px;
+	position: relative;
+	text-align: center;
+	z-index: 0;
 
-  &:hover {
-    z-index: 1;
-  }
+	&:hover {
+		z-index: 1;
+	}
 
-  &::before {
-    background: #f5f5f5;
-    content: "";
-    display: block;
-    height: 100%;
-    left: -50%;
-    position: absolute;
-    top: 0;
-    width: 200%;
-  }
+	&::before {
+		background: #f5f5f5;
+		content: "";
+		display: block;
+		height: 100%;
+		left: -50%;
+		position: absolute;
+		top: 0;
+		width: 200%;
+	}
 
-  &:first-child::before {
-    left: 0;
-    width: 150%;
-  }
+	&:first-child::before {
+		left: 0;
+		width: 150%;
+	}
 
-  &:last-child::before {
-    left: auto;
-    right: 0;
-    width: 150%;
-  }
+	&:last-child::before {
+		left: auto;
+		right: 0;
+		width: 150%;
+	}
 }
 
 .selected-day {
-  z-index: 2;
+	z-index: 2;
 
-  &::before {
-    display: block;
-    left: auto;
-    right: auto;
-    width: 100%;
-  }
+	&::before {
+		display: block;
+		left: auto;
+		right: auto;
+		width: 100%;
+	}
 
-  &:first-child::before {
-    display: block;
-    left: 50%;
-    width: 100%;
-  }
+	&:first-child::before {
+		display: block;
+		left: 50%;
+		width: 100%;
+	}
 
-  &:last-child::before {
-    display: block;
-    right: 50%;
-    width: 100%;
-  }
+	&:last-child::before {
+		display: block;
+		right: 50%;
+		width: 100%;
+	}
 
-  & + &,
-  & + &:hover {
-    z-index: 4 !important;
-  }
+	&+&,
+	&+&:hover {
+		z-index: 4 !important;
+	}
 }
 
 .no-selection::before {
-  display: none;
+	display: none;
 }
 
 .start-of-selection::before {
-  left: 50%;
-  right: auto;
+	left: 50%;
+	right: auto;
 }
 
 .end-of-selection::before {
-  left: auto;
-  right: 50%;
+	left: auto;
+	right: 50%;
 }
 
 .first-child {
-  &:first-child::before {
-    display: none;
-  }
+	&:first-child::before {
+		display: none;
+	}
 }
 
 .last-child {
-  &:last-child::before {
-    display: none;
-  }
+	&:last-child::before {
+		display: none;
+	}
 }
 
 .day-inner {
-  border: 0;
-  border-radius: 6px;
-  display: inline-block;
-  height: 32px;
-  max-width: 32px;
-  outline: 0;
-  padding: 0;
-  position: relative;
-  text-align: center;
-  transition: background 0.3s ease;
-  width: 100%;
+	border: 0;
+	border-radius: 6px;
+	display: inline-block;
+	height: 32px;
+	max-width: 32px;
+	outline: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	transition: background 0.3s ease;
+	width: 100%;
 }
 
 .day-inner-active {
-  cursor: pointer;
+	cursor: pointer;
 
-  &:hover {
-    background: var(--palette-bg-2);
-  }
+	&:hover {
+		background: var(--palette-bg-2);
+	}
 }
 
 .day-focused {
-  outline: 2px solid var(--palette-black, #000);
-  outline-offset: 2px;
+	outline: 2px solid var(--palette-black, #000);
+	outline-offset: 2px;
 }

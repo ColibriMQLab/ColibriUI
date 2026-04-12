@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { leadingZeros } from "../../../libs/numbers/leadingZeros";
 import Typography from "../../../Typography";
 import {
-  getShortWeekDayNameByIndex,
-  getUpperMonthName,
+	getShortWeekDayNameByIndex,
+	getUpperMonthName,
 } from "../../../helpers/date";
 import { getMonthWeeks } from "../../utils/getMonthWeeks";
 import styles from "./index.module.scss";
@@ -13,222 +13,222 @@ import type { CalendarTitleSize } from "../../index.props";
 import type { FunctionComponent, PropsWithChildren } from "react";
 
 const WEEK_DAYS = Array.from({ length: 7 }, (_, idx) => {
-  const index = idx + 1;
-  return {
-    index,
-    name: getShortWeekDayNameByIndex(index),
-    isWeekend: index > 5,
-  };
+	const index = idx + 1;
+	return {
+		index,
+		name: getShortWeekDayNameByIndex(index),
+		isWeekend: index > 5,
+	};
 });
 
 const SELECTED_BG_STYLE = { background: "var(--palette-bg-2)" };
 const TRANSPARENT_BG_STYLE = { background: "transparent" };
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export interface FCWithElements<T = {}> extends FunctionComponent<T> {}
+export interface FCWithElements<T = {}> extends FunctionComponent<T> { }
 
 type Props = {
-  today: string;
-  startDate: Date;
-  activeDays?: string[];
-  selectedDate?: string;
-  selectedPeriod?: number;
-  onDayClick: (date: string) => void;
-  offsetLeft: number;
-  availableDates?: string[];
-  titleSize?: CalendarTitleSize;
-  focusedDate?: string;
+	today: string;
+	startDate: Date;
+	activeDays?: string[];
+	selectedDate?: string;
+	selectedPeriod?: number;
+	onDayClick: (date: string) => void;
+	offsetLeft: number;
+	availableDates?: string[];
+	titleSize?: CalendarTitleSize;
+	focusedDate?: string;
 };
 
 type ComponentProps = {
-  isStartOfSelection?: boolean;
-  isEndOfSelection?: boolean;
-  isSelected?: boolean;
-  isInSelectedRange?: boolean;
+	isStartOfSelection?: boolean;
+	isEndOfSelection?: boolean;
+	isSelected?: boolean;
+	isInSelectedRange?: boolean;
 };
 
 const Item = React.memo(
-  ({
-    isSelected,
-    isInSelectedRange,
-    isStartOfSelection,
-    isEndOfSelection,
-    children,
-  }: PropsWithChildren<ComponentProps>) => {
-    const itemClass = clsx(styles.day, {
-      [styles["selected-day"]]: isSelected,
-      [styles["selected-range-day"]]: isInSelectedRange || isSelected,
-      [styles["no-selection"]]: isStartOfSelection && isEndOfSelection,
-      [styles["start-of-selection"]]: isStartOfSelection && !isEndOfSelection,
-      [styles["end-of-selection"]]: isEndOfSelection && !isStartOfSelection,
-      [styles["first-child"]]: isEndOfSelection,
-      [styles["last-child"]]: isStartOfSelection,
-    });
+	({
+		isSelected,
+		isInSelectedRange,
+		isStartOfSelection,
+		isEndOfSelection,
+		children,
+	}: PropsWithChildren<ComponentProps>) => {
+		const itemClass = clsx(styles.day, {
+			[styles["selected-day"]]: isSelected,
+			[styles["selected-range-day"]]: isInSelectedRange || isSelected,
+			[styles["no-selection"]]: isStartOfSelection && isEndOfSelection,
+			[styles["start-of-selection"]]: isStartOfSelection && !isEndOfSelection,
+			[styles["end-of-selection"]]: isEndOfSelection && !isStartOfSelection,
+			[styles["first-child"]]: isEndOfSelection,
+			[styles["last-child"]]: isStartOfSelection,
+		});
 
-    if (isSelected) {
-      return <li className={itemClass}>{children}</li>;
-    } else if (isInSelectedRange) {
-      return <li className={styles["selected-range-day"]}>{children}</li>;
-    }
+		if (isSelected) {
+			return <li className={itemClass}>{children}</li>;
+		} else if (isInSelectedRange) {
+			return <li className={styles["selected-range-day"]}>{children}</li>;
+		}
 
-    return <li className={styles.day}>{children}</li>;
-  },
+		return <li className={styles.day}>{children}</li>;
+	},
 );
 
 Item.displayName = "Item";
 
 const DayButton = React.memo<{
-  day: number;
-  isActive: boolean;
-  isSelected: boolean;
-  isFocused: boolean;
-  dateString: string;
-  onDayClick: (date: string) => void;
+	day: number;
+	isActive: boolean;
+	isSelected: boolean;
+	isFocused: boolean;
+	dateString: string;
+	onDayClick: (date: string) => void;
 }>(({ day, isActive, isSelected, isFocused, dateString, onDayClick }) => {
-  const btnRef = useRef<HTMLButtonElement>(null);
+	const btnRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (isFocused && btnRef.current) {
-      btnRef.current.focus({ preventScroll: true });
-    }
-  }, [isFocused]);
+	useEffect(() => {
+		if (isFocused && btnRef.current) {
+			btnRef.current.focus({ preventScroll: true });
+		}
+	}, [isFocused]);
 
-  const handleClick = useCallback(() => {
-    if (isActive) {
-      onDayClick(dateString);
-    }
-  }, [isActive, dateString, onDayClick]);
+	const handleClick = useCallback(() => {
+		if (isActive) {
+			onDayClick(dateString);
+		}
+	}, [isActive, dateString, onDayClick]);
 
-  const dayInnerActive = isActive ? "day-inner-active" : "";
-  const bgStyle = isSelected ? SELECTED_BG_STYLE : TRANSPARENT_BG_STYLE;
+	const dayInnerActive = isActive ? "day-inner-active" : "";
+	const bgStyle = isSelected ? SELECTED_BG_STYLE : TRANSPARENT_BG_STYLE;
 
-  return (
-    <button
-      ref={btnRef}
-      className={clsx(styles["day-inner"], dayInnerActive, {
-        [styles["day-focused"]]: isFocused,
-      })}
-      style={bgStyle}
-      role="button"
-      type="button"
-      tabIndex={isFocused ? 0 : -1}
-      onClick={isActive ? handleClick : undefined}
-      aria-label={dateString}
-      aria-pressed={isSelected}
-    >
-      <Typography
-        size="s"
-        style={{
-          opacity: isActive ? 80 : 30,
-          color: isActive ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.3)",
-        }}
-      >
-        {day}
-      </Typography>
-    </button>
-  );
+	return (
+		<button
+			ref={btnRef}
+			className={clsx(styles["day-inner"], dayInnerActive, {
+				[styles["day-focused"]]: isFocused,
+			})}
+			style={bgStyle}
+			role="button"
+			type="button"
+			tabIndex={isFocused ? 0 : -1}
+			onClick={isActive ? handleClick : undefined}
+			aria-label={dateString}
+			aria-pressed={isSelected}
+		>
+			<Typography
+				size="s"
+				style={{
+					opacity: isActive ? 80 : 30,
+					color: isActive ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.3)",
+				}}
+			>
+				{day}
+			</Typography>
+		</button>
+	);
 });
 
 DayButton.displayName = "DayButton";
 
 const Month: FCWithElements<Props> = (props) => {
-  const {
-    startDate,
-    offsetLeft,
-    titleSize,
-    onDayClick,
-    today,
-    selectedDate,
-    selectedPeriod,
-    activeDays,
-    availableDates,
-    focusedDate,
-  } = props;
+	const {
+		startDate,
+		offsetLeft,
+		titleSize,
+		onDayClick,
+		today,
+		selectedDate,
+		selectedPeriod,
+		activeDays,
+		availableDates,
+		focusedDate,
+	} = props;
 
-  const year = startDate.getFullYear();
-  const month = useMemo(
-    () => leadingZeros(startDate.getMonth() + 1, 2),
-    [startDate],
-  );
-  const monthName = useMemo(() => getUpperMonthName(startDate), [startDate]);
+	const year = startDate.getFullYear();
+	const month = useMemo(
+		() => leadingZeros(startDate.getMonth() + 1, 2),
+		[startDate],
+	);
+	const monthName = useMemo(() => getUpperMonthName(startDate), [startDate]);
 
-  const weeks = useMemo(
-    () => getMonthWeeks(props),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      today,
-      startDate,
-      activeDays,
-      selectedDate,
-      selectedPeriod,
-      availableDates,
-    ],
-  );
+	const weeks = useMemo(
+		() => getMonthWeeks(props),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[
+			today,
+			startDate,
+			activeDays,
+			selectedDate,
+			selectedPeriod,
+			availableDates,
+		],
+	);
 
-  const leftStyle = useMemo(
-    () => (offsetLeft ? { left: `${offsetLeft}px` } : undefined),
-    [offsetLeft],
-  );
+	const leftStyle = useMemo(
+		() => (offsetLeft ? { left: `${offsetLeft}px` } : undefined),
+		[offsetLeft],
+	);
 
-  return (
-    <div data-testid="month" className={styles.root} style={leftStyle}>
-      <div className={styles["month-name"]}>
-        <Typography tag="span" size={titleSize}>
-          {monthName}
-        </Typography>
-      </div>
-      <div className={styles.table}>
-        <ul className={styles.legend}>
-          {WEEK_DAYS.map(({ index, name, isWeekend }) => (
-            <li className={styles.day} key={index}>
-              <Typography
-                style={{
-                  opacity: isWeekend ? 80 : 30,
-                  color: isWeekend
-                    ? "var(--typography-alert)"
-                    : "var(--palette-black)",
-                }}
-              >
-                {name}
-              </Typography>
-            </li>
-          ))}
-        </ul>
-        {weeks.map((days, weekIndex) => (
-          <ul key={`week-${weekIndex}`} className={styles.week}>
-            {days.map((day, dayIndex) => {
-              const key = `day-${dayIndex}`;
+	return (
+		<div data-testid="month" className={styles.root} style={leftStyle}>
+			<div className={styles["month-name"]}>
+				<Typography tag="span" size={titleSize}>
+					{monthName}
+				</Typography>
+			</div>
+			<div className={styles.table}>
+				<ul className={styles.legend}>
+					{WEEK_DAYS.map(({ index, name, isWeekend }) => (
+						<li className={styles.day} key={index}>
+							<Typography
+								style={{
+									opacity: isWeekend ? 80 : 30,
+									color: isWeekend
+										? "var(--typography-alert)"
+										: "var(--palette-black)",
+								}}
+							>
+								{name}
+							</Typography>
+						</li>
+					))}
+				</ul>
+				{weeks.map((days, weekIndex) => (
+					<ul key={`week-${weekIndex}`} className={styles.week}>
+						{days.map((day, dayIndex) => {
+							const key = `day-${dayIndex}`;
 
-              if (day.isDummy) {
-                return <li className={styles.day} key={key} />;
-              }
+							if (day.isDummy) {
+								return <li className={styles.day} key={key} />;
+							}
 
-              const dateString = `${year}-${month}-${leadingZeros(day.day, 2)}`;
+							const dateString = `${year}-${month}-${leadingZeros(day.day, 2)}`;
 
-              return (
-                <Item
-                  isStartOfSelection={day.isStartOfSelection}
-                  isEndOfSelection={day.isEndOfSelection}
-                  isSelected={day.isSelected}
-                  isInSelectedRange={day.isInSelectedRange}
-                  key={key}
-                >
-                  <DayButton
-                    day={day.day}
-                    isActive={Boolean(day.isActive)}
-                    isSelected={Boolean(day.isSelected)}
-                    isFocused={focusedDate === dateString}
-                    dateString={dateString}
-                    onDayClick={onDayClick}
-                  />
-                </Item>
-              );
-            })}
-          </ul>
-        ))}
-      </div>
-    </div>
-  );
+							return (
+								<Item
+									isStartOfSelection={day.isStartOfSelection}
+									isEndOfSelection={day.isEndOfSelection}
+									isSelected={day.isSelected}
+									isInSelectedRange={day.isInSelectedRange}
+									key={key}
+								>
+									<DayButton
+										day={day.day}
+										isActive={Boolean(day.isActive)}
+										isSelected={Boolean(day.isSelected)}
+										isFocused={focusedDate === dateString}
+										dateString={dateString}
+										onDayClick={onDayClick}
+									/>
+								</Item>
+							);
+						})}
+					</ul>
+				))}
+			</div>
+		</div>
+	);
 };
 
 export default React.memo(Month);

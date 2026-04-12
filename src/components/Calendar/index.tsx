@@ -24,13 +24,13 @@ const idleCallbackOptions = {
 };
 
 type CalendarState = {
-  selectedDate: string | undefined;
-  selectedPeriod: number | undefined;
-  currentMonthOffset: number;
-  contentWidth: number;
-  isRangeCompleted: boolean;
-  focusedDate: string | undefined;
-};type CalendarAction =
+	selectedDate: string | undefined;
+	selectedPeriod: number | undefined;
+	currentMonthOffset: number;
+	contentWidth: number;
+	isRangeCompleted: boolean;
+	focusedDate: string | undefined;
+}; type CalendarAction =
 	| { type: "SET_SELECTED_DATE"; payload: string | undefined }
 	| { type: "SET_SELECTED_PERIOD"; payload: number | undefined }
 	| { type: "SET_CURRENT_MONTH_OFFSET"; payload: number }
@@ -189,25 +189,25 @@ const Calendar: React.FC<CalendarProps> = ({
 		focusedDate: initialSelectedDate,
 	});
 
-  useEffect(() => {
-    const el = $root.current;
-    if (!el) return;
+	useEffect(() => {
+		const el = $root.current;
+		if (!el) return;
 
-    dispatch({
-      type: "SET_CONTENT_WIDTH",
-      payload: el.offsetWidth,
-    });
+		dispatch({
+			type: "SET_CONTENT_WIDTH",
+			payload: el.offsetWidth,
+		});
 
-    const observer = new ResizeObserver(() => {
-      const width = el.offsetWidth;
-      if (width) {
-        dispatch({ type: "SET_CONTENT_WIDTH", payload: width });
-      }
-    });
+		const observer = new ResizeObserver(() => {
+			const width = el.offsetWidth;
+			if (width) {
+				dispatch({ type: "SET_CONTENT_WIDTH", payload: width });
+			}
+		});
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);	const showPrevMonth = (event: MouseEvent<HTMLButtonElement>) => {
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []); const showPrevMonth = (event: MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
 		dispatch({ type: "DECREMENT_MONTH_OFFSET" });
