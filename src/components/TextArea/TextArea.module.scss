@@ -1,16 +1,16 @@
 .textarea {
-  background: transparent;
-  border: none;
-  color: inherit;
-  flex: 1;
-  font: inherit;
-  outline: none;
-  overflow: hidden;
-  padding: 7px 0;
-  resize: none;
-  text-overflow: ellipsis;
+	background: transparent;
+	border: none;
+	color: inherit;
+	flex: 1;
+	font: inherit;
+	outline: none;
+	overflow: hidden;
+	padding: 7px 0;
+	resize: none;
+	text-overflow: ellipsis;
 
-  &::placeholder {
-    color: var(--palette-bg-3);
-  }
+	&::placeholder {
+		color: var(--palette-bg-3);
+	}
 }
