@@ -426,12 +426,12 @@ const Calendar: React.FC<CalendarProps> = ({
 						]
 							.filter((index) => index >= 0)
 							.map((index) => {
-							const monthProps = {
-								...commonMonthProps,
-								today,
-								startDate: getMonthStartDate(index),
-								offsetLeft: index * state.contentWidth,
-							};								return (
+								const monthProps = {
+									...commonMonthProps,
+									today,
+									startDate: getMonthStartDate(index),
+									offsetLeft: index * state.contentWidth,
+								}; return (
 									<Month
 										{...monthProps}
 										titleSize={titleSize}

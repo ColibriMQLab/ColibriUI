@@ -3,9 +3,20 @@ import { Close as CloseIcon } from "../../../Icons";
 import styles from "./Close.module.scss";
 import type { FC } from "react";
 
-const Close: FC<{ onClick?: () => void }> = ({ onClick }) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-  <CloseIcon className={styles.close} onClick={onClick} />
+type CloseButtonProps = {
+	onClick?: () => void;
+	"aria-label"?: string;
+};
+
+const Close: FC<CloseButtonProps> = ({ onClick, "aria-label": ariaLabel }) => (
+	<button
+		type="button"
+		onClick={onClick}
+		aria-label={ariaLabel ?? "Close"}
+		className={styles["close-button"]}
+	>
+		<CloseIcon width={18} height={18} />
+	</button>
 );
 
 export default Close;

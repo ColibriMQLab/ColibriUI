@@ -12,80 +12,80 @@ import type { FC, PropsWithChildren } from "react";
 import type { ModalProps } from "./index.props";
 
 const Modal: FC<PropsWithChildren<ModalProps>> = ({
-  children,
-  className,
-  onClose,
-  title,
+	children,
+	className,
+	onClose,
+	title,
 }) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
-  const isDesktop = useMediaSizes((bp) => bp.up("md"));
+	const modalRef = useRef<HTMLDivElement | null>(null);
+	const isDesktop = useMediaSizes((bp) => bp.up("md"));
 
-  useScrollLock();
-  useTrapFocus(modalRef);
+	useScrollLock();
+	useTrapFocus(modalRef);
 
-  const handleClose = useCallback(() => {
-    onClose?.();
-  }, [onClose]);
+	const handleClose = useCallback(() => {
+		onClose?.();
+	}, [onClose]);
 
-  const handleOverlayClick = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (e.target === e.currentTarget) {
-        handleClose();
-      }
-    },
-    [handleClose],
-  );
+	const handleOverlayClick = useCallback(
+		(event: React.MouseEvent<HTMLDivElement>) => {
+			if (event.target === event.currentTarget) {
+				handleClose();
+			}
+		},
+		[handleClose],
+	);
 
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        handleClose();
-      }
-    };
+	useEffect(() => {
+		const handleEscape = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				handleClose();
+			}
+		};
 
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
+		document.addEventListener("keydown", handleEscape);
+		return () => document.removeEventListener("keydown", handleEscape);
+	}, [handleClose]);
 
-  return (
-    <Portal>
-      <div
-        className={styles.root}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={title ? "modal-title" : undefined}
-      >
-        <div
-          className={styles["modal-overlay"]}
-          onClick={handleOverlayClick}
-          aria-hidden="true"
-        />
-        <div
-          className={clsx(
-            styles["modal-wrapper"],
-            {
-              [styles["modal-wrapper_desktop"]]: isDesktop,
-              [styles["modal-wrapper_mobile"]]: !isDesktop,
-            },
-            className,
-          )}
-          ref={modalRef}
-        >
-          {title ? (
-            <div className={styles["title-wrapper"]}>
-              <Title>{title}</Title>
-              <Close onClick={handleClose} aria-label="Close modal" />
-            </div>
-          ) : (
-            <div className={styles["close-wrapper"]}>
-              <Close onClick={handleClose} aria-label="Close modal" />
-            </div>
-          )}
-          <Content>{children}</Content>
-        </div>
-      </div>
-    </Portal>
-  );
+	return (
+		<Portal>
+			<div
+				className={styles.root}
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby={title ? "modal-title" : undefined}
+			>
+				<div
+					className={styles["modal-overlay"]}
+					onClick={handleOverlayClick}
+					aria-hidden="true"
+				/>
+				<div
+					className={clsx(
+						styles["modal-wrapper"],
+						{
+							[styles["modal-wrapper_desktop"]]: isDesktop,
+							[styles["modal-wrapper_mobile"]]: !isDesktop,
+						},
+						className,
+					)}
+					ref={modalRef}
+				>
+					{title ? (
+						<div className={styles["title-wrapper"]}>
+							<Title>{title}</Title>
+							<Close onClick={handleClose} aria-label="Close modal" />
+						</div>
+					) : (
+						<div className={styles["close-wrapper"]}>
+							<Close onClick={handleClose} aria-label="Close modal" />
+						</div>
+					)}
+					<Content>{children}</Content>
+				</div>
+			</div>
+		</Portal>
+	);
 };
 
 export default Modal;

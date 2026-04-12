@@ -1,3 +1,13 @@
-.close {
-  cursor: pointer;
+.close-button {
+	align-items: center;
+	background: none;
+	border: none;
+	box-sizing: content-box;
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	line-height: 0;
+	outline: none;
+	padding: 8px;
 }
