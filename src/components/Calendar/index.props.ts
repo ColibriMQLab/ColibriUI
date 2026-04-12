@@ -25,6 +25,7 @@ export type CalendarProps = {
   activeDates?: string[];
   datePresets?: Preset[];
   availableDates?: string[];
+  maxDate?: string;
   onChange?: (payload: CalendarPayload) => void;
   onCancel?: () => void;
   withContinueButton?: boolean;

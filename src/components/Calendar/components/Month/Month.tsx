@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { leadingZeros } from "../../../libs/numbers/leadingZeros";
 import Typography from "../../../Typography";
@@ -37,6 +37,7 @@ type Props = {
   offsetLeft: number;
   availableDates?: string[];
   titleSize?: CalendarTitleSize;
+  focusedDate?: string;
 };
 
 type ComponentProps = {
@@ -80,9 +81,18 @@ const DayButton = React.memo<{
   day: number;
   isActive: boolean;
   isSelected: boolean;
+  isFocused: boolean;
   dateString: string;
   onDayClick: (date: string) => void;
-}>(({ day, isActive, isSelected, dateString, onDayClick }) => {
+}>(({ day, isActive, isSelected, isFocused, dateString, onDayClick }) => {
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isFocused && btnRef.current) {
+      btnRef.current.focus({ preventScroll: true });
+    }
+  }, [isFocused]);
+
   const handleClick = useCallback(() => {
     if (isActive) {
       onDayClick(dateString);
@@ -94,11 +104,17 @@ const DayButton = React.memo<{
 
   return (
     <button
-      className={clsx(styles["day-inner"], dayInnerActive)}
+      ref={btnRef}
+      className={clsx(styles["day-inner"], dayInnerActive, {
+        [styles["day-focused"]]: isFocused,
+      })}
       style={bgStyle}
       role="button"
       type="button"
+      tabIndex={isFocused ? 0 : -1}
       onClick={isActive ? handleClick : undefined}
+      aria-label={dateString}
+      aria-pressed={isSelected}
     >
       <Typography
         size="s"
@@ -126,6 +142,7 @@ const Month: FCWithElements<Props> = (props) => {
     selectedPeriod,
     activeDays,
     availableDates,
+    focusedDate,
   } = props;
 
   const year = startDate.getFullYear();
@@ -200,6 +217,7 @@ const Month: FCWithElements<Props> = (props) => {
                     day={day.day}
                     isActive={Boolean(day.isActive)}
                     isSelected={Boolean(day.isSelected)}
+                    isFocused={focusedDate === dateString}
                     dateString={dateString}
                     onDayClick={onDayClick}
                   />
