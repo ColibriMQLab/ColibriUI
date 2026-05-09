@@ -21,17 +21,27 @@ const meta: Meta<typeof TimeSelect> = {
 		},
 		selectedDate: {
 			control: "date",
-			description:
-				"The reference start date. Times before it will be disabled.",
+			description: "The reference start date. Times before it will be disabled.",
 		},
 		allowedTimeRange: {
 			control: "object",
-			description:
-				"Defines the allowed time range in HH:mm format (e.g., 09:00–18:00).",
+			description: "Defines the allowed time range in HH:mm format (e.g., 09:00–18:00).",
 		},
 		disabled: {
 			control: "boolean",
 			description: "Disables the select component.",
+		},
+		fullWidth: {
+			control: "boolean",
+			description: "Makes the select take up the full width of the container.",
+		},
+		required: {
+			control: "boolean",
+			description: "Marks the field as required.",
+		},
+		hasError: {
+			control: "boolean",
+			description: "Shows error state.",
 		},
 		label: {
 			control: "text",
@@ -40,6 +50,10 @@ const meta: Meta<typeof TimeSelect> = {
 		placeholder: {
 			control: "text",
 			description: "Text displayed when no time is selected.",
+		},
+		hint: {
+			control: "text",
+			description: "Helper text displayed below the field.",
 		},
 	},
 	args: {
@@ -90,6 +104,52 @@ export const Default: Story = {
 	},
 };
 
+export const Disabled: Story = {
+	render: Template,
+	args: {
+		label: "Disabled select",
+		disabled: true,
+	},
+};
+
+export const FullWidth: Story = {
+	render: (args) => (
+		<div style={{ width: "400px" }}>
+			<Template {...args} />
+		</div>
+	),
+	args: {
+		label: "Full width",
+		fullWidth: true,
+	},
+};
+
+export const Required: Story = {
+	render: Template,
+	args: {
+		label: "Required field",
+		required: true,
+	},
+};
+
+export const WithHint: Story = {
+	render: Template,
+	args: {
+		label: "With hint",
+		hint: "Choose a time between 09:00 and 18:00",
+	},
+};
+
+export const WithError: Story = {
+	render: Template,
+	args: {
+		label: "Time with error",
+		placeholder: "Select time",
+		hasError: true,
+		hint: "Please select a valid time",
+	},
+};
+
 export const WithoutCurrentDate: Story = {
 	render: Template,
 	args: {
@@ -137,5 +197,21 @@ export const WithBusinessHoursAndSelectedDate: Story = {
 		interval: 15,
 		allowedTimeRange: { start: "09:00", end: "18:00" },
 		selectedDate: new Date("2024-07-24T14:00:00"),
+	},
+};
+
+export const Interval5: Story = {
+	render: Template,
+	args: {
+		label: "5 min interval",
+		interval: 5,
+	},
+};
+
+export const Interval30: Story = {
+	render: Template,
+	args: {
+		label: "30 min interval",
+		interval: 30,
 	},
 };
