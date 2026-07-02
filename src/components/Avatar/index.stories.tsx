@@ -7,7 +7,7 @@ import { AvatarSize } from "./constants";
 const meta: Meta<typeof Avatar> = {
   title: "UI/Avatar",
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
   argTypes: {
     accountType: {
@@ -16,11 +16,47 @@ const meta: Meta<typeof Avatar> = {
     },
     size: {
       control: { type: "select" },
-      options: [AvatarSize.S, AvatarSize.M, AvatarSize.L, AvatarSize.XL, AvatarSize.XXL, AvatarSize.XXXL],
+      options: [
+        AvatarSize.S,
+        AvatarSize.M,
+        AvatarSize.L,
+        AvatarSize.XL,
+        AvatarSize.XXL,
+        AvatarSize.XXXL,
+      ],
+    },
+    alt: {
+      control: "text",
+    },
+    src: {
+      control: "text",
+    },
+    bordered: {
+      control: "boolean",
+    },
+    initials: {
+      control: "text",
+    },
+    loading: {
+      control: "boolean",
+    },
+    ariaLabel: {
+      control: "text",
+    },
+    className: {
+      table: { disable: true },
+    },
+    onClick: {
+      action: "click",
     },
   },
   args: {
-    size: AvatarSize.XXL
+    accountType: AccountType.Organization,
+    alt: "Profile avatar",
+    ariaLabel: "Avatar",
+    bordered: false,
+    loading: false,
+    size: AvatarSize.XXL,
   },
   component: Avatar,
 } satisfies Meta<typeof Avatar>;
@@ -32,17 +68,28 @@ export const Default = (args: AvatarProps) => {
 };
 
 export const WithSrc = (args: AvatarProps) => {
-  return <Avatar src='https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg' {...args} />;
+  return (
+    <Avatar
+      src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"
+      {...args}
+    />
+  );
 };
 
 export const Bordered = (args: AvatarProps) => {
-  return <Avatar bordered {...args}/>;
+  return <Avatar bordered {...args} />;
 };
 
 export const Initials = (args: AvatarProps) => {
-  return <Avatar initials="SB" src='https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg' {...args}/>;
+  return (
+    <Avatar
+      initials="SB"
+      src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"
+      {...args}
+    />
+  );
 };
 
 export const Loader = (args: AvatarProps) => {
-  return <Avatar loading {...args}/>;
+  return <Avatar loading {...args} />;
 };

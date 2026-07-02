@@ -16,6 +16,42 @@ const meta: Meta<typeof Checkbox> = {
       control: { type: "select" },
       options: ["primary"],
     },
+    checked: {
+      control: "boolean",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    hasError: {
+      control: "boolean",
+    },
+    label: {
+      control: "text",
+    },
+    hint: {
+      control: "text",
+    },
+    id: {
+      control: "text",
+    },
+    name: {
+      control: "text",
+    },
+    value: {
+      control: "text",
+    },
+    className: {
+      table: { disable: true },
+    },
+    onChange: {
+      action: "change",
+    },
+    onFocus: {
+      action: "focus",
+    },
+    onBlur: {
+      action: "blur",
+    },
   },
   args: {
     disabled: false,
@@ -29,11 +65,15 @@ export default meta;
 
 const TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-const Example = ({ checked: controlledChecked, onChange, ...args }): JSX.Element => {
+const Example = ({
+  checked: controlledChecked,
+  onChange,
+  ...args
+}): JSX.Element => {
   const [isChecked, setChecked] = useState<boolean>(controlledChecked ?? false);
 
   useEffect(() => {
-    setChecked(controlledChecked);
+    setChecked(controlledChecked ?? false);
   }, [controlledChecked]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,14 +83,13 @@ const Example = ({ checked: controlledChecked, onChange, ...args }): JSX.Element
 
   return (
     <Checkbox
+      {...args}
       checked={isChecked}
       onChange={handleChange}
-      hint={args.hasError ? "Error text" : ""}
-      {...args}
+      hint={args.hasError ? "Error text" : args.hint}
     />
   );
 };
-
 
 export const Default = (args): JSX.Element => (
   <ul style={{ listStyleType: "none" }}>

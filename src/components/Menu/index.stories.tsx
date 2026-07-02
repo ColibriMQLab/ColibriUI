@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Menu from ".";
+import { fn } from "storybook/test";
 import type { Meta } from "@storybook/react-webpack5";
 import MenuItem from "./components/MenuItem";
 
@@ -8,17 +9,46 @@ const meta: Meta<typeof Menu> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
+  argTypes: {
+    selected: {
+      control: "object",
+    },
+    variant: {
+      control: { type: "select" },
+      options: ["primary"],
+    },
+    className: {
+      table: { disable: true },
+    },
+    children: {
+      table: { disable: true },
+    },
+    onClick: {
+      action: "click",
+    },
+  },
+  args: {
+    selected: ["2", "4"],
+    variant: "primary",
+    onClick: fn(),
+  },
   component: Menu,
 } satisfies Meta<typeof Menu>;
 
 export default meta;
 
 const Template = (args) => {
-  const [selected, setSelected] = useState<string[]>(['2', '4']);
+  const [selected, setSelected] = useState<string[]>(args.selected);
 
   return (
-    <Menu {...args} selected={selected} onClick={(k) => setSelected([k])}>
+    <Menu
+      {...args}
+      selected={selected}
+      onClick={(key, event) => {
+        setSelected([key]);
+        args.onClick?.(key, event);
+      }}
+    >
       <MenuItem key="1">Menu item 1</MenuItem>
       <MenuItem key="2">Menu item 2</MenuItem>
       <MenuItem disabled key="3">

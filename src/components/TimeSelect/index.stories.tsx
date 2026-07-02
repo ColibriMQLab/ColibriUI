@@ -1,68 +1,93 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import TimeSelect from ".";
 import { fn } from "storybook/test";
 
 const meta: Meta<typeof TimeSelect> = {
-	title: "UI/TimeSelect",
-	component: TimeSelect,
-	parameters: {
-		layout: "centered",
-	},
-	argTypes: {
-		interval: {
-			control: { type: "select" },
-			options: [5, 10, 15, 30],
-			description: "Time interval between options in minutes.",
-		},
-		currentDate: {
-			control: "date",
-			description: "The current date used to disable past times.",
-		},
-		selectedDate: {
-			control: "date",
-			description: "The reference start date. Times before it will be disabled.",
-		},
-		allowedTimeRange: {
-			control: "object",
-			description: "Defines the allowed time range in HH:mm format (e.g., 09:00–18:00).",
-		},
-		disabled: {
-			control: "boolean",
-			description: "Disables the select component.",
-		},
-		fullWidth: {
-			control: "boolean",
-			description: "Makes the select take up the full width of the container.",
-		},
-		required: {
-			control: "boolean",
-			description: "Marks the field as required.",
-		},
-		hasError: {
-			control: "boolean",
-			description: "Shows error state.",
-		},
-		label: {
-			control: "text",
-			description: "Label displayed above the field.",
-		},
-		placeholder: {
-			control: "text",
-			description: "Text displayed when no time is selected.",
-		},
-		hint: {
-			control: "text",
-			description: "Helper text displayed below the field.",
-		},
-	},
-	args: {
-		interval: 15,
-		label: "Select time",
-		placeholder: "Select options",
-		onChange: fn(),
-		fullWidth: true,
-	},
+  title: "UI/TimeSelect",
+  component: TimeSelect,
+  parameters: {
+    layout: "centered",
+  },
+  argTypes: {
+    interval: {
+      control: { type: "select" },
+      options: [5, 10, 15, 30],
+      description: "Time interval between options in minutes.",
+    },
+    currentDate: {
+      control: "date",
+      description: "The current date used to disable past times.",
+    },
+    selectedDate: {
+      control: "date",
+      description:
+        "The reference start date. Times before it will be disabled.",
+    },
+    allowedTimeRange: {
+      control: "object",
+      description:
+        "Defines the allowed time range in HH:mm format (e.g., 09:00–18:00).",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the select component.",
+    },
+    fullWidth: {
+      control: "boolean",
+      description: "Makes the select take up the full width of the container.",
+    },
+    required: {
+      control: "boolean",
+      description: "Marks the field as required.",
+    },
+    hasError: {
+      control: "boolean",
+      description: "Shows error state.",
+    },
+    label: {
+      control: "text",
+      description: "Label displayed above the field.",
+    },
+    placeholder: {
+      control: "text",
+      description: "Text displayed when no time is selected.",
+    },
+    hint: {
+      control: "text",
+      description: "Helper text displayed below the field.",
+    },
+    value: {
+      control: "text",
+    },
+    name: {
+      control: "text",
+    },
+    size: {
+      control: { type: "select" },
+      options: ["s", "m", "l"],
+    },
+    zIndex: {
+      control: "number",
+    },
+    fontSize: {
+      control: "number",
+    },
+    className: {
+      table: { disable: true },
+    },
+    customInputRoot: {
+      table: { disable: true },
+    },
+  },
+  args: {
+    interval: 15,
+    label: "Select time",
+    placeholder: "Select options",
+    onChange: fn(),
+    fullWidth: false,
+    size: "m",
+  },
 };
 
 export default meta;
@@ -74,20 +99,24 @@ type Story = StoryObj<typeof TimeSelect>;
 // ---------------------------
 
 const Template = (args: React.ComponentProps<typeof TimeSelect>) => {
-	const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(args.value ?? "");
 
-	return (
-		<div style={{ width: args.fullWidth ? "240px" : "auto" }}>
-			<TimeSelect
-				{...args}
-				value={value}
-				onChange={(v) => {
-					setValue(v);
-					args.onChange(v);
-				}}
-			/>
-		</div>
-	);
+  useEffect(() => {
+    setValue(args.value ?? "");
+  }, [args.value]);
+
+  return (
+    <div style={{ width: args.fullWidth ? "100%" : 240 }}>
+      <TimeSelect
+        {...args}
+        value={value}
+        onChange={(v) => {
+          setValue(v);
+          args.onChange?.(v);
+        }}
+      />
+    </div>
+  );
 };
 
 // ---------------------------
@@ -95,123 +124,123 @@ const Template = (args: React.ComponentProps<typeof TimeSelect>) => {
 // ---------------------------
 
 export const Default: Story = {
-	render: Template,
-	args: {
-		label: "Start time",
-		placeholder: "Select time",
-		interval: 10,
-		currentDate: new Date(),
-	},
+  render: Template,
+  args: {
+    label: "Start time",
+    placeholder: "Select time",
+    interval: 10,
+    currentDate: new Date(),
+  },
 };
 
 export const Disabled: Story = {
-	render: Template,
-	args: {
-		label: "Disabled select",
-		disabled: true,
-	},
+  render: Template,
+  args: {
+    label: "Disabled select",
+    disabled: true,
+  },
 };
 
 export const FullWidth: Story = {
-	render: (args) => (
-		<div style={{ width: "400px" }}>
-			<Template {...args} />
-		</div>
-	),
-	args: {
-		label: "Full width",
-		fullWidth: true,
-	},
+  render: (args) => (
+    <div style={{ width: "400px" }}>
+      <Template {...args} />
+    </div>
+  ),
+  args: {
+    label: "Full width",
+    fullWidth: true,
+  },
 };
 
 export const Required: Story = {
-	render: Template,
-	args: {
-		label: "Required field",
-		required: true,
-	},
+  render: Template,
+  args: {
+    label: "Required field",
+    required: true,
+  },
 };
 
 export const WithHint: Story = {
-	render: Template,
-	args: {
-		label: "With hint",
-		hint: "Choose a time between 09:00 and 18:00",
-	},
+  render: Template,
+  args: {
+    label: "With hint",
+    hint: "Choose a time between 09:00 and 18:00",
+  },
 };
 
 export const WithError: Story = {
-	render: Template,
-	args: {
-		label: "Time with error",
-		placeholder: "Select time",
-		hasError: true,
-		hint: "Please select a valid time",
-	},
+  render: Template,
+  args: {
+    label: "Time with error",
+    placeholder: "Select time",
+    hasError: true,
+    hint: "Please select a valid time",
+  },
 };
 
 export const WithoutCurrentDate: Story = {
-	render: Template,
-	args: {
-		label: "Select time",
-		interval: 10,
-	},
+  render: Template,
+  args: {
+    label: "Select time",
+    interval: 10,
+  },
 };
 
 export const WithSelectedDate: Story = {
-	render: Template,
-	args: {
-		label: "End time (start was 14:30)",
-		placeholder: "Select end time",
-		interval: 15,
-		selectedDate: new Date("2024-07-24T14:30:00"),
-	},
+  render: Template,
+  args: {
+    label: "End time (start was 14:30)",
+    placeholder: "Select end time",
+    interval: 15,
+    selectedDate: new Date("2024-07-24T14:30:00"),
+  },
 };
 
 export const WithPastSelectedDate: Story = {
-	render: Template,
-	args: {
-		label: "End time (start was 10:00)",
-		placeholder: "Select end time",
-		interval: 30,
-		selectedDate: new Date("2024-07-24T10:00:00"),
-	},
+  render: Template,
+  args: {
+    label: "End time (start was 10:00)",
+    placeholder: "Select end time",
+    interval: 30,
+    selectedDate: new Date("2024-07-24T10:00:00"),
+  },
 };
 
 export const WithCurrentAndSelectedDate: Story = {
-	render: Template,
-	args: {
-		label: "Considering current and selected dates",
-		placeholder: "Select end time",
-		interval: 15,
-		currentDate: new Date("2024-07-24T12:00:00"),
-		selectedDate: new Date("2024-07-24T13:30:00"),
-	},
+  render: Template,
+  args: {
+    label: "Considering current and selected dates",
+    placeholder: "Select end time",
+    interval: 15,
+    currentDate: new Date("2024-07-24T12:00:00"),
+    selectedDate: new Date("2024-07-24T13:30:00"),
+  },
 };
 
 export const WithBusinessHoursAndSelectedDate: Story = {
-	render: Template,
-	args: {
-		label: "Business hours (start was 14:00)",
-		placeholder: "Select end time",
-		interval: 15,
-		allowedTimeRange: { start: "09:00", end: "18:00" },
-		selectedDate: new Date("2024-07-24T14:00:00"),
-	},
+  render: Template,
+  args: {
+    label: "Business hours (start was 14:00)",
+    placeholder: "Select end time",
+    interval: 15,
+    allowedTimeRange: { start: "09:00", end: "18:00" },
+    selectedDate: new Date("2024-07-24T14:00:00"),
+  },
 };
 
 export const Interval5: Story = {
-	render: Template,
-	args: {
-		label: "5 min interval",
-		interval: 5,
-	},
+  render: Template,
+  args: {
+    label: "5 min interval",
+    interval: 5,
+  },
 };
 
 export const Interval30: Story = {
-	render: Template,
-	args: {
-		label: "30 min interval",
-		interval: 30,
-	},
+  render: Template,
+  args: {
+    label: "30 min interval",
+    interval: 30,
+  },
 };

@@ -26,16 +26,13 @@ const Badge: FC<PropsWithChildren<Props>> = ({
     invisible = true;
   }
 
-  const displayValue = content
-    ? content > max
-      ? `${max}+`
-      : content
-    : undefined;
+  const displayValue =
+    content == null ? undefined : content > max ? `${max}+` : content;
 
   return (
     <Control {...props}>
       {children}
-      {displayValue && (
+      {displayValue !== undefined && (
         <span
           className={clsx(
             styles.root,

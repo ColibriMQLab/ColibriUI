@@ -1,47 +1,48 @@
 import React, { useState } from "react";
 import Modal from ".";
+import Button from "../Button";
+import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Modal> = {
   title: "UI/Modal",
   component: Modal,
+  argTypes: {
+    title: {
+      control: "text",
+    },
+    className: {
+      table: { disable: true },
+    },
+    onClose: {
+      action: "close",
+    },
+  },
+  args: {
+    onClose: fn(),
+    title: "Title of modal",
+  },
 } satisfies Meta<typeof Modal>;
 
 export default meta;
 
 type Story = StoryObj<typeof Modal>;
 
-const TITLE = "Title of modal";
-
-export const Default = ({ args }: Story) => {
+const ModalTemplate: Story["render"] = (args) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onClose = () => {
     setIsOpen(false);
+    args.onClose?.();
   };
 
   return (
     <>
-      {isOpen && (
-        <Modal {...args} onClose={onClose} title={TITLE}>
-          content
-        </Modal>
+      {!isOpen && (
+        <Button type="button" onClick={() => setIsOpen(true)}>
+          Open modal
+        </Button>
       )}
-    </>
-  );
-};
-
-
-
-export const WithoutTitle = ({ args }: Story) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const onClose = () => {
-    setIsOpen(false);
-  };
-
-  return (
-    <>
       {isOpen && (
         <Modal {...args} onClose={onClose}>
           content
@@ -49,4 +50,15 @@ export const WithoutTitle = ({ args }: Story) => {
       )}
     </>
   );
+};
+
+export const Default: Story = {
+  render: ModalTemplate,
+};
+
+export const WithoutTitle: Story = {
+  render: ModalTemplate,
+  args: {
+    title: undefined,
+  },
 };

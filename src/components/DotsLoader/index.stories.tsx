@@ -8,6 +8,11 @@ const meta: Meta<typeof DotsLoader> = {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    color: {
+      control: "color",
+    },
+  },
   component: DotsLoader,
 } satisfies Meta<typeof DotsLoader>;
 

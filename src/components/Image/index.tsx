@@ -40,13 +40,14 @@ const Image = ({
   }, []);
 
   return (
-    <picture ref={ref} className={styles.root}>
+    <picture className={styles.root}>
       {!!sources.length &&
         sources.map((source, index) => (
           <source key={`item-${index}`} {...source} />
         ))}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <img
+        ref={ref}
         alt={alt}
         style={sizeAttrs}
         className={clsx(className)}

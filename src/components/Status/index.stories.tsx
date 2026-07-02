@@ -5,30 +5,46 @@ import { STATUS_TYPE } from "./index.props";
 
 const list = [
   {
-    text: 'Neutral',
+    text: "Neutral",
   },
   {
     type: STATUS_TYPE.SUCCESS,
-    text: 'Success',
+    text: "Success",
   },
   {
     type: STATUS_TYPE.FAILURE,
-    text: 'Failure',
+    text: "Failure",
   },
   {
     type: STATUS_TYPE.WARNING,
-    text: 'Warning',
+    text: "Warning",
   },
   {
     type: STATUS_TYPE.INFO,
-    text: 'Info',
+    text: "Info",
   },
 ];
 
 const meta: Meta<typeof Status> = {
   title: "UI/Status",
   parameters: {
-    layout: 'centered'
+    layout: "centered",
+  },
+  argTypes: {
+    type: {
+      control: { type: "select" },
+      options: Object.values(STATUS_TYPE),
+    },
+    tag: {
+      control: { type: "select" },
+      options: ["span", "div"],
+    },
+    className: {
+      table: { disable: true },
+    },
+  },
+  args: {
+    tag: "span",
   },
   component: Status,
 } satisfies Meta<typeof Status>;
@@ -36,7 +52,13 @@ const meta: Meta<typeof Status> = {
 export default meta;
 
 export const Default = (args) => {
-  return <div style={{display: 'flex', gap: '16px'}}>
-    {list.map(({text, type}, index) => (<Status type={type} {...args} key={index}>{text}</Status>))}
-    </div>;
+  return (
+    <div style={{ display: "flex", gap: "16px" }}>
+      {list.map(({ text, type }, index) => (
+        <Status type={type} {...args} key={index}>
+          {text}
+        </Status>
+      ))}
+    </div>
+  );
 };

@@ -1,7 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Counter from ".";
-import type { Meta } from "@storybook/react-webpack5";
+import { fn } from "storybook/test";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { CounterProps } from "./index.props";
 
 const meta: Meta<typeof Counter> = {
   title: "UI/Counter",
@@ -26,15 +27,69 @@ const meta: Meta<typeof Counter> = {
       control: { type: "boolean" },
       options: [true, false],
     },
+    className: {
+      table: { disable: true },
+    },
+  },
+  args: {
+    value: 1,
+    min: 1,
+    max: 10,
+    disabled: false,
+    fullWidth: false,
+    onChange: fn(),
   },
   component: Counter,
 } satisfies Meta<typeof Counter>;
 
 export default meta;
 
-export const Default = (args) => {
-  const [value, setValue] = useState(1);
+type Story = StoryObj<typeof Counter>;
+
+const ControlledTemplate = ({
+  value: initialValue = 1,
+  onChange,
+  ...args
+}: CounterProps) => {
+  const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
   return (
-    <Counter onChange={setValue} min={1} value={value} max={10} {...args} />
+    <Counter
+      {...args}
+      value={value}
+      onChange={(nextValue) => {
+        setValue(nextValue);
+        onChange(nextValue);
+      }}
+    />
   );
+};
+
+export const Default: Story = {
+  render: ControlledTemplate,
+};
+
+export const Disabled: Story = {
+  render: ControlledTemplate,
+  args: {
+    disabled: true,
+  },
+};
+
+export const FullWidth: Story = {
+  render: ControlledTemplate,
+  args: {
+    fullWidth: true,
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 240 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };

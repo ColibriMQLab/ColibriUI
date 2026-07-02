@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Switch from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
@@ -25,6 +25,24 @@ const meta: Meta<typeof Switch> = {
     hint: {
       control: { type: "text" },
     },
+    checked: {
+      control: { type: "boolean" },
+    },
+    id: {
+      control: { type: "text" },
+    },
+    name: {
+      control: { type: "text" },
+    },
+    value: {
+      control: { type: "text" },
+    },
+    className: {
+      table: { disable: true },
+    },
+    onChange: {
+      action: "change",
+    },
   },
 };
 
@@ -32,14 +50,21 @@ export default meta;
 
 type Story = StoryObj<typeof Switch>;
 
-const SwitchWithState = (args: any) => {
-  const [checked, setChecked] = useState(false);
+const SwitchWithState = (args: React.ComponentProps<typeof Switch>) => {
+  const [checked, setChecked] = useState(args.checked ?? false);
+
+  useEffect(() => {
+    setChecked(args.checked ?? false);
+  }, [args.checked]);
 
   return (
     <Switch
       {...args}
       checked={checked}
-      onChange={(e) => setChecked(e.target.checked)}
+      onChange={(e) => {
+        setChecked(e.target.checked);
+        args.onChange?.(e);
+      }}
     />
   );
 };
@@ -83,13 +108,7 @@ export const Disabled: Story = {
 };
 
 export const DisabledChecked: Story = {
-  render: (args) => (
-    <Switch
-      {...args}
-      checked={true}
-      onChange={() => {}}
-    />
-  ),
+  render: (args) => <Switch {...args} checked={true} onChange={() => {}} />,
   args: {
     label: "Premium feature",
     hint: "Available in premium plan",

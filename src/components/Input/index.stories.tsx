@@ -7,8 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Input> = {
   title: "UI/Input",
-  parameters: {
-  },
+  parameters: {},
   argTypes: {
     size: {
       control: { type: "select" },
@@ -18,10 +17,58 @@ const meta: Meta<typeof Input> = {
       control: { type: "select" },
       options: ["primary"],
     },
+    label: {
+      control: "text",
+    },
+    hint: {
+      control: "text",
+    },
+    hasError: {
+      control: "boolean",
+    },
+    required: {
+      control: "boolean",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    placeholder: {
+      control: "text",
+    },
+    type: {
+      control: "text",
+    },
+    value: {
+      control: "text",
+    },
+    startIcon: {
+      table: { disable: true },
+    },
+    endIcon: {
+      table: { disable: true },
+    },
+    inputRef: {
+      table: { disable: true },
+    },
+    className: {
+      table: { disable: true },
+    },
+    onFocus: {
+      action: "focus",
+    },
+    onBlur: {
+      action: "blur",
+    },
+    onKeyDown: {
+      action: "keyDown",
+    },
+    onInput: {
+      action: "input",
+    },
   },
-  args: { 
-    onChange: fn(), 
-    hasError: false,    
+  args: {
+    onChange: fn(),
+    hasError: false,
     disabled: false,
     label: "Label",
     variant: "primary",
@@ -52,13 +99,15 @@ export const Required: Story = {
 export const TypePassword: Story = {
   args: {
     placeholder: PLACEHOLDER,
-    type: 'password',
+    type: "password",
   },
 };
 
 export const Error: Story = {
   args: {
     placeholder: PLACEHOLDER,
+    hasError: true,
+    hint: "Error text",
   },
 };
 

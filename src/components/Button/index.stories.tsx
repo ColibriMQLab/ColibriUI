@@ -16,7 +16,15 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary", "outline", "pseudo", "clear", "alert", "success"],
+      options: [
+        "primary",
+        "secondary",
+        "outline",
+        "pseudo",
+        "clear",
+        "alert",
+        "success",
+      ],
     },
     disabled: {
       control: { type: "boolean" },
@@ -26,8 +34,24 @@ const meta: Meta<typeof Button> = {
       control: { type: "boolean" },
       options: [true, false],
     },
+    type: {
+      control: { type: "select" },
+      options: ["button", "submit", "reset"],
+    },
+    icon: {
+      table: { disable: true },
+    },
+    iconStart: {
+      table: { disable: true },
+    },
+    iconEnd: {
+      table: { disable: true },
+    },
+    onClick: {
+      action: "click",
+    },
   },
-  args: { onClick: fn() },
+  args: { onClick: fn(), type: "button" },
   component: Button,
 } satisfies Meta<typeof Button>;
 
@@ -50,25 +74,32 @@ export const withIcon: Story = {
   },
 };
 
+export const withStartIcon: Story = {
+  args: {
+    children: TEXT,
+    iconStart: <More />,
+  },
+};
+
 export const onlyIcon: Story = {
   args: {
     icon: <More />,
-    size: 'xs'
+    size: "xs",
   },
 };
 
 export const Sizes = (args) => (
   <div>
-    <Button size="xs" {...args}>
+    <Button {...args} size="xs">
       size = xs
-    </Button>{' '}
-    <Button size="s" {...args}>
+    </Button>{" "}
+    <Button {...args} size="s">
       size = s
-    </Button>{' '}
-    <Button size="m" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m">
       size = m
-    </Button>{' '}
-    <Button size="l" {...args}>
+    </Button>{" "}
+    <Button {...args} size="l">
       size = l
     </Button>
   </div>
@@ -76,32 +107,32 @@ export const Sizes = (args) => (
 
 export const Variants = (args) => (
   <div>
-    <Button size="m" variant="primary" {...args}>
+    <Button {...args} size="m" variant="primary">
       primary
-    </Button>{' '}
-    <Button size="m" variant="secondary" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m" variant="secondary">
       secondary
-    </Button>{' '}
-    <Button size="m" variant="outline" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m" variant="outline">
       outline
-    </Button>{' '}
-    <Button size="m" variant="pseudo" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m" variant="pseudo">
       pseudo
-    </Button>{' '}
-    <Button size="m" variant="clear" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m" variant="clear">
       clear
     </Button>
-    <Button size="m" variant="alert" {...args}>
+    <Button {...args} size="m" variant="alert">
       alert
-    </Button>{' '}
-    <Button size="m" variant="success" {...args}>
+    </Button>{" "}
+    <Button {...args} size="m" variant="success">
       success
     </Button>
   </div>
 );
 
 export const LongText = (args) => (
-  <div style={{width: '200px'}}>
+  <div style={{ width: "200px" }}>
     <Button size="m" variant="primary" {...args} fullWidth>
       Lorem ipsum dolor sit amet consectetur adipisicing elit
     </Button>

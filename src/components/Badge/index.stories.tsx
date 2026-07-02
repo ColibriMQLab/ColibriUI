@@ -1,7 +1,7 @@
 import React from "react";
 import User from "../Icons/User";
 import Cart from "../Icons/Cart";
-import generateUniqID from '../helpers/generateUniqID';
+import generateUniqID from "../helpers/generateUniqID";
 import Badge from ".";
 import type { ReactNode } from "react";
 import type { Meta } from "@storybook/react-webpack5";
@@ -36,8 +36,13 @@ const meta: Meta<typeof Badge> = {
       control: { type: "select" },
       options: ["right", "left"],
     },
+    className: {
+      table: { disable: true },
+    },
   },
   args: {
+    content: 3,
+    max: 99,
     invisible: false,
     showZero: false,
     background: "#FC5759",
@@ -54,7 +59,7 @@ function render(args) {
     <div style={{ display: "flex", gap: "30px" }}>
       {[<Cart />, <User />].map((icon: ReactNode, index: number) => {
         return (
-          <Badge key={generateUniqID(index)} content={3} {...args}>
+          <Badge key={generateUniqID(index)} {...args}>
             {icon}
           </Badge>
         );
@@ -64,5 +69,17 @@ function render(args) {
 }
 
 export const Default = (args) => {
-  return <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px'}} >{render(args)}</div>;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      {render(args)}
+    </div>
+  );
+};
+
+export const ShowZero = (args) => {
+  return (
+    <Badge {...args} content={0} showZero>
+      <Cart />
+    </Badge>
+  );
 };

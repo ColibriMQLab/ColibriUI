@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
-import RadioGroup, { RadioGroupProps } from '.';
+import React, { useEffect, useState } from "react";
+import RadioGroup, { RadioGroupProps } from ".";
+import { fn } from "storybook/test";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const getOptions = (name?: string) => [
   {
-    name: name || 'Option',
-    val: '1',
-    text: 'Option 1',
+    name: name || "Option",
+    val: "1",
+    text: "Option 1",
   },
   {
-    name: name || 'Option',
-    val: '2',
-    text: 'Option 2',
+    name: name || "Option",
+    val: "2",
+    text: "Option 2",
   },
   {
-    name: name || 'Option',
-    val: '3',
-    text: 'Option 3',
+    name: name || "Option",
+    val: "3",
+    text: "Option 3",
   },
 ];
 
 export const Example = (args: RadioGroupProps) => {
-  const [checked, setChecked] = useState<string>('1');
+  const [checked, setChecked] = useState<string | number>(args.val ?? "1");
+
+  useEffect(() => {
+    setChecked(args.val ?? "1");
+  }, [args.val]);
+
   return (
     <div style={{ margin: 20 }}>
       <RadioGroup
         {...args}
         val={checked}
         options={args.options || getOptions()}
-        onChange={(value: string) => setChecked(value)}
+        onChange={(value: string) => {
+          setChecked(value);
+          args.onChange(value);
+        }}
       />
     </div>
   );
@@ -41,10 +50,38 @@ const meta: Meta<typeof Example> = {
     layout: "centered",
   },
   args: {
+    val: "1",
+    options: getOptions(),
+    onChange: fn(),
     disabled: false,
     column: false,
-    
-    wrapped: false
+    wrapped: false,
+  },
+  argTypes: {
+    val: {
+      control: "text",
+    },
+    options: {
+      control: "object",
+    },
+    column: {
+      control: "boolean",
+    },
+    wrapped: {
+      control: "boolean",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    className: {
+      table: { disable: true },
+    },
+    onChange: {
+      action: "change",
+    },
+    onBlur: {
+      action: "blur",
+    },
   },
   component: Example,
 } satisfies Meta<typeof Example>;
@@ -60,13 +97,12 @@ const getSomeDisabledOptions = (name?: string) =>
   }));
 
 export const Default: Story = {
-  args: {
-  },
+  args: {},
 };
 
 export const DisabledRadio: Story = {
   args: {
-    options: getSomeDisabledOptions('Radio')
+    options: getSomeDisabledOptions("Radio"),
   },
 };
 
@@ -74,12 +110,12 @@ export const WithNote: Story = {
   args: {
     options: [
       {
-        name: 'With Note',
-        val: 'With Note',
-        text: 'With Note',
-        note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+        name: "With Note",
+        val: "With Note",
+        text: "With Note",
+        note: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
       },
-    ]
+    ],
   },
 };
 
@@ -87,15 +123,15 @@ export const LongText: Story = {
   args: {
     options: [
       {
-        name: 'Long Text',
-        val: '1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+        name: "Long Text",
+        val: "1",
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
       },
       {
-        name: 'Long Text',
-        val: '2',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+        name: "Long Text",
+        val: "2",
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
       },
-    ]
+    ],
   },
 };

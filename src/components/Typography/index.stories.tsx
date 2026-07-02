@@ -1,6 +1,33 @@
 import Typography from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
+const typographySizes = [
+  "xs",
+  "s",
+  "m",
+  "l",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+] as const;
+
+const typographyTags = [
+  "span",
+  "label",
+  "legend",
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "s",
+] as const;
+
 const meta: Meta<typeof Typography> = {
   title: "UI/Typography",
   component: Typography,
@@ -14,18 +41,23 @@ const meta: Meta<typeof Typography> = {
     },
     tag: {
       control: { type: "select" },
-      options: ["span", "p", "h1", "h2", "h3", "div"],
+      options: typographyTags,
     },
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: typographySizes,
     },
     fontWeight: {
       control: { type: "select" },
-      options: ["normal", "bold", "light"],
+      options: ["normal", "medium", "bold"],
     },
     className: { table: { disable: true } },
-    style: { table: { disable: true } },
+    style: { control: "object" },
+  },
+  args: {
+    tag: "span",
+    size: "m",
+    fontWeight: "normal",
   },
 } satisfies Meta<typeof Typography>;
 
