@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import React, { useState } from "react";
 
 import Dropdown from ".";
 import Menu from "../Menu";
 import MenuItem from "../Menu/components/MenuItem";
 import Button from "../Button";
-import type { DropdownProps } from "./index.props";
 
 const meta: Meta<typeof Dropdown> = {
   title: "UI/Dropdown",
@@ -55,6 +54,10 @@ const meta: Meta<typeof Dropdown> = {
     disabled: {
       control: "boolean",
       description: "Отключает Dropdown (не открывается)",
+    },
+    defaultVisible: {
+      control: "boolean",
+      description: "Начальная видимость dropdown в uncontrolled-режиме",
     },
     visible: {
       control: "boolean",
@@ -150,5 +153,33 @@ export const CombinedTriggers: Story = {
     children: <Button variant="primary">Hover or Click me</Button>,
     overlay: overlayMenu,
     trigger: ["hover", "click"],
+  },
+};
+
+export const Controlled: Story = {
+  name: "Controlled",
+  args: {
+    overlay: overlayMenu,
+    preventAutoClose: true,
+    trigger: ["click"],
+  },
+  render: (args) => {
+    const [visible, setVisible] = useState(false);
+
+    return (
+      <Dropdown
+        {...args}
+        visible={visible}
+        onVisibleChange={setVisible}
+        overlay={
+          <Menu>
+            <MenuItem onClick={() => setVisible(false)}>Close on item</MenuItem>
+            <MenuItem>Stays open because preventAutoClose is true</MenuItem>
+          </Menu>
+        }
+      >
+        <Button variant="primary">Controlled dropdown</Button>
+      </Dropdown>
+    );
   },
 };

@@ -35,20 +35,36 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   zIndex,
   fontSize,
   disabled,
+  defaultVisible = false,
   onVisibleChange,
   overlay,
   placement = "bottom-center" as Placement,
   strategy = "absolute",
   trigger = ["hover"],
-  visible: visibleProp = true,
+  visible: visibleProp,
   preventOverflow = false,
   preventAutoClose = false,
   flip: flipEnabled = true,
   samewidth = false,
 }) => {
-  const [visible, setVisible] = useState(false);
+  const [internalVisible, setInternalVisible] = useState(defaultVisible);
 
-  const isVisible = visibleProp && visible && !disabled;
+  const isControlled = visibleProp !== undefined;
+  const visible = isControlled ? visibleProp : internalVisible;
+  const isVisible = visible && !disabled;
+
+  const setOpen = useCallback(
+    (nextVisible: boolean) => {
+      if (disabled && nextVisible) return;
+
+      if (!isControlled) {
+        setInternalVisible(nextVisible);
+      }
+
+      onVisibleChange?.(nextVisible);
+    },
+    [disabled, isControlled, onVisibleChange],
+  );
 
   const {
     refs,
@@ -58,7 +74,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     placement: finalPlacement,
   } = useFloating({
     open: isVisible,
-    onOpenChange: setVisible,
+    onOpenChange: setOpen,
     placement,
     strategy,
     whileElementsMounted: autoUpdate,
@@ -69,10 +85,16 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     ],
   });
 
-  const hover = useHover(context, { enabled: trigger.includes("hover") });
-  const click = useClick(context, { enabled: trigger.includes("click") });
-  const focus = useFocus(context, { enabled: trigger.includes("focus") });
-  const dismiss = useDismiss(context);
+  const hover = useHover(context, {
+    enabled: !disabled && trigger.includes("hover"),
+  });
+  const click = useClick(context, {
+    enabled: !disabled && trigger.includes("click"),
+  });
+  const focus = useFocus(context, {
+    enabled: !disabled && trigger.includes("focus"),
+  });
+  const dismiss = useDismiss(context, { outsidePress: false });
   const role = useRole(context, { role: "menu" });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -96,15 +118,11 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     (event) => {
       event.stopPropagation();
       if (!preventAutoClose) {
-        setVisible(false);
+        setOpen(false);
       }
     },
-    [preventAutoClose],
+    [preventAutoClose, setOpen],
   );
-
-  useEffect(() => {
-    if (onVisibleChange) onVisibleChange(visible);
-  }, [onVisibleChange, visible]);
 
   useEffect(() => {
     if (update) update();
@@ -121,7 +139,7 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
 
       {isVisible && (
         <FloatingPortal>
-          <ClickOutside onClick={() => setVisible(false)}>
+          <ClickOutside onClick={() => setOpen(false)}>
             <div
               ref={refs.setFloating}
               data-testid="popper-container"
