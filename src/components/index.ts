@@ -10,6 +10,7 @@ export { default as Counter } from "./Counter";
 export { default as Datepicker } from "./Datepicker";
 export { default as DotsLoader } from "./DotsLoader";
 export { default as Dropdown } from "./Dropdown";
+export { default as Editable } from "./Editable";
 export { default as Grid } from "./Grid";
 export { default as GridItem } from "./Grid/Item";
 export { default as Image } from "./Image";
