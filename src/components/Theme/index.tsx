@@ -1,7 +1,7 @@
-import THEME_DEFAULT from "./themes/default";
+import theme_jaipur from "./themes/jaipur";
 import THEME_BA from "./themes/buenos_aires";
 
 export const THEMES = {
-  DEFAULT: THEME_DEFAULT,
+  JAIPUR: theme_jaipur,
   BA: THEME_BA,
 };

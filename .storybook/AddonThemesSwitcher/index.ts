@@ -7,10 +7,11 @@ const getThemeByName = (name) => {
   switch (name) {
     case "BA":
       return THEMES.BA;
+    case "JAIPUR":
     case "DEFAULT":
-      return THEMES.DEFAULT;
+      return THEMES.JAIPUR;
     default:
-      return THEMES.DEFAULT;
+      return THEMES.JAIPUR;
   }
 };
 
@@ -29,7 +30,7 @@ export const withThemesDecorator = makeDecorator({
         document.documentElement.style.setProperty(`--${key}`, value);
       });
 
-      document.cookie = `${THEME_COOKIE}=${name || "DEFAULT"}`;
+      document.cookie = `${THEME_COOKIE}=${name || "JAIPUR"}`;
     });
 
     const name = new Map(

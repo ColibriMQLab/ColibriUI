@@ -6,24 +6,24 @@ const inputDir = './src';
 const distPaths = ["dist", "dist/esm"];
 
 async function variables() {
-  let themeDefault = "";
-  let themeBA = "";
-  Object.entries(THEMES.DEFAULT).forEach(([key, value]) => {
-    themeDefault += `--${key}: ${value};\r\n`;
-  });
-  Object.entries(THEMES.BA).forEach(([key, value]) => {
-    themeBA += `--${key}: ${value};\r\n`;
-  });
-  const defaultContent = `.theme {\r\n${themeDefault}}`;
-  const baContent = `.theme {\r\n${themeBA}}`;
+	let themeJaipur = "";
+	let themeBA = "";
+	Object.entries(THEMES.JAIPUR).forEach(([key, value]) => {
+		themeJaipur += `--${key}: ${value};\r\n`;
+	});
+	Object.entries(THEMES.BA).forEach(([key, value]) => {
+		themeBA += `--${key}: ${value};\r\n`;
+	});
+	const jaipurContent = `.theme {\r\n${themeJaipur}}`;
+	const baContent = `.theme {\r\n${themeBA}}`;
 
-  for (const outputDir of distPaths) {
-    const defaultPath = resolve(outputDir, 'theme_default_variables.css');
-    const baPath = resolve(outputDir, 'theme_ba_variables.css');
-    await ensureDir(dirname(defaultPath));
-    await writeFile(defaultPath, defaultContent);
-    await writeFile(baPath, baContent);
-  }
+	for (const outputDir of distPaths) {
+		const jaipurPath = resolve(outputDir, 'theme_jaipur_variables.css');
+		const baPath = resolve(outputDir, 'theme_ba_variables.css');
+		await ensureDir(dirname(jaipurPath));
+		await writeFile(jaipurPath, jaipurContent);
+		await writeFile(baPath, baContent);
+	}
 }
 
 variables().catch(err => console.error(err));

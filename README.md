@@ -20,7 +20,7 @@ npm i -S colibri-ui
 // app/layout.tsx
 import clsx from "clsx";
 import type { ReactNode } from "react";
-import "colibri-ui/theme_default_variables.css";
+import "colibri-ui/theme_jaipur_variables.css";
 
 export default function RootLayout({
   children,

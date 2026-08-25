@@ -1,4 +1,4 @@
-import Color from "../colors";
+import Color from "../colors/theme_buenos_aires";
 
 export default {
   "color-brand-lime": Color.BRAND_BA_LIME,
@@ -173,10 +173,14 @@ export default {
 
   "border-width-hairline": "1px",
   "focus-ring-width": "0.125rem",
-  "shadow-raised": "0 0.3125rem 1.25rem color-mix(in srgb, var(--color-border-default) 40%, transparent)",
-  "shadow-pressed": "0 0.0625rem 0.1875rem color-mix(in srgb, var(--color-border-default) 40%, transparent)",
-  "shadow-tooltip": "0 0.25rem 0.625rem color-mix(in srgb, var(--color-border-strong) 24%, transparent)",
-  "shadow-switch-thumb": "0 0.0625rem 0.1875rem color-mix(in srgb, var(--color-border-strong) 24%, transparent)",
+  "shadow-raised":
+    "0 0.3125rem 1.25rem color-mix(in srgb, var(--color-border-default) 40%, transparent)",
+  "shadow-pressed":
+    "0 0.0625rem 0.1875rem color-mix(in srgb, var(--color-border-default) 40%, transparent)",
+  "shadow-tooltip":
+    "0 0.25rem 0.625rem color-mix(in srgb, var(--color-border-strong) 24%, transparent)",
+  "shadow-switch-thumb":
+    "0 0.0625rem 0.1875rem color-mix(in srgb, var(--color-border-strong) 24%, transparent)",
 
   "font-family-ui":
     'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',

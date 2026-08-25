@@ -1,6 +1,6 @@
 import React from "react";
 import chroma from "chroma-js";
-import ColorsDefault from "./themes/default";
+import ColorsJaipur from "./themes/jaipur";
 import ColorsBA from "./themes/buenos_aires";
 import Typography from "../Typography";
 
@@ -12,7 +12,7 @@ export default meta;
 
 export const Themes = () => {
   const themeKeys = Array.from(
-    new Set([...Object.keys(ColorsDefault), ...Object.keys(ColorsBA)]),
+    new Set([...Object.keys(ColorsJaipur), ...Object.keys(ColorsBA)]),
   );
 
   const style = `
@@ -55,12 +55,18 @@ export const Themes = () => {
     <>
       <style>{style}</style>
       <div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-4)",
+          }}
+        >
           <div style={{ display: "flex", gap: "var(--space-4)" }}>
             <div style={{ flex: 1 }} />
             <div style={{ flex: 1 }}>
               <Typography tag="h5" size="h5">
-                Theme Default
+                Theme Jaipur
               </Typography>
             </div>
             <div style={{ flex: 1 }}>
@@ -70,19 +76,22 @@ export const Themes = () => {
             </div>
           </div>
           {themeKeys.map((key, index) => {
-            const backgroundColor = ColorsDefault[key];
+            const backgroundColor = ColorsJaipur[key];
             const textColor = getTextColorForBackground(backgroundColor);
             const backgroundBAColor = ColorsBA[key];
             const textBAColor = getTextColorForBackground(backgroundBAColor);
-            const isDefaultColor = isColorToken(backgroundColor);
+            const isJaipurColor = isColorToken(backgroundColor);
             const isBAColor = isColorToken(backgroundBAColor);
 
             return (
-              <div key={index} style={{ display: "flex", gap: "var(--space-4)" }}>
+              <div
+                key={index}
+                style={{ display: "flex", gap: "var(--space-4)" }}
+              >
                 <div style={{ flex: 1 }}>{`--${key}`}</div>
                 <div
                   style={{
-                    backgroundColor: isDefaultColor
+                    backgroundColor: isJaipurColor
                       ? backgroundColor
                       : "transparent",
                     color: textColor,
