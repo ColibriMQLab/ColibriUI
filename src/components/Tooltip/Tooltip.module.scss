@@ -1,9 +1,10 @@
 .tooltip {
-  background-color: var(--tooltip-bg);
+  background-color: var(--component-tooltip-bg);
   border-radius: 0.35rem;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 10px
+    color-mix(in srgb, var(--color-border-strong) 24%, transparent);
   box-sizing: border-box;
-  color: var(--tooltip-color);
+  color: var(--component-tooltip-text);
   display: inline-block;
   font-size: 14px;
   font-weight: 400;

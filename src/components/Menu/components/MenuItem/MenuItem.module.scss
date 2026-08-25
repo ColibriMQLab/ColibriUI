@@ -11,31 +11,31 @@
   padding: 8px 6px;
 
   &_disabled {
-    background-color: var(--palette-white);
-    color: var(--palette-bg-2);
+    background-color: var(--component-menu-item-bg);
+    color: var(--component-menu-item-text-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }
 
   &_selected {
-    background-color: var(--palette-bg-2, rgb(232 240 254));
+    background-color: var(--component-menu-item-bg-selected);
   }
 
   &_variant {
     &_primary {
-      background-color: var(--palette-white);
+      background-color: var(--component-menu-item-bg);
 
       &:hover {
-        background-color: var(--palette-bg-2);
+        background-color: var(--component-menu-item-bg-hover);
       }
 
       &:active {
-        background-color: var(--palette-bg-2);
+        background-color: var(--component-menu-item-bg-pressed);
       }
 
       &:focus,
       &:focus-within {
-        background-color: var(--palette-bg-2);
+        background-color: var(--component-menu-item-bg-hover);
       }
     }
   }

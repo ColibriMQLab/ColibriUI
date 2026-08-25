@@ -7,6 +7,7 @@ export type Variant = "primary";
 
 export type InputProps = PropsWithChildren<{
   variant?: Variant;
+  active?: boolean;
   disabled: boolean;
   hasError?: boolean;
   className?: string;

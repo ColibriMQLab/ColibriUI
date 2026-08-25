@@ -1,15 +1,10 @@
 import React, { memo } from "react";
 import clsx from "clsx";
 import { AvatarSize } from "./constants";
-import userCircleUrl from "./assets/user-circle.svg";
-import orgCircleUrl from "./assets/org-circle.svg";
 import styles from "./Avatar.module.scss";
 import { AccountType } from "./index.props";
 import type { AvatarProps } from "./index.props";
 import type { FC } from "react";
-
-const getStubImage = (type: AccountType) =>
-  type === AccountType.Organization ? orgCircleUrl : userCircleUrl;
 
 const SIZE_CLASSES = {
   [AvatarSize.S]: styles["size-s"],
@@ -29,6 +24,40 @@ const TEXT_CLASSES = {
   [AvatarSize.XXXL]: styles["text-xxxl"],
 };
 
+const UserStubIcon = () => (
+  <svg
+    className={styles["avatar-stub-icon"]}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 42 39"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M33.6 37.997c-2.9-1.709-7-4.725-8.6-4.725h-3.802c-.9 0-2.8-.805-3-1.507-.199-.503-.199-1.408-.1-2.212 0-.1.303-.1.402 0 .8.905 1.099 1.508 1.9 1.508h1.8c.7 0 3.1-2.111 4.099-4.725.2-.603.4-1.608.5-2.713 0-.1.1-.202.1-.1.1.501.3 1.105.4 1.105.3.201.7-.603 1.2-1.709.5-1.006.5-1.608.7-2.413.3-1.105-.1-1.91-.4-1.91a.91.91 0 0 0-.7.302c-.1 0-.2 0-.2-.1 0-.704.1-1.81.9-2.413-1.1-1.005-.4-2.714-.4-2.714.4.2.4 0 .4 0l-.2-1.106c.6-.1 1.1-.603 1.1-.603s-1.6-.402-2.4-1.005c.7-.202 1.117-.957 1.117-.957S27 9.952 26 9.65c.9-.904.3-2.15.3-2.15s-1.6.441-4.7.441c-2.2-.1-3-.402-4.6 1.207-1.9 1.909-1.9 2.412-3.1 2.412 1 1.407.5 2.814.5 2.814l-.1 2.112.1.401s0 .1.1.302c0 .101 0 .303.1.402l.3 1.61s-.1.1-.2 0a1.42 1.42 0 0 0-1.2-.604c-.3 0-.8.805-.4 1.91.3.804.6 1.306.9 2.412s.9 1.91 1.2 1.71q.15-.153.3-.906c0-.1.1 0 .2.102.1 1.004.3 1.908.5 2.411.2.302.4.703.6 1.005-.2 1.709-.4 3.82-.8 5.428-2.6.704-6.6 1.91-10 2.714C2.2 31.967 0 26.74 0 21.11 0 9.45 9.4 0 21 0s21 9.45 21 21.11c0 6.936-3.3 13.066-8.4 16.887"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const OrgStubIcon = () => (
+  <svg
+    className={styles["avatar-stub-icon"]}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 42 42"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M19.103 27.36V34H9V12.062L22.567 6v21.36h-3.464zm-6.64 0v1.733h3.176V27.36h-3.175zm0-6.638v1.732h6.64v-1.732h-6.64zm0-4.042v1.732h6.64V16.68h-6.64zM32.67 27.36h-6.062v1.733h6.062V34h-9.526V18.124h9.526v9.237z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
 const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     src,
@@ -45,41 +74,65 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     ...rest
   } = props;
 
-  const stubSrc = getStubImage(accountType);
-
-  // Приоритет: переданное изображение (src) > инициалы > дефолтное изображение
   const hasInitials = initials && initials.trim().length > 0;
   const hasCustomImage = Boolean(src);
 
-  // Показываем изображение если есть src ИЛИ (нет инициалов И есть дефолтное изображение)
-  const shouldShowImage = hasCustomImage || (!hasInitials && stubSrc);
-  const finalSrc = src || stubSrc;
+  if (hasCustomImage) {
+    return (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <div
+        className={clsx(styles["avatar-wrapper"], {
+          [styles["avatar-loader"]]: Boolean(loading),
+        })}
+        onClick={onClick}
+        role="button"
+        aria-label={ariaLabel || "Avatar"}
+      >
+        <img
+          ref={ref}
+          data-testid="avatar"
+          alt={alt}
+          src={src}
+          className={clsx(
+            styles.avatar,
+            { [styles["avatar-bordered"]]: Boolean(bordered) },
+            SIZE_CLASSES[size],
+            className,
+          )}
+          {...rest}
+        />
+      </div>
+    );
+  }
 
-  return shouldShowImage ? (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
-      className={clsx(styles["avatar-wrapper"], {
-        [styles["avatar-loader"]]: Boolean(loading),
-      })}
-      onClick={onClick}
-      role="button"
-      aria-label={ariaLabel || "Avatar"}
-    >
-      <img
+  if (hasInitials) {
+    return (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <span
         ref={ref}
         data-testid="avatar"
-        alt={alt}
-        src={finalSrc as string}
+        role="button"
+        aria-label={ariaLabel || "Avatar"}
+        onClick={onClick}
         className={clsx(
-          styles.avatar,
-          { [styles["avatar-bordered"]]: Boolean(bordered) },
+          styles["avatar-initials"],
+          {
+            [styles["avatar-bordered"]]: Boolean(bordered),
+            [styles["avatar-loader"]]: Boolean(loading),
+          },
           SIZE_CLASSES[size],
           className,
         )}
         {...rest}
-      />
-    </div>
-  ) : (
+      >
+        <span className={clsx(styles["initials-text"], TEXT_CLASSES[size])}>
+          {initials.trim().slice(0, 2)}
+        </span>
+      </span>
+    );
+  }
+
+  return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <span
       ref={ref}
@@ -88,7 +141,7 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       aria-label={ariaLabel || "Avatar"}
       onClick={onClick}
       className={clsx(
-        styles["avatar-initials"],
+        styles["avatar-stub"],
         {
           [styles["avatar-bordered"]]: Boolean(bordered),
           [styles["avatar-loader"]]: Boolean(loading),
@@ -98,9 +151,11 @@ const Avatar: FC<AvatarProps> = memo((props) => {
       )}
       {...rest}
     >
-      <span className={clsx(styles["initials-text"], TEXT_CLASSES[size])}>
-        {initials?.trim().slice(0, 2) || ""}
-      </span>
+      {accountType === AccountType.Organization ? (
+        <OrgStubIcon />
+      ) : (
+        <UserStubIcon />
+      )}
     </span>
   );
 });

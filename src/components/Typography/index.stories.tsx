@@ -6,6 +6,18 @@ const typographySizes = [
   "s",
   "m",
   "l",
+  "text-xs",
+  "text-sm",
+  "text-md",
+  "text-lg",
+  "heading-sm",
+  "heading-md",
+  "heading-lg",
+  "heading-xl",
+  "display-sm",
+  "display-md",
+  "display-lg",
+  "display-xl",
   "h1",
   "h2",
   "h3",
@@ -28,6 +40,44 @@ const typographyTags = [
   "s",
 ] as const;
 
+const typographyVariants = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "disabled",
+  "inverse",
+  "alert",
+  "success",
+  "warning",
+  "info",
+] as const;
+
+const typographyWeights = [
+  "normal",
+  "regular",
+  "medium",
+  "semibold",
+  "bold",
+] as const;
+
+const productSizes = [
+  "text-xs",
+  "text-sm",
+  "text-md",
+  "text-lg",
+  "heading-sm",
+  "heading-md",
+  "heading-lg",
+  "heading-xl",
+] as const;
+
+const displaySizes = [
+  "display-sm",
+  "display-md",
+  "display-lg",
+  "display-xl",
+] as const;
+
 const meta: Meta<typeof Typography> = {
   title: "UI/Typography",
   component: Typography,
@@ -37,7 +87,7 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["secondary", "alert", "success"],
+      options: typographyVariants,
     },
     tag: {
       control: { type: "select" },
@@ -49,7 +99,7 @@ const meta: Meta<typeof Typography> = {
     },
     fontWeight: {
       control: { type: "select" },
-      options: ["normal", "medium", "bold"],
+      options: typographyWeights,
     },
     className: { table: { disable: true } },
     style: { control: "object" },
@@ -99,4 +149,111 @@ export const CustomTag: Story = {
     children: TEXT,
     tag: "h1",
   },
+};
+
+export const AllVariants: Story = {
+  parameters: {
+    layout: "padded",
+  },
+  render: () => (
+    <div
+      style={{
+        display: "grid",
+        gap: 32,
+        maxWidth: 960,
+      }}
+    >
+      <section style={{ display: "grid", gap: 16 }}>
+        <Typography size="heading-md">Product scale</Typography>
+
+        <div style={{ display: "grid", gap: 12 }}>
+          {productSizes.map((size) => (
+            <div
+              key={size}
+              style={{
+                alignItems: "baseline",
+                display: "grid",
+                gap: 16,
+                gridTemplateColumns: "120px minmax(0, 1fr)",
+              }}
+            >
+              <Typography size="text-sm" variant="secondary">
+                {size}
+              </Typography>
+              <Typography size={size}>The quick brown fox jumps</Typography>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ display: "grid", gap: 16 }}>
+        <Typography size="heading-md">Marketing display</Typography>
+
+        <div style={{ display: "grid", gap: 12 }}>
+          {displaySizes.map((size) => (
+            <div key={size} style={{ display: "grid", gap: 4 }}>
+              <Typography size="text-sm" variant="secondary">
+                {size}
+              </Typography>
+              <Typography size={size}>Buenos Aires</Typography>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ display: "grid", gap: 16 }}>
+        <Typography size="heading-md">Weights</Typography>
+
+        <div style={{ display: "grid", gap: 12 }}>
+          {typographyWeights.map((fontWeight) => (
+            <div
+              key={fontWeight}
+              style={{
+                alignItems: "baseline",
+                display: "grid",
+                gap: 16,
+                gridTemplateColumns: "120px minmax(0, 1fr)",
+              }}
+            >
+              <Typography size="text-sm" variant="secondary">
+                {fontWeight}
+              </Typography>
+              <Typography fontWeight={fontWeight} size="text-md">
+                The quick brown fox jumps
+              </Typography>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ display: "grid", gap: 16 }}>
+        <Typography size="heading-md">Semantic variants</Typography>
+
+        <div
+          style={{
+            display: "grid",
+            gap: 12,
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          }}
+        >
+          {typographyVariants.map((variant) => (
+            <div
+              key={variant}
+              style={{
+                background:
+                  variant === "inverse" ? "var(--color-bg-inverse)" : "none",
+                border: "1px solid var(--color-border-subtle)",
+                borderRadius: 8,
+                padding: 16,
+              }}
+            >
+              <Typography fontWeight="medium" size="text-md" variant={variant}>
+                {variant}
+              </Typography>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  ),
 };

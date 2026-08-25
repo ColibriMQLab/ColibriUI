@@ -4,6 +4,7 @@ import styles from "./InputRoot.module.scss";
 import type { InputProps } from "./index.props";
 
 const InputRoot = ({
+  active,
   className,
   startIcon,
   endIcon,
@@ -23,6 +24,7 @@ const InputRoot = ({
       styles[`variant_${variant}`],
       size && styles[`size_${size}`],
       {
+        [styles[`variant_${variant}_active`]]: active,
         [styles[`variant_${variant}_disabled`]]: disabled,
         [styles[`variant_${variant}_error`]]: hasError,
       },

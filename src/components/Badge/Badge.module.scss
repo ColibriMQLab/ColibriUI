@@ -1,9 +1,9 @@
 .root {
   align-items: center;
-  background-color: var(--palette-brand-default-1);
+  background-color: var(--component-badge-bg);
   border-radius: 10px;
   box-sizing: border-box;
-  color: var(--palette-white);
+  color: var(--component-badge-text);
   display: flex;
   flex-flow: row wrap;
   font-size: 12px;

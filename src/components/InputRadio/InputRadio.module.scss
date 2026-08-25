@@ -5,15 +5,16 @@
 }
 
 .text {
+  color: var(--component-control-text);
   flex: 1 1 auto;
   line-height: 18px;
   margin-inline-start: 8px;
 }
 
 .icon {
-  background-color: var(--palette-white);
+  background-color: var(--component-control-bg);
   block-size: 16px;
-  border: solid 1px var(--palette-bg-3);
+  border: solid 1px var(--component-control-border);
   border-radius: 100%;
   box-sizing: border-box;
   display: block;
@@ -38,12 +39,11 @@
 
   &_error {
     & .text {
-      color: var(--palette-alert);
+      color: var(--component-control-text-error);
     }
 
     & .icon {
-      border-color: var(--palette-alert);
-      box-shadow: 0 0 0 2px var(--palette-tretiary-2);
+      border-color: var(--component-control-border-error);
     }
   }
 }
@@ -51,7 +51,7 @@
 .input {
   block-size: 1px;
   border: 0;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   inline-size: 1px;
   margin: -1px;
   overflow: hidden;
@@ -59,15 +59,17 @@
   position: absolute;
 
   &_checked + .icon {
-    background-color: var(--palette-black);
-    border: 4px solid var(--input-radio-bg-checked);
+    background-color: var(--component-control-bg);
+    border: 4px solid var(--component-control-border-checked);
   }
 
   &_disabled + .icon {
+    background-color: var(--component-control-bg-disabled);
+    border-color: var(--component-control-border-disabled);
     border-radius: 50%;
 
     &::after {
-      background-color: rgb(246 246 246 / 80%);
+      background-color: transparent;
       border-radius: 50%;
       content: "";
       display: block;
@@ -79,28 +81,29 @@
 
   &:not(&_disabled, &_error) {
     &:hover + .icon {
-      border-color: var(--input-radio-bg-hovered);
+      border-color: var(--component-control-border-hover);
     }
 
     &:focus + .icon {
-      box-shadow: 0 0 0 2px var(--input-radio-box-shadow-focused);
+      border-color: var(--component-control-border-focus);
+      box-shadow: 0 0 0 2px var(--component-control-focus-ring);
     }
 
     &:active + .icon {
-      background-color: var(--input-radio-bg-focused);
-      border-color: var(--input-radio-border-color-focused);
-      box-shadow: 0 0 0 2px var(--input-radio-box-shadow-focused);
+      background-color: var(--component-control-bg);
+      border-color: var(--component-control-border-focus);
+      box-shadow: 0 0 0 2px var(--component-control-focus-ring);
     }
   }
 
   &:not(&_disabled, &_error) &_checked {
     &:hover + .icon {
-      border-color: var(--input-radio-bg-hovered);
+      border-color: var(--component-control-border-hover);
     }
 
     &:active + .icon {
-      background-color: var(--palette-black);
-      border: 4px solid var(--input-radio-bg-checked);
+      background-color: var(--component-control-bg);
+      border: 4px solid var(--component-control-border-checked);
     }
   }
 
@@ -112,7 +115,7 @@
 }
 
 .note {
-  color: var(--palette-bg-5);
+  color: var(--component-control-helper);
   margin-block-start: 4px;
   padding-inline-start: 24px;
 }

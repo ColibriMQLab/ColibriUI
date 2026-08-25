@@ -22,7 +22,7 @@ import User from "./User";
 import type { ReactNode } from "react";
 
 const icons = {
-  ArrowNext: <ArrowNext/>,
+  ArrowNext: <ArrowNext />,
   Cart: <Cart />,
   Check: <Check />,
   Chevron: <Chevron />,
@@ -39,7 +39,7 @@ const icons = {
   More: <More />,
   Plus: <Plus />,
   Setting: <Setting />,
-  Shield: <Shield/>,
+  Shield: <Shield />,
   Trash: <Trash />,
   User: <User />,
 };
@@ -57,7 +57,9 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
     allIcons.push(
       // @ts-expect-error error
       <div key={Math.random()}>
-        <div style={{textAlign: 'center', fontSize: '40px', width: '100%'}}>{icons[icon]}</div>
+        <div style={{ textAlign: "center", fontSize: "40px", width: "100%" }}>
+          {icons[icon]}
+        </div>
         <div>{icon}</div>
       </div>,
     );
@@ -67,9 +69,24 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
 };
 
 export const All = () => {
-  return <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px'}}>{renderIcons(icons)}</div>;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      {renderIcons(icons)}
+    </div>
+  );
 };
 
 export const Colored = () => {
-  return <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', color: "#0066DC" }}>{renderIcons(icons)}</div>;
+  return (
+    <div
+      style={{
+        color: "var(--color-icon-primary)",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px",
+      }}
+    >
+      {renderIcons(icons)}
+    </div>
+  );
 };

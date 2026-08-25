@@ -21,5 +21,9 @@ export default meta;
 type Story = StoryObj<typeof Separator>;
 
 export const Default: Story = {
-  render: (args) => <Separator {...args} />,
+  render: (args) => (
+    <div style={{ width: 320 }}>
+      <Separator {...args} />
+    </div>
+  ),
 };

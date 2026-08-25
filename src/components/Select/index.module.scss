@@ -20,7 +20,7 @@
   margin: 7px 0;
 
   ::placeholder {
-    color: var(--palette-bg-2);
+    color: var(--component-input-placeholder);
   }
 
   & > * {
@@ -31,7 +31,7 @@
 }
 
 .placeholder {
-  color: var(--input-primary-plaseholder-color);
+  color: var(--component-input-placeholder);
   display: block;
   max-width: 100%;
   overflow: hidden;

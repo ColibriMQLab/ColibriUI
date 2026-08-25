@@ -5,6 +5,7 @@
 
 .inner {
   box-sizing: border-box;
+  color: var(--component-chip-text);
   display: flex;
   font: inherit;
   min-width: 0;
@@ -14,33 +15,56 @@
   transition-timing-function: ease;
 
   &_active {
-    background: var(--palette-bg-1);
+    background: var(--component-chip-bg-active);
+    color: var(--component-chip-text-active, var(--component-chip-text));
   }
 
   &_inactive {
-    background: var(--palette-white);
-    box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+    background: var(--component-chip-bg);
+    box-shadow: color-mix(in srgb, var(--color-border-default) 40%, transparent)
+      0 5px 20px;
 
     &:hover {
-      box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+      background: var(--component-chip-bg-hover);
+      box-shadow: color-mix(
+          in srgb,
+          var(--color-border-default) 40%,
+          transparent
+        )
+        0 5px 20px;
       transform: translateY(-2px);
     }
 
     &:active {
-      background: rgb(0 0 0 / 2%);
-      box-shadow: rgb(193 193 193 / 40%) 0 1px 3px;
+      background: var(--component-chip-bg-pressed);
+      box-shadow: color-mix(
+          in srgb,
+          var(--color-border-default) 40%,
+          transparent
+        )
+        0 1px 3px;
       outline: 0;
       transition-duration: 0.15s;
     }
 
     @media (hover: none) {
       &:hover {
-        box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+        box-shadow: color-mix(
+            in srgb,
+            var(--color-border-default) 40%,
+            transparent
+          )
+          0 5px 20px;
         transform: translateY(0);
       }
 
       &:active {
-        box-shadow: rgb(193 193 193 / 40%) 0 1px 3px;
+        box-shadow: color-mix(
+            in srgb,
+            var(--color-border-default) 40%,
+            transparent
+          )
+          0 1px 3px;
       }
     }
   }
@@ -81,13 +105,21 @@
 
 .icon-right {
   align-items: center;
-  color: var(--palette-bg-5);
+  color: var(--component-chip-icon);
   display: flex;
   justify-content: center;
   margin-left: -11px;
   padding-right: 0.8rem;
 
   &:hover {
-    color: var(--palette-black);
+    color: var(--component-chip-icon-hover);
+  }
+}
+
+.inner_active .icon-right {
+  color: var(--component-chip-icon-active, currentcolor);
+
+  &:hover {
+    color: var(--component-chip-icon-active-hover, currentcolor);
   }
 }

@@ -38,37 +38,13 @@ type Story = StoryObj<typeof SkeletonRect>;
 
 export const Rect: Story = {
   render: (args) => {
-    const style = `
-        .my-rect-skeleton {
-            --skeleton-color: rgba(0, 0, 0, .05);
-            --skeleton-animation: skeleton-loading 1.5s ease-in-out infinite;
-        }
-    `;
-
-    return (
-      <>
-        <style>{style}</style>
-        <SkeletonRect {...args} />
-      </>
-    );
+    return <SkeletonRect {...args} />;
   },
 };
 
 export const Text: Story = {
   render: (args) => {
-    const style = `
-        .my-text-skeleton {
-            --skeleton-color: rgba(0, 0, 0, .05);
-            --skeleton-animation: skeleton-loading 1.5s ease-in-out infinite;
-        }
-    `;
-
-    return (
-      <>
-        <style>{style}</style>
-        <SkeletonText width={args.width} size={Number(args.size ?? 16)} />
-      </>
-    );
+    return <SkeletonText width={args.width} size={Number(args.size ?? 16)} />;
   },
   args: {
     width: 128,

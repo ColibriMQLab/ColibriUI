@@ -1,11 +1,12 @@
 .root {
-  --editable-background: var(--background-primary, #fff);
-  --editable-caret-color: var(--text-accent, #006be6);
-  --editable-icon-color: var(--text-tertiary, #7d838a);
-  --editable-icon-hover-color: var(--text-primary, #17191c);
-  --editable-placeholder-color: var(--text-secondary, #626971);
+  --editable-background: var(--color-bg-surface);
+  --editable-caret-color: var(--color-border-focus);
+  --editable-icon-color: var(--color-text-tertiary);
+  --editable-icon-hover-color: var(--color-text-primary);
+  --editable-placeholder-color: var(--color-text-placeholder);
 
   align-items: center;
+  color: var(--color-text-primary);
   cursor: text;
   display: inline-flex;
   max-width: 100%;

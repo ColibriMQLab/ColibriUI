@@ -18,12 +18,6 @@ const meta: Meta<typeof Badge> = {
     max: {
       control: { type: "number" },
     },
-    color: {
-      control: { type: "color" },
-    },
-    background: {
-      control: { type: "color" },
-    },
     invisible: {
       control: { type: "boolean" },
       options: [true, false],
@@ -45,8 +39,6 @@ const meta: Meta<typeof Badge> = {
     max: 99,
     invisible: false,
     showZero: false,
-    background: "#FC5759",
-    color: "#fff",
     direction: "right",
   },
   component: Badge,

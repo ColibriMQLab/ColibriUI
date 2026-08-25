@@ -5,7 +5,6 @@
   position: relative;
 
   &_disabled {
-    opacity: 0.7;
     pointer-events: none;
   }
 }
@@ -30,26 +29,27 @@
 
   &_variant {
     &_primary {
-      background-color: var(--switch-bg);
-      border-color: var(--switch-border-color);
+      background-color: var(--component-switch-bg);
+      border-color: var(--component-control-border);
     }
   }
 
   &_disabled {
+    background-color: var(--component-control-bg-disabled);
+    border-color: var(--component-control-border-disabled);
     cursor: not-allowed;
-    opacity: 0.5;
   }
 
   &_error {
-    border-color: var(--color-error, #ef4444);
-    box-shadow: 0 0 0 1px var(--color-error, #ef4444);
+    border-color: var(--component-control-border-error);
   }
 }
 
 .base-switch {
-  background: var(--palette-white);
+  background: var(--component-switch-thumb);
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 3px
+    color-mix(in srgb, var(--color-border-strong) 24%, transparent);
   height: 16px;
   left: 2px;
   position: absolute;
@@ -73,17 +73,27 @@
   z-index: 1;
 
   &:checked + .wrapper {
-    background-color: var(--switch-bg-checked);
-    border-color: var(--switch-border-color-checked);
+    background-color: var(--component-switch-bg-checked);
+    border-color: var(--component-control-border-checked);
 
     .base-switch {
+      background: var(--component-switch-thumb-checked);
       transform: translateX(18px);
     }
   }
 
   &:focus + .wrapper {
-    outline: 2px solid var(--focus-color, #3b82f6);
+    outline: 2px solid var(--component-control-focus-ring);
     outline-offset: 2px;
+  }
+
+  &:disabled + .wrapper {
+    background-color: var(--component-control-bg-disabled);
+    border-color: var(--component-control-border-disabled);
+
+    .base-switch {
+      background: var(--component-control-text-disabled);
+    }
   }
 
   &:disabled {
@@ -92,8 +102,16 @@
 }
 
 .text {
-  color: var(--text-primary, #1f2937);
+  color: var(--component-control-text);
   font-size: 16px;
   line-height: 1.4;
   user-select: none;
+}
+
+.root_disabled .text {
+  color: var(--component-control-text-disabled);
+}
+
+.hint_error {
+  color: var(--component-control-helper-error);
 }

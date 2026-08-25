@@ -21,7 +21,7 @@ const WEEK_DAYS = Array.from({ length: 7 }, (_, weekDayIndex) => {
   };
 });
 
-const SELECTED_BG_STYLE = { background: "var(--palette-bg-2)" };
+const SELECTED_BG_STYLE = { background: "var(--component-switch-bg-checked)" };
 const TRANSPARENT_BG_STYLE = { background: "transparent" };
 
 type Props = {
@@ -115,8 +115,11 @@ const DayButton = React.memo<{
       <Typography
         size="s"
         style={{
-          opacity: isActive ? 80 : 30,
-          color: isActive ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.3)",
+          color: isActive
+            ? isSelected
+              ? "var(--component-tab-text-active)"
+              : "var(--color-text-primary)"
+            : "var(--color-text-disabled)",
         }}
       >
         {day}
@@ -179,10 +182,9 @@ const Month: FC<Props> = (props) => {
             <li className={styles.day} key={index}>
               <Typography
                 style={{
-                  opacity: isWeekend ? 80 : 30,
                   color: isWeekend
-                    ? "var(--typography-alert)"
-                    : "var(--palette-black)",
+                    ? "var(--color-status-error)"
+                    : "var(--color-text-secondary)",
                 }}
               >
                 {name}

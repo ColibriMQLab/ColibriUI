@@ -1,8 +1,8 @@
 import React from "react";
-import chroma from 'chroma-js';
-import ColorsDefault from './themes/default';
-import ColorsBA from './themes/buenos_aires';
-import Typography from '../Typography'
+import chroma from "chroma-js";
+import ColorsDefault from "./themes/default";
+import ColorsBA from "./themes/buenos_aires";
+import Typography from "../Typography";
 
 const meta = {
   title: "UI/Theme",
@@ -11,6 +11,10 @@ const meta = {
 export default meta;
 
 export const Themes = () => {
+  const themeKeys = Array.from(
+    new Set([...Object.keys(ColorsDefault), ...Object.keys(ColorsBA)]),
+  );
+
   const style = `
     #storybook-root {
       flex: 1;
@@ -18,50 +22,88 @@ export const Themes = () => {
     }
   `;
 
-  function isColorDark(color) {
+  function isColorToken(value: unknown) {
+    return typeof value === "string" && chroma.valid(value);
+  }
+
+  function isColorDark(color: string) {
     const rgb = chroma(color).rgb();
     const [r, g, b] = rgb.map(Number);
-    const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+    const brightness = r * 0.299 + g * 0.587 + b * 0.114;
     return brightness < 128;
   }
 
-  function getTextColorForBackground(bgColor) {
-    return isColorDark(bgColor) ? 'white' : 'black';
+  function getTextColorForBackground(bgColor: unknown) {
+    if (!isColorToken(bgColor)) {
+      return "var(--color-text-primary)";
+    }
+
+    return isColorDark(bgColor)
+      ? "var(--color-text-inverse)"
+      : "var(--color-text-primary)";
+  }
+
+  function renderTokenValue(value: unknown) {
+    if (value == null) {
+      return "-";
+    }
+
+    return String(value);
   }
 
   return (
     <>
       <style>{style}</style>
       <div>
-        <div style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', gap: '16px' }}>
-          <div style={{ flex: 1 }}/>
-          <div style={{ flex: 1 }}>
-            <Typography tag="h5" size="h5">Theme Default</Typography>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ display: "flex", gap: "16px" }}>
+            <div style={{ flex: 1 }} />
+            <div style={{ flex: 1 }}>
+              <Typography tag="h5" size="h5">
+                Theme Default
+              </Typography>
+            </div>
+            <div style={{ flex: 1 }}>
+              <Typography tag="h5" size="h5">
+                Theme BA
+              </Typography>
+            </div>
           </div>
-          <div style={{ flex: 1 }}>
-            <Typography tag="h5" size="h5">Theme BA</Typography>
-          </div>
-        </div>
-          {Object.entries(ColorsDefault).map((item, index) => {
-            const backgroundColor = item[1];
+          {themeKeys.map((key, index) => {
+            const backgroundColor = ColorsDefault[key];
             const textColor = getTextColorForBackground(backgroundColor);
-            const backgroundBAColor = ColorsBA[item[0]];
-            const textBAColor = getTextColorForBackground(backgroundColor);
+            const backgroundBAColor = ColorsBA[key];
+            const textBAColor = getTextColorForBackground(backgroundBAColor);
+            const isDefaultColor = isColorToken(backgroundColor);
+            const isBAColor = isColorToken(backgroundBAColor);
 
             return (
-              <div style={{ display: 'flex', gap: '16px' }} key={index}>
-                <div style={{ flex: 1 }}>
-                  {`--${item[0]}`}
+              <div key={index} style={{ display: "flex", gap: "16px" }}>
+                <div style={{ flex: 1 }}>{`--${key}`}</div>
+                <div
+                  style={{
+                    backgroundColor: isDefaultColor
+                      ? backgroundColor
+                      : "transparent",
+                    color: textColor,
+                    flex: 1,
+                  }}
+                >
+                  {renderTokenValue(backgroundColor)}
                 </div>
-                <div style={{ backgroundColor, color: textColor, flex: 1 }}>
-                  {item[1]}
-                </div>
-                <div style={{ backgroundColor: backgroundBAColor, color: textBAColor, flex: 1 }}>
-                  {ColorsBA[item[0]]}
+                <div
+                  style={{
+                    backgroundColor: isBAColor
+                      ? backgroundBAColor
+                      : "transparent",
+                    color: textBAColor,
+                    flex: 1,
+                  }}
+                >
+                  {renderTokenValue(backgroundBAColor)}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>

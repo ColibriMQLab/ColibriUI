@@ -1,7 +1,8 @@
 .tab {
+  color: var(--component-tab-text);
   cursor: pointer;
   padding: 0 0.875em;
-  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+  -webkit-tap-highlight-color: transparent;
   transition-duration: 0.3s;
   transition-property: background, box-shadow, transform;
   transition-timing-function: ease;
@@ -10,13 +11,13 @@
 
   &[data-size="xs"] {
     border-radius: 1.75rem;
-    font-size: 0.775rem/1.15rem;
+    font-size: 0.775rem;
     line-height: 1.75rem;
   }
 
   &[data-size="s"] {
     border-radius: 2rem;
-    font-size: 0.875rem/1.25rem;
+    font-size: 0.875rem;
     line-height: 2rem;
   }
 
@@ -29,37 +30,60 @@
 
   &[data-size="l"] {
     border-radius: 2.625rem;
-    font-size: 1rem/1.5rem;
+    font-size: 1rem;
     line-height: 2.625rem;
     padding: 0 1em;
   }
 
   &_active {
-    background: var(--palette-bg-1);
+    background: var(--component-tab-bg-active);
+    color: var(--component-tab-text-active, var(--component-tab-text));
   }
 
   &_inactive {
-    background: var(--palette-white);
-    box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+    background: var(--component-tab-bg);
+    box-shadow: color-mix(in srgb, var(--color-border-default) 40%, transparent)
+      0 5px 20px;
 
     &:hover {
-      box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+      background: var(--component-tab-bg-hover);
+      box-shadow: color-mix(
+          in srgb,
+          var(--color-border-default) 40%,
+          transparent
+        )
+        0 5px 20px;
     }
 
     &:active {
-      background: rgb(0 0 0 / 2%);
-      box-shadow: rgb(193 193 193 / 40%) 0 1px 3px;
+      background: var(--component-tab-bg-pressed);
+      box-shadow: color-mix(
+          in srgb,
+          var(--color-border-default) 40%,
+          transparent
+        )
+        0 1px 3px;
       outline: 0;
       transition-duration: 0.15s;
     }
 
     @media (hover: none) {
       &:hover {
-        box-shadow: rgb(193 193 193 / 40%) 0 5px 20px;
+        box-shadow: color-mix(
+            in srgb,
+            var(--color-border-default) 40%,
+            transparent
+          )
+          0 5px 20px;
       }
 
       &:active {
-        box-shadow: rgb(193 193 193 / 40%) 0 1px 3px;
+        box-shadow: color-mix(
+            in srgb,
+            var(--color-border-default) 40%,
+            transparent
+          )
+          0 1px 3px;
       }
     }
   }
@@ -69,9 +93,9 @@
   }
 
   &_disabled {
-    background: #f7f8f9;
+    background: var(--component-tab-bg-disabled);
     box-shadow: none;
-    color: var(--palette-bg-3);
+    color: var(--component-tab-text-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }

@@ -116,6 +116,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           <InputRoot
             hasError={hasError}
             size={size}
+            active={isOpen && Boolean(!disabled)}
             style={{ ...style, width: fullWidth ? "100%" : "" }}
             className={clsx(styles.root, {
               [styles["root_auto"]]: preparedLabel.length,

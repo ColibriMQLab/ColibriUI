@@ -1,8 +1,9 @@
 .root {
   align-items: center;
-  background-color: var(--status-neutral-bg);
+  background-color: var(--component-status-neutral-bg);
   border-radius: 6rem;
   box-sizing: border-box;
+  color: var(--color-text-primary);
   display: inline-flex;
   gap: 0.5rem;
   inline-size: fit-content;
@@ -13,7 +14,7 @@
   white-space: nowrap;
 
   &::before {
-    background-color: var(--status-neutral);
+    background-color: var(--component-status-neutral);
     block-size: 0.4rem;
     border-radius: 100%;
     content: "";
@@ -21,34 +22,34 @@
   }
 
   &_success {
-    background-color: var(--status-success-bg);
+    background-color: var(--component-status-success-bg);
 
     &::before {
-      background-color: var(--status-success);
+      background-color: var(--component-status-success);
     }
   }
 
   &_info {
-    background-color: var(--status-info-bg);
+    background-color: var(--component-status-info-bg);
 
     &::before {
-      background-color: var(--status-info);
+      background-color: var(--component-status-info);
     }
   }
 
   &_failure {
-    background-color: var(--status-failure-bg);
+    background-color: var(--component-status-error-bg);
 
     &::before {
-      background-color: var(--status-failure);
+      background-color: var(--component-status-error);
     }
   }
 
   &_warning {
-    background-color: var(--status-warning-bg);
+    background-color: var(--component-status-warning-bg);
 
     &::before {
-      background-color: var(--status-warning);
+      background-color: var(--component-status-warning);
     }
   }
 }

@@ -1,6 +1,7 @@
 .input-container {
   align-items: center;
-  border: 1px solid var(--palette-bg-3);
+  background-color: var(--component-input-bg);
+  border: 1px solid var(--component-input-border);
   border-bottom-right-radius: 0.375rem;
   border-left: none;
   border-top-right-radius: 0.375rem;
@@ -22,21 +23,26 @@
 }
 
 .input-date {
-  border-bottom: 1px solid var(--palette-bg-3);
-  border-right: 1px solid var(--palette-bg-3);
-  border-top: 1px solid var(--palette-bg-3);
+  border-bottom: 1px solid var(--component-input-border);
+  border-right: 1px solid var(--component-input-border);
+  border-top: 1px solid var(--component-input-border);
+  color: var(--component-input-text);
   cursor: pointer;
   flex: 3;
   position: relative;
 }
 
+.input-date:hover {
+  border-color: var(--component-input-border-hover);
+}
+
 .input-date:focus-within {
-  border-color: var(--palette-primary-3);
-  box-shadow: 0 0 0 2px var(--palette-primary-2);
+  border-color: var(--component-input-border-focus);
+  box-shadow: 0 0 0 2px var(--component-input-focus-ring);
 }
 
 .input-date:focus-within::before {
-  background-color: var(--palette-primary-3);
+  background-color: var(--component-input-border-focus);
   content: "";
   height: 100%;
   left: 0;

@@ -1,22 +1,27 @@
 .root {
-  --code-field-background: transparent;
-  --code-field-background-focus: transparent;
-  --code-field-background-hover: transparent;
-  --code-field-border-color: var(
-    --surface-transparent-tertiary,
-    rgb(0 0 0 / 14%)
+  --code-field-background: var(--component-input-bg, transparent);
+  --code-field-background-disabled: var(--component-input-bg-disabled);
+  --code-field-background-focus: var(--component-input-bg, transparent);
+  --code-field-background-hover: var(--component-input-bg, transparent);
+  --code-field-border-color: var(--component-input-border);
+  --code-field-border-disabled-color: var(--component-input-border-disabled);
+  --code-field-border-focus-color: var(--component-input-border-focus);
+  --code-field-border-hover-color: var(--component-input-border-hover);
+  --code-field-caption-color: var(--color-text-secondary);
+  --code-field-caret-color: var(--component-input-border-focus);
+  --code-field-color: var(--component-input-text);
+  --code-field-disabled-color: var(--component-input-text-disabled);
+  --code-field-error-color: var(--component-input-border-error);
+  --code-field-error-helper-color: var(
+    --component-input-helper-error,
+    var(--code-field-error-color)
   );
-  --code-field-border-focus-color: var(--surface-accent, #006be6);
-  --code-field-border-hover-color: var(--text-secondary, #626971);
-  --code-field-caption-color: var(--text-secondary, #626971);
-  --code-field-caret-color: var(--surface-accent, #006be6);
-  --code-field-color: var(--text-primary, #17191c);
-  --code-field-error-color: var(--text-negative, #d91c3a);
+  --code-field-focus-ring-color: var(--component-input-focus-ring);
 
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family-ui);
   justify-content: center;
   width: min-content;
 }
@@ -49,6 +54,12 @@
 .item_error {
   box-shadow: inset 0 0 0 1px var(--code-field-error-color) !important;
   color: var(--code-field-error-color);
+}
+
+.disabled .item {
+  background: var(--code-field-background-disabled);
+  box-shadow: inset 0 0 0 1px var(--code-field-border-disabled-color);
+  color: var(--code-field-disabled-color);
 }
 
 .default .item {
@@ -157,7 +168,7 @@
 }
 
 .caption_error {
-  color: var(--code-field-error-color);
+  color: var(--code-field-error-helper-color);
 }
 
 .shaking {
@@ -166,7 +177,6 @@
 
 .disabled {
   cursor: not-allowed;
-  opacity: 0.4;
 }
 
 .disabled .native_input {
@@ -180,7 +190,9 @@
 
 .root:focus-within .focused {
   background: var(--code-field-background-focus);
-  box-shadow: inset 0 0 0 1px var(--code-field-border-focus-color);
+  box-shadow:
+    inset 0 0 0 1px var(--code-field-border-focus-color),
+    0 0 0 2px var(--code-field-focus-ring-color);
 }
 
 @keyframes caret-blink {

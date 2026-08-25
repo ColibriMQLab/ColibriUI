@@ -30,9 +30,9 @@ const meta: Meta<typeof Accordion> = {
 export default meta;
 
 const wrapperStyles = {
+  backgroundColor: "var(--color-bg-surface-subtle)",
   height: "400px",
   width: "600px",
-  backgroundColor: "#DFE7FA",
 };
 
 export const Default = (args): React.ReactElement => {

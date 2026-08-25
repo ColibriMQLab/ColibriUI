@@ -6,10 +6,8 @@ import type { FC, PropsWithChildren } from "react";
 import type { Props } from "./index.props";
 
 const Badge: FC<PropsWithChildren<Props>> = ({
-  background,
   children,
   className,
-  color,
   content,
   direction = "right",
   invisible: invisibleProp,
@@ -43,7 +41,6 @@ const Badge: FC<PropsWithChildren<Props>> = ({
             className,
           )}
           data-testid="badge"
-          style={{ backgroundColor: background, color }}
         >
           {displayValue}
         </span>

@@ -33,8 +33,9 @@ type Story = StoryObj<typeof Grid>;
 
 const style = `
 	.grid-item {
-		background: #f7f8f9;
+		background: var(--color-bg-surface-subtle);
 		border-radius: 6px;
+		color: var(--color-text-primary);
 		padding: 12px;
 	}
 	#storybook-root {
@@ -87,7 +88,10 @@ export const GridItemProps: Story = {
         <GridItem
           fullWidth
           className="grid-item"
-          style={{ background: "#e8f4ff" }}
+          style={{
+            background: "var(--component-tab-bg-active)",
+            color: "var(--component-tab-text-active)",
+          }}
         >
           Full-width item with custom style
         </GridItem>

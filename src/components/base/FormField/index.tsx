@@ -26,7 +26,11 @@ const FormField = ({
     )}
     {children}
     {hint && (
-      <Typography variant={hasError ? "alert" : "secondary"} tag="span">
+      <Typography
+        className={clsx({ [styles.hint_error]: hasError })}
+        variant={hasError ? "alert" : "secondary"}
+        tag="span"
+      >
         {hint}
       </Typography>
     )}

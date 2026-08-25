@@ -85,10 +85,7 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
       {groups.map((group, index) => (
         <div key={`item-${index}`}>
           <div className={styles.title}>
-            <Typography
-              style={{ color: "var(--typography-secondary)" }}
-              size="s"
-            >
+            <Typography size="s" variant="secondary">
               {group.title}
             </Typography>
           </div>

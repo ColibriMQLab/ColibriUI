@@ -1,6 +1,6 @@
 .rect {
   animation: skeleton-loading 1.5s ease-in-out infinite;
-  background-color: var(--palette-bg-2);
+  background-color: var(--component-skeleton-bg);
 
   @keyframes skeleton-loading {
     0% {
@@ -19,7 +19,7 @@
 
 .text {
   animation: skeleton-loading 1.5s ease-in-out infinite;
-  background-color: var(--palette-bg-2);
+  background-color: var(--component-skeleton-bg);
   border-radius: 6px;
   height: 12px;
 

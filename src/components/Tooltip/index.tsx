@@ -91,7 +91,13 @@ const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
           >
             <div className={styles.content}>{content}</div>
 
-            {withTail && <FloatingArrow ref={arrowRef} context={context} />}
+            {withTail && (
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                fill="var(--component-tooltip-bg)"
+              />
+            )}
           </div>
         </FloatingPortal>
       )}

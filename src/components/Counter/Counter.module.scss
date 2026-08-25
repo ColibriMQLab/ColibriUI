@@ -1,8 +1,9 @@
 .root {
-  background-color: var(--palette-white);
+  background-color: var(--component-counter-bg);
   block-size: 40px;
   border-radius: 4px;
   box-sizing: border-box;
+  color: var(--component-counter-text);
   display: inline-block;
   font-size: 16px;
   min-inline-size: 96px;
@@ -28,7 +29,7 @@
 
 .value {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium, 500);
   inline-size: 24px;
   text-align: center;
   user-select: none;

@@ -81,6 +81,7 @@ const Select = <T extends string>({
             <InputRoot
               hasError={hasError}
               size={size}
+              active={isOpen && Boolean(!disabled)}
               style={{ width: fullWidth ? "100%" : "" }}
               className={styles.root}
               endIcon={
