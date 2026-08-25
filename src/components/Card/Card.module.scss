@@ -1,0 +1,91 @@
+.card {
+  --card-outline-width: var(--space-2);
+  --card-border-radius: var(--component-card-radius);
+  --card-content-border-radius: var(--radius-xs);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  position: relative;
+  z-index: 0;
+}
+
+.s {
+  --card-outline-width: var(--space-2);
+  --card-border-radius: var(--radius-md);
+  --card-content-border-radius: var(--radius-xs);
+}
+
+.m {
+  --card-outline-width: var(--space-3);
+  --card-border-radius: var(--component-card-radius);
+  --card-content-border-radius: var(--radius-xs);
+}
+
+.l {
+  --card-outline-width: var(--space-4);
+  --card-border-radius: var(--radius-lg);
+  --card-content-border-radius: var(--radius-sm);
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.solid {
+  background: var(--component-card-bg);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-outline-width);
+}
+
+.selected::after {
+  border: var(--border-width-hairline) solid var(--color-border-focus);
+  border-radius: var(--card-border-radius);
+  content: "";
+  inset: calc(-1 * var(--border-width-hairline));
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.content {
+  border-radius: var(--card-content-border-radius);
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:not(.solid) > .content {
+  border-radius: var(--card-border-radius);
+}
+
+.content.horizontal {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content.vertical {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inner-content {
+  display: flex;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.inner-content.horizontal {
+  flex-direction: row;
+}
+
+.inner-content.vertical {
+  flex-direction: column;
+}

@@ -1,0 +1,192 @@
+.root {
+  --progress-track-color: var(--color-bg-surface-strong);
+  --progress-filled-color: var(--color-action-primary);
+  --progress-label-color: var(--color-text-primary);
+  --progress-icon-color: var(--color-icon-primary);
+  --progress-value-color: var(--color-text-secondary);
+  --progress-caption-color: var(--color-text-secondary);
+  --progress-track-height: var(--space-1);
+  --progress-top-gap: var(--space-4);
+  --progress-side-gap: var(--space-5);
+  --progress-font-size: var(--font-size-text-md);
+  --progress-line-height: var(--line-height-text-md);
+
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-ui);
+  width: 100%;
+}
+
+.default {
+  --progress-filled-color: var(--color-action-primary);
+}
+
+.secondary {
+  --progress-filled-color: var(--color-border-strong);
+}
+
+.accent {
+  --progress-filled-color: var(--color-action-secondary);
+}
+
+.accent-gradient {
+  --progress-filled-color: linear-gradient(
+    90deg,
+    var(--color-action-secondary),
+    var(--color-expressive-blue)
+  );
+}
+
+.info {
+  --progress-filled-color: var(--color-status-info);
+  --progress-caption-color: var(--color-status-info);
+}
+
+.positive {
+  --progress-caption-color: var(--color-status-success);
+  --progress-filled-color: var(--color-status-success);
+}
+
+.warning {
+  --progress-caption-color: var(--color-status-warning);
+  --progress-filled-color: var(--color-status-warning);
+}
+
+.negative {
+  --progress-caption-color: var(--color-status-error);
+  --progress-filled-color: var(--color-status-error);
+}
+
+.s {
+  --progress-font-size: var(--font-size-text-sm);
+  --progress-line-height: var(--line-height-text-sm);
+  --progress-side-gap: var(--space-4);
+  --progress-top-gap: var(--space-3);
+}
+
+.m {
+  --progress-font-size: var(--font-size-text-md);
+  --progress-line-height: var(--line-height-text-md);
+  --progress-side-gap: var(--space-5);
+  --progress-top-gap: var(--space-4);
+}
+
+.l {
+  --progress-font-size: var(--font-size-text-lg);
+  --progress-line-height: var(--line-height-text-lg);
+  --progress-side-gap: var(--space-6);
+  --progress-top-gap: var(--space-5);
+}
+
+.bar2 {
+  --progress-track-height: var(--focus-ring-width);
+}
+
+.bar4 {
+  --progress-track-height: var(--space-1);
+}
+
+.bar6 {
+  --progress-track-height: calc(var(--space-1) + var(--focus-ring-width));
+}
+
+.bar8 {
+  --progress-track-height: var(--space-2);
+}
+
+.top-row,
+.mid-row {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.top-row {
+  justify-content: space-between;
+  margin-bottom: var(--progress-top-gap);
+}
+
+.value-align-start .top-row {
+  justify-content: flex-start;
+}
+
+.value-align-center .top-row {
+  justify-content: center;
+}
+
+.value-align-end .top-row {
+  justify-content: flex-end;
+}
+
+.track {
+  background: var(--progress-track-color);
+  border-radius: var(--radius-full);
+  flex: 1;
+  height: var(--progress-track-height);
+  overflow: hidden;
+  position: relative;
+}
+
+.filled {
+  background: var(--progress-filled-color);
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: width 0.2s ease;
+}
+
+.label-wrapper {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.label-left .label-wrapper {
+  margin-right: var(--progress-side-gap);
+}
+
+.label,
+.value {
+  font-size: var(--progress-font-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--progress-line-height);
+  white-space: nowrap;
+}
+
+.label {
+  color: var(--progress-label-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label-icon {
+  color: var(--progress-icon-color);
+  display: inline-flex;
+  flex: none;
+}
+
+.value {
+  color: var(--progress-value-color);
+  flex: none;
+}
+
+.mid-row > .value {
+  margin-left: var(--progress-side-gap);
+}
+
+.caption {
+  color: var(--progress-caption-color);
+  font-size: var(--font-size-text-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text-xs);
+  margin-top: var(--space-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filled {
+    transition: none;
+  }
+}
