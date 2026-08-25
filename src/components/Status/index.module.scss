@@ -1,3 +1,22 @@
+.indicator {
+  align-items: center;
+  background-color: var(--component-status-neutral);
+  block-size: var(--component-status-dot-size);
+  border-radius: var(--radius-full);
+  color: currentcolor;
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--component-status-dot-size);
+  justify-content: center;
+}
+
+.indicator_custom {
+  background-color: transparent;
+  block-size: auto;
+  border-radius: var(--radius-none);
+  inline-size: auto;
+}
+
 .root {
   align-items: center;
   background-color: var(--component-status-neutral-bg);
@@ -13,18 +32,10 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  &::before {
-    background-color: var(--component-status-neutral);
-    block-size: var(--component-status-dot-size);
-    border-radius: var(--radius-full);
-    content: "";
-    inline-size: var(--component-status-dot-size);
-  }
-
   &_success {
     background-color: var(--component-status-success-bg);
 
-    &::before {
+    .indicator:not(.indicator_custom) {
       background-color: var(--component-status-success);
     }
   }
@@ -32,7 +43,7 @@
   &_info {
     background-color: var(--component-status-info-bg);
 
-    &::before {
+    .indicator:not(.indicator_custom) {
       background-color: var(--component-status-info);
     }
   }
@@ -40,7 +51,7 @@
   &_failure {
     background-color: var(--component-status-error-bg);
 
-    &::before {
+    .indicator:not(.indicator_custom) {
       background-color: var(--component-status-error);
     }
   }
@@ -48,7 +59,7 @@
   &_warning {
     background-color: var(--component-status-warning-bg);
 
-    &::before {
+    .indicator:not(.indicator_custom) {
       background-color: var(--component-status-warning);
     }
   }

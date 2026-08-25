@@ -1,11 +1,24 @@
-import React, { useState } from "react";
-import clsx from "clsx";
+import React, { useEffect, useMemo, useState } from "react";
 import Dropdown from "../../../Dropdown";
 import Calendar from "../../../Calendar";
-import { toDMYDate, toISODate } from "../../../helpers/date";
+import Input from "../../../Input";
+import BaseInput from "../../../base/BaseInput";
+import FormField from "../../../base/FormField";
+import InputRoot from "../../../base/InputRoot";
+import { parse, toDMYDate, toISODate } from "../../../helpers/date";
 import styles from "./index.module.scss";
+import type { CalendarSize } from "../../../Calendar";
+import type { DatepickerRangeValue } from "../../index.props";
 import type { DatePickerProps } from "./index.props";
-import type { CalendarPayload } from "../../../Calendar/index.props";
+
+const calendarSizeByDatepickerSize: Record<
+  NonNullable<DatePickerProps["size"]>,
+  CalendarSize
+> = {
+  l: "s",
+  m: "xs",
+  s: "xs",
+};
 
 const CalendarIcon = () => (
   <svg
@@ -26,53 +39,170 @@ const CalendarIcon = () => (
 
 const DatePicker: React.FC<DatePickerProps> = ({
   className,
+  endPlaceholder,
+  hasError,
+  hint,
+  label,
+  placeholder,
+  required,
   selectedDate = "",
+  selectedRange = ["", ""],
+  selectionMode = "single",
+  size = "m",
+  startPlaceholder,
   onChangeDate,
+  onChangeRange,
 }) => {
   const [date, setDate] = useState(selectedDate);
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const handleDateChange = ({ date }: CalendarPayload) => {
-    setDate(date);
-    onChangeDate?.(date);
+  const [range, setRange] = useState<DatepickerRangeValue>(selectedRange);
+  const [isOpen, setIsOpen] = useState(false);
+  const calendarValue = useMemo(() => (date ? parse(date) : null), [date]);
+  const calendarRangeValue = useMemo<[Date | null, Date | null]>(
+    () => [
+      range[0] ? parse(range[0]) : null,
+      range[1] ? parse(range[1]) : null,
+    ],
+    [range],
+  );
+  const calendarSize = calendarSizeByDatepickerSize[size];
+  const visibleMonth = calendarValue ?? calendarRangeValue[0] ?? new Date();
+  const isRangeMode = selectionMode === "range";
+
+  useEffect(() => {
+    setDate(selectedDate);
+  }, [selectedDate]);
+
+  useEffect(() => {
+    setRange(selectedRange);
+  }, [selectedRange]);
+
+  const handleDateChange = (nextDate: Date) => {
+    const nextValue = toISODate(nextDate);
+    setDate(nextValue);
+    setIsOpen(false);
+    onChangeDate?.(nextValue);
   };
 
-  return (
-    <Dropdown
-      placement="bottom"
-      fontSize={14}
-      trigger={["click"]}
-      overlay={
+  const handleRangeChange = (nextRange: [Date | null, Date | null]) => {
+    const nextValue: DatepickerRangeValue = [
+      nextRange[0] ? toISODate(nextRange[0]) : "",
+      nextRange[1] ? toISODate(nextRange[1]) : "",
+    ];
+
+    setRange(nextValue);
+    if (nextValue[0] && nextValue[1]) setIsOpen(false);
+    onChangeRange?.(nextValue);
+  };
+
+  const renderCalendar = () => {
+    if (isRangeMode) {
+      return (
         <Calendar
-          minWidth={260}
-          className={clsx(styles.calendar, className)}
-          today={toISODate(new Date())}
-          titleSize="h5"
-          selectedDate={date}
-          onChange={handleDateChange}
+          className={className}
+          defaultVisibleMonth={visibleMonth}
+          monthsToShow={2}
+          selectionMode="range"
+          size={calendarSize}
+          value={calendarRangeValue}
+          onChange={handleRangeChange}
         />
-      }
-    >
-      <div
-        className={clsx(
-          styles["input-container"],
-          styles["input-date"],
-          className,
-        )}
+      );
+    }
+
+    return (
+      <Calendar
+        className={className}
+        defaultVisibleMonth={visibleMonth}
+        selectionMode="single"
+        size={calendarSize}
+        value={calendarValue}
+        onChange={handleDateChange}
+      />
+    );
+  };
+
+  const renderRangeInput = () => (
+    <div className={styles["range-input"]}>
+      <InputRoot
+        className={styles["range-control-start"]}
+        disabled={false}
+        hasError={hasError}
+        size={size}
       >
-        <input
-          className={styles["input-field"]}
-          tabIndex={0}
-          aria-expanded="false"
+        <BaseInput
+          aria-expanded={isOpen}
           aria-haspopup="true"
-          aria-invalid="false"
+          aria-invalid={hasError}
           autoComplete="off"
-          maxLength={7}
+          maxLength={10}
+          placeholder={startPlaceholder ?? placeholder}
           readOnly
-          value={toDMYDate(date)}
+          required={required}
+          value={toDMYDate(range[0])}
         />
-        <CalendarIcon />
-      </div>
-    </Dropdown>
+      </InputRoot>
+      <InputRoot
+        className={styles["range-control-end"]}
+        disabled={false}
+        endIcon={<CalendarIcon />}
+        hasError={hasError}
+        size={size}
+      >
+        <BaseInput
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+          aria-invalid={hasError}
+          autoComplete="off"
+          maxLength={10}
+          placeholder={endPlaceholder ?? placeholder}
+          readOnly
+          required={required}
+          value={toDMYDate(range[1])}
+        />
+      </InputRoot>
+    </div>
+  );
+
+  return (
+    <FormField
+      label={label}
+      required={required}
+      hint={hint}
+      hasError={hasError}
+    >
+      <Dropdown
+        visible={isOpen}
+        onVisibleChange={setIsOpen}
+        placement="bottom"
+        preventAutoClose
+        trigger={["click"]}
+        overlay={
+          <div className={styles["calendar-popup"]}>{renderCalendar()}</div>
+        }
+      >
+        <div className={styles.trigger}>
+          {isRangeMode ? (
+            renderRangeInput()
+          ) : (
+            <Input
+              className={styles.input}
+              aria-expanded={isOpen}
+              aria-haspopup="true"
+              aria-invalid={hasError}
+              autoComplete="off"
+              endIcon={<CalendarIcon />}
+              hasError={hasError}
+              maxLength={10}
+              placeholder={placeholder}
+              readOnly
+              required={required}
+              size={size}
+              value={toDMYDate(date)}
+            />
+          )}
+        </div>
+      </Dropdown>
+    </FormField>
   );
 };
 

@@ -1,58 +1,40 @@
-.input-container {
-  align-items: center;
-  background-color: var(--component-input-bg);
-  border: var(--border-width-hairline) solid var(--component-input-border);
-  border-bottom-right-radius: var(--component-input-radius);
-  border-left: none;
-  border-top-right-radius: var(--component-input-radius);
-  box-sizing: border-box;
-  display: flex;
-  height: var(--component-input-height-m);
-  justify-content: center;
+.calendar-popup {
+  padding: var(--space-3);
 }
 
-.input-field {
-  background: transparent;
-  border: none;
-  box-sizing: border-box;
-  height: 100%;
-  outline: none;
-  padding: var(--space-1);
-  text-align: center;
-  width: 100%;
+.trigger {
+  display: inline-block;
 }
 
-.input-date {
-  border-bottom: var(--border-width-hairline) solid
-    var(--component-input-border);
-  border-right: var(--border-width-hairline) solid var(--component-input-border);
-  border-top: var(--border-width-hairline) solid var(--component-input-border);
-  color: var(--component-input-text);
-  cursor: pointer;
-  flex: 3;
-  position: relative;
+.input {
+  width: var(--component-date-picker-calendar-max-width);
 }
 
-.input-date:hover {
-  border-color: var(--component-input-border-hover);
+.range-input {
+  display: inline-flex;
+  width: calc(var(--component-date-picker-calendar-max-width) * 2);
 }
 
-.input-date:focus-within {
-  border-color: var(--component-input-border-focus);
-  box-shadow: 0 0 0 var(--focus-ring-width) var(--component-input-focus-ring);
+.range-control-start,
+.range-control-end {
+  flex: 1 1 var(--space-0);
+  min-width: var(--space-0);
 }
 
-.input-date:focus-within::before {
-  background-color: var(--component-input-border-focus);
-  content: "";
-  height: 100%;
-  left: 0;
-  position: absolute;
-  width: var(--border-width-hairline);
+.range-control-start {
+  border-bottom-right-radius: var(--radius-none);
+  border-top-right-radius: var(--radius-none);
 }
 
-.calendar {
-  max-width: var(--component-date-picker-calendar-max-width);
+.range-control-end {
+  border-bottom-left-radius: var(--radius-none);
+  border-top-left-radius: var(--radius-none);
+  margin-left: calc(-1 * var(--border-width-hairline));
+}
+
+.range-control-start:focus-within,
+.range-control-end:focus-within {
+  z-index: 1;
 }
 
 .calendar-icon {

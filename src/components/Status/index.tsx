@@ -6,6 +6,8 @@ import type { StatusProps } from "./index.props";
 
 const Status = ({
   className,
+  indicator,
+  showIndicator = true,
   tag: Component = "span",
   children,
   type,
@@ -17,6 +19,16 @@ const Status = ({
       className,
     )}
   >
+    {showIndicator && (
+      <span
+        className={clsx(styles.indicator, {
+          [styles["indicator_custom"]]: Boolean(indicator),
+        })}
+        aria-hidden="true"
+      >
+        {indicator}
+      </span>
+    )}
     {children}
   </Component>
 );

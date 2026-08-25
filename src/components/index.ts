@@ -3,7 +3,15 @@ export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
 export { default as Button } from "./Button";
 export { default as Calendar } from "./Calendar";
-export { getPresets } from "./Calendar/utils/getPresets";
+export type {
+  CalendarEvent,
+  CalendarProps,
+  CalendarRangeProps,
+  CalendarSelectionMode,
+  CalendarSingleProps,
+  CalendarSize,
+  CalendarView,
+} from "./Calendar";
 export { Card, CardContent, CardInnerContent } from "./Card";
 export type {
   CardBackgroundType,

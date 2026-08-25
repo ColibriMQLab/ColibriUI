@@ -1,20 +1,41 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./Datepicker.module.scss";
-import TimePickerInput from "./components/TimePicker";
 import DatePickerInput from "./components/DatePicker";
 import type { Props } from "./index.props";
 
 const Datepicker = ({
   className,
-  selectedTime,
+  endPlaceholder,
+  hasError,
+  hint,
+  label,
+  placeholder,
+  required,
   selectedDate,
+  selectedRange,
+  selectionMode,
+  size = "m",
+  startPlaceholder,
   onChangeDate,
-  onChangeTime,
+  onChangeRange,
 }: Props) => (
   <div className={clsx(styles.root, className)}>
-    <TimePickerInput selectedTime={selectedTime} onChangeTime={onChangeTime} />
-    <DatePickerInput selectedDate={selectedDate} onChangeDate={onChangeDate} />
+    <DatePickerInput
+      endPlaceholder={endPlaceholder}
+      hasError={hasError}
+      hint={hint}
+      label={label}
+      placeholder={placeholder}
+      required={required}
+      selectedDate={selectedDate}
+      selectedRange={selectedRange}
+      selectionMode={selectionMode}
+      size={size}
+      startPlaceholder={startPlaceholder}
+      onChangeDate={onChangeDate}
+      onChangeRange={onChangeRange}
+    />
   </div>
 );
 
