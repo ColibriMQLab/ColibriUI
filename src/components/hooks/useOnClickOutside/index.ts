@@ -4,7 +4,7 @@ import type { RefObject } from "react";
 type AnyEvent = MouseEvent | TouchEvent;
 
 /**
- * Универсальный тип ссылки, поддерживающий как useRef, так и forwardRef.
+ * Universal ref type that supports both useRef and forwardRef.
  */
 type AnyRef<T> = RefObject<T> | { current: T | null | undefined };
 
@@ -19,13 +19,13 @@ function useOnClickOutside<T extends HTMLElement = HTMLElement>(
     element = ref;
 
     const listener = (event: AnyEvent) => {
-      // Проверяем, что хук относится именно к текущему элементу
+      // Ensure this hook belongs to the current element.
       if (ref?.current !== element?.current) return;
 
       const el = element.current;
       if (!el) return;
 
-      // Игнорируем клики внутри элемента
+      // Ignore clicks inside the element.
       if (el.contains(event.target as Node)) return;
 
       handler(event);

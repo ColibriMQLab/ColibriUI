@@ -13,7 +13,7 @@ exports[`TabsPanels should display new JSX content when activePane changes (snap
       role="tabpanel"
     >
       <div>
-        Pane 3 Маркет
+        Pane 3 Market
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@ exports[`TabsPanels should display only the active pane content (snapshot) 1`] =
           id="tab1"
           role="tabpanel"
         >
-          Pane 1 Поиск
+          Pane 1 Search
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ exports[`TabsPanels should display only the active pane content (snapshot) 1`] =
         id="tab1"
         role="tabpanel"
       >
-        Pane 1 Поиск
+        Pane 1 Search
       </div>
     </div>
   </div>,
@@ -124,7 +124,7 @@ exports[`TabsPanels should return the complete component template (snapshot) 1`]
           id="tab1"
           role="tabpanel"
         >
-          Pane 1 Поиск
+          Pane 1 Search
         </div>
       </div>
     </div>
@@ -140,7 +140,7 @@ exports[`TabsPanels should return the complete component template (snapshot) 1`]
         id="tab1"
         role="tabpanel"
       >
-        Pane 1 Поиск
+        Pane 1 Search
       </div>
     </div>
   </div>,

@@ -18,7 +18,7 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta;
 
-// ✅ типизируем Template как StoryFn
+// Type Template as StoryFn.
 const Template: StoryFn<typeof Calendar> = (args) => {
   const [, updateArgs] = useArgs();
   return (
@@ -33,17 +33,17 @@ const Template: StoryFn<typeof Calendar> = (args) => {
   );
 };
 
-// Теперь TS будет знать про .args
+// TS now knows about .args.
 export const Today = Template.bind({});
 Today.args = {
   today: toISODate(new Date()),
   selectedDate: toISODate(new Date()),
 };
 
-// остальные сценарии оставляешь без изменений …
+// Other scenarios stay unchanged.
 export const SingleDateSelection = Template.bind({});
 SingleDateSelection.args = {
-  selectedDate: '2025-12-17',
+  selectedDate: "2025-12-17",
 };
 
 export const RangeSelection = Template.bind({});
@@ -78,42 +78,42 @@ WithCustomMinWidth.args = {
   minWidth: 500,
 };
 
-// Новые сценарии для демонстрации различных месяцев
+// Scenarios that demonstrate different months.
 export const ShowDecember = Template.bind({});
 ShowDecember.args = {
-  selectedDate: '2025-12-15',
-  today: '2025-01-15', // сегодня январь, но показываем декабрь
+  selectedDate: "2025-12-15",
+  today: "2025-01-15", // Today is in January, but December is shown.
 };
 
 export const ShowJune = Template.bind({});
 ShowJune.args = {
-  selectedDate: '2025-06-20',
-  today: '2025-01-15', // сегодня январь, но показываем июнь
+  selectedDate: "2025-06-20",
+  today: "2025-01-15", // Today is in January, but June is shown.
 };
 
-// Сценарии с активными датами
+// Scenarios with active dates.
 export const WithActiveDates = Template.bind({});
 WithActiveDates.args = {
   activeDates: [
-    '2025-01-15',
-    '2025-01-16',
-    '2025-01-17',
-    '2025-02-10',
-    '2025-02-11',
+    "2025-01-15",
+    "2025-01-16",
+    "2025-01-17",
+    "2025-02-10",
+    "2025-02-11",
   ],
-  selectedDate: '2025-01-15',
+  selectedDate: "2025-01-15",
 };
 
 export const ShowMonthByActiveDates = Template.bind({});
 ShowMonthByActiveDates.args = {
   activeDates: [
-    '2025-08-15', // август
-    '2025-08-16',
+    "2025-08-15", // August.
+    "2025-08-16",
   ],
-  today: '2025-01-15',
+  today: "2025-01-15",
 };
 
-// Сценарии с пресетами
+// Scenarios with presets.
 export const AllPresets = Template.bind({});
 AllPresets.args = {
   datePresets: getPresets([
@@ -128,14 +128,11 @@ AllPresets.args = {
 
 export const OnlyWeekPresets = Template.bind({});
 OnlyWeekPresets.args = {
-  datePresets: getPresets([
-    PRESETS.CURWEEK,
-    PRESETS.NEXTWEEK,
-  ]),
+  datePresets: getPresets([PRESETS.CURWEEK, PRESETS.NEXTWEEK]),
   canSelectRange: true,
 };
 
-// Сценарии с кнопкой продолжения
+// Scenarios with the continue button.
 export const WithContinueButton = Template.bind({});
 WithContinueButton.args = {
   withContinueButton: true,
@@ -151,7 +148,7 @@ WithContinueButtonAndPresets.args = {
   canSelectRange: true,
 };
 
-// Сценарии с разными размерами заголовков
+// Scenarios with different title sizes.
 export const SmallTitle = Template.bind({});
 SmallTitle.args = {
   titleSize: "h4",
@@ -166,11 +163,11 @@ LargeTitle.args = {
 
 export const EndOfYear = Template.bind({});
 EndOfYear.args = {
-  selectedDate: '2025-12-31',
-  today: '2025-01-15',
+  selectedDate: "2025-12-31",
+  today: "2025-01-15",
 };
 
-// Интерактивные сценарии
+// Interactive scenarios.
 export const InteractiveRangeSelection = Template.bind({});
 InteractiveRangeSelection.args = {
   canSelectRange: true,
@@ -178,7 +175,7 @@ InteractiveRangeSelection.args = {
   withContinueButton: true,
 };
 
-// Сценарий с кастомным классом
+// Scenario with a custom class.
 export const WithCustomStyling = Template.bind({});
 WithCustomStyling.args = {
   className: "custom-calendar-style",

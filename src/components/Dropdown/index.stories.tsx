@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import React, { useState } from "react";
 
 import Dropdown from ".";
@@ -18,7 +18,7 @@ const meta: Meta<typeof Dropdown> = {
         type: "multi-select",
       },
       options: ["click", "hover", "focus"],
-      description: "Тип(ы) триггера, которые открывают дропдаун",
+      description: "Trigger type(s) that open the dropdown",
     },
     placement: {
       control: "select",
@@ -36,54 +36,52 @@ const meta: Meta<typeof Dropdown> = {
         "right-start",
         "right-end",
       ],
-      description: "Позиция выпадающего меню относительно триггера",
+      description: "Dropdown menu placement relative to the trigger",
     },
     strategy: {
       control: "select",
       options: ["absolute", "fixed"],
-      description: "Способ позиционирования меню",
+      description: "Menu positioning strategy",
     },
     zIndex: {
       control: "number",
-      description: "Z-index контейнера выпадающего меню",
+      description: "Dropdown menu container z-index",
     },
     fontSize: {
       control: "number",
-      description: "Размер шрифта внутри меню",
+      description: "Font size inside the menu",
     },
     disabled: {
       control: "boolean",
-      description: "Отключает Dropdown (не открывается)",
+      description: "Disables Dropdown so it cannot be opened",
     },
     defaultVisible: {
       control: "boolean",
-      description: "Начальная видимость dropdown в uncontrolled-режиме",
+      description: "Initial dropdown visibility in uncontrolled mode",
     },
     visible: {
       control: "boolean",
-      description: "Контролируемое состояние видимости dropdown",
+      description: "Controlled dropdown visibility state",
     },
     preventOverflow: {
       control: "boolean",
-      description: "Запрещает выход меню за границы экрана",
+      description: "Prevents the menu from overflowing the viewport",
     },
     preventAutoClose: {
       control: "boolean",
-      description: "Меню не закрывается при клике на пункт",
+      description: "Keeps the menu open after clicking an item",
     },
     flip: {
       control: "boolean",
-      description:
-        "Разрешить автоматическое изменение позиции при нехватке места",
+      description: "Allows automatic placement changes when space is limited",
     },
     samewidth: {
       control: "boolean",
-      description:
-        "Принудительно выравнивает ширину overlay под ширину триггера",
+      description: "Forces the overlay width to match the trigger width",
     },
     onVisibleChange: {
       action: "visibleChange",
-      description: "Вызывается при открытии/закрытии меню",
+      description: "Called when the menu opens or closes",
     },
     overlay: {
       table: { disable: true },

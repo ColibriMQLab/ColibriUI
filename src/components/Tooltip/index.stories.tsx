@@ -14,7 +14,7 @@ const meta: Meta<typeof Tooltip> = {
     },
     withTail: {
       control: "boolean",
-      description: "Показывать ли стрелку у тултипа",
+      description: "Whether to show the tooltip arrow",
     },
     placement: {
       control: "select",

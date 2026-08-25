@@ -22,6 +22,8 @@ export { default as Modal } from "./Modal";
 export { default as MultiSelect } from "./MultiSelect";
 export { default as Portal } from "./Portal";
 export { default as RadioGroup } from "./RadioGroup";
+export { default as Rating } from "./Rating";
+export type { RatingProps, RatingSize, RatingView } from "./Rating";
 export { default as Select } from "./Select";
 export { default as Separator } from "./Separator";
 export { SkeletonText, SkeletonRect } from "./Skeleton";

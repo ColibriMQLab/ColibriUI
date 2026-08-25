@@ -48,7 +48,7 @@ export const getCurrWeek = (): DatePreset => {
   let date = new Date(today);
   let days = 0;
 
-  // если сегодня понедельник, пропускаем его
+  // If today is Monday, skip it.
   if (today.getDay() === 1) {
     date = addDays(date);
     days++;
@@ -69,7 +69,7 @@ export const getCurrWeek = (): DatePreset => {
 export const getNextWeek = (): DatePreset => {
   let date = new Date();
 
-  // если сегодня понедельник — смещаемся на завтра
+  // If today is Monday, move to tomorrow.
   if (date.getDay() === 1) {
     date = addDays(date);
   }
