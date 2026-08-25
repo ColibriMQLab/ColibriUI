@@ -31,8 +31,8 @@ export default meta;
 
 const wrapperStyles = {
   backgroundColor: "var(--color-bg-surface-subtle)",
-  height: "400px",
-  width: "600px",
+  height: "25rem",
+  width: "37.5rem",
 };
 
 export const Default = (args): React.ReactElement => {

@@ -53,7 +53,7 @@ export default meta;
 
 export const Default = (args) => {
   return (
-    <div style={{ display: "flex", gap: "16px" }}>
+    <div style={{ display: "flex", gap: "var(--space-4)" }}>
       {list.map(({ text, type }, index) => (
         <Status type={type} {...args} key={index}>
           {text}

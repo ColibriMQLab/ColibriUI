@@ -3,7 +3,7 @@
 
   &_auto {
     height: auto;
-    min-height: 36px;
+    min-height: var(--component-input-height-m);
   }
 }
 
@@ -22,7 +22,7 @@
   border: none;
   display: flex;
   flex: 1;
-  margin: 7px 0;
+  margin: var(--component-input-content-margin-block) 0;
 
   ::placeholder {
     color: var(--component-input-placeholder);
@@ -38,7 +38,7 @@
 .base-input-flex {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: var(--space-1);
 }
 
 .placeholder {

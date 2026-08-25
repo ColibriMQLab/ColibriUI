@@ -1,12 +1,12 @@
 .root {
   box-sizing: border-box;
   color: var(--color-text-primary);
-  padding: 0 16px;
+  padding: 0 var(--space-4);
   width: 100%;
 }
 
 .month-name {
-  padding: 7px 0 25px;
+  padding: var(--space-2) 0 var(--space-6);
   text-align: center;
 }
 
@@ -19,32 +19,32 @@
 
 .week {
   display: grid;
-  gap: 4px;
+  gap: var(--space-1);
   grid-template-columns: repeat(7, 1fr);
   justify-content: center;
-  margin: 2px 0;
+  margin: var(--space-1) 0;
   padding: 0;
 }
 
 .day {
   display: block;
-  min-height: 32px;
+  min-height: var(--component-calendar-day-size);
   position: relative;
   text-align: center;
 }
 
 .legend {
   display: grid;
-  gap: 4px;
+  gap: var(--space-1);
   grid-template-columns: repeat(7, 1fr);
-  margin: 2px 0;
+  margin: var(--space-1) 0;
   padding: 0;
   text-align: center;
 }
 
 .selected-range-day {
   display: block;
-  height: 32px;
+  height: var(--component-calendar-day-size);
   position: relative;
   text-align: center;
 
@@ -130,10 +130,10 @@
 
 .day-inner {
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--component-calendar-day-radius);
   display: inline-block;
-  height: 32px;
-  max-width: 32px;
+  height: var(--component-calendar-day-size);
+  max-width: var(--component-calendar-day-size);
   outline: 0;
   padding: 0;
   position: relative;
@@ -152,6 +152,6 @@
 }
 
 .day-focused {
-  outline: 2px solid var(--component-input-focus-ring);
-  outline-offset: 2px;
+  outline: var(--focus-ring-width) solid var(--component-input-focus-ring);
+  outline-offset: var(--focus-ring-width);
 }

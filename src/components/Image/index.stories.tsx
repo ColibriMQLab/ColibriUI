@@ -85,7 +85,7 @@ export const WithSources: Story = {
     sources: [
       {
         srcSet: `${IMG}&w=800 800w, ${IMG}&w=1200 1200w`,
-        sizes: "(max-width: 600px) 100vw, 400px",
+        sizes: "(max-width: 37.5rem) 100vw, 25rem",
       },
     ],
   },

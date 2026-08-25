@@ -14,11 +14,11 @@
 
 .editor {
   caret-color: var(--editable-caret-color);
-  margin-right: -1rem;
-  min-width: 1px;
+  margin-right: calc(var(--space-4) * -1);
+  min-width: var(--border-width-hairline);
   outline: none;
   overflow: hidden;
-  padding-right: 1rem;
+  padding-right: var(--space-4);
   white-space: nowrap;
 }
 
@@ -42,14 +42,14 @@
   color: var(--editable-icon-color);
   cursor: pointer;
   display: inline-flex;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 var(--space-4);
   position: relative;
 }
 
 .default_icon {
   fill: currentcolor;
-  height: 1rem;
-  width: 1rem;
+  height: var(--component-editable-icon-size);
+  width: var(--component-editable-icon-size);
 }
 
 .disabled .edit_button {

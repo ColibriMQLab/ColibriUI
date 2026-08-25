@@ -6,7 +6,7 @@
   font: inherit;
   outline: none;
   overflow: hidden;
-  padding: 7px 0;
+  padding: var(--component-input-content-margin-block) 0;
   resize: none;
   text-overflow: ellipsis;
 

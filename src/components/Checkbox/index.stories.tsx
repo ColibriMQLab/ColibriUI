@@ -93,16 +93,16 @@ const Example = ({
 
 export const Default = (args): JSX.Element => (
   <ul style={{ listStyleType: "none" }}>
-    <li style={{ padding: "3px" }}>
+    <li style={{ padding: "var(--space-1)" }}>
       <Example {...args} label="Label one" />
     </li>
-    <li style={{ padding: "3px" }}>
+    <li style={{ padding: "var(--space-1)" }}>
       <Example {...args} label="Label two" />
     </li>
-    <li style={{ padding: "3px" }}>
+    <li style={{ padding: "var(--space-1)" }}>
       <Example {...args} label="Disabled" disabled />
     </li>
-    <li style={{ padding: "3px" }}>
+    <li style={{ padding: "var(--space-1)" }}>
       <Example {...args} label="Disabled checked" checked disabled />
     </li>
   </ul>

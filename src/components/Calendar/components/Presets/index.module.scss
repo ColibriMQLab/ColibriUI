@@ -13,19 +13,19 @@
 
 .item {
   flex-grow: 1;
-  padding: 0 4px;
+  padding: 0 var(--space-1);
 
   & > button {
     display: block;
-    padding: 0 8px;
+    padding: 0 var(--space-2);
     width: 100%;
   }
 
   &:first-child {
-    padding-left: 16px;
+    padding-left: var(--space-4);
   }
 
   &:last-child {
-    padding-right: 16px;
+    padding-right: var(--space-4);
   }
 }

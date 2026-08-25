@@ -30,7 +30,7 @@ export const Example = (args: RadioGroupProps) => {
   }, [args.val]);
 
   return (
-    <div style={{ margin: 20 }}>
+    <div style={{ margin: "var(--space-5)" }}>
       <RadioGroup
         {...args}
         val={checked}

@@ -1,5 +1,5 @@
 .root {
   background-color: var(--component-separator-bg);
-  block-size: 1px;
+  block-size: var(--border-width-hairline);
   inline-size: 100%;
 }

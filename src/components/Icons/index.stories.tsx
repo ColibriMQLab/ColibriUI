@@ -57,7 +57,7 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
     allIcons.push(
       // @ts-expect-error error
       <div key={Math.random()}>
-        <div style={{ textAlign: "center", fontSize: "40px", width: "100%" }}>
+        <div style={{ textAlign: "center", fontSize: "2.5rem", width: "100%" }}>
           {icons[icon]}
         </div>
         <div>{icon}</div>
@@ -70,7 +70,7 @@ const renderIcons = (icons: { [key: string]: ReactNode }) => {
 
 export const All = () => {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
       {renderIcons(icons)}
     </div>
   );
@@ -83,7 +83,7 @@ export const Colored = () => {
         color: "var(--color-icon-primary)",
         display: "flex",
         flexWrap: "wrap",
-        gap: "10px",
+        gap: "var(--space-2)",
       }}
     >
       {renderIcons(icons)}

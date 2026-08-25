@@ -29,7 +29,7 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
     if (contentRef.current) {
       contentRef.current.style.blockSize = isOpen
         ? `${contentRef.current.scrollHeight}px`
-        : "0px";
+        : "0";
     }
   }, [isOpen]);
 

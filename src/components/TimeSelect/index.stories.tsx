@@ -143,7 +143,7 @@ export const Disabled: Story = {
 
 export const FullWidth: Story = {
   render: (args) => (
-    <div style={{ width: "400px" }}>
+    <div style={{ width: "25rem" }}>
       <Template {...args} />
     </div>
   ),

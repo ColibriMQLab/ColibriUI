@@ -22,7 +22,7 @@ export const Accents = {
   SUCCESS_LIGHT: "#ecf9f5",
 };
 
-export const Color = {
+const Color = {
   ...Common,
   ...Accents,
   ...Backgrounds,

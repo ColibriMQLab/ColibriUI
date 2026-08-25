@@ -21,70 +21,49 @@
 
   &_inactive {
     background: var(--component-chip-bg);
-    box-shadow: color-mix(in srgb, var(--color-border-default) 40%, transparent)
-      0 5px 20px;
+    box-shadow: var(--shadow-raised);
 
     &:hover {
       background: var(--component-chip-bg-hover);
-      box-shadow: color-mix(
-          in srgb,
-          var(--color-border-default) 40%,
-          transparent
-        )
-        0 5px 20px;
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-raised);
+      transform: translateY(calc(var(--focus-ring-width) * -1));
     }
 
     &:active {
       background: var(--component-chip-bg-pressed);
-      box-shadow: color-mix(
-          in srgb,
-          var(--color-border-default) 40%,
-          transparent
-        )
-        0 1px 3px;
+      box-shadow: var(--shadow-pressed);
       outline: 0;
       transition-duration: 0.15s;
     }
 
     @media (hover: none) {
       &:hover {
-        box-shadow: color-mix(
-            in srgb,
-            var(--color-border-default) 40%,
-            transparent
-          )
-          0 5px 20px;
+        box-shadow: var(--shadow-raised);
         transform: translateY(0);
       }
 
       &:active {
-        box-shadow: color-mix(
-            in srgb,
-            var(--color-border-default) 40%,
-            transparent
-          )
-          0 1px 3px;
+        box-shadow: var(--shadow-pressed);
       }
     }
   }
 
   &[data-size="s"] {
-    border-radius: 32px;
-    font-size: 0.875rem;
-    line-height: 2.2;
+    border-radius: var(--component-chip-radius);
+    font-size: var(--component-chip-font-size-s);
+    line-height: var(--component-chip-line-height-s);
   }
 
   &[data-size="m"] {
-    border-radius: 36px;
-    font-size: 1rem;
-    line-height: 2.3;
+    border-radius: var(--component-chip-radius);
+    font-size: var(--component-chip-font-size-m);
+    line-height: var(--component-chip-line-height-m);
   }
 
   &[data-size="l"] {
-    border-radius: 44px;
-    font-size: 1.15rem;
-    line-height: 2.4;
+    border-radius: var(--component-chip-radius);
+    font-size: var(--component-chip-font-size-l);
+    line-height: var(--component-chip-line-height-l);
   }
 }
 
@@ -92,8 +71,8 @@
   align-items: center;
   display: flex;
   justify-content: flex-start;
-  max-width: 200px;
-  padding: 0 1rem;
+  max-width: var(--component-tooltip-max-width);
+  padding: 0 var(--space-4);
   user-select: none;
 }
 
@@ -108,8 +87,8 @@
   color: var(--component-chip-icon);
   display: flex;
   justify-content: center;
-  margin-left: -11px;
-  padding-right: 0.8rem;
+  margin-left: calc(var(--space-3) * -1);
+  padding-right: var(--space-3);
 
   &:hover {
     color: var(--component-chip-icon-hover);

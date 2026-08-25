@@ -14,20 +14,21 @@ const meta: Meta<typeof SkeletonRect> = {
     height: {
       control: "text",
     },
-    borderRadius: {
-      control: "text",
+    radius: {
+      control: "select",
+      options: ["none", "xs", "sm", "md", "lg", "xl", "full"],
     },
     size: {
-      control: "number",
+      control: "text",
     },
     className: {
       table: { disable: true },
     },
   },
   args: {
-    width: 128,
-    height: 32,
-    borderRadius: 6,
+    width: "var(--component-skeleton-rect-width)",
+    height: "var(--component-skeleton-rect-height)",
+    radius: "sm",
   },
   component: SkeletonRect,
 } satisfies Meta<typeof SkeletonRect>;
@@ -44,10 +45,15 @@ export const Rect: Story = {
 
 export const Text: Story = {
   render: (args) => {
-    return <SkeletonText width={args.width} size={Number(args.size ?? 16)} />;
+    return (
+      <SkeletonText
+        width={args.width}
+        size={args.size ?? "var(--component-skeleton-text-height)"}
+      />
+    );
   },
   args: {
-    width: 128,
-    size: 16,
+    width: "var(--component-skeleton-rect-width)",
+    size: "var(--component-skeleton-text-height)",
   },
 };

@@ -1,16 +1,15 @@
 .tooltip {
   background-color: var(--component-tooltip-bg);
-  border-radius: 0.35rem;
-  box-shadow: 0 4px 10px
-    color-mix(in srgb, var(--color-border-strong) 24%, transparent);
+  border-radius: var(--component-tooltip-radius);
+  box-shadow: var(--shadow-tooltip);
   box-sizing: border-box;
   color: var(--component-tooltip-text);
   display: inline-block;
-  font-size: 14px;
+  font-size: var(--component-tooltip-font-size);
   font-weight: 400;
-  line-height: 18px;
-  max-width: 200px;
-  padding: 4px 10px;
+  line-height: var(--component-tooltip-line-height);
+  max-width: var(--component-tooltip-max-width);
+  padding: var(--space-1) var(--component-tooltip-padding-inline);
   position: relative;
   z-index: 1000;
 }

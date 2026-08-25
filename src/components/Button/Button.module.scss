@@ -1,20 +1,20 @@
 .root {
   align-items: center;
-  border: 1px solid;
-  border-radius: 1.125rem;
+  border: var(--border-width-hairline) solid;
+  border-radius: var(--component-button-radius);
   box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;
   flex-shrink: 0;
-  font-size: 15px;
+  font-size: var(--component-button-font-size-m);
   font-style: normal;
   font-weight: 400;
-  gap: 8px;
-  height: 36px;
+  gap: var(--space-2);
+  height: var(--component-button-height-m);
   justify-content: center;
-  line-height: 36px;
+  line-height: var(--component-button-height-m);
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 var(--space-3);
   text-overflow: ellipsis;
   transition:
     background-color 0.15s linear,
@@ -24,23 +24,23 @@
   width: fit-content;
 
   &_icon {
-    border-radius: 50%;
-    width: 36px;
+    border-radius: var(--radius-full);
+    width: var(--component-button-height-m);
 
     &.size_xs {
-      width: 29px;
+      width: var(--component-button-height-xs);
     }
 
     &.size_s {
-      width: 32px;
+      width: var(--component-button-height-s);
     }
 
     &.size_m {
-      width: 36px;
+      width: var(--component-button-height-m);
     }
 
     &.size_l {
-      width: 42px;
+      width: var(--component-button-height-l);
     }
   }
 
@@ -55,28 +55,28 @@
 
 .size {
   &_xs {
-    font-size: 12px;
-    height: 29px;
-    line-height: 29px;
+    font-size: var(--component-button-font-size-xs);
+    height: var(--component-button-height-xs);
+    line-height: var(--component-button-height-xs);
   }
 
   &_s {
-    font-size: 13px;
-    height: 32px;
-    line-height: 32px;
+    font-size: var(--component-button-font-size-s);
+    height: var(--component-button-height-s);
+    line-height: var(--component-button-height-s);
   }
 
   &_m {
-    font-size: 15px;
-    height: 36px;
-    line-height: 36px;
+    font-size: var(--component-button-font-size-m);
+    height: var(--component-button-height-m);
+    line-height: var(--component-button-height-m);
   }
 
   &_l {
-    border-radius: 1.5rem;
-    font-size: 18px;
-    height: 42px;
-    line-height: 42px;
+    border-radius: var(--component-button-radius-lg);
+    font-size: var(--component-button-font-size-l);
+    height: var(--component-button-height-l);
+    line-height: var(--component-button-height-l);
   }
 }
 

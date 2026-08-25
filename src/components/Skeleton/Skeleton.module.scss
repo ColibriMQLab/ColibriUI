@@ -20,8 +20,8 @@
 .text {
   animation: skeleton-loading 1.5s ease-in-out infinite;
   background-color: var(--component-skeleton-bg);
-  border-radius: 6px;
-  height: 12px;
+  border-radius: var(--component-skeleton-radius);
+  height: var(--component-skeleton-text-height);
 
   @keyframes skeleton-loading {
     0% {

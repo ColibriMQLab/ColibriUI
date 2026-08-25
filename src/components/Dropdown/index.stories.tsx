@@ -101,7 +101,7 @@ const meta: Meta<typeof Dropdown> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: "100px", textAlign: "center" }}>
+      <div style={{ padding: "var(--space-24)", textAlign: "center" }}>
         <Story />
       </div>
     ),

@@ -9,10 +9,11 @@
 
 .title-wrapper {
   align-items: center;
-  border-bottom: 1px solid var(--component-modal-border);
+  border-bottom: var(--border-width-hairline) solid
+    var(--component-modal-border);
   display: flex;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: var(--space-4) var(--space-5);
 }
 
 .close-wrapper {
@@ -20,8 +21,8 @@
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
-  min-height: 70px;
-  padding: 0 20px;
+  min-height: var(--component-modal-close-min-height);
+  padding: 0 var(--space-5);
 }
 
 .modal-overlay {
@@ -49,10 +50,10 @@
   }
 
   &_desktop {
-    border: solid 1px var(--component-modal-border);
-    border-radius: 8px;
-    max-height: calc(100vh - 100px);
-    max-width: calc(100vw - 100px);
-    min-width: 515px;
+    border: solid var(--border-width-hairline) var(--component-modal-border);
+    border-radius: var(--component-modal-radius);
+    max-height: calc(100vh - var(--component-modal-viewport-offset));
+    max-width: calc(100vw - var(--component-modal-viewport-offset));
+    min-width: var(--component-modal-desktop-min-width);
   }
 }

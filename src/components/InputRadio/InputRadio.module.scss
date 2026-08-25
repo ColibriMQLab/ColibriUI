@@ -7,20 +7,20 @@
 .text {
   color: var(--component-control-text);
   flex: 1 1 auto;
-  line-height: 18px;
-  margin-inline-start: 8px;
+  line-height: var(--component-control-line-height);
+  margin-inline-start: var(--space-2);
 }
 
 .icon {
   background-color: var(--component-control-bg);
-  block-size: 16px;
-  border: solid 1px var(--component-control-border);
-  border-radius: 100%;
+  block-size: var(--component-control-size);
+  border: solid var(--border-width-hairline) var(--component-control-border);
+  border-radius: var(--radius-full);
   box-sizing: border-box;
   display: block;
   flex-shrink: 0;
-  inline-size: 16px;
-  margin-block-start: 1px;
+  inline-size: var(--component-control-size);
+  margin-block-start: var(--component-control-offset);
   position: relative;
   transition:
     border-color 0.16s ease,
@@ -31,7 +31,7 @@
   align-items: flex-start;
   cursor: pointer;
   display: flex;
-  padding: 3px 0;
+  padding: var(--space-1) 0;
 
   &_disabled {
     cursor: inherit;
@@ -49,32 +49,33 @@
 }
 
 .input {
-  block-size: 1px;
+  block-size: var(--border-width-hairline);
   border: 0;
   clip-path: inset(50%);
-  inline-size: 1px;
-  margin: -1px;
+  inline-size: var(--border-width-hairline);
+  margin: calc(var(--border-width-hairline) * -1);
   overflow: hidden;
   padding: 0;
   position: absolute;
 
   &_checked + .icon {
     background-color: var(--component-control-bg);
-    border: 4px solid var(--component-control-border-checked);
+    border: var(--component-control-checked-border-width) solid
+      var(--component-control-border-checked);
   }
 
   &_disabled + .icon {
     background-color: var(--component-control-bg-disabled);
     border-color: var(--component-control-border-disabled);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
 
     &::after {
       background-color: transparent;
-      border-radius: 50%;
+      border-radius: var(--radius-full);
       content: "";
       display: block;
       inset: 0;
-      margin: -1px;
+      margin: calc(var(--border-width-hairline) * -1);
       position: absolute;
     }
   }
@@ -86,13 +87,15 @@
 
     &:focus + .icon {
       border-color: var(--component-control-border-focus);
-      box-shadow: 0 0 0 2px var(--component-control-focus-ring);
+      box-shadow: 0 0 0 var(--focus-ring-width)
+        var(--component-control-focus-ring);
     }
 
     &:active + .icon {
       background-color: var(--component-control-bg);
       border-color: var(--component-control-border-focus);
-      box-shadow: 0 0 0 2px var(--component-control-focus-ring);
+      box-shadow: 0 0 0 var(--focus-ring-width)
+        var(--component-control-focus-ring);
     }
   }
 
@@ -103,19 +106,20 @@
 
     &:active + .icon {
       background-color: var(--component-control-bg);
-      border: 4px solid var(--component-control-border-checked);
+      border: var(--component-control-checked-border-width) solid
+        var(--component-control-border-checked);
     }
   }
 
   &_checked:disabled + .icon {
     &::after {
-      margin: -4px;
+      margin: calc(var(--space-1) * -1);
     }
   }
 }
 
 .note {
   color: var(--component-control-helper);
-  margin-block-start: 4px;
-  padding-inline-start: 24px;
+  margin-block-start: var(--space-1);
+  padding-inline-start: var(--space-6);
 }

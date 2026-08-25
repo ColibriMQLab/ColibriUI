@@ -6,15 +6,15 @@
 .label {
   cursor: pointer;
   display: inline-flex;
-  line-height: 18px;
+  line-height: var(--component-control-line-height);
   position: relative;
 }
 
 .text {
   color: var(--component-control-text);
-  font-size: 16px;
-  margin-block-start: -1px;
-  margin-inline-start: 8px;
+  font-size: var(--component-control-font-size);
+  margin-block-start: calc(var(--border-width-hairline) * -1);
+  margin-inline-start: var(--space-2);
 }
 
 .hint_error {
@@ -23,14 +23,14 @@
 
 .fake-checkbox {
   background-color: var(--component-control-bg);
-  block-size: 16px;
-  border: 1px solid var(--component-control-border);
-  border-radius: 4px;
+  block-size: var(--component-control-size);
+  border: var(--border-width-hairline) solid var(--component-control-border);
+  border-radius: var(--radius-xs);
   box-sizing: border-box;
   direction: ltr;
   display: block;
   flex-shrink: 0;
-  inline-size: 16px;
+  inline-size: var(--component-control-size);
   position: relative;
   transition:
     background 0.16s ease,
@@ -43,13 +43,15 @@
   border: 0;
 
   &::after {
-    block-size: 8px;
-    border-block-end: 2px solid var(--component-control-check);
-    border-inline-end: 2px solid var(--component-control-check);
+    block-size: var(--component-checkbox-check-block-size);
+    border-block-end: var(--component-checkbox-check-border-width) solid
+      var(--component-control-check);
+    border-inline-end: var(--component-checkbox-check-border-width) solid
+      var(--component-control-check);
     box-sizing: content-box;
     content: "";
     display: block;
-    inline-size: 4px;
+    inline-size: var(--component-checkbox-check-inline-size);
     inset-block-start: 45%;
     inset-inline-start: 50%;
     position: absolute;
@@ -65,20 +67,24 @@
 
     &_checked {
       &::after {
-        border-block-end: 2px solid var(--component-control-check);
-        border-inline-end: 2px solid var(--component-control-check);
+        border-block-end: var(--component-checkbox-check-border-width) solid
+          var(--component-control-check);
+        border-inline-end: var(--component-checkbox-check-border-width) solid
+          var(--component-control-check);
       }
     }
   }
 }
 
 .control {
-  inset-inline-start: -9999px;
+  inset-inline-start: var(--component-control-visually-hidden-offset);
   position: absolute;
 
   &:disabled + .fake-checkbox::after {
-    border-block-end: 2px solid var(--component-control-text-disabled);
-    border-inline-end: 2px solid var(--component-control-text-disabled);
+    border-block-end: var(--component-checkbox-check-border-width) solid
+      var(--component-control-text-disabled);
+    border-inline-end: var(--component-checkbox-check-border-width) solid
+      var(--component-control-text-disabled);
   }
 
   &:hover:not(:disabled) + .fake-checkbox {
@@ -90,12 +96,14 @@
   &_primary {
     &:focus:not(:disabled) + .fake-checkbox {
       border-color: var(--component-control-border-focus);
-      box-shadow: 0 0 0 2px var(--component-control-focus-ring);
+      box-shadow: 0 0 0 var(--focus-ring-width)
+        var(--component-control-focus-ring);
     }
     /* stylelint-disable-next-line no-descending-specificity */
     &:disabled + .fake-checkbox {
       background-color: var(--component-control-bg-disabled);
-      border: 1px solid var(--component-control-border-disabled);
+      border: var(--border-width-hairline) solid
+        var(--component-control-border-disabled);
       border-color: var(--component-control-border-disabled);
       z-index: 1;
     }

@@ -17,7 +17,7 @@
   border: none;
   display: inline-grid;
   flex: 1;
-  margin: 7px 0;
+  margin: var(--component-input-content-margin-block) 0;
 
   ::placeholder {
     color: var(--component-input-placeholder);

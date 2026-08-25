@@ -55,8 +55,8 @@ export const Themes = () => {
     <>
       <style>{style}</style>
       <div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ display: "flex", gap: "16px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+          <div style={{ display: "flex", gap: "var(--space-4)" }}>
             <div style={{ flex: 1 }} />
             <div style={{ flex: 1 }}>
               <Typography tag="h5" size="h5">
@@ -78,7 +78,7 @@ export const Themes = () => {
             const isBAColor = isColorToken(backgroundBAColor);
 
             return (
-              <div key={index} style={{ display: "flex", gap: "16px" }}>
+              <div key={index} style={{ display: "flex", gap: "var(--space-4)" }}>
                 <div style={{ flex: 1 }}>{`--${key}`}</div>
                 <div
                   style={{

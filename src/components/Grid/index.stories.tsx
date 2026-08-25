@@ -8,22 +8,54 @@ const meta: Meta<typeof Grid> = {
   component: Grid,
   argTypes: {
     gridRowGap: {
-      control: "number",
+      control: "select",
+      options: [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "8",
+        "10",
+        "12",
+        "16",
+        "20",
+        "24",
+        "32",
+      ],
     },
     gridColumnGap: {
-      control: "number",
+      control: "select",
+      options: [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "8",
+        "10",
+        "12",
+        "16",
+        "20",
+        "24",
+        "32",
+      ],
     },
     gridItemMinWidth: {
-      control: "number",
+      control: "text",
     },
     className: {
       table: { disable: true },
     },
   },
   args: {
-    gridRowGap: 24,
-    gridColumnGap: 16,
-    gridItemMinWidth: 100,
+    gridRowGap: "6",
+    gridColumnGap: "4",
+    gridItemMinWidth: "var(--component-grid-item-min-width)",
   },
 } satisfies Meta<typeof Grid>;
 
@@ -34,9 +66,9 @@ type Story = StoryObj<typeof Grid>;
 const style = `
 	.grid-item {
 		background: var(--color-bg-surface-subtle);
-		border-radius: 6px;
+		border-radius: var(--radius-md);
 		color: var(--color-text-primary);
-		padding: 12px;
+		padding: var(--space-3);
 	}
 	#storybook-root {
 		flex: 1;

@@ -28,7 +28,7 @@ export const Brand = {
   BRAND_DEFAULT_3: "#ee65bf",
 };
 
-export const Color = {
+const Color = {
   ...Brand,
   ...Primary,
   ...Secondary,

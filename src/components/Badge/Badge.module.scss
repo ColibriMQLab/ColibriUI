@@ -1,15 +1,15 @@
 .root {
   align-items: center;
   background-color: var(--component-badge-bg);
-  border-radius: 10px;
+  border-radius: var(--radius-full);
   box-sizing: border-box;
   color: var(--component-badge-text);
   display: flex;
   flex-flow: row wrap;
-  font-size: 12px;
-  height: 20px;
-  min-width: 20px;
-  padding: 0 4px;
+  font-size: var(--font-size-text-xs);
+  height: var(--space-5);
+  min-width: var(--space-5);
+  padding: 0 var(--space-1);
   place-content: center center;
   position: absolute;
   user-select: none;

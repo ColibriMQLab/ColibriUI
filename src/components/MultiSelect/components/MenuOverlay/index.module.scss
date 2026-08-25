@@ -1,9 +1,9 @@
 .root {
-  max-height: 220px;
+  max-height: var(--component-select-menu-max-height);
   overflow-y: auto;
 }
 
 .title {
   color: var(--color-text-secondary);
-  margin: 8px 6px;
+  margin: var(--space-2) var(--space-1);
 }

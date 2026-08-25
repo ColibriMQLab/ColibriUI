@@ -1,7 +1,7 @@
 .root {
   display: inline-flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
   position: relative;
 
   &_disabled {
@@ -13,19 +13,19 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   position: relative;
 }
 
 .wrapper {
-  border-radius: 17px;
+  border-radius: var(--radius-full);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--border-width-hairline);
   box-sizing: border-box;
-  height: 22px;
+  height: var(--component-switch-height);
   position: relative;
   transition: all 150ms ease;
-  width: 40px;
+  width: var(--component-switch-width);
 
   &_variant {
     &_primary {
@@ -47,15 +47,14 @@
 
 .base-switch {
   background: var(--component-switch-thumb);
-  border-radius: 50%;
-  box-shadow: 0 1px 3px
-    color-mix(in srgb, var(--color-border-strong) 24%, transparent);
-  height: 16px;
-  left: 2px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-switch-thumb);
+  height: var(--component-switch-thumb-size);
+  left: var(--component-switch-thumb-offset);
   position: absolute;
-  top: 2px;
+  top: var(--component-switch-thumb-offset);
   transition: transform 150ms ease;
-  width: 16px;
+  width: var(--component-switch-thumb-size);
 }
 
 .checkbox {
@@ -78,13 +77,13 @@
 
     .base-switch {
       background: var(--component-switch-thumb-checked);
-      transform: translateX(18px);
+      transform: translateX(var(--component-switch-thumb-translate));
     }
   }
 
   &:focus + .wrapper {
-    outline: 2px solid var(--component-control-focus-ring);
-    outline-offset: 2px;
+    outline: var(--focus-ring-width) solid var(--component-control-focus-ring);
+    outline-offset: var(--focus-ring-width);
   }
 
   &:disabled + .wrapper {
@@ -103,7 +102,7 @@
 
 .text {
   color: var(--component-control-text);
-  font-size: 16px;
+  font-size: var(--component-control-font-size);
   line-height: 1.4;
   user-select: none;
 }

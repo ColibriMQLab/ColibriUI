@@ -48,7 +48,7 @@ export default meta;
 
 function render(args) {
   return (
-    <div style={{ display: "flex", gap: "30px" }}>
+    <div style={{ display: "flex", gap: "var(--space-8)" }}>
       {[<Cart />, <User />].map((icon: ReactNode, index: number) => {
         return (
           <Badge key={generateUniqID(index)} {...args}>
@@ -62,7 +62,7 @@ function render(args) {
 
 export const Default = (args) => {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
       {render(args)}
     </div>
   );

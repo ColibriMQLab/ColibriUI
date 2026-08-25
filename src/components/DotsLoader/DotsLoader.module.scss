@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  width: 70px;
+  width: var(--component-loader-width);
 }
 
 @keyframes pending {
@@ -23,10 +23,10 @@
   animation-iteration-count: infinite;
   animation-name: pending;
   background-color: var(--component-loader-dot);
-  border-radius: 5px;
-  height: 10px;
+  border-radius: var(--radius-full);
+  height: var(--component-loader-dot-size);
   transform: scale(0);
-  width: 10px;
+  width: var(--component-loader-dot-size);
 
   &_first {
     animation-delay: 0s;

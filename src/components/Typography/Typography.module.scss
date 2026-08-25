@@ -26,98 +26,98 @@
   }
 
   &_text-xs {
-    font-size: var(--font-size-text-xs, 12px);
-    line-height: var(--line-height-text-xs, 16px);
+    font-size: var(--font-size-text-xs, 0.75rem);
+    line-height: var(--line-height-text-xs, 1rem);
   }
 
   &_text-sm {
-    font-size: var(--font-size-text-sm, 14px);
-    line-height: var(--line-height-text-sm, 20px);
+    font-size: var(--font-size-text-sm, 0.875rem);
+    line-height: var(--line-height-text-sm, 1.25rem);
   }
 
   &_text-md {
-    font-size: var(--font-size-text-md, 16px);
-    line-height: var(--line-height-text-md, 24px);
+    font-size: var(--font-size-text-md, 1rem);
+    line-height: var(--line-height-text-md, 1.5rem);
   }
 
   &_text-lg {
-    font-size: var(--font-size-text-lg, 18px);
-    line-height: var(--line-height-text-lg, 26px);
+    font-size: var(--font-size-text-lg, 1.125rem);
+    line-height: var(--line-height-text-lg, 1.625rem);
   }
 
   &_heading-sm {
-    font-size: var(--font-size-heading-sm, 20px);
+    font-size: var(--font-size-heading-sm, 1.25rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
-    line-height: var(--line-height-heading-sm, 28px);
+    line-height: var(--line-height-heading-sm, 1.75rem);
   }
 
   &_heading-md {
-    font-size: var(--font-size-heading-md, 24px);
+    font-size: var(--font-size-heading-md, 1.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
-    line-height: var(--line-height-heading-md, 32px);
+    line-height: var(--line-height-heading-md, 2rem);
   }
 
   &_heading-lg {
-    font-size: var(--font-size-heading-lg, 32px);
+    font-size: var(--font-size-heading-lg, 2rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
-    line-height: var(--line-height-heading-lg, 40px);
+    line-height: var(--line-height-heading-lg, 2.5rem);
   }
 
   &_heading-xl {
-    font-size: var(--font-size-heading-xl, 40px);
+    font-size: var(--font-size-heading-xl, 2.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
-    line-height: var(--line-height-heading-xl, 48px);
+    line-height: var(--line-height-heading-xl, 3rem);
   }
 
   &_display-sm {
-    font-size: var(--font-size-display-sm, 48px);
+    font-size: var(--font-size-display-sm, 3rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
-    line-height: var(--line-height-display-sm, 52px);
+    line-height: var(--line-height-display-sm, 3.25rem);
 
-    @media (width < 768px) {
-      font-size: var(--font-size-display-sm-mobile, 40px);
-      line-height: var(--line-height-display-sm-mobile, 44px);
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-sm-mobile, 2.5rem);
+      line-height: var(--line-height-display-sm-mobile, 2.75rem);
     }
   }
 
   &_display-md {
-    font-size: var(--font-size-display-md, 64px);
+    font-size: var(--font-size-display-md, 4rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
-    line-height: var(--line-height-display-md, 68px);
+    line-height: var(--line-height-display-md, 4.25rem);
 
-    @media (width < 768px) {
-      font-size: var(--font-size-display-md-mobile, 48px);
-      line-height: var(--line-height-display-md-mobile, 52px);
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-md-mobile, 3rem);
+      line-height: var(--line-height-display-md-mobile, 3.25rem);
     }
   }
 
   &_display-lg {
-    font-size: var(--font-size-display-lg, 80px);
+    font-size: var(--font-size-display-lg, 5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
-    line-height: var(--line-height-display-lg, 82px);
+    line-height: var(--line-height-display-lg, 5.125rem);
 
-    @media (width < 768px) {
-      font-size: var(--font-size-display-lg-mobile, 56px);
-      line-height: var(--line-height-display-lg-mobile, 58px);
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-lg-mobile, 3.5rem);
+      line-height: var(--line-height-display-lg-mobile, 3.625rem);
     }
   }
 
   &_display-xl {
-    font-size: var(--font-size-display-xl, 104px);
+    font-size: var(--font-size-display-xl, 6.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
-    line-height: var(--line-height-display-xl, 100px);
+    line-height: var(--line-height-display-xl, 6.25rem);
 
-    @media (width < 768px) {
-      font-size: var(--font-size-display-xl-mobile, 56px);
-      line-height: var(--line-height-display-xl-mobile, 58px);
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-xl-mobile, 3.5rem);
+      line-height: var(--line-height-display-xl-mobile, 3.625rem);
     }
   }
 

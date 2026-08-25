@@ -1,7 +1,7 @@
 .tab {
   color: var(--component-tab-text);
   cursor: pointer;
-  padding: 0 0.875em;
+  padding: 0 var(--space-3);
   -webkit-tap-highlight-color: transparent;
   transition-duration: 0.3s;
   transition-property: background, box-shadow, transform;
@@ -10,29 +10,29 @@
   white-space: nowrap;
 
   &[data-size="xs"] {
-    border-radius: 1.75rem;
-    font-size: 0.775rem;
-    line-height: 1.75rem;
+    border-radius: var(--component-tab-radius);
+    font-size: var(--component-tab-font-size-xs);
+    line-height: var(--component-tab-line-height-xs);
   }
 
   &[data-size="s"] {
-    border-radius: 2rem;
-    font-size: 0.875rem;
-    line-height: 2rem;
+    border-radius: var(--component-tab-radius);
+    font-size: var(--component-tab-font-size-s);
+    line-height: var(--component-tab-line-height-s);
   }
 
   &[data-size="m"] {
-    border-radius: 2.25rem;
-    font-size: 1rem;
-    line-height: 2.25rem;
-    padding: 0 1em;
+    border-radius: var(--component-tab-radius);
+    font-size: var(--component-tab-font-size-m);
+    line-height: var(--component-tab-line-height-m);
+    padding: 0 var(--space-4);
   }
 
   &[data-size="l"] {
-    border-radius: 2.625rem;
-    font-size: 1rem;
-    line-height: 2.625rem;
-    padding: 0 1em;
+    border-radius: var(--component-tab-radius);
+    font-size: var(--component-tab-font-size-l);
+    line-height: var(--component-tab-line-height-l);
+    padding: 0 var(--space-4);
   }
 
   &_active {
@@ -42,48 +42,27 @@
 
   &_inactive {
     background: var(--component-tab-bg);
-    box-shadow: color-mix(in srgb, var(--color-border-default) 40%, transparent)
-      0 5px 20px;
+    box-shadow: var(--shadow-raised);
 
     &:hover {
       background: var(--component-tab-bg-hover);
-      box-shadow: color-mix(
-          in srgb,
-          var(--color-border-default) 40%,
-          transparent
-        )
-        0 5px 20px;
+      box-shadow: var(--shadow-raised);
     }
 
     &:active {
       background: var(--component-tab-bg-pressed);
-      box-shadow: color-mix(
-          in srgb,
-          var(--color-border-default) 40%,
-          transparent
-        )
-        0 1px 3px;
+      box-shadow: var(--shadow-pressed);
       outline: 0;
       transition-duration: 0.15s;
     }
 
     @media (hover: none) {
       &:hover {
-        box-shadow: color-mix(
-            in srgb,
-            var(--color-border-default) 40%,
-            transparent
-          )
-          0 5px 20px;
+        box-shadow: var(--shadow-raised);
       }
 
       &:active {
-        box-shadow: color-mix(
-            in srgb,
-            var(--color-border-default) 40%,
-            transparent
-          )
-          0 1px 3px;
+        box-shadow: var(--shadow-pressed);
       }
     }
   }

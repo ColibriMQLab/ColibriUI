@@ -44,7 +44,7 @@ const meta: Meta<typeof Tooltip> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: "100px", textAlign: "center" }}>
+      <div style={{ padding: "var(--space-24)", textAlign: "center" }}>
         <Story />
       </div>
     ),

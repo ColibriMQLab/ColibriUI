@@ -1,24 +1,24 @@
 .root {
   align-items: center;
   background-color: var(--component-status-neutral-bg);
-  border-radius: 6rem;
+  border-radius: var(--radius-full);
   box-sizing: border-box;
   color: var(--color-text-primary);
   display: inline-flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   inline-size: fit-content;
-  line-height: 1.5rem;
+  line-height: var(--component-status-line-height);
   overflow: hidden;
-  padding: 0 0.5rem;
+  padding: 0 var(--space-2);
   vertical-align: middle;
   white-space: nowrap;
 
   &::before {
     background-color: var(--component-status-neutral);
-    block-size: 0.4rem;
-    border-radius: 100%;
+    block-size: var(--component-status-dot-size);
+    border-radius: var(--radius-full);
     content: "";
-    inline-size: 0.4rem;
+    inline-size: var(--component-status-dot-size);
   }
 
   &_success {

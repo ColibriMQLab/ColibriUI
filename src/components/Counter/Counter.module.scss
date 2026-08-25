@@ -1,12 +1,12 @@
 .root {
   background-color: var(--component-counter-bg);
-  block-size: 40px;
-  border-radius: 4px;
+  block-size: var(--component-counter-block-size);
+  border-radius: var(--component-counter-radius);
   box-sizing: border-box;
   color: var(--component-counter-text);
   display: inline-block;
-  font-size: 16px;
-  min-inline-size: 96px;
+  font-size: var(--component-control-font-size);
+  min-inline-size: var(--component-counter-min-inline-size);
   overflow: hidden;
   position: relative;
 
@@ -17,9 +17,9 @@
 
 .control {
   align-items: center;
-  block-size: 38px;
+  block-size: var(--component-counter-control-block-size);
   display: flex;
-  gap: 4px;
+  gap: var(--space-1);
   justify-content: space-between;
 
   &_fullWidth {
@@ -28,9 +28,9 @@
 }
 
 .value {
-  font-size: 18px;
+  font-size: var(--font-size-text-lg);
   font-weight: var(--font-weight-medium, 500);
-  inline-size: 24px;
+  inline-size: var(--component-counter-value-inline-size);
   text-align: center;
   user-select: none;
 }

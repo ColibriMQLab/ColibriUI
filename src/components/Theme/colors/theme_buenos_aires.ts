@@ -147,7 +147,7 @@ export const TretiaryBA = {
   TRETIARY_BA_5: BlueBA.BLUE_BA_700,
 };
 
-export const Color = {
+const Color = {
   ...BrandBA,
   ...NeutralBA,
   ...LimeBA,

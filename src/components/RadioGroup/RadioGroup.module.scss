@@ -1,6 +1,6 @@
 .radio {
-  line-height: 16px;
-  margin-inline-end: 20px;
+  line-height: var(--component-control-size);
+  margin-inline-end: var(--space-5);
 }
 
 .group {
@@ -14,7 +14,7 @@
     flex-direction: column;
 
     .radio:not(:last-child) {
-      margin-block-end: 16px;
+      margin-block-end: var(--space-4);
     }
   }
 
@@ -23,7 +23,7 @@
     /* stylelint-disable-next-line no-descending-specificity */
     .radio {
       inline-size: 100%;
-      margin: 8px auto;
+      margin: var(--space-2) auto;
 
       &:first-child {
         margin-block-start: 0;

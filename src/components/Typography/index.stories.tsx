@@ -159,22 +159,22 @@ export const AllVariants: Story = {
     <div
       style={{
         display: "grid",
-        gap: 32,
+        gap: "var(--space-8)",
         maxWidth: 960,
       }}
     >
-      <section style={{ display: "grid", gap: 16 }}>
+      <section style={{ display: "grid", gap: "var(--space-4)" }}>
         <Typography size="heading-md">Product scale</Typography>
 
-        <div style={{ display: "grid", gap: 12 }}>
+        <div style={{ display: "grid", gap: "var(--space-3)" }}>
           {productSizes.map((size) => (
             <div
               key={size}
               style={{
                 alignItems: "baseline",
                 display: "grid",
-                gap: 16,
-                gridTemplateColumns: "120px minmax(0, 1fr)",
+                gap: "var(--space-4)",
+                gridTemplateColumns: "7.5rem minmax(0, 1fr)",
               }}
             >
               <Typography size="text-sm" variant="secondary">
@@ -186,12 +186,12 @@ export const AllVariants: Story = {
         </div>
       </section>
 
-      <section style={{ display: "grid", gap: 16 }}>
+      <section style={{ display: "grid", gap: "var(--space-4)" }}>
         <Typography size="heading-md">Marketing display</Typography>
 
-        <div style={{ display: "grid", gap: 12 }}>
+        <div style={{ display: "grid", gap: "var(--space-3)" }}>
           {displaySizes.map((size) => (
-            <div key={size} style={{ display: "grid", gap: 4 }}>
+            <div key={size} style={{ display: "grid", gap: "var(--space-1)" }}>
               <Typography size="text-sm" variant="secondary">
                 {size}
               </Typography>
@@ -201,18 +201,18 @@ export const AllVariants: Story = {
         </div>
       </section>
 
-      <section style={{ display: "grid", gap: 16 }}>
+      <section style={{ display: "grid", gap: "var(--space-4)" }}>
         <Typography size="heading-md">Weights</Typography>
 
-        <div style={{ display: "grid", gap: 12 }}>
+        <div style={{ display: "grid", gap: "var(--space-3)" }}>
           {typographyWeights.map((fontWeight) => (
             <div
               key={fontWeight}
               style={{
                 alignItems: "baseline",
                 display: "grid",
-                gap: 16,
-                gridTemplateColumns: "120px minmax(0, 1fr)",
+                gap: "var(--space-4)",
+                gridTemplateColumns: "7.5rem minmax(0, 1fr)",
               }}
             >
               <Typography size="text-sm" variant="secondary">
@@ -226,14 +226,14 @@ export const AllVariants: Story = {
         </div>
       </section>
 
-      <section style={{ display: "grid", gap: 16 }}>
+      <section style={{ display: "grid", gap: "var(--space-4)" }}>
         <Typography size="heading-md">Semantic variants</Typography>
 
         <div
           style={{
             display: "grid",
-            gap: 12,
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "var(--space-3)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(11.25rem, 1fr))",
           }}
         >
           {typographyVariants.map((variant) => (
@@ -242,9 +242,10 @@ export const AllVariants: Story = {
               style={{
                 background:
                   variant === "inverse" ? "var(--color-bg-inverse)" : "none",
-                border: "1px solid var(--color-border-subtle)",
-                borderRadius: 8,
-                padding: 16,
+                border:
+                  "var(--border-width-hairline) solid var(--color-border-subtle)",
+                borderRadius: "var(--radius-md)",
+                padding: "var(--space-4)",
               }}
             >
               <Typography fontWeight="medium" size="text-md" variant={variant}>
