@@ -15,7 +15,7 @@ export interface CalendarEvent {
   label?: ReactNode;
 }
 
-interface CalendarCommonProps
+export interface CalendarCommonProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "onChange" | "defaultValue"> {
   defaultVisibleMonth?: Date;
   defaultView?: CalendarView;

@@ -19,9 +19,11 @@ const Datepicker = ({
   startPlaceholder,
   onChangeDate,
   onChangeRange,
+  ...calendarProps
 }: Props) => (
   <div className={clsx(styles.root, className)}>
     <DatePickerInput
+      {...calendarProps}
       endPlaceholder={endPlaceholder}
       hasError={hasError}
       hint={hint}

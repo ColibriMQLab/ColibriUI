@@ -49,9 +49,12 @@ const DatePicker: React.FC<DatePickerProps> = ({
   selectedRange = ["", ""],
   selectionMode = "single",
   size = "m",
+  defaultVisibleMonth,
+  monthsToShow,
   startPlaceholder,
   onChangeDate,
   onChangeRange,
+  ...calendarProps
 }) => {
   const [date, setDate] = useState(selectedDate);
   const [range, setRange] = useState<DatepickerRangeValue>(selectedRange);
@@ -98,9 +101,10 @@ const DatePicker: React.FC<DatePickerProps> = ({
     if (isRangeMode) {
       return (
         <Calendar
+          {...calendarProps}
           className={className}
-          defaultVisibleMonth={visibleMonth}
-          monthsToShow={2}
+          defaultVisibleMonth={defaultVisibleMonth ?? visibleMonth}
+          monthsToShow={monthsToShow ?? 2}
           selectionMode="range"
           size={calendarSize}
           value={calendarRangeValue}
@@ -111,8 +115,10 @@ const DatePicker: React.FC<DatePickerProps> = ({
 
     return (
       <Calendar
+        {...calendarProps}
         className={className}
-        defaultVisibleMonth={visibleMonth}
+        defaultVisibleMonth={defaultVisibleMonth ?? visibleMonth}
+        monthsToShow={monthsToShow}
         selectionMode="single"
         size={calendarSize}
         value={calendarValue}

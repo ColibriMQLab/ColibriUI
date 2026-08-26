@@ -1,9 +1,10 @@
 import type {
   DatepickerSize,
+  DatepickerCalendarProps,
   Props as DatepickerProps,
 } from "../../index.props";
 
-export type DatePickerProps = {
+export type DatePickerProps = DatepickerCalendarProps & {
   className?: string;
   endPlaceholder?: string;
   hasError?: boolean;
