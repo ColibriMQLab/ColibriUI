@@ -26,7 +26,10 @@
 		"test:coverage": "jest --config ./.config/jest/jest.config.ts --coverage",
 		"test": "jest --config ./.config/jest/jest.config.ts"
 	},
-	"sideEffects": false,
+	"sideEffects": [
+		"**/*.css",
+		"**/*.scss"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/ColibriMQLab/ColibriUI.git"

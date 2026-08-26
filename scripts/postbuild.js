@@ -19,7 +19,7 @@ const generatePackageJsons = async () => {
 
     for (let item of components) {
       const packageJsonContent = {
-        sideEffects: false,
+        sideEffects: ["**/*.css", "**/*.scss"],
         module: `../esm/${item}/index.js`,
         main: "./index.js",
         types: "./index.d.ts",
