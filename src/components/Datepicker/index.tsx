@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./Datepicker.module.scss";
-import DatePickerInput from "./components/DatePicker";
+import { DatePicker as DatePickerInput } from "./components/DatePicker";
 import type { Props } from "./index.props";
 
-const Datepicker = ({
+export const Datepicker = ({
   className,
   endPlaceholder,
   hasError,
@@ -40,5 +40,3 @@ const Datepicker = ({
     />
   </div>
 );
-
-export default Datepicker;

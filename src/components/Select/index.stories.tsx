@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import Select from ".";
-import Button from "../Button";
+import { Select } from ".";
+import { Button } from "../Button";
 import type { SelectProps } from "./index.props";
 
 const meta: Meta<typeof Select> = {

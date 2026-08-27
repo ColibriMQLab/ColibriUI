@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Tooltip from "..";
-import Button from "../../Button";
+import { Tooltip } from "..";
+import { Button } from "../../Button";
 
 describe("<Tooltip />", () => {
   const content = (

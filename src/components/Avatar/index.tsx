@@ -58,7 +58,7 @@ const OrgStubIcon = () => (
   </svg>
 );
 
-const Avatar: FC<AvatarProps> = memo((props) => {
+export const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     src,
     size = AvatarSize.M,
@@ -159,5 +159,3 @@ const Avatar: FC<AvatarProps> = memo((props) => {
     </span>
   );
 });
-
-export default Avatar;

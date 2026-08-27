@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Switch from ".";
+import { Switch } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Switch> = {

@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
 import { render, screen } from "@testing-library/react";
-import TabsPanels from "..";
+import { TabsPanels } from "..";
 
 const panel1 = { id: "tab1", content: "Pane 1 Search" };
 const panel2 = { id: "tab2", content: "Pane 2 Images" };

@@ -1,11 +1,11 @@
 import React from "react";
 import clsx from "clsx";
-import FormField from "../base/FormField";
-import InputRoot from "../base/InputRoot";
-import BaseInput from "../base/BaseInput";
+import { FormField } from "../base/FormField";
+import { InputRoot } from "../base/InputRoot";
+import { BaseInput } from "../base/BaseInput";
 import type { InputProps } from "./index.props";
 
-const Input = ({
+export const Input = ({
   className,
   startIcon,
   endIcon,
@@ -51,5 +51,3 @@ const Input = ({
     </InputRoot>
   </FormField>
 );
-
-export default Input;

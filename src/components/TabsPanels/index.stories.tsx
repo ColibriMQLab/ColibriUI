@@ -1,5 +1,5 @@
 import React from "react";
-import TabsPanels from ".";
+import { TabsPanels } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof TabsPanels> = {

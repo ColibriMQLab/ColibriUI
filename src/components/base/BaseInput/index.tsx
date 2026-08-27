@@ -4,7 +4,7 @@ import styles from "./BaseInput.module.scss";
 import type { ChangeEvent } from "react";
 import type { Props } from "./index.props";
 
-const BaseInput = ({
+export const BaseInput = ({
   className,
   onFocus,
   onChange,
@@ -30,5 +30,3 @@ const BaseInput = ({
     />
   );
 };
-
-export default BaseInput;

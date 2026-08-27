@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import type { FC, PropsWithChildren } from "react";
+import type { FC } from "react";
+import type { PortalProps } from "./index.props";
 
-const Portal: FC<PropsWithChildren<{ node?: HTMLElement | null }>> = ({
-  children,
-  node,
-}) => {
+export const Portal: FC<PortalProps> = ({ children, node }) => {
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -14,5 +12,3 @@ const Portal: FC<PropsWithChildren<{ node?: HTMLElement | null }>> = ({
 
   return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
 };
-
-export default Portal;

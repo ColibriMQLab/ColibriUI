@@ -1,4 +1,4 @@
-export { default, default as Calendar } from "./Calendar";
+export { Calendar } from "./Calendar";
 export type {
   CalendarEvent,
   CalendarCommonProps,
@@ -8,4 +8,4 @@ export type {
   CalendarSingleProps,
   CalendarSize,
   CalendarView,
-} from "./Calendar";
+} from "./index.props";

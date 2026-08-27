@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import Typography from "../Typography";
+import { Typography } from "../Typography";
 import styles from "./Switch.module.scss";
 import type { SwitchProps } from "./index.props";
 
-const Switch = ({
+export const Switch = ({
   disabled,
   className,
   variant = "primary",
@@ -55,5 +55,3 @@ const Switch = ({
     )}
   </div>
 );
-
-export default Switch;

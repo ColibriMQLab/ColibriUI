@@ -6,4 +6,4 @@ export type {
   CardSize,
   CardOrientation,
   CardBackgroundType,
-} from "./Card";
+} from "./index.props";

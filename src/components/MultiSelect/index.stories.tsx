@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import MultiSelect from ".";
+import { MultiSelect } from ".";
 import { fn } from "storybook/test";
 import type { SelectedItem } from "./index.props";
 

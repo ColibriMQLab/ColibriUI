@@ -1,8 +1,8 @@
 import React from "react";
-import User from "../Icons/User";
-import Cart from "../Icons/Cart";
+import { User } from "../Icons/User";
+import { Cart } from "../Icons/Cart";
 import generateUniqID from "../helpers/generateUniqID";
-import Badge from ".";
+import { Badge } from ".";
 import type { ReactNode } from "react";
 import type { Meta } from "@storybook/react-webpack5";
 

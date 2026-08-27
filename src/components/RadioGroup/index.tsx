@@ -1,36 +1,11 @@
 import React, { memo } from "react";
 import clsx from "clsx";
-import Radio from "./Radio";
+import { Radio } from "./Radio";
 import styles from "./RadioGroup.module.scss";
 import type { FC } from "react";
+import type { RadioGroupProps } from "./index.props";
 
-export interface Option {
-  id?: string;
-  val: string | number;
-  text: string;
-  note?: string;
-  name?: string;
-  tooltipContent?: () => React.ReactElement;
-  onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-  onMouseEnter?: (
-    event: React.MouseEvent<HTMLLabelElement, MouseEvent>,
-  ) => void;
-  className?: string;
-  disabled?: boolean;
-}
-
-export interface RadioGroupProps {
-  val?: string | number;
-  options: Option[];
-  onChange: (value: string) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  column?: boolean;
-  wrapped?: boolean;
-  className?: string;
-  disabled?: boolean;
-}
-
-const RadioGroup: FC<RadioGroupProps> = memo(
+export const RadioGroup: FC<RadioGroupProps> = memo(
   ({
     val,
     options,
@@ -86,5 +61,3 @@ const RadioGroup: FC<RadioGroupProps> = memo(
     </div>
   ),
 );
-
-export default RadioGroup;

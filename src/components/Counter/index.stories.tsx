@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Counter from ".";
+import { Counter } from ".";
 import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CounterProps } from "./index.props";

@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import clsx from "clsx";
-import useScrollLock from "../hooks/useScrollLock";
-import useTrapFocus from "../hooks/useTrapFocus";
-import Portal from "../Portal";
-import useMediaSizes from "../hooks/useMediaSizes";
-import Content from "./components/Content";
-import Close from "./components/Close";
-import Title from "./components/Title";
+import { useScrollLock } from "../hooks/useScrollLock";
+import { useTrapFocus } from "../hooks/useTrapFocus";
+import { Portal } from "../Portal";
+import { useMediaSizes } from "../hooks/useMediaSizes";
+import { Content } from "./components/Content";
+import { Close } from "./components/Close";
+import { Title } from "./components/Title";
 import styles from "./Modal.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { ModalProps } from "./index.props";
 
-const Modal: FC<PropsWithChildren<ModalProps>> = ({
+export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   children,
   className,
   onClose,
@@ -87,5 +87,3 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
     </Portal>
   );
 };
-
-export default Modal;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useScrollLock = () => {
+export const useScrollLock = () => {
   useEffect(() => {
     const body = document.querySelector("body");
     if (!body) return undefined;
@@ -22,5 +22,3 @@ const useScrollLock = () => {
     };
   }, []);
 };
-
-export default useScrollLock;

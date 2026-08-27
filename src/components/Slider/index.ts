@@ -1,4 +1,4 @@
-export { Slider as default, Slider } from "./Slider";
+export { Slider } from "./Slider";
 export type {
   SliderOrientation,
   SliderPointerSize,

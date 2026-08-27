@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Menu from ".";
+import { Menu } from ".";
 import { fn } from "storybook/test";
 import type { Meta } from "@storybook/react-webpack5";
-import MenuItem from "./components/MenuItem";
+import { MenuItem } from "./components/MenuItem";
 
 const meta: Meta<typeof Menu> = {
   title: "UI/Menu",

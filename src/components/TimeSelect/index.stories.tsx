@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import TimeSelect from ".";
+import { TimeSelect } from ".";
 import { fn } from "storybook/test";
 
 const meta: Meta<typeof TimeSelect> = {

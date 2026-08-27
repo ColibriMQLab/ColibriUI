@@ -1,7 +1,7 @@
 import React from "react";
 import { fn } from "storybook/test";
-import Chevron from "../Icons/Chevron";
-import Input from ".";
+import { Chevron } from "../Icons/Chevron";
+import { Input } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 

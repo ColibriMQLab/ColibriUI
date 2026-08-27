@@ -1,25 +1,17 @@
 import React, { useMemo } from "react";
-import Select from "../Select";
+import { Select } from "../Select";
 import {
   checkIsBeforeSelectedDate,
   checkIsBeforeNow,
   generateSuggest,
   isTimeInRange,
 } from "./helpers";
-import OptionLabel from "./Label";
+import { OptionLabel } from "./Label";
 
-import type { SelectProps } from "../Select/index.props";
-import type { TimeRange } from "./helpers";
 import type { FC } from "react";
+import type { TimeSelectProps } from "./index.props";
 
-interface TimeSelectProps extends Omit<SelectProps<string>, "options"> {
-  interval?: 5 | 10 | 15 | 30;
-  currentDate?: Date | null;
-  selectedDate?: Date | null;
-  allowedTimeRange?: TimeRange;
-}
-
-const TimeSelect: FC<TimeSelectProps> = ({
+export const TimeSelect: FC<TimeSelectProps> = ({
   value,
   name,
   className,
@@ -85,5 +77,3 @@ const TimeSelect: FC<TimeSelectProps> = ({
     />
   );
 };
-
-export default TimeSelect;

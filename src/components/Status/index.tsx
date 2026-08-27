@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 import type { PropsWithChildren } from "react";
 import type { StatusProps } from "./index.props";
 
-const Status = ({
+export const Status = ({
   className,
   indicator,
   showIndicator = true,
@@ -32,5 +32,3 @@ const Status = ({
     {children}
   </Component>
 );
-
-export default Status;

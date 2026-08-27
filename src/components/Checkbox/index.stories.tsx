@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Checkbox from ".";
+import { Checkbox } from ".";
 import type { Meta } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Checkbox> = {

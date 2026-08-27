@@ -4,7 +4,7 @@ import { type TypographyProps } from "./index.props";
 import styles from "./Typography.module.scss";
 import type { FC, PropsWithChildren } from "react";
 
-const Typography: FC<PropsWithChildren<TypographyProps>> = ({
+export const Typography: FC<PropsWithChildren<TypographyProps>> = ({
   tag: Component = "span",
   children,
   variant,
@@ -29,5 +29,3 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = ({
     {children}
   </Component>
 );
-
-export default Typography;

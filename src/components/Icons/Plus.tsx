@@ -1,7 +1,7 @@
 import React from "react";
 import type { Props } from "./index.props";
 
-export default ({
+export const Plus = ({
   fill = "currentColor",
   width = 18,
   height = 18,

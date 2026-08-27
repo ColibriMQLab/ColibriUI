@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 
-import Calendar from ".";
+import { Calendar } from ".";
 import type { CalendarProps, CalendarSize } from ".";
 
 const baseMonth = new Date(2026, 4, 1);

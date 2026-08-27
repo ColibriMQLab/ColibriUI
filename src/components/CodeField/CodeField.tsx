@@ -1,10 +1,6 @@
 import React, {
-  type Dispatch,
   forwardRef,
-  type InputHTMLAttributes,
   type MouseEventHandler,
-  type ReactNode,
-  type SetStateAction,
   useCallback,
   useEffect,
   useMemo,
@@ -13,40 +9,11 @@ import React, {
 } from "react";
 
 import styles from "./CodeField.module.scss";
+import type { CodeFieldProps } from "./index.props";
 
 export const ONLY_DIGITS_PATTERN = "^\\d+$";
 export const ONLY_CHARS_PATTERN = "^[a-zA-Z]+$";
 export const ONLY_DIGITS_AND_CHARS_PATTERN = "^[a-zA-Z0-9]+$";
-
-export type CodeFieldSize = "m" | "l" | "xl";
-export type CodeFieldShape = "default" | "segmented";
-export type ItemErrorBehavior = "remove-symbol" | "keep" | "forbid-enter";
-export type CodeErrorBehavior = "remove-code" | "keep";
-
-export interface CodeFieldProps
-  extends Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    "onChange" | "onClick" | "size" | "width" | "value"
-  > {
-  value?: string;
-  placeholder?: string;
-  codeLength?: 4 | 5 | 6;
-  caption?: ReactNode;
-  captionAlign?: "left" | "center";
-  width?: string | number;
-  view?: string;
-  shape?: CodeFieldShape;
-  size?: CodeFieldSize;
-  disabled?: boolean;
-  isError?: boolean;
-  setIsError?: Dispatch<SetStateAction<boolean>>;
-  allowedSymbols?: string | RegExp;
-  itemErrorBehavior?: ItemErrorBehavior;
-  codeErrorBehavior?: CodeErrorBehavior;
-  onChange?: (value: string) => void;
-  onFullCodeEnter?: (code: string) => void;
-  onClick?: MouseEventHandler<HTMLDivElement>;
-}
 
 const cx = (...classNames: Array<string | false | null | undefined>) =>
   classNames.filter(Boolean).join(" ");

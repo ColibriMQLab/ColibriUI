@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fn } from "storybook/test";
 
-import CodeField, { ONLY_DIGITS_AND_CHARS_PATTERN } from ".";
+import { CodeField, ONLY_DIGITS_AND_CHARS_PATTERN } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof CodeField> = {

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import RadioGroup, { RadioGroupProps } from ".";
+import { RadioGroup } from ".";
 import { fn } from "storybook/test";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { RadioGroupProps } from "./index.props";
 
 const getOptions = (name?: string) => [
   {

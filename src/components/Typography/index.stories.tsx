@@ -1,4 +1,4 @@
-import Typography from ".";
+import { Typography } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const typographySizes = [

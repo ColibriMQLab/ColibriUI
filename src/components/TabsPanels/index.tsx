@@ -5,7 +5,7 @@ import type { TabsPanelsProps } from "./index.props";
 import type { FC } from "react";
 import type { PanelProps } from "./Panel/index.props";
 
-const TabsPanels: FC<TabsPanelsProps> = ({
+export const TabsPanels: FC<TabsPanelsProps> = ({
   activePanel,
   className,
   innerRef,
@@ -41,5 +41,3 @@ const TabsPanels: FC<TabsPanelsProps> = ({
     </div>
   );
 };
-
-export default TabsPanels;

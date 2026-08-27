@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Modal from ".";
-import Button from "../Button";
+import { Modal } from ".";
+import { Button } from "../Button";
 import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 

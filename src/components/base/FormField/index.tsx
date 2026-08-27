@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import Typography from "../../Typography";
+import { Typography } from "../../Typography";
 import styles from "./FormField.module.scss";
 import type { FormFieldProps } from "./index.props";
 
-const FormField = ({
+export const FormField = ({
   label,
   hint,
   children,
@@ -36,5 +36,3 @@ const FormField = ({
     )}
   </div>
 );
-
-export default FormField;

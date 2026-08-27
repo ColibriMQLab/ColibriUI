@@ -1,7 +1,7 @@
 import React from "react";
 import type { Props } from "./index.props";
 
-export default ({ width = 24, height = 24, ref, ...props }: Props) => (
+export const Close = ({ width = 24, height = 24, ref, ...props }: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

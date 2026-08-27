@@ -4,7 +4,7 @@ import styles from "./MenuItem.module.scss";
 import type { PropsWithChildren } from "react";
 import type { MenuItemProps } from "./index.props";
 
-const MenuItem = ({
+export const MenuItem = ({
   className,
   isSelected,
   variant = "primary",
@@ -47,5 +47,3 @@ const MenuItem = ({
     </li>
   );
 };
-
-export default MenuItem;

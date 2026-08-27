@@ -1,7 +1,7 @@
 import React from "react";
 import type { Props } from "./index.props";
 
-export default ({
+export const CrossFill = ({
   fill = "currentColor",
   width = 24,
   height = 24,

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import React, { useState } from "react";
 
-import Dropdown from ".";
-import Menu from "../Menu";
-import MenuItem from "../Menu/components/MenuItem";
-import Button from "../Button";
+import { Dropdown } from ".";
+import { Menu } from "../Menu";
+import { MenuItem } from "../Menu/components/MenuItem";
+import { Button } from "../Button";
 
 const meta: Meta<typeof Dropdown> = {
   title: "UI/Dropdown",

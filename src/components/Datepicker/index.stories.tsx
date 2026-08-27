@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Datepicker from ".";
+import { Datepicker } from ".";
 import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { Props } from "./index.props";

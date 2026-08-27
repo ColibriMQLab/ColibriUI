@@ -2,7 +2,7 @@ import React from "react";
 import chroma from "chroma-js";
 import ColorsJaipur from "./themes/jaipur";
 import ColorsBA from "./themes/buenos_aires";
-import Typography from "../Typography";
+import { Typography } from "../Typography";
 
 const meta = {
   title: "UI/Theme",

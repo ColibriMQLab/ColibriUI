@@ -1,7 +1,7 @@
 import React from "react";
 import { fn } from "storybook/test";
-import More from "../Icons/More";
-import Button from ".";
+import { More } from "../Icons/More";
+import { Button } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Button> = {

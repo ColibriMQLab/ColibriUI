@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fn } from "storybook/test";
 
-import Editable from ".";
+import { Editable } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Editable> = {

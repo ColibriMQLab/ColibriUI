@@ -2,13 +2,13 @@ import React, { useCallback, createRef, useMemo } from "react";
 
 import clsx from "clsx";
 import { isKey, Keys } from "../lib/keyboard";
-import Tab from "./Tab/Tab";
+import { Tab } from "./Tab/Tab";
 import styles from "./TabsMenu.module.scss";
 import type { TabsMenuProps } from "./index.props";
 
 import type { KeyboardEvent, FC } from "react";
 
-const TabsMenu: FC<TabsMenuProps> = ({
+export const TabsMenu: FC<TabsMenuProps> = ({
   activeTab,
   onChange,
   className,
@@ -104,5 +104,3 @@ const TabsMenu: FC<TabsMenuProps> = ({
     </ul>
   );
 };
-
-export default TabsMenu;

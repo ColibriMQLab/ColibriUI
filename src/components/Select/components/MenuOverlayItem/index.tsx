@@ -1,22 +1,9 @@
 import React, { useLayoutEffect, useRef } from "react";
-import MenuItem from "../../../Menu/components/MenuItem";
-import Check from "../../../Icons/Check";
-import type { Coordinates } from "../../index.props";
+import { MenuItem } from "../../../Menu/components/MenuItem";
+import { Check } from "../../../Icons/Check";
+import type { SelectItemProps } from "./index.props";
 
-type SelectItemProps = {
-  option: {
-    value: string;
-    label: React.ReactNode;
-    selected: boolean;
-    disabled?: boolean;
-  };
-  onClick?: () => void;
-  setScrollView: (value: Coordinates) => void;
-  isPrevDisabled?: boolean;
-  isDisabled?: boolean;
-};
-
-const SelectItem = ({
+export const SelectItem = ({
   option,
   onClick,
   setScrollView,
@@ -57,5 +44,3 @@ const SelectItem = ({
     </MenuItem>
   );
 };
-
-export default SelectItem;

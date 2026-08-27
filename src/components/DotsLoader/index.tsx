@@ -2,8 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./DotsLoader.module.scss";
 import type { FC } from "react";
+import type { DotsLoaderProps } from "./index.props";
 
-const DotsLoader: FC = () => (
+export const DotsLoader: FC<DotsLoaderProps> = () => (
   <div className={styles.wrapper}>
     <div className={clsx({ [styles.dot]: true, [styles.dot_first]: true })} />
     <div className={clsx({ [styles.dot]: true, [styles.dot_second]: true })} />
@@ -11,5 +12,3 @@ const DotsLoader: FC = () => (
     <div className={clsx({ [styles.dot]: true, [styles.dot_fourth]: true })} />
   </div>
 );
-
-export default DotsLoader;

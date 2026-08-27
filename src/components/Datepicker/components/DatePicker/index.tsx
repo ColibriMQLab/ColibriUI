@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Dropdown from "../../../Dropdown";
-import Calendar from "../../../Calendar";
-import Input from "../../../Input";
-import BaseInput from "../../../base/BaseInput";
-import FormField from "../../../base/FormField";
-import InputRoot from "../../../base/InputRoot";
+import { Dropdown } from "../../../Dropdown";
+import { Calendar } from "../../../Calendar";
+import { Input } from "../../../Input";
+import { BaseInput } from "../../../base/BaseInput";
+import { FormField } from "../../../base/FormField";
+import { InputRoot } from "../../../base/InputRoot";
 import { parse, toDMYDate, toISODate } from "../../../helpers/date";
 import styles from "./index.module.scss";
 import type { CalendarSize } from "../../../Calendar";
@@ -37,7 +37,7 @@ const CalendarIcon = () => (
   </svg>
 );
 
-const DatePicker: React.FC<DatePickerProps> = ({
+export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   endPlaceholder,
   hasError,
@@ -211,5 +211,3 @@ const DatePicker: React.FC<DatePickerProps> = ({
     </FormField>
   );
 };
-
-export default DatePicker;

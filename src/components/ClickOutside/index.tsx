@@ -4,16 +4,12 @@ import {
   isValidElement,
   useCallback,
   type FC,
-  type PropsWithChildren,
   type ReactElement,
   type Ref,
   type MutableRefObject,
 } from "react";
-import useOnClickOutside from "../hooks/useOnClickOutside";
-
-type ClickOutsideProps = {
-  onClick: (event: MouseEvent | TouchEvent) => void;
-};
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
+import type { ClickOutsideProps } from "./index.props";
 
 /**
  * Merges multiple refs (callback or object) into a single ref callback.
@@ -31,10 +27,7 @@ function useMergedRefs<T>(
   }, refs);
 }
 
-const ClickOutside: FC<PropsWithChildren<ClickOutsideProps>> = ({
-  children,
-  onClick,
-}) => {
+export const ClickOutside: FC<ClickOutsideProps> = ({ children, onClick }) => {
   const localRef = useRef<HTMLElement | null>(null);
   useOnClickOutside(localRef, onClick);
 
@@ -50,5 +43,3 @@ const ClickOutside: FC<PropsWithChildren<ClickOutsideProps>> = ({
     ref: mergedRef,
   });
 };
-
-export default ClickOutside;

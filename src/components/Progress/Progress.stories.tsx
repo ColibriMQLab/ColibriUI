@@ -93,27 +93,53 @@ export const Default: Story = {};
 
 export const Views: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-      {(["default", "secondary", "accent", "accentGradient", "info", "positive", "warning", "negative"] as const).map(
-        (view, index) => (
-          <Progress
-            key={view}
-            {...args}
-            caption={view}
-            value={(index + 1) * 12}
-            view={view}
-          />
-        ),
-      )}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-4)",
+      }}
+    >
+      {(
+        [
+          "default",
+          "secondary",
+          "accent",
+          "accentGradient",
+          "info",
+          "positive",
+          "warning",
+          "negative",
+        ] as const
+      ).map((view, index) => (
+        <Progress
+          key={view}
+          {...args}
+          caption={view}
+          value={(index + 1) * 12}
+          view={view}
+        />
+      ))}
     </div>
   ),
 };
 
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-4)",
+      }}
+    >
       {(["s", "m", "l"] as const).map((size) => (
-        <Progress key={size} {...args} caption={`${size.toUpperCase()} size`} size={size} />
+        <Progress
+          key={size}
+          {...args}
+          caption={`${size.toUpperCase()} size`}
+          size={size}
+        />
       ))}
     </div>
   ),
@@ -121,9 +147,20 @@ export const Sizes: Story = {
 
 export const BarSizes: Story = {
   render: (args) => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-4)",
+      }}
+    >
       {(["2", "4", "6", "8"] as const).map((progressSize) => (
-        <Progress key={progressSize} {...args} caption={`${progressSize}px bar`} progressSize={progressSize} />
+        <Progress
+          key={progressSize}
+          {...args}
+          caption={`${progressSize}px bar`}
+          progressSize={progressSize}
+        />
       ))}
     </div>
   ),

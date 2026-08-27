@@ -1,7 +1,7 @@
 import React, { forwardRef, useId, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import Cross from "../Icons/Cross";
-import Input from "../Input";
+import { Cross } from "../Icons/Cross";
+import { Input } from "../Input";
 
 import styles from "./NumberInput.module.scss";
 import type {

@@ -1,8 +1,8 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import Cart from "../../Icons/Cart";
-import Badge from "..";
+import { Cart } from "../../Icons/Cart";
+import { Badge } from "..";
 
 describe("<Badge />", () => {
   it("should render correctly", () => {

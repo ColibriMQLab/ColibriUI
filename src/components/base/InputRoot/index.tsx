@@ -3,7 +3,7 @@ import clsx from "clsx";
 import styles from "./InputRoot.module.scss";
 import type { InputProps } from "./index.props";
 
-const InputRoot = ({
+export const InputRoot = ({
   active,
   className,
   startIcon,
@@ -37,5 +37,3 @@ const InputRoot = ({
     {disabled && <div className={styles["base-disable-wrapper"]} />}
   </div>
 );
-
-export default InputRoot;

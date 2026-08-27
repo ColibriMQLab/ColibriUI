@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import type { TabProps } from "./Tab/Tab.props";
+import type { TabProps } from "./Tab/index.props";
 
 export type Size = "xs" | "s" | "m" | "l";
 

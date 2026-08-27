@@ -5,7 +5,7 @@ import styles from "./Badge.module.scss";
 import type { FC, PropsWithChildren } from "react";
 import type { Props } from "./index.props";
 
-const Badge: FC<PropsWithChildren<Props>> = ({
+export const Badge: FC<PropsWithChildren<Props>> = ({
   children,
   className,
   content,
@@ -48,5 +48,3 @@ const Badge: FC<PropsWithChildren<Props>> = ({
     </Control>
   );
 };
-
-export default Badge;

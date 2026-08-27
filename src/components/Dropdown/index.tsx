@@ -25,12 +25,12 @@ import {
   type Placement,
 } from "@floating-ui/react";
 
-import ClickOutside from "../ClickOutside";
+import { ClickOutside } from "../ClickOutside";
 import styles from "./Dropdown.module.scss";
 import type { MouseEventHandler, HTMLProps } from "react";
 import type { DropdownProps } from "./index.props";
 
-const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
+export const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   children,
   zIndex,
   fontSize,
@@ -173,5 +173,3 @@ const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
     </>
   );
 };
-
-export default Dropdown;

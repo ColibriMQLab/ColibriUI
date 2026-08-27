@@ -7,4 +7,4 @@ export type {
   DrawerPlacement,
   DrawerClosePlacement,
   DrawerAnimationInfo,
-} from "./Drawer";
+} from "./index.props";

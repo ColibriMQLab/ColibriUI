@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from ".";
+import { Avatar } from ".";
 import type { Meta } from "@storybook/react-webpack5";
 import { AccountType, AvatarProps } from "./index.props";
 import { AvatarSize } from "./constants";

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Props } from "./index.props";
 
-export default ({
+export const ArrowNext = ({
   fill = "currentColor",
   width = 10,
   height = 16,

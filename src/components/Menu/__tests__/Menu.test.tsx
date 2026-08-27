@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MenuItem from "../components/MenuItem";
-import Menu from "..";
+import { MenuItem } from "../components/MenuItem";
+import { Menu } from "..";
 
 describe("<Menu />", () => {
   it("renders", () => {

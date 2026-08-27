@@ -1,33 +1,16 @@
 import React, { memo, useLayoutEffect, useRef, useState } from "react";
-import Menu from "../../../Menu";
-import SelectItem from "../MenuOverlayItem";
-import Typography from "../../../Typography";
-import Separator from "../../../Separator";
+import { Menu } from "../../../Menu";
+import { SelectItem } from "../MenuOverlayItem";
+import { Typography } from "../../../Typography";
+import { Separator } from "../../../Separator";
 import { toKey } from "../../utils";
 import styles from "./index.module.scss";
-import type { ReactNode } from "react";
-import type { Coordinates, GroupProps } from "../../index.props";
-
-export interface IOption {
-  selected: boolean;
-  value: string;
-  label: ReactNode;
-  disabled?: boolean;
-}
-
-type MenuOverlayGroup = Omit<GroupProps, "options" | "value"> & {
-  options: IOption[];
-  value: string;
-};
-
-type MenuOverlayProps = {
-  groups: MenuOverlayGroup[];
-  onChange: (key: string) => void;
-};
+import type { Coordinates } from "../../index.props";
+import type { MenuOverlayProps } from "./index.props";
 
 const OFFSET_ITEMS_COUNT = 2;
 
-const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
+const MenuOverlayBase = ({ groups, onChange }: MenuOverlayProps) => {
   const refs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
@@ -115,4 +98,4 @@ const MenuOverlay = ({ groups, onChange }: MenuOverlayProps) => {
   );
 };
 
-export default memo(MenuOverlay);
+export const MenuOverlay = memo(MenuOverlayBase);

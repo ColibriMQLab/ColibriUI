@@ -1,13 +1,13 @@
 import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import clsx from "clsx";
-import FormField from "../base/FormField";
-import InputRoot from "../base/InputRoot";
+import { FormField } from "../base/FormField";
+import { InputRoot } from "../base/InputRoot";
 import styles from "./TextArea.module.scss";
 import type { ITextAreaProps } from "./index.props";
 import type { ChangeEvent } from "react";
 
-const TextArea = ({
+export const TextArea = ({
   className,
   value = "",
   minRows = 3,
@@ -50,5 +50,3 @@ const TextArea = ({
     </FormField>
   );
 };
-
-export default TextArea;

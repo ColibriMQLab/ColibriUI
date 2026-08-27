@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
-import Rating from ".";
+import { Rating } from ".";
 
 const meta = {
   title: "UI/Rating",

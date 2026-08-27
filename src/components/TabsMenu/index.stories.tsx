@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TabsMenu from ".";
+import { TabsMenu } from ".";
 import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 

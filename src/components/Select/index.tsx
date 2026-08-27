@@ -1,15 +1,15 @@
 import React, { useState, useMemo } from "react";
 import clsx from "clsx";
-import Chevron from "../Icons/Chevron";
-import InputRoot from "../base/InputRoot";
-import FormField from "../base/FormField";
-import Dropdown from "../Dropdown";
+import { Chevron } from "../Icons/Chevron";
+import { InputRoot } from "../base/InputRoot";
+import { FormField } from "../base/FormField";
+import { Dropdown } from "../Dropdown";
 import styles from "./index.module.scss";
-import MenuOverlay from "./components/MenuOverlay";
+import { MenuOverlay } from "./components/MenuOverlay";
 import type { JSX } from "react";
 import type { SelectProps } from "./index.props";
 
-const Select = <T extends string>({
+export const Select = <T extends string>({
   options = [],
   value,
   name,
@@ -111,5 +111,3 @@ const Select = <T extends string>({
     </FormField>
   );
 };
-
-export default Select;

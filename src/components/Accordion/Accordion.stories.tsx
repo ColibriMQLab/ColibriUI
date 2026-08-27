@@ -1,5 +1,5 @@
 import React from "react";
-import Accordion from ".";
+import { Accordion } from ".";
 import { Meta } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof Accordion> = {

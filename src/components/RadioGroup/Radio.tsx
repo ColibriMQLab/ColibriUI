@@ -1,27 +1,10 @@
 import React from "react";
 
-import InputRadio from "../InputRadio";
-import type { ChangeEvent, FC, FocusEvent } from "react";
+import { InputRadio } from "../InputRadio";
+import type { FC } from "react";
+import type { RadioProps } from "./index.props";
 
-type Props = {
-  value: string | number;
-  text: string;
-  id?: string;
-  note?: string;
-  name?: string;
-  checked?: boolean;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-  onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-  onMouseEnter?: (
-    event: React.MouseEvent<HTMLLabelElement, MouseEvent>,
-  ) => void;
-  className: string;
-  disabled?: boolean;
-  testId?: string;
-};
-
-const Radio: FC<Props> = ({
+export const Radio: FC<RadioProps> = ({
   id,
   value,
   text,
@@ -35,7 +18,7 @@ const Radio: FC<Props> = ({
   className,
   disabled = false,
   testId,
-}: Props) => (
+}: RadioProps) => (
   <InputRadio
     id={id}
     value={value}
@@ -52,5 +35,3 @@ const Radio: FC<Props> = ({
     testid={testId}
   />
 );
-
-export default Radio;

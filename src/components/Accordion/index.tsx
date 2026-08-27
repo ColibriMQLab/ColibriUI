@@ -2,18 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 
 import clsx from "clsx";
 import { Chevron } from "../Icons";
-import Typography from "../Typography";
+import { Typography } from "../Typography";
 import styles from "./Accordion.module.scss";
-import type { FC, ReactNode, PropsWithChildren } from "react";
+import type { FC } from "react";
+import type { AccordionProps } from "./index.props";
 
-type Props = {
-  title: ReactNode;
-  className?: string;
-  boldTitle?: boolean;
-  tabIndex?: number;
-};
-
-const Accordion: FC<PropsWithChildren<Props>> = ({
+export const Accordion: FC<AccordionProps> = ({
   title,
   boldTitle = false,
   children,
@@ -67,5 +61,3 @@ const Accordion: FC<PropsWithChildren<Props>> = ({
     </div>
   );
 };
-
-export default Accordion;

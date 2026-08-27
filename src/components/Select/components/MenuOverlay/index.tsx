@@ -1,22 +1,16 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
-import Menu from "../../../Menu";
-import SelectItem from "../MenuOverlayItem";
+import { Menu } from "../../../Menu";
+import { SelectItem } from "../MenuOverlayItem";
 import styles from "./index.module.scss";
 import type { Coordinates, IOption } from "../../index.props";
-
-interface Props<T extends string> {
-  options: {
-    value: T;
-    label: React.ReactNode;
-    selected: boolean;
-    disabled?: boolean;
-  }[];
-  onChange: (value: T) => void;
-}
+import type { MenuOverlayProps } from "./index.props";
 
 const OFFSET_ITEMS_COUNT = 2;
 
-const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
+export const MenuOverlay = <T extends string>({
+  options,
+  onChange,
+}: MenuOverlayProps<T>) => {
   const [selected, setSelected] = useState<string[]>();
   const [scrollView, setScrollView] = useState<Coordinates>({
     top: 0,
@@ -64,5 +58,3 @@ const MenuOverlay = <T extends string>({ options, onChange }: Props<T>) => {
     </div>
   );
 };
-
-export default MenuOverlay;

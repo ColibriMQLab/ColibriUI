@@ -6,7 +6,7 @@ import type { ImageProps } from "./index.props";
 const emptyImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
 
-const Image = ({
+export const Image = ({
   className,
   loading = "lazy",
   src,
@@ -64,5 +64,3 @@ const Image = ({
     </picture>
   );
 };
-
-export default Image;

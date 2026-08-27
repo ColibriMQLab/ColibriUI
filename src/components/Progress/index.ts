@@ -4,4 +4,4 @@ export type {
   ProgressSize,
   ProgressBarSize,
   ProgressView,
-} from "./Progress";
+} from "./index.props";

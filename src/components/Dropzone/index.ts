@@ -4,4 +4,4 @@ export type {
   DropzoneFileResult,
   DropzoneValidator,
   DropzoneFileHandler,
-} from "./Dropzone";
+} from "./index.props";

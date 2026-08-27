@@ -7,7 +7,7 @@ import type { GridProps } from "./index.props";
 const toRemLength = (value: number | string) =>
   typeof value === "number" ? `${value / 16}rem` : value;
 
-const Grid: FC<PropsWithChildren<GridProps>> = ({
+export const Grid: FC<PropsWithChildren<GridProps>> = ({
   children,
   gridRowGap = "6",
   gridColumnGap = "4",
@@ -27,5 +27,3 @@ const Grid: FC<PropsWithChildren<GridProps>> = ({
     {children}
   </div>
 );
-
-export default Grid;

@@ -1,19 +1,9 @@
 import React from "react";
-import MenuItem from "../../../Menu/components/MenuItem";
-import Check from "../../../Icons/Check";
+import { MenuItem } from "../../../Menu/components/MenuItem";
+import { Check } from "../../../Icons/Check";
+import type { SelectItemProps } from "./index.props";
 
-type SelectItemProps = {
-  option: {
-    value: string;
-    label: React.ReactNode;
-    selected: boolean;
-    disabled?: boolean;
-  };
-  onClick?: () => void;
-  ref?: React.Ref<HTMLLIElement>;
-};
-
-const SelectItem = ({ option, onClick, ref }: SelectItemProps) => (
+export const SelectItem = ({ option, onClick, ref }: SelectItemProps) => (
   <MenuItem
     ref={ref}
     onClick={onClick}
@@ -24,5 +14,3 @@ const SelectItem = ({ option, onClick, ref }: SelectItemProps) => (
     {option.selected && <Check width={16} height={16} />}
   </MenuItem>
 );
-
-export default SelectItem;

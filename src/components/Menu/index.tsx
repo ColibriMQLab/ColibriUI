@@ -4,7 +4,7 @@ import styles from "./Menu.module.scss";
 import type { Props } from "./index.props";
 import type { KeyboardEvent, MouseEvent } from "react";
 
-const Menu = ({
+export const Menu = ({
   selected,
   variant,
   className,
@@ -41,5 +41,3 @@ const Menu = ({
     </ul>
   );
 };
-
-export default Menu;

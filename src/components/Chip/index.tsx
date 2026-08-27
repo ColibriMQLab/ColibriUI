@@ -4,7 +4,7 @@ import styles from "./Chip.module.scss";
 import type { ChipProps } from "./index.props";
 import type { FC, PropsWithChildren } from "react";
 
-const Chip: FC<PropsWithChildren<ChipProps>> = ({
+export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
   iconEnd,
   isActive,
@@ -46,5 +46,3 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
     </span>
   </span>
 );
-
-export default Chip;

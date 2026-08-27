@@ -1,4 +1,4 @@
-import DotsLoader from ".";
+import { DotsLoader } from ".";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 const meta: Meta<typeof DotsLoader> = {

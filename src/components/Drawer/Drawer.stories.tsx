@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import Button from "../Button";
+import { Button } from "../Button";
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader } from "./Drawer";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 

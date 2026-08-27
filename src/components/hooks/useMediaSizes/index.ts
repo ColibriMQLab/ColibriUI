@@ -8,7 +8,7 @@ type QueryInput = QueryInputFunction | string;
 const supportMatchMedia =
   typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
 
-const useMediaSizes = (queryInput: QueryInput) => {
+export const useMediaSizes = (queryInput: QueryInput) => {
   let query =
     typeof queryInput === "function" ? queryInput(Breakpoints) : queryInput;
 
@@ -46,5 +46,3 @@ const useMediaSizes = (queryInput: QueryInput) => {
 
   return match;
 };
-
-export default useMediaSizes;

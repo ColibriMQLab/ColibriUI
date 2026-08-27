@@ -1,11 +1,8 @@
 import React, {
   type ClipboardEventHandler,
-  type ElementType,
   type FocusEventHandler,
   forwardRef,
-  type HTMLAttributes,
   type KeyboardEventHandler,
-  type ReactNode,
   type SyntheticEvent,
   useCallback,
   useEffect,
@@ -16,27 +13,7 @@ import React, {
 
 import { Edit } from "../Icons";
 import styles from "./Editable.module.scss";
-
-export interface EditableProps
-  extends Omit<
-    HTMLAttributes<HTMLSpanElement>,
-    "onChange" | "onBlur" | "onPaste"
-  > {
-  /** Current text. The component also works without this prop. */
-  value?: string;
-  /** Element used to render the editable text, for example `span`, `h1` or a typography component. */
-  textComponent?: ElementType;
-  /** Icon shown on the right. Pass `null` to hide it. */
-  icon?: ReactNode;
-  placeholder?: string;
-  maxLength?: number;
-  name?: string;
-  disabled?: boolean;
-  spellCheck?: boolean;
-  onChange?: (event: SyntheticEvent<HTMLDivElement>, value: string) => void;
-  onBlur?: FocusEventHandler<HTMLDivElement>;
-  onPaste?: ClipboardEventHandler<HTMLDivElement>;
-}
+import type { EditableProps } from "./index.props";
 
 const placeCaretAtEnd = (element: HTMLElement) => {
   const selection = window.getSelection();

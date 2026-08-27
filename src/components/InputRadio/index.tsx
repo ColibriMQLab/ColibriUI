@@ -1,38 +1,11 @@
 import React, { memo } from "react";
 import clsx from "clsx";
-import Typography from "../Typography";
+import { Typography } from "../Typography";
 import styles from "./InputRadio.module.scss";
-import type {
-  FC,
-  CSSProperties,
-  PropsWithChildren,
-  FocusEvent,
-  ChangeEvent,
-} from "react";
+import type { FC } from "react";
+import type { InputRadioProps } from "./index.props";
 
-type InputRadioProps = {
-  checked?: boolean;
-  className?: string;
-  containerClassName?: string;
-  disabled?: boolean;
-  error?: string;
-  id?: string;
-  name?: string;
-  note?: string;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-  onMouseEnter?: (
-    event: React.MouseEvent<HTMLLabelElement, MouseEvent>,
-  ) => void;
-  style?: CSSProperties;
-  text?: string;
-  value: string | number;
-  testid?: string;
-};
-
-const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
+export const InputRadio: FC<InputRadioProps> = memo(
   ({
     checked,
     children,
@@ -104,5 +77,3 @@ const InputRadio: FC<PropsWithChildren<InputRadioProps>> = memo(
     </label>
   ),
 );
-
-export default InputRadio;

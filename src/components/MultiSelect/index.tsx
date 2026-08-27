@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo, useState } from "react";
 import clsx from "clsx";
-import Dropdown from "../Dropdown";
-import InputRoot from "../base/InputRoot";
-import FormField from "../base/FormField";
+import { Dropdown } from "../Dropdown";
+import { InputRoot } from "../base/InputRoot";
+import { FormField } from "../base/FormField";
 import { Chevron, CrossFill } from "../Icons";
-import Chip from "../Chip";
+import { Chip } from "../Chip";
 import styles from "./index.module.scss";
-import MenuOverlay from "./components/MenuOverlay";
+import { MenuOverlay } from "./components/MenuOverlay";
 import { fromKey, toKey } from "./utils";
 import type { GroupOptions, MultiSelectProps } from "./index.props";
 
@@ -16,7 +16,7 @@ type PreparedLabelProps = { label: string; key: string };
 const getValue = (options: PreparedLabelProps[]): string =>
   options.map(({ label }) => label).join(", ");
 
-const MultiSelect: React.FC<MultiSelectProps> = ({
+export const MultiSelect: React.FC<MultiSelectProps> = ({
   className,
   groups,
   zIndex,
@@ -169,5 +169,3 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     </FormField>
   );
 };
-
-export default MultiSelect;

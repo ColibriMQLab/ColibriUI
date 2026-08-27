@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Counter from "..";
+import { Counter } from "..";
 
 describe("<Counter />", () => {
   const baseProps = {

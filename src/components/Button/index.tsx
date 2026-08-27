@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { type ButtonProps } from "./index.props";
 import styles from "./Button.module.scss";
 
-const Button = ({
+export const Button = ({
   className,
   fullWidth = false,
   variant = "primary",
@@ -44,5 +44,3 @@ const Button = ({
     {iconEnd && <span className={styles.icon}>{iconEnd}</span>}
   </button>
 );
-
-export default Button;

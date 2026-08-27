@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
-import Chip from ".";
+import { Chip } from ".";
 import { fn } from "storybook/test";
 import generateUniqID from "../helpers/generateUniqID";
 import type { Meta } from "@storybook/react-webpack5";
-import CrossFill from "../Icons/CrossFill";
+import { CrossFill } from "../Icons/CrossFill";
 import type { ChipProps } from "./index.props";
 
 const meta: Meta<typeof Chip> = {

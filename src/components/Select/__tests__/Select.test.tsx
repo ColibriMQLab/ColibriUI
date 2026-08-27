@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Select from '..';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Select } from "..";
 
-describe('<Select />', () => {
+describe("<Select />", () => {
   const options = Array(5)
     .fill(null)
     .map((_, i) => ({
@@ -11,21 +11,21 @@ describe('<Select />', () => {
       value: i,
     }));
 
-  it('renders', () => {
+  it("renders", () => {
     const onChange = jest.fn();
     render(
-      <Select value={2} label="hint" options={options} onChange={onChange} />
+      <Select value={2} label="hint" options={options} onChange={onChange} />,
     );
 
     const selectLabel = screen.getByText(/hint/i);
     expect(selectLabel).toBeInTheDocument();
   });
 
-  it('calls onChange when an option is selected', async () => {
+  it("calls onChange when an option is selected", async () => {
     const onChange = jest.fn();
     render(<Select value={2} options={options} onChange={onChange} />);
 
-    const selectButton = screen.getByTestId('base-input');
+    const selectButton = screen.getByTestId("base-input");
     await userEvent.click(selectButton);
 
     const firstOption = screen.getByText(/options 0/i);

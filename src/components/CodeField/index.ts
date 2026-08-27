@@ -1,5 +1,4 @@
 export {
-  CodeField as default,
   CodeField,
   ONLY_DIGITS_PATTERN,
   ONLY_CHARS_PATTERN,
@@ -11,4 +10,4 @@ export type {
   CodeFieldSize,
   ItemErrorBehavior,
   CodeErrorBehavior,
-} from "./CodeField";
+} from "./index.props";

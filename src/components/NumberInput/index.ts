@@ -1,4 +1,4 @@
-export { NumberInput as default, NumberInput } from "./NumberInput";
+export { NumberInput } from "./NumberInput";
 export type {
   NumberInputGroupStyle,
   NumberInputProps,

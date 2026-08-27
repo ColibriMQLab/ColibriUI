@@ -24,7 +24,7 @@ import clsx from "clsx";
 import styles from "./Tooltip.module.scss";
 import type { TooltipProps } from "./index.props";
 
-const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
+export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   children,
   content,
   zIndex = 1000,
@@ -104,5 +104,3 @@ const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     </>
   );
 };
-
-export default Tooltip;

@@ -10,7 +10,7 @@ type AnyRef<T> = RefObject<T> | { current: T | null | undefined };
 
 let element: AnyRef<HTMLElement> = { current: undefined };
 
-function useOnClickOutside<T extends HTMLElement = HTMLElement>(
+export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: AnyRef<T>,
   handler: (event: AnyEvent) => void,
 ) {
@@ -41,5 +41,3 @@ function useOnClickOutside<T extends HTMLElement = HTMLElement>(
     };
   }, [handler, ref]);
 }
-
-export default useOnClickOutside;

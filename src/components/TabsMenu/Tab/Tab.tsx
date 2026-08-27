@@ -2,9 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./Tab.module.scss";
 import type { FC } from "react";
-import type { TabProps } from "./Tab.props";
+import type { TabProps } from "./index.props";
 
-const Tab: FC<TabProps> = ({
+export const Tab: FC<TabProps> = ({
   innerRef,
   active,
   className,
@@ -33,5 +33,3 @@ const Tab: FC<TabProps> = ({
     {content}
   </li>
 );
-
-export default Tab;

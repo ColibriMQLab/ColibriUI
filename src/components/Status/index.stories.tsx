@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
-import Status from ".";
+import { Status } from ".";
 import { STATUS_TYPE } from "./index.props";
 
 const list = [

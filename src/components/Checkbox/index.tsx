@@ -1,11 +1,11 @@
 import React from "react";
 import clsx from "clsx";
-import Typography from "../Typography";
+import { Typography } from "../Typography";
 import styles from "./Checkbox.module.scss";
 import type { FC } from "react";
 import type { CheckboxProps } from "./index.props";
 
-const Checkbox: FC<CheckboxProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
   id,
   name,
   value,
@@ -59,5 +59,3 @@ const Checkbox: FC<CheckboxProps> = ({
     )}
   </div>
 );
-
-export default Checkbox;
