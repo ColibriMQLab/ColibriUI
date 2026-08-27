@@ -187,3 +187,13 @@ export const DeletableVariants = (args: ChipProps) => {
     </div>
   );
 };
+
+export const LongText = (args: ChipProps) => {
+  return (
+    <div style={{ width: "12.5rem" }}>
+      <Chip {...args}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+      </Chip>
+    </div>
+  );
+};
