@@ -67,6 +67,17 @@ export { default as Rating } from "./Rating";
 export type { RatingProps, RatingSize, RatingView } from "./Rating";
 export { default as Select } from "./Select";
 export { default as Separator } from "./Separator";
+export { default as Slider } from "./Slider";
+export type {
+  SliderOrientation,
+  SliderPointerSize,
+  SliderProps,
+  SliderRangeProps,
+  SliderSingleProps,
+  SliderSize,
+  SliderTick,
+  SliderView,
+} from "./Slider";
 export { SkeletonText, SkeletonRect } from "./Skeleton";
 export { default as Status } from "./Status";
 export { default as Switch } from "./Switch";
