@@ -1,0 +1,155 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  width: var(--component-autocomplete-inline-size);
+}
+
+.field {
+  width: 100%;
+}
+
+.control {
+  position: relative;
+  width: 100%;
+
+  > div {
+    width: 100%;
+  }
+}
+
+.success {
+  --component-input-border: var(--component-autocomplete-border-success);
+  --component-input-border-focus: var(--component-autocomplete-border-success);
+}
+
+.end-icons {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--component-autocomplete-end-icon-gap);
+}
+
+.clear {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--component-autocomplete-clear-radius);
+  color: var(--component-autocomplete-clear-icon);
+  cursor: pointer;
+  display: inline-flex;
+  flex: none;
+  height: var(--component-autocomplete-clear-size);
+  justify-content: center;
+  padding: var(--space-0);
+  width: var(--component-autocomplete-clear-size);
+
+  &:hover {
+    background: var(--component-autocomplete-clear-bg-hover);
+  }
+
+  svg {
+    height: var(--component-autocomplete-icon-size);
+    width: var(--component-autocomplete-icon-size);
+  }
+}
+
+.chevron {
+  color: var(--component-autocomplete-chevron);
+  flex: none;
+  height: var(--component-autocomplete-icon-size);
+  transition: transform 0.16s ease-in;
+  width: var(--component-autocomplete-icon-size);
+}
+
+.chevron_open {
+  transform: rotate(180deg);
+}
+
+.popup {
+  background: var(--component-autocomplete-popup-bg);
+  border-color: var(--component-autocomplete-popup-border);
+  border-radius: var(--component-autocomplete-popup-radius);
+  border-style: solid;
+  border-width: var(--border-width-hairline);
+  box-shadow: var(--component-autocomplete-popup-shadow);
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--component-autocomplete-popup-offset));
+  z-index: var(--component-autocomplete-popup-z-index);
+}
+
+.list {
+  box-sizing: border-box;
+  list-style: none;
+  margin: var(--space-0);
+  overflow: auto;
+  padding: var(--component-autocomplete-list-padding);
+}
+
+.option {
+  align-items: center;
+  border-radius: var(--component-autocomplete-option-radius);
+  color: var(--component-autocomplete-option-text);
+  cursor: pointer;
+  display: flex;
+  gap: var(--component-autocomplete-option-gap);
+  min-height: var(--component-autocomplete-option-min-height);
+  padding: var(--component-autocomplete-option-padding-block)
+    var(--component-autocomplete-option-padding-inline);
+
+  &:hover {
+    background: var(--component-autocomplete-option-bg-hover);
+  }
+}
+
+.active {
+  background: var(--component-autocomplete-option-bg-hover);
+}
+
+.selected {
+  color: var(--component-autocomplete-option-text-selected);
+}
+
+.option_disabled {
+  color: var(--component-autocomplete-option-text-disabled);
+  cursor: not-allowed;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.option-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+
+  > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    color: var(--component-autocomplete-option-description);
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+    margin-top: var(--component-autocomplete-description-offset);
+  }
+}
+
+.side {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+}
+
+.message {
+  color: var(--component-autocomplete-message-text);
+  font-size: var(--font-size-text-sm);
+  line-height: var(--line-height-text-sm);
+  padding: var(--component-autocomplete-message-padding);
+  text-align: center;
+}

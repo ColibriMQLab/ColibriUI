@@ -18,21 +18,18 @@ export const Input = ({
   onBlur,
   onKeyDown,
   inputRef,
+  controlAfter,
+  controlClassName,
+  controlRef,
   disabled,
   variant = "primary",
   size = "m",
   ref,
   ...props
-}: InputProps) => (
-  <FormField
-    className={clsx(className)}
-    label={label}
-    required={required}
-    hint={hint}
-    hasError={hasError}
-  >
+}: InputProps) => {
+  const control = (
     <InputRoot
-      ref={ref}
+      ref={controlRef ?? ref}
       startIcon={startIcon}
       endIcon={endIcon}
       variant={variant}
@@ -49,5 +46,24 @@ export const Input = ({
         {...{ type: "text", ...props }}
       />
     </InputRoot>
-  </FormField>
-);
+  );
+
+  return (
+    <FormField
+      className={clsx(className)}
+      label={label}
+      required={required}
+      hint={hint}
+      hasError={hasError}
+    >
+      {controlAfter || controlClassName || controlRef ? (
+        <div className={controlClassName}>
+          {control}
+          {controlAfter}
+        </div>
+      ) : (
+        control
+      )}
+    </FormField>
+  );
+};

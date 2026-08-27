@@ -2,6 +2,13 @@ export { Accordion } from "./Accordion";
 export type { AccordionProps } from "./Accordion/index.props";
 export { Avatar } from "./Avatar";
 export type { AvatarProps } from "./Avatar/index.props";
+export { Autocomplete } from "./Autocomplete";
+export type {
+  AutocompleteOption,
+  AutocompleteOptionState,
+  AutocompleteProps,
+  AutocompleteSize,
+} from "./Autocomplete/index.props";
 export { Badge } from "./Badge";
 export type { Props as BadgeProps } from "./Badge/index.props";
 export { Button } from "./Button";

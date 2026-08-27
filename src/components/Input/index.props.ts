@@ -14,6 +14,9 @@ import type { Size, Variant } from "../base/InputRoot/index.props";
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange" | "size">,
     Omit<FormFieldProps, "children"> {
+  controlAfter?: ReactNode;
+  controlClassName?: string;
+  controlRef?: Ref<HTMLDivElement>;
   endIcon?: ReactNode;
   hasError?: boolean;
   hint?: ReactNode;
@@ -24,7 +27,7 @@ export interface InputProps
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
   onInput?: (event: FormEvent<HTMLInputElement>) => void;
-  ref?: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLDivElement>;
   required?: boolean;
   size?: Size;
   startIcon?: ReactNode;
