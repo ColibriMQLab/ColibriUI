@@ -54,6 +54,13 @@ export { default as Menu } from "./Menu";
 export { default as MenuItem } from "./Menu/components/MenuItem";
 export { default as Modal } from "./Modal";
 export { default as MultiSelect } from "./MultiSelect";
+export { default as NumberInput } from "./NumberInput";
+export type {
+  NumberInputGroupStyle,
+  NumberInputProps,
+  NumberInputSize,
+  NumberInputValues,
+} from "./NumberInput";
 export { default as Portal } from "./Portal";
 export { Progress } from "./Progress";
 export type {

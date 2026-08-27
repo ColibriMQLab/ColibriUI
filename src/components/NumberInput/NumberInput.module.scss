@@ -1,0 +1,33 @@
+.field {
+  width: 20rem;
+}
+
+.end_content {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.clear {
+  align-items: center;
+  background: transparent;
+  border: var(--space-0);
+  border-radius: var(--radius-xs);
+  color: var(--color-icon-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-text-md);
+  height: var(--component-input-icon-size);
+  justify-content: center;
+  line-height: var(--line-height-text-sm);
+  padding: var(--space-0);
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+  width: var(--component-input-icon-size);
+}
+
+.clear:hover {
+  color: var(--color-icon-primary);
+}
