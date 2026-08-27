@@ -494,6 +494,8 @@ export default {
   "component-grid-item-flex-basis": "15.625rem",
   "component-select-menu-max-height": "13.75rem",
   "component-date-picker-calendar-max-width": "15.625rem",
+  "component-calendar-item-bg": Color.NEUTRAL_JP_0,
+  "component-calendar-item-bg-hover": Color.NEUTRAL_JP_100,
   "component-calendar-min-block-size": "22.5rem",
   "component-calendar-min-inline-size": "20rem",
   "component-calendar-months-min-block-size": "18.75rem",

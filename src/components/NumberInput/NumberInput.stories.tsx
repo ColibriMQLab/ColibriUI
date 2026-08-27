@@ -158,6 +158,13 @@ const meta: Meta<NumberInputProps> = {
     onKeyDown: fn(),
     onInput: fn(),
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "20rem" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<NumberInputProps>;
 
 export default meta;
@@ -319,4 +326,15 @@ export const Sizes: Story = {
       <NumberInputWithState {...args} label="size = l" size="l" value="1000" />
     </div>
   ),
+};
+
+export const NarrowContainer: Story = {
+  render: (args) => (
+    <div style={{ width: "7.5rem" }}>
+      <NumberInputWithState {...args} label="Narrow container" value="1000" />
+    </div>
+  ),
+  parameters: {
+    layout: "centered",
+  },
 };

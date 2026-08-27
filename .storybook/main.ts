@@ -35,7 +35,9 @@ const createScssRule = (modules: boolean): RuleSetRule => ({
       options: {
         modules: modules
           ? {
+              exportLocalsConvention: "as-is",
               localIdentName: "[name]__[local]--[hash:base64:5]",
+              namedExport: false,
             }
           : false,
       },

@@ -1,5 +1,7 @@
 .field {
-  width: 20rem;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .end_content {

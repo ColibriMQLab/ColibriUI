@@ -3,6 +3,7 @@ export { Cart } from "./Cart";
 export { Check } from "./Check";
 export { Chevron } from "./Chevron";
 export { Close } from "./Close";
+export { Copy } from "./Copy";
 export { Cross } from "./Cross";
 export { CrossFill } from "./CrossFill";
 export { Edit } from "./Edit";

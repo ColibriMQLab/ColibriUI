@@ -4,6 +4,7 @@ import { Cart } from "./Cart";
 import { Check } from "./Check";
 import { Chevron } from "./Chevron";
 import { Close } from "./Close";
+import { Copy } from "./Copy";
 import { Cross } from "./Cross";
 import { CrossFill } from "./CrossFill";
 import { Edit } from "./Edit";
@@ -27,6 +28,7 @@ const icons = {
   Check: <Check />,
   Chevron: <Chevron />,
   Close: <Close />,
+  Copy: <Copy />,
   Cross: <Cross />,
   CrossFill: <CrossFill />,
   Edit: <Edit />,

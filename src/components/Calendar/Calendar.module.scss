@@ -191,7 +191,7 @@
 }
 
 .period-button {
-  background: var(--component-menu-item-bg);
+  background: var(--component-calendar-item-bg);
   border: var(--space-0);
   border-radius: var(--calendar-radius);
   box-sizing: border-box;
@@ -216,7 +216,7 @@
 }
 
 .period-button:hover:not(:disabled, .period-button-selected) {
-  background: var(--component-menu-item-bg-hover);
+  background: var(--component-calendar-item-bg-hover);
 }
 
 .period-button-selected {
@@ -224,7 +224,7 @@
 }
 
 .day {
-  background: var(--component-menu-item-bg);
+  background: var(--component-calendar-item-bg);
   border: var(--space-0);
   border-radius: var(--calendar-radius);
   color: var(--color-text-primary);
@@ -252,7 +252,7 @@
 }
 
 .day:hover:not(:disabled, .selected) {
-  background: var(--component-menu-item-bg-hover);
+  background: var(--component-calendar-item-bg-hover);
 }
 
 .outside {
@@ -269,7 +269,7 @@
 }
 
 .in-range {
-  background: var(--component-menu-item-bg-hover);
+  background: var(--component-calendar-item-bg-hover);
   border-radius: var(--radius-none);
 }
 
