@@ -16,6 +16,18 @@ const meta: Meta<typeof Chip> = {
       control: { type: "select" },
       options: ["s", "m", "l"],
     },
+    variant: {
+      control: { type: "select" },
+      options: [
+        "primary",
+        "secondary",
+        "outline",
+        "pseudo",
+        "alert",
+        "success",
+        "clear",
+      ],
+    },
     isActive: {
       control: "boolean",
     },
@@ -34,6 +46,7 @@ const meta: Meta<typeof Chip> = {
   },
   args: {
     size: "m",
+    variant: "primary",
     isActive: false,
     onClick: fn(),
     onClickIcon: fn(),
@@ -42,6 +55,18 @@ const meta: Meta<typeof Chip> = {
 } satisfies Meta<typeof Chip>;
 
 export default meta;
+
+const variants = [
+  "primary",
+  "secondary",
+  "outline",
+  "pseudo",
+  "alert",
+  "success",
+  "clear",
+] as const;
+
+const sizes = ["s", "m", "l"] as const;
 
 const menuItems = [
   {
@@ -90,18 +115,42 @@ export const Default = (args: ChipProps) => {
 };
 
 export const Sizes = (args: ChipProps) => {
+  const [activeSizes, setActiveSizes] = useState<Record<string, boolean>>({});
+
+  const handleClick = useCallback((size: (typeof sizes)[number]) => {
+    setActiveSizes((prevState) => ({
+      ...prevState,
+      [size]: !prevState[size],
+    }));
+  }, []);
+
   return (
     <>
-      <Chip {...args} size="s">
-        Chip s
-      </Chip>{" "}
-      <Chip {...args} size="m">
-        Chip m
-      </Chip>{" "}
-      <Chip {...args} size="l">
-        Chip l
-      </Chip>
+      {sizes.map((size) => (
+        <React.Fragment key={size}>
+          <Chip
+            {...args}
+            isActive={Boolean(activeSizes[size])}
+            size={size}
+            onClick={() => handleClick(size)}
+          >
+            Chip {size}
+          </Chip>{" "}
+        </React.Fragment>
+      ))}
     </>
+  );
+};
+
+export const Variants = (args: ChipProps) => {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+      {variants.map((variant) => (
+        <Chip key={variant} {...args} variant={variant} isActive>
+          {variant}
+        </Chip>
+      ))}
+    </div>
   );
 };
 
@@ -118,5 +167,23 @@ export const Deletable = (args: ChipProps) => {
         Long long chip 3
       </Chip>
     </>
+  );
+};
+
+export const DeletableVariants = (args: ChipProps) => {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+      {variants.map((variant) => (
+        <Chip
+          key={variant}
+          {...args}
+          size="s"
+          variant={variant}
+          iconEnd={<CrossFill />}
+        >
+          {variant}
+        </Chip>
+      ))}
+    </div>
   );
 };

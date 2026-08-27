@@ -1,7 +1,16 @@
-type Size = "s" | "m" | "l";
+export type ChipSize = "s" | "m" | "l";
+export type ChipVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "pseudo"
+  | "alert"
+  | "success"
+  | "clear";
 
 export type ChipProps = {
-  size?: Size;
+  size?: ChipSize;
+  variant?: ChipVariant;
   testID?: string;
   isActive?: boolean;
   iconEnd?: React.ReactNode;

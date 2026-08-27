@@ -32,7 +32,7 @@ export type {
 export { Checkbox } from "./Checkbox";
 export type { CheckboxProps } from "./Checkbox/index.props";
 export { Chip } from "./Chip";
-export type { ChipProps } from "./Chip/index.props";
+export type { ChipProps, ChipSize, ChipVariant } from "./Chip/index.props";
 export {
   CodeField,
   ONLY_CHARS_PATTERN,

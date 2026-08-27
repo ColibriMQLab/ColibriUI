@@ -4,34 +4,49 @@
 }
 
 .inner {
+  --chip-bg: var(--component-chip-primary-bg);
+  --chip-bg-active: var(--component-chip-primary-bg-active);
+  --chip-bg-hover: var(--component-chip-primary-bg-hover);
+  --chip-bg-pressed: var(--component-chip-primary-bg-pressed);
+  --chip-icon: var(--component-chip-primary-icon);
+  --chip-icon-active: var(--component-chip-primary-icon-active);
+  --chip-icon-active-hover: var(--component-chip-primary-icon-active-hover);
+  --chip-icon-hover: var(--component-chip-primary-icon-hover);
+  --chip-text: var(--component-chip-primary-text);
+  --chip-text-active: var(--component-chip-primary-text-active);
+  --chip-text-hover: var(--component-chip-primary-text-hover);
+  --chip-text-pressed: var(--component-chip-primary-text-pressed);
+
   box-sizing: border-box;
-  color: var(--component-chip-text);
+  color: var(--chip-text);
   display: flex;
   font: inherit;
   min-width: 0;
   place-items: stretch flex-start;
   transition-duration: 0.3s;
-  transition-property: background, box-shadow, transform;
+  transition-property: background, box-shadow, color, transform;
   transition-timing-function: ease;
 
   &_active {
-    background: var(--component-chip-bg-active);
-    color: var(--component-chip-text-active, var(--component-chip-text));
+    background: var(--chip-bg-active);
+    color: var(--chip-text-active);
   }
 
   &_inactive {
-    background: var(--component-chip-bg);
+    background: var(--chip-bg);
     box-shadow: var(--shadow-raised);
 
     &:hover {
-      background: var(--component-chip-bg-hover);
+      background: var(--chip-bg-hover);
       box-shadow: var(--shadow-raised);
+      color: var(--chip-text-hover);
       transform: translateY(calc(var(--focus-ring-width) * -1));
     }
 
     &:active {
-      background: var(--component-chip-bg-pressed);
+      background: var(--chip-bg-pressed);
       box-shadow: var(--shadow-pressed);
+      color: var(--chip-text-pressed);
       outline: 0;
       transition-duration: 0.15s;
     }
@@ -39,13 +54,120 @@
     @media (hover: none) {
       &:hover {
         box-shadow: var(--shadow-raised);
+        color: var(--chip-text);
         transform: translateY(0);
       }
 
       &:active {
         box-shadow: var(--shadow-pressed);
+        color: var(--chip-text-pressed);
       }
     }
+  }
+
+  &_variant_primary {
+    --chip-bg: var(--component-chip-primary-bg);
+    --chip-bg-active: var(--component-chip-primary-bg-active);
+    --chip-bg-hover: var(--component-chip-primary-bg-hover);
+    --chip-bg-pressed: var(--component-chip-primary-bg-pressed);
+    --chip-icon: var(--component-chip-primary-icon);
+    --chip-icon-active: var(--component-chip-primary-icon-active);
+    --chip-icon-active-hover: var(--component-chip-primary-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-primary-icon-hover);
+    --chip-text: var(--component-chip-primary-text);
+    --chip-text-active: var(--component-chip-primary-text-active);
+    --chip-text-hover: var(--component-chip-primary-text-hover);
+    --chip-text-pressed: var(--component-chip-primary-text-pressed);
+  }
+
+  &_variant_secondary {
+    --chip-bg: var(--component-chip-secondary-bg);
+    --chip-bg-active: var(--component-chip-secondary-bg-active);
+    --chip-bg-hover: var(--component-chip-secondary-bg-hover);
+    --chip-bg-pressed: var(--component-chip-secondary-bg-pressed);
+    --chip-icon: var(--component-chip-secondary-icon);
+    --chip-icon-active: var(--component-chip-secondary-icon-active);
+    --chip-icon-active-hover: var(--component-chip-secondary-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-secondary-icon-hover);
+    --chip-text: var(--component-chip-secondary-text);
+    --chip-text-active: var(--component-chip-secondary-text-active);
+    --chip-text-hover: var(--component-chip-secondary-text-hover);
+    --chip-text-pressed: var(--component-chip-secondary-text-pressed);
+  }
+
+  &_variant_outline {
+    --chip-bg: var(--component-chip-outline-bg);
+    --chip-bg-active: var(--component-chip-outline-bg-active);
+    --chip-bg-hover: var(--component-chip-outline-bg-hover);
+    --chip-bg-pressed: var(--component-chip-outline-bg-pressed);
+    --chip-icon: var(--component-chip-outline-icon);
+    --chip-icon-active: var(--component-chip-outline-icon-active);
+    --chip-icon-active-hover: var(--component-chip-outline-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-outline-icon-hover);
+    --chip-text: var(--component-chip-outline-text);
+    --chip-text-active: var(--component-chip-outline-text-active);
+    --chip-text-hover: var(--component-chip-outline-text-hover);
+    --chip-text-pressed: var(--component-chip-outline-text-pressed);
+  }
+
+  &_variant_pseudo {
+    --chip-bg: var(--component-chip-pseudo-bg);
+    --chip-bg-active: var(--component-chip-pseudo-bg-active);
+    --chip-bg-hover: var(--component-chip-pseudo-bg-hover);
+    --chip-bg-pressed: var(--component-chip-pseudo-bg-pressed);
+    --chip-icon: var(--component-chip-pseudo-icon);
+    --chip-icon-active: var(--component-chip-pseudo-icon-active);
+    --chip-icon-active-hover: var(--component-chip-pseudo-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-pseudo-icon-hover);
+    --chip-text: var(--component-chip-pseudo-text);
+    --chip-text-active: var(--component-chip-pseudo-text-active);
+    --chip-text-hover: var(--component-chip-pseudo-text-hover);
+    --chip-text-pressed: var(--component-chip-pseudo-text-pressed);
+  }
+
+  &_variant_alert {
+    --chip-bg: var(--component-chip-alert-bg);
+    --chip-bg-active: var(--component-chip-alert-bg-active);
+    --chip-bg-hover: var(--component-chip-alert-bg-hover);
+    --chip-bg-pressed: var(--component-chip-alert-bg-pressed);
+    --chip-icon: var(--component-chip-alert-icon);
+    --chip-icon-active: var(--component-chip-alert-icon-active);
+    --chip-icon-active-hover: var(--component-chip-alert-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-alert-icon-hover);
+    --chip-text: var(--component-chip-alert-text);
+    --chip-text-active: var(--component-chip-alert-text-active);
+    --chip-text-hover: var(--component-chip-alert-text-hover);
+    --chip-text-pressed: var(--component-chip-alert-text-pressed);
+  }
+
+  &_variant_success {
+    --chip-bg: var(--component-chip-success-bg);
+    --chip-bg-active: var(--component-chip-success-bg-active);
+    --chip-bg-hover: var(--component-chip-success-bg-hover);
+    --chip-bg-pressed: var(--component-chip-success-bg-pressed);
+    --chip-icon: var(--component-chip-success-icon);
+    --chip-icon-active: var(--component-chip-success-icon-active);
+    --chip-icon-active-hover: var(--component-chip-success-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-success-icon-hover);
+    --chip-text: var(--component-chip-success-text);
+    --chip-text-active: var(--component-chip-success-text-active);
+    --chip-text-hover: var(--component-chip-success-text-hover);
+    --chip-text-pressed: var(--component-chip-success-text-pressed);
+  }
+
+  &_variant_clear {
+    --chip-bg: var(--component-chip-clear-bg);
+    --chip-bg-active: var(--component-chip-clear-bg-active);
+    --chip-bg-hover: var(--component-chip-clear-bg-hover);
+    --chip-bg-pressed: var(--component-chip-clear-bg-pressed);
+    --chip-icon: var(--component-chip-clear-icon);
+    --chip-icon-active: var(--component-chip-clear-icon-active);
+    --chip-icon-active-hover: var(--component-chip-clear-icon-active-hover);
+    --chip-icon-hover: var(--component-chip-clear-icon-hover);
+    --chip-text: var(--component-chip-clear-text);
+    --chip-text-active: var(--component-chip-clear-text-active);
+    --chip-text-hover: var(--component-chip-clear-text-hover);
+    --chip-text-pressed: var(--component-chip-clear-text-pressed);
   }
 
   &[data-size="s"] {
@@ -71,7 +193,7 @@
   align-items: center;
   display: flex;
   justify-content: flex-start;
-  max-width: var(--component-tooltip-max-width);
+  max-width: var(--component-chip-content-max-width);
   padding: 0 var(--space-4);
   user-select: none;
 }
@@ -84,21 +206,55 @@
 
 .icon-right {
   align-items: center;
-  color: var(--component-chip-icon);
+  border-radius: var(--radius-full);
+  color: var(--chip-icon);
+  cursor: pointer;
   display: flex;
   justify-content: center;
   margin-left: calc(var(--space-3) * -1);
+  opacity: 1;
   padding-right: var(--space-3);
+  transform: scale(1);
+  transform-origin: center;
+  transition:
+    color 0.15s linear,
+    opacity 0.15s linear,
+    transform 0.15s linear;
 
   &:hover {
-    color: var(--component-chip-icon-hover);
+    color: var(--chip-icon-hover);
+    opacity: 0.72;
+  }
+
+  &:active {
+    color: var(--chip-icon-active-hover);
+    opacity: 0.56;
+    transform: scale(0.9);
+  }
+
+  @media (hover: none) {
+    &:hover {
+      color: var(--chip-icon);
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &:active {
+      color: var(--chip-icon-active-hover);
+      opacity: 0.56;
+      transform: scale(0.9);
+    }
   }
 }
 
 .inner_active .icon-right {
-  color: var(--component-chip-icon-active, currentcolor);
+  color: var(--chip-icon-active);
 
   &:hover {
-    color: var(--component-chip-icon-active-hover, currentcolor);
+    color: var(--chip-icon-active-hover);
+  }
+
+  &:active {
+    color: var(--chip-icon-active-hover);
   }
 }

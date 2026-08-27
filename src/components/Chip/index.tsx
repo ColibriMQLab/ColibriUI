@@ -12,11 +12,12 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   onClickIcon,
   size = "m",
   testID = "chip",
+  variant = "primary",
   ...props
 }) => (
   <span className={styles.chip} data-testid={testID} {...props}>
     <span
-      className={clsx(styles.inner, {
+      className={clsx(styles.inner, styles[`inner_variant_${variant}`], {
         [styles["inner_active"]]: iconEnd || isActive,
         [styles["inner_inactive"]]: !iconEnd && !isActive,
       })}
