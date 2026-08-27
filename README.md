@@ -1,8 +1,15 @@
 # Colibri UI
 
 ![npm version](https://img.shields.io/npm/v/colibri-ui.svg?style=flat)
+![tests](https://img.shields.io/badge/tests-40%20passed-brightgreen?style=flat)
+![coverage statements](https://img.shields.io/badge/statements-90.3%25-brightgreen?style=flat)
+![coverage branches](https://img.shields.io/badge/branches-73.3%25-yellowgreen?style=flat)
+![coverage functions](https://img.shields.io/badge/functions-98.14%25-brightgreen?style=flat)
+![coverage lines](https://img.shields.io/badge/lines-95.55%25-brightgreen?style=flat)
 
 React UI components library.
+
+Colibri UI is in active development. Use it at your own risk 😈
 
 ## Demo
 
@@ -29,9 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx("theme")}>
-        {children}
-      </body>
+      <body className={clsx("theme")}>{children}</body>
     </html>
   );
 }
