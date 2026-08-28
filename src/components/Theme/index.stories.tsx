@@ -1,7 +1,6 @@
 import React from "react";
 import chroma from "chroma-js";
-import ColorsJaipur from "./themes/jaipur";
-import ColorsBA from "./themes/buenos_aires";
+import { THEMES } from ".";
 import { Typography } from "../Typography";
 
 const meta = {
@@ -11,6 +10,8 @@ const meta = {
 export default meta;
 
 export const Themes = () => {
+  const ColorsJaipur = THEMES.JAIPUR;
+  const ColorsBA = THEMES.BA;
   const themeKeys = Array.from(
     new Set([...Object.keys(ColorsJaipur), ...Object.keys(ColorsBA)]),
   );

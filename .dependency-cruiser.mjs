@@ -32,8 +32,7 @@ const createPrivateCrossImportRule = (componentName) => {
     },
     to: {
       path: `^src/components/${escapedName}/(?!index\\.(?:ts|tsx)$|index\\.props\\.ts$|README\\.md$).+`,
-      pathNot:
-        "^src/components/(?:Menu/components/MenuItem|Grid/Item)/index\\.tsx$",
+      pathNot: `^(?:src/components/${escapedName}/tokens\\.ts|src/components/(?:Menu/components/MenuItem|Grid/Item)/index\\.tsx)$`,
     },
   };
 };
