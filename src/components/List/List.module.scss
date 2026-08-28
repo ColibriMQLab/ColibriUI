@@ -1,0 +1,199 @@
+.list {
+  box-sizing: border-box;
+  color: var(--component-list-text);
+  font-family: var(--font-family-ui);
+  list-style: none;
+  margin: var(--space-0);
+  padding: var(--space-0);
+  width: 100%;
+}
+
+.surface_container {
+  background: var(--component-list-bg);
+  border-radius: var(--component-list-container-radius);
+  padding: var(--component-list-container-padding);
+}
+
+.surface_items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-list-items-gap);
+}
+
+.item {
+  display: block;
+  margin: var(--space-0);
+  position: relative;
+}
+
+.item_surface {
+  background: var(--component-list-bg);
+  border-radius: var(--component-list-item-surface-radius);
+  overflow: hidden;
+}
+
+.action,
+.static-content {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--component-list-item-radius);
+  box-sizing: border-box;
+  color: inherit;
+  display: flex;
+  font: inherit;
+  gap: var(--component-list-item-gap);
+  min-height: var(--component-list-item-min-height-m);
+  padding: var(--component-list-item-padding-block)
+    var(--component-list-item-padding-inline);
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+}
+
+.action {
+  cursor: pointer;
+
+  &:hover {
+    background: var(--component-list-item-bg-hover);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--component-list-focus-ring);
+    outline-offset: calc(var(--focus-ring-width) * -1);
+  }
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  color: var(--component-list-description);
+  font-size: var(--component-list-description-font-size);
+  line-height: var(--component-list-description-line-height);
+  margin-top: var(--component-list-description-offset);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.left,
+.right {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+}
+
+.selected {
+  .action,
+  .static-content {
+    background: var(--component-list-item-bg-selected);
+    color: var(--component-list-item-text-selected);
+  }
+
+  .description {
+    color: var(--component-list-description-selected);
+  }
+}
+
+.list_disabled {
+  color: var(--component-list-text-disabled);
+}
+
+.item_divider:not(:last-child)::after {
+  background: var(--component-list-divider);
+  bottom: 0;
+  content: "";
+  height: var(--border-width-hairline);
+  left: var(--component-list-item-padding-inline);
+  position: absolute;
+  right: var(--component-list-item-padding-inline);
+}
+
+.density_compact {
+  .action,
+  .static-content {
+    min-height: var(--component-list-item-min-height-compact);
+    padding-bottom: var(--component-list-item-padding-block-compact);
+    padding-top: var(--component-list-item-padding-block-compact);
+  }
+}
+
+.size_s {
+  font-size: var(--component-list-font-size-s);
+  line-height: var(--component-list-line-height-s);
+
+  .action,
+  .static-content {
+    min-height: var(--component-list-item-min-height-s);
+  }
+}
+
+.size_m {
+  font-size: var(--component-list-font-size-m);
+  line-height: var(--component-list-line-height-m);
+}
+
+.size_l {
+  font-size: var(--component-list-font-size-l);
+  line-height: var(--component-list-line-height-l);
+
+  .action,
+  .static-content {
+    min-height: var(--component-list-item-min-height-l);
+    padding-left: var(--component-list-item-padding-inline-l);
+    padding-right: var(--component-list-item-padding-inline-l);
+  }
+}
+
+.item_disabled {
+  color: var(--component-list-item-text-disabled);
+
+  .action {
+    cursor: not-allowed;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.section {
+  list-style: none;
+  margin: var(--space-0);
+  padding: var(--space-0);
+}
+
+.section + .section {
+  margin-top: var(--component-list-section-gap);
+}
+
+.section-title {
+  color: var(--component-list-section-title);
+  font-size: var(--component-list-section-title-font-size);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-ui);
+  line-height: var(--component-list-section-title-line-height);
+  padding: var(--component-list-section-title-padding-block-start)
+    var(--component-list-item-padding-inline)
+    var(--component-list-section-title-padding-block-end);
+  text-transform: uppercase;
+}
+
+.nested-list {
+  list-style: none;
+  margin: var(--space-0);
+  padding: var(--space-0);
+}

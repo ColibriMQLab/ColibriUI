@@ -121,7 +121,7 @@ export const Sizes: Story = {
   ),
 };
 
-export const VerticalWithOuterContent: Story = {
+export const HorizontalWithOuterContent: Story = {
   args: { orientation: "horizontal", selected: true },
   render: (args) => (
     <Card
