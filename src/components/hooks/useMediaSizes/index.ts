@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import Breakpoints from "../../Theme/breakpoints";
-import type { BreakpointsTheme } from "../../Theme/breakpoints";
+import { media } from "../../Theme/breakpoints";
+import type { Media } from "../../Theme/breakpoints";
 
-export type QueryInputFunction = (breakpoints: BreakpointsTheme) => string;
+export type QueryInputFunction = (breakpoints: Media) => string;
 type QueryInput = QueryInputFunction | string;
 
 const supportMatchMedia =
   typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
 
 export const useMediaSizes = (queryInput: QueryInput) => {
-  let query =
-    typeof queryInput === "function" ? queryInput(Breakpoints) : queryInput;
+  let query = typeof queryInput === "function" ? queryInput(media) : queryInput;
 
   query = query.replace(/^@media( ?)/m, "");
 

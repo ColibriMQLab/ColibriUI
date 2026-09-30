@@ -1,52 +1,29 @@
-export type Breakpoints = {
-  hd: number;
-  xl: number;
-  lg: number;
-  md: number;
-  sm: number;
-  xs: number;
+/**
+ * Breakpoints shared with the apps that use the kit.
+ * The values match the Tailwind CSS defaults on purpose; Tailwind is not a dependency.
+ */
+export const BREAKPOINTS = {
+  sm: "40rem",
+  md: "48rem",
+  lg: "64rem",
+  xl: "80rem",
+  "2xl": "96rem",
+} as const;
+
+export type BreakpointName = keyof typeof BREAKPOINTS;
+
+export type Media = {
+  /** `(width >= <name>)` */
+  up: (name: BreakpointName) => string;
+  /** `(width < <name>)` */
+  down: (name: BreakpointName) => string;
+  /** `(<from> <= width < <to>)` */
+  between: (from: BreakpointName, to: BreakpointName) => string;
 };
 
-export type BreakpointName = keyof Breakpoints;
-
-export type BreakpointsTheme = {
-  values: Breakpoints;
-  up: (breakpoint: BreakpointName, isMedial?: boolean) => string;
-  under: (breakpoint: BreakpointName, isMedial?: boolean) => string;
-  between: (
-    [from, to]: [BreakpointName, BreakpointName],
-    isMedial?: boolean,
-  ) => string;
+/** Bare media queries, usable in `window.matchMedia`. Prefix with `@media ` in CSS-in-JS. */
+export const media: Media = {
+  up: (name) => `(width >= ${BREAKPOINTS[name]})`,
+  down: (name) => `(width < ${BREAKPOINTS[name]})`,
+  between: (from, to) => `(${BREAKPOINTS[from]} <= width < ${BREAKPOINTS[to]})`,
 };
-
-export type BreakpointMap<T = number> = Map<BreakpointName, T>;
-
-const Breakpoints: BreakpointsTheme = {
-  values: {
-    hd: 2560,
-    xl: 1920,
-    lg: 1450,
-    md: 1075,
-    sm: 680,
-    xs: 320,
-  },
-  up(breakpoint, isMedia = true) {
-    return `${isMedia ? "@media " : ""}(min-width: ${
-      this.values[breakpoint]
-    }px)`;
-  },
-  under(breakpoint, isMedia = true) {
-    return `${isMedia ? "@media " : ""}(max-width: ${
-      this.values[breakpoint] - 1
-    }px)`;
-  },
-  between([min, max], isMedia = true) {
-    const from = this.values[min];
-    const to = this.values[max] - 1;
-    return `${
-      isMedia ? "@media " : ""
-    }(min-width: ${from}px) and (max-width: ${to}px)`;
-  },
-};
-
-export default Breakpoints;

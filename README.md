@@ -131,6 +131,65 @@ If you add a theme inside the library itself, create both layers:
 
 Then export it from `src/components/Theme/index.tsx` and update `scripts/variables.ts` if you want a generated CSS variables file in the package build.
 
+## Breakpoints
+
+Colibri UI uses one fixed set of breakpoints, shared with the apps that use the kit.
+
+| Name  | Value   | px   |
+| ----- | ------- | ---- |
+| `sm`  | `40rem` | 640  |
+| `md`  | `48rem` | 768  |
+| `lg`  | `64rem` | 1024 |
+| `xl`  | `80rem` | 1280 |
+| `2xl` | `96rem` | 1536 |
+
+The values match the Tailwind CSS defaults on purpose, because they are an industry standard. Tailwind is not a dependency of Colibri UI.
+
+Rules:
+
+- **Mobile first.** Base styles are for screens narrower than `sm`. There is no `xs`.
+- **rem, not px.** Layout follows the user's browser font size.
+- **Range syntax only.** Write `(width >= 48rem)` and `(width < 48rem)`. Do not use `min-width` / `max-width` or `- 1px` arithmetic: each edge belongs to exactly one side.
+
+### CSS
+
+CSS cannot read variables inside media queries, so write the value as a literal:
+
+```css
+.card {
+  padding: var(--space-4);
+}
+
+@media (width >= 64rem) {
+  .card {
+    padding: var(--space-6);
+  }
+}
+```
+
+Inside the kit, a test and a stylelint rule reject `min-width` / `max-width` and any width value outside the table.
+
+### JavaScript
+
+```ts
+import { BREAKPOINTS, media, useMediaSizes } from "colibri-ui";
+
+BREAKPOINTS.md; // "48rem"
+media.up("md"); // "(width >= 48rem)"
+media.down("md"); // "(width < 48rem)"
+media.between("md", "lg"); // "(48rem <= width < 64rem)"
+
+window.matchMedia(media.up("lg")).matches;
+
+// in a component
+const isDesktop = useMediaSizes((bp) => bp.up("lg"));
+
+// CSS-in-JS: add the @media prefix yourself
+const css = `@media ${media.down("sm")} { … }`;
+```
+
+`BREAKPOINTS` and `media` are also exported from `colibri-ui/Theme`.
+
 ## License
 
 MIT

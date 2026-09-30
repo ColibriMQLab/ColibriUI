@@ -48,7 +48,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   const parentModal = useContext(ModalContext);
   const parentContainer = withinParent ? parentModal?.container : undefined;
   const isContained = Boolean(parentContainer);
-  const isDesktop = useMediaSizes((bp) => bp.up("md"));
+  const isDesktop = useMediaSizes((bp) => bp.up("lg"));
   const titleId = useId();
   const [titleCount, setTitleCount] = useState(0);
 
