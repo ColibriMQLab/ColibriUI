@@ -5,6 +5,16 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
+import fg from "fast-glob";
+
+// Every public entry (`colibri-ui/<Component>`) must be a Rollup input.
+// With a single root input, `preserveModules` treats component `index` files as
+// internal modules: re-exports are resolved to their source modules and dropped,
+// so ESM `<Component>/index.js` loses exports or is not emitted at all.
+const input = [
+  "./src/components/index.ts",
+  ...fg.sync("./src/components/[A-Z]*/index.{ts,tsx}"),
+];
 
 const external = (id) =>
   (!id.startsWith(".") && !id.startsWith("/")) || id.endsWith(".scss");
@@ -24,7 +34,7 @@ const getBabelOptions = ({ value }) => ({
 
 export default [
   {
-    input: "./src/components/index.ts",
+    input,
     output: [
       {
         dir: "dist/esm",
@@ -51,7 +61,7 @@ export default [
     ],
   },
   {
-    input: "./src/components/index.ts",
+    input,
     output: [
       {
         dir: "dist",

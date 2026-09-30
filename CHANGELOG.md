@@ -2,6 +2,8 @@
 
 ## 1.0.0 (unreleased)
 
+Release this as a major version: the breakpoint change below is breaking.
+
 ### Breaking changes
 
 Breakpoints now use one fixed set of values in `rem`, the same as the Tailwind CSS defaults (Tailwind is not a dependency). See the "Breakpoints" section in the README.
@@ -22,6 +24,28 @@ Breakpoints now use one fixed set of values in `rem`, the same as the Tailwind C
 - Queries use range syntax: `up` is `(width >= X)` instead of `(min-width: Xpx)`; `down` is `(width < X)` instead of `(max-width: X - 1px)`.
 - `useMediaSizes` passes `media` to a callback instead of the old `Breakpoints` object.
 - `Modal` switches between the mobile and desktop layouts at `lg` (1024px) instead of 1075px.
+
+### ⚠️ Same names, different sizes: no type error
+
+`sm`, `md`, `lg` and `xl` still exist, so code like `bp.up("md")` keeps compiling, but the edge moves silently. Map by value, not by name:
+
+| Old call      | Old edge | Same call now   | Use instead  | New edge |
+| ------------- | -------- | --------------- | ------------ | -------- |
+| `up("sm")`    | 680px    | 640px (−40px)   | `up("sm")`   | 640px    |
+| `up("md")`    | 1075px   | 768px (−307px)  | `up("lg")`   | 1024px   |
+| `up("lg")`    | 1450px   | 1024px (−426px) | `up("xl")`   | 1280px   |
+| `up("xl")`    | 1920px   | 1280px (−640px) | `up("2xl")`  | 1536px   |
+| `under("md")` | < 1075px | —               | `down("lg")` | < 1024px |
+
+The same mapping applies to `down` / `between` and to `useMediaSizes` callbacks.
+
+### Changed
+
+- `useMediaSizes` is built on `useSyncExternalStore`. It returns `false` on the server and during hydration and the real value right after, so the first client render matches the server render. It subscribes to `matchMedia` once per query instead of on every render.
+
+### Fixed
+
+- The ESM build did not emit the public entries' `index.js` correctly: `esm/Theme/index.js` exported only `THEMES` (not `BREAKPOINTS` / `media`), and 13 entries (`Autocomplete`, `Calendar`, `Card`, `CodeField`, `Drawer`, `Dropzone`, `Editable`, `Icons`, `List`, `NumberInput`, `Progress`, `Rating`, `Slider`) had no `esm/<Entry>/index.js` at all, so `colibri-ui/<Entry>` failed in bundlers that use the `module` field. Every public entry is now a Rollup input, and `yarn build` checks the built CJS and ESM entries against their `.d.ts`.
 
 ### Added
 

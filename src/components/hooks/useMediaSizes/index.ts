@@ -1,47 +1,42 @@
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { media } from "../../Theme/breakpoints";
 import type { Media } from "../../Theme/breakpoints";
 
 export type QueryInputFunction = (breakpoints: Media) => string;
 type QueryInput = QueryInputFunction | string;
 
-const supportMatchMedia =
-  typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+const getServerSnapshot = () => false;
 
-export const useMediaSizes = (queryInput: QueryInput) => {
-  let query = typeof queryInput === "function" ? queryInput(media) : queryInput;
+const getMediaQueryList = (query: string) =>
+  typeof window !== "undefined" && typeof window.matchMedia === "function"
+    ? window.matchMedia(query)
+    : null;
 
-  query = query.replace(/^@media( ?)/m, "");
+/**
+ * Returns whether the media query matches.
+ * Returns `false` on the server and during hydration, the real value right after.
+ */
+export const useMediaSizes = (queryInput: QueryInput): boolean => {
+  // A function input is a new function every render: memoize on the query string.
+  const query = (
+    typeof queryInput === "function" ? queryInput(media) : queryInput
+  ).replace(/^\s*@media\s*/, "");
 
-  const matchMedia = supportMatchMedia ? window.matchMedia : null;
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const queryList = getMediaQueryList(query);
+      if (!queryList) return () => {};
 
-  const [match, setMatch] = useState(() => {
-    if (matchMedia) {
-      return matchMedia(query).matches;
-    }
+      queryList.addEventListener("change", onChange);
+      return () => queryList.removeEventListener("change", onChange);
+    },
+    [query],
+  );
 
-    return false;
-  });
+  const getSnapshot = useCallback(
+    () => getMediaQueryList(query)?.matches ?? false,
+    [query],
+  );
 
-  useEffect(() => {
-    if (!matchMedia) return undefined;
-
-    let active = true;
-
-    const queryList = matchMedia(query);
-    const updateMatch = () => {
-      if (active) {
-        setMatch(queryList.matches);
-      }
-    };
-    updateMatch();
-    queryList.addEventListener("change", updateMatch);
-
-    return () => {
-      active = false;
-      queryList.removeEventListener("change", updateMatch);
-    };
-  });
-
-  return match;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 };

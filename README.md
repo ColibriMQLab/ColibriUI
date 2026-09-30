@@ -190,6 +190,12 @@ const css = `@media ${media.down("sm")} { … }`;
 
 `BREAKPOINTS` and `media` are also exported from `colibri-ui/Theme`.
 
+### useMediaSizes
+
+`useMediaSizes(query)` takes a query string or a function that receives `media`, and returns whether the query matches. It updates when the viewport crosses the edge.
+
+Returns `false` on the server and during hydration. Use it to decide whether to mount a heavy component; to show/hide markup use CSS media queries, otherwise the wrong variant renders until hydration.
+
 ## License
 
 MIT
