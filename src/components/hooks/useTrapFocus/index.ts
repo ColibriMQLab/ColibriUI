@@ -6,10 +6,14 @@ const getFocusableModalElements = (element: HTMLElement) =>
     'a[href], button, textarea, input[type="text"], input[type="password"], input[type="radio"], input[type="checkbox"], select',
   );
 
-export function useTrapFocus(refObject: RefObject<HTMLElement | null>) {
+export function useTrapFocus(
+  refObject: RefObject<HTMLElement | null>,
+  isActive?: () => boolean,
+) {
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (!refObject.current || event.code !== "Tab") return;
+      if (isActive && !isActive()) return;
 
       const focusable = Array.from(
         getFocusableModalElements(refObject.current),
@@ -43,5 +47,5 @@ export function useTrapFocus(refObject: RefObject<HTMLElement | null>) {
     return () => {
       document.removeEventListener("keydown", handler);
     };
-  }, [refObject]);
+  }, [refObject, isActive]);
 }

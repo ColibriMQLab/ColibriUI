@@ -1,0 +1,10 @@
+.root {
+  align-items: center;
+  border-top: var(--border-width-hairline) solid var(--component-modal-border);
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  padding: var(--space-4) var(--space-5);
+}

@@ -1,0 +1,36 @@
+.root {
+  align-items: center;
+  border-bottom: var(--border-width-hairline) solid
+    var(--component-modal-border);
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+
+  &_overlay {
+    align-items: flex-start;
+    background: transparent;
+    border-bottom: none;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+}
+
+.close {
+  margin-left: auto;
+
+  .root_overlay & {
+    background-color: var(--component-modal-bg);
+    border-radius: var(--component-modal-radius);
+    box-shadow: var(--shadow-raised);
+  }
+}

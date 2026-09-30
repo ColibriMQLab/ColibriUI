@@ -105,8 +105,20 @@ export { Menu } from "./Menu";
 export type { Props as MenuProps } from "./Menu/index.props";
 export { MenuItem } from "./Menu/components/MenuItem";
 export type { MenuItemProps } from "./Menu/components/MenuItem/index.props";
-export { Modal } from "./Modal";
-export type { ModalProps } from "./Modal/index.props";
+export {
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+} from "./Modal";
+export type {
+  ModalProps,
+  ModalHeaderProps,
+  ModalTitleProps,
+  ModalBodyProps,
+  ModalFooterProps,
+} from "./Modal/index.props";
 export { MultiSelect } from "./MultiSelect";
 export type { MultiSelectProps } from "./MultiSelect/index.props";
 export { NumberInput } from "./NumberInput";

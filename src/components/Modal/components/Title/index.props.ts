@@ -1,3 +1,1 @@
-import type { PropsWithChildren } from "react";
-
-export type TitleProps = PropsWithChildren;
+export type { ModalTitleProps as TitleProps } from "../../index.props";
