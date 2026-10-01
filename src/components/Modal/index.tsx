@@ -12,6 +12,7 @@ import React, {
 import clsx from "clsx";
 import { useScrollLock } from "../hooks/useScrollLock";
 import { useTrapFocus } from "../hooks/useTrapFocus";
+import { useModalStack } from "../hooks/useModalStack";
 import { Portal } from "../Portal";
 import { useMediaSizes } from "../hooks/useMediaSizes";
 import { Body } from "./components/Body";
@@ -21,7 +22,6 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Title } from "./components/Title";
 import { ModalContext } from "./context";
-import { useModalStack } from "./useModalStack";
 import styles from "./Modal.module.scss";
 import type { FC, PropsWithChildren, ReactNode } from "react";
 import type { ModalProps } from "./index.props";
@@ -87,7 +87,9 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isTopmost()) {
+      // A layer that closed on this Escape already called preventDefault.
+      if (event.key === "Escape" && !event.defaultPrevented && isTopmost()) {
+        event.preventDefault();
         handleClose();
       }
     };

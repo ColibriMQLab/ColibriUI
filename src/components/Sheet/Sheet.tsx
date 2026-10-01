@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
+import { useModalStack } from "../hooks/useModalStack";
 import styles from "./Sheet.module.scss";
 import type { PointerEvent as ReactPointerEvent } from "react";
 
@@ -93,6 +94,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
     });
     const titleId = useId();
     const descriptionId = useId();
+    const isTopmost = useModalStack(titleId, open && modal);
 
     const setPanelRef = (node: HTMLDivElement | null) => {
       panelRef.current = node;
@@ -154,6 +156,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         (initialFocusRef?.current ?? first ?? panelRef.current)?.focus();
       });
       const onKeyDown = (event: KeyboardEvent) => {
+        if (event.defaultPrevented || !isTopmost()) return;
         if (event.key === "Escape" && closeOnEscape) {
           event.preventDefault();
           onOpenChange(false, "escape");
@@ -194,6 +197,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
       onOpenChange,
       initialFocusRef,
       returnFocusRef,
+      isTopmost,
     ]);
 
     const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {

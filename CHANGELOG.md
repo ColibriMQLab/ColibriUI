@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.82
+
+### Fixed
+
+- A modal `Sheet` now joins the same stack as `Modal` while it is open, so only the topmost layer reacts to Escape and Tab. Before, a `Sheet` opened over a `Modal` closed both on Escape, and the `Modal` focus trap pulled Tab focus out of the `Sheet`. A non-modal `Sheet` does not join the stack and leaves Escape to an open `Modal`.
+- `Modal` and `Sheet` ignore an Escape that another layer already handled (`event.defaultPrevented`), and `Modal` now calls `preventDefault()` on the Escape that closes it.
+
 ## 1.0.0 (unreleased)
 
 Release this as a major version: the breakpoint change below is breaking.
