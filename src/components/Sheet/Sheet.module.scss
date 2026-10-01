@@ -1,0 +1,167 @@
+.root {
+  font-family: var(--font-family-ui);
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: var(--component-sheet-z-index);
+}
+
+.overlay {
+  animation: fade-in var(--component-sheet-motion-duration) ease-out both;
+  background: var(--component-sheet-overlay);
+  inset: 0;
+  pointer-events: auto;
+  position: absolute;
+}
+
+.blur {
+  backdrop-filter: blur(var(--component-sheet-overlay-blur));
+}
+
+.sheet {
+  animation: sheet-in var(--component-sheet-motion-duration)
+    var(--component-sheet-motion-easing) both;
+  background: var(--component-sheet-bg);
+  border-radius: var(--component-sheet-radius) var(--component-sheet-radius) 0 0;
+  bottom: 0;
+  box-shadow: var(--component-sheet-shadow);
+  box-sizing: border-box;
+  color: var(--component-sheet-text);
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  max-height: min(var(--component-sheet-max-height), 100%);
+  outline: none;
+  overflow: hidden;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  transition:
+    height var(--component-sheet-resize-duration) ease,
+    transform var(--component-sheet-motion-duration) ease;
+}
+
+.dragging {
+  transition: none;
+  user-select: none;
+}
+
+.drag-area {
+  align-items: center;
+  cursor: ns-resize;
+  display: flex;
+  flex: none;
+  justify-content: center;
+  min-height: var(--component-sheet-drag-area-height);
+  touch-action: none;
+}
+
+.handle {
+  background: var(--component-sheet-secondary);
+  border-radius: var(--component-sheet-handle-radius);
+  height: var(--component-sheet-handle-height);
+  opacity: var(--component-sheet-handle-opacity);
+  width: var(--component-sheet-handle-width);
+}
+
+.header {
+  align-items: flex-start;
+  border-bottom: var(--component-sheet-border-width) solid
+    var(--component-sheet-border-color);
+  display: flex;
+  flex: none;
+  gap: var(--component-sheet-header-gap);
+  padding: var(--component-sheet-header-padding);
+}
+
+.heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.heading h2 {
+  font-size: var(--component-sheet-title-font-size);
+  font-weight: var(--component-sheet-title-font-weight);
+  line-height: var(--component-sheet-title-line-height);
+  margin: 0;
+}
+
+.heading p {
+  color: var(--component-sheet-secondary);
+  font-size: var(--component-sheet-description-font-size);
+  margin: var(--component-sheet-description-offset) 0 0;
+}
+
+.header-actions {
+  align-items: center;
+  display: flex;
+  flex: none;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--component-sheet-body-padding);
+}
+
+.footer {
+  background: var(--component-sheet-bg);
+  border-top: var(--component-sheet-border-width) solid
+    var(--component-sheet-border-color);
+  flex: none;
+  padding: var(--component-sheet-footer-padding-block)
+    var(--component-sheet-footer-padding-inline)
+    max(
+      var(--component-sheet-footer-padding-block),
+      env(safe-area-inset-bottom)
+    );
+}
+
+.closing .overlay {
+  animation: fade-out var(--component-sheet-motion-duration) ease-in both;
+}
+
+.closing .sheet {
+  animation: sheet-out var(--component-sheet-motion-duration) ease-in both;
+}
+
+.non-modal {
+  height: 100%;
+  inset: auto 0 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheet-out {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .sheet,
+  .closing .overlay,
+  .closing .sheet {
+    animation-duration: var(--component-sheet-reduced-motion-duration);
+    transition-duration: var(--component-sheet-reduced-motion-duration);
+  }
+}

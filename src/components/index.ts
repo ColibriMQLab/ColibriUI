@@ -145,6 +145,8 @@ export { Select } from "./Select";
 export type { SelectProps } from "./Select/index.props";
 export { Separator } from "./Separator";
 export type { SeparatorProps } from "./Separator/index.props";
+export { Sheet } from "./Sheet";
+export type { SheetProps, SheetSnapPoint, SheetCloseReason } from "./Sheet";
 export { SkeletonRect, SkeletonText } from "./Skeleton";
 export type {
   RectProps as SkeletonRectProps,
