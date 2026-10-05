@@ -4,48 +4,66 @@
   letter-spacing: var(--letter-spacing-ui, 0);
 }
 
+.clamp {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--typography-lines);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
 .size {
   &_xs {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-xs, 0.75rem);
     line-height: var(--line-height-text-xs, 1rem);
   }
 
   &_s {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-sm, 0.875rem);
     line-height: var(--line-height-text-sm, 1.25rem);
   }
 
   &_m {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-md, 1rem);
     line-height: var(--line-height-text-md, 1.5rem);
   }
 
   &_l {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-lg, 1.125rem);
     line-height: var(--line-height-text-lg, 1.625rem);
   }
 
   &_text-xs {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-xs, 0.75rem);
     line-height: var(--line-height-text-xs, 1rem);
   }
 
   &_text-sm {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-sm, 0.875rem);
     line-height: var(--line-height-text-sm, 1.25rem);
   }
 
   &_text-md {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-md, 1rem);
     line-height: var(--line-height-text-md, 1.5rem);
   }
 
   &_text-lg {
+    font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-lg, 1.125rem);
     line-height: var(--line-height-text-lg, 1.625rem);
   }
 
   &_heading-sm {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-sm, 1.25rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
@@ -53,6 +71,7 @@
   }
 
   &_heading-md {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-md, 1.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
@@ -60,6 +79,7 @@
   }
 
   &_heading-lg {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-lg, 2rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
@@ -67,6 +87,7 @@
   }
 
   &_heading-xl {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-xl, 2.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
@@ -74,6 +95,7 @@
   }
 
   &_display-sm {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-sm, 3rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
@@ -86,6 +108,7 @@
   }
 
   &_display-md {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-md, 4rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
@@ -98,6 +121,7 @@
   }
 
   &_display-lg {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-lg, 5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
@@ -110,6 +134,7 @@
   }
 
   &_display-xl {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-xl, 6.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
@@ -121,42 +146,112 @@
     }
   }
 
+  &_display-s {
+    font-family: var(--font-family-display, inherit);
+    font-size: var(--font-size-display-s, 3.5rem);
+    font-weight: var(--font-weight-semibold, 600);
+    letter-spacing: var(--letter-spacing-display, 0);
+    line-height: var(--line-height-display-s, 4rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-s-mobile, 2.5rem);
+      line-height: var(--line-height-display-s-mobile, 3rem);
+    }
+  }
+
+  &_display-m {
+    font-family: var(--font-family-display, inherit);
+    font-size: var(--font-size-display-m, 4.5rem);
+    font-weight: var(--font-weight-semibold, 600);
+    letter-spacing: var(--letter-spacing-display, 0);
+    line-height: var(--line-height-display-m, 5rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-m-mobile, 3rem);
+      line-height: var(--line-height-display-m-mobile, 3.5rem);
+    }
+  }
+
+  &_display-l {
+    font-family: var(--font-family-display, inherit);
+    font-size: var(--font-size-display-l, 5.5rem);
+    font-weight: var(--font-weight-semibold, 600);
+    letter-spacing: var(--letter-spacing-display, 0);
+    line-height: var(--line-height-display-l, 6rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-display-l-mobile, 3.5rem);
+      line-height: var(--line-height-display-l-mobile, 4rem);
+    }
+  }
+
   &_h1 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-sm, 3rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-display, 0);
     line-height: var(--line-height-display-sm, 3.25rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-h1-mobile, 2rem);
+      line-height: var(--line-height-h1-mobile, 2.5rem);
+    }
   }
 
   &_h2 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-xl, 2.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
     line-height: var(--line-height-heading-xl, 3rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-h2-mobile, 1.75rem);
+      line-height: var(--line-height-h2-mobile, 2.25rem);
+    }
   }
 
   &_h3 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-lg, 2rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
     line-height: var(--line-height-heading-lg, 2.5rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-h3-mobile, 1.5rem);
+      line-height: var(--line-height-h3-mobile, 2rem);
+    }
   }
 
   &_h4 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-md, 1.5rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
     line-height: var(--line-height-heading-md, 2rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-h4-mobile, 1.25rem);
+      line-height: var(--line-height-h4-mobile, 1.75rem);
+    }
   }
 
   &_h5 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-sm, 1.25rem);
     font-weight: var(--font-weight-semibold, 600);
     letter-spacing: var(--letter-spacing-heading, 0);
     line-height: var(--line-height-heading-sm, 1.75rem);
+
+    @media (width < 48rem) {
+      font-size: var(--font-size-h5-mobile, 1.125rem);
+      line-height: var(--line-height-h5-mobile, 1.625rem);
+    }
   }
 
   &_h6 {
+    font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-text-md, 1rem);
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--line-height-text-md, 1.5rem);

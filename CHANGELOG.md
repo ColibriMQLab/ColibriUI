@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `Typography` takes `lines`: the text is limited to that many lines and the last one ends with an ellipsis.
+- Theme tokens `font-size-h{1…5}-mobile` and `line-height-h{1…5}-mobile`.
+- `Typography` sizes `display-s`, `display-m` and `display-l` for hero headings above `h1`: 56/64, 72/80 and 88/96 px (font size / line height), and 40/48, 48/56 and 56/64 px below `md` (48rem). They use their own tokens `font-size-display-{s,m,l}`, `line-height-display-{s,m,l}` and the `-mobile` pairs; `display-sm`…`display-xl` and their tokens do not change.
+
+### Changed
+
+- `Typography` sizes `h1`…`h5` get smaller below `md` (48rem): 32/40, 28/36, 24/32, 20/28 and 18/26 px (font size / line height). From 48rem up they stay the same. `h6` and `xs`/`s`/`m`/`l` do not change.
+- `Typography` sets the font family by size: `xs`/`s`/`m`/`l` and `text-*` use `--font-family-body`; `h1`…`h6`, `heading-*` and `display-*` use `--font-family-display`. Without `size` the font is inherited, as before.
+
 ## 0.8.82
 
 ### Fixed

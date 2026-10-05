@@ -18,6 +18,9 @@ const typographySizes = [
   "display-md",
   "display-lg",
   "display-xl",
+  "display-s",
+  "display-m",
+  "display-l",
   "h1",
   "h2",
   "h3",
@@ -72,6 +75,9 @@ const productSizes = [
 ] as const;
 
 const displaySizes = [
+  "display-s",
+  "display-m",
+  "display-l",
   "display-sm",
   "display-md",
   "display-lg",
@@ -101,6 +107,7 @@ const meta: Meta<typeof Typography> = {
       control: { type: "select" },
       options: typographyWeights,
     },
+    lines: { control: { type: "number", min: 1 } },
     className: { table: { disable: true } },
     style: { control: "object" },
   },
@@ -141,6 +148,14 @@ export const Success: Story = {
   args: {
     children: TEXT,
     variant: "success",
+  },
+};
+
+export const Lines: Story = {
+  args: {
+    children: `${TEXT} ${TEXT} ${TEXT}`,
+    lines: 2,
+    style: { maxWidth: "15rem" },
   },
 };
 

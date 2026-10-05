@@ -33,6 +33,9 @@ export type TypographySize =
   | "display-md"
   | "display-lg"
   | "display-xl"
+  | "display-s"
+  | "display-m"
+  | "display-l"
   | "h1"
   | "h2"
   | "h3"
@@ -59,5 +62,7 @@ export type TypographyProps = {
   variant?: TypographyVariant;
   size?: TypographySize;
   fontWeight?: TypographyFontWeight;
+  /** Limits the text to this many lines and ends the last one with an ellipsis. */
+  lines?: number;
   style?: CSSProperties;
 };
