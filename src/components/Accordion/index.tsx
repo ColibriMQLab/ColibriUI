@@ -34,7 +34,6 @@ export const Accordion: FC<AccordionProps> = ({
           className={styles.button}
           onClick={toggleAccordion}
           type="button"
-          role="button"
           aria-expanded={isOpen}
           tabIndex={tabIndex}
           aria-label="Toggle"

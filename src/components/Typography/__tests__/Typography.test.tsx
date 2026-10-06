@@ -1,6 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Typography } from "..";
 
 describe("<Typography />", () => {
@@ -34,5 +35,11 @@ describe("<Typography />", () => {
         .getByText("Short text")
         .style.getPropertyValue("--typography-lines"),
     ).toBe("");
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(<Typography lines={2}>Long text</Typography>);
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

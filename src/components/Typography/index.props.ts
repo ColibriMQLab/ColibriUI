@@ -58,6 +58,9 @@ export type TypographyTag =
 
 export type TypographyProps = {
   className?: string;
+  /** Associates the text with a form control when `tag` is `label`. */
+  htmlFor?: string;
+  id?: string;
   tag?: TypographyTag;
   variant?: TypographyVariant;
   size?: TypographySize;

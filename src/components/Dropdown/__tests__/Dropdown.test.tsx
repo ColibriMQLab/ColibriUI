@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Dropdown } from "..";
 import { Menu } from "../../Menu";
 import { MenuItem } from "../../Menu/components/MenuItem";
@@ -249,5 +250,19 @@ describe("<Dropdown />", () => {
     await waitFor(() => {
       expect(menuItems[0]).toHaveTextContent("Test 1");
     });
+  });
+
+  it("has no axe violations when open", async () => {
+    const { baseElement } = render(
+      <Dropdown trigger={["click"]} overlay={overlay}>
+        Open
+      </Dropdown>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /open/i }));
+
+    expect(
+      await axe(baseElement, { rules: { region: { enabled: false } } }),
+    ).toHaveNoViolations();
   });
 });

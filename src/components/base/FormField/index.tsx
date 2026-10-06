@@ -9,6 +9,8 @@ export const FormField = ({
   hint,
   children,
   hasError,
+  hintId,
+  htmlFor,
   required,
   className,
   ref,
@@ -20,6 +22,7 @@ export const FormField = ({
           [styles.label_required]: Boolean(required),
         })}
         tag="label"
+        htmlFor={htmlFor}
       >
         {label}
       </Typography>
@@ -27,6 +30,7 @@ export const FormField = ({
     {children}
     {hint && (
       <Typography
+        id={hintId}
         className={clsx({ [styles.hint_error]: hasError })}
         variant={hasError ? "alert" : "secondary"}
         tag="span"

@@ -6,6 +6,7 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import eslintPluginImportOrder from "eslint-plugin-import";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginJSXA11Y from "eslint-plugin-jsx-a11y";
+import eslintPluginCompat from "eslint-plugin-compat";
 
 export default [
   { languageOptions: { globals: globals.browser } },
@@ -13,12 +14,13 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReactConfig,
+  eslintPluginJSXA11Y.flatConfigs.recommended,
+  eslintPluginCompat.configs["flat/recommended"],
   eslintPluginPrettierRecommended,
   {
     plugins: {
       import: eslintPluginImportOrder,
       "react-hooks": eslintPluginReactHooks,
-      "jsx-a11y": eslintPluginJSXA11Y,
     },
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",

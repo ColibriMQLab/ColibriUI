@@ -27,7 +27,8 @@ export const InputRadio: FC<InputRadioProps> = memo(
     testid,
     ...rest
   }) => (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    // Keyboard activation of the nested radio dispatches a click that bubbles to the label.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <label
       className={clsx(styles.label, className)}
       htmlFor={id}

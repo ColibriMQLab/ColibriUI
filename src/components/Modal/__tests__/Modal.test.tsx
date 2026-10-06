@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Modal } from "..";
 
 describe("<Modal />", () => {
@@ -123,5 +124,15 @@ describe("<Modal withinParent />", () => {
     const dialog = screen.getByRole("dialog");
     expect(dialog.parentElement).toBe(document.body);
     expect(dialog).not.toHaveClass("root_contained");
+  });
+
+  it("has no axe violations", async () => {
+    const { baseElement } = render(
+      <Modal title="Title" onClose={jest.fn()}>
+        content
+      </Modal>,
+    );
+
+    expect(await axe(baseElement)).toHaveNoViolations();
   });
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 
 import { Sheet } from "..";
 
@@ -98,5 +99,15 @@ describe("Sheet", () => {
     });
     document.dispatchEvent(event);
     expect(event.defaultPrevented).toBe(false);
+  });
+
+  it("has no axe violations", async () => {
+    const { baseElement } = render(
+      <Sheet open onOpenChange={jest.fn()} title="Settings">
+        Content
+      </Sheet>,
+    );
+
+    expect(await axe(baseElement)).toHaveNoViolations();
   });
 });

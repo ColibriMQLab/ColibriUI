@@ -13,7 +13,7 @@ import type { Size, Variant } from "../base/InputRoot/index.props";
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange" | "size">,
-    Omit<FormFieldProps, "children"> {
+    Omit<FormFieldProps, "children" | "htmlFor" | "hintId"> {
   controlAfter?: ReactNode;
   controlClassName?: string;
   controlRef?: Ref<HTMLDivElement>;

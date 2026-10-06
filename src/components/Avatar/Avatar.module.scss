@@ -147,3 +147,12 @@
     transform: rotate(360deg);
   }
 }
+
+.avatar-wrapper,
+.avatar-initials,
+.avatar-stub {
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: var(--focus-ring-width);
+  }
+}

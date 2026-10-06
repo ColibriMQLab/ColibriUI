@@ -35,7 +35,6 @@ export const Button = ({
     disabled={disabled}
     data-testid="button"
     type={type || "button"}
-    role="button"
     {...props}
   >
     {icon && <span className={styles.icon}>{icon}</span>}

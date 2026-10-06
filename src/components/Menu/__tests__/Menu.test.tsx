@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { MenuItem } from "../components/MenuItem";
 import { Menu } from "..";
 
@@ -44,5 +45,16 @@ describe("<Menu />", () => {
     expect(selectedItem).toHaveStyle(
       "background-color: var(--component-menu-item-bg-selected)",
     );
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(
+      <Menu>
+        <MenuItem key="1">Test 1</MenuItem>
+        <MenuItem key="2">Test 2</MenuItem>
+      </Menu>,
+    );
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

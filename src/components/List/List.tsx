@@ -68,7 +68,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           {...rest}
           ref={ref}
           aria-label={ariaLabel}
-          aria-disabled={disabled || undefined}
           className={clsx(
             styles.list,
             styles[`size_${size}`],
@@ -133,15 +132,12 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
         interactiveProps as ListItemLinkProps;
 
       return (
-        <li
-          ref={ref}
-          className={itemClassName}
-          aria-disabled={isDisabled || undefined}
-        >
+        <li ref={ref} className={itemClassName}>
           <a
             {...anchorProps}
             href={isDisabled ? undefined : href}
             tabIndex={isDisabled ? -1 : anchorProps.tabIndex}
+            aria-disabled={isDisabled || undefined}
             aria-current={selected ? "page" : undefined}
             className={styles.action}
             onClick={(event) => {
@@ -185,7 +181,6 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
         {...(interactiveProps as ListItemStaticProps)}
         ref={ref}
         className={itemClassName}
-        aria-disabled={isDisabled || undefined}
         aria-current={selected || undefined}
       >
         <div className={styles["static-content"]}>{content}</div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Chip } from "..";
 
 describe("<Chip />", () => {
@@ -17,5 +18,11 @@ describe("<Chip />", () => {
     expect(screen.getByTestId("chip").firstElementChild).toHaveClass(
       "inner_variant_alert",
     );
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(<Chip>Chip</Chip>);
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

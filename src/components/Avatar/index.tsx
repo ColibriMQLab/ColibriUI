@@ -4,7 +4,7 @@ import { AvatarSize } from "./constants";
 import styles from "./Avatar.module.scss";
 import { AccountType } from "./index.props";
 import type { AvatarProps } from "./index.props";
-import type { FC } from "react";
+import type { FC, KeyboardEvent } from "react";
 
 const SIZE_CLASSES = {
   [AvatarSize.S]: styles["size-s"],
@@ -58,6 +58,21 @@ const OrgStubIcon = () => (
   </svg>
 );
 
+const getRoleProps = (onClick: AvatarProps["onClick"], label: string) =>
+  onClick
+    ? {
+        role: "button",
+        tabIndex: 0,
+        "aria-label": label,
+        onClick,
+        onKeyDown: (event: KeyboardEvent) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          onClick();
+        },
+      }
+    : { role: "img", "aria-label": label };
+
 export const Avatar: FC<AvatarProps> = memo((props) => {
   const {
     src,
@@ -76,17 +91,15 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
 
   const hasInitials = initials && initials.trim().length > 0;
   const hasCustomImage = Boolean(src);
+  const roleProps = getRoleProps(onClick, ariaLabel || alt);
 
   if (hasCustomImage) {
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <div
         className={clsx(styles["avatar-wrapper"], {
           [styles["avatar-loader"]]: Boolean(loading),
         })}
-        onClick={onClick}
-        role="button"
-        aria-label={ariaLabel || "Avatar"}
+        {...(onClick && roleProps)}
       >
         <img
           ref={ref}
@@ -107,13 +120,10 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
 
   if (hasInitials) {
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <span
         ref={ref}
         data-testid="avatar"
-        role="button"
-        aria-label={ariaLabel || "Avatar"}
-        onClick={onClick}
+        {...roleProps}
         className={clsx(
           styles["avatar-initials"],
           {
@@ -133,13 +143,10 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <span
       ref={ref}
       data-testid="avatar"
-      role="button"
-      aria-label={ariaLabel || "Avatar"}
-      onClick={onClick}
+      {...roleProps}
       className={clsx(
         styles["avatar-stub"],
         {

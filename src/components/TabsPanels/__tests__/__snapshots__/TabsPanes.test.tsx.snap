@@ -4,7 +4,6 @@ exports[`TabsPanels should display new JSX content when activePane changes (snap
 <div>
   <div
     class=""
-    role="menutabpanels"
   >
     <div
       aria-labelledby="tab-tab3"
@@ -27,7 +26,6 @@ exports[`TabsPanels should display only the active pane content (snapshot) 1`] =
     <div>
       <div
         class=""
-        role="menutabpanels"
       >
         <div
           aria-labelledby="tab-tab1"
@@ -43,7 +41,6 @@ exports[`TabsPanels should display only the active pane content (snapshot) 1`] =
   "container": <div>
     <div
       class=""
-      role="menutabpanels"
     >
       <div
         aria-labelledby="tab-tab1"
@@ -116,7 +113,6 @@ exports[`TabsPanels should return the complete component template (snapshot) 1`]
     <div>
       <div
         class="mix"
-        role="menutabpanels"
       >
         <div
           aria-labelledby="tab-tab1"
@@ -132,7 +128,6 @@ exports[`TabsPanels should return the complete component template (snapshot) 1`]
   "container": <div>
     <div
       class="mix"
-      role="menutabpanels"
     >
       <div
         aria-labelledby="tab-tab1"

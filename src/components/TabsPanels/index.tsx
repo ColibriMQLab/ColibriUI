@@ -26,12 +26,7 @@ export const TabsPanels: FC<TabsPanelsProps> = ({
   const { id, content, ...panelProps } = currentPanel;
 
   return (
-    <div
-      {...props}
-      ref={innerRef}
-      role="menutabpanels"
-      className={clsx(className)}
-    >
+    <div {...props} ref={innerRef} className={clsx(className)}>
       <TabsPanel
         aria-labelledby={`tab-${activePanel}`}
         id={id}

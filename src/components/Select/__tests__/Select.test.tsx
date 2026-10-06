@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import userEvent from "@testing-library/user-event";
 import { Select } from "..";
 
@@ -33,5 +34,17 @@ describe("<Select />", () => {
 
     expect(onChange).toHaveBeenCalled();
     expect(onChange).toHaveBeenCalledWith(0);
+  });
+
+  it("has no axe violations when open", async () => {
+    const { baseElement } = render(
+      <Select value={2} label="hint" options={options} onChange={jest.fn()} />,
+    );
+
+    await userEvent.click(screen.getByTestId("base-input"));
+
+    expect(
+      await axe(baseElement, { rules: { region: { enabled: false } } }),
+    ).toHaveNoViolations();
   });
 });

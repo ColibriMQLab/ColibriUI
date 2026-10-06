@@ -1,5 +1,6 @@
 import React, { createRef } from "react";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { TabsPanels } from "..";
 
 const panel1 = { id: "tab1", content: "Pane 1 Search" };
@@ -46,6 +47,14 @@ describe("TabsPanels", () => {
 
   test("should render an empty panel when activePane is not set", () => {
     render(<TabsPanels activePanel={undefined} panels={panels} />);
-    expect(screen.queryByRole("menutabpanels")).toBeNull();
+    expect(screen.queryByRole("tabpanel")).toBeNull();
+  });
+
+  test("has no axe violations", async () => {
+    const { container } = render(
+      <TabsPanels activePanel={panel1.id} panels={panels} />,
+    );
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { NumberInput } from "../NumberInput";
 
 describe("<NumberInput />", () => {
@@ -30,5 +31,13 @@ describe("<NumberInput />", () => {
     expect(styles).toContain("max-width: 100%");
     expect(styles).toContain("min-width: 0");
     expect(styles).not.toContain("width: 20rem");
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(
+      <NumberInput label="Amount" value="1000" onValueChange={jest.fn()} />,
+    );
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import clsx from "clsx";
 import { FormField } from "../base/FormField";
@@ -20,8 +20,12 @@ export const TextArea = ({
   disabled,
   inputRef,
   ref,
+  id,
   ...props
 }: ITextAreaProps) => {
+  const generatedId = useId();
+  const textareaId = id ?? generatedId;
+  const hintId = hint ? `${textareaId}-hint` : undefined;
   const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(event.target.value, event);
   };
@@ -32,7 +36,9 @@ export const TextArea = ({
       className={clsx(className)}
       required={required}
       label={label}
+      htmlFor={textareaId}
       hint={hint}
+      hintId={hintId}
       hasError={hasError}
     >
       <InputRoot disabled={!!disabled} hasError={hasError}>
@@ -46,6 +52,12 @@ export const TextArea = ({
           className={clsx(styles.textarea, className)}
           onChange={onChangeHandler}
           {...props}
+          id={textareaId}
+          required={required}
+          aria-invalid={props["aria-invalid"] ?? (hasError || undefined)}
+          aria-describedby={
+            clsx(props["aria-describedby"], hintId) || undefined
+          }
         />
       </InputRoot>
     </FormField>

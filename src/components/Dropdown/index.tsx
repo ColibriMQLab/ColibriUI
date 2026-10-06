@@ -155,6 +155,7 @@ export const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
                   : undefined,
                 fontSize: `${fontSize}px`,
               }}
+              role="menu"
               tabIndex={0}
               {...getFloatingProps()}
             >

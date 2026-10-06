@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Counter } from "..";
 
 describe("<Counter />", () => {
@@ -71,5 +72,11 @@ describe("<Counter />", () => {
   it("renders with fullWidth class if fullWidth=true", () => {
     const { container } = setup({ fullWidth: true });
     expect(container.firstChild).toHaveClass("root_fullWidth");
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = setup();
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

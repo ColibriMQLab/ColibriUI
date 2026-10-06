@@ -280,6 +280,8 @@ export const CodeField = forwardRef<HTMLInputElement, CodeFieldProps>(
             maxLength={codeLength}
             autoComplete={autoComplete}
             inputMode={inputMode}
+            // Opt-in public prop: consumers decide when autofocus is appropriate.
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             disabled={disabled}
             spellCheck={false}

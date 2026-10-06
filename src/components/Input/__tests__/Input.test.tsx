@@ -1,6 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import userEvent from "@testing-library/user-event";
 import { Input } from "..";
 
@@ -27,5 +28,20 @@ describe("<Input />", () => {
     render(<Input label="Email" />);
 
     expect(screen.getByRole("textbox")).toBeEnabled();
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(<Input label="Email" />);
+
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("exposes required, error and hint to assistive technology", () => {
+    render(<Input label="Email" required hasError hint="Invalid email" />);
+
+    const input = screen.getByRole("textbox", { name: "Email" });
+    expect(input).toBeRequired();
+    expect(input).toBeInvalid();
+    expect(input).toHaveAccessibleDescription("Invalid email");
   });
 });
