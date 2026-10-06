@@ -39,6 +39,7 @@ export const Input = ({
     >
       <BaseInput
         ref={inputRef}
+        disabled={disabled}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}

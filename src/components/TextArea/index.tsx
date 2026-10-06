@@ -39,6 +39,7 @@ export const TextArea = ({
         <TextareaAutosize
           ref={inputRef}
           data-testid="textarea"
+          disabled={disabled}
           minRows={minRows}
           maxRows={maxRows}
           value={value}

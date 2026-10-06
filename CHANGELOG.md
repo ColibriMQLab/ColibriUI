@@ -13,6 +13,10 @@
 - `Typography` sizes `h1`…`h5` get smaller below `md` (48rem): 32/40, 28/36, 24/32, 20/28 and 18/26 px (font size / line height). From 48rem up they stay the same. `h6` and `xs`/`s`/`m`/`l` do not change.
 - `Typography` sets the font family by size: `xs`/`s`/`m`/`l` and `text-*` use `--font-family-body`; `h1`…`h6`, `heading-*` and `display-*` use `--font-family-display`. Without `size` the font is inherited, as before.
 
+### Fixed
+
+- `Input` and `TextArea` with `disabled` now disable the native `<input>` / `<textarea>`. Before, `disabled` only styled the field and covered it with a click-blocking layer: the field was still reachable with Tab, editable from the keyboard and announced as enabled by screen readers.
+
 ## 0.8.82
 
 ### Fixed
