@@ -141,4 +141,43 @@ describe("Sheet", () => {
     expect(onClosed).toHaveBeenCalledTimes(1);
     jest.useRealTimers();
   });
+
+  it("keeps focus and scroll lock when the parent passes a new onOpenChange", () => {
+    jest.useFakeTimers();
+    const sheet = () => (
+      <Sheet open onOpenChange={() => undefined} title="Profile">
+        <input aria-label="First" />
+        <input aria-label="Second" />
+      </Sheet>
+    );
+    const { rerender } = render(sheet());
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    const second = screen.getByLabelText("Second");
+    second.focus();
+    rerender(sheet());
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(document.activeElement).toBe(second);
+    expect(document.body.style.overflow).toBe("hidden");
+    jest.useRealTimers();
+  });
+
+  it("calls the latest onOpenChange on Escape", () => {
+    const first = jest.fn();
+    const latest = jest.fn();
+    const { rerender } = render(
+      <Sheet open onOpenChange={first} title="Profile" />,
+    );
+    rerender(<Sheet open onOpenChange={latest} title="Profile" />);
+
+    fireEvent.keyDown(document, { key: "Escape" });
+
+    expect(first).not.toHaveBeenCalled();
+    expect(latest).toHaveBeenCalledWith(false, "escape");
+  });
 });

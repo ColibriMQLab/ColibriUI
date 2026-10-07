@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
+import { useLatestRef } from "../hooks/useLatestRef";
 import { useModalStack } from "../hooks/useModalStack";
 import styles from "./Sheet.module.scss";
 import type { PointerEvent as ReactPointerEvent } from "react";
@@ -118,11 +119,10 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
       onSnapPointChange?.(next);
     };
 
-    // The latest callback without restarting the closing timer.
-    const onClosedRef = useRef(onClosed);
-    useEffect(() => {
-      onClosedRef.current = onClosed;
-    }, [onClosed]);
+    // Callbacks from props change on every parent render; effects read them
+    // from refs, so focus, scroll lock and the closing timer do not restart.
+    const onClosedRef = useLatestRef(onClosed);
+    const onOpenChangeRef = useLatestRef(onOpenChange);
 
     useEffect(() => {
       if (open) {
@@ -146,7 +146,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         Number.isFinite(duration) ? duration : 220,
       );
       return () => window.clearTimeout(timer);
-    }, [open, rendered]);
+    }, [onClosedRef, open, rendered]);
 
     useEffect(() => {
       if (!open || typeof document === "undefined") return;
@@ -167,7 +167,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         if (event.defaultPrevented || !isTopmost()) return;
         if (event.key === "Escape" && closeOnEscape) {
           event.preventDefault();
-          onOpenChange(false, "escape");
+          onOpenChangeRef.current(false, "escape");
           return;
         }
         if (!modal || event.key !== "Tab" || !panelRef.current) return;
@@ -202,7 +202,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
       modal,
       lockBodyScroll,
       closeOnEscape,
-      onOpenChange,
+      onOpenChangeRef,
       initialFocusRef,
       returnFocusRef,
       isTopmost,

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- `Sheet` and `Drawer` no longer move focus to the first field, unlock page scroll for a moment or return focus to the opener when the parent re-renders with a new `onOpenChange`, `onClose` or `onEscKeyDown`. Effects read the latest callbacks from refs; Escape calls the latest one.
+
 ### Added
 
 - `Drawer` and `Sheet` take `onClosed`: called once the closing animation has finished and the panel with its content is removed.

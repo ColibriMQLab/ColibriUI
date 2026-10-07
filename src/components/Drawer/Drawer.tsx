@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLatestRef } from "../hooks/useLatestRef";
 import styles from "./Drawer.module.scss";
 import type {
   DrawerContentProps,
@@ -64,11 +65,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
     const previousFocus = useRef<HTMLElement | null>(null);
     const [rendered, setRendered] = useState(opened);
     const [closing, setClosing] = useState(false);
-    // The latest callback without restarting the closing timer.
-    const onClosedRef = useRef(onClosed);
-    useEffect(() => {
-      onClosedRef.current = onClosed;
-    }, [onClosed]);
+    // Callbacks from props change on every parent render; effects read them
+    // from refs, so focus, scroll lock and the closing timer do not restart.
+    const onClosedRef = useLatestRef(onClosed);
+    const onCloseRef = useLatestRef(onClose);
+    const onEscKeyDownRef = useLatestRef(onEscKeyDown);
 
     const setPanelRef = (element: HTMLDivElement | null) => {
       panelRef.current = element;
@@ -90,7 +91,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         onClosedRef.current?.();
       }, 200);
       return () => window.clearTimeout(timeout);
-    }, [opened, rendered]);
+    }, [onClosedRef, opened, rendered]);
 
     useEffect(() => {
       if (!opened || typeof document === "undefined") return;
@@ -115,8 +116,8 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === "Escape" && closeOnEsc) {
-          onEscKeyDown?.(event);
-          if (!event.defaultPrevented) onClose?.();
+          onEscKeyDownRef.current?.(event);
+          if (!event.defaultPrevented) onCloseRef.current?.();
           return;
         }
 
@@ -154,8 +155,8 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       closeOnEsc,
       focusAfterRef,
       initialFocusRef,
-      onClose,
-      onEscKeyDown,
+      onCloseRef,
+      onEscKeyDownRef,
     ]);
 
     if (!rendered || typeof document === "undefined") return null;
