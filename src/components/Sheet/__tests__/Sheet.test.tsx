@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 
 import { Sheet } from "..";
@@ -109,5 +109,36 @@ describe("Sheet", () => {
     );
 
     expect(await axe(baseElement)).toHaveNoViolations();
+  });
+
+  it("calls onClosed once the closing animation has finished", () => {
+    jest.useFakeTimers();
+    const onClosed = jest.fn();
+    const { rerender } = render(
+      <Sheet open onOpenChange={jest.fn()} onClosed={onClosed} title="Settings">
+        Content
+      </Sheet>,
+    );
+
+    rerender(
+      <Sheet
+        open={false}
+        onOpenChange={jest.fn()}
+        onClosed={() => onClosed()}
+        title="Settings"
+      >
+        Content
+      </Sheet>,
+    );
+    expect(screen.getByRole("dialog")).toBeTruthy();
+    expect(onClosed).not.toHaveBeenCalled();
+
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(onClosed).toHaveBeenCalledTimes(1);
+    jest.useRealTimers();
   });
 });

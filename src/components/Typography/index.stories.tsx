@@ -159,6 +159,14 @@ export const Lines: Story = {
   },
 };
 
+/** `xs` on phones, `m` from `sm` (40rem), `h4` from `lg` (64rem). Resize the viewport. */
+export const ResponsiveSize: Story = {
+  args: {
+    children: TEXT,
+    size: { base: "xs", sm: "m", lg: "h4" },
+  },
+};
+
 export const CustomTag: Story = {
   args: {
     children: TEXT,

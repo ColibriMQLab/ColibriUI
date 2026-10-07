@@ -21,6 +21,7 @@ import { Sheet, Button } from "colibri-ui";
 | -------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `open`                                 | Required         | Controlled visibility.                                                                                              |
 | `onOpenChange`                         | Required         | Receives visibility and an optional close reason: `overlay`, `escape` or `drag`.                                    |
+| `onClosed`                             | —                | Called after the closing animation, when the sheet and its content are removed.                                     |
 | `title`, `description`                 | —                | Heading and accessible description.                                                                                 |
 | `header`, `footer`                     | —                | Header actions and fixed footer content.                                                                            |
 | `children`                             | —                | Scrollable body content.                                                                                            |

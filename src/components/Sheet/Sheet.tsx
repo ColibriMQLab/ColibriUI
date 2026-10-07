@@ -44,6 +44,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
     {
       open,
       onOpenChange,
+      onClosed,
       title,
       description,
       header,
@@ -117,6 +118,12 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
       onSnapPointChange?.(next);
     };
 
+    // The latest callback without restarting the closing timer.
+    const onClosedRef = useRef(onClosed);
+    useEffect(() => {
+      onClosedRef.current = onClosed;
+    }, [onClosed]);
+
     useEffect(() => {
       if (open) {
         setRendered(true);
@@ -134,6 +141,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         () => {
           setRendered(false);
           setClosing(false);
+          onClosedRef.current?.();
         },
         Number.isFinite(duration) ? duration : 220,
       );

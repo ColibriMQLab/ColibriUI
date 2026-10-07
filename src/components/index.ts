@@ -180,7 +180,10 @@ export type { TimeSelectProps } from "./TimeSelect/index.props";
 export { Tooltip } from "./Tooltip";
 export type { TooltipProps } from "./Tooltip/index.props";
 export { Typography } from "./Typography";
-export type { TypographyProps } from "./Typography/index.props";
+export type {
+  TypographyProps,
+  TypographyResponsiveSize,
+} from "./Typography/index.props";
 export { useMediaSizes } from "./hooks/useMediaSizes";
 export { useScrollLock } from "./hooks/useScrollLock";
 export * from "./Icons";

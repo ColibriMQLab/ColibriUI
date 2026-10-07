@@ -12,6 +12,8 @@ export interface SheetProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "onChange"> {
   open: boolean;
   onOpenChange: (open: boolean, reason?: SheetCloseReason) => void;
+  /** Called once the closing animation has finished and the sheet is removed. */
+  onClosed?: () => void;
   title?: ReactNode;
   description?: ReactNode;
   header?: ReactNode;

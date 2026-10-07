@@ -50,6 +50,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       focusAfterRef,
       portalContainer,
       onClose,
+      onClosed,
       onEscKeyDown,
       onOverlayClick,
       className,
@@ -63,6 +64,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
     const previousFocus = useRef<HTMLElement | null>(null);
     const [rendered, setRendered] = useState(opened);
     const [closing, setClosing] = useState(false);
+    // The latest callback without restarting the closing timer.
+    const onClosedRef = useRef(onClosed);
+    useEffect(() => {
+      onClosedRef.current = onClosed;
+    }, [onClosed]);
 
     const setPanelRef = (element: HTMLDivElement | null) => {
       panelRef.current = element;
@@ -81,6 +87,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       const timeout = window.setTimeout(() => {
         setRendered(false);
         setClosing(false);
+        onClosedRef.current?.();
       }, 200);
       return () => window.clearTimeout(timeout);
     }, [opened, rendered]);

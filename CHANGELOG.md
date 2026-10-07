@@ -4,6 +4,9 @@
 
 ### Added
 
+- `Drawer` and `Sheet` take `onClosed`: called once the closing animation has finished and the panel with its content is removed.
+- `Typography` `size` takes sizes per breakpoint, mobile first: `size={{ base: "xs", sm: "m" }}` is `xs` below `sm` (40rem) and `m` from it. `base` applies to every width, a breakpoint from its width up (`BREAKPOINTS`); any size name works at any breakpoint, and the sizes' own mobile steps (`h1`…`h5`, `display-*`) still apply inside them. A breakpoint size replaces the previous one completely: weight and letter spacing it does not set come from the parent, not from the smaller size; an explicit `fontWeight` still wins. A plain string works as before. Type `TypographyResponsiveSize`.
+
 - `Typography` takes `lines`: the text is limited to that many lines and the last one ends with an ellipsis.
 - Theme tokens `font-size-h{1…5}-mobile` and `line-height-h{1…5}-mobile`.
 - `Typography` sizes `display-s`, `display-m` and `display-l` for hero headings above `h1`: 56/64, 72/80 and 88/96 px (font size / line height), and 40/48, 48/56 and 56/64 px below `md` (48rem). They use their own tokens `font-size-display-{s,m,l}`, `line-height-display-{s,m,l}` and the `-mobile` pairs; `display-sm`…`display-xl` and their tokens do not change.

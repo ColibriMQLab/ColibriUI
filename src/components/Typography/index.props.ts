@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import type { BreakpointName } from "../Theme";
 
 export type TypographyVariant =
   | "primary"
@@ -43,6 +44,14 @@ export type TypographySize =
   | "h5"
   | "h6";
 
+/**
+ * Size per breakpoint, mobile first: `base` applies to every width, each
+ * breakpoint from its width up (`BREAKPOINTS` in Theme).
+ */
+export type TypographyResponsiveSize = {
+  base?: TypographySize;
+} & Partial<Record<BreakpointName, TypographySize>>;
+
 export type TypographyTag =
   | "span"
   | "label"
@@ -63,7 +72,8 @@ export type TypographyProps = {
   id?: string;
   tag?: TypographyTag;
   variant?: TypographyVariant;
-  size?: TypographySize;
+  /** One size, or sizes per breakpoint: `{ base: "xs", sm: "m" }`. */
+  size?: TypographySize | TypographyResponsiveSize;
   fontWeight?: TypographyFontWeight;
   /** Limits the text to this many lines and ends the last one with an ellipsis. */
   lines?: number;

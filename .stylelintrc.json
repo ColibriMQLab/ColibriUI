@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-standard",
+  "customSyntax": "postcss-scss",
   "plugins": [
     "stylelint-scss",
     "stylelint-order",

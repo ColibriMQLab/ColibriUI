@@ -13,56 +13,112 @@
   white-space: normal;
 }
 
-.size {
-  &_xs {
+@mixin sizes($breakpoint: "") {
+  &_#{$breakpoint}xs {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-xs, 0.75rem);
     line-height: var(--line-height-text-xs, 1rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_s {
+  &_#{$breakpoint}s {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-sm, 0.875rem);
     line-height: var(--line-height-text-sm, 1.25rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_m {
+  &_#{$breakpoint}m {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-md, 1rem);
     line-height: var(--line-height-text-md, 1.5rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_l {
+  &_#{$breakpoint}l {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-lg, 1.125rem);
     line-height: var(--line-height-text-lg, 1.625rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_text-xs {
+  &_#{$breakpoint}text-xs {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-xs, 0.75rem);
     line-height: var(--line-height-text-xs, 1rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_text-sm {
+  &_#{$breakpoint}text-sm {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-sm, 0.875rem);
     line-height: var(--line-height-text-sm, 1.25rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_text-md {
+  &_#{$breakpoint}text-md {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-md, 1rem);
     line-height: var(--line-height-text-md, 1.5rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_text-lg {
+  &_#{$breakpoint}text-lg {
     font-family: var(--font-family-body, inherit);
     font-size: var(--font-size-text-lg, 1.125rem);
     line-height: var(--line-height-text-lg, 1.625rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
   }
 
-  &_heading-sm {
+  &_#{$breakpoint}heading-sm {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-sm, 1.25rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -70,7 +126,7 @@
     line-height: var(--line-height-heading-sm, 1.75rem);
   }
 
-  &_heading-md {
+  &_#{$breakpoint}heading-md {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-md, 1.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -78,7 +134,7 @@
     line-height: var(--line-height-heading-md, 2rem);
   }
 
-  &_heading-lg {
+  &_#{$breakpoint}heading-lg {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-lg, 2rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -86,7 +142,7 @@
     line-height: var(--line-height-heading-lg, 2.5rem);
   }
 
-  &_heading-xl {
+  &_#{$breakpoint}heading-xl {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-xl, 2.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -94,7 +150,7 @@
     line-height: var(--line-height-heading-xl, 3rem);
   }
 
-  &_display-sm {
+  &_#{$breakpoint}display-sm {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-sm, 3rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -107,7 +163,7 @@
     }
   }
 
-  &_display-md {
+  &_#{$breakpoint}display-md {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-md, 4rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -120,7 +176,7 @@
     }
   }
 
-  &_display-lg {
+  &_#{$breakpoint}display-lg {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-lg, 5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -133,7 +189,7 @@
     }
   }
 
-  &_display-xl {
+  &_#{$breakpoint}display-xl {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-xl, 6.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -146,7 +202,7 @@
     }
   }
 
-  &_display-s {
+  &_#{$breakpoint}display-s {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-s, 3.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -159,7 +215,7 @@
     }
   }
 
-  &_display-m {
+  &_#{$breakpoint}display-m {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-m, 4.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -172,7 +228,7 @@
     }
   }
 
-  &_display-l {
+  &_#{$breakpoint}display-l {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-l, 5.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -185,7 +241,7 @@
     }
   }
 
-  &_h1 {
+  &_#{$breakpoint}h1 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-display-sm, 3rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -198,7 +254,7 @@
     }
   }
 
-  &_h2 {
+  &_#{$breakpoint}h2 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-xl, 2.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -211,7 +267,7 @@
     }
   }
 
-  &_h3 {
+  &_#{$breakpoint}h3 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-lg, 2rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -224,7 +280,7 @@
     }
   }
 
-  &_h4 {
+  &_#{$breakpoint}h4 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-md, 1.5rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -237,7 +293,7 @@
     }
   }
 
-  &_h5 {
+  &_#{$breakpoint}h5 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-heading-sm, 1.25rem);
     font-weight: var(--font-weight-semibold, 600);
@@ -250,11 +306,54 @@
     }
   }
 
-  &_h6 {
+  &_#{$breakpoint}h6 {
     font-family: var(--font-family-display, inherit);
     font-size: var(--font-size-text-md, 1rem);
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--line-height-text-md, 1.5rem);
+
+    // A breakpoint size replaces the previous one: what it does not set
+    // comes from the parent, not from the smaller size.
+    @if $breakpoint != "" {
+      letter-spacing: inherit;
+    }
+  }
+}
+
+.size {
+  @include sizes;
+}
+
+// Mobile first: a size for a breakpoint overrides the base size and the
+// smaller breakpoints, because it comes later. The widths are BREAKPOINTS
+// from Theme/breakpoints.ts.
+@media (width >= 40rem) {
+  .size {
+    @include sizes("sm_");
+  }
+}
+
+@media (width >= 48rem) {
+  .size {
+    @include sizes("md_");
+  }
+}
+
+@media (width >= 64rem) {
+  .size {
+    @include sizes("lg_");
+  }
+}
+
+@media (width >= 80rem) {
+  .size {
+    @include sizes("xl_");
+  }
+}
+
+@media (width >= 96rem) {
+  .size {
+    @include sizes("2xl_");
   }
 }
 

@@ -33,6 +33,8 @@ export interface DrawerProps
   focusAfterRef?: RefObject<HTMLElement | null>;
   portalContainer?: HTMLElement | null;
   onClose?: () => void;
+  /** Called once the closing animation has finished and the drawer is removed. */
+  onClosed?: () => void;
   onEscKeyDown?: (event: KeyboardEvent) => void;
   onOverlayClick?: MouseEventHandler<HTMLDivElement>;
 }
