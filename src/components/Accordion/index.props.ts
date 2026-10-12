@@ -5,4 +5,6 @@ export type AccordionProps = PropsWithChildren<{
   className?: string;
   boldTitle?: boolean;
   tabIndex?: number;
+  /** Initial expanded state. Defaults to `false`. */
+  defaultOpen?: boolean;
 }>;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 import clsx from "clsx";
 import { Chevron } from "../Icons";
@@ -13,18 +13,33 @@ export const Accordion: FC<AccordionProps> = ({
   children,
   className,
   tabIndex,
+  defaultOpen = false,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   const toggleAccordion = () => setIsOpen(!isOpen);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.style.blockSize = isOpen
-        ? `${contentRef.current.scrollHeight}px`
-        : "0";
+  useLayoutEffect(() => {
+    const content = contentRef.current;
+    const inner = innerRef.current;
+    if (!content || !inner) return;
+
+    if (!isOpen) {
+      content.style.blockSize = "0";
+      return;
     }
+
+    const updateBlockSize = () => {
+      content.style.blockSize = `${inner.scrollHeight}px`;
+    };
+    updateBlockSize();
+
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(updateBlockSize);
+    observer.observe(inner);
+    return () => observer.disconnect();
   }, [isOpen]);
 
   return (
@@ -55,7 +70,9 @@ export const Accordion: FC<AccordionProps> = ({
         </button>
       </div>
       <div ref={contentRef} className={styles.content}>
-        {children}
+        <div ref={innerRef} className={styles.inner}>
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -10,6 +10,11 @@
   transition: block-size 0.2s ease-in-out;
 }
 
+.inner {
+  // Contain children's margins so they are included in the measured height.
+  display: flow-root;
+}
+
 .button {
   align-items: center;
   background: none;

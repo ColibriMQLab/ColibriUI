@@ -16,6 +16,9 @@ const meta: Meta<typeof Accordion> = {
     tabIndex: {
       control: "number",
     },
+    defaultOpen: {
+      control: { type: "boolean" },
+    },
     className: {
       table: { disable: true },
     },
@@ -23,6 +26,7 @@ const meta: Meta<typeof Accordion> = {
   args: {
     title: "Accordion title",
     boldTitle: false,
+    defaultOpen: false,
   },
   component: Accordion,
 } satisfies Meta<typeof Accordion>;
@@ -66,6 +70,48 @@ export const BoldTitle = (args): React.ReactElement => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </div>
+      </Accordion>
+    </div>
+  );
+};
+
+export const DefaultOpen = (args): React.ReactElement => {
+  return (
+    <div style={wrapperStyles}>
+      <Accordion {...args} defaultOpen>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </div>
+      </Accordion>
+    </div>
+  );
+};
+
+const LazyContent = (): React.ReactElement => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div>
+      {isLoaded
+        ? "Content loaded after opening. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        : "Loading..."}
+    </div>
+  );
+};
+
+export const DefaultOpenWithLazyContent = (args): React.ReactElement => {
+  return (
+    <div style={wrapperStyles}>
+      <Accordion {...args} defaultOpen>
+        <LazyContent />
       </Accordion>
     </div>
   );
