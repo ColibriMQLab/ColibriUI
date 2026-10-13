@@ -12,6 +12,12 @@ const getDayButton = (isoDate: string) => {
   return day;
 };
 
+const getTrigger = (input: HTMLElement) => {
+  const trigger = input.closest<HTMLElement>("[tabindex]");
+  if (!trigger) throw new Error("Datepicker trigger is not rendered");
+  return trigger;
+};
+
 describe("<Datepicker />", () => {
   it("does not loop renders in single mode without selectedRange", () => {
     const onRender = jest.fn();
@@ -93,5 +99,70 @@ describe("<Datepicker />", () => {
 
     expect(onChangeDate).toHaveBeenCalledWith("2026-10-20");
     expect(screen.getByDisplayValue("20.10.2026")).toBeInTheDocument();
+  });
+
+  it("opens the calendar with Enter when enabled", async () => {
+    render(<Datepicker selectedDate="2026-10-14" />);
+
+    getTrigger(screen.getByDisplayValue("14.10.2026")).focus();
+    await userEvent.keyboard("{Enter}");
+
+    expect(screen.getByTestId("popper-container")).toBeInTheDocument();
+  });
+
+  it("does not open when disabled", async () => {
+    const onChangeDate = jest.fn();
+
+    render(
+      <Datepicker
+        disabled
+        selectedDate="2026-10-14"
+        onChangeDate={onChangeDate}
+      />,
+    );
+
+    const input = screen.getByDisplayValue("14.10.2026");
+    const trigger = getTrigger(input);
+
+    expect(input).toBeDisabled();
+    expect(trigger).toHaveAttribute("aria-disabled", "true");
+    expect(trigger).toHaveAttribute("tabindex", "-1");
+
+    await userEvent.click(input);
+    await userEvent.click(trigger);
+    trigger.focus();
+    await userEvent.keyboard("{Enter}");
+
+    expect(screen.queryByTestId("popper-container")).not.toBeInTheDocument();
+    expect(onChangeDate).not.toHaveBeenCalled();
+  });
+
+  it("does not open in range mode when disabled", async () => {
+    const onChangeRange = jest.fn();
+
+    render(
+      <Datepicker
+        disabled
+        selectionMode="range"
+        selectedRange={["2026-10-01", "2026-10-05"]}
+        onChangeRange={onChangeRange}
+      />,
+    );
+
+    const start = screen.getByDisplayValue("01.10.2026");
+    const end = screen.getByDisplayValue("05.10.2026");
+    const trigger = getTrigger(start);
+
+    expect(start).toBeDisabled();
+    expect(end).toBeDisabled();
+    expect(trigger).toHaveAttribute("aria-disabled", "true");
+
+    await userEvent.click(start);
+    await userEvent.click(end);
+    trigger.focus();
+    await userEvent.keyboard("{Enter}");
+
+    expect(screen.queryByTestId("popper-container")).not.toBeInTheDocument();
+    expect(onChangeRange).not.toHaveBeenCalled();
   });
 });

@@ -10,6 +10,8 @@ export type FormFieldProps = PropsWithChildren<{
   /** Id of the control the label belongs to. */
   htmlFor?: string;
   label?: ReactNode;
+  /** Id of the label, referenced by the control's `aria-labelledby`. */
+  labelId?: string;
   ref?: React.Ref<HTMLDivElement>;
   required?: boolean;
 }>;

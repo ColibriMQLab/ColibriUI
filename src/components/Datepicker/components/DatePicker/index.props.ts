@@ -6,6 +6,7 @@ import type {
 
 export type DatePickerProps = DatepickerCalendarProps & {
   className?: string;
+  disabled?: boolean;
   endPlaceholder?: string;
   hasError?: boolean;
   hint?: DatepickerProps["hint"];

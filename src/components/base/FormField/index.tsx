@@ -11,6 +11,7 @@ export const FormField = ({
   hasError,
   hintId,
   htmlFor,
+  labelId,
   required,
   className,
   ref,
@@ -23,6 +24,7 @@ export const FormField = ({
         })}
         tag="label"
         htmlFor={htmlFor}
+        id={labelId}
       >
         {label}
       </Typography>

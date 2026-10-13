@@ -41,6 +41,7 @@ const CalendarIcon = () => (
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   className,
+  disabled = false,
   endPlaceholder,
   hasError,
   hint,
@@ -72,6 +73,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const calendarSize = calendarSizeByDatepickerSize[size];
   const visibleMonth = calendarValue ?? calendarRangeValue[0] ?? new Date();
   const isRangeMode = selectionMode === "range";
+  const isCalendarOpen = isOpen && !disabled;
 
   useEffect(() => {
     setDate(selectedDate);
@@ -85,6 +87,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   }, [isRangeMode, selectedRangeStart, selectedRangeEnd]);
 
   const handleDateChange = (nextDate: Date) => {
+    if (disabled) return;
+
     const nextValue = toISODate(nextDate);
     setDate(nextValue);
     setIsOpen(false);
@@ -92,6 +96,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const handleRangeChange = (nextRange: [Date | null, Date | null]) => {
+    if (disabled) return;
+
     const nextValue: DatepickerRangeValue = [
       nextRange[0] ? toISODate(nextRange[0]) : "",
       nextRange[1] ? toISODate(nextRange[1]) : "",
@@ -136,15 +142,16 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     <div className={styles["range-input"]}>
       <InputRoot
         className={styles["range-control-start"]}
-        disabled={false}
+        disabled={disabled}
         hasError={hasError}
         size={size}
       >
         <BaseInput
-          aria-expanded={isOpen}
+          aria-expanded={isCalendarOpen}
           aria-haspopup="true"
           aria-invalid={hasError}
           autoComplete="off"
+          disabled={disabled}
           maxLength={10}
           placeholder={startPlaceholder ?? placeholder}
           readOnly
@@ -154,16 +161,17 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       </InputRoot>
       <InputRoot
         className={styles["range-control-end"]}
-        disabled={false}
+        disabled={disabled}
         endIcon={<CalendarIcon />}
         hasError={hasError}
         size={size}
       >
         <BaseInput
-          aria-expanded={isOpen}
+          aria-expanded={isCalendarOpen}
           aria-haspopup="true"
           aria-invalid={hasError}
           autoComplete="off"
+          disabled={disabled}
           maxLength={10}
           placeholder={endPlaceholder ?? placeholder}
           readOnly
@@ -182,7 +190,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       hasError={hasError}
     >
       <Dropdown
-        visible={isOpen}
+        disabled={disabled}
+        visible={isCalendarOpen}
         onVisibleChange={setIsOpen}
         placement="bottom"
         preventAutoClose
@@ -191,16 +200,21 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           <div className={styles["calendar-popup"]}>{renderCalendar()}</div>
         }
       >
-        <div className={styles.trigger}>
+        <div
+          aria-disabled={disabled || undefined}
+          className={styles.trigger}
+          tabIndex={disabled ? -1 : 0}
+        >
           {isRangeMode ? (
             renderRangeInput()
           ) : (
             <Input
               className={styles.input}
-              aria-expanded={isOpen}
+              aria-expanded={isCalendarOpen}
               aria-haspopup="true"
               aria-invalid={hasError}
               autoComplete="off"
+              disabled={disabled}
               endIcon={<CalendarIcon />}
               hasError={hasError}
               maxLength={10}

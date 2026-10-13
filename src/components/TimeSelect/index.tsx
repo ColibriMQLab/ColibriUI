@@ -31,6 +31,7 @@ export const TimeSelect: FC<TimeSelectProps> = ({
   zIndex,
   hasError,
   hint,
+  "aria-label": ariaLabel,
 }) => {
   const baseOptions = useMemo(
     () =>
@@ -58,6 +59,7 @@ export const TimeSelect: FC<TimeSelectProps> = ({
 
   return (
     <Select
+      aria-label={ariaLabel}
       className={className}
       customInputRoot={customInputRoot}
       fontSize={fontSize}

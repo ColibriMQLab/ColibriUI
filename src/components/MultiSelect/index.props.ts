@@ -23,7 +23,10 @@ type Size = "s" | "m" | "l";
 type Type = "chip";
 
 export type SelectedItem = { group: string; option: string };
-export interface MultiSelectProps extends Omit<FormFieldProps, "children"> {
+export interface MultiSelectProps
+  extends Omit<FormFieldProps, "children" | "labelId"> {
+  /** Accessible name of the trigger when no visible `label` is passed. */
+  "aria-label"?: string;
   groups: GroupProps[];
   className?: string;
   zIndex?: number;

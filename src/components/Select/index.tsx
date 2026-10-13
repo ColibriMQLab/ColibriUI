@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useId, useState, useMemo } from "react";
 import clsx from "clsx";
 import { Chevron } from "../Icons/Chevron";
 import { InputRoot } from "../base/InputRoot";
@@ -26,8 +26,13 @@ export const Select = <T extends string>({
   customInputRoot,
   className,
   onChange,
+  "aria-label": ariaLabel,
 }: SelectProps<T>): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const id = useId();
+  const labelId = label ? `${id}-label` : undefined;
+  const valueId = `${id}-value`;
+  const hintId = hint ? `${id}-hint` : undefined;
 
   const preparedOptions = useMemo(
     () =>
@@ -56,7 +61,9 @@ export const Select = <T extends string>({
       )}
       required={required}
       label={label}
+      labelId={labelId}
       hint={hint}
+      hintId={hintId}
       hasError={hasError}
     >
       <Dropdown
@@ -74,7 +81,11 @@ export const Select = <T extends string>({
           customInputRoot
         ) : (
           <div
-            tabIndex={0}
+            aria-describedby={hintId}
+            aria-disabled={disabled || undefined}
+            aria-label={labelId ? undefined : ariaLabel}
+            aria-labelledby={labelId ? `${labelId} ${valueId}` : undefined}
+            tabIndex={disabled ? -1 : 0}
             role="button"
             style={{ width: fullWidth ? "100%" : "fit-content" }}
           >
@@ -93,7 +104,11 @@ export const Select = <T extends string>({
               }
               disabled={Boolean(disabled)}
             >
-              <div className={styles["base-input"]} data-testid="base-input">
+              <div
+                id={valueId}
+                className={styles["base-input"]}
+                data-testid="base-input"
+              >
                 {preparedLabel ?? (
                   <span className={styles.placeholder}>{placeholder}</span>
                 )}

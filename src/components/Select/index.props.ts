@@ -15,7 +15,9 @@ export interface IOption<T extends string> {
 }
 
 export interface SelectProps<T extends string>
-  extends Omit<FormFieldProps, "children"> {
+  extends Omit<FormFieldProps, "children" | "labelId"> {
+  /** Accessible name of the trigger when no visible `label` is passed. */
+  "aria-label"?: string;
   className?: string;
   customInputRoot?: ReactNode;
   disabled?: boolean;

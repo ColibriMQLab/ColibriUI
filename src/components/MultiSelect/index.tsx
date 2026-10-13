@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useId, useMemo, useState } from "react";
 import clsx from "clsx";
 import { Dropdown } from "../Dropdown";
 import { InputRoot } from "../base/InputRoot";
@@ -34,8 +34,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   value = [],
   type,
   onChange,
+  "aria-label": ariaLabel,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const id = useId();
+  const labelId = label ? `${id}-label` : undefined;
+  const valueId = `${id}-value`;
+  const hintId = hint ? `${id}-hint` : undefined;
   const internalSelectedKeys = useMemo(() => value.map(toKey), [value]);
 
   const preparedGroups = useMemo(
@@ -92,7 +97,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       )}
       required={required}
       label={label}
+      labelId={labelId}
       hint={hint}
+      hintId={hintId}
       hasError={hasError}
     >
       <Dropdown
@@ -109,7 +116,11 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
         samewidth
       >
         <div
-          tabIndex={0}
+          aria-describedby={hintId}
+          aria-disabled={disabled || undefined}
+          aria-label={labelId ? undefined : ariaLabel}
+          aria-labelledby={labelId ? `${labelId} ${valueId}` : undefined}
+          tabIndex={disabled ? -1 : 0}
           role="button"
           style={{ width: fullWidth ? "100%" : "fit-content" }}
         >
@@ -131,6 +142,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
             disabled={Boolean(disabled)}
           >
             <div
+              id={valueId}
               className={clsx(
                 styles["base-input"],
                 styles[type === "chip" ? "base-input-flex" : "base-input-text"],

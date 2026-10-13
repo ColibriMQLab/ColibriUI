@@ -12,6 +12,7 @@ export type DatepickerCalendarProps = Omit<
 
 export type Props = DatepickerCalendarProps & {
   className?: string;
+  disabled?: boolean;
   endPlaceholder?: string;
   hasError?: boolean;
   hint?: ReactNode;

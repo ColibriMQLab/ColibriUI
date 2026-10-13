@@ -6,6 +6,7 @@ import type { Props } from "./index.props";
 
 export const Datepicker = ({
   className,
+  disabled,
   endPlaceholder,
   hasError,
   hint,
@@ -24,6 +25,7 @@ export const Datepicker = ({
   <div className={clsx(styles.root, className)}>
     <DatePickerInput
       {...calendarProps}
+      disabled={disabled}
       endPlaceholder={endPlaceholder}
       hasError={hasError}
       hint={hint}

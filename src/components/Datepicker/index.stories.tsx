@@ -10,6 +10,9 @@ const meta: Meta<typeof Datepicker> = {
     layout: "centered",
   },
   argTypes: {
+    disabled: {
+      control: "boolean",
+    },
     endPlaceholder: {
       control: "text",
     },
@@ -50,6 +53,7 @@ const meta: Meta<typeof Datepicker> = {
     },
   },
   args: {
+    disabled: false,
     hasError: false,
     hint: undefined,
     label: undefined,
@@ -139,6 +143,26 @@ export const WithError: Story = {
     hint: "Date is required.",
     label: "Start date",
     selectedDate: "",
+  },
+  render: ControlledTemplate,
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    label: "Start date",
+  },
+  render: ControlledTemplate,
+};
+
+export const DisabledRange: Story = {
+  args: {
+    disabled: true,
+    endPlaceholder: "End date",
+    label: "Period",
+    selectedDate: "",
+    selectionMode: "range",
+    startPlaceholder: "Start date",
   },
   render: ControlledTemplate,
 };
