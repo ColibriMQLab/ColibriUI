@@ -10,7 +10,6 @@
 		"audit:snyk": "snyk test",
 		"audit:outdated": "yarn outdated",
 		"audit:all": "yarn run audit && yarn run audit:snyk",
-		"audit:ui": "npx update-browserslist-db@latest && yarn lint && yarn test && yarn build && yarn audit:package",
 		"audit:package": "publint dist --pack npm && attw --pack dist --profile node16",
 		"audit:dead-code": "knip",
 		"clean": "rm -rf dist",
