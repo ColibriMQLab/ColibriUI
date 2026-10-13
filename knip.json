@@ -1,0 +1,18 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "src/components/index.ts",
+    "src/components/[A-Z]*/index.{ts,tsx}",
+    "scripts/*.{js,mjs,ts}"
+  ],
+  "project": ["src/**", ".storybook/**", "scripts/**"],
+  "ignoreBinaries": ["outdated"],
+  "ignoreDependencies": [
+    "@babel/plugin-transform-runtime",
+    "@colbymchenry/codegraph",
+    "css-loader",
+    "postcss-loader",
+    "sass-loader",
+    "style-loader"
+  ]
+}
