@@ -56,7 +56,10 @@ export type {
 export { Counter } from "./Counter";
 export type { CounterProps } from "./Counter/index.props";
 export { Datepicker } from "./Datepicker";
-export type { Props as DatepickerProps } from "./Datepicker/index.props";
+export type {
+  Props as DatepickerProps,
+  DatepickerSelectionMode,
+} from "./Datepicker/index.props";
 export { DotsLoader } from "./DotsLoader";
 export type { DotsLoaderProps } from "./DotsLoader/index.props";
 export { Drawer, DrawerContent, DrawerFooter, DrawerHeader } from "./Drawer";
@@ -77,11 +80,14 @@ export type {
   DropzoneValidator,
 } from "./Dropzone";
 export { Dropdown } from "./Dropdown";
-export type { DropdownProps } from "./Dropdown/index.props";
+export type {
+  DropdownProps,
+  Trigger as DropdownTrigger,
+} from "./Dropdown/index.props";
 export { Editable } from "./Editable";
 export type { EditableProps } from "./Editable";
 export { Grid } from "./Grid";
-export type { GridProps } from "./Grid/index.props";
+export type { GridProps, Space as GridSpace } from "./Grid/index.props";
 export { GridItem } from "./Grid/Item";
 export type { GridItemProps } from "./Grid/Item/index.props";
 export { Image } from "./Image";
@@ -164,7 +170,7 @@ export type {
   SliderView,
 } from "./Slider";
 export { Status } from "./Status";
-export type { StatusProps } from "./Status/index.props";
+export type { StatusProps, StatusTag } from "./Status/index.props";
 export { Switch } from "./Switch";
 export type { SwitchProps } from "./Switch/index.props";
 export { TabsMenu } from "./TabsMenu";
@@ -181,8 +187,11 @@ export { Tooltip } from "./Tooltip";
 export type { TooltipProps } from "./Tooltip/index.props";
 export { Typography } from "./Typography";
 export type {
+  TypographyFontWeight,
   TypographyProps,
   TypographyResponsiveSize,
+  TypographyTag,
+  TypographyVariant,
 } from "./Typography/index.props";
 export { useMediaSizes } from "./hooks/useMediaSizes";
 export { useScrollLock } from "./hooks/useScrollLock";

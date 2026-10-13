@@ -5,8 +5,18 @@
     "src/components/[A-Z]*/index.{ts,tsx}",
     "scripts/*.{js,mjs,ts}"
   ],
-  "project": ["src/**", ".storybook/**", "scripts/**"],
-  "ignoreBinaries": ["outdated"],
+  "project": [
+    "src/**",
+    ".storybook/**",
+    "scripts/**"
+  ],
+  "ignore": [
+    "src/components/Theme/colors/**",
+    "src/components/Theme/global.scss"
+  ],
+  "ignoreBinaries": [
+    "outdated"
+  ],
   "ignoreDependencies": [
     "@babel/plugin-transform-runtime",
     "@colbymchenry/codegraph",

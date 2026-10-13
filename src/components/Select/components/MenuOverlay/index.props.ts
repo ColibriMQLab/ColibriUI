@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export interface MenuOverlayOption<T extends string> {
+interface MenuOverlayOption<T extends string> {
   value: T;
   label: ReactNode;
   selected: boolean;

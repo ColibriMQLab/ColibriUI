@@ -5,3 +5,4 @@ set -euo pipefail
 yarn lint
 yarn lint:deps
 yarn test
+yarn audit:dead-code

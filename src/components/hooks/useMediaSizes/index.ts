@@ -2,7 +2,7 @@ import { useCallback, useSyncExternalStore } from "react";
 import { media } from "../../Theme/breakpoints";
 import type { Media } from "../../Theme/breakpoints";
 
-export type QueryInputFunction = (breakpoints: Media) => string;
+type QueryInputFunction = (breakpoints: Media) => string;
 type QueryInput = QueryInputFunction | string;
 
 const getServerSnapshot = () => false;

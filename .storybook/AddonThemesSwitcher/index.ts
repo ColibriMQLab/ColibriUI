@@ -15,7 +15,7 @@ const getThemeByName = (name) => {
   }
 };
 
-export const withThemesDecorator = makeDecorator({
+const withThemesDecorator = makeDecorator({
   name: "withThemes",
   parameterName: "theme",
   skipIfNoParametersOrOptions: false,

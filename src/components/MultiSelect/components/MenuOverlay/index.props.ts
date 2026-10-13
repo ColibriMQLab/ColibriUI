@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 import type { GroupProps } from "../../index.props";
 
-export interface IOption {
+interface IOption {
   selected: boolean;
   value: string;
   label: ReactNode;
   disabled?: boolean;
 }
 
-export type MenuOverlayGroup = Omit<GroupProps, "options" | "value"> & {
+type MenuOverlayGroup = Omit<GroupProps, "options" | "value"> & {
   options: IOption[];
   value: string;
 };

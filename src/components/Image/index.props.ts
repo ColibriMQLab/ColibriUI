@@ -1,6 +1,6 @@
 import type React from "react";
 
-export interface BaseImageContainerProps {
+interface BaseImageContainerProps {
   fallbackSrc?: string;
   ariaLabel?: string;
   sources?: React.SourceHTMLAttributes<HTMLSourceElement>[];
