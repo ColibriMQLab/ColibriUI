@@ -20,6 +20,8 @@ const calendarSizeByDatepickerSize: Record<
   s: "xs",
 };
 
+const EMPTY_RANGE: DatepickerRangeValue = ["", ""];
+
 const CalendarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +48,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   placeholder,
   required,
   selectedDate = "",
-  selectedRange = ["", ""],
+  selectedRange = EMPTY_RANGE,
   selectionMode = "single",
   size = "m",
   defaultVisibleMonth,
@@ -75,9 +77,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     setDate(selectedDate);
   }, [selectedDate]);
 
+  const [selectedRangeStart, selectedRangeEnd] = selectedRange;
+
   useEffect(() => {
-    setRange(selectedRange);
-  }, [selectedRange]);
+    if (!isRangeMode) return;
+    setRange([selectedRangeStart, selectedRangeEnd]);
+  }, [isRangeMode, selectedRangeStart, selectedRangeEnd]);
 
   const handleDateChange = (nextDate: Date) => {
     const nextValue = toISODate(nextDate);
