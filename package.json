@@ -8,8 +8,6 @@
 	"scripts": {
 		"audit": "yarn audit --groups \"dependencies devDependencies\"",
 		"audit:snyk": "snyk test",
-		"audit:outdated": "yarn outdated",
-		"audit:all": "yarn run audit && yarn run audit:snyk",
 		"audit:package": "publint dist --pack npm && attw --pack dist --profile node16",
 		"audit:dead-code": "knip",
 		"clean": "rm -rf dist",

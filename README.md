@@ -196,6 +196,57 @@ const css = `@media ${media.down("sm")} { … }`;
 
 Returns `false` on the server and during hydration. Use it to decide whether to mount a heavy component; to show/hide markup use CSS media queries, otherwise the wrong variant renders until hydration.
 
+## Development Commands
+
+Run these commands from the repository root after installing dependencies with `yarn install`.
+
+### Checks and Fixes
+
+| Command                | Purpose                                                                                                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `yarn lint`            | Run both ESLint and Stylelint.                                                                                         |
+| `yarn lint:ts`         | Check JavaScript and TypeScript with ESLint.                                                                           |
+| `yarn lint:ts:fix`     | Apply automatic ESLint fixes.                                                                                          |
+| `yarn lint:css`        | Check SCSS with Stylelint.                                                                                             |
+| `yarn lint:css:fix`    | Apply automatic Stylelint fixes.                                                                                       |
+| `yarn lint:deps`       | Check component dependency boundaries.                                                                                 |
+| `yarn test`            | Run Jest tests and collect coverage in `.coverage/`.                                                                   |
+| `yarn test:coverage`   | Explicitly enable coverage; currently equivalent to `yarn test` because coverage is enabled in the Jest configuration. |
+| `yarn audit:dead-code` | Check for unused files, exports and dependencies with Knip.                                                            |
+
+`./verify.sh` runs lint, dependency boundary checks, tests and the dead code audit in sequence, stopping at the first failure.
+
+### Storybook
+
+| Command                | Purpose                                                 |
+| ---------------------- | ------------------------------------------------------- |
+| `yarn storybook`       | Start the Storybook development server on port 6006.    |
+| `yarn build-storybook` | Build the static Storybook site in `storybook-static/`. |
+
+### Package Build
+
+| Command                    | Purpose                                                                                                               |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `yarn build`               | Clean `dist/`, build CommonJS and ESM output with Rollup, run all build stages below and check the resulting exports. |
+| `yarn clean`               | Delete `dist/`.                                                                                                       |
+| `yarn build:sass`          | Compile SCSS to CSS and apply Autoprefixer for both package formats.                                                  |
+| `yarn build:updateImports` | Replace SCSS import paths with CSS paths in the built JavaScript.                                                     |
+| `yarn build:variables`     | Generate CSS variables files for Buenos Aires and Jaipur.                                                             |
+| `yarn build:postbuild`     | Copy package metadata and README, and generate component package manifests.                                           |
+| `yarn build:check`         | Check that built CommonJS and ESM entry points provide the runtime exports declared in their types.                   |
+
+Use `yarn build` for a complete build. Individual build stages operate on existing output and are mainly useful when diagnosing the build pipeline.
+
+### Audits
+
+| Command              | Purpose                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `yarn run audit`     | Check production and development dependencies for known vulnerabilities using Yarn's audit command.              |
+| `yarn audit:snyk`    | Check dependencies with Snyk; requires Snyk authentication.                                                      |
+| `yarn audit:package` | Check the built package with Publint and Are the Types Wrong using the `node16` profile. Run after `yarn build`. |
+
+Dependency security audits require network access. To check for available dependency updates, run `yarn outdated` directly.
+
 ## License
 
 MIT

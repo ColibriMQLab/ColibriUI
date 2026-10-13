@@ -14,9 +14,6 @@
     "src/components/Theme/colors/**",
     "src/components/Theme/global.scss"
   ],
-  "ignoreBinaries": [
-    "outdated"
-  ],
   "ignoreDependencies": [
     "@babel/plugin-transform-runtime",
     "@colbymchenry/codegraph",
