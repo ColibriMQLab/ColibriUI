@@ -1,0 +1,123 @@
+.root {
+  --pagination-item-size: var(--component-input-height-m);
+  --pagination-font-size: var(--font-size-text-md);
+
+  color: var(--component-pagination-text);
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--font-family-ui);
+  gap: var(--space-3);
+  max-inline-size: 100%;
+
+  &_disabled {
+    opacity: 0.55;
+  }
+}
+
+.size {
+  &_s {
+    --pagination-item-size: var(--component-input-height-s);
+    --pagination-font-size: var(--font-size-text-sm);
+  }
+
+  &_l {
+    --pagination-item-size: var(--component-input-height-l);
+  }
+}
+
+.main,
+.pages {
+  align-items: center;
+  display: flex;
+  gap: var(--space-1);
+}
+
+.page,
+.arrow {
+  align-items: center;
+  background: transparent;
+  block-size: var(--pagination-item-size);
+  border: none;
+  border-radius: var(--radius-sm);
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: var(--pagination-font-size);
+  justify-content: center;
+  min-inline-size: var(--pagination-item-size);
+  padding: 0 var(--space-2);
+
+  &:disabled {
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid
+      var(--component-pagination-focus-ring);
+    outline-offset: var(--focus-ring-width);
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--component-pagination-bg-hover);
+  }
+}
+
+.page_current,
+.page_current:hover:not(:disabled) {
+  background: var(--component-pagination-bg-current);
+  color: var(--component-pagination-text-current);
+  cursor: default;
+}
+
+.arrow_previous {
+  transform: rotate(90deg);
+}
+
+.arrow_next {
+  transform: rotate(-90deg);
+}
+
+.ellipsis {
+  align-items: center;
+  block-size: var(--pagination-item-size);
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  font-size: var(--pagination-font-size);
+  justify-content: center;
+  min-inline-size: var(--space-6);
+  user-select: none;
+}
+
+.counter {
+  align-items: center;
+  display: flex;
+  font-size: var(--pagination-font-size);
+  gap: var(--space-1);
+  justify-content: center;
+  min-inline-size: var(--space-20);
+}
+
+.actions {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  min-inline-size: 0;
+}
+
+.jump {
+  inline-size: var(--space-20);
+}
+
+.helper {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-text-sm);
+  line-height: var(--pagination-item-size);
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

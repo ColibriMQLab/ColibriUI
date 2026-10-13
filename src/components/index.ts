@@ -134,6 +134,13 @@ export type {
   NumberInputSize,
   NumberInputValues,
 } from "./NumberInput";
+export { Pagination, getPaginationItems } from "./Pagination";
+export type {
+  PaginationItem,
+  PaginationMode,
+  PaginationProps,
+  PaginationSize,
+} from "./Pagination";
 export { Portal } from "./Portal";
 export type { PortalProps } from "./Portal/index.props";
 export { Progress } from "./Progress";
