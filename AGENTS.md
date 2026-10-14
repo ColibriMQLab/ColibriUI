@@ -15,15 +15,23 @@ Useful skills:
 
 - `components` for creating, moving, or refactoring React components.
 - `typescript` for public prop types, generics, type errors, and exported type APIs.
-- `code-review` for reviews and behavior-preserving refactors.
+- `code-review` for reviews, architecture/dependency audits, and behavior-preserving refactors.
 - `js-conventions` for local formatting and code style.
+
+## Scope and Existing Changes
+
+- Follow the user's requested scope. A review is read-only unless fixes are explicitly requested.
+- Before work, inspect staged, unstaged, and untracked changes. Preserve unrelated user changes.
+- Read-only requests also cover configuration, lockfiles, generated output, and local indexes. Do not run autofix, install dependencies, or generate builds in the workspace during a read-only review.
+- If a review needs additional tests or generated artifacts, use an isolated temporary copy and report the verification limits.
+- Keep behavior-preserving refactors compatible with public props, exports, DOM/style contracts, callbacks, and lifecycle behavior. Report unrelated existing defects separately.
 
 ## CodeGraph
 
-Use CodeGraph before broad grep/find exploration when a `.codegraph/` index exists.
+When a `.codegraph/` index exists, use `codegraph_explore` through MCP, or `yarn codegraph explore`, before searching or reading code to locate symbols, understand behavior, or discover impact. Name a file or symbol to get its line-numbered source and call paths. Use raw file reads for unindexed content or files reported as stale.
 CodeGraph stores a local project index in `.codegraph/`; it is gitignored and must not be committed.
 
-Keep the graph fresh:
+Keep an existing graph fresh during implementation work:
 
 ```bash
 yarn codegraph status
@@ -46,11 +54,7 @@ If the graph looks stale or broken, rebuild it:
 yarn codegraph index
 ```
 
-If `.codegraph/` does not exist yet, initialize it:
-
-```bash
-yarn codegraph init --yes
-```
+If `.codegraph/` does not exist, skip CodeGraph. Index initialization is the user's decision; do not create it automatically. During a read-only review, do not sync or rebuild the index; read affected files directly if the graph is stale.
 
 ## Dependency Cruiser
 
@@ -99,8 +103,10 @@ yarn install
 yarn lint
 yarn lint:deps
 yarn test
+yarn audit:dead-code
 yarn build
 yarn build-storybook
+yarn audit:package
 ./verify.sh
 ```
 
@@ -110,9 +116,14 @@ yarn build-storybook
 yarn lint
 yarn lint:deps
 yarn test
+yarn audit:dead-code
 ```
 
 Run `./verify.sh` after runtime code, dependency, build-tooling, or config changes. For docs-only or stories-only changes, run the narrower relevant command and say what was skipped.
+
+Run `yarn build` for public type or package/build pipeline changes, and `yarn build-storybook` for story changes. `yarn audit:package` checks the built package in `dist/`. A source TypeScript check does not validate emitted declarations or package compatibility.
+
+For read-only reviews, choose checks that respect the scope above and use an isolated copy when builds are needed. Report actual commands, failures, warnings, and skipped checks. Treat dead-code reports as advisory: absence of local callers does not prove a public export is unused.
 
 ## Testing
 
@@ -120,6 +131,9 @@ Run `./verify.sh` after runtime code, dependency, build-tooling, or config chang
 - Test behavior, not implementation details.
 - Add focused tests when a component behavior, keyboard interaction, formatting rule, or accessibility contract changes.
 - Storybook stories should cover public props and interactive actions for component APIs.
+- For overlays and focus changes, cover initial focus, Tab/Shift+Tab, Escape, restoration after close (including `autoFocus`), nested instances, rerenders, and cleanup where relevant.
+- Use real-browser evidence for focus visibility, visual layout, themes, and interactions that jsdom cannot establish. Passing Jest, axe, or a Storybook build alone does not prove browser accessibility.
+- Component README and Storybook content remain English; write reports in the user's language.
 
 ## TypeScript
 
