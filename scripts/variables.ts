@@ -1,4 +1,4 @@
-const { writeFile, ensureDir } = require('fs-extra');
+const { writeFile, mkdir } = require('node:fs/promises');
 const { resolve, dirname } = require("path");
 const { THEMES } = require('../src/components/Theme');
 
@@ -20,7 +20,7 @@ async function variables() {
 	for (const outputDir of distPaths) {
 		const jaipurPath = resolve(outputDir, 'theme_jaipur_variables.css');
 		const baPath = resolve(outputDir, 'theme_ba_variables.css');
-		await ensureDir(dirname(jaipurPath));
+		await mkdir(dirname(jaipurPath), { recursive: true });
 		await writeFile(jaipurPath, jaipurContent);
 		await writeFile(baPath, baContent);
 	}

@@ -1,4 +1,4 @@
-const { writeFile, mkdir } = require('fs-extra');
+const { writeFile, mkdir } = require('node:fs/promises');
 const { relative, join, dirname } = require("path");
 const fg = require("fast-glob");
 const sass = require('sass')

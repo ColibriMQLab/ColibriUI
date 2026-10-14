@@ -1,4 +1,4 @@
-const { writeFile, readFile } = require('fs-extra');
+const { writeFile, readFile } = require('node:fs/promises');
 const fg = require("fast-glob");
 
 const inputDir = 'dist';

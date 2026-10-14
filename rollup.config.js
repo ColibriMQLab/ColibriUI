@@ -1,9 +1,7 @@
 import typescript from "@rollup/plugin-typescript";
 import babel from "@rollup/plugin-babel";
-import url from "@rollup/plugin-url";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import svgr from "@svgr/rollup";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 import fg from "fast-glob";
 
@@ -47,8 +45,6 @@ export default [
     external,
     treeshake: true,
     plugins: [
-      url(),
-      svgr(),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],
@@ -75,8 +71,6 @@ export default [
     external,
     treeshake: false,
     plugins: [
-      url(),
-      svgr(),
       nodeResolve({
         preferBuiltins: true,
         extensions: [".ts", ".tsx"],

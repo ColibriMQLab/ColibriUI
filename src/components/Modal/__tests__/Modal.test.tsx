@@ -78,6 +78,131 @@ describe("<Modal />", () => {
   });
 });
 
+describe("<Modal /> focus", () => {
+  it("moves focus to the first focusable element and restores it on close", () => {
+    const { rerender } = render(<button type="button">Open</button>);
+    const trigger = screen.getByText("Open");
+    trigger.focus();
+
+    rerender(
+      <>
+        <button type="button">Open</button>
+        <Modal>
+          <Modal.Body>
+            <div role="button" tabIndex={0}>
+              Select
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <div tabIndex={0}>Custom</div>
+          </Modal.Footer>
+        </Modal>
+      </>,
+    );
+
+    expect(screen.getByLabelText("Close modal")).toHaveFocus();
+
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(screen.getByText("Custom")).toHaveFocus();
+
+    rerender(<button type="button">Open</button>);
+    expect(trigger).toHaveFocus();
+  });
+
+  it("returns focus to the outer modal when a nested modal closes", () => {
+    const { rerender } = render(<Modal>outer</Modal>);
+    const outerClose = screen.getByLabelText("Close modal");
+    expect(outerClose).toHaveFocus();
+
+    rerender(
+      <>
+        <Modal>outer</Modal>
+        <Modal>inner</Modal>
+      </>,
+    );
+    expect(screen.getAllByLabelText("Close modal")[1]).toHaveFocus();
+
+    rerender(<Modal>outer</Modal>);
+    expect(screen.getByLabelText("Close modal")).toHaveFocus();
+  });
+
+  it("keeps focus on autofocused content and restores it on close", () => {
+    const { rerender } = render(<button type="button">Open</button>);
+    const trigger = screen.getByText("Open");
+    trigger.focus();
+
+    rerender(
+      <>
+        <button type="button">Open</button>
+        <Modal>
+          {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+          <input aria-label="Name" autoFocus />
+        </Modal>
+      </>,
+    );
+    expect(screen.getByLabelText("Name")).toHaveFocus();
+
+    rerender(<button type="button">Open</button>);
+    expect(trigger).toHaveFocus();
+  });
+
+  it("leaves focus in the remaining modal when a lower one closes", () => {
+    const { rerender } = render(<button type="button">Open</button>);
+    const trigger = screen.getByText("Open");
+    trigger.focus();
+
+    rerender(
+      <>
+        <button type="button">Open</button>
+        <Modal key="a">a</Modal>
+      </>,
+    );
+    rerender(
+      <>
+        <button type="button">Open</button>
+        <Modal key="a">a</Modal>
+        <Modal key="b">b</Modal>
+      </>,
+    );
+    const closeB = screen.getAllByLabelText("Close modal")[1];
+    expect(closeB).toHaveFocus();
+
+    rerender(
+      <>
+        <button type="button">Open</button>
+        <Modal key="b">b</Modal>
+      </>,
+    );
+    expect(closeB).toHaveFocus();
+
+    rerender(<button type="button">Open</button>);
+    expect(trigger).toHaveFocus();
+  });
+
+  it("skips disabled and non-focusable elements when wrapping Tab", () => {
+    render(
+      <Modal>
+        <Modal.Body>
+          <input aria-label="Name" />
+          <div role="button">Not focusable</div>
+          <button type="button" disabled tabIndex={0}>
+            Disabled
+          </button>
+        </Modal.Body>
+      </Modal>,
+    );
+    const close = screen.getByLabelText("Close modal");
+    const input = screen.getByLabelText("Name");
+    expect(close).toHaveFocus();
+
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(input).toHaveFocus();
+
+    fireEvent.keyDown(document, { key: "Tab" });
+    expect(close).toHaveFocus();
+  });
+});
+
 describe("<Modal /> nested", () => {
   it("closes only the topmost modal on Escape", () => {
     const onOuterClose = jest.fn();

@@ -74,3 +74,4 @@ A fixed row for actions, aligned to the end.
 - Compound mode is detected by direct children. Wrapping parts in a Fragment or a custom component switches the modal to legacy mode.
 - A close button is always present: if compound children have no `Modal.Header`, a standalone close row is rendered.
 - Legacy mode keeps the previous markup: `<Modal title="...">content</Modal>`.
+- On open, focus moves to the first focusable element in the dialog (usually the close button), or to the dialog itself if there is none. An element with `autoFocus` keeps focus. On close, focus returns to the element that was focused before the modal opened, unless focus is already in another open modal.

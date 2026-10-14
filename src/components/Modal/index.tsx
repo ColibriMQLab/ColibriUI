@@ -6,7 +6,6 @@ import React, {
   useEffect,
   useId,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import clsx from "clsx";
@@ -43,7 +42,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   title,
   withinParent = false,
 }) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  const [dialog, setDialog] = useState<HTMLDivElement | null>(null);
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
   const parentModal = useContext(ModalContext);
   const parentContainer = withinParent ? parentModal?.container : undefined;
@@ -55,7 +54,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   const isTopmost = useModalStack(titleId);
 
   useScrollLock();
-  useTrapFocus(modalRef, isTopmost);
+  useTrapFocus(dialog, isTopmost);
 
   const handleClose = useCallback(() => {
     onClose?.();
@@ -64,11 +63,6 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   const registerTitle = useCallback(() => {
     setTitleCount((count) => count + 1);
     return () => setTitleCount((count) => count - 1);
-  }, []);
-
-  const setWrapperRef = useCallback((node: HTMLDivElement | null) => {
-    modalRef.current = node;
-    setContainer(node);
   }, []);
 
   const contextValue = useMemo(
@@ -140,8 +134,10 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
           className={clsx(styles.root, {
             [styles.root_contained]: isContained,
           })}
+          ref={setDialog}
           role="dialog"
           aria-modal="true"
+          tabIndex={-1}
           aria-labelledby={titleCount > 0 ? titleId : undefined}
         >
           <div
@@ -159,7 +155,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
               },
               className,
             )}
-            ref={setWrapperRef}
+            ref={setContainer}
           >
             {content}
           </div>
