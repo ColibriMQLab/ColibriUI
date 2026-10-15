@@ -66,3 +66,14 @@
   max-width: calc(100% - var(--space-8));
   min-width: 0;
 }
+
+// Fills the parent padding box; the parent border, radius and overflow clip form the edges.
+.modal-wrapper_contained.modal-wrapper_fill {
+  border: 0;
+  border-radius: 0;
+  height: 100%;
+  max-height: none;
+  max-width: none;
+  min-width: 0;
+  width: 100%;
+}

@@ -21,6 +21,9 @@ const meta: Meta<typeof Modal> = {
     withinParent: {
       table: { disable: true },
     },
+    fillParent: {
+      table: { disable: true },
+    },
   },
   args: {
     onClose: fn(),
@@ -236,6 +239,51 @@ export const NestedWithinParent: Story = {
                   <div style={{ width: "18.75rem", maxWidth: "100%" }}>
                     Closing this modal keeps the parent open.
                   </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button onClick={closeInner}>OK</Button>
+                </Modal.Footer>
+              </Modal>
+            )}
+          </Modal>
+        )}
+      </>
+    );
+  },
+};
+
+export const NestedFillParent: Story = {
+  render: (args) => {
+    const { isOpen, open, close } = useModalState(args.onClose);
+    const [isInnerOpen, setIsInnerOpen] = useState(false);
+    const closeInner = () => setIsInnerOpen(false);
+
+    return (
+      <>
+        {!isOpen && <Button onClick={open}>Open modal</Button>}
+        {isOpen && (
+          <Modal onClose={close}>
+            <Modal.Header>
+              <Modal.Title>Large parent modal</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div style={{ width: "62.5rem", maxWidth: "100%" }}>
+                <p>The inner modal covers this window edge to edge.</p>
+                <Button onClick={() => setIsInnerOpen(true)}>
+                  Open inner modal
+                </Button>
+                {Array.from({ length: 20 }, (_, index) => (
+                  <p key={index}>Parent content line {index + 1}</p>
+                ))}
+              </div>
+            </Modal.Body>
+            {isInnerOpen && (
+              <Modal withinParent fillParent onClose={closeInner}>
+                <Modal.Header>
+                  <Modal.Title>Inner modal</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  Closing this modal brings the parent back.
                 </Modal.Body>
                 <Modal.Footer>
                   <Button onClick={closeInner}>OK</Button>

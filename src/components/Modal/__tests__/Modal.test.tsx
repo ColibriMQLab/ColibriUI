@@ -251,6 +251,26 @@ describe("<Modal withinParent />", () => {
     expect(dialog).not.toHaveClass("root_contained");
   });
 
+  it("fills the parent window only with withinParent and fillParent", () => {
+    render(
+      <Modal>
+        <Modal.Body>outer</Modal.Body>
+        <Modal withinParent>inset</Modal>
+        <Modal withinParent fillParent>
+          fill
+        </Modal>
+        <Modal fillParent>ignored</Modal>
+      </Modal>,
+    );
+
+    const windowOf = (text: string) =>
+      screen.getByText(text).closest("[class*='modal-wrapper']");
+    expect(windowOf("fill")).toHaveClass("modal-wrapper_fill");
+    expect(windowOf("inset")).not.toHaveClass("modal-wrapper_fill");
+    expect(windowOf("ignored")).not.toHaveClass("modal-wrapper_fill");
+    expect(windowOf("outer")).not.toHaveClass("modal-wrapper_fill");
+  });
+
   it("has no axe violations", async () => {
     const { baseElement } = render(
       <Modal title="Title" onClose={jest.fn()}>

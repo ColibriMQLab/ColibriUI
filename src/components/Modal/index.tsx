@@ -41,6 +41,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   onClose,
   title,
   withinParent = false,
+  fillParent = false,
 }) => {
   const [dialog, setDialog] = useState<HTMLDivElement | null>(null);
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
@@ -152,6 +153,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
                 [styles["modal-wrapper_desktop"]]: isDesktop,
                 [styles["modal-wrapper_mobile"]]: !isDesktop,
                 [styles["modal-wrapper_contained"]]: isContained,
+                [styles["modal-wrapper_fill"]]: isContained && fillParent,
               },
               className,
             )}

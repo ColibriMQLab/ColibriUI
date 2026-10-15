@@ -14,6 +14,12 @@ export type ModalProps = {
    * rendered inside another `Modal`.
    */
   withinParent?: boolean;
+  /**
+   * Makes a `withinParent` modal take the whole parent window, with no
+   * offset. The parent border and radius form the edges. Has no effect
+   * without `withinParent` or a parent modal.
+   */
+  fillParent?: boolean;
 };
 
 export interface ModalHeaderProps extends HTMLAttributes<HTMLDivElement> {

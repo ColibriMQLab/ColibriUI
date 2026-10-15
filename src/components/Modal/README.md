@@ -34,15 +34,32 @@ The parts are also exported as `ModalHeader`, `ModalTitle`, `ModalBody` and `Mod
 </Modal>
 ```
 
+### Nested within parent
+
+`withinParent` renders a modal inside the parent `Modal` window: its overlay covers only the parent, and the window keeps an offset from the parent edges. Add `fillParent` to make the nested window take the whole parent window with no offset; the parent border and radius form its edges, so the two windows line up exactly. On mobile a nested window already fills the parent. Without `withinParent` or a parent modal, `fillParent` has no effect.
+
+```tsx
+<Modal onClose={close}>
+  <Modal.Body>…</Modal.Body>
+  {isInnerOpen && (
+    <Modal withinParent fillParent onClose={closeInner}>
+      <Modal.Body>Inner content</Modal.Body>
+    </Modal>
+  )}
+</Modal>
+```
+
 ## Props
 
 ### Modal
 
-| Prop        | Type         | Description                                                                                      |
-| ----------- | ------------ | ------------------------------------------------------------------------------------------------ |
-| `onClose`   | `() => void` | Called by the close button, Escape and overlay click.                                            |
-| `title`     | `string`     | Legacy shorthand. Used only when children contain no `Modal.Header`, `Modal.Body` or `Modal.Footer`. |
-| `className` | `string`     | Class for the modal window, for example to set a fixed size.                                     |
+| Prop           | Type         | Description                                                                                      |
+| -------------- | ------------ | ------------------------------------------------------------------------------------------------ |
+| `onClose`      | `() => void` | Called by the close button, Escape and overlay click.                                            |
+| `title`        | `string`     | Legacy shorthand. Used only when children contain no `Modal.Header`, `Modal.Body` or `Modal.Footer`. |
+| `className`    | `string`     | Class for the modal window, for example to set a fixed size.                                     |
+| `withinParent` | `boolean`    | Renders inside the parent modal window instead of the viewport. Default `false`.                 |
+| `fillParent`   | `boolean`    | With `withinParent`, takes the whole parent window with no offset. Default `false`.              |
 
 ### Modal.Header
 
