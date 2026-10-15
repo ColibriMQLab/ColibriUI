@@ -15,6 +15,7 @@ import { Help } from "./Help";
 import { Info } from "./Info";
 import { Minus } from "./Minus";
 import { More } from "./More";
+import { Pipette } from "./Pipette";
 import { Plus } from "./Plus";
 import { Setting } from "./Setting";
 import { Shield } from "./Shield";
@@ -39,6 +40,7 @@ const icons = {
   Info: <Info />,
   Minus: <Minus />,
   More: <More />,
+  Pipette: <Pipette />,
   Plus: <Plus />,
   Setting: <Setting />,
   Shield: <Shield />,

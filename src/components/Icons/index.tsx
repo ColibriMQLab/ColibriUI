@@ -14,6 +14,7 @@ export { Help } from "./Help";
 export { Info } from "./Info";
 export { Minus } from "./Minus";
 export { More } from "./More";
+export { Pipette } from "./Pipette";
 export { Plus } from "./Plus";
 export { Setting } from "./Setting";
 export { Shield } from "./Shield";

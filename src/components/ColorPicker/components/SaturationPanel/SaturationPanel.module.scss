@@ -1,0 +1,30 @@
+// The background is the pure hue (inline). The gradients use exact black and
+// white because they define the color space, not the theme.
+.root {
+  background-image:
+    linear-gradient(to top, black, transparent),
+    linear-gradient(to right, white, transparent);
+  border-radius: var(--radius-sm);
+  cursor: crosshair;
+  height: var(--space-32);
+  outline: none;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  width: 100%;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--color-focus-ring);
+  }
+}
+
+.thumb {
+  border: var(--focus-ring-width) solid var(--color-neutral-0);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-raised);
+  height: var(--space-5);
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: var(--space-5);
+}

@@ -1,0 +1,43 @@
+.root {
+  // The hue spectrum defines the color space, not the theme.
+  background: linear-gradient(
+    to right,
+    hsl(0deg 100% 50%),
+    hsl(60deg 100% 50%),
+    hsl(120deg 100% 50%),
+    hsl(180deg 100% 50%),
+    hsl(240deg 100% 50%),
+    hsl(300deg 100% 50%),
+    hsl(360deg 100% 50%)
+  );
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  height: var(--space-3);
+  outline: none;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+
+  // The bar is thin: extend the pointer hit area up and down.
+  &::before {
+    content: "";
+    inset: calc(var(--space-2) * -1) 0;
+    position: absolute;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--color-focus-ring);
+  }
+}
+
+.thumb {
+  border: var(--focus-ring-width) solid var(--color-neutral-0);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-raised);
+  height: var(--space-5);
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--space-5);
+}

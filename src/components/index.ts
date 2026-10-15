@@ -53,6 +53,12 @@ export type {
   CodeFieldSize,
   ItemErrorBehavior,
 } from "./CodeField";
+export { ColorPicker, COLOR_PICKER_PRESETS } from "./ColorPicker";
+export type {
+  ColorPickerLabels,
+  ColorPickerPreset,
+  ColorPickerProps,
+} from "./ColorPicker";
 export { Counter } from "./Counter";
 export type { CounterProps } from "./Counter/index.props";
 export { Datepicker } from "./Datepicker";

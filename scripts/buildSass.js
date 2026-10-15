@@ -1,4 +1,4 @@
-const { writeFile, mkdir } = require('node:fs/promises');
+const { writeFile, mkdir, copyFile } = require('node:fs/promises');
 const { relative, join, dirname } = require("path");
 const fg = require("fast-glob");
 const sass = require('sass')
@@ -24,7 +24,21 @@ async function compileSass() {
   }))
 }
 
-compileSass().catch(err => {
+// Images referenced from styles with url() keep their relative paths.
+async function copyStyleAssets() {
+  const files = await fg(`${inputDir}/components/**/*.{png,svg}`);
+  await Promise.all(files.map(async (fileName) => {
+    const relativePath = relative(`${inputDir}/components`, fileName);
+
+    for (const outputDir of distPaths) {
+        const outputFilePath = join(outputDir, relativePath);
+        await mkdir(dirname(outputFilePath), { recursive: true });
+        await copyFile(fileName, outputFilePath);
+    }
+  }))
+}
+
+Promise.all([compileSass(), copyStyleAssets()]).catch(err => {
   console.error(err);
   process.exit(1);
 });

@@ -1,0 +1,25 @@
+// The wrapper only gives access to the trigger and does not affect layout.
+.root {
+  display: contents;
+}
+
+.dot {
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 0 0 var(--border-width-hairline)
+    var(--color-border-default);
+  display: block;
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+// "No color" fills the whole round trigger.
+.trigger_empty {
+  background-image: url("./assets/none.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dot_hidden {
+  display: none;
+}
