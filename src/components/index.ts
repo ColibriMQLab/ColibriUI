@@ -133,6 +133,15 @@ export type {
 } from "./Modal/index.props";
 export { MultiSelect } from "./MultiSelect";
 export type { MultiSelectProps } from "./MultiSelect/index.props";
+export { NavigationMenu } from "./NavigationMenu";
+export type {
+  NavigationMenuItem,
+  NavigationMenuLayout,
+  NavigationMenuLinkProps,
+  NavigationMenuProps,
+  NavigationMenuRenderLink,
+  NavigationMenuSize,
+} from "./NavigationMenu";
 export { NumberInput } from "./NumberInput";
 export type {
   NumberInputGroupStyle,

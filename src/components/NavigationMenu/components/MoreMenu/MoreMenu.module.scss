@@ -1,0 +1,22 @@
+// The wrapper only gives access to the trigger and does not affect layout.
+.root {
+  display: contents;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+
+  &_open {
+    transform: rotate(180deg);
+  }
+}
+
+// Portaled out of the menu root, so the font is set again.
+.options {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-ui);
+  min-inline-size: calc(var(--space-32) + var(--space-16));
+  padding: var(--space-1);
+}

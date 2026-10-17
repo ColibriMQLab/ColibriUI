@@ -1,0 +1,75 @@
+.root {
+  font-family: var(--font-family-ui);
+  min-inline-size: 0;
+
+  // Item geometry, read by the links and the "More" trigger.
+  &.size_m {
+    --navigation-item-height: calc(var(--space-8) + var(--space-1));
+    --navigation-item-font-size: var(--font-size-text-md);
+    --navigation-item-line-height: var(--line-height-text-md);
+    --navigation-item-padding: var(--space-4);
+    --navigation-menu-gap: var(--space-2);
+  }
+
+  &.size_s {
+    --navigation-item-height: var(--space-8);
+    --navigation-item-font-size: var(--font-size-text-sm);
+    --navigation-item-line-height: var(--line-height-text-sm);
+    --navigation-item-padding: var(--space-3);
+    --navigation-menu-gap: var(--space-1);
+  }
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  gap: var(--navigation-menu-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &_item {
+    display: flex;
+    flex-shrink: 0;
+  }
+}
+
+.overflow {
+  display: block;
+  position: relative;
+
+  // Before the first measurement, and on the server: no "More", as many items as fit.
+  &_measuring {
+    overflow: hidden;
+  }
+}
+
+.more_hidden {
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.measurer {
+  block-size: 0;
+  display: flex;
+  inline-size: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+// position: relative makes item offsets relative to the strip.
+.scroll_area {
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  position: relative;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

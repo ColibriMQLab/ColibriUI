@@ -649,7 +649,11 @@ export default {
   "component-pagination-bg-current": Color.BRAND_JP_EGGPLANT,
   "component-pagination-bg-hover": Color.NEUTRAL_JP_100,
   "component-pagination-focus-ring": Color.BRAND_JP_PINK,
+  "component-navigation-item-text": Color.BRAND_JP_EGGPLANT,
+  "component-navigation-item-text-selected": Color.BRAND_JP_PINK,
+  "component-navigation-item-bg-hover": Color.NEUTRAL_JP_100,
   "component-navigation-item-bg-selected": Color.BRAND_JP_EGGPLANT,
+  "component-navigation-item-focus-ring": Color.BRAND_JP_PINK,
   "component-chip-bg-selected": Color.BRAND_JP_EGGPLANT,
   "component-chip-bg-selected-strong": Color.BRAND_JP_PINK,
 

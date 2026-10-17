@@ -1,0 +1,73 @@
+// Sizes come from the custom properties of the menu root.
+.item {
+  align-items: center;
+  background: transparent;
+  block-size: var(--navigation-item-height);
+  border: none;
+  border-radius: var(--radius-full);
+  box-sizing: border-box;
+  color: var(--component-navigation-item-text);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: var(--navigation-item-font-size);
+  gap: var(--space-2);
+  line-height: var(--navigation-item-line-height);
+  padding: 0 var(--navigation-item-padding);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--component-navigation-item-bg-hover);
+  }
+
+  // Inset: the scroll strip and the measuring row clip an outer ring.
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid
+      var(--component-navigation-item-focus-ring);
+    outline-offset: calc(var(--focus-ring-width) * -1);
+  }
+
+  &_selected,
+  &_selected:hover {
+    background: var(--component-navigation-item-bg-selected);
+    color: var(--component-navigation-item-text-selected);
+  }
+}
+
+.option {
+  align-items: center;
+  border-radius: var(--radius-xs);
+  color: var(--component-menu-text);
+  display: flex;
+  font-size: var(--font-size-text-sm);
+  gap: var(--space-2);
+  line-height: var(--line-height-text-sm);
+  outline: none;
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--component-menu-item-bg-hover);
+  }
+
+  &_selected,
+  &_selected:hover,
+  &_selected:focus-visible {
+    background: var(--component-navigation-item-bg-selected);
+    color: var(--component-navigation-item-text-selected);
+  }
+
+  &_selected:focus-visible {
+    outline: var(--focus-ring-width) solid
+      var(--component-navigation-item-focus-ring);
+    outline-offset: calc(var(--focus-ring-width) * -1);
+  }
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}

@@ -648,7 +648,11 @@ export default {
   "component-pagination-bg-current": Color.BRAND_BA_FOREST,
   "component-pagination-bg-hover": Color.NEUTRAL_BA_100,
   "component-pagination-focus-ring": Color.BRAND_BA_LIME,
+  "component-navigation-item-text": Color.BRAND_BA_FOREST,
+  "component-navigation-item-text-selected": Color.BRAND_BA_LIME,
+  "component-navigation-item-bg-hover": Color.NEUTRAL_BA_100,
   "component-navigation-item-bg-selected": Color.BRAND_BA_FOREST,
+  "component-navigation-item-focus-ring": Color.BRAND_BA_LIME,
   "component-chip-bg-selected": Color.BRAND_BA_FOREST,
   "component-chip-bg-selected-strong": Color.BRAND_BA_LIME,
 
