@@ -33,7 +33,6 @@ export const Button = ({
       className,
     )}
     disabled={disabled}
-    data-testid="button"
     type={type || "button"}
     {...props}
   >

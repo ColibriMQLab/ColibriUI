@@ -14,6 +14,7 @@ export const Counter: React.FC<CounterProps> = ({
   onChange,
   disabled,
   className,
+  "data-testid": testId,
 }) => {
   const minusDisabled = disabled || value <= min;
   const plusDisabled = disabled || value >= max;
@@ -34,6 +35,7 @@ export const Counter: React.FC<CounterProps> = ({
         },
         className,
       )}
+      data-testid={testId}
     >
       <div
         className={clsx(styles.control, {

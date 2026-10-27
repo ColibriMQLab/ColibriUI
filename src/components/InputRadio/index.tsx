@@ -24,7 +24,7 @@ export const InputRadio: FC<InputRadioProps> = memo(
     style,
     text,
     value,
-    testid,
+    "data-testid": testId,
     ...rest
   }) => (
     // Keyboard activation of the nested radio dispatches a click that bubbles to the label.
@@ -35,7 +35,7 @@ export const InputRadio: FC<InputRadioProps> = memo(
       style={style}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
-      data-testid={testid}
+      data-testid={testId}
     >
       <div
         className={clsx(

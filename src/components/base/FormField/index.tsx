@@ -15,8 +15,13 @@ export const FormField = ({
   required,
   className,
   ref,
+  "data-testid": testId,
 }: FormFieldProps) => (
-  <div className={clsx(styles.container, className)} ref={ref}>
+  <div
+    className={clsx(styles.container, className)}
+    ref={ref}
+    data-testid={testId}
+  >
     {label && (
       <Typography
         className={clsx(styles.label, {

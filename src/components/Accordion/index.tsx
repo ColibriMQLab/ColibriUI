@@ -14,6 +14,7 @@ export const Accordion: FC<AccordionProps> = ({
   className,
   tabIndex,
   defaultOpen = false,
+  "data-testid": testId,
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,7 @@ export const Accordion: FC<AccordionProps> = ({
   }, [isOpen]);
 
   return (
-    <div className={clsx(styles.root, className)}>
+    <div className={clsx(styles.root, className)} data-testid={testId}>
       <div className={styles.header}>
         <button
           className={styles.button}

@@ -27,7 +27,6 @@ export const MenuItem = ({
       ref={ref}
       role="menuitem"
       tabIndex={disabled ? -1 : 0}
-      data-testid="menuitem"
       aria-disabled={disabled || undefined}
       className={clsx(
         styles.item,

@@ -26,6 +26,7 @@ export const ColorPicker = ({
   zIndex,
   labels: labelsProp,
   children,
+  "data-testid": testId,
 }: ColorPickerProps) => {
   const [isOpen, setOpen] = useState(false);
   const [isCustomOpen, setCustomOpen] = useState(false);
@@ -88,7 +89,7 @@ export const ColorPicker = ({
   );
 
   return (
-    <span ref={rootRef} className={styles.root}>
+    <span ref={rootRef} className={styles.root} data-testid={testId}>
       <Dropdown
         trigger={["click"]}
         visible={isOpen}

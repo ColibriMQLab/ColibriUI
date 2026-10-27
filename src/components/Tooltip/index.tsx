@@ -32,6 +32,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   placement = "bottom",
   strategy = "absolute",
   className,
+  "data-testid": testId,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef(null);
@@ -87,6 +88,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
             ref={refs.setFloating}
             {...getFloatingProps()}
             className={clsx(styles.tooltip, className)}
+            data-testid={testId}
             style={{ ...floatingStyles, zIndex }}
           >
             <div className={styles.content}>{content}</div>

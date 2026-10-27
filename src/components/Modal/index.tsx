@@ -42,6 +42,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
   title,
   withinParent = false,
   fillParent = false,
+  "data-testid": testId,
 }) => {
   const [dialog, setDialog] = useState<HTMLDivElement | null>(null);
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
@@ -138,6 +139,7 @@ const ModalRoot: FC<PropsWithChildren<ModalProps>> = ({
           ref={setDialog}
           role="dialog"
           aria-modal="true"
+          data-testid={testId}
           tabIndex={-1}
           aria-labelledby={titleCount > 0 ? titleId : undefined}
         >

@@ -103,7 +103,6 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
       >
         <img
           ref={ref}
-          data-testid="avatar"
           alt={alt}
           src={src}
           className={clsx(
@@ -122,7 +121,6 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
     return (
       <span
         ref={ref}
-        data-testid="avatar"
         {...roleProps}
         className={clsx(
           styles["avatar-initials"],
@@ -145,7 +143,6 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
   return (
     <span
       ref={ref}
-      data-testid="avatar"
       {...roleProps}
       className={clsx(
         styles["avatar-stub"],

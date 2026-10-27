@@ -33,7 +33,7 @@ describe("<Dropdown />", () => {
     const button = screen.getByRole("button", { name: /open/i });
     fireEvent.click(button);
 
-    const menuItems = screen.getAllByTestId("menuitem");
+    const menuItems = screen.getAllByRole("menuitem");
 
     await waitFor(() => {
       expect(menuItems[0]).toBeVisible();
@@ -193,7 +193,7 @@ describe("<Dropdown />", () => {
       </Dropdown>,
     );
 
-    fireEvent.keyDown(screen.getByTestId("popper-container"), {
+    fireEvent.keyDown(screen.getByRole("menu"), {
       key: "Escape",
     });
 
@@ -230,7 +230,7 @@ describe("<Dropdown />", () => {
     const button = screen.getByRole("button", { name: /open/i });
     fireEvent.mouseEnter(button);
 
-    const menuItems = screen.getAllByTestId("menuitem");
+    const menuItems = screen.getAllByRole("menuitem");
     await waitFor(() => {
       expect(menuItems[0]).toBeVisible();
       expect(menuItems[0]).toHaveTextContent("Test 1");
@@ -246,7 +246,7 @@ describe("<Dropdown />", () => {
     const button = screen.getByRole("button", { name: /open/i });
     fireEvent.mouseEnter(button);
 
-    const menuItems = screen.getAllByTestId("menuitem");
+    const menuItems = screen.getAllByRole("menuitem");
     await waitFor(() => {
       expect(menuItems[0]).toHaveTextContent("Test 1");
     });

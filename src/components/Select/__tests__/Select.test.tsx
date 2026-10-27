@@ -26,7 +26,7 @@ describe("<Select />", () => {
     const onChange = jest.fn();
     render(<Select value={2} options={options} onChange={onChange} />);
 
-    const selectButton = screen.getByTestId("base-input");
+    const selectButton = screen.getByRole("button");
     await userEvent.click(selectButton);
 
     const firstOption = screen.getByText(/options 0/i);
@@ -41,7 +41,7 @@ describe("<Select />", () => {
       <Select value={2} label="hint" options={options} onChange={jest.fn()} />,
     );
 
-    await userEvent.click(screen.getByTestId("base-input"));
+    await userEvent.click(screen.getByRole("button"));
 
     expect(
       await axe(baseElement, { rules: { region: { enabled: false } } }),

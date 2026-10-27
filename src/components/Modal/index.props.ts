@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from "react";
+import type { TestIdProps } from "../helpers/testId";
 
-export type ModalProps = {
+export type ModalProps = TestIdProps & {
   className?: string;
   onClose?: () => void;
   /**

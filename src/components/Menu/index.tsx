@@ -11,6 +11,7 @@ export const Menu = ({
   onClick,
   children,
   ref,
+  "data-testid": testId,
 }: Props) => {
   const renderChild = useMemo(
     () =>
@@ -36,7 +37,12 @@ export const Menu = ({
   );
 
   return (
-    <ul ref={ref} className={clsx(styles.menu, className)} role="menu">
+    <ul
+      ref={ref}
+      className={clsx(styles.menu, className)}
+      role="menu"
+      data-testid={testId}
+    >
       {renderChild}
     </ul>
   );

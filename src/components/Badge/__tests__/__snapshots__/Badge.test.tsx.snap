@@ -19,7 +19,6 @@ exports[`<Badge /> should render correctly 1`] = `
     </svg>
     <span
       class="root root_direction_right"
-      data-testid="badge"
     >
       3
     </span>

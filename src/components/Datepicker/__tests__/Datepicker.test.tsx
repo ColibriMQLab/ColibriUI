@@ -107,7 +107,7 @@ describe("<Datepicker />", () => {
     getTrigger(screen.getByDisplayValue("14.10.2026")).focus();
     await userEvent.keyboard("{Enter}");
 
-    expect(screen.getByTestId("popper-container")).toBeInTheDocument();
+    expect(screen.getByRole("menu")).toBeInTheDocument();
   });
 
   it("does not open when disabled", async () => {
@@ -133,7 +133,7 @@ describe("<Datepicker />", () => {
     trigger.focus();
     await userEvent.keyboard("{Enter}");
 
-    expect(screen.queryByTestId("popper-container")).not.toBeInTheDocument();
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     expect(onChangeDate).not.toHaveBeenCalled();
   });
 
@@ -162,7 +162,7 @@ describe("<Datepicker />", () => {
     trigger.focus();
     await userEvent.keyboard("{Enter}");
 
-    expect(screen.queryByTestId("popper-container")).not.toBeInTheDocument();
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     expect(onChangeRange).not.toHaveBeenCalled();
   });
 });

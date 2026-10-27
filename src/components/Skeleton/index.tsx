@@ -12,9 +12,11 @@ export const SkeletonRect: FC<RectProps> = ({
   width,
   height,
   radius = "sm",
+  "data-testid": testId,
 }) => (
   <div
     className={clsx(styles.rect, className)}
+    data-testid={testId}
     style={{
       width: toRemLength(width),
       height: toRemLength(height),
@@ -23,9 +25,15 @@ export const SkeletonRect: FC<RectProps> = ({
   />
 );
 
-export const SkeletonText: FC<TextProps> = ({ className, width, size }) => (
+export const SkeletonText: FC<TextProps> = ({
+  className,
+  width,
+  size,
+  "data-testid": testId,
+}) => (
   <div
     className={clsx(styles.text, className)}
+    data-testid={testId}
     style={{ width: toRemLength(width), height: toRemLength(size) }}
   />
 );

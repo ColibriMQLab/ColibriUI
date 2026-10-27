@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import type { Placement } from "@floating-ui/react";
+import type { TestIdProps } from "../helpers/testId";
 
 export interface ColorPickerPreset {
   /** HEX color, for example `#d81b60`. */
@@ -27,7 +28,7 @@ export interface ColorPickerLabels {
   save: string;
 }
 
-export interface ColorPickerProps {
+export interface ColorPickerProps extends TestIdProps {
   /** Current color in HEX. A color missing from `presets` is shown as an extra swatch. */
   value?: string;
   /** Called with the chosen color as lowercase `#rrggbb`. */

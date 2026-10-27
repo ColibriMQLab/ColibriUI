@@ -17,7 +17,7 @@ export const Radio: FC<RadioProps> = ({
   onMouseEnter,
   className,
   disabled = false,
-  testId,
+  "data-testid": testId,
 }: RadioProps) => (
   <InputRadio
     id={id}
@@ -32,6 +32,6 @@ export const Radio: FC<RadioProps> = ({
     name={name}
     className={className}
     disabled={disabled}
-    testid={testId}
+    data-testid={testId}
   />
 );

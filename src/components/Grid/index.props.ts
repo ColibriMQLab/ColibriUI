@@ -1,3 +1,5 @@
+import type { TestIdProps } from "../helpers/testId";
+
 export type Space =
   | "0"
   | "1"
@@ -14,7 +16,7 @@ export type Space =
   | "24"
   | "32";
 
-export type GridProps = {
+export type GridProps = TestIdProps & {
   className?: string;
   gridRowGap?: Space;
   gridColumnGap?: Space;

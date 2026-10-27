@@ -22,8 +22,7 @@ describe("<Badge />", () => {
       </Badge>,
     );
 
-    const badge = screen.getByTestId("badge");
-    expect(badge).toHaveTextContent("3");
+    expect(screen.getByText("3")).toBeInTheDocument();
   });
 
   it("renders zero when showZero is enabled", () => {
@@ -33,8 +32,7 @@ describe("<Badge />", () => {
       </Badge>,
     );
 
-    const badge = screen.getByTestId("badge");
-    expect(badge).toHaveTextContent("0");
+    expect(screen.getByText("0")).toBeInTheDocument();
   });
 
   it("has no axe violations", async () => {

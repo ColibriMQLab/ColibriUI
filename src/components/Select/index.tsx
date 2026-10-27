@@ -27,6 +27,7 @@ export const Select = <T extends string>({
   className,
   onChange,
   "aria-label": ariaLabel,
+  "data-testid": testId,
 }: SelectProps<T>): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const id = useId();
@@ -52,6 +53,7 @@ export const Select = <T extends string>({
 
   return (
     <FormField
+      data-testid={testId}
       className={clsx(
         styles["form-field"],
         {
@@ -104,11 +106,7 @@ export const Select = <T extends string>({
               }
               disabled={Boolean(disabled)}
             >
-              <div
-                id={valueId}
-                className={styles["base-input"]}
-                data-testid="base-input"
-              >
+              <div id={valueId} className={styles["base-input"]}>
                 {preparedLabel ?? (
                   <span className={styles.placeholder}>{placeholder}</span>
                 )}

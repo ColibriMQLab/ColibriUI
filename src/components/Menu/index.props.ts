@@ -1,9 +1,10 @@
 import type { ReactElement, KeyboardEvent, MouseEvent } from "react";
 import type { MenuItemProps } from "./components/MenuItem/index.props";
+import type { TestIdProps } from "../helpers/testId";
 
 export type MenuVariant = "primary";
 
-export type Props = {
+export type Props = TestIdProps & {
   selected?: string[];
   variant?: MenuVariant;
   className?: string;

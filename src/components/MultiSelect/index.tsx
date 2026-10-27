@@ -35,6 +35,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   type,
   onChange,
   "aria-label": ariaLabel,
+  "data-testid": testId,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const id = useId();
@@ -90,6 +91,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   return (
     <FormField
+      data-testid={testId}
       className={clsx(
         styles["form-field"],
         { [styles["full-width"]]: Boolean(fullWidth) },

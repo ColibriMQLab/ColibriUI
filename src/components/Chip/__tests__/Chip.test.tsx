@@ -5,7 +5,7 @@ import { Chip } from "..";
 
 describe("<Chip />", () => {
   it("uses the primary variant by default", () => {
-    render(<Chip>Chip</Chip>);
+    render(<Chip data-testid="chip">Chip</Chip>);
 
     expect(screen.getByTestId("chip").firstElementChild).toHaveClass(
       "inner_variant_primary",
@@ -13,7 +13,11 @@ describe("<Chip />", () => {
   });
 
   it("uses the selected variant class", () => {
-    render(<Chip variant="alert">Chip</Chip>);
+    render(
+      <Chip data-testid="chip" variant="alert">
+        Chip
+      </Chip>,
+    );
 
     expect(screen.getByTestId("chip").firstElementChild).toHaveClass(
       "inner_variant_alert",
@@ -21,7 +25,7 @@ describe("<Chip />", () => {
   });
 
   it("has no axe violations", async () => {
-    const { container } = render(<Chip>Chip</Chip>);
+    const { container } = render(<Chip data-testid="chip">Chip</Chip>);
 
     expect(await axe(container)).toHaveNoViolations();
   });

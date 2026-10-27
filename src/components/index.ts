@@ -218,3 +218,4 @@ export type {
 export { useMediaSizes } from "./hooks/useMediaSizes";
 export { useScrollLock } from "./hooks/useScrollLock";
 export * from "./Icons";
+export type { PopupTestIdProps, TestIdProps } from "./helpers/testId";

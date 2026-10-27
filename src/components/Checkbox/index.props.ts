@@ -1,6 +1,7 @@
 import type { FocusEvent, ChangeEvent, ReactNode } from "react";
+import type { TestIdProps } from "../helpers/testId";
 
-export interface CheckboxProps {
+export interface CheckboxProps extends TestIdProps {
   checked?: boolean;
   className?: string;
   disabled?: boolean;

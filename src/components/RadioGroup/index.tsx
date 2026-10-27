@@ -43,7 +43,7 @@ export const RadioGroup: FC<RadioGroupProps> = memo(
           <Radio
             key={optionVal}
             id={id}
-            testId={id}
+            data-testid={id}
             value={optionVal}
             text={text}
             note={note}

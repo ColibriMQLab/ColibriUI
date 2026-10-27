@@ -20,9 +20,10 @@ export const Datepicker = ({
   startPlaceholder,
   onChangeDate,
   onChangeRange,
+  "data-testid": testId,
   ...calendarProps
 }: Props) => (
-  <div className={clsx(styles.root, className)}>
+  <div className={clsx(styles.root, className)} data-testid={testId}>
     <DatePickerInput
       {...calendarProps}
       disabled={disabled}

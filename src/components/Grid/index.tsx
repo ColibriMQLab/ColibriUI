@@ -13,9 +13,11 @@ export const Grid: FC<PropsWithChildren<GridProps>> = ({
   gridColumnGap = "4",
   gridItemMinWidth = "var(--component-grid-item-min-width)",
   className,
+  "data-testid": testId,
 }) => (
   <div
     className={clsx(styles.root, className)}
+    data-testid={testId}
     style={{
       rowGap: `var(--space-${gridRowGap})`,
       columnGap: `var(--space-${gridColumnGap})`,

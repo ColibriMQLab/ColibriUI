@@ -1,3 +1,5 @@
+import type { TestIdProps } from "../helpers/testId";
+
 export type ChipSize = "s" | "m" | "l";
 export type ChipVariant =
   | "primary"
@@ -8,10 +10,9 @@ export type ChipVariant =
   | "success"
   | "clear";
 
-export type ChipProps = {
+export type ChipProps = TestIdProps & {
   size?: ChipSize;
   variant?: ChipVariant;
-  testID?: string;
   isActive?: boolean;
   iconEnd?: React.ReactNode;
   onClick?: () => void;

@@ -14,7 +14,7 @@ describe("<Menu />", () => {
       </Menu>,
     );
 
-    const menuItems = screen.getAllByTestId("menuitem");
+    const menuItems = screen.getAllByRole("menuitem");
     expect(menuItems.length).toBe(3);
   });
 

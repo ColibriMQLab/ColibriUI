@@ -1,6 +1,7 @@
 import type { Placement, Strategy } from "@floating-ui/react";
 import type { ReactNode } from "react";
-export type TooltipProps = {
+import type { PopupTestIdProps } from "../helpers/testId";
+export type TooltipProps = PopupTestIdProps & {
   content: ReactNode;
   zIndex?: number;
   placement?: Placement;

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { TestIdProps } from "../helpers/testId";
 
 export type StatusTag = "span" | "div";
 
@@ -9,7 +10,7 @@ export enum STATUS_TYPE {
   WARNING = "warning",
 }
 
-export type StatusProps = {
+export type StatusProps = TestIdProps & {
   className?: string;
   indicator?: ReactNode;
   showIndicator?: boolean;

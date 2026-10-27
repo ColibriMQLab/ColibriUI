@@ -32,6 +32,7 @@ import type { DropdownProps } from "./index.props";
 
 export const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
   children,
+  "data-testid": testId,
   zIndex,
   fontSize,
   disabled,
@@ -142,7 +143,7 @@ export const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
           <ClickOutside onClick={() => setOpen(false)}>
             <div
               ref={refs.setFloating}
-              data-testid="popper-container"
+              data-testid={testId}
               className={clsx(
                 styles["popper-container"],
                 styles[`placement-${finalPlacement}`],
@@ -161,7 +162,6 @@ export const Dropdown: FC<PropsWithChildren<DropdownProps>> = ({
             >
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
               <div
-                data-testid="overlay-container"
                 className={styles["overlay-container"]}
                 onClick={onClickOverlay}
               >

@@ -19,8 +19,9 @@ export const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled,
   hasError,
+  "data-testid": testId,
 }) => (
-  <div className={styles.root}>
+  <div className={styles.root} data-testid={testId}>
     <label className={styles.label} htmlFor={id}>
       <input
         className={clsx(

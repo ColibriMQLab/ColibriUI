@@ -4,6 +4,7 @@ import styles from "./Separator.module.scss";
 import type { FC } from "react";
 import type { SeparatorProps } from "./index.props";
 
-export const Separator: FC<SeparatorProps> = ({ className }) => (
-  <div className={clsx(styles.root, className)} />
-);
+export const Separator: FC<SeparatorProps> = ({
+  className,
+  "data-testid": testId,
+}) => <div className={clsx(styles.root, className)} data-testid={testId} />;

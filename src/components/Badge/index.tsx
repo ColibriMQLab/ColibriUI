@@ -40,7 +40,6 @@ export const Badge: FC<PropsWithChildren<Props>> = ({
             },
             className,
           )}
-          data-testid="badge"
         >
           {displayValue}
         </span>

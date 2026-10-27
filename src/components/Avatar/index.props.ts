@@ -1,11 +1,12 @@
 import type { AvatarSize } from "./constants";
+import type { TestIdProps } from "../helpers/testId";
 
 export enum AccountType {
   Person = "person",
   Organization = "org",
 }
 
-export type AvatarProps = {
+export type AvatarProps = TestIdProps & {
   accountType?: AccountType;
   alt?: string;
   size?: AvatarSize;

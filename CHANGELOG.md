@@ -17,6 +17,10 @@
 
 ### Changed
 
+- **Breaking:** components set no `data-testid` of their own, and every component puts the `data-testid` it is given on its root element (type `TestIdProps`). Fields (`Input`, `TextArea`, `Autocomplete`, `NumberInput`, `CodeField`, `Dropzone`) put it on the native control, as before. Removed defaults: `Button` (`button`), `MenuItem` (`menuitem`), `TextArea` (`textarea`), `Select` (`base-input`), `Avatar` (`avatar`), `Badge` (`badge`, on the count), `Chip` (`chip`), `Dropdown` (`popper-container`, `overlay-container`). Find these by role or text instead (`getByRole("menuitem")`, `getByRole("menu")` for an open `Dropdown`).
+- **Breaking:** `Chip` `testID`, `InputRadio` `testid` and `RadioGroup` `Radio` `testId` are replaced by `data-testid`.
+- `Accordion`, `Checkbox`, `ColorPicker`, `Counter`, `Datepicker`, `DotsLoader`, `Grid`, `Menu`, `Modal` (on the dialog), `MultiSelect`, `Select`, `Separator`, `SkeletonRect`, `SkeletonText`, `Status`, `TimeSelect` and `FormField` now take `data-testid`; before, it was dropped.
+- `Dropdown` and `Tooltip` have no root of their own: their `data-testid` names the floating panel, which is in the DOM only while open (type `PopupTestIdProps`). The trigger is your element and keeps its own `data-testid`: `<Dropdown data-testid="sort-menu" overlay={…}><Button data-testid="sort">Sort</Button></Dropdown>`.
 - `Typography` sizes `h1`…`h5` get smaller below `md` (48rem): 32/40, 28/36, 24/32, 20/28 and 18/26 px (font size / line height). From 48rem up they stay the same. `h6` and `xs`/`s`/`m`/`l` do not change.
 - `Typography` sets the font family by size: `xs`/`s`/`m`/`l` and `text-*` use `--font-family-body`; `h1`…`h6`, `heading-*` and `display-*` use `--font-family-display`. Without `size` the font is inherited, as before.
 

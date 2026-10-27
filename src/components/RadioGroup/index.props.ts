@@ -41,5 +41,5 @@ export type RadioProps = {
   ) => void;
   className: string;
   disabled?: boolean;
-  testId?: string;
+  "data-testid"?: string;
 };

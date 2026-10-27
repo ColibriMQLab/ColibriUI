@@ -11,8 +11,10 @@ export const Status = ({
   tag: Component = "span",
   children,
   type,
+  "data-testid": testId,
 }: PropsWithChildren<StatusProps>) => (
   <Component
+    data-testid={testId}
     className={clsx(
       styles.root,
       { [styles[`root_${type}`]]: Boolean(type) },
