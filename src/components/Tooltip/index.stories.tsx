@@ -73,3 +73,11 @@ export const WithTail: Story = {
     placement: "right",
   },
 };
+
+export const LongUnbrokenText: Story = {
+  args: {
+    children: <Button variant="primary">Hover me</Button>,
+    content: <span>whatsupsergey+manager1@gmail.com</span>,
+    placement: "top",
+  },
+};

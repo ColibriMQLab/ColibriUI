@@ -54,6 +54,22 @@ describe("<Tooltip />", () => {
     expect(tooltipText).toHaveTextContent("I am Tooltip");
   });
 
+  it("shows long text without spaces in full", async () => {
+    const email = "whatsupsergey+manager1@gmail.com";
+
+    render(
+      <Tooltip content={<span>{email}</span>}>
+        <Button variant="primary">Button</Button>
+      </Tooltip>,
+    );
+
+    await userEvent.hover(screen.getByRole("button", { name: /button/i }));
+
+    const tooltipText = await screen.findByText(email);
+    expect(tooltipText).toBeVisible();
+    expect(tooltipText).toHaveTextContent(email);
+  });
+
   it("has no axe violations when visible", async () => {
     const { baseElement } = render(
       <Tooltip content={content}>
