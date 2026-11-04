@@ -14,4 +14,6 @@ const [title, setTitle] = useState("Document 1");
 />;
 ```
 
+Focus follows text input behavior: a mouse click places the caret at the click point, and keyboard focus selects the whole value. The edit button places the caret at the end. If the parent changes `value` while the field is focused, the caret moves to the end.
+
 Colors can be overridden with CSS variables: `--editable-background`, `--editable-icon-color`, `--editable-icon-hover-color`, `--editable-placeholder-color`, and `--editable-caret-color`.

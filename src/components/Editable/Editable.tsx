@@ -67,6 +67,16 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
     const [currentValue, setCurrentValue] = useState(value ?? "");
     const [isEditing, setIsEditing] = useState(false);
     const lastValidValue = useRef(value ?? "");
+    // React must not rewrite the text node while typing: that resets the caret.
+    // A new text element is created only with a new component, so seed it then.
+    const [textSeed, setTextSeed] = useState({
+      component: TextComponent,
+      text: value ?? "",
+    });
+    if (textSeed.component !== TextComponent) {
+      setTextSeed({ component: TextComponent, text: currentValue });
+    }
+    const isMouseFocus = useRef(false);
 
     useImperativeHandle(
       forwardedRef,
@@ -78,7 +88,10 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
       if (value === undefined || value === lastValidValue.current) return;
       lastValidValue.current = value;
       setCurrentValue(value);
-      if (editorRef.current) editorRef.current.textContent = value;
+      const editor = editorRef.current;
+      if (!editor) return;
+      editor.textContent = value;
+      if (document.activeElement === editor) placeCaretAtEnd(editor);
     }, [value]);
 
     const commitInput = useCallback(
@@ -102,6 +115,10 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
 
     const handleFocus: FocusEventHandler<HTMLDivElement> = (event) => {
       setIsEditing(true);
+      if (isMouseFocus.current) {
+        isMouseFocus.current = false;
+        return;
+      }
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(event.currentTarget);
@@ -111,6 +128,7 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
 
     const handleBlur: FocusEventHandler<HTMLDivElement> = (event) => {
       setIsEditing(false);
+      isMouseFocus.current = false;
       window.getSelection()?.removeAllRanges();
       if (event.currentTarget.innerHTML === "<br>")
         event.currentTarget.innerHTML = "";
@@ -144,7 +162,10 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
     };
 
     const focusEditor = () => {
-      if (!disabled) editorRef.current?.focus();
+      const editor = editorRef.current;
+      if (disabled || !editor) return;
+      editor.focus();
+      placeCaretAtEnd(editor);
     };
 
     return (
@@ -169,12 +190,15 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>(
           suppressContentEditableWarning
           spellCheck={spellCheck}
           onInput={commitInput}
+          onMouseDown={() => {
+            isMouseFocus.current = !disabled;
+          }}
           onFocus={handleFocus}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
         >
-          {currentValue}
+          {textSeed.text}
         </TextComponent>
 
         {!currentValue && !isEditing && placeholder && (
