@@ -19,6 +19,8 @@
 ### Changed
 
 - **Breaking:** icon `Exit` is renamed to `SignOut`.
+- **Breaking:** icons `Plus` (was 18×18) and `ArrowNext` (was 10×16) are now 24×24 by default, like the other icons.
+- Icons `Bug`, `Cart`, `Copy`, `Plus` and `User` keep about 2px of padding inside the 24px box, like the other icons; `Pipette` is centered. `Cart` has a square `viewBox`.
 - **Breaking:** components set no `data-testid` of their own, and every component puts the `data-testid` it is given on its root element (type `TestIdProps`). Fields (`Input`, `TextArea`, `Autocomplete`, `NumberInput`, `CodeField`, `Dropzone`) put it on the native control, as before. Removed defaults: `Button` (`button`), `MenuItem` (`menuitem`), `TextArea` (`textarea`), `Select` (`base-input`), `Avatar` (`avatar`), `Badge` (`badge`, on the count), `Chip` (`chip`), `Dropdown` (`popper-container`, `overlay-container`). Find these by role or text instead (`getByRole("menuitem")`, `getByRole("menu")` for an open `Dropdown`).
 - **Breaking:** `Chip` `testID`, `InputRadio` `testid` and `RadioGroup` `Radio` `testId` are replaced by `data-testid`.
 - `Accordion`, `Checkbox`, `ColorPicker`, `Counter`, `Datepicker`, `DotsLoader`, `Grid`, `Menu`, `Modal` (on the dialog), `MultiSelect`, `Select`, `Separator`, `SkeletonRect`, `SkeletonText`, `Status`, `TimeSelect` and `FormField` now take `data-testid`; before, it was dropped.

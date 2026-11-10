@@ -3,8 +3,8 @@ import type { Props } from "./index.props";
 
 export const ArrowNext = ({
   fill = "currentColor",
-  width = 10,
-  height = 16,
+  width = 24,
+  height = 24,
   ref,
   ...props
 }: Props) => (
@@ -13,7 +13,7 @@ export const ArrowNext = ({
     fill="none"
     width={width}
     height={height}
-    viewBox="0 0 10 16"
+    viewBox="-7.3 -4 24 24"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >

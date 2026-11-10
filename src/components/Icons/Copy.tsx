@@ -15,7 +15,7 @@ export const Copy = ({
     height={height}
     ref={ref}
     {...props}
-    viewBox="0 0 16 16"
+    viewBox="-0.9 -0.9 17.8 17.8"
   >
     <path
       fillRule="evenodd"

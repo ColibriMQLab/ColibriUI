@@ -9,7 +9,7 @@ exports[`<Badge /> should render correctly 1`] = `
       fill="currentColor"
       focusable="false"
       height="24"
-      viewBox="0 0 20 24"
+      viewBox="-4.73 -2.38 28.5 28.5"
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >

@@ -3,8 +3,8 @@ import type { Props } from "./index.props";
 
 export const Plus = ({
   fill = "currentColor",
-  width = 18,
-  height = 18,
+  width = 24,
+  height = 24,
   ref,
   ...props
 }: Props) => (
@@ -12,7 +12,7 @@ export const Plus = ({
     xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
-    viewBox="0 0 18 18"
+    viewBox="-1.6 -1.6 21.2 21.2"
     ref={ref}
     {...props}
   >

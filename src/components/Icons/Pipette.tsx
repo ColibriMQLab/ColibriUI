@@ -14,7 +14,7 @@ export const Pipette = ({
     height={height}
     {...props}
     ref={ref}
-    viewBox="0 0 24 24"
+    viewBox="0.35 -1.5 24 24"
     fill="none"
   >
     <path

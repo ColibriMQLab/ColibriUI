@@ -6,7 +6,7 @@ export const Bug = ({ width = 24, height = 24, ref, ...props }: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
-    viewBox="17.6 17.6 118 117.9"
+    viewBox="5.8 5.75 141.6 141.6"
     ref={ref}
     {...props}
   >
