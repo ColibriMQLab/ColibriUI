@@ -14,9 +14,11 @@
 - `Typography` takes `lines`: the text is limited to that many lines and the last one ends with an ellipsis.
 - Theme tokens `font-size-h{1…5}-mobile` and `line-height-h{1…5}-mobile`.
 - `Typography` sizes `display-s`, `display-m` and `display-l` for hero headings above `h1`: 56/64, 72/80 and 88/96 px (font size / line height), and 40/48, 48/56 and 56/64 px below `md` (48rem). They use their own tokens `font-size-display-{s,m,l}`, `line-height-display-{s,m,l}` and the `-mobile` pairs; `display-sm`…`display-xl` and their tokens do not change.
+- Icons `Book`, `Bug`, `Comment`, `Console`, `Cookie`, `Copyright`, `CurrencyGbp`, `Github` and `SignIn`. All take the text color (`currentColor`) except `Bug`, which keeps its own colors.
 
 ### Changed
 
+- **Breaking:** icon `Exit` is renamed to `SignOut`.
 - **Breaking:** components set no `data-testid` of their own, and every component puts the `data-testid` it is given on its root element (type `TestIdProps`). Fields (`Input`, `TextArea`, `Autocomplete`, `NumberInput`, `CodeField`, `Dropzone`) put it on the native control, as before. Removed defaults: `Button` (`button`), `MenuItem` (`menuitem`), `TextArea` (`textarea`), `Select` (`base-input`), `Avatar` (`avatar`), `Badge` (`badge`, on the count), `Chip` (`chip`), `Dropdown` (`popper-container`, `overlay-container`). Find these by role or text instead (`getByRole("menuitem")`, `getByRole("menu")` for an open `Dropdown`).
 - **Breaking:** `Chip` `testID`, `InputRadio` `testid` and `RadioGroup` `Radio` `testId` are replaced by `data-testid`.
 - `Accordion`, `Checkbox`, `ColorPicker`, `Counter`, `Datepicker`, `DotsLoader`, `Grid`, `Menu`, `Modal` (on the dialog), `MultiSelect`, `Select`, `Separator`, `SkeletonRect`, `SkeletonText`, `Status`, `TimeSelect` and `FormField` now take `data-testid`; before, it was dropped.
