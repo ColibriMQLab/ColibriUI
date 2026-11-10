@@ -2,6 +2,7 @@ import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   HTMLAttributes,
+  MouseEventHandler,
   ReactNode,
 } from "react";
 
@@ -9,10 +10,27 @@ export type ListSize = "s" | "m" | "l";
 export type ListDensity = "compact" | "normal";
 export type ListSurface = "none" | "container" | "items";
 
+export interface ListLinkProps
+  extends Omit<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    "children" | "className" | "href" | "onClick" | "aria-current"
+  > {
+  /** `undefined` for a disabled item. */
+  href?: string;
+  className: string;
+  children: ReactNode;
+  onClick: MouseEventHandler<HTMLAnchorElement>;
+  "aria-current"?: "page";
+}
+
+/** Renders an item link, for example a router `Link`. Pass every prop to the element. */
+export type ListRenderLink = (props: ListLinkProps) => ReactNode;
+
 export interface ListContextValue {
   disabled: boolean;
   dividers: boolean;
   surface: ListSurface;
+  renderLink?: ListRenderLink;
 }
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
@@ -22,6 +40,8 @@ export interface ListProps extends HTMLAttributes<HTMLUListElement> {
   dividers?: boolean;
   size?: ListSize;
   surface?: ListSurface;
+  /** Custom link for items with `href`. Defaults to `<a href>`. */
+  renderLink?: ListRenderLink;
 }
 
 export interface ListItemBaseProps {
@@ -56,6 +76,8 @@ export interface ListItemLinkProps
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children" | "href"> {
   href: string;
   onAction?: () => void;
+  /** Custom link. Overrides `renderLink` of the `List`. Defaults to `<a href>`. */
+  renderLink?: ListRenderLink;
 }
 
 export type ListItemProps =

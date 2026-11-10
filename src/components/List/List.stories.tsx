@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { action } from "storybook/actions";
 import { fn } from "storybook/test";
 
 import { Chevron } from "../Icons/Chevron";
@@ -23,9 +24,13 @@ const meta: Meta<typeof List> = {
     className: { table: { disable: true } },
     density: { control: "inline-radio", options: ["compact", "normal"] },
     disabled: { control: "boolean" },
+    renderLink: { table: { disable: true } },
     dividers: { control: "boolean" },
     size: { control: "inline-radio", options: ["s", "m", "l"] },
-    surface: { control: "inline-radio", options: ["none", "container", "items"] },
+    surface: {
+      control: "inline-radio",
+      options: ["none", "container", "items"],
+    },
   },
   args: {
     ariaLabel: "Settings",
@@ -125,6 +130,44 @@ export const Sections: Story = {
           <ListItem href="#support">Support Center</ListItem>
           <ListItem>Version 2.0.0</ListItem>
         </ListSection>
+      </List>
+    </StoryFrame>
+  ),
+};
+
+const logLinkClick = action("router link click");
+
+/** `renderLink` receives ready props for a router link, for example `next/link`. */
+export const CustomLink: Story = {
+  name: "List with custom link",
+  args: {
+    ariaLabel: "Files",
+    renderLink: (props) => (
+      <a
+        {...props}
+        data-router-link=""
+        onClick={(event) => {
+          props.onClick(event);
+          // Like `next/link`: skip a prevented click, navigate without reload.
+          if (event.defaultPrevented) return;
+          event.preventDefault();
+          logLinkClick(props.href);
+        }}
+      />
+    ),
+  },
+  render: (args) => (
+    <StoryFrame>
+      <List {...args}>
+        <ListItem href="#documents" selected contentRight={<ChevronRight />}>
+          Documents
+        </ListItem>
+        <ListItem href="#images" contentRight={<ChevronRight />}>
+          Images
+        </ListItem>
+        <ListItem href="#archive" disabled contentRight={<ChevronRight />}>
+          Archive
+        </ListItem>
       </List>
     </StoryFrame>
   ),

@@ -8,6 +8,7 @@
 
 ### Added
 
+- `List` and `ListItem` take `renderLink`: a custom link for items with `href`, for example `next/link`, so navigation does not reload the page. `List` sets it for all items, `ListItem` overrides it for one. It gets the props the `<a>` got before (`href`, `className`, `children`, `onClick`, `tabIndex`, `aria-disabled`, `aria-current`, other anchor props); a disabled item gets no `href`. Without `renderLink` the item is still `<a href>`. Types `ListRenderLink` and `ListLinkProps`.
 - `Drawer` and `Sheet` take `onClosed`: called once the closing animation has finished and the panel with its content is removed.
 - `Typography` `size` takes sizes per breakpoint, mobile first: `size={{ base: "xs", sm: "m" }}` is `xs` below `sm` (40rem) and `m` from it. `base` applies to every width, a breakpoint from its width up (`BREAKPOINTS`); any size name works at any breakpoint, and the sizes' own mobile steps (`h1`…`h5`, `display-*`) still apply inside them. A breakpoint size replaces the previous one completely: weight and letter spacing it does not set come from the parent, not from the smaller size; an explicit `fontWeight` still wins. A plain string works as before. Type `TypographyResponsiveSize`.
 

@@ -9,6 +9,7 @@ import type {
   ListItemProps,
   ListItemButtonProps,
   ListItemStaticProps,
+  ListLinkProps,
   ListProps,
   ListSectionProps,
 } from "./index.props";
@@ -51,6 +52,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       dividers = false,
       disabled = false,
       ariaLabel,
+      renderLink,
       className,
       children,
       ...rest
@@ -58,8 +60,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref,
   ) => {
     const context = useMemo(
-      () => ({ disabled, dividers, surface }),
-      [disabled, dividers, surface],
+      () => ({ disabled, dividers, surface, renderLink }),
+      [disabled, dividers, surface, renderLink],
     );
 
     return (
@@ -95,6 +97,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
       disabled: listDisabled,
       dividers,
       surface,
+      renderLink: listRenderLink,
     } = useContext(ListContext);
     const {
       children,
@@ -128,30 +131,39 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
     );
 
     if ("href" in interactiveProps && interactiveProps.href) {
-      const { href, onAction, onClick, ...anchorProps } =
-        interactiveProps as ListItemLinkProps;
+      const {
+        href,
+        onAction,
+        onClick,
+        renderLink = listRenderLink,
+        ...anchorProps
+      } = interactiveProps as ListItemLinkProps;
+      const linkProps: ListLinkProps = {
+        ...anchorProps,
+        href: isDisabled ? undefined : href,
+        tabIndex: isDisabled ? -1 : anchorProps.tabIndex,
+        "aria-disabled": isDisabled || undefined,
+        "aria-current": selected ? "page" : undefined,
+        className: styles.action,
+        onClick: (event) => {
+          if (isDisabled) {
+            event.preventDefault();
+            return;
+          }
+
+          onClick?.(event);
+          if (!event.defaultPrevented) onAction?.();
+        },
+        children: content,
+      };
 
       return (
         <li ref={ref} className={itemClassName}>
-          <a
-            {...anchorProps}
-            href={isDisabled ? undefined : href}
-            tabIndex={isDisabled ? -1 : anchorProps.tabIndex}
-            aria-disabled={isDisabled || undefined}
-            aria-current={selected ? "page" : undefined}
-            className={styles.action}
-            onClick={(event) => {
-              if (isDisabled) {
-                event.preventDefault();
-                return;
-              }
-
-              onClick?.(event);
-              if (!event.defaultPrevented) onAction?.();
-            }}
-          >
-            {content}
-          </a>
+          {renderLink ? (
+            renderLink(linkProps)
+          ) : (
+            <a {...linkProps}>{linkProps.children}</a>
+          )}
         </li>
       );
     }
